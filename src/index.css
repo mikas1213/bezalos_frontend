@@ -42,7 +42,8 @@ html {
 }
 
 body {
-    background-color: var(--color-bgr-light);
+    /* background-color: var(--color-bgr-light); */
+    /* background-image: linear-gradient(180deg, var(--color-bgr-top), var(--color-bgr-bottom)) !important; */
     
     /* margin-bottom:50px; */
 }

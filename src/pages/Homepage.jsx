@@ -17,9 +17,10 @@ const Homepage = () => {
     const [isIntersecting, setIsIntersecting] = useState(false);
 
     useEffect(() => {
-        document.body.style.backgroundColor = "#084747";
+        // document.body.style.backgroundColor = "#084747";
         // document.body.style.backgroundColor = '#082b1d';
-        // document.body.style.backgroundColor = 'linear-gradient(180deg, var(--color-bgr-top), var(--color-bgr-bottom))';
+        document.body.style.backgroundColor = '#d1d6cf';
+        // document.body.style.backgroundImage = 'linear-gradient(to bottom, rgb(0,0,0) 0%,rgb(0,0,0) 1%,rgba(0,0,0,1) 100%)';
         document.title = "Be žalos";
         window.scrollTo(0, 0);
     }, []);
