@@ -9,7 +9,7 @@ const FooterSection = () => {
     const [isHover, setIsHovered] = useState(false);
     
     return (
-        <footer className={styles.footerSection}>
+        <footer className={`${styles.footerSection} section--hiddenn`}>
             <div className={styles.footerContainer}>
                 <div className={styles.footerTop}>
                     <div className={styles.newsLetter}>

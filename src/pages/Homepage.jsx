@@ -4,6 +4,7 @@ import WelcomeSection from "../components/homepage/WelcomeSection";
 import AboutSection from "../components/homepage/AboutSection";
 import ExperienceSection from '../components/homepage/ExperienceSection';
 import BenefitsSection from "../components/homepage/BenefitsSection";
+import ClientStorySection from '../components/homepage/ClientStorySection';
 import TestimonialSection from '../components/homepage/TestimonialSection';
 import FooterSection from "../components/homepage/FooterSection";
 
@@ -55,6 +56,7 @@ const Homepage = () => {
                 <ExperienceSection />
                 <AboutSection />
                 <BenefitsSection />
+                <ClientStorySection />
                 <TestimonialSection />
                 <FooterSection />
             </Main>

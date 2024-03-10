@@ -1,10 +1,11 @@
 .aboutSection {
-    margin-bottom: 7rem;
+    margin-top: 7rem;
     transition: transform 1s, opacity 1s;
 }
 
 .aboutContainer {
     display: flex;
+    gap: 4rem;
     justify-content: space-between;
     align-items: center;
     max-width: var(--content-width);
@@ -43,7 +44,7 @@ img.signature { width: 18.19rem; }
 
 .aboutRight img {
     width: 58rem;
-    /* transform: scaleX(-1); */
+    transform: scaleX(-1);  
 }
 
 

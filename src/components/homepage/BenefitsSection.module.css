@@ -1,17 +1,21 @@
 .benefitsSection {
-    background-color: var(--color-bgr-card);
+    /* background-color: var(--color-bgr-card); */
     transition: transform 1s, opacity 1s;
 }
 
 .benefitsContainer {
+    /* background-color: var(--color-bgr-card); */
+    border-radius: 3rem;
     margin: 0 auto;
     max-width: var(--content-width);
     padding-top: 7rem;
     padding-bottom: 7rem;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 
 .benefits {
     display: grid;
+    padding: 0 5rem 0 5rem; /* T E S T */
     column-gap: 7rem;
     row-gap: 7rem;
     grid-template-columns: 1fr 1fr;
@@ -22,7 +26,7 @@
     color: var(--color-text-dark);
     font-weight: 700;
     font-size: var(--font-size-h2);
-    padding-bottom: 7rem;
+    padding-bottom: 4rem;
     line-height: 100%;
 }
 
