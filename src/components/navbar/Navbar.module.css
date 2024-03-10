@@ -1,0 +1,100 @@
+.nav {
+    position: fixed;
+    z-index: 1;
+    width: 100%;
+    transition: all .3s ease;
+}
+
+.navHomeNotScroll {
+    background-color: var(--color-bgr-top);
+    color: var(--color-text-light);
+}
+.navHomeAndScroll {
+    background-color: var(--color-bgr-light);
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 0.5px 10px 0px;
+}
+.navNotHomeNotScroll {
+    background-color: var(--color-bgr-light);
+    border-bottom: 0.5px solid #a7aba644;
+}
+.navNotHomeAndScroll {
+    background-color: var(--color-bgr-light);
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 0.5px 10px 0px;
+    border-bottom: 0.5px solid #a7aba644;
+}
+
+.navContainer {
+    max-width: var(--content-width);
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+    font-size: var(--font-size-h5);
+    font-weight: 300; 
+    height: var(--nav-height); 
+}
+
+.navList {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 6rem;
+}
+
+.listItem {
+    position: relative;
+}
+
+.loginBtn {
+    border: none;
+    height: 4rem;
+    width: 16rem;
+    
+    border-radius: 10rem;
+    font-size: var(--font-size-h5);
+    border: 2px solid var(--color-text-light);
+    color: var(--color-text-light);
+    background-color: #00000000;
+    /* background-color: var(--color-btn-primary); */
+    transition: background 0.07s ease-out;
+}
+
+.navHomeNotScroll .loginBtn { box-shadow: 0px 10px 20px 5px rgba(0, 0, 0, 0.1); }
+.navHomeAndScroll .loginBtn, 
+.navNotHomeNotScroll .loginBtn, 
+.navNotHomeAndScroll .loginBtn { 
+    border: 2px solid var(--color-text-dark);
+    color: var(--color-text-dark);
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px; 
+}
+.navHomeNotScroll .loginBtn:hover { background-color: #ffffff33; }
+
+.navHomeAndScroll .loginBtn:hover, 
+.navNotHomeNotScroll .loginBtn:hover, 
+.navNotHomeAndScroll .loginBtn:hover {
+    background-color: #aaaaaa33;
+}
+
+.indicator {
+    position: absolute;
+    border-radius: 50px;
+    margin-top: -4px;
+    margin-left: -2px;
+    height: 1.5px;
+    width: 0px;
+    transition: all 0.2s ease-in-out;
+}
+.navHomeNotScroll .indicator { background-color: var(--color-text-light); }
+.navHomeAndScroll .indicator, 
+.navNotHomeNotScroll .indicator,
+.navNotHomeAndScroll .indicator {background-color: var(--color-text-dark);}
+
+.listItem {
+    cursor: pointer;
+}
+.listItem:hover .indicator {
+    width: calc(100% + 4px);
+    transition: all 0.2s ease-in-out;
+}
+:global(.active) ~ .indicator {
+    width: calc(100% + 4px);
+}

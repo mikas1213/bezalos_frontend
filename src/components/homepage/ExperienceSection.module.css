@@ -1,0 +1,38 @@
+.experienceSection {
+    margin-bottom: 7rem;
+    /* padding-bottom: 7rem; */
+    /* width: 100%; */
+    /* background-color:  var(--color-bgr-light); */
+}
+
+.experienceContainer {
+    display: flex;
+    justify-content: space-between;
+    max-width: var(--content-width);
+    margin: 0 auto;
+}
+
+.experienceItem {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    opacity: 0.2;
+}
+
+.experienceItem h3 {
+    color: var(--color-text-dark);
+    font-weight: 700;
+    line-height: 100%;
+    font-size: var(--font-size-h3);
+}
+
+.experienceItem h4 {
+    line-height: 110%;
+    font-size: var(--font-size-h6);
+    font-weight: 300;
+}
+
+.experienceItem.onload {
+    opacity: 1;
+    transition: opacity 0.5s;
+}

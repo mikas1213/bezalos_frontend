@@ -1,0 +1,14 @@
+.testimonialSection {
+    transition: transform 1s, opacity 1s;
+    /* margin-top: 7rem; */
+    margin-bottom: 7rem;
+}
+
+.testimonialContainer {
+    /* display: flex; */
+    gap: 3rem;
+    align-items: center;
+    max-width: var(--content-width);    
+    margin: 0 auto;
+    padding-bottom: 7rem;
+}

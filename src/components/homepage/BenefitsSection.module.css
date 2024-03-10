@@ -1,0 +1,62 @@
+.benefitsSection {
+    background-color: var(--color-bgr-card);
+    transition: transform 1s, opacity 1s;
+    padding-top: 7rem;
+    padding-bottom: 7rem;
+}
+
+.benefitsContainer {
+    margin: 0 auto;
+    max-width: var(--content-width);
+}
+
+.benefits {
+    display: grid;
+    column-gap: 7rem;
+    row-gap: 7rem;
+    grid-template-columns: 1fr 1fr;
+}
+
+.benefitTitle {
+    text-align: center;
+    color: var(--color-text-dark);
+    font-weight: 700;
+    font-size: var(--font-size-h2);
+    padding-bottom: 7rem;
+    line-height: 100%;
+}
+
+.benefitItem {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.message {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.icon {
+    display: flex;
+    font-size: 7rem;    
+    align-self: center;
+    color: var(--color-text-dark);
+    font-size: 10rem;
+    width: 25.6rem;
+}
+
+.title {
+    color: var(--color-text-dark);
+    font-size: var(--font-size-h5);
+    font-weight: 700;
+}
+
+.text {
+    color: var(--color-text-dark);
+    font-size: var(--font-size-h6);
+}
+
+.testImg {
+    width: 4rem;
+}

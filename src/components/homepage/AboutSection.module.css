@@ -1,0 +1,51 @@
+.aboutSection {
+    background-color: var(--color-bgr-light);
+    transition: transform 1s, opacity 1s;
+}
+
+.aboutContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: var(--content-width);
+    padding-bottom: 7rem;
+    margin: 0 auto;
+    
+}
+
+/* L E F T   S I D E */
+.aboutLeft {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    color: var(--color-text-dark);
+    flex-basis: 60%;
+}
+
+.aboutMsg {
+    font-size: var(--font-size-h2);
+    font-weight: 600;
+}
+
+.aboutTxt {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    font-size: var(--font-size-h6);
+}
+
+/* img.signature { width: 22.737rem; } */
+img.signature { width: 18.19rem; }
+
+/* R I G H T   S I D E */
+.aboutRight {
+    justify-self: center;
+    align-self: center;
+    flex-basis: 40%;
+}
+
+.aboutRight img {
+    width: 58rem;
+}
+
+
