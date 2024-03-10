@@ -1,6 +1,6 @@
 import styles from './AboutSection.module.css';
-import AuthorImg from '../../assets/images/author_1260x1080.png';
-import SignatureImg from '../../assets/images/signature.png';
+import AuthorImg from '../../assets/images/homepage/author_1260x1080.png';
+import SignatureImg from '../../assets/images/homepage/signature.png';
 
 const AboutSection = () => {
     return (

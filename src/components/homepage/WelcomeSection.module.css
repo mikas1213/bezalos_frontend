@@ -10,7 +10,7 @@
 .welcomeContainer { 
     display: flex;
     justify-content: space-between;
-    
+
     max-width: var(--content-width);
     margin: 0 auto;
 
@@ -51,7 +51,7 @@
     gap: 0.1rem;
     color: var(--color-text-light);
     font-size: var(--font-size-h5);
-    font-weight: 100;
+    font-weight: 200;
     transform: translateX(-2%);
     transition: transform 0.6s ease-out, opacity 0.6s ease-out;
     opacity: 0.1;
@@ -76,12 +76,15 @@
 
 .btn:hover { background-color: #ffffff22; }
 
-.welcomeLeft.onload .welcomeMsg p,
-.welcomeLeft.onload .welcomeTxt,
-.welcomeLeft.onload .btn {
+.welcomeLeft.onload :is(.welcomeMsg p, .welcomeTxt, .btn) {
     transform: translateX(0%);
     opacity: 1;
 }
+
+/* .welcomeLeft.onload .welcomeMsg p, .welcomeLeft.onload .welcomeTxt, .welcomeLeft.onload .btn {
+    transform: translateX(0%);
+    opacity: 1;
+} */
 
 
 /* R I G H T   S I D E */

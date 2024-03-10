@@ -1,5 +1,5 @@
 :root {
-    /* Colors */
+    /* Colors CMD + k + g */
     --color-bgr-light: #eff1ef;
     --color-bgr-card: #d1d6cf;
     --color-bgr-top: #084747;
@@ -8,25 +8,6 @@
     --color-text-dark: #082b1d;
     --color-btn-primary: #7ed957;
     --color-btn-secondary: #60c040;
-
-/* CMD+k+g */
-/* Mygtuko spalva - green: {
-
-    100: "#e5f7dd",
-    200: "#cbf0bc",
-    300: "#b2e89a",
-    400: "#98e179",
-    500: "#7ed957",
-    600: "#65ae46",
-    700: "#4c8234",
-    800: "#325723",
-    900: "#192b11"
-
-} */
-
-    /* Main Sizes */
-    --nav-height: 8rem;
-    --content-width: 102rem;
 
     /* Font sizes: */
     --font-size-big: 5.3rem;
@@ -39,6 +20,11 @@
     --font-size-p: 1rem;
     --font-size-small-1: 0.8rem;
     --font-size-small-2: 0.64rem;
+
+
+        /* Main Sizes */
+        --nav-height: 8rem;
+        --content-width: 102rem;
 }
 
 * {
@@ -75,9 +61,9 @@ li {
     list-style: none;
 }
 
-.icon {
+/* .icon {
     font-size: var(--h2FontSize);
-}
+} */
 
 img {
     display: block;

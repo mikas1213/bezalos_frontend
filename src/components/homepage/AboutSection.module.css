@@ -1,5 +1,5 @@
 .aboutSection {
-    background-color: var(--color-bgr-light);
+    margin-bottom: 7rem;
     transition: transform 1s, opacity 1s;
 }
 
@@ -8,9 +8,7 @@
     justify-content: space-between;
     align-items: center;
     max-width: var(--content-width);
-    padding-bottom: 7rem;
-    margin: 0 auto;
-    
+    margin: 0 auto;   
 }
 
 /* L E F T   S I D E */
@@ -34,7 +32,6 @@
     font-size: var(--font-size-h6);
 }
 
-/* img.signature { width: 22.737rem; } */
 img.signature { width: 18.19rem; }
 
 /* R I G H T   S I D E */

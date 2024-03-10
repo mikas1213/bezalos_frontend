@@ -1,13 +1,13 @@
 .benefitsSection {
     background-color: var(--color-bgr-card);
     transition: transform 1s, opacity 1s;
-    padding-top: 7rem;
-    padding-bottom: 7rem;
 }
 
 .benefitsContainer {
     margin: 0 auto;
     max-width: var(--content-width);
+    padding-top: 7rem;
+    padding-bottom: 7rem;
 }
 
 .benefits {
@@ -38,12 +38,9 @@
 }
 
 .icon {
-    display: flex;
-    font-size: 7rem;    
+    display: flex;/* font-size: 7rem;     */
     align-self: center;
-    color: var(--color-text-dark);
-    font-size: 10rem;
-    width: 25.6rem;
+    width: 8rem;
 }
 
 .title {
@@ -55,8 +52,4 @@
 .text {
     color: var(--color-text-dark);
     font-size: var(--font-size-h6);
-}
-
-.testImg {
-    width: 4rem;
 }

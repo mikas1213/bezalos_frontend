@@ -54,25 +54,21 @@
     border: 2px solid var(--color-text-light);
     color: var(--color-text-light);
     background-color: #00000000;
-    /* background-color: var(--color-btn-primary); */
+
     transition: background 0.07s ease-out;
 }
 
 .navHomeNotScroll .loginBtn { box-shadow: 0px 10px 20px 5px rgba(0, 0, 0, 0.1); }
-.navHomeAndScroll .loginBtn, 
-.navNotHomeNotScroll .loginBtn, 
-.navNotHomeAndScroll .loginBtn { 
+:is(.navHomeAndScroll, .navNotHomeNotScroll,  .navNotHomeAndScroll) .loginBtn { 
     border: 2px solid var(--color-text-dark);
     color: var(--color-text-dark);
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px; 
 }
-.navHomeNotScroll .loginBtn:hover { background-color: #ffffff33; }
 
-.navHomeAndScroll .loginBtn:hover, 
-.navNotHomeNotScroll .loginBtn:hover, 
-.navNotHomeAndScroll .loginBtn:hover {
+.navHomeNotScroll .loginBtn:hover { background-color: #ffffff33; }
+:is(.navHomeAndScroll, .navNotHomeNotScroll, .navNotHomeAndScroll) .loginBtn:hover {
     background-color: #aaaaaa33;
-}
+} 
 
 .indicator {
     position: absolute;
@@ -84,9 +80,9 @@
     transition: all 0.2s ease-in-out;
 }
 .navHomeNotScroll .indicator { background-color: var(--color-text-light); }
-.navHomeAndScroll .indicator, 
-.navNotHomeNotScroll .indicator,
-.navNotHomeAndScroll .indicator {background-color: var(--color-text-dark);}
+:is(.navHomeAndScroll, .navNotHomeNotScroll, .navNotHomeAndScroll)  .indicator {
+    background-color: var(--color-text-dark);
+}
 
 .listItem {
     cursor: pointer;
