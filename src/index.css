@@ -8,6 +8,7 @@
     --color-text-dark: #082b1d;
     --color-btn-primary: #7ed957;
     --color-btn-secondary: #60c040;
+    --color-star: #F3C127;
 
     /* Font sizes: */
     --font-size-big: 5.3rem;
@@ -42,6 +43,8 @@ html {
 
 body {
     background-color: var(--color-bgr-light);
+    
+    /* margin-bottom:50px; */
 }
 
 nav {

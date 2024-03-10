@@ -23,7 +23,7 @@ const BenefitsSection = () => {
   
     const text = 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of.';
     return (
-        <section className={`${styles.benefitsSection} section--hiddenn`}>
+        <section className={`${styles.benefitsSection} section--hidden`}>
            
             <div className={styles.benefitsContainer}>
                 <div className={styles.benefitTitle}>Dirbant kartu tavęs laukia</div>

@@ -5,8 +5,10 @@ import AboutSection from "../components/homepage/AboutSection";
 import ExperienceSection from '../components/homepage/ExperienceSection';
 import BenefitsSection from "../components/homepage/BenefitsSection";
 import TestimonialSection from '../components/homepage/TestimonialSection';
+import FooterSection from "../components/homepage/FooterSection";
 
 import { useState, useRef, useEffect } from "react";
+
 
 const Homepage = () => {
 
@@ -15,6 +17,8 @@ const Homepage = () => {
 
     useEffect(() => {
         document.body.style.backgroundColor = "#084747";
+        // document.body.style.backgroundColor = '#082b1d';
+        // document.body.style.backgroundColor = 'linear-gradient(180deg, var(--color-bgr-top), var(--color-bgr-bottom))';
         document.title = "Be žalos";
         window.scrollTo(0, 0);
     }, []);
@@ -52,6 +56,7 @@ const Homepage = () => {
                 <AboutSection />
                 <BenefitsSection />
                 <TestimonialSection />
+                <FooterSection />
             </Main>
         </>
     );
