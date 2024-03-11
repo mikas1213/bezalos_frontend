@@ -10,15 +10,17 @@ function App() {
     return (
         <BrowserRouter>
             <Routes>
-                <Route exact path='/' element={<Homepage />} />
-                <Route exact path='/virtuve' element={<Virtuve />} />
-                <Route exact path='/receptai' element={<Receptai />} />
-                <Route exact path='/paslaugos' element={<Paslaugos />} />
+                <Route path='/' element={<Homepage />} />
+                <Route path='/virtuve' element={<Virtuve />} />
+                <Route path='/receptai' element={<Receptai />} />
+                <Route path='/paslaugos' element={<Paslaugos />} />
+                <Route path='*' element={<h1>404</h1>} />
                 {/* <Route path='/profilis' element={<Profilis />}>
 
                 </Route> */}
             </Routes>
         </BrowserRouter>
+
     );
 }
 

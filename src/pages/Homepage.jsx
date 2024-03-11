@@ -10,7 +10,7 @@ import FooterSection from "../components/homepage/FooterSection";
 
 import { useState, useRef, useEffect } from "react";
 
-import axios from '../apis/axios';
+// import axios from '../apis/axios';
 
 
 const Homepage = () => {
@@ -22,10 +22,10 @@ const Homepage = () => {
         document.title = "Be žalos";
         window.scrollTo(0, 0);
 
-        const getData = async () => {
-            await axios.get("/");
-        };
-        getData();
+        // const getData = async () => {
+        //     await axios.get("/");
+        // };
+        // getData();
         
     }, []);
     
