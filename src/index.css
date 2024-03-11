@@ -10,6 +10,17 @@
     --color-btn-secondary: #60c040;
     --color-star: #F3C127;
 
+/*    green: {
+        100: "#dff2d9",
+        200: "#bfe6b3",
+        300: "#a0d98c",
+        400: "#80cd66",
+        500: "#60c040",
+        600: "#4d9a33",
+        700: "#3a7326",
+        800: "#264d1a",
+        900: "#13260d"
+}*/
     /* Font sizes: */
     --font-size-big: 5.3rem;
     --font-size-h1: 3.815rem;
@@ -39,13 +50,11 @@
 
 html {
     font-size: 62.5%;
+    scroll-behavior: smooth;
 }
 
 body {
-    /* background-color: var(--color-bgr-light); */
-    /* background-image: linear-gradient(180deg, var(--color-bgr-top), var(--color-bgr-bottom)); */
-    /* background-color: red; */
-    /* margin-bottom:50px; */
+    background-color: var(--color-bgr-light);
 }
 
 nav {
@@ -54,6 +63,9 @@ nav {
 
 button {
     cursor: pointer;
+}
+a {
+    display: flex;
 }
 a:link,
 a:visited {

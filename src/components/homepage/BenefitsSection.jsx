@@ -1,10 +1,10 @@
 import styles from './BenefitsSection.module.css';
 
 
-import Icon1 from '../../assets/icons/homepage/interaktyvus-mitybos-planas.png';
-import Icon2 from '../../assets/icons/homepage/merginu-bendruomene.png';
-import Icon3 from '../../assets/icons/homepage/emocinio-valgymo-dienorastis.png';
-import Icon4 from '../../assets/icons/homepage/pokyciu-statistika.png';
+import Icon1 from '../../assets/icons/benefits/interaktyvus-mitybos-planas.png';
+import Icon2 from '../../assets/icons/benefits/merginu-bendruomene.png';
+import Icon3 from '../../assets/icons/benefits/emocinio-valgymo-dienorastis.png';
+import Icon4 from '../../assets/icons/benefits/pokyciu-statistika.png';
 
 
 const BenefitItem = ({icon, title, text}) => {

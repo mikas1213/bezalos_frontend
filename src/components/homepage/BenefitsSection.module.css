@@ -1,5 +1,4 @@
 .benefitsSection {
-    /* background-color: var(--color-bgr-card); */
     transition: transform 1s, opacity 1s;
 }
 
@@ -42,7 +41,7 @@
 }
 
 .icon {
-    display: flex;/* font-size: 7rem;     */
+    display: flex;
     align-self: center;
     width: 8rem;
 }

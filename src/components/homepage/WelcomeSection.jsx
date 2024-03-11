@@ -5,23 +5,24 @@ import styles from "./WelcomeSection.module.css";
 // import Salat from "../../assets/images/homepage/main-meal-salad.png";
 // import Sandwich from "../../assets/images/homepage/main-meal-sandwich.png";
 // import Vegetables from "../../assets/images/homepage/main-meal-vegetables.png";
-import copy_one from "../../assets/images/homepage/square-salad.png";
-import copy_two from "../../assets/images/homepage/square-pancakes.png";
-import copy_three from "../../assets/images/homepage/square-vegetables.png";
-import Burger_2500 from "../../assets/images/homepage/burger_2500x2050.png";
-import Burger_3048 from "../../assets/images/homepage/burger_3048x2500.png";
+import Burger from "../../assets/images/homepage/burger.png";
+// import copy_one from "../../assets/images/homepage/square-salad.png";
+// import copy_two from "../../assets/images/homepage/square-pancakes.png";
+// import copy_three from "../../assets/images/homepage/square-vegetables.png";
+// import Burger_2500 from "../../assets/images/homepage/burger_2500x2050.png";
+// import Burger_3048 from "../../assets/images/homepage/burger_3048x2500.png";
 
 
 import { useState, useEffect } from "react";
 
 // const images = [Burger, Pancakes, Sandwich, Salat, Vegetables];
-const images = [copy_one, copy_two, copy_three, Burger_2500, Burger_3048];
-const randomIntFromInterval = (min, max) => Math.floor(Math.random() * (max - min + 1) + min);
+// const images = [copy_one, copy_two, copy_three, Burger_2500, Burger_3048];
+// const randomIntFromInterval = (min, max) => Math.floor(Math.random() * (max - min + 1) + min);
 
 const WelcomeSection = () => {
     const [isAnimate, setIsAnimate] = useState();
     
-    const randomPhoto = randomIntFromInterval(3, 3);
+    // const randomPhoto = randomIntFromInterval(3, 3);
     
 
     useEffect(() => {
@@ -57,7 +58,7 @@ const WelcomeSection = () => {
                 <div className={styles.welcomeRight}>
                     <img
                         className={isAnimate ? styles.onload : ""}
-                        src={images[randomPhoto]}
+                        src={Burger}
                         alt="Burger"
                     />
                 </div>
