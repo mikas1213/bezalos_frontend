@@ -7,7 +7,8 @@ import Paslaugos from './pages/Paslaugos';
 
 
 function App() {
-
+    // document.body.style.backgroundImage = '#aa00aa';
+    // document.body.style.backgroundImage = 'linear-gradient(red, orange, yellow, green, blue)';
     return (
         <BrowserRouter>
             <Routes>

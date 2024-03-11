@@ -1,6 +1,6 @@
 .main { 
     padding-top: var(--nav-height); 
-    background-color: var(--color-bgr-light); 
+    /* background-color: var(--color-bgr-light);  */
 }
 /* .mainBgr { */
     /* background-color: var(--color-bgr-light);  */

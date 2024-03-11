@@ -6,7 +6,7 @@ import { useEffect } from 'react';
 const Receptai = () => {
 
     useEffect(() => {
-        document.body.style.backgroundColor = '#eff1ef';
+        // document.body.style.backgroundColor = '#eff1ef';
         document.title = 'Be žalos | Receptai';
     }, []);
 

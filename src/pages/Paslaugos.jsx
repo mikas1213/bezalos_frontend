@@ -5,7 +5,7 @@ import { useEffect } from 'react';
 
 const Paslaugos = () => {
     useEffect(() => {
-        document.body.style.backgroundColor = '#eff1ef';
+        // document.body.style.backgroundColor = '#eff1ef';
         document.title = 'Be žalos | Paslaugos';
     }, []);
     return (

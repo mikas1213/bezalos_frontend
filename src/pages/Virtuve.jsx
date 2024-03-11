@@ -6,7 +6,7 @@ import { useEffect } from 'react';
 const Virtuve = () => {
     
     useEffect(() => {
-        document.body.style.backgroundColor = '#eff1ef';
+        // document.body.style.backgroundColor = '#eff1ef';
         document.title = 'Be žalos | Virtuvė';
     }, []);
     

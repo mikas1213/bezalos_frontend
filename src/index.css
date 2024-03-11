@@ -43,8 +43,8 @@ html {
 
 body {
     /* background-color: var(--color-bgr-light); */
-    /* background-image: linear-gradient(180deg, var(--color-bgr-top), var(--color-bgr-bottom)) !important; */
-    
+    /* background-image: linear-gradient(180deg, var(--color-bgr-top), var(--color-bgr-bottom)); */
+    /* background-color: red; */
     /* margin-bottom:50px; */
 }
 
