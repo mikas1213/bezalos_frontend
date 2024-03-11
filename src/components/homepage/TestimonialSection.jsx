@@ -1,13 +1,5 @@
 import styles from "./TestimonialSection.module.css";
-
-import "swiper/css";
-import "swiper/css/pagination";
-import 'swiper/css/navigation';
-
 import { FaStar } from "react-icons/fa6";
-
-// import React, { useRef, useState } from "react";
-// import { Swiper, SwiperSlide } from "swiper/react";
 
 const text = 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s.';
 const TestimonialCard = ({title, text}) => {
