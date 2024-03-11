@@ -10,10 +10,10 @@ function App() {
     return (
         <BrowserRouter>
             <Routes>
-                <Route path='/' element={<Homepage />} />
-                <Route path='/virtuve' element={<Virtuve />} />
-                <Route path='/receptai' element={<Receptai />} />
-                <Route path='/paslaugos' element={<Paslaugos />} />
+                <Route exact path='/' element={<Homepage />} />
+                <Route exact path='/virtuve' element={<Virtuve />} />
+                <Route exact path='/receptai' element={<Receptai />} />
+                <Route exact path='/paslaugos' element={<Paslaugos />} />
                 {/* <Route path='/profilis' element={<Profilis />}>
 
                 </Route> */}

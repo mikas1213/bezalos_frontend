@@ -21,7 +21,7 @@ const Navbar = ({isHome = false}) => {
             <div className={styles.navContainer}>
                 <div className={styles.logo}>
                     <NavLink to='/'>
-                        <Logo isChangeColor={{isHome, isScroll}}/>
+                        <Logo isChangeColor={{isHome, isScroll}} />
                     </NavLink>
                 </div>
 

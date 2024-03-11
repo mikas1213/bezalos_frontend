@@ -66,11 +66,11 @@
     /* border: 1px solid var(--color-btn-primary); */
     background-color: var(--color-btn-primary);
 
-    height: 4rem;
+    height: 3.8rem;
     width: 13rem;
     top: 50%;
     transform: translateY(-50%);
-    right: 4px;
+    right: 0.6rem;
 
     transition: background 0.2s;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
@@ -80,7 +80,6 @@
     background-color: var(--color-btn-secondary);
 }
 .subsEmail button:active {
-    transition: background 0.0s;
     background-color: #80cd66;
 }
 
@@ -132,6 +131,3 @@
     /* background: red; */
 }
 
-svg {
-    /* stroke-width: 0.1rem; */
-}
