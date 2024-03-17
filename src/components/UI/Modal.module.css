@@ -1,0 +1,57 @@
+.modalOverlay {
+    position: fixed;
+    z-index: 10;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    backdrop-filter: blur(2px);
+    background: #f0f0f090;
+    animation: openModalOverlay 0.2s;
+}
+
+.modal {
+    display: flex;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: var(--color-bgr-light);
+    animation: openModal 0.2s;
+    border-radius: 2rem;
+    overflow: hidden;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.close {
+    position: absolute;
+    right: 0;
+}
+
+.icon {
+    display: flex;
+}
+
+@keyframes openModalOverlay {
+    from {
+        opacity: 0;
+        backdrop-filter:  blur(0px);
+    }
+    to {
+        opacity: 1;
+        backdrop-filter:  blur(3px);
+    } 
+}
+
+@keyframes openModal {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -48%);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    } 
+}
+
+

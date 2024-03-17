@@ -1,0 +1,45 @@
+.FormLeft {
+    width: 400px;
+    height: 80vh;
+    background-image: url('../../assets/images/auth/registration_bgr.jpg');
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: var(--color-text-dark);
+}
+
+.FormLeft h1 {
+    font-size: var(--font-size-h1);
+}
+.FormLeft div {
+    padding-top: 4rem;
+}
+.FormLeft div h3 {
+    display: flex;
+    justify-content: center;
+    font-size: var(--font-size-h5);
+}
+.FormLeft h4 {
+    padding-top: 10rem;
+    font-size: var(--font-size-h6);
+    font-weight: 400;
+}
+
+.FormLeft button {
+    margin-top: 1rem;
+    border: none;
+    border-radius: 10rem;
+    color: var(--color-text-light);
+    background-color: var(--color-bgr-top);
+    height: 4rem;
+    width: 14rem;
+    font-weight: 500;
+    transition: background-color 0.1s ease-in-out;
+    box-shadow: 0px 10px 20px 5px rgba(0, 0, 0, 0.1);
+}
+.FormLeft button:hover {
+    background-color: var(--color-bgr-bottom);
+    transition: background-color 0.1s ease-in-out;
+}

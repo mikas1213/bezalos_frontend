@@ -42,7 +42,6 @@ const Homepage = () => {
             threshold: 0.16,
             // rootMargin: '-200px',
             // threshold: 0.15
-            
         });
 
         ref.current.querySelectorAll(".section--hidden").forEach((section) => {

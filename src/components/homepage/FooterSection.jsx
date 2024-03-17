@@ -48,7 +48,7 @@ const FooterSection = () => {
                 </div>
                 <div className={styles.footerDivider}></div>
                 <div className={styles.footerBottom}>
-                    <span>&copy;</span>
+                    <span className={styles.copy}>&copy;</span>
                     <span>2024 Valgau be žalos</span>
                 </div>
             </div>

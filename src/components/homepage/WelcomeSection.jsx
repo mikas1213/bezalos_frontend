@@ -14,7 +14,7 @@ import Burger from "../../assets/images/homepage/burger.png";
 
 
 import { useState, useEffect } from "react";
-
+import TestGetUsers from '../TestGetUsers';
 // const images = [Burger, Pancakes, Sandwich, Salat, Vegetables];
 // const images = [copy_one, copy_two, copy_three, Burger_2500, Burger_3048];
 // const randomIntFromInterval = (min, max) => Math.floor(Math.random() * (max - min + 1) + min);
@@ -32,6 +32,7 @@ const WelcomeSection = () => {
 
     return (
         <section className={styles.welcomeSection}>
+            <TestGetUsers />
             <div className={styles.welcomeContainer}>
                 <div
                     className={`${styles.welcomeLeft} ${

@@ -115,14 +115,20 @@
 .footerDivider {
     /* border-bottom: 1.5px solid #082b1d99; */
     border-bottom: 1.2px solid #44444455;
-    margin: 1rem -3rem 1rem -3rem;
+    margin: 1rem -3rem 0.6rem -3rem;
     
 }
 
 .footerBottom {
     display: flex;
+    align-items: center;
+    gap: 0.3rem;
     color: var(--color-bgr-top);
     font-size: var(--font-size-h6);
+}
+.copy {
+    font-size: var(--font-size-h5);
+    font-weight: 400;
 }
 
 .icon {

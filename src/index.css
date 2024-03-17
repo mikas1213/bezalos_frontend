@@ -21,6 +21,7 @@
         800: "#264d1a",
         900: "#13260d"
 }*/
+
     /* Font sizes: */
     --font-size-big: 5.3rem;
     --font-size-h1: 3.815rem;
@@ -99,16 +100,12 @@ img {
     transform: translateY(7rem);
 }
 
-/* .anime {
-    transition: all 1s ease;
-    transform: translateX(-10%);
-} */
+
+
 
 
 
 /* --------------------------------------------- */
-
-
 
 /* 
 	https://typescale.com

@@ -1,54 +1,75 @@
-import { useState } from 'react';
+import { useState } from "react";
 import { NavLink } from "react-router-dom";
 
-import styles from './Navbar.module.css';
-import { Logo } from './Logo';
+import styles from "./Navbar.module.css";
+import { Logo } from "./Logo";
 
-const Navbar = ({isHome = false}) => {
-    
+import Modal from '../UI/Modal';
+import RegistrationForm from "../authentication/RegistrationForm";
+import FormLeft from "../authentication/FormLeft";
+import FormRight from "../authentication/FormRight";
+
+const Navbar = ({ isHome = false }) => {
     const [isScroll, setIsScroll] = useState(false);
-    const changeColor = () => window.scrollY > 100 ? setIsScroll(true) : setIsScroll(false);
-    window.addEventListener('scroll', changeColor);
+    const changeColor = () =>
+        window.scrollY > 100 ? setIsScroll(true) : setIsScroll(false);
+    window.addEventListener("scroll", changeColor);
 
-    let changeStyleClass = '';
-    if(isHome && !isScroll) changeStyleClass = styles.navHomeNotScroll;
-    if(isHome && isScroll) changeStyleClass = styles.navHomeAndScroll;
-    if(!isHome && !isScroll) changeStyleClass = styles.navNotHomeNotScroll;
-    if(!isHome && isScroll) changeStyleClass = styles.navNotHomeAndScroll;
-    
+    let changeStyleClass = "";
+    if (isHome && !isScroll) changeStyleClass = styles.navHomeNotScroll;
+    if (isHome && isScroll) changeStyleClass = styles.navHomeAndScroll;
+    if (!isHome && !isScroll) changeStyleClass = styles.navNotHomeNotScroll;
+    if (!isHome && isScroll) changeStyleClass = styles.navNotHomeAndScroll;
+
+    const [isOpenModal, setIsOpenModal] = useState(false);
+
     return (
-        <nav className={`${styles.nav} ${changeStyleClass}`}>
-            <div className={styles.navContainer}>
-                <div className={styles.logo}>
-                    <NavLink to='/'>
-                        <Logo isChangeColor={{isHome, isScroll}} />
-                    </NavLink>
+        <>
+            {isOpenModal && <Modal onClose={() => setIsOpenModal(false)}>
+                {/* <RegistrationForm onCloseModal={() => setIsOpenModal(false)} /> */}
+                <FormLeft />
+                <FormRight />
+            </Modal>}
+            
+            <nav className={`${styles.nav} ${changeStyleClass}`}>
+                <div className={styles.navContainer}>
+                    <div className={styles.logo}>
+                        <NavLink to="/">
+                            <Logo isChangeColor={{ isHome, isScroll }} />
+                        </NavLink>
+                    </div>
+
+                    <ul className={styles.navList}>
+                        <li className={styles.listItem}>
+                            <NavLink to="/virtuve">Virtuvė</NavLink>
+                            <div className={styles.indicator}></div>
+                        </li>
+
+                        <li className={styles.listItem}>
+                            <NavLink to="/receptai">Receptai</NavLink>
+                            <div className={styles.indicator}></div>
+                        </li>
+
+                        <li className={styles.listItem}>
+                            <NavLink to="/paslaugos">Paslaugos</NavLink>
+                            <div className={styles.indicator}></div>
+                        </li>
+
+                        <li className={styles.listItem}>
+                            <NavLink to="/profilis">Profils</NavLink>
+                            <div className={styles.indicator}></div>
+                        </li>
+                        <li>
+                            <button
+                                onClick={() => setIsOpenModal(true)}
+                                className={styles.loginBtn}>
+                                Prisijungti
+                            </button>
+                        </li>
+                    </ul>
                 </div>
-
-                <ul className={styles.navList}>
-                    <li className={styles.listItem}>
-                        <NavLink to='/virtuve'>Virtuvė</NavLink>
-                        <div className={styles.indicator}></div>
-                    </li>
-
-                    <li className={styles.listItem}>
-                        <NavLink to='/receptai'>Receptai</NavLink>
-                        <div className={styles.indicator}></div>
-                    </li>
-
-                    <li className={styles.listItem}>
-                        <NavLink to='/paslaugos'>Paslaugos</NavLink>
-                        <div className={styles.indicator}></div>
-                    </li>
-
-                    <li className={styles.listItem}>
-                        <NavLink to='/profilis'>Profils</NavLink>
-                        <div className={styles.indicator}></div>
-                    </li>
-                    <li><button className={styles.loginBtn}>Prisijungti</button></li>
-                </ul>
-            </div>
-        </nav>
+            </nav>
+        </>
     );
 };
 

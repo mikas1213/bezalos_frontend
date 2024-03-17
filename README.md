@@ -15,8 +15,14 @@ https://www.npmjs.com/package/react-router-dom
 npm i @tanstack/react-query
 https://tanstack.com/query/latest
 
-npm i swiper
-https://swiperjs.com/react
+npm i @tanstack/react-query-devtools
+https://tanstack.com/query/latest/docs/framework/react/devtools
+
+npm i react-hook-form
+https://react-hook-form.com/get-started
+https://www.npmjs.com/package/react-hook-form
+
+
 
 
 # Colors:
