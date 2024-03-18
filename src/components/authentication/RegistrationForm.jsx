@@ -1,17 +1,20 @@
 import { useState } from "react";
 import { FaEnvelope } from "react-icons/fa";
-import { FaUser, FaLock } from "react-icons/fa6";
+import { FaUser, FaLock, FaUserPlus } from "react-icons/fa6";
 import { RiEyeCloseLine } from "react-icons/ri";
 import { BsEyeFill } from "react-icons/bs";
+import { IoInformationCircle } from "react-icons/io5";
+// import { PiUserCirclePlusDuotone } from "react-icons/pi";
 import styles from "./RegistrationForm.module.css";
 import axios from "../../api/axios";
 
-const RegistrationForm = () => {
+import { Input } from "./Radio";
+const Registration = () => {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [passwordConfirmed, setPasswordConfirmed] = useState("");
-    const [radioButtonValue, setRadioButtonValue] = useState("abu");
+    const [radioButtonValue, setRadioButtonValue] = useState("test1");
 
     const [openEye_1, setOpenEye_1] = useState(false);
     const [openEye_2, setOpenEye_2] = useState(false);
@@ -38,7 +41,15 @@ const RegistrationForm = () => {
     return (
         <>
             <form className={styles.form} onSubmit={handleSubmit}>
-                <h1>REGISTRACIJA</h1>
+
+                {/* <Input value='test1' one={radioButtonValue} two={setRadioButtonValue} /> */}
+                {/* <Input value='test2' one={radioButtonValue} two={setRadioButtonValue} /> */}
+                {/* <h1>REGISTRACIJA</h1> */}
+                {/* <div className={styles.newUserIcon}> */}
+                    {/* <FaUserPlus className={styles.icon} /> */}
+                    {/* <PiUserCirclePlusDuotone className={styles.icon} /> */}
+                {/* </div> */}
+                
                 <div className={styles.inputs}>
                     <div className={styles.inputGroup}>
                         <input
@@ -115,8 +126,11 @@ const RegistrationForm = () => {
                         </div>
                     </div>
                 </div>
-
-                <h3>Mane domina: </h3>
+                
+                <div className={styles.maneDomina}>
+                    <h3>Mane domina: </h3>
+                    <IoInformationCircle className={styles.icon}/>
+                </div>
 
                 <div className={styles.radios}>
                     <div className={styles.radioGroup}>
@@ -130,6 +144,7 @@ const RegistrationForm = () => {
                         />
                         <span className={styles.checkmark} onClick={() => setRadioButtonValue("profilis")}></span>
                         <label htmlFor="profilis">Sveikas svorio metimas</label>
+                        
                     </div>
 
                     <div className={styles.radioGroup}>
@@ -143,7 +158,7 @@ const RegistrationForm = () => {
                         />
                         <span className={styles.checkmark} onClick={() => setRadioButtonValue("virtuve")}></span>
                         <label htmlFor="virtuve">
-                            Mitybos įpročių formavimas
+                            Išmokti valgyti be sąžinės graužimo
                         </label>
                     </div>
 
@@ -157,7 +172,7 @@ const RegistrationForm = () => {
                             onChange={() => setRadioButtonValue("abu")}
                         />
                         <span className={styles.checkmark} onClick={() => setRadioButtonValue("abu")}></span>
-                        <label htmlFor="abu">Abu</label>
+                        <label htmlFor="abu">Abu aukščiau pateikti varijantai</label>
                     </div>
 
                     <div className={styles.radioGroup}>
@@ -173,10 +188,13 @@ const RegistrationForm = () => {
                         <label htmlFor="nezinau">Dar nežinau</label>
                     </div>
                 </div>
-                <button>REGISTRUOTIS</button>
+
+                <div className={styles.btn}>
+                    <button>REGISTRUOTIS</button>
+                </div>
             </form>
         </>
     );
 };
 
-export default RegistrationForm;
+export default Registration;

@@ -1,9 +1,9 @@
 import styles from './FormRight.module.css';
-import RegistrationForm from './RegistrationForm';
-const FormRight = () => {
+
+const FormRight = ({children}) => {
     return (
-        <div className={styles.FormRight}>
-            <RegistrationForm />
+        <div className={styles.formRight}>
+            {children}
         </div>
     );
 };

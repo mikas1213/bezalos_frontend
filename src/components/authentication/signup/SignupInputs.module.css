@@ -1,0 +1,28 @@
+.inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.inputs .icon {
+    position: absolute;
+    font-size: 1.3rem;
+    color: var(--color-text-dark);
+    top: 50%;
+    transform: translateY(-50%);
+    left: 1.2rem;
+}
+
+.eyeIconContainer {
+    display: flex;
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 1.2rem;
+}
+
+.eyeIcon {
+    font-size: 2rem;
+    color: #bbb;
+}

@@ -1,0 +1,12 @@
+.signup {
+    margin: 0 4rem;
+    /* transition: all 2s ease; */
+    animation: mymove 0.1s ease-in-out;
+}
+
+
+
+@keyframes mymove {
+    from {opacity: 0;}
+    to {opacity: 1;}
+  }

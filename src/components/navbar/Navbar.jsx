@@ -5,9 +5,7 @@ import styles from "./Navbar.module.css";
 import { Logo } from "./Logo";
 
 import Modal from '../UI/Modal';
-import RegistrationForm from "../authentication/RegistrationForm";
-import FormLeft from "../authentication/FormLeft";
-import FormRight from "../authentication/FormRight";
+import AuthenticationForms from '../authentication/AuthenticationForms';
 
 const Navbar = ({ isHome = false }) => {
     const [isScroll, setIsScroll] = useState(false);
@@ -26,9 +24,7 @@ const Navbar = ({ isHome = false }) => {
     return (
         <>
             {isOpenModal && <Modal onClose={() => setIsOpenModal(false)}>
-                {/* <RegistrationForm onCloseModal={() => setIsOpenModal(false)} /> */}
-                <FormLeft />
-                <FormRight />
+                <AuthenticationForms formState='signin' />
             </Modal>}
             
             <nav className={`${styles.nav} ${changeStyleClass}`}>

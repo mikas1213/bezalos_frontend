@@ -1,0 +1,26 @@
+.inputGroup {
+    position: relative;
+}
+
+.inputGroup input {
+    cursor: pointer;
+    width: 100%;
+    outline: transparent;
+    border: none;
+    font-weight: 500;
+    padding-left: 3.4rem;
+    line-height: 4rem;
+    border-radius: 10rem;
+    background: transparent;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    /* box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px; */
+}
+
+.inputGroup input::placeholder {
+    color: #bbb;
+}
+.inputGroup input:focus {
+    outline: 0.8px solid var(--color-text-dark);
+    transition: outline 0.1s ease;
+}
+
