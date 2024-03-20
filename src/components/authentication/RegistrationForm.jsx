@@ -8,7 +8,7 @@ import { IoInformationCircle } from "react-icons/io5";
 import styles from "./RegistrationForm.module.css";
 import axios from "../../api/axios";
 
-import { Input } from "./Radio";
+// import { Input } from "./Radio";
 const Registration = () => {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
@@ -34,8 +34,7 @@ const Registration = () => {
                 withCredentials: true,
             }
         );
-
-        console.log("response: ", response);
+        console.log(response)
     };
 
     return (

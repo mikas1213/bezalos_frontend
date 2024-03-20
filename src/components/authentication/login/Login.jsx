@@ -13,6 +13,8 @@ const Login = () => {
 
             <button onClick={() => setChangeFormState('signup')}>Sign up</button>
             <button onClick={() => setChangeFormState('forgot')}>Forgot Password</button>
+
+            
         </div>
     );
 };

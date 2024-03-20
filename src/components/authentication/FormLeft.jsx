@@ -21,7 +21,10 @@ const FormLeft = () => {
                 <h4>Dar neturi paskyros?</h4>
                 <button onClick={() => setChangeFormState('signup')}>REGISTRUOTIS</button>
             </div>}
-            {(changeFormState === 'signup' || changeFormState === 'forgot') && <div className={styles.action}>
+            {(
+                changeFormState === 'signup' || 
+                changeFormState === 'forgot'||
+                changeFormState === 'success-signup') && <div className={styles.action}>
                 <h4>Jau turi paskyrą?</h4>
                 <button onClick={() => setChangeFormState('signin')}>PRISIJUNGTI</button>
             </div>}

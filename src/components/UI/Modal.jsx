@@ -22,9 +22,7 @@ const Modal = ({children, onClose}) => {
     return createPortal(
         <div className={styles.modalOverlay}>
             <div ref={ref} className={styles.modal}>
-                {/* <button className={styles.close} onClick={onClose}> */}
                     <HiXMark className={styles.icon} onClick={onClose} />
-                {/* </button> */}
                 {children}
             </div>
         </div>, document.body

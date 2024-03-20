@@ -1,0 +1,26 @@
+.loader {
+    position: absolute;
+    top: calc(50% - 24px);
+    right: calc(25% - 42px);
+    /* transform: translateY(-142px); */
+    z-index: 100;    
+    opacity: 0.5;
+
+    width: 84px;
+    height: 84px;
+    border: 8px solid var(--color-text-dark);
+    border-bottom-color: transparent;
+    border-radius: 50%;
+    display: inline-block;
+    box-sizing: border-box;
+    animation: rotation 1s linear infinite;
+}
+
+@keyframes rotation {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}

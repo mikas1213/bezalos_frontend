@@ -1,13 +1,20 @@
 import styles from './Signup.module.css';
 import { useState, createContext, useMemo } from 'react';
+import axios from "../../../api/axios";
+
 import SignupHeader from './SignupHeader';
 import SignupInputs from './SignupInputs';
 import SignupRadios from './SignupRadios';
 import SignupBottom from './SignupBottom';
+import Spinner from '../../UI/Spinner';
+
+import { useContext } from 'react';
+import { FormContext } from '../AuthenticationForms';
 
 export const SignUpContext = createContext(null);
+
 const Signup = () => {
-    
+    const {setChangeFormState} = useContext(FormContext);
     const [inputsData, setInputsData] = useState({
         name:'', 
         email: '', 
@@ -16,16 +23,34 @@ const Signup = () => {
         passwordConfirmed: ''
     });
 
-    const providerInputsData = useMemo(() => ({inputsData, setInputsData}), [inputsData, setInputsData]);
+    const [isLoading, setIsLoading] = useState(false);
+    const [errors, setErrors] = useState([]);
+    const providerInputsData = useMemo(() => ({inputsData, setInputsData, errors}), [inputsData, setInputsData, errors]);
+
+    const handleSubmit = async e => {
+        e.preventDefault();
+        try {
+            setIsLoading(true);
+            await axios.post('auth/signup', inputsData, {
+                headers: {'Content-Tupe': 'application/json'},
+                withCredentials: true
+            });
+            setIsLoading(false);
+            setChangeFormState('success-signup');
+        } catch(err) {
+            setIsLoading(false);
+            setErrors(err.response.data.errors)
+        }
+    };
 
     return (
         <SignUpContext.Provider value={providerInputsData}>
-            <form className={styles.signup}>
+            {isLoading && <Spinner />}
+            <form className={styles.signup} onSubmit={handleSubmit}>
                 <SignupHeader />
                 <SignupInputs />
                 <SignupRadios />
                 <SignupBottom />
-            {/* <button type='text' onClick={() => setChangeFormState('signin')}>Sign In</button> */}
             </form>
         </SignUpContext.Provider>
     );

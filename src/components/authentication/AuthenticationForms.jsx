@@ -2,6 +2,7 @@ import  { useState, createContext, useMemo } from 'react';
 import FormLeft from "./FormLeft";
 import FormRight from "./FormRight";
 import Signup from './signup/Signup';
+import SuccessSignup from './success_signup/SuccessSignup';
 import Login from './login/Login';
 import ForgotPassword from "./forgot_password/ForgotPassword";
 
@@ -15,12 +16,14 @@ const Authentication = ({formState}) => {
     
     return (
         <FormContext.Provider value={providerchangeFormState}>
+            
             <FormLeft />
             <FormRight>
                 {changeFormState === 'signin' && <Login />}
                 {changeFormState === 'signup' && <Signup />}
                 {changeFormState === 'forgot' && <ForgotPassword />}
-            </FormRight>        
+                {changeFormState === 'success-signup' && <SuccessSignup />}
+            </FormRight>
         </FormContext.Provider>
     );
 };
