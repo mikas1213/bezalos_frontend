@@ -1,3 +1,4 @@
+import axios from '../../api/axios';
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
 
@@ -5,12 +6,12 @@ import styles from "./Navbar.module.css";
 import { Logo } from "./Logo";
 
 import Modal from '../UI/Modal';
-// import AuthenticationForms from '../authentication/AuthenticationForms';
 import Authentication from "../auth/Authentication";
 import useAuth from "../../hooks/useAuth";
-
+import useLogout from '../../hooks/useLogout';
 
 const Navbar = ({ isHome = false }) => {
+    const logout = useLogout();
     
     const [isScroll, setIsScroll] = useState(false);
     const changeColor = () =>
@@ -23,13 +24,11 @@ const Navbar = ({ isHome = false }) => {
     if (!isHome && !isScroll) changeStyleClass = styles.navNotHomeNotScroll;
     if (!isHome && isScroll) changeStyleClass = styles.navNotHomeAndScroll;
 
-    // const [isOpenModal, setIsOpenModal] = useState(false);
     const { auth, isOpenModal, setIsOpenModal } = useAuth();
     
     return (
         <>
             {isOpenModal && <Modal onClose={() => setIsOpenModal(false)}>
-                {/* <AuthenticationForms formState='signin' /> */}
                 <Authentication />
             </Modal>}
             
@@ -63,11 +62,14 @@ const Navbar = ({ isHome = false }) => {
                         </li>}
                         
                         <li>
-                            <button
+                            {!auth.accessToken ? <button
                                 onClick={() => setIsOpenModal(true)}
                                 className={styles.loginBtn}>
                                 Prisijungti
                             </button>
+                            :
+                            <button className={styles.loginBtn} onClick={async () => await logout()}>Atsijungti</button>
+                            }
                         </li>
                     </ul>
                 </div>

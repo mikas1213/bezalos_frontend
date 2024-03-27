@@ -19,6 +19,8 @@ import useAuth from '../../hooks/useAuth';
 import { useContext } from "react";
 import { FormStateContext } from "./Authentication";
 
+import toast from 'react-hot-toast';
+
 
 const Signin = () => {
     const [eyeOne, setEyeOne] = useState(false);
@@ -47,8 +49,12 @@ const Signin = () => {
             setAuth({
                 accessToken: data.data.accessToken
             });
+            
+            toast.success('Prisijungimas sėkmingas!');
+            // toast.error('Prisijungimas sėkmingas!');
             setIsOpenModal(false);
             navigate(from, { replace: true });
+            
         },
         onError: (err) => {
             const { response: {data: {errors: serverErrors}} } = err;

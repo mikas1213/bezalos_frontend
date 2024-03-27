@@ -104,6 +104,13 @@ img {
     transform: translateY(7rem);
 }
 
+.myToast {
+    background: var(--color-bgr-light);
+    width: 100vw;
+    /* border-radius: 50px; */
+    /* max-width: 100vw; */
+}
+
 
 
 
