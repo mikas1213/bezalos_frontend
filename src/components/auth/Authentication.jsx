@@ -7,7 +7,7 @@ import Signin from './Signin';
 import Signup from './Signup';
 import SignupSuccess from './SignupSuccess';
 import ForgotPassword from './ForgotPassword';
-import RestPasswordSent from './ResetPasswordSent';
+import ResetPasswordSent from './ResetPasswordSent';
 
 export const FormStateContext = createContext(null);
 
@@ -18,16 +18,18 @@ const Authentication = () => {
         <FormStateContext.Provider value={{formState, setFormState}}>
 
             <div className={styles.autchentication}>
-                {formState === 'token-sent' ?
-                    // <SignupSuccess /> 
-                    <RestPasswordSent />
+                {formState === 'success' || formState === 'token-sent' 
+                    ?
+                    <>
+                        {formState === 'success' && <SignupSuccess /> }
+                        {formState === 'token-sent' && <ResetPasswordSent />}
+                    </>
                     : 
                     <>
                         <Left />
                         {formState === 'forgot' && <ForgotPassword />}
                         {formState === 'signin' && <Signin />}
                         {formState === 'signup' && <Signup />}
-                        
                     </>
                 }
             </div>

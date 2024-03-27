@@ -1,13 +1,17 @@
 import styles from './RestPasswordSent.module.css';
-import { PiEnvelopeOpenDuotone } from "react-icons/pi";
+import { useNavigate } from "react-router-dom";
 import { FaRegPaperPlane } from "react-icons/fa";
-
-import { useContext } from "react";
-import { FormStateContext } from "./Authentication";
-    
+import useAuth from '../../hooks/useAuth';
 
 const SignupSuccess = () => {
-    // const { setFormState } = useContext(FormStateContext);
+    const navigate = useNavigate();
+    const {setIsOpenModal} = useAuth();
+
+    const handleCloseBtn = () => {
+        setIsOpenModal(false);
+        navigate('/');
+    };
+
     return (
         <div className={styles.signupSuccess}>
 
@@ -19,7 +23,9 @@ const SignupSuccess = () => {
                 <p>išsiuntėme el. paštu</p>
             </div>
             
-            {/* <button onClick={() => setFormState('signin')}>PRISIJUNGTI</button> */}
+            <div className={styles.griztiContainer}>
+                <button onClick={handleCloseBtn}>Į pradžią</button>
+            </div>
         </div>
     );
 };
