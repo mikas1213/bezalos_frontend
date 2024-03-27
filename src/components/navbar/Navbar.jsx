@@ -5,9 +5,13 @@ import styles from "./Navbar.module.css";
 import { Logo } from "./Logo";
 
 import Modal from '../UI/Modal';
-import AuthenticationForms from '../authentication/AuthenticationForms';
+// import AuthenticationForms from '../authentication/AuthenticationForms';
+import Authentication from "../auth/Authentication";
+import useAuth from "../../hooks/useAuth";
+
 
 const Navbar = ({ isHome = false }) => {
+    
     const [isScroll, setIsScroll] = useState(false);
     const changeColor = () =>
         window.scrollY > 100 ? setIsScroll(true) : setIsScroll(false);
@@ -19,12 +23,14 @@ const Navbar = ({ isHome = false }) => {
     if (!isHome && !isScroll) changeStyleClass = styles.navNotHomeNotScroll;
     if (!isHome && isScroll) changeStyleClass = styles.navNotHomeAndScroll;
 
-    const [isOpenModal, setIsOpenModal] = useState(false);
-
+    // const [isOpenModal, setIsOpenModal] = useState(false);
+    const { auth, isOpenModal, setIsOpenModal } = useAuth();
+    
     return (
         <>
             {isOpenModal && <Modal onClose={() => setIsOpenModal(false)}>
-                <AuthenticationForms formState='signin' />
+                {/* <AuthenticationForms formState='signin' /> */}
+                <Authentication />
             </Modal>}
             
             <nav className={`${styles.nav} ${changeStyleClass}`}>
@@ -51,10 +57,11 @@ const Navbar = ({ isHome = false }) => {
                             <div className={styles.indicator}></div>
                         </li>
 
-                        <li className={styles.listItem}>
-                            <NavLink to="/profilis">Profils</NavLink>
+                        {auth?.accessToken && <li className={styles.listItem}>
+                            <NavLink to="/profilis" >Profils</NavLink>
                             <div className={styles.indicator}></div>
-                        </li>
+                        </li>}
+                        
                         <li>
                             <button
                                 onClick={() => setIsOpenModal(true)}

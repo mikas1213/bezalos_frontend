@@ -11,6 +11,8 @@
     --color-btn-primary: #7ed957;
     --color-btn-secondary: #60c040;
     --color-star: #F3C127;
+    --color-error: #c00;
+    --color-success: #60c040;
 
 /*    green: {
         100: "#dff2d9",

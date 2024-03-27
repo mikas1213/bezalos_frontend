@@ -1,0 +1,220 @@
+.right {
+    position: relative;
+    width: 40rem;
+    height: 80vh;
+    padding: 0 4rem;
+    /* animation: auth_anime 0.5s ease-in-out; */
+}
+
+/* 
+@keyframes auth_anime {
+    from {opacity: 0;}
+    to {opacity: 1;}
+} */
+
+.right:has(.invalid) {
+    height: 83vh;
+}
+
+.signup {
+    /* margin: 0 4rem; */
+}
+
+/* H E A D E R */
+.header {
+    margin: 3.5rem 0;
+    display: flex;
+    justify-content: center;
+}
+
+.header .icon {
+    font-size: 7rem;
+    color: var(--color-bgr-dark);
+    opacity: 0.4;    
+}
+
+
+/* I N P U T S */
+.inputs {
+    display: flex;
+    flex-direction: column;
+}
+
+/* O N E   I N P U T */
+.inputGroup {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 1rem;
+}
+
+.inputGroup:has(.invalid) {
+    padding-bottom: 0.6rem;
+}
+
+.inputContainer {
+    position: relative;
+}
+
+.inputGroup input {
+    cursor: pointer;
+    width: 100%;
+    outline: transparent;
+    border: none;
+    font-weight: 500;
+    padding: 0 3.4rem;
+    line-height: 4rem;
+    border-radius: 10rem;
+    background: transparent;
+    box-shadow: #a7aba671 1px 3px 8px;
+}
+
+.inputGroup input::placeholder {
+    color: var(--color-radio-border);
+}
+
+.inputGroup input:focus {
+    outline: 1.5px solid var(--color-text-dark);
+    transition: outline 0.1s ease;
+}
+
+.inputGroup input.invalid {
+    outline: 1.5px solid var(--color-error);
+    transition: outline 0.2s ease;
+}
+
+.inputGroup input.valid {
+    outline: 1.5px solid var(--color-success);
+    transition: outline 0.2s ease;
+}
+
+.inputs .icon {
+    cursor: pointer;
+    position: absolute;
+    font-size: 1.3rem;
+    color: var(--color-bgr-top);
+    top: 50%;
+    transform: translateY(-50%);
+    left: 1.2rem;
+}
+
+.eyeIconContainer {
+    display: flex;
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 1.1rem;
+}
+
+.eyeIcon {
+    font-size: 2rem;
+    color: var(--color-radio-border);
+}
+
+.inputError {
+    padding-left: 3.4rem;
+    display: inline-block;
+    margin-top: 0.2rem;
+    /* margin-bottom: 1rem; */
+    color: var(--color-error);
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+/* M A N E   D O M I N E */
+
+.maneDomina {
+    display: flex;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    justify-content: space-between;   
+    color: var(--color-bgr-top);
+}
+
+/* R A D I O   B U T T O N S */
+
+.radios {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.radio {
+    position: relative;
+    display: flex;
+    align-items: center;   
+}
+
+label {
+    cursor: pointer;
+    margin-left: 1rem;
+    font-size: 1.2rem;
+    font-weight: 500;
+    opacity: 0.6;
+}
+.input {
+    appearance: none;
+}
+
+.check {
+    cursor: pointer;
+    display: block;
+    position: relative;
+    border-radius: 100%;
+    width: 2rem;
+    height: 2rem;
+    border: 1px solid var(--color-radio-border);
+}
+
+input:checked + .check:after {
+    content: '';
+    display: block;
+    position: absolute;
+    background: var(--color-radio);
+    width: 1rem;
+    height: 1rem;
+    border-radius: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: radioMove 0.1s ease-in-out;
+}
+
+@keyframes radioMove {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+/* B O T T O M */
+.bottom {
+    display: flex;
+    justify-content: center;
+    /* margin-bottom: 2rem; */
+}
+
+.bottom button {
+    margin-top: 2rem;
+    width: 100%;
+    font-size: var(--font-size-h5);
+    font-weight: 600 !important;
+    border: none;
+    border-radius: 10rem;
+    background-color: var(--color-btn-primary);
+    color: var(--color-text-dark);
+    height: 4rem;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+    font-weight: 500;
+    transition: background-color 0.1s ease;
+}
+
+.bottom button:hover {
+    background-color: var(--color-btn-secondary);
+    transition: background-color 0.1s ease;
+}
+
+.bottom button:disabled {
+    cursor: wait;
+    background: var(--color-radio-border);
+    color: var(--color-text-light);
+}
+

@@ -12,7 +12,6 @@ import { useState, useRef, useEffect } from "react";
 
 // import axios from '../apis/axios';
 
-
 const Homepage = () => {
 
     const ref = useRef(null);

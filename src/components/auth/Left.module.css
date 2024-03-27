@@ -1,5 +1,6 @@
-.formLeft {
-    /* width: 400px; */
+.left {
+    width: 40rem;
+    /* height: 80vh; */
     background-image: url('../../assets/images/auth/registration_bgr.jpg');
     background-size: cover;
     display: flex;
@@ -9,29 +10,31 @@
     color: var(--color-text-dark);
 }
 
-.formLeft h1 {
+.title {
     font-size: var(--font-size-h1);
+    color: var(--color-text-dark);
 }
-.formLeft div {
+.message {
     padding-top: 4rem;
 }
-.formLeft div h3 {
+.message h3 {
+    color: var(--color-text-dark);
     display: flex;
     justify-content: center;
     font-size: var(--font-size-h5);
 }
-.formLeft .action {
+.action {
     display: flex;
     flex-direction: column;
     align-items: center;
     padding-top: 8rem;
 }
-.formLeft h4 {
+.action h4 {
     font-size: var(--font-size-h6);
     font-weight: 400;
 }
 
-.formLeft button {
+.action button {
     margin-top: 1rem;
     border: none;
     border-radius: 10rem;
@@ -43,7 +46,14 @@
     transition: background-color 0.1s ease-in-out;
     box-shadow: 0px 10px 20px 5px rgba(0, 0, 0, 0.1);
 }
-.formLeft button:hover {
+.action button:hover {
     background-color: var(--color-bgr-bottom);
     transition: background-color 0.1s ease-in-out;
+}
+
+
+@media only screen and (max-width: 430px){
+    .left {
+        display: none;
+    }
 }

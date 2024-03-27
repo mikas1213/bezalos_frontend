@@ -11,11 +11,6 @@
 }
 
 .modal {
-    /* display: flex; */
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    width: 80rem;
-    height: 80vh;
     position: fixed;
     top: 50%;
     left: 50%;
@@ -36,6 +31,7 @@
     font-size: 3rem;
     color: var(--color-bgr-dark);
     opacity: 0.5;
+    z-index: 10;
 }
 
 
