@@ -1,11 +1,11 @@
-import styles from './LoginPage.module.css';
 import Authentication from "../components/auth/Authentication";
+import FlexContainer from "../components/UI/FlexContainer";
 
 const Login = () => {
     return (
-        <div className={styles.login}>
+        <FlexContainer>
             <Authentication />
-        </div>
+        </FlexContainer>
     );
 };
 

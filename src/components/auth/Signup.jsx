@@ -26,7 +26,7 @@ const Signup = () => {
     const { mutate, isPending } = useMutation({
         mutationFn: async (inputsData) => {
             await axios.post('auth/signup', inputsData, {
-                headers: {'Content-Tupe': 'application/json'},
+                headers: {'Content-Type': 'application/json'},
                 withCredentials: true
             });
         },

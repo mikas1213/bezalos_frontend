@@ -11,6 +11,7 @@ import Virtuve from './pages/Virtuve';
 import Receptai from './pages/Receptai';
 import Paslaugos from './pages/Paslaugos';
 import Profilis from './pages/Profilis';
+import UpdatePasswordPage from './pages/UpdatePasswordPage';
 import NotFoundPage from './pages/NotFoundPages/NotFoundPage';
 
 import RequireAuth from './pages/RequireAuth';
@@ -37,7 +38,8 @@ function App() {
                             <Route path='/virtuve' element={<Virtuve />} />
                             <Route path='/receptai' element={<Receptai />} />
                             <Route path='/paslaugos' element={<Paslaugos />} />
-                            <Route path='/login' element={<LoginPage />} />
+                            <Route path='/prisijungti' element={<LoginPage />} />
+                            <Route path='/keisti-slaptazodi/:token' element={<UpdatePasswordPage /> } />
                             <Route path='*' element={<NotFoundPage />} />
 
                             {/* <Route element={<PersistLogin /> }> */}

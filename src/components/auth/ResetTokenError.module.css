@@ -1,0 +1,7 @@
+.resetTokenError {
+    background-image: url('../../assets/images/auth/registration_bgr.jpg');
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
