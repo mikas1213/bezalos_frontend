@@ -8,7 +8,6 @@ import { useForm } from 'react-hook-form';
 import { useContext } from "react";
 import { FormStateContext } from "./Authentication";
 
-
 import { PiKeyholeDuotone } from 'react-icons/pi';
 import { FaEnvelope } from 'react-icons/fa';
 
@@ -27,11 +26,6 @@ const ForgotPassword = () => {
         },
         onSuccess: () => {
             setFormState('token-sent');
-            // setAuth({
-            //     accessToken: data.data.accessToken
-            // });
-            // setIsOpenModal(false);
-            // navigate(from, { replace: true });
         },
         onError: (err) => {
             const { response: {data: {errors: serverErrors}} } = err;
@@ -40,7 +34,9 @@ const ForgotPassword = () => {
         }
     });
 
-    const submit = ({ email }) => mutate({ email });
+    const submit = ({ email }) => mutate({ 
+        email: email.toLowerCase().trim()
+    });
     
     return (
         <div className={styles.right}>
