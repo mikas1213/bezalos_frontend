@@ -176,7 +176,7 @@ const Signup = () => {
                             value='virtuve'
                         />
                         <span className={styles.check} onClick={() => setRadioData('virtuve')}></span>
-                        <label onClick={() => setRadioData('virtuve')}>Išmokti valgyti be sąžinės graužimo</label>
+                        <label onClick={() => setRadioData('virtuve')}>Išmokti sveikatai palankios mitybos pagrindų</label>
                     </div>
 
                     <div className={styles.radio}>
@@ -188,7 +188,7 @@ const Signup = () => {
                             value='abu'
                         />
                         <span className={styles.check} onClick={() => setRadioData('abu')}></span>
-                        <label onClick={() => setRadioData('abu')}>Abu aukščiau pateikti varijantai</label>
+                        <label onClick={() => setRadioData('abu')}>Abu aukščiau pateikti variantai</label>
                     </div>
 
                     <div className={styles.radio}>
