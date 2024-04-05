@@ -3,6 +3,9 @@ import axios from '../../api/axios';
 import { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 
+import { PiKeyholeDuotone } from 'react-icons/pi';
+import { PiDotOutlineFill } from "react-icons/pi";
+
 import { useForm } from 'react-hook-form';
 import { useMutation } from '@tanstack/react-query';
 import toast from 'react-hot-toast';
@@ -56,17 +59,38 @@ const UpdatePassword = () => {
             passwordConfirmed: passwordConfirmed.trim()
         });
     };
-   
+    
     return (
         <FlexContainer className={styles.bgr}>
             <div className={styles.updateContainer}>
-                <h1>ATKURTI SLAPTAŽODĮ</h1>
-                <p>
+                <PiKeyholeDuotone className={styles.headerIcon}/>
+                <h1>Atkurti slaptažodį</h1>
+                {/* <p>
                     Slaptažodį turėtų sudaryti ne mažiau nei 8 simboliai iš
                     kurių bent vienas skaičius, dėl saugumo siūlome nenaudoti to
                     paties slaptažodžio kaip kitose registracijose
-                </p>
-                <form onSubmit={handleSubmit(submit)}>
+                </p> */}
+
+                <div >
+                    <span className={styles.passwordRequiredList}>
+                        Slaptažodį turi sudaryti: 
+                    </span>
+                    <span className={styles.passwordRequiredList}>
+                        <PiDotOutlineFill className={styles.icon}/> 
+                        Ne mažiau nei 8 simboliai
+                    </span>
+
+                    <span className={styles.passwordRequiredList}>
+                        <PiDotOutlineFill className={styles.icon}/> 
+                        Bent vienas skaičius
+                    </span>
+
+                    <span className={styles.passwordRequiredList}>
+                        <PiDotOutlineFill className={styles.icon}/> 
+                        Bent viena raidė
+                    </span>
+                </div>
+                <form className={styles.form} onSubmit={handleSubmit(submit)}>
                     <FormInput
                         errors={errors}
                         openEye={openEye}
@@ -76,12 +100,13 @@ const UpdatePassword = () => {
                         <input
                             type={openEye ? "text" : "password"}
                             placeholder="Slaptažodis"
-                            className={`${
-                                (errors.password && styles.invalid) ||
-                                (!!watch(type_password) &&
-                                    !errors[type_password] &&
-                                    styles.valid)
-                            }`}
+                            // className={`${
+                            //     (errors[type_password] && styles.invalid) ||
+                            //     (!!watch(type_password) &&
+                            //         !errors[type_password] &&
+                            //         styles.valid)
+                            // }`}
+                            className={`${errors.password && styles.invalid || !!watch('password') && !errors.password && styles.valid}`}
                             {...register(type_password, {
                                 required: "Neįvestas slaptažodis",
                                 validate: (value) => {

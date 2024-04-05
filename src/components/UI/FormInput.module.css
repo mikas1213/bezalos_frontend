@@ -1,12 +1,8 @@
 .inputGroup {
     display: flex;
     flex-direction: column;
-    /* padding-bottom: 1rem; */
+    width: 100%;
 }
-
-/* .inputGroup:has(.invalid) {
-    padding-bottom: 0.6rem;
-} */
 
 .inputContainer {
     position: relative;
@@ -29,7 +25,7 @@
     color: var(--color-radio-border);
 }
 
-.inputGroup input:focus {
+/* .inputGroup input:focus {
     outline: 1.5px solid var(--color-text-dark);
     transition: outline 0.1s ease;
 }
@@ -42,7 +38,7 @@
 .inputGroup input.valid {
     outline: 1.5px solid var(--color-success);
     transition: outline 0.2s ease;
-}
+} */
 
 .inputGroup .icon {
     cursor: pointer;

@@ -39,9 +39,12 @@
     --font-size-small-2: 0.64rem;
 
 
-        /* Main Sizes */
-        --nav-height: 8rem;
-        --content-width: 102rem;
+    /* Main Sizes */
+    --nav-height: 8rem;
+    --content-width: 102.4rem;
+
+    --nav-height_430: 6rem;
+    --content-width-responsive: 100vw;
 }
 
 * {
@@ -51,6 +54,7 @@
     /* font-family: "Montserrat", sans-serif; */
     font-family: "Poppins", sans-serif;
     /* transition: .3s ease; */
+    -webkit-tap-highlight-color: transparent;
 }
 
 html {

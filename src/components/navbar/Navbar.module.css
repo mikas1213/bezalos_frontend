@@ -25,20 +25,53 @@
 
 .navContainer {
     max-width: var(--content-width);
+    height: var(--nav-height); 
     display: flex;
     justify-content: space-between;
+    align-items: center;
     margin: 0 auto;
     font-size: var(--font-size-h5);
     font-weight: 300; 
-    height: var(--nav-height); 
+}
+.navContainerMobile {
+    display: none;
+    height: 0px;
 }
 
 .navList {
     display: flex;
     align-items: center;
-    justify-content: flex-end;
     gap: 6rem;
 }
+
+.hamburger {
+    height: 50%;
+    display: none;
+}
+.navHomeNotScroll :is(.burgerTop, .burgerMiddle, .burgerBottom) {
+    border-bottom: 2px solid var(--color-bgr-light);
+}
+:is(.navHomeAndScroll, .navNotHomeNotScroll, .navNotHomeAndScroll) 
+:is(.burgerTop, .burgerMiddle, .burgerBottom) {
+    border-bottom: 2px solid var(--color-bgr-top);
+}
+.burgerTop, .burgerMiddle, .burgerBottom {
+    position: absolut;
+    width: 3rem;
+    transition: all 0.5s;
+}
+.burgerTop { transform: translateY(-0.8rem); }
+.burgerBottom { transform: translateY(0.8rem); }
+
+.openBurger .burgerTop { transform: translateY(0.2rem) rotate(45deg); }
+.openBurger .burgerMiddle { width: 0; }
+.openBurger .burgerBottom { transform: translateY(-0.2rem) rotate(-45deg); }
+
+.logoSvg {
+    width: 10rem;
+    height: var(--van-height);
+}
+
 
 .listItem {
     position: relative;
@@ -59,7 +92,7 @@
 }
 
 .navHomeNotScroll .loginBtn { box-shadow: 0px 10px 20px 5px rgba(0, 0, 0, 0.1); }
-:is(.navHomeAndScroll, .navNotHomeNotScroll,  .navNotHomeAndScroll) .loginBtn { 
+:is(.navHomeAndScroll, .navNotHomeNotScroll, .navNotHomeAndScroll) .loginBtn { 
     border: 2px solid var(--color-text-dark);
     color: var(--color-text-dark);
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px; 
@@ -93,4 +126,116 @@
 }
 :global(.active) ~ .indicator {
     width: calc(100% + 4px);
+}
+
+
+
+
+@media only screen and (min-width: 1025px) and (max-width: 1200px) {
+    /* For portrait layouts only */
+}
+
+@media only screen and (min-width: 769px) and (max-width: 1024px) {
+    /* For portrait layouts only */
+}
+
+@media only screen and (max-width: 430px) {
+    .nav { 
+        width: var(--content-width-responsive);
+        height: var(--nav-height_430);
+    }
+    .navContainer {
+        height: var(--nav-height_430);
+        padding: 0 1.4rem;
+    }
+    .hamburger {
+        cursor: pointer;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+    }
+    .logoSvg {
+        width: 8rem;
+        height: var(--van-height-430);
+    }
+
+    .navList {
+        display: none;
+    }
+    .navContainerMobile {
+        display: flex;
+        /* align-items: center; */
+        /* justify-content: center; */
+        overflow: hidden;
+        gap: 1.8rem;
+        /* padding: 0 1.4rem; */
+        background-color: var(--color-text-light); 
+        border-top: 0px solid var(--color-bgr-top);
+        transition: all 0.5s ease-in-out;
+    }
+
+    .show.navContainerMobile {
+        /* border-top: 0.5px solid #ffffff44; */
+        height: calc(100dvh - var(--nav-height_430));
+        /* height: 400px; */
+        transition: height 0.5s ease;
+    }
+
+    .navListMobile {
+        /* margin-top: 4rem; */
+        /* padding: 0 3rem; */
+        display: grid;
+        width: 100%;
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(5, 1fr);
+        /* row-gap: 2rem; */
+        /* flex-direction: column; */
+        /* align-items: center; */
+        /* gap: 4rem; */
+        /* height: 90%; */
+    }
+
+    .listItemMobile {
+        /* border: 1px solid var(--color-bgr-top); */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 1rem;
+        color: var(--color-bgr-top);
+    }
+    .listItemMobile:has(:global(.active)) {
+        background-color: var(--color-btn-secondary);
+    }
+
+    .listItemMobile:has(:global(.active)) :is(.icon, a) {
+        color: var(--color-bgr-light);
+    }
+
+    .listItemMobile a {
+        font-size: var(--font-size-h5);
+        font-weight: 500;
+        
+    }
+    .listItemMobile .icon {
+        font-size: var(--font-size-big);
+    }
+
+    .signout {
+        border-top: 0.5px solid var(--color-bgr-top);
+    }
+}
+
+
+
+@media only screen and (max-width: 375px) {
+    .listItemMobile a {
+        font-size: var(--font-size-h6);
+        font-weight: 500;
+    }
+    .listItemMobile .icon {
+        font-size: var(--font-size-h2);
+    }
 }

@@ -1,10 +1,14 @@
 import styles from './ResetTokenError.module.css';
 import { PiXCircleFill } from 'react-icons/pi';
-
+import { useNavigate } from 'react-router-dom';
 
 
 const ResetTokenError = () => {
-    const handleCloseBtn = () => {}
+    const navigate = useNavigate();
+    const handleCloseBtn = () => {
+        navigate('/');
+    };
+
     return (
         <div className={styles.resetTokenErrorPage}>
             <div className={styles.resetTokenCard}>
