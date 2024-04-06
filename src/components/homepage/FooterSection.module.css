@@ -15,6 +15,7 @@
 .subsTitle {
     display: flex;
     justify-content: center;
+    text-align: center;
     color: var(--color-text-dark);
     font-weight: 700;
     font-size: var(--font-size-h3);
@@ -137,3 +138,33 @@
     /* background: red; */
 }
 
+@media only screen and (max-width: 430px) {
+    .footerContainer {
+        padding-right: var(--content-padding_430);
+        padding-left: var(--content-padding_430);
+    }
+
+    .subsTitle {
+        /* text-align: center; */
+    }
+}
+
+
+@media only screen and (max-width: 375px) {
+    .footerContainer {
+        padding-right: var(--content-padding_375);
+        padding-left: var(--content-padding_375);
+    }
+
+    .subsTitle {
+        font-size: var(--font-size-h4);
+    }
+}
+
+
+@media only screen and (max-width: 320px) {
+    .footerContainer {
+        padding-right: var(--content-padding_320);
+        padding-left: var(--content-padding_320);
+    }
+}

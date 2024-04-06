@@ -3,7 +3,6 @@
 }
 
 .benefitsContainer {
-    /* background-color: var(--color-bgr-card); */
     border-radius: 3rem;
     margin: 0 auto;
     max-width: var(--content-width);
@@ -55,4 +54,70 @@
 .text {
     color: var(--color-text-dark);
     font-size: var(--font-size-h6);
+}
+
+/* * * * * * * * * * * * * * * * * * * *
+*        M E D I A  Q U E R I E S      *
+* * * * * * * * * * * * * * * * * * * */
+
+
+@media only screen and (max-width: 430px) {
+    .benefitsSection {
+        padding: 0 var(--content-padding_430);
+    }
+    .benefitsContainer {
+        padding-top: 3.5rem;
+        padding-bottom: 3.5rem;
+    }
+
+    .benefitTitle {
+        font-size: var(--font-size-h3);
+    }
+
+    .benefits {
+        grid-template-columns: 1fr;
+        padding: 0 var(--content-padding_430);
+        row-gap: 3.5rem;
+    }
+
+
+    /* TEST */
+    .benefitItem {
+        flex-direction: column;
+    }
+
+    .message {
+        /* display: flex;
+        flex-direction: column;
+        gap: 0.5rem; */
+
+        align-items: center;
+    }
+
+    .text {
+        text-align: justify;
+    }
+    
+}
+@media only screen and (max-width: 375px) {
+    .benefitsSection {
+        padding: 0 var(--content-padding_375);
+    }
+
+    .benefits {
+        padding: 0 var(--content-padding_375);
+    }
+}
+@media only screen and (max-width: 320px) {
+    .benefitsSection {
+        padding: 0 var(--content-padding_320);
+    }
+
+    .benefits {
+        padding: 0 var(--content-padding_320);
+    }
+
+    .title {
+        font-size: var(--font-size-h6);
+    }
 }

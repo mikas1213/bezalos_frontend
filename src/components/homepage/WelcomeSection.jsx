@@ -1,30 +1,24 @@
-import styles from "./WelcomeSection.module.css";
+import styles from './WelcomeSection.module.css';
 
-// import Burger from "../../assets/images/homepage/main-meal-burger.png";  
-// import Pancakes from "../../assets/images/homepage/main-meal-pancakes.png";
-// import Salat from "../../assets/images/homepage/main-meal-salad.png";
-// import Sandwich from "../../assets/images/homepage/main-meal-sandwich.png";
-// import Vegetables from "../../assets/images/homepage/main-meal-vegetables.png";
-import Burger from "../../assets/images/homepage/burger.png";
-// import copy_one from "../../assets/images/homepage/square-salad.png";
-// import copy_two from "../../assets/images/homepage/square-pancakes.png";
-// import copy_three from "../../assets/images/homepage/square-vegetables.png";
-// import Burger_2500 from "../../assets/images/homepage/burger_2500x2050.png";
-// import Burger_3048 from "../../assets/images/homepage/burger_3048x2500.png";
+import Burger from '../../assets/images/homepage/meal-burger.webp';
+import Sandwich from '../../assets/images/homepage/meal-sandwich.webp';
+import Salad from '../../assets/images/homepage/meal-salad.webp';
+import Vegetables from '../../assets/images/homepage/meal-vegetables.webp';
+import Pancakes from '../../assets/images/homepage/meal-pancakes.webp';
 
-
-import { useState, useEffect } from "react";
+import { useState, useEffect } from 'react';
 // const images = [Burger, Pancakes, Sandwich, Salat, Vegetables];
-// const images = [copy_one, copy_two, copy_three, Burger_2500, Burger_3048];
-// const randomIntFromInterval = (min, max) => Math.floor(Math.random() * (max - min + 1) + min);
+const images = [Burger, Sandwich, Salad, Vegetables, Pancakes];
+const randomIntFromInterval = (min, max) => Math.floor(Math.random() * (max - min + 1) + min);
 
 const WelcomeSection = () => {
     const [isAnimate, setIsAnimate] = useState();
-    
-    // const randomPhoto = randomIntFromInterval(3, 3);
+    const randomPhoto = randomIntFromInterval(0, 4);
+    const [image, setImage] = useState();
     
 
     useEffect(() => {
+        setImage(images[randomPhoto]);
         setIsAnimate(true);
         return () => setIsAnimate(false);
     }, []);
@@ -34,21 +28,17 @@ const WelcomeSection = () => {
             <div className={styles.welcomeContainer}>
                 <div
                     className={`${styles.welcomeLeft} ${
-                        isAnimate ? styles.onload : ""
+                        isAnimate ? styles.onload : ''
                     }`}
                 >
                     <div className={styles.welcomeMsg}>
-                        <p>
-                            Tavo <span>ilgalaikių</span>
-                        </p>
-                        <p>mitybos pokyčių</p>
-                        <p>garantas</p>
+                        <p>Tavo <span>ilgalaikių</span> mitybos pokyčių garantas</p>
                     </div>
+
                     <div className={styles.welcomeTxt}>
-                        <p>Begalė bandymų neatnešė norimų rezultatų?</p>
-                        <p>Čia išmoksi sveikatai palankios mitybos pagrindų, tapsi</p>
-                        <p>bendruomenės nare. Juk drauge įpročius formuoti lengviau!</p>
+                        <p>Čia išmoksi sveikatai palankios mitybos pagrindų, tapsi bendruomenės nare. Juk drauge įpročius formuoti lengviau!</p>
                     </div>
+
                     <div>
                         <button className={styles.btn}>Virtuvė</button>
                     </div>
@@ -56,9 +46,9 @@ const WelcomeSection = () => {
 
                 <div className={styles.welcomeRight}>
                     <img
-                        className={isAnimate ? styles.onload : ""}
-                        src={Burger}
-                        alt="Burger"
+                        className={isAnimate ? styles.onload : ''}
+                        src={image}
+                        alt='Burger'
                     />
                 </div>
             </div>

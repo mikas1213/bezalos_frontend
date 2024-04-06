@@ -1,22 +1,19 @@
-import styles from './ClienStorySection.module.css';
-import AuthorImg from '../../assets/images/homepage/author_1260x1080.png';
-// import SignatureImg from '../../assets/images/homepage/signature.png';
+import styles from './ClientStorySection.module.css';
+import AuthorImg from '../../assets/images/homepage/client-story.webp';
+
 
 const AboutSection = () => {
     return (
-        <section className={`${styles.aboutSection} section--hidden`}>
-            <div className={styles.aboutContainer}>
-                <div className={styles.aboutRight}>
+        <section className={`${styles.clientStorySection} section--hidden`}>
+            <div className={styles.clientStoryContainer}>
+                <div className={styles.containerRight}>
                     <img src={AuthorImg} alt="Author" />
                 </div>
-                <div className={styles.aboutLeft}>
-                    {/* <div className={styles.aboutMsg}>
-                        <p>Labas, su tavim</p>
-                        <p>sveikinuosi aš,</p>
-                        <p>Sandra, iš projekto</p>
-                        <p>Valgau Be Žalos</p>
-                    </div> */}
-                    <div className={styles.aboutTxt}>
+                <div className={styles.containerLeft}>
+                    <div className={styles.clientStoryMsg}>
+                        <p>Iš 92kg į 60kg</p>
+                    </div>
+                    <div className={styles.clientStoryTxt}>
                         <div>
                             <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
                             <p>Reiciendis neque repellat maxime sint pariatur voluptatem, </p>

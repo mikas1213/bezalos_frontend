@@ -1,5 +1,5 @@
 import styles from './AboutSection.module.css';
-import AuthorImg from '../../assets/images/homepage/author_1260x1080.png';
+import AuthorImg from '../../assets/images/homepage/author_1260x1080.webp';
 import SignatureImg from '../../assets/images/homepage/signature.png';
 
 const AboutSection = () => {
@@ -8,10 +8,7 @@ const AboutSection = () => {
             <div className={styles.aboutContainer}>
                 <div className={styles.aboutLeft}>
                     <div className={styles.aboutMsg}>
-                    <p>Labas, su tavim</p>
-                        <p>sveikinuosi aš,</p>
-                        <p>Sandra, iš projekto</p>
-                        <p>Valgau Be Žalos</p>
+                        Labas, su tavim sveikinuosi aš, Sandra, iš projekto Valgau Be Žalos
                     </div>
                     <div className={styles.aboutTxt}>
                         <div>

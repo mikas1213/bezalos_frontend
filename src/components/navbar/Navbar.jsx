@@ -19,7 +19,6 @@ import { FaArrowRightToBracket } from "react-icons/fa6";
 const Navbar = ({ isHome = false }) => {
     const location = useLocation();
     const navigate = useNavigate();
-
     const logout = useLogout();
     
     const [isScroll, setIsScroll] = useState(false);

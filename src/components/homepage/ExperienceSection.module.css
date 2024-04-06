@@ -33,3 +33,44 @@
     opacity: 1;
     transition: opacity 0.5s;
 }
+
+@media only screen and (max-width: 430px) {
+    .experienceContainer { 
+        padding: 0 var(--content-padding_430);
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        row-gap: 4rem;
+    }
+
+    .experienceItem {
+        align-items: center;
+    }
+    
+    .experienceItem h3 {
+        font-size: var(--font-size-h2);
+    }
+
+    .experienceItem h4 {
+        font-size: var(--font-size-h5);
+    }
+}
+
+@media only screen and (max-width: 375px) {
+    .experienceContainer { 
+        padding: 0 var(--content-padding_375);
+    }
+}
+
+@media only screen and (max-width: 320px) {
+    .experienceContainer { 
+        padding: 0 var(--content-padding_320);
+    }
+
+    .experienceItem h3 {
+        font-size: var(--font-size-h3);
+    }
+    
+    .experienceItem h4 {
+        font-size: var(--font-size-h6);
+    }
+}

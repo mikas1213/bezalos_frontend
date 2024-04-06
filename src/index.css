@@ -45,7 +45,9 @@
 
     --nav-height_430: 6rem;
     --content-width-responsive: 100vw;
-    --content-padding_430: 1.4rem;
+    --content-padding_430: 1.8rem;
+    --content-padding_375: 1.6rem;
+    --content-padding_320: 1.4rem;
 }
 
 * {
@@ -65,6 +67,7 @@ html {
 
 body {
     background-color: var(--color-bgr-light);
+    /* background-color: var(--color-bgr-top); */
 }
 
 nav {
