@@ -46,6 +46,62 @@ img.signature { width: 18.19rem; }
     filter: drop-shadow(2px 2px 2px var(--color-radio));
 }
 
+/* * * * * * * * * * * * * * * * * * * * *
+*        M E D I A  Q U E R I E S        *
+* * * * * * * * * * * * * * * * * * * * */
+
+@media only screen and (min-width: 1025px) and (max-width: 1200px) {
+    .aboutContainer {
+        padding: 0 var(--content-padding_768);
+        display: grid;
+        grid-template-columns: 2.4fr 1.6fr;
+    }
+}
+
+@media only screen and (min-width: 769px) and (max-width: 1024px) {
+    .aboutContainer {
+        padding: 0 var(--content-padding_768);
+        display: grid;
+        grid-template-columns: 2.4fr 1.6fr;
+    }
+
+    .aboutRight img {
+        width: 100%;
+    }
+}
+
+@media only screen and (min-width: 608px) and (max-width: 768px) {
+    .aboutContainer {
+        padding: 0 var(--content-padding_768);
+    }
+    .aboutMsg {
+        font-size: var(--font-size-h5);
+    }
+    .aboutRight img {
+        width: 100%;
+    }
+}
+@media only screen and (min-width: 431px) and (max-width: 607px) {
+    .aboutContainer {
+        padding: 0 var(--content-padding_607);
+        flex-direction: column-reverse;
+        align-items: start;
+        gap: 3rem;
+    }
+
+    .aboutMsg {
+        font-size: var(--font-size-h5);
+        font-weight: 600;
+    }
+
+    .aboutTxt {
+        font-size: var(--font-size-small-1);
+    }
+    .aboutRight img {
+        width: 100%;
+    }
+}
+
 @media only screen and (max-width: 430px) {
     .aboutSection {
         margin-bottom: 3.5rem;

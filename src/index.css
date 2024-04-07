@@ -43,8 +43,13 @@
     --nav-height: 8rem;
     --content-width: 102.4rem;
 
-    --nav-height_430: 6rem;
     --content-width-responsive: 100vw;
+
+    --nav-height_607: 7rem;
+    --nav-height_430: 6rem;
+
+    --content-padding_768: 2.2rem;
+    --content-padding_607: 2rem;
     --content-padding_430: 1.8rem;
     --content-padding_375: 1.6rem;
     --content-padding_320: 1.4rem;
@@ -63,10 +68,12 @@
 html {
     font-size: 62.5%;
     scroll-behavior: smooth;
+    overflow-x: hidden;
 }
 
 body {
     background-color: var(--color-bgr-light);
+    overflow-x: hidden;
     /* background-color: var(--color-bgr-top); */
 }
 

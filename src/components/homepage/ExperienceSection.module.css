@@ -34,6 +34,46 @@
     transition: opacity 0.5s;
 }
 
+/* * * * * * * * * * * * * * * * * * * * *
+*        M E D I A  Q U E R I E S        *
+* * * * * * * * * * * * * * * * * * * * */
+@media only screen and (min-width: 1025px) and (max-width: 1200px) {
+    .experienceContainer { 
+        padding: 0 var(--content-padding_768);
+        gap: 1rem;
+    }
+}
+
+@media only screen and (min-width: 769px) and (max-width: 1024px) {
+    .experienceContainer { 
+        padding: 0 var(--content-padding_768);
+        gap: 1rem;
+    }
+}
+@media only screen and (min-width: 608px) and (max-width: 768px) {
+    .experienceContainer { 
+        padding: 0 var(--content-padding_768);
+        gap: 1rem;
+    }
+}
+
+/* 607px is iPhone mini landscape */
+@media only screen and (min-width: 431px) and (max-width: 607px) {
+    .experienceContainer { 
+        padding: 0 var(--content-padding_607);
+        gap: 1rem;
+    }
+
+    .experienceItem {
+        align-items: center;
+        text-align: center;
+    }
+
+    .experienceItem h3 {
+        font-size: var(--font-size-h3);
+    }
+}
+
 @media only screen and (max-width: 430px) {
     .experienceContainer { 
         padding: 0 var(--content-padding_430);

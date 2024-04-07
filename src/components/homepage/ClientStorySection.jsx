@@ -1,7 +1,6 @@
 import styles from './ClientStorySection.module.css';
 import AuthorImg from '../../assets/images/homepage/client-story.webp';
 
-
 const AboutSection = () => {
     return (
         <section className={`${styles.clientStorySection} section--hidden`}>
@@ -11,7 +10,7 @@ const AboutSection = () => {
                 </div>
                 <div className={styles.containerLeft}>
                     <div className={styles.clientStoryMsg}>
-                        <p>Iš 92kg į 60kg</p>
+                        <p>Kartu iš 92kg į 60kg</p>
                     </div>
                     <div className={styles.clientStoryTxt}>
                         <div>

@@ -83,7 +83,7 @@
     
     border-radius: 10rem;
     font-size: var(--font-size-h5);
-    border: 2px solid var(--color-text-light);
+    border: 1px solid var(--color-text-light);
     color: var(--color-text-light);
     background-color: #00000000;
 
@@ -92,7 +92,7 @@
 
 .navHomeNotScroll .loginBtn { box-shadow: 0px 10px 20px 5px rgba(0, 0, 0, 0.1); }
 :is(.navHomeAndScroll, .navNotHomeNotScroll, .navNotHomeAndScroll) .loginBtn { 
-    border: 2px solid var(--color-text-dark);
+    border: 1px solid var(--color-text-dark);
     color: var(--color-text-dark);
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px; 
 }
@@ -131,11 +131,60 @@
 
 
 @media only screen and (min-width: 1025px) and (max-width: 1200px) {
-    /* For portrait layouts only */
+    .navContainer {
+        padding: 0 var(--content-padding_768);
+    }
 }
 
 @media only screen and (min-width: 769px) and (max-width: 1024px) {
-    /* For portrait layouts only */
+    .navContainer {
+        padding: 0 var(--content-padding_768);
+    }
+}
+
+@media only screen and (min-width: 608px) and (max-width: 768px) {
+    .navContainer {
+        padding: 0 var(--content-padding_768);
+    }
+
+    .navList {
+        gap: var(--content-padding_768);
+    }
+
+    .loginBtn {
+        width: 11rem;
+    }
+}
+
+/* 607px is iPhone mini landscape */
+@media only screen and (min-width: 431px) and (max-width: 607px) {
+    .nav { 
+        width: var(--content-width-responsive);
+        height: var(--nav-height_607);
+    }
+    .navContainer {
+        height: var(--nav-height_607);
+        padding: 0 var(--content-padding_607);
+    }
+    .logoSvg {
+        margin-right: 1rem;
+        width: 6rem;
+        height: var(--van-height);
+    }
+
+    .navList {
+        gap: var(--content-padding_607);
+    }
+
+    .listItem {
+        font-size: var(--font-size-h6);
+    }
+    
+    .loginBtn {
+        height: 3rem;
+        width: 8rem;
+        font-size: var(--font-size-h6);
+    }
 }
 
 @media only screen and (max-width: 430px) {
@@ -170,7 +219,6 @@
     .navContainerMobile {
         display: flex;
         overflow: hidden;
-        /* gap: 1.8rem; */
         background-color: var(--color-text-light); 
         border-top: 0px solid var(--color-bgr-top);
         transition: all 0.5s ease-in-out;

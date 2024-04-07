@@ -4,8 +4,6 @@ import Logo from '../../assets/svg/be-zalos-logo.svg';
 
 import { PiFacebookLogo, PiInstagramLogo, PiAt } from "react-icons/pi";
 
-
-
 const FooterSection = () => {
     
     return (
@@ -15,8 +13,7 @@ const FooterSection = () => {
                     Keliaujam į ilgalaikius pokyčius kartu?
                 </div>
                 <div className={styles.subsParagraph}>
-                    <p>Gauk palaikymą ir mokslu grįstą informaciją, kaip pagaliau</p>
-                    <p>pasiekti ilgalaikių rezultatų su meile ir be žalos</p>
+                    <p>Gauk palaikymą ir mokslu grįstą informaciją, kaip pagaliau pasiekti ilgalaikių rezultatų su meile ir be žalos</p>
                 </div>
                 <div className={styles.subsEmail}>
                     <div>
@@ -26,7 +23,7 @@ const FooterSection = () => {
                 </div>
                 <div className={styles.footerTop}>
                     <div className={styles.logo}>
-                        <img src={Logo} alt="icon" className={styles.logoIcon} onClick={() => window.scrollTo(0, 0)}/>
+                        <img src={Logo} alt='logo' className={styles.logoIcon} onClick={() => window.scrollTo(0, 0)}/>
                     </div>
                     <div className={styles.termsOfUse}>
                         <Link to='/kontaktai'>Kontaktai</Link>

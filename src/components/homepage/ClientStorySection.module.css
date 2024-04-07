@@ -47,6 +47,64 @@ img.signature { width: 18.19rem; }
     width: 58rem;
 }
 
+/* * * * * * * * * * * * * * * * * * * *
+*        M E D I A  Q U E R I E S      *
+* * * * * * * * * * * * * * * * * * * */
+@media only screen and (min-width: 1025px) and (max-width: 1200px) {
+    .clientStoryContainer {
+        padding: 0 var(--content-padding_768);
+    }
+}
+@media only screen and (min-width: 769px) and (max-width: 1024px) {
+    .clientStoryContainer {
+        padding: 0 var(--content-padding_768);
+        gap: 3rem;
+
+        display: grid;
+        grid-template-columns: 2.1fr 1.9fr;
+    }
+    .containerRight {
+        justify-items: center;
+        
+    }
+
+    .containerRight img {
+        width: 100%;
+    }
+}
+@media only screen and (min-width: 608px) and (max-width: 768px) {
+    .clientStoryContainer {
+        padding: 0 var(--content-padding_768);
+        gap: 1.5rem;
+    }
+
+    .containerRight img {
+        width: 100%;
+    }
+}
+@media only screen and (min-width: 431px) and (max-width: 607px) {
+    .clientStoryContainer {
+        padding: 0 var(--content-padding_607);
+        flex-direction: column;
+        align-items: start;
+        gap: 3rem;
+    }
+    .containerLeft {
+        width: 100%;
+    }
+
+    .containerRight img {
+        width: 100%;
+    }
+    .clientStoryMsg {
+        font-size: var(--font-size-h5);
+    }
+
+    .clientStoryTxt {
+        font-size: var(--font-size-small-1);
+    }
+}
+
 @media only screen and (max-width: 430px) {
     .clientStorySection {
         margin-top: 3.5rem;

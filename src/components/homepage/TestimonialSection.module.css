@@ -72,6 +72,52 @@
 } */
 
 
+/* * * * * * * * * * * * * * * * * * * *
+*        M E D I A  Q U E R I E S      *
+* * * * * * * * * * * * * * * * * * * */
+@media only screen and (min-width: 1025px) and (max-width: 1200px) {
+    .testimonialContainer {
+        padding: 3.6rem var(--content-padding_768) 7.2rem var(--content-padding_768);
+        gap: var(--content-padding_768);
+    }
+}
+@media only screen and (min-width: 769px) and (max-width: 1024px) {
+    .testimonialContainer {
+        padding: 3.6rem var(--content-padding_768) 7.2rem var(--content-padding_768);
+        gap: var(--content-padding_768);
+    }
+    .testimonialCard {
+        padding: var(--content-padding_768);
+    }
+}
+@media only screen and (min-width: 608px) and (max-width: 768px) {
+    .testimonialContainer {
+        padding: 3.6rem var(--content-padding_768) 7.2rem var(--content-padding_768);
+        gap: var(--content-padding_768);
+    }
+    .testimonialCard {
+        padding: var(--content-padding_768);
+    }
+}
+
+@media only screen and (min-width: 431px) and (max-width: 607px) {
+    .testimonialContainer {
+        padding: var(--content-padding_607);
+    }
+    .testimonialContainer {
+        flex-direction: column;
+        padding: 3.6rem var(--content-padding_607) 7.2rem var(--content-padding_607);
+        gap: var(--content-padding_607);
+    }
+    .testimonialCard {
+        padding: var(--content-padding_607);
+    }
+    .text {
+        font-size: var(--font-size-small-1);
+    }
+}
+
+
 @media only screen and (max-width: 430px) {
     .clientStorySection {
         margin-top: 3.5rem;

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
 
 import styles from "./Navbar.module.css";
@@ -17,6 +17,7 @@ import { FaPowerOff } from "react-icons/fa6";
 import { FaArrowRightToBracket } from "react-icons/fa6";
 
 const Navbar = ({ isHome = false }) => {
+
     const location = useLocation();
     const navigate = useNavigate();
     const logout = useLogout();
@@ -25,13 +26,30 @@ const Navbar = ({ isHome = false }) => {
     const [isOpenBurger, setIsOpenBurger] = useState(false);
     const changeColor = () =>
         window.scrollY > 100 ? setIsScroll(true) : setIsScroll(false);
-    window.addEventListener("scroll", changeColor);
+    window.addEventListener('scroll', changeColor);
 
-    let changeStyleClass = "";
+    let changeStyleClass = '';
     if (isHome && !isScroll) changeStyleClass = styles.navHomeNotScroll;
     if (isHome && isScroll) changeStyleClass = styles.navHomeAndScroll;
     if (!isHome && !isScroll) changeStyleClass = styles.navNotHomeNotScroll;
     if (!isHome && isScroll) changeStyleClass = styles.navNotHomeAndScroll;
+   
+    // if (isHome && !isScroll) document.body.style.backgroundColor = '#084747';
+    
+    // useEffect(() => {
+        // if(isHome && !isScroll) {
+            // document.getElementById('body').style.transition = "all 0.3s";
+            // document.body.style.backgroundColor = '#084747';
+        // } else {
+            // document.getElementById('body').style.transition = "all 0.3s";
+            // document.body.style.backgroundColor = '#eff1ef';
+        // }
+        // return () => {
+        //     document.getElementById('body').style.transition = "all 0.3s";
+        //     document.body.style.backgroundColor = '#084747';
+        // }
+    // }, [isHome, isScroll]);
+    
 
     const { auth, isOpenModal, setIsOpenModal } = useAuth();
     

@@ -7,7 +7,7 @@ import Vegetables from '../../assets/images/homepage/meal-vegetables.webp';
 import Pancakes from '../../assets/images/homepage/meal-pancakes.webp';
 
 import { useState, useEffect } from 'react';
-// const images = [Burger, Pancakes, Sandwich, Salat, Vegetables];
+
 const images = [Burger, Sandwich, Salad, Vegetables, Pancakes];
 const randomIntFromInterval = (min, max) => Math.floor(Math.random() * (max - min + 1) + min);
 
@@ -39,7 +39,7 @@ const WelcomeSection = () => {
                         <p>Čia išmoksi sveikatai palankios mitybos pagrindų, tapsi bendruomenės nare. Juk drauge įpročius formuoti lengviau!</p>
                     </div>
 
-                    <div>
+                    <div className={styles.btnContainer}>
                         <button className={styles.btn}>Virtuvė</button>
                     </div>
                 </div>
