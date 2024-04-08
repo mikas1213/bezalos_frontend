@@ -41,18 +41,21 @@
 
     /* Main Sizes */
     --nav-height: 8rem;
-    --content-width: 102.4rem;
-
-    --content-width-responsive: 100vw;
-
     --nav-height_607: 7rem;
     --nav-height_430: 6rem;
+
+    --content-width: 102.4rem;
+    --content-width-responsive: 100vw;
+
+
 
     --content-padding_768: 2.2rem;
     --content-padding_607: 2rem;
     --content-padding_430: 1.8rem;
     --content-padding_375: 1.6rem;
     --content-padding_320: 1.4rem;
+
+    --content-padding: 1.6rem;
 }
 
 * {
@@ -60,7 +63,7 @@
     box-sizing: border-box;
     margin: 0;
     /* font-family: "Montserrat", sans-serif; */
-    font-family: "Poppins", sans-serif;
+    font-family: 'Poppins', sans-serif;
     /* transition: .3s ease; */
     -webkit-tap-highlight-color: transparent;
 }
@@ -72,9 +75,8 @@ html {
 }
 
 body {
-    background-color: var(--color-bgr-light);
+    /* background-color: var(--color-bgr-light); */
     overflow-x: hidden;
-    /* background-color: var(--color-bgr-top); */
 }
 
 nav {
@@ -127,12 +129,7 @@ img {
 }
 
 
-
-
-
-
-/* --------------------------------------------- */
-
+/* -----------------t-y-p-e-s-c-a-l-e----------------- */
 /* 
 	https://typescale.com
 	SCALE: 1.250 
@@ -162,5 +159,3 @@ img {
 	0.086rem /1.37px
 	0.069rem /1.10px
 */
-
-

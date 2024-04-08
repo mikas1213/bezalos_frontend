@@ -1,17 +1,5 @@
-.testimonialSection {
-    transition: transform 1s, opacity 1s;
-}
-
 .testimonialContainer {
-    display: flex;
     gap: 3.5rem;
-    align-items: center;
-    max-width: var(--content-width);
-    /* max-width: 850px;     */
-    margin: 0 auto;
-    padding-top: 7rem;
-    padding-bottom: 9rem;
-
 }
 
 .testimonialCard {
@@ -40,51 +28,20 @@
     font-size: var(--font-size-h5);
 }
 
-:global(.mySwiper .swiper-pagination .swiper-pagination-bullet) {
-    background-color: var(--color-bgr-top);
-}
-/* 
-:global(.swiper-slide-active) .testimonialCard {
-    margin-left: 5rem;
-    overflow: hidden;
-}
-
-:global(.swiper-slide-next) {
-    padding: 0 20px;
-}
-
-
-:global(.swiper-slide-next) ~ div .testimonialCard {
-    margin-right: 5rem;
-}
-
-:global(.swiper-button-prev):after, :global(.swiper-button-next):after {
-    color: var(--color-bgr-card);
-} */
-
-:global(.swiper-wrapper) {
-    margin-bottom: 4rem;
-    padding: 0;
-}
-
-/* :global(.swiper-pagination) {
-    bottom: -20px !important;
-} */
-
 
 /* * * * * * * * * * * * * * * * * * * *
 *        M E D I A  Q U E R I E S      *
 * * * * * * * * * * * * * * * * * * * */
 @media only screen and (min-width: 1025px) and (max-width: 1200px) {
     .testimonialContainer {
-        padding: 3.6rem var(--content-padding_768) 7.2rem var(--content-padding_768);
-        gap: var(--content-padding_768);
+        /* padding: 3.6rem var(--content-padding_768) 7.2rem var(--content-padding_768); */
+        /* gap: var(--content-padding_768); */
     }
 }
 @media only screen and (min-width: 769px) and (max-width: 1024px) {
     .testimonialContainer {
-        padding: 3.6rem var(--content-padding_768) 7.2rem var(--content-padding_768);
-        gap: var(--content-padding_768);
+        /* padding: 3.6rem var(--content-padding_768) 7.2rem var(--content-padding_768); */
+        /* gap: var(--content-padding_768); */
     }
     .testimonialCard {
         padding: var(--content-padding_768);
@@ -92,8 +49,8 @@
 }
 @media only screen and (min-width: 608px) and (max-width: 768px) {
     .testimonialContainer {
-        padding: 3.6rem var(--content-padding_768) 7.2rem var(--content-padding_768);
-        gap: var(--content-padding_768);
+        /* padding: 3.6rem var(--content-padding_768) 7.2rem var(--content-padding_768); */
+        /* gap: var(--content-padding_768); */
     }
     .testimonialCard {
         padding: var(--content-padding_768);
@@ -102,12 +59,12 @@
 
 @media only screen and (min-width: 431px) and (max-width: 607px) {
     .testimonialContainer {
-        padding: var(--content-padding_607);
+        /* padding: var(--content-padding_607); */
     }
     .testimonialContainer {
         flex-direction: column;
-        padding: 3.6rem var(--content-padding_607) 7.2rem var(--content-padding_607);
-        gap: var(--content-padding_607);
+        /* padding: 3.6rem var(--content-padding_607) 7.2rem var(--content-padding_607); */
+        /* gap: var(--content-padding_607); */
     }
     .testimonialCard {
         padding: var(--content-padding_607);
@@ -132,6 +89,13 @@
     .testimonialCard {
         padding: var(--content-padding_430);
     }
+    .title {
+        font-size: var(--font-size-h5);
+        font-weight: 600;
+    }
+    .text {
+        font-size: var(--font-size-h5);
+    }
 }
 
 @media only screen and (max-width: 375px) {
@@ -153,5 +117,13 @@
 
     .testimonialCard {
         padding: var(--content-padding_320);
+    }
+
+    .title {
+        font-size: var(--font-size-h6);
+        font-weight: 600;
+    }
+    .text {
+        font-size: var(--font-size-h6);
     }
 }

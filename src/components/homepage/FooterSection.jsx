@@ -1,14 +1,15 @@
 import styles from './FooterSection.module.css';
+import MainContainer from './ui/MainContainer';
 import { Link } from 'react-router-dom';
 import Logo from '../../assets/svg/be-zalos-logo.svg';
 
-import { PiFacebookLogo, PiInstagramLogo, PiAt } from "react-icons/pi";
+import { PiFacebookLogo, PiInstagramLogo, PiAt } from 'react-icons/pi';
 
 const FooterSection = () => {
     
     return (
-        <footer className={`${styles.footerSection} section--hiddenn`}>
-            <div className={styles.footerContainer}>
+        <footer className={styles.footerSection}>
+            <MainContainer customClass={styles.footerContainer}>
                 <div className={styles.subsTitle}>
                     Keliaujam į ilgalaikius pokyčius kartu?
                 </div>
@@ -17,7 +18,7 @@ const FooterSection = () => {
                 </div>
                 <div className={styles.subsEmail}>
                     <div>
-                        <input type="email" placeholder='Jūsų el. paštas'/>
+                        <input type='email' placeholder='Jūsų el. paštas'/>
                         <button>Prenumeruoti</button>
                     </div>
                 </div>
@@ -31,10 +32,10 @@ const FooterSection = () => {
                         <Link to='/privatumo-politika'>Privatumo politika</Link>
                     </div>
                     <div className={styles.socialIcons}>
-                        <Link to='https://www.facebook.com/sandra.jatulyte' target="_blank">
+                        <Link to='https://www.facebook.com/sandra.jatulyte' target='_blank'>
                             <PiFacebookLogo className={styles.icon}/>    
                         </Link>
-                        <Link to='https://www.instagram.com/valgau_be_zalos' target="_blank">
+                        <Link to='https://www.instagram.com/valgau_be_zalos' target='_blank'>
                             <PiInstagramLogo className={styles.icon} />
                         </Link>
                        
@@ -48,7 +49,7 @@ const FooterSection = () => {
                     <span className={styles.copy}>&copy;</span>
                     <span>2024 Valgau be žalos</span>
                 </div>
-            </div>
+            </MainContainer>
         </footer>
     );
 };

@@ -1,5 +1,6 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
+import MainContainer from '../homepage/ui/MainContainer';
 
 import styles from "./Navbar.module.css";
 import { Logo } from "./Logo";
@@ -33,23 +34,7 @@ const Navbar = ({ isHome = false }) => {
     if (isHome && isScroll) changeStyleClass = styles.navHomeAndScroll;
     if (!isHome && !isScroll) changeStyleClass = styles.navNotHomeNotScroll;
     if (!isHome && isScroll) changeStyleClass = styles.navNotHomeAndScroll;
-   
-    // if (isHome && !isScroll) document.body.style.backgroundColor = '#084747';
-    
-    // useEffect(() => {
-        // if(isHome && !isScroll) {
-            // document.getElementById('body').style.transition = "all 0.3s";
-            // document.body.style.backgroundColor = '#084747';
-        // } else {
-            // document.getElementById('body').style.transition = "all 0.3s";
-            // document.body.style.backgroundColor = '#eff1ef';
-        // }
-        // return () => {
-        //     document.getElementById('body').style.transition = "all 0.3s";
-        //     document.body.style.backgroundColor = '#084747';
-        // }
-    // }, [isHome, isScroll]);
-    
+
 
     const { auth, isOpenModal, setIsOpenModal } = useAuth();
     
@@ -60,7 +45,7 @@ const Navbar = ({ isHome = false }) => {
             </Modal>}
             
             <nav className={`${styles.nav} ${changeStyleClass}`}>
-                <div className={styles.navContainer}>
+                <MainContainer customClass={styles.navContainer}>
                     <div className={styles.logo}>
                         <NavLink to="/">
                             <Logo isChangeColor={{ isHome, isScroll }} />
@@ -104,8 +89,8 @@ const Navbar = ({ isHome = false }) => {
                             }
                         </li>
                     </ul>
-                </div>
-
+                </MainContainer>
+                
                 <div className={`${styles.navContainerMobile} ${isOpenBurger ? styles.show : ''}`}>
                     <ul className={styles.navListMobile}>
 

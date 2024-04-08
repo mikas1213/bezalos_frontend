@@ -1,16 +1,3 @@
-.aboutSection {
-    margin-bottom: 7rem;
-    transition: transform 1s, opacity 1s;
-}
-
-.aboutContainer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    max-width: var(--content-width);
-    margin: 0 auto;   
-}
-
 /* L E F T   S I D E */
 .aboutLeft {
     display: flex;
@@ -51,15 +38,15 @@ img.signature { width: 18.19rem; }
 * * * * * * * * * * * * * * * * * * * * */
 
 @media only screen and (min-width: 1025px) and (max-width: 1200px) {
-    .aboutContainer {
+    /* .aboutContainer {
         padding: 0 var(--content-padding_768);
         display: grid;
         grid-template-columns: 2.4fr 1.6fr;
-    }
+    } */
 }
 
 @media only screen and (min-width: 769px) and (max-width: 1024px) {
-    .aboutContainer {
+    /* .aboutContainer {
         padding: 0 var(--content-padding_768);
         display: grid;
         grid-template-columns: 2.4fr 1.6fr;
@@ -67,11 +54,11 @@ img.signature { width: 18.19rem; }
 
     .aboutRight img {
         width: 100%;
-    }
+    } */
 }
 
 @media only screen and (min-width: 608px) and (max-width: 768px) {
-    .aboutContainer {
+    /* .aboutContainer {
         padding: 0 var(--content-padding_768);
     }
     .aboutMsg {
@@ -79,10 +66,10 @@ img.signature { width: 18.19rem; }
     }
     .aboutRight img {
         width: 100%;
-    }
+    } */
 }
 @media only screen and (min-width: 431px) and (max-width: 607px) {
-    .aboutContainer {
+    /* .aboutContainer {
         padding: 0 var(--content-padding_607);
         flex-direction: column-reverse;
         align-items: start;
@@ -99,11 +86,11 @@ img.signature { width: 18.19rem; }
     }
     .aboutRight img {
         width: 100%;
-    }
+    } */
 }
 
 @media only screen and (max-width: 430px) {
-    .aboutSection {
+    /* .aboutSection {
         margin-bottom: 3.5rem;
     }
     .aboutContainer {
@@ -118,22 +105,30 @@ img.signature { width: 18.19rem; }
 
     .aboutMsg {
         font-size: var(--font-size-h3);
+        font-weight: 600;
     }
+    .aboutTxt {
+        font-size: var(--font-size-h5);
+    } */
 }
 
 @media only screen and (max-width: 375px) {
-    .aboutContainer {
+    /* .aboutContainer {
         padding: 0 var(--content-padding_375);
-    }
+    } */
 }
 
 @media only screen and (max-width: 320px) {
-    .aboutContainer {
+    /* .aboutContainer {
         padding: 0 var(--content-padding_320);
     }
     .aboutMsg {
         font-size: var(--font-size-h4);
+        font-weight: 600;
     }
+    .aboutTxt {
+        font-size: var(--font-size-h6);
+    } */
 }
 
 

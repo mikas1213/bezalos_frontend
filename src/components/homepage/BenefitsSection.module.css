@@ -1,11 +1,5 @@
-.benefitsSection {
-    transition: transform 1s, opacity 1s;
-}
-
 .benefitsContainer {
     border-radius: 3rem;
-    margin: 0 auto;
-    max-width: var(--content-width);
     padding-top: 7rem;
     padding-bottom: 7rem;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
@@ -61,18 +55,22 @@
 * * * * * * * * * * * * * * * * * * * */
 @media only screen and (min-width: 1025px) and (max-width: 1200px) {
     .benefitsSection {
-        padding: 0 var(--content-padding_768);
+        /* padding: 0 var(--content-padding_768); */
+    }
+
+    .benefitsContainer {
+        /* margin: 0 var(--content-padding_768); */
     }
 }
 
 @media only screen and (min-width: 769px) and (max-width: 1024px) {
     .benefitsSection {
-        padding: 0 var(--content-padding_768);
+        /* padding: 0 var(--content-padding_768); */
     }
 
     .benefits {
         grid-template-columns: 1fr;
-        padding: 0 var(--content-padding_768);
+        /* padding: 0 var(--content-padding_768); */
         row-gap: 3.5rem;
     }
 }
@@ -128,6 +126,7 @@
 
     .benefitTitle {
         font-size: var(--font-size-h3);
+        font-weight: 600;
     }
 
     .benefits {
@@ -136,8 +135,6 @@
         row-gap: 3.5rem;
     }
 
-
-    /* TEST */
     .benefitItem {
         flex-direction: column;
     }
@@ -146,8 +143,14 @@
         align-items: center;
     }
 
+    .title {
+        font-size: var(--font-size-h5);
+        font-weight: 600;
+    }
+
     .text {
         text-align: justify;
+        font-size: var(--font-size-h5);
     }
     
 }
@@ -159,20 +162,27 @@
     .benefits {
         padding: 0 var(--content-padding_375);
     }
-    .benefitTitle {
-        font-size: var(--font-size-h4);
-    }
 }
 @media only screen and (max-width: 320px) {
     .benefitsSection {
         padding: 0 var(--content-padding_320);
     }
 
+    .benefitTitle {
+        font-size: var(--font-size-h4);
+        font-weight: 600;
+    }
+    
     .benefits {
         padding: 0 var(--content-padding_320);
     }
 
     .title {
+        font-size: var(--font-size-h6);
+        font-weight: 600;
+    }
+
+    .text {
         font-size: var(--font-size-h6);
     }
 }

@@ -1,6 +1,6 @@
 .main { 
     padding-top: var(--nav-height); 
-    background-color: #eff1ef;
+    /* background-color: #eff1ef; */
 }
 
 @media only screen

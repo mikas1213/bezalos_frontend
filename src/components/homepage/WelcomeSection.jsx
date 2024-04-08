@@ -1,4 +1,6 @@
 import styles from './WelcomeSection.module.css';
+import Section from './ui/Section';
+import MainContainer from './ui/MainContainer';
 
 import Burger from '../../assets/images/homepage/meal-burger.webp';
 import Sandwich from '../../assets/images/homepage/meal-sandwich.webp';
@@ -24,18 +26,14 @@ const WelcomeSection = () => {
     }, []);
 
     return (
-        <section className={styles.welcomeSection}>
-            <div className={styles.welcomeContainer}>
-                <div
-                    className={`${styles.welcomeLeft} ${
-                        isAnimate ? styles.onload : ''
-                    }`}
-                >
-                    <div className={styles.welcomeMsg}>
+        <Section customClass={styles.welcomeSection}>
+            <MainContainer customClass={styles.welcomeContainer}>
+                <div className={`${styles.welcomeLeft} ${ isAnimate ? styles.onload : '' }`}>
+                    <div className={styles.welcomeHeader}>
                         <p>Tavo <span>ilgalaikių</span> mitybos pokyčių garantas</p>
                     </div>
 
-                    <div className={styles.welcomeTxt}>
+                    <div className={styles.welcomeTitle}>
                         <p>Čia išmoksi sveikatai palankios mitybos pagrindų, tapsi bendruomenės nare. Juk drauge įpročius formuoti lengviau!</p>
                     </div>
 
@@ -51,8 +49,8 @@ const WelcomeSection = () => {
                         alt='Burger'
                     />
                 </div>
-            </div>
-        </section>
+            </MainContainer>
+        </Section>
     );
 };
 
