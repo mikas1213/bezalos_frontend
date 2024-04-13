@@ -38,6 +38,7 @@ function App() {
                             <Route path='/virtuve' element={<Virtuve />} />
                             <Route path='/receptai' element={<Receptai />} />
                             <Route path='/paslaugos' element={<Paslaugos />} />
+                        
                             <Route path='/prisijungti' element={<LoginPage />} />
                             <Route path='/keisti-slaptazodi/:token' element={<UpdatePasswordPage /> } />
                             <Route path='*' element={<NotFoundPage />} />

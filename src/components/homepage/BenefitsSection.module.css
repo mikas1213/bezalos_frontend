@@ -1,188 +1,93 @@
+.benefitsSection {
+    padding: 0 var(--content-padding-lg);
+}
+
 .benefitsContainer {
-    border-radius: 3rem;
-    padding-top: 7rem;
-    padding-bottom: 7rem;
+    flex-direction: column;
+    border-radius: 2rem;
+    padding: clamp(1rem, 6.25vw, 4rem);
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 
 .benefits {
     display: grid;
-    padding: 0 5rem 0 5rem; /* T E S T */
-    column-gap: 7rem;
-    row-gap: 7rem;
+    column-gap: clamp(1rem, 6.25vw, 4rem);
+    row-gap: clamp(1rem, 6.25vw, 4rem);
     grid-template-columns: 1fr 1fr;
 }
 
-.benefitTitle {
+/* .benefitHeader {
     text-align: center;
     color: var(--color-text-dark);
-    font-weight: 700;
-    font-size: var(--font-size-h2);
-    padding-bottom: 4rem;
-    line-height: 100%;
-}
+    font-size: var(--font-size-dynamic-h4-lg);
+    font-weight: 600;
+    line-height:140%;
+    padding-bottom: 1rem;
+} */
 
 .benefitItem {
     display: flex;
-    gap: 1.5rem;
+    gap: clamp(0rem,1.563vw, 1rem);
 }
 
 .message {
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
-}
-
-.icon {
-    display: flex;
-    align-self: center;
-    width: 8rem;
+    gap: clamp(0rem, 0.781vw, 0.5rem);
 }
 
 .title {
     color: var(--color-text-dark);
-    font-size: var(--font-size-h5);
+    font-size: var(--font-size-dynamic-h6-lg);
     font-weight: 600;
 }
 
 .text {
     color: var(--color-text-dark);
-    font-size: var(--font-size-h6);
+    font-size: var(--font-size-dynamic-p-lg);
+    font-weight: 400;
+    /* text-align: justify; */
+}
+
+.icon {
+    display: flex;
+    align-self: center;
+    width: clamp(1rem, 6.25vw, 4rem);
 }
 
 /* * * * * * * * * * * * * * * * * * * *
 *        M E D I A  Q U E R I E S      *
-* * * * * * * * * * * * * * * * * * * */
-@media only screen and (min-width: 1025px) and (max-width: 1200px) {
+* * * * * * * * * * * * * * * * * * * */    
+
+@media only screen and (max-width: 576px) {
     .benefitsSection {
-        /* padding: 0 var(--content-padding_768); */
+        padding: 0 var(--content-padding-sm);
     }
 
     .benefitsContainer {
-        /* margin: 0 var(--content-padding_768); */
-    }
-}
-
-@media only screen and (min-width: 769px) and (max-width: 1024px) {
-    .benefitsSection {
-        /* padding: 0 var(--content-padding_768); */
+        padding: 2rem var(--content-padding-sm);
     }
 
     .benefits {
         grid-template-columns: 1fr;
-        /* padding: 0 var(--content-padding_768); */
-        row-gap: 3.5rem;
-    }
-}
-
-@media only screen and (min-width: 608px) and (max-width: 768px) {
-    .benefitsSection {
-        padding: 0 var(--content-padding_768);
-    }
-    .benefits {
-        grid-template-columns: 1fr;
-        padding: 0 var(--content-padding_768);
-        row-gap: 3.5rem;
-    }
-    .benefitsContainer {
-        padding-top: 3.5rem;
-        padding-bottom: 3.5rem;
-    }
-}
-@media only screen and (min-width: 431px) and (max-width: 607px) {
-    .benefitsSection {
-        padding: 0 var(--content-padding_607);
-    }
-
-    .benefits {
-        grid-template-columns: 1fr;
-        padding: 0 var(--content-padding_607);
-        row-gap: 3.5rem;
-    }
-
-    .benefitsContainer {
-        padding-top: 3.5rem;
-        padding-bottom: 3.5rem;
-    }
-
-    .benefitTitle {
-        font-size: var(--font-size-h3);
-    }
-    .text {
-        color: var(--color-text-dark);
-        font-size: var(--font-size-small-1);
-    }
-}
-
-
-@media only screen and (max-width: 430px) {
-    .benefitsSection {
-        padding: 0 var(--content-padding_430);
-    }
-    .benefitsContainer {
-        padding-top: 3.5rem;
-        padding-bottom: 3.5rem;
-    }
-
-    .benefitTitle {
-        font-size: var(--font-size-h3);
-        font-weight: 600;
-    }
-
-    .benefits {
-        grid-template-columns: 1fr;
-        padding: 0 var(--content-padding_430);
-        row-gap: 3.5rem;
+        row-gap: clamp(0rem, 11.111vw, 4rem);
     }
 
     .benefitItem {
         flex-direction: column;
-    }
-
-    .message {
-        align-items: center;
+        /* gap: 1rem; */
     }
 
     .title {
-        font-size: var(--font-size-h5);
-        font-weight: 600;
+        font-size: var(--font-size-dynamic-h5-sm);
+        text-align: center;
     }
-
     .text {
+        color: var(--color-text-dark);
+        font-size: var(--font-size-dynamic-h6-sm);
         text-align: justify;
-        font-size: var(--font-size-h5);
     }
-    
-}
-@media only screen and (max-width: 375px) {
-    .benefitsSection {
-        padding: 0 var(--content-padding_375);
-    }
-
-    .benefits {
-        padding: 0 var(--content-padding_375);
-    }
-}
-@media only screen and (max-width: 320px) {
-    .benefitsSection {
-        padding: 0 var(--content-padding_320);
-    }
-
-    .benefitTitle {
-        font-size: var(--font-size-h4);
-        font-weight: 600;
-    }
-    
-    .benefits {
-        padding: 0 var(--content-padding_320);
-    }
-
-    .title {
-        font-size: var(--font-size-h6);
-        font-weight: 600;
-    }
-
-    .text {
-        font-size: var(--font-size-h6);
+    .icon {
+        width: clamp(0rem, 13.889vw, 5rem);
     }
 }

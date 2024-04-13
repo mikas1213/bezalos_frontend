@@ -8,22 +8,22 @@ const AboutSection = () => {
         <Section customClass='section--hidden'>
             <MainContainer customClass={styles.clientStoryContainer}>
                 <div className={styles.containerLeft}>
-                    <div className={styles.clientStoryMsg}>
-                        <p>Kartu iš 92kg į 60kg</p>
+                    <div className={styles.clientStoryTitle}>
+                        Kartu iš 92kg į 60kg
                     </div>
-                    <div className={styles.clientStoryTxt}>
-                        <div>
-                            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Reiciendis neque repellat maxime sint pariatur voluptatem, consectetur asperiores animi dignissimos. Laborum sint eos vitae quis et ab facere corporis, aliquam libero?</p>
-                        </div>
-                        
-                        <div>
-                            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Reiciendis neque repellat maxime sint pariatur voluptatem, consectetur asperiores animi dignissimos. Laborum sint eos vitae quis et ab facere corporis, aliquam libero?</p>
-                        </div>
 
-                        <div>
-                            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Reiciendis neque repellat maxime sint pariatur voluptatem, consectetur asperiores animi dignissimos. Laborum sint eos vitae quis et ab facere corporis, aliquam libero?</p>
-                        </div>
+                    <div className={styles.clientStoryText}>
+                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Reiciendis neque repellat maxime sint pariatur voluptatem, consectetur asperiores animi dignissimos. Laborum sint eos vitae quis et ab facere corporis, aliquam libero?
                     </div>
+                        
+                    <div className={styles.clientStoryText}>
+                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Reiciendis neque repellat maxime sint pariatur voluptatem, consectetur asperiores animi dignissimos. Laborum sint eos vitae quis et ab facere corporis, aliquam libero?
+                    </div>
+
+                    <div className={styles.clientStoryText}>
+                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Reiciendis neque repellat maxime sint pariatur voluptatem, consectetur asperiores animi dignissimos. Laborum sint eos vitae quis et ab facere corporis, aliquam libero?
+                    </div>
+
                 </div>
                 <div className={styles.containerRight}>
                     <img src={AuthorImg} alt="Author" />

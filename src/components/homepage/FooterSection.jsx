@@ -10,20 +10,21 @@ const FooterSection = () => {
     return (
         <footer className={styles.footerSection}>
             <MainContainer customClass={styles.footerContainer}>
-                <div className={styles.subsTitle}>
-                    Keliaujam į ilgalaikius pokyčius kartu?
+                <div className={styles.footerTitle}>
+                    <span>Keliaujam į ilgalaikius&nbsp;</span> 
+                    <span>pokyčius kartu?</span>
                 </div>
-                <div className={styles.subsParagraph}>
+                <div className={styles.footerText}>
                     <p>Gauk palaikymą ir mokslu grįstą informaciją, kaip pagaliau pasiekti ilgalaikių rezultatų su meile ir be žalos</p>
                 </div>
-                <div className={styles.subsEmail}>
+                <div className={styles.footerEmail}>
                     <div>
                         <input type='email' placeholder='Jūsų el. paštas'/>
                         <button>Prenumeruoti</button>
                     </div>
                 </div>
                 <div className={styles.footerTop}>
-                    <div className={styles.logo}>
+                    <div className={styles.footerLogo}>
                         <img src={Logo} alt='logo' className={styles.logoIcon} onClick={() => window.scrollTo(0, 0)}/>
                     </div>
                     <div className={styles.termsOfUse}>

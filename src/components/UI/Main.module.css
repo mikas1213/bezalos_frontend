@@ -1,18 +1,15 @@
 .main { 
-    padding-top: var(--nav-height); 
-    /* background-color: #eff1ef; */
+    padding-top: var(--nav-height-80); 
 }
 
-@media only screen
-and (min-width: 431px) 
-and (max-width: 607px) {
+@media only screen and (max-width: 576px) {
     .main { 
-        padding-top: var(--nav-height_607);
+        padding-top: var(--nav-height-70);
     }
 }
 
 @media only screen and (max-width: 430px) {
     .main { 
-        padding-top: var(--nav-height_430);
+        padding-top: var(--nav-height-60);
     }
 }

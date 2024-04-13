@@ -26,8 +26,26 @@
         900: "#13260d"
 }*/
 
+    /* Main Sizes */
+
+    /* --nav-height-80: 80px; */
+    --nav-height-80: clamp(60px, 7.813vw, 80px);
+    --nav-height-70: 70px;
+    --nav-height-60: 60px;
+
+    --section-padding-bottom: clamp(1.875rem, 3.906vw, 2.5rem);
+
+    --content-width: 1024px;
+    --content-width-responsive: 100vw;
+    --content-padding-lg: 2rem;
+    --content-padding-sm: 1rem;
+
+    --signature-size-lg: clamp(0rem, 17.188vw, 11rem);
+    --signature-size-sm: clamp(0rem, 33.333vw, 12rem);
+    
     /* Font sizes: */
-    --font-size-big: 5.3rem;
+    --font-size-big-1: 5.96rem;
+    --font-size-big-2: 4.768rem;	
     --font-size-h1: 3.815rem;
     --font-size-h2: 3.052rem;
     --font-size-h3: 2.441rem;
@@ -38,24 +56,30 @@
     --font-size-small-1: 0.8rem;
     --font-size-small-2: 0.64rem;
 
+    /* DYNAMIC FONTS */
+    /* 1024 Viewport Width */
+    --font-size-dynamic-h1-lg: clamp(0rem, 5.961vw, var(--font-size-h1));
+    --font-size-dynamic-h2-lg: clamp(0rem, 4.769vw, var(--font-size-h2));
+    --font-size-dynamic-h3-lg: clamp(0rem, 3.814vw, var(--font-size-h3));
+    --font-size-dynamic-h4-lg: clamp(1.21rem, 3.052vw, var(--font-size-h4));
+    --font-size-dynamic-h5-lg: clamp(0rem, 2.442vw, var(--font-size-h5));
+    --font-size-dynamic-h6-lg: clamp(0rem, 1.953vw, var(--font-size-h6));
+    --font-size-dynamic-p-lg: clamp(0rem, 1.563vw, var(--font-size-p));
+    --font-size-dynamic-small-1-lg: clamp(0rem, 1.25vw, var(--font-size-small-1));
+    --font-size-dynamic-small-2-lg: clamp(0rem, 1vw, var(--font-size-small-2));
 
-    /* Main Sizes */
-    --nav-height: 8rem;
-    --nav-height_607: 7rem;
-    --nav-height_430: 6rem;
+    /* 576 Viewport Width */
+    --font-size-dynamic-h1-sm: clamp(0rem, 10.597vw, 3.815rem);
+    --font-size-dynamic-h2-sm: clamp(0rem, 8.478vw, 3.052rem);
+    --font-size-dynamic-h3-sm: clamp(0rem, 6.781vw, 2.441rem);
+    --font-size-dynamic-h4-sm: clamp(0rem, 5.425vw, 1.953rem);
+    --font-size-dynamic-h5-sm: clamp(0rem, 4.342vw, 1.563rem);
+    --font-size-dynamic-h6-sm: clamp(0rem, 3.472vw, 1.25rem);
+    --font-size-dynamic-p-sm: clamp(0rem, 2.778vw, 1rem);
+    --font-size-dynamic-small-1-sm: clamp(0rem, 2.222vw, 0.8rem);
+    --font-size-dynamic-small-2-sm: clamp(0rem, 1.778vw, 0.64rem);
+    
 
-    --content-width: 102.4rem;
-    --content-width-responsive: 100vw;
-
-
-
-    --content-padding_768: 2.2rem;
-    --content-padding_607: 2rem;
-    --content-padding_430: 1.8rem;
-    --content-padding_375: 1.6rem;
-    --content-padding_320: 1.4rem;
-
-    --content-padding: 1.6rem;
 }
 
 * {
@@ -69,13 +93,13 @@
 }
 
 html {
-    font-size: 62.5%;
+    /* font-size: 62.5%; */
     scroll-behavior: smooth;
     overflow-x: hidden;
 }
 
 body {
-    /* background-color: var(--color-bgr-light); */
+    background-color: var(--color-bgr-light);
     overflow-x: hidden;
 }
 
