@@ -1,13 +1,12 @@
 import styles from './Navbar.module.css';
 export const Logo = ({isChangeColor}) => {
     const {isHome, isScroll} = isChangeColor;
-    const color = isHome && !isScroll ? '#EFF1EF' : '#082B1D';
+    const color = isHome && !isScroll ? '#EFF1EF' : '#082b1d';
     
     return(
         <svg 
             version="1.1" 
             viewBox="0 0 1600 496" fill={color} 
-            // width="100" height="80"
             xmlns="http://www.w3.org/2000/svg"
             className={styles.logoSvg}
         >

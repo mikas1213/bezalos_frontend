@@ -1,34 +1,28 @@
 .right {
-    position: relative;
-    width: 40rem;
-    height: 80vh;
-    padding: 0 4rem;
-    /* animation: auth_anime 0.5s ease-in-out; */
-}
+    /* display: flex; */
+    /* flex-direction: column; */
+    /* justify-content: center; */
 
-/* 
-@keyframes auth_anime {
-    from {opacity: 0;}
-    to {opacity: 1;}
-} */
+    position: relative;
+    width: var(--form-side-width-lg);
+    height: 80dvh;
+    padding: 0 var(--from-size-padding-lg);
+}
 
 .right:has(.invalid) {
     height: 83vh;
 }
 
-.signup {
-    /* margin: 0 4rem; */
-}
 
 /* H E A D E R */
 .header {
-    margin: 3.5rem 0;
+    margin: clamp(0rem, 3.438vw, 2.2rem) 0;
     display: flex;
     justify-content: center;
 }
 
 .header .icon {
-    font-size: 7rem;
+    font-size: var(--form-header-icon-size-lg);
     color: var(--color-bgr-dark);
     opacity: 0.4;    
 }
@@ -44,7 +38,7 @@
 .inputGroup {
     display: flex;
     flex-direction: column;
-    padding-bottom: 1rem;
+    padding-bottom: clamp(0rem, 0.94vw, 0.6rem);
 }
 
 .inputGroup:has(.invalid) {
@@ -60,9 +54,10 @@
     width: 100%;
     outline: transparent;
     border: none;
+    font-size: var(--font-size-dynamic-small-1-lg);
     font-weight: 500;
-    padding: 0 3.4rem;
-    line-height: 4rem;
+    padding: 0 clamp(0rem, 3.761vw, 2.4rem);
+    line-height: var(--form-btn-height-lg);
     border-radius: 10rem;
     background: transparent;
     box-shadow: #a7aba671 1px 3px 8px;
@@ -90,11 +85,11 @@
 .inputs .icon {
     cursor: pointer;
     position: absolute;
-    font-size: 1.3rem;
+    font-size: clamp(0rem, 1.563vw, 1rem);
     color: var(--color-bgr-top);
     top: 50%;
     transform: translateY(-50%);
-    left: 1.2rem;
+    left: clamp(0rem, 1.254vw, 0.8rem);
 }
 
 .eyeIconContainer {
@@ -107,17 +102,16 @@
 }
 
 .eyeIcon {
-    font-size: 2rem;
+    font-size: clamp(0rem, 2.031vw, 1.3rem);
     color: var(--color-radio-border);
 }
 
 .inputError {
-    padding-left: 3.4rem;
+    padding-left: clamp(0rem, 3.761vw, 2.4rem);
     display: inline-block;
     margin-top: 0.2rem;
-    /* margin-bottom: 1rem; */
     color: var(--color-error);
-    font-size: 1.1rem;
+    font-size: var(--font-size-dynamic-small-2-lg);
     font-weight: 500;
 }
 
@@ -125,10 +119,11 @@
 
 .maneDomina {
     display: flex;
-    margin-top: 2rem;
-    margin-bottom: 1rem;
+    margin-top: 1.6rem;
+    margin-bottom: 0.6rem;
     justify-content: space-between;   
     color: var(--color-bgr-top);
+    font-size: var(--font-size-dynamic-small-1-lg);
 }
 
 /* R A D I O   B U T T O N S */
@@ -136,7 +131,7 @@
 .radios {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: clamp(0rem, 0.938vw,0.6rem);
 }
 
 .radio {
@@ -147,8 +142,8 @@
 
 label {
     cursor: pointer;
-    margin-left: 1rem;
-    font-size: 1.2rem;
+    margin-left: clamp(0rem, 0.625vw, 0.4rem);
+    font-size: var(--font-size-dynamic-small-2-lg);
     font-weight: 500;
     opacity: 0.6;
 }
@@ -161,8 +156,8 @@ label {
     display: block;
     position: relative;
     border-radius: 100%;
-    width: 2rem;
-    height: 2rem;
+    width: clamp(0rem, 1.563vw, 1rem);
+    height: clamp(0rem, 1.563vw, 1rem);
     border: 1px solid var(--color-radio-border);
 }
 
@@ -171,8 +166,8 @@ input:checked + .check:after {
     display: block;
     position: absolute;
     background: var(--color-radio);
-    width: 1rem;
-    height: 1rem;
+    width: clamp(0rem, 0.781vw, 0.5rem);
+    height: clamp(0rem, 0.781vw, 0.5rem);
     border-radius: 100%;
     top: 50%;
     left: 50%;
@@ -194,14 +189,14 @@ input:checked + .check:after {
 
 .bottom button {
     margin-top: 2rem;
-    width: 100%;
-    font-size: var(--font-size-h5);
+    width: clamp(0rem, 17.188vw, 11rem);
+    font-size: var(--font-size-dynamic-p-lg);
     font-weight: 600 !important;
     border: none;
     border-radius: 10rem;
     background-color: var(--color-btn-primary);
     color: var(--color-text-dark);
-    height: 4rem;
+    height: var(--form-btn-height-lg);
     box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
     font-weight: 500;
     transition: background-color 0.1s ease;
@@ -218,3 +213,8 @@ input:checked + .check:after {
     color: var(--color-text-light);
 }
 
+@media only screen and (max-width: 576px){
+    .right {
+        width: var(--form-side-width-lg);
+    }
+}

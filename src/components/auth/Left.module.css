@@ -1,17 +1,16 @@
 .left {
-    width: 40rem;
-    /* height: 80vh; */
+    width: var(--form-side-width-lg);
     background-image: url('../../assets/images/auth/registration_bgr.jpg');
     background-size: cover;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    color: var(--color-text-dark);
+    color: var(--color-text-dark);    
 }
 
 .title {
-    font-size: var(--font-size-h1);
+    font-size: var(--font-size-dynamic-h3-lg);
     color: var(--color-text-dark);
 }
 .message {
@@ -21,7 +20,7 @@
     color: var(--color-text-dark);
     display: flex;
     justify-content: center;
-    font-size: var(--font-size-h5);
+    font-size: var(--font-size-dynamic-p-lg);
 }
 .action {
     display: flex;
@@ -30,18 +29,19 @@
     padding-top: 8rem;
 }
 .action h4 {
-    font-size: var(--font-size-h6);
+    font-size: var(--font-size-dynamic-p-lg);
     font-weight: 400;
 }
 
 .action button {
-    margin-top: 1rem;
+    margin-top: clamp(0.1rem, 0.781vw, 0.5rem);
     border: none;
     border-radius: 10rem;
     color: var(--color-text-light);
     background-color: var(--color-bgr-top);
-    height: 4rem;
-    width: 14rem;
+    height: var(--form-btn-height-lg);
+    width: clamp(0rem, 17.188vw, 11rem);
+    font-size: var(--font-size-dynamic-p-lg);
     font-weight: 500;
     transition: background-color 0.1s ease-in-out;
     box-shadow: 0px 10px 20px 5px rgba(0, 0, 0, 0.1);
@@ -52,7 +52,7 @@
 }
 
 
-@media only screen and (max-width: 430px){
+@media only screen and (max-width: 576px){
     .left {
         display: none;
     }

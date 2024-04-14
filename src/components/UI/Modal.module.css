@@ -17,7 +17,7 @@
     transform: translate(-50%, -50%);
     background-color: var(--color-bgr-light);
     animation: openModal 0.2s;
-    border-radius: 2rem;
+    border-radius: 1.5rem;
     overflow: hidden;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
@@ -28,7 +28,7 @@
     display: flex;
     right: 1.2rem;
     top: 1.2rem;
-    font-size: 3rem;
+    font-size: clamp(0rem, 4.701vw, 3rem);
     color: var(--color-bgr-dark);
     opacity: 0.5;
     z-index: 10;

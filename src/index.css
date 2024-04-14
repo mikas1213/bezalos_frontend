@@ -56,7 +56,7 @@
     --font-size-small-1: 0.8rem;
     --font-size-small-2: 0.64rem;
 
-    /* DYNAMIC FONTS */
+    /* D-Y-N-A-M-I-C---F-O-N-T-S */
     /* 1024 Viewport Width */
     --font-size-dynamic-h1-lg: clamp(0rem, 5.961vw, var(--font-size-h1));
     --font-size-dynamic-h2-lg: clamp(0rem, 4.769vw, var(--font-size-h2));
@@ -68,7 +68,14 @@
     --font-size-dynamic-small-1-lg: clamp(0rem, 1.25vw, var(--font-size-small-1));
     --font-size-dynamic-small-2-lg: clamp(0rem, 1vw, var(--font-size-small-2));
 
+    --form-side-width-lg: clamp(10rem, 39.063vw, 25rem);
+    --from-size-padding-lg: clamp(0rem, 4.688vw, 3rem);
+    --form-btn-height-lg: clamp(0rem, 3.906vw, 2.5rem);
+    --form-header-icon-size-lg: clamp(0rem, 6.25vw, 4rem);
+
     /* 576 Viewport Width */
+    --font-size-dynamic-big-1-sm: clamp(0rem, 16.556vw, 5.96rem);
+    --font-size-dynamic-big-2-sm: clamp(0rem, 13.244vw, 4.768rem);
     --font-size-dynamic-h1-sm: clamp(0rem, 10.597vw, 3.815rem);
     --font-size-dynamic-h2-sm: clamp(0rem, 8.478vw, 3.052rem);
     --font-size-dynamic-h3-sm: clamp(0rem, 6.781vw, 2.441rem);
@@ -78,8 +85,8 @@
     --font-size-dynamic-p-sm: clamp(0rem, 2.778vw, 1rem);
     --font-size-dynamic-small-1-sm: clamp(0rem, 2.222vw, 0.8rem);
     --font-size-dynamic-small-2-sm: clamp(0rem, 1.778vw, 0.64rem);
-    
 
+    --form-side-width-sm: clamp(1rem, 91.667vw, 33rem);
 }
 
 * {

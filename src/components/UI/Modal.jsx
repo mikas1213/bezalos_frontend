@@ -9,6 +9,7 @@ const Modal = ({children, onClose}) => {
     const ref = useRef(null);
     useEffect(() => {
         const handleClick = e => {
+            
             if(ref.current && !ref.current.contains(e.target)) {
                 onClose();
             }

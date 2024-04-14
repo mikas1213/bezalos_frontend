@@ -2,23 +2,17 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: center;
+
     align-items: center;
-    width: 40rem;
-    padding: 0 4rem;
-    height: 80vh;
-    /* animation: signin_animation 0.5s ease-in-out; */
+    width: var(--form-side-width-lg);
+    padding: 0 var(--from-size-padding-lg);
+    height: 80dvh;
 }
 
 .signin {
     width: 100%;
 }
-
-
-/* @keyframes signin_animation {
-    from { opacity: 0; }
-    to { opacity: 1; }
-} */
 
 /* H E A D E R */
 
@@ -29,7 +23,7 @@
 }
 
 .header .icon {
-    font-size: 7rem;
+    font-size: var(--form-header-icon-size-lg);
     color: var(--color-bgr-dark);
     opacity: 0.4;    
 }
@@ -46,12 +40,8 @@
 .inputGroup {
     display: flex;
     flex-direction: column;
-    padding-bottom: 1rem;
+    padding-bottom: clamp(0rem, 0.94vw, 0.6rem);
 }
-
-/* .inputGroup:has(.invalid) {
-    padding-bottom: 0.6rem;
-} */
 
 .inputContainer {
     position: relative;
@@ -62,9 +52,10 @@
     width: 100%;
     outline: transparent;
     border: none;
+    font-size: var(--font-size-dynamic-small-1-lg);
     font-weight: 500;
-    padding: 0 3.4rem;
-    line-height: 4rem;
+    padding: 0 clamp(0rem, 3.761vw, 2.4rem);
+    line-height: var(--form-btn-height-lg);
     border-radius: 10rem;
     background: transparent;
     box-shadow: #a7aba671 1px 3px 8px;
@@ -92,11 +83,11 @@
 .inputs .icon {
     cursor: pointer;
     position: absolute;
-    font-size: 1.3rem;
+    font-size: clamp(0rem, 1.563vw, 1rem);
     color: var(--color-bgr-top);
     top: 50%;
     transform: translateY(-50%);
-    left: 1.2rem;
+    left: clamp(0rem, 1.254vw, 0.8rem);
 }
 
 .eyeIconContainer {
@@ -109,16 +100,16 @@
 }
 
 .eyeIcon {
-    font-size: 2rem;
+    font-size: clamp(0rem, 2.031vw, 1.3rem);
     color: var(--color-radio-border);
 }
 
 .inputError {
-    padding-left: 3.4rem;
+    padding-left: clamp(0rem, 3.761vw, 2.4rem);
     display: inline-block;
     margin-top: 0.2rem;
     color: var(--color-error);
-    font-size: 1.1rem;
+    font-size: var(--font-size-dynamic-small-2-lg);
     font-weight: 500;
 }
 
@@ -126,29 +117,30 @@
 .primintiSlaptazodi {
     cursor: pointer;
     text-align: right;
-    padding-right: 1.1rem;
+    padding-right: 1rem;
     font-weight: 400;
-    font-size: var(--font-size-h6);
+    font-size: var(--font-size-dynamic-small-1-lg);
 }
 
 .primintiSlaptazodi:hover {
     text-decoration: underline
 }
 
-
-
-
 /* B O T T O M */
+.bottom {
+    display: flex;
+    justify-content: center;
+}
 .bottom button {
     margin-top: 2rem;
-    width: 100%;
-    font-size: var(--font-size-h5);
+    width: clamp(0rem, 17.188vw, 11rem);
+    font-size: var(--font-size-dynamic-p-lg);
     font-weight: 600 !important;
     border: none;
     border-radius: 10rem;
     background-color: var(--color-btn-primary);
     color: var(--color-text-dark);
-    height: 4rem;
+    height: var(--form-btn-height-lg);
     /* box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px; */
     /* box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; */
     /* box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px; */
@@ -169,9 +161,16 @@
 }
 
 .signatureContainer {
-    padding-bottom: 1.8rem;
+    padding-bottom: clamp(0rem, 1.563vw, 1rem);
 }
 .signatureContainer img {
-    width: 15rem;
+    width: clamp(0rem, 15.625vw, 10rem);
     opacity: 0.4;
+}
+
+
+@media only screen and (max-width: 576px){
+    .right {
+        width: clamp(1rem, 91.667vw, 33rem);
+    }
 }

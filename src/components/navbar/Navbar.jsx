@@ -10,12 +10,9 @@ import Authentication from "../auth/Authentication";
 import useAuth from "../../hooks/useAuth";
 import useLogout from '../../hooks/useLogout';
 
-import { FaPhotoVideo } from "react-icons/fa";
-import { FaClipboardList } from "react-icons/fa6";
-import { FaHeadset } from "react-icons/fa6";
-import { FaUser } from "react-icons/fa6";
-import { FaPowerOff } from "react-icons/fa6";
-import { FaArrowRightToBracket } from "react-icons/fa6";
+// ICONS
+// https://www.svgrepo.com/collection/solar-broken-line-icons
+import { VirtuveIcon, ReceptaiIcon, PaslaugosIcon, ProfilisIcon, PrisijungtiIcon, AtsijungtiIcon } from './NavIcons';
 
 const Navbar = ({ isHome = false }) => {
 
@@ -25,6 +22,7 @@ const Navbar = ({ isHome = false }) => {
     
     const [isScroll, setIsScroll] = useState(false);
     const [isOpenBurger, setIsOpenBurger] = useState(false);
+    
     const changeColor = () =>
         window.scrollY > 100 ? setIsScroll(true) : setIsScroll(false);
     window.addEventListener('scroll', changeColor);
@@ -35,9 +33,8 @@ const Navbar = ({ isHome = false }) => {
     if (!isHome && !isScroll) changeStyleClass = styles.navNotHomeNotScroll;
     if (!isHome && isScroll) changeStyleClass = styles.navNotHomeAndScroll;
 
-
     const { auth, isOpenModal, setIsOpenModal } = useAuth();
-    
+    const iconStroke = 1.5;    
     return (
         <>
             {isOpenModal && <Modal onClose={() => setIsOpenModal(false)}>
@@ -96,28 +93,38 @@ const Navbar = ({ isHome = false }) => {
 
                         <li className={`${styles.listItemMobile} ${location.pathname.indexOf('virtuve') > -1 ? styles.active : ''}`} 
                             onClick={() => navigate('/virtuve')}>  
-                            <FaPhotoVideo className={styles.icon}/>
+                            <VirtuveIcon 
+                                active={location.pathname.indexOf('virtuve') > -1 ? true : false} 
+                                stroke={iconStroke}
+                            />
                             <span>Virtuvė</span>
                         </li>
                         
-                        
                         <li className={`${styles.listItemMobile} ${location.pathname.indexOf('receptai') > -1 ? styles.active : ''}`} 
                             onClick={() => navigate('/receptai')}>
-                            <FaClipboardList className={styles.icon}/>
+                            <ReceptaiIcon 
+                                active={location.pathname.indexOf('receptai') > -1 ? true : false} 
+                                stroke={iconStroke}
+                            />
                             <span>Receptai</span>
                         </li>
                         
-                        
                         <li className={`${styles.listItemMobile} ${location.pathname.indexOf('paslaugos') > -1 ? styles.active : ''}`}
                             onClick={() => navigate('/paslaugos')}>
-                            <FaHeadset className={styles.icon}/>
+                            <PaslaugosIcon 
+                                active={location.pathname.indexOf('paslaugos') > -1 ? true : false} 
+                                stroke={iconStroke}
+                            />
                             <span>Paslaugos</span>
                         </li>
                         
 
                         {auth?.accessToken && <li className={`${styles.listItemMobile} ${location.pathname.indexOf('profilis') > -1 ? styles.active : ''}`}
                             onClick={() => navigate('/profilis')}>
-                            <FaUser className={styles.icon}/>
+                            <ProfilisIcon 
+                                active={location.pathname.indexOf('profilis') > -1 ? true : false} 
+                                stroke={iconStroke}
+                            />
                             <span>Profilis</span>
                         </li>}
                         
@@ -125,13 +132,13 @@ const Navbar = ({ isHome = false }) => {
                         {!auth.accessToken ? <li 
                             className={`${styles.listItemMobile} ${styles.signout}`}
                             onClick={() => setIsOpenModal(true)}>
-                            <FaArrowRightToBracket className={styles.icon}/>
+                            <PrisijungtiIcon stroke={iconStroke} />
                             <span>Prisijungti</span>
                         </li>
                         :
                         <li className={`${styles.listItemMobile} ${styles.signout}`}
                             onClick={async () => await logout()}>
-                            <FaPowerOff className={styles.icon}/>
+                            <AtsijungtiIcon stroke={iconStroke} />
                             <span>Atsijungti</span>
                         </li>}
                     </ul>

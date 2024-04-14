@@ -1,7 +1,7 @@
 import styles from './FooterSection.module.css';
 import MainContainer from './ui/MainContainer';
 import { Link } from 'react-router-dom';
-import Logo from '../../assets/svg/be-zalos-logo.svg';
+import Logo from '../../assets/icons/svg/be-zalos-logo.svg';
 
 import { PiFacebookLogo, PiInstagramLogo, PiAt } from 'react-icons/pi';
 
