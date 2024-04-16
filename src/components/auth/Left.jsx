@@ -13,25 +13,22 @@ const FormLeft = () => {
                 <h3>Liko tik vienas žingsnis iki tavo</h3>
                 <h3>ilgalaikių pokyčių starto</h3>
             </div>
-
-            {formState === "signin" && (
-                <div className={styles.action}>
-                    <h4>Dar neturi paskyros?</h4>
-                    <button onClick={() => setFormState("signup")}>
-                        REGISTRUOTIS
-                    </button>
-                </div>
-            )}
-            {(formState === "signup" ||
-                formState === "forgot" ||
-                formState === "success") && (
-                <div className={styles.action}>
-                    <h4>Jau turi paskyrą?</h4>
-                    <button onClick={() => setFormState("signin")}>
-                        PRISIJUNGTI
-                    </button>
-                </div>
-            )}
+            <div className={styles.action}>
+                {formState === "signin" && (
+                    <>
+                        <h4>Dar neturi paskyros?</h4>
+                        <button onClick={() => setFormState("signup")}>REGISTRUOTIS</button>
+                    </>
+                )}
+                {(formState === "signup" ||
+                    formState === "forgot" ||
+                    formState === "success") && (
+                    <>
+                        <h4>Jau turi paskyrą?</h4>
+                        <button onClick={() => setFormState("signin")}>PRISIJUNGTI</button>
+                    </>
+                )}
+            </div>
         </div>
     );
 };

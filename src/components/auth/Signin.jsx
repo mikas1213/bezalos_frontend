@@ -1,5 +1,5 @@
 import styles from './Signin.module.css';
-import SignatureImg from '../../assets/images/homepage/signature.png';
+// import SignatureImg from '../../assets/images/homepage/signature.png';
 import axios from '../../api/axios';
 
 import { useState } from 'react';
@@ -20,6 +20,9 @@ import { useContext } from "react";
 import { FormStateContext } from "./Authentication";
 
 import toast from 'react-hot-toast';
+
+
+
 
 
 const Signin = () => {
@@ -115,10 +118,9 @@ const Signin = () => {
                         </div>
                         {(errors.password || (errors.email && errors.email.type == 'server')) && <span className={styles.inputError}>{errors?.password?.message || errors?.email?.message}</span>}
                         
-                    </div>
-
-                    <div className={styles.primintiSlaptazodi}>
-                        <p onClick={() => setFormState('forgot')}>Priminti slaptažodį</p>
+                        <div className={styles.primintiSlaptazodi}>
+                            <p onClick={() => setFormState('forgot')}>Priminti slaptažodį</p>
+                        </div>
                     </div>
 
                 </div>
@@ -126,11 +128,16 @@ const Signin = () => {
                 <div className={styles.bottom}>
                     <button disabled={isPending ? true : false}>{isPending ? 'PALAUKITE...': 'PRISIJUNGTI'}</button>
                 </div>
-            </form>
 
+                <div className={styles.signUpMobile} onClick={() => setFormState('signup')}>
+                    <span>Dar neturi paskyros?</span>
+                    <span>Registruotis</span>
+                </div>
+            </form>
+{/* 
             <div className={styles.signatureContainer}>
                 <img src={SignatureImg} alt="" />             
-            </div>
+            </div> */}
         </div>
     );
 };

@@ -1,25 +1,20 @@
 .right {
     position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-
-    align-items: center;
     width: var(--form-side-width-lg);
-    padding: 0 var(--from-size-padding-lg);
     height: 80dvh;
 }
 
-.signin {
-    width: 100%;
+form.signin {
+    height: 100%;
+    display: grid;
+    grid-template-rows: repeat(3, 1fr);
+    align-items: center;
+    justify-items: center;
 }
 
 /* H E A D E R */
-
 .header {
-    display: flex;
-    justify-content: center;
-    margin: 3.5rem 0;
+    align-self: end;
 }
 
 .header .icon {
@@ -30,26 +25,29 @@
 
 
 /* I N P U T S */
-
 .inputs {
+    position: relative;
     display: flex;
     flex-direction: column;
+    gap: clamp(0rem, 0.94vw, 0.6rem);
 }
 
 /* O N E   I N P U T */
 .inputGroup {
+    position: relative;
     display: flex;
     flex-direction: column;
-    padding-bottom: clamp(0rem, 0.94vw, 0.6rem);
 }
 
 .inputContainer {
+    display: flex;
     position: relative;
+    
 }
 
 .inputGroup input {
+    width: clamp(0rem, 28.125vw, 18rem);
     cursor: pointer;
-    width: 100%;
     outline: transparent;
     border: none;
     font-size: var(--font-size-dynamic-small-1-lg);
@@ -96,7 +94,7 @@
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    right: 1.1rem;
+    right: clamp(0rem, 1.563vw, 1rem);
 }
 
 .eyeIcon {
@@ -115,35 +113,36 @@
 
 /* P R I M I N T I   S L A P T A Ž O D Į */
 .primintiSlaptazodi {
+    position: absolute;
+    bottom: -60%;
+    right: 0;
     cursor: pointer;
     text-align: right;
-    padding-right: 1rem;
+    padding-right: clamp(0rem, 1.563vw, 1rem);
     font-weight: 400;
     font-size: var(--font-size-dynamic-small-1-lg);
 }
 
 .primintiSlaptazodi:hover {
-    text-decoration: underline
+    text-decoration: underline;
 }
 
 /* B O T T O M */
 .bottom {
     display: flex;
-    justify-content: center;
+}
+.signUpMobile {
+    display: none;
 }
 .bottom button {
-    margin-top: 2rem;
     width: clamp(0rem, 17.188vw, 11rem);
+    height: var(--form-btn-height-lg);
     font-size: var(--font-size-dynamic-p-lg);
     font-weight: 600 !important;
     border: none;
     border-radius: 10rem;
     background-color: var(--color-btn-primary);
     color: var(--color-text-dark);
-    height: var(--form-btn-height-lg);
-    /* box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px; */
-    /* box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; */
-    /* box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px; */
     box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
     font-weight: 500;
     transition: background-color 0.1s ease;
@@ -160,17 +159,110 @@
     color: var(--color-text-light);
 }
 
-.signatureContainer {
-    padding-bottom: clamp(0rem, 1.563vw, 1rem);
-}
+/* .signatureContainer { */
+    /* padding-bottom: clamp(0rem, 1.563vw, 1rem); */
+/* } */
 .signatureContainer img {
     width: clamp(0rem, 15.625vw, 10rem);
     opacity: 0.4;
 }
 
-
-@media only screen and (max-width: 576px){
+@media only screen and (min-width: 769px) and (orientation: portrait) {
     .right {
-        width: clamp(1rem, 91.667vw, 33rem);
+        height: 55dvh;
+    }
+}
+
+@media only screen and (max-width: 768px) and (orientation: landscape) {
+    .right {
+        height: 90dvh;
+    }
+}
+
+@media only screen and (max-width: 576px) {
+    .right {
+        height: 90dvh;
+        width:  clamp(0rem, 91.667vw, 33rem);
+    }
+
+    form.signin {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .header {
+        align-self: center;
+        flex: 1;
+        align-content: center;
+    }
+
+    .header .icon {
+        display: flex;
+        font-size: clamp(0rem, 22.222vw, 8rem);
+        
+    }
+
+    .inputs {
+        gap: clamp(0rem, 2.977vw, 0.8rem);
+        flex: 1;
+    }
+
+    .inputGroup input {
+        width: clamp(0rem, 78.14vw, 30rem);
+        line-height: clamp(0rem, 12.651vw, 3.4rem);
+        font-size: var(--font-size-dynamic-h6-sm);
+        padding: 0 clamp(0rem, 10.419vw, 2.8rem);
+    }
+
+    .inputs .icon {
+        font-size: clamp(0rem, 4.465vw, 1.2rem);
+        left: clamp(0rem, 3.721vw, 1rem);
+    }
+
+    .eyeIconContainer {
+        right: clamp(0rem, 3.333vw, 1.2rem);
+    }
+    .eyeIcon {
+        font-size: clamp(0rem, 5.953vw, 1.6rem);
+    }
+
+    .inputError {
+        padding-left: clamp(0rem, 10.419vw, 2.8rem);
+        font-size: var(--font-size-dynamic-p-sm);
+    }
+
+    .primintiSlaptazodi {
+        top: 115%;
+        right: 5%;
+        padding-right: clamp(0rem, 1.563vw, 1rem);
+        font-size: var(--font-size-dynamic-h6-sm); 
+    }
+    
+        
+    .bottom {
+        display: flex;
+        flex-direction: column;
+        /* flex: 1; */
+        justify-content: center;
+    }
+
+    .bottom button {
+        width: clamp(0rem, 78.14vw, 30rem);
+        height: clamp(0rem, 12.651vw, 3.4rem);
+        font-size: var(--font-size-dynamic-h5-sm); 
+    }
+
+    .signUpMobile {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 15vh;
+
+    }
+    .signUpMobile span {
+        font-size: var(--font-size-dynamic-h6-sm);
+        line-height: 140%;
     }
 }

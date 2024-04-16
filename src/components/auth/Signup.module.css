@@ -1,8 +1,8 @@
 .right {
-    /* display: flex; */
-    /* flex-direction: column; */
-    /* justify-content: center; */
-
+    overflow: scroll;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     position: relative;
     width: var(--form-side-width-lg);
     height: 80dvh;
@@ -131,7 +131,7 @@
 .radios {
     display: flex;
     flex-direction: column;
-    gap: clamp(0rem, 0.938vw,0.6rem);
+    gap: clamp(0rem, 0.938vw, 0.6rem);
 }
 
 .radio {
@@ -211,6 +211,18 @@ input:checked + .check:after {
     cursor: wait;
     background: var(--color-radio-border);
     color: var(--color-text-light);
+}
+
+@media only screen and (min-width: 769px) and (orientation: portrait) {
+    .right {
+        height: 55dvh;
+    }
+}
+
+@media only screen and (max-width: 768px) and (orientation: landscape) {
+    .right {
+        height: 90dvh;
+    }
 }
 
 @media only screen and (max-width: 576px){

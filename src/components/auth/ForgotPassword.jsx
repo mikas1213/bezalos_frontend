@@ -1,5 +1,5 @@
 import styles from './ForgotPassword.module.css';
-import SignatureImg from '../../assets/images/homepage/signature.png';
+// import SignatureImg from '../../assets/images/homepage/signature.png';
 import axios from '../../api/axios';
 import Spinner from '../UI/Spinner';
 
@@ -62,21 +62,21 @@ const ForgotPassword = () => {
                             <FaEnvelope className={styles.icon}/>
                         </div>
                         {errors.email && <span className={styles.inputError}>{errors?.email?.message}</span>}
+
+                        <div className={styles.prisijungti}>
+                            <p onClick={() => setFormState('signin')}>Prisijungti</p>
+                        </div>
                     </div>
                 </div>
 
                 <div className={styles.bottom}>
                     <button disabled={isPending ? true : false}>{isPending ? 'PALAUKITE...' : 'PRIMINTI'}</button>
-                </div>
-
-                <div className={styles.prisijungti}>
-                    <p onClick={() => setFormState('signin')}>Prisijungti</p>
-                </div>
+                </div>             
             </form>
 
-            <div className={styles.signatureContainer}>
+            {/* <div className={styles.signatureContainer}>
                 <img src={SignatureImg} alt='logo' />             
-            </div>
+            </div> */}
         </div>
     );
 };
