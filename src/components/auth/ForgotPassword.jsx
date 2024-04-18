@@ -62,16 +62,26 @@ const ForgotPassword = () => {
                             <FaEnvelope className={styles.icon}/>
                         </div>
                         {errors.email && <span className={styles.inputError}>{errors?.email?.message}</span>}
-
-                        <div className={styles.prisijungti}>
+                            
+                         
+                        {/* <div className={styles.prisijungti}>
                             <p onClick={() => setFormState('signin')}>Prisijungti</p>
-                        </div>
+                        </div> */}
+                    </div>
+                    <div className={styles.bottom}>
+                        <button disabled={isPending ? true : false}>{isPending ? 'PALAUKITE...' : 'PRIMINTI'}</button>
+                    </div>
+
+                    <div className={styles.prisijungti}>
+                        <p onClick={() => setFormState('signin')}>Prisijungti</p>
                     </div>
                 </div>
-
-                <div className={styles.bottom}>
+                        
+                {/* <div className={styles.bottom}>
                     <button disabled={isPending ? true : false}>{isPending ? 'PALAUKITE...' : 'PRIMINTI'}</button>
-                </div>             
+                </div>              */}
+
+                
             </form>
 
             {/* <div className={styles.signatureContainer}>

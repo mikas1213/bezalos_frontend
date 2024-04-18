@@ -181,7 +181,7 @@ form.signin {
 
 @media only screen and (max-width: 576px) {
     .right {
-        height: 90dvh;
+        height: 85dvh;
         width:  clamp(0rem, 91.667vw, 33rem);
     }
 
@@ -238,8 +238,7 @@ form.signin {
         padding-right: clamp(0rem, 1.563vw, 1rem);
         font-size: var(--font-size-dynamic-h6-sm); 
     }
-    
-        
+
     .bottom {
         display: flex;
         flex-direction: column;

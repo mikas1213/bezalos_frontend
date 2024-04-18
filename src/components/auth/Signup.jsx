@@ -207,6 +207,11 @@ const Signup = () => {
                 <div className={styles.bottom}>
                     <button disabled={isPending ? true : false}>{isPending ? 'PALAUKITE...': 'REGISTRUOTIS'}</button>
                 </div>
+
+                <div className={styles.signInMobile} onClick={() => setFormState('signin')}>
+                    <span>Jau turi paskyrą?</span>
+                    <span>Prisijungti</span>
+                </div>
             </form>
         </div>
     );

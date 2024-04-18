@@ -13,6 +13,18 @@
     height: 83vh;
 }
 
+form.signup {
+    /* height: 100%; */
+    /* display: flex; */
+    /* flex-direction: column; */
+    /* display: grid; */
+    /* grid-template-rows: repeat(3, 1fr); */
+    /* align-items: center; */
+    /* justify-items: center; */
+
+    display: grid;
+}
+
 
 /* H E A D E R */
 .header {
@@ -116,7 +128,6 @@
 }
 
 /* M A N E   D O M I N E */
-
 .maneDomina {
     display: flex;
     margin-top: 1.6rem;
@@ -127,7 +138,6 @@
 }
 
 /* R A D I O   B U T T O N S */
-
 .radios {
     display: flex;
     flex-direction: column;
@@ -138,17 +148,18 @@
     position: relative;
     display: flex;
     align-items: center;   
+    gap: clamp(0rem, 0.625vw, 0.4rem);
 }
 
 label {
     cursor: pointer;
-    margin-left: clamp(0rem, 0.625vw, 0.4rem);
     font-size: var(--font-size-dynamic-small-2-lg);
     font-weight: 500;
     opacity: 0.6;
 }
 .input {
     appearance: none;
+    order: 1;
 }
 
 .check {
@@ -213,6 +224,10 @@ input:checked + .check:after {
     color: var(--color-text-light);
 }
 
+.signInMobile {
+    display: none;
+}
+
 @media only screen and (min-width: 769px) and (orientation: portrait) {
     .right {
         height: 55dvh;
@@ -225,8 +240,143 @@ input:checked + .check:after {
     }
 }
 
-@media only screen and (max-width: 576px){
+@media only screen and (max-width: 576px) {
     .right {
-        width: var(--form-side-width-lg);
+        align-items: unset;
+        height: 95dvh;
+        width:  clamp(0rem, 91.667vw, 33rem);
+    }
+
+    form.signup {
+        width: clamp(0rem, 78.14vw, 30rem);
+    }
+
+    .header {
+        align-self: center;
+        flex: 1;
+        align-content: center;
+        margin: clamp(0rem, 8.333vw, 3rem);
+    }
+
+    .header .icon {
+        display: flex;
+        font-size: clamp(0rem, 22.222vw, 8rem);
+    }
+
+    .inputs {
+        gap: clamp(0rem, 2.977vw, 0.8rem);
+        flex-shrink: 0;
+        /* width: clamp(0rem, 78.14vw, 30rem); */
+        width: 100%;
+        /* flex: 1; */
+    }
+    .inputGroup {
+        padding: 0;
+    }
+    .inputGroup input {
+        /* width: clamp(0rem, 78.14vw, 30rem); */
+        /* width: 100%; */
+        line-height: clamp(0rem, 12.651vw, 3.4rem);
+        font-size: var(--font-size-dynamic-h6-sm);
+        padding: 0 clamp(0rem, 10.419vw, 2.8rem);
+    }
+
+    .inputs .icon {
+        font-size: clamp(0rem, 4.465vw, 1.2rem);
+        left: clamp(0rem, 3.721vw, 1rem);
+    }
+    .eyeIconContainer {
+        right: clamp(0rem, 3.333vw, 1.2rem);
+    }
+    .eyeIcon {
+        font-size: clamp(0rem, 5.953vw, 1.6rem);
+    }
+    .inputError {
+        padding-left: clamp(0rem, 10.419vw, 2.8rem);
+        font-size: var(--font-size-dynamic-p-sm);
+    }
+
+
+    /* R A D I O   B U T T O N S */
+    .maneDomina {
+        margin-top: clamp(0rem, 5.556vw, 2rem);
+        margin-bottom: clamp(0rem, 1.667vw, 0.6rem);
+        font-size: var(--font-size-dynamic-p-sm);
+    }
+    .radios {
+        margin-bottom: 1rem;
+    }
+    .radios, .radio {
+        gap: 0.6rem;
+    }
+    label {
+        font-size: var(--font-size-dynamic-p-sm);
+        font-weight: 500;
+    }
+    
+    .check {
+        width: 1.5rem;
+        height: 1.5rem;
+    }
+    
+    input:checked + .check:after {
+        width: 0.8rem;
+        height: 0.8rem;
+    }
+
+    .bottom button {
+        width: clamp(0rem, 78.14vw, 30rem);
+        height: clamp(0rem, 12.651vw, 3.4rem);
+        font-size: var(--font-size-dynamic-h5-sm); 
+        margin: 0
+    }
+
+    .signInMobile {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 15vh;
+    }
+    .signInMobile span {
+        font-size: var(--font-size-dynamic-h6-sm);
+        line-height: 140%;
+    }
+}
+@media only screen and (max-width: 430px) {
+    .radios, .radio {
+        gap: 0.5rem;
+    }
+    .check {
+        width: 1.2rem;
+        height: 1.2rem;
+    }
+    input:checked + .check:after {
+        width: 0.6rem;
+        height: 0.6rem;
+    }
+
+    .signInMobile {
+        height: 12vh;
+    }
+}
+
+@media only screen and (max-width: 375px) {
+    .radios, .radio {
+        gap: 0.4rem;
+    }
+
+    .check {
+        width: 1rem;
+        height: 1rem;
+    }
+    
+    input:checked + .check:after {
+        width: 0.5rem;
+        height: 0.5rem;
+    }
+
+    .signInMobile {
+        height: 10vh;
     }
 }

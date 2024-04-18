@@ -22,7 +22,7 @@ const ResetTokenError = () => {
                 </div>
 
                 <div className={styles.griztiContainer}>
-                    <button onClick={handleCloseBtn}>GRĮŽTI</button>
+                    <button onClick={handleCloseBtn}>Grįžti</button>
                 </div>
             </div>
         </div>

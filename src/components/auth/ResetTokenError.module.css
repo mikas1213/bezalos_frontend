@@ -7,8 +7,10 @@
 }
 
 .resetTokenCard {
-    width: 30rem;
-    padding: 3rem;
+    /* width: 30rem; */
+    /* padding: 3rem; */
+    width: 24rem;
+    height: 24rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -20,38 +22,37 @@
     animation: auth_anime 0.1s ease-in-out;
 }
 
-.resetTokenCard h2 {
-    font-size: var(--font-size-h4);
-}
-
 .icon {
-    font-size: 6rem;
+    font-size: 4rem;
     color: var(--color-error);
     filter: drop-shadow(1px 1px 1px #a7aba6);
-    margin: 0rem 0 2rem 0;
+    /* margin: 0rem 0 2rem 0; */
+    flex: 1;
+}
+.resetTokenCard h2 {
+    font-size: var(--font-size-h5);
 }
 .smallText {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 2rem 0 1rem 0;
-    font-size: var(--font-size-h6);
+    align-content: center;
+    text-align: center;
+    font-size: var(--font-size-p);
+    font-weight: 500;
+    flex: 1;
 }
 
 .griztiContainer {
-    width: 100%;
-    margin-top: 2rem;
-    /* padding: 0 2rem 2rem 2rem; */
+    flex: 1;
 }
 .griztiContainer button {
-    width: 100%;
+    width: 16rem;
+    height: 3.5rem;
     font-size: var(--font-size-h5);
     font-weight: 600 !important;
     border: none;
     border-radius: 2rem;
     background-color: var(--color-btn-primary);
     color: var(--color-text-dark);
-    height: 4rem;
+    
     box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
     font-weight: 500;
     transition: background-color 0.1s ease;
@@ -66,4 +67,25 @@
 @keyframes auth_anime {
     from { opacity: 0; }
     to { opacity: 1; }
+}
+
+@media only screen and (max-width: 430px) {
+    .resetTokenCard {
+        width: clamp(0rem, 89.302vw, 24rem);
+        height: clamp(0rem, 89.302vw, 24rem);
+    }
+    .icon {
+        font-size: clamp(0rem, 14.884vw, 4rem);
+    }
+    .resetTokenCard h2 {
+        font-size: var(--font-size-dynamic-h4-sm);
+    }
+    .smallText {
+        font-size: var(--font-size-dynamic-h5-sm);
+    }
+    .griztiContainer button {
+        width: clamp(0rem, 59.535vw, 16rem);
+        height: clamp(0rem, 13.023vw, 3.5rem);
+        font-size: var(--font-size-dynamic-h5-sm);
+    }
 }
