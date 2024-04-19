@@ -1,0 +1,14 @@
+@media only screen and (max-width: 430px) {
+    .myToast {
+        width: 90vw;
+    }
+}
+
+@media only screen and (max-width: 375px) {
+
+    .myToast div {
+        font-size: 0.8rem;
+        font-weight: 500;
+    }
+}
+

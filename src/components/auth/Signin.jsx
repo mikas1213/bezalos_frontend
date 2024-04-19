@@ -21,10 +21,6 @@ import { FormStateContext } from "./Authentication";
 
 import toast from 'react-hot-toast';
 
-
-
-
-
 const Signin = () => {
     const [eyeOne, setEyeOne] = useState(false);
     const { setAuth, setIsOpenModal } = useAuth();
@@ -134,10 +130,6 @@ const Signin = () => {
                     <span>Registruotis</span>
                 </div>
             </form>
-{/* 
-            <div className={styles.signatureContainer}>
-                <img src={SignatureImg} alt="" />             
-            </div> */}
         </div>
     );
 };

@@ -3,7 +3,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { AuthProvider } from "./context/AuthProvider";
 import { Toaster } from 'react-hot-toast';
-
+import styles from './App.module.css';
 import LoginPage from './pages/LoginPage';
 
 import Homepage from './pages/Homepage';
@@ -62,7 +62,7 @@ function App() {
             <Toaster 
                 position='top-center' 
                 gutter={12} 
-                containerStyle={{ margin: '8px' }} 
+                containerStyle={{ margin: '6px' }} 
                 toastOptions={{
                     success: {
                         duration: 2000
@@ -75,13 +75,13 @@ function App() {
                         primary: 'var(--color-btn-secondary)',
                         secondary: 'var(--color-bgr-light)',
                     },
-                    className: 'myToast',
+                    className: `${styles.myToast}`,
                     style: {
-                        fontSize: '16px',
-                        height: '5.5rem',
+                        // fontSize: '1rem',
+                        // height: '3.5rem',
                         // width: '25vw',
                         // maxWidth: '80vw',
-                        padding: '16px 24px',
+                        // padding: '12px 24px',
                         // backgroundColor: 'var(--color-bgr-light)',
                         color: 'var(--color-text-dark)'
                     }

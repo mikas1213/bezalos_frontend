@@ -10,6 +10,8 @@ import Authentication from "../auth/Authentication";
 import useAuth from "../../hooks/useAuth";
 import useLogout from '../../hooks/useLogout';
 
+            
+
 // ICONS
 // https://www.svgrepo.com/collection/solar-broken-line-icons
 import { VirtuveIcon, ReceptaiIcon, PaslaugosIcon, ProfilisIcon, PrisijungtiIcon, AtsijungtiIcon } from './NavIcons';
@@ -137,7 +139,7 @@ const Navbar = ({ isHome = false }) => {
                         </li>
                         :
                         <li className={`${styles.listItemMobile} ${styles.signout}`}
-                            onClick={async () => await logout()}>
+                            onClick={async () => await logout() }>
                             <AtsijungtiIcon stroke={iconStroke} />
                             <span>Atsijungti</span>
                         </li>}

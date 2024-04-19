@@ -27,7 +27,9 @@
 }*/
 
     /* Main Sizes */
-
+    /* Units converter */
+    /* https://cssunitconverter.vercel.app/rem-to-vw */
+    
     /* --nav-height-80: 80px; */
     --nav-height-80: clamp(60px, 7.813vw, 80px);
     --nav-height-70: 70px;
