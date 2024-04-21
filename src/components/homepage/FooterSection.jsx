@@ -3,9 +3,42 @@ import MainContainer from './ui/MainContainer';
 import { Link } from 'react-router-dom';
 import Logo from '../../assets/icons/svg/be-zalos-logo.svg';
 
+import axios from '../../api/axios/';
+import { useForm } from 'react-hook-form';
+import { useMutation } from '@tanstack/react-query';
+import toast from 'react-hot-toast';
+
 import { PiFacebookLogo, PiInstagramLogo, PiAt } from 'react-icons/pi';
 
 const FooterSection = () => {
+
+    const { register, formState: { errors }, setError, watch, handleSubmit } = useForm({ mode: 'onChange' });
+    
+    const { mutate, isPending } = useMutation({
+        mutationFn: async (inputsData) => {
+            console.log(inputsData)
+            await axios.post('mailer/add', inputsData, {
+                headers: {'Content-Type': 'application/json'},
+                withCredentials: true
+            });
+        },
+        onSuccess: () => {
+            toast.success('Naujienlaiškis užprenumeruotas sėkmingas!');
+        },
+        onError: (err) => {
+            const { response: {data: {errors: serverErrors}} } = err;
+            const { path, msg } = serverErrors[0]
+            setError(path, { type: "server", message: msg });
+        }
+    });
+    
+    const submit = ({ email }) => {
+        mutate({
+            email: email.toLowerCase().trim(),
+        });
+    };
+
+
     
     return (
         <footer className={styles.footerSection}>
@@ -17,12 +50,26 @@ const FooterSection = () => {
                 <div className={styles.footerText}>
                     <p>Gauk palaikymą ir mokslu grįstą informaciją, kaip pagaliau pasiekti ilgalaikių rezultatų su meile ir be žalos</p>
                 </div>
-                <div className={styles.footerEmail}>
-                    <div>
-                        <input type='email' placeholder='Jūsų el. paštas'/>
-                        <button>Prenumeruoti</button>
+
+                <form className={styles.newsletterEmail} onSubmit={handleSubmit(submit)}>
+                    <div className={styles.footerEmail}>
+                        <div>
+                            <input type='email' 
+                                placeholder='El. paštas'
+                                className={`${errors.email && styles.invalid || !!watch('email') && !errors.email && styles.valid}`} 
+                                {...register('email', {
+                                required: 'Neįvestas el. paštas',
+                                pattern: {
+                                    value: /\S+@\S+\.\S+/,
+                                    message: 'Neteisingai įvestas el. pašto adresas'
+                                }
+                            })} autoComplete='off' />
+                            <button disabled={isPending ? true : false}>Prenumeruoti</button>
+                            {errors.email && <span className={styles.inputError}>{errors?.email?.message}</span>}    
+                        </div>
                     </div>
-                </div>
+                </form>
+
                 <div className={styles.footerTop}>
                     <div className={styles.footerLogo}>
                         <img src={Logo} alt='logo' className={styles.logoIcon} onClick={() => window.scrollTo(0, 0)}/>

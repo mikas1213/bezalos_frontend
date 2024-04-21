@@ -27,7 +27,10 @@
     font-size: var(--font-size-dynamic-h6-lg);
     margin: 2rem 0;
 }
-
+/* .newsletterEmail {
+    display: flex;
+    flex-direction: column;
+} */
 .footerEmail {
     display: flex;
     justify-content: center;
@@ -54,6 +57,30 @@
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 
+.inputError {
+    position: absolute;
+    top: 105%;
+    left: 5%;
+    color: var(--color-error);
+    font-weight: 500;
+    font-size: var(--font-size-dynamic-p-sm);
+}
+
+.footerEmail input:focus {
+    outline: 1.5px solid var(--color-text-dark);
+    transition: outline 0.1s ease;
+}
+
+.footerEmail input.invalid {
+    outline: 1.5px solid var(--color-error);
+    transition: outline 0.2s ease;
+}
+
+.footerEmail input.valid {
+    outline: 1.5px solid var(--color-success);
+    transition: outline 0.2s ease;
+}
+
 .footerEmail button {
     position: absolute;
     border: none;
@@ -76,6 +103,13 @@
 }
 .footerEmail button:active {
     background-color: #80cd66;
+}
+
+.footerEmail button:disabled {
+    cursor: not-allowed;
+    color: #eff1ef;
+    background: #a7aba6;
+    
 }
 
 .footerTop {
