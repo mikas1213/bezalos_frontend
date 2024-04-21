@@ -12,18 +12,18 @@ import { PiFacebookLogo, PiInstagramLogo, PiAt } from 'react-icons/pi';
 
 const FooterSection = () => {
 
-    const { register, formState: { errors }, setError, watch, handleSubmit } = useForm({ mode: 'onChange' });
+    const { register, formState: { errors }, setError, watch, reset, handleSubmit } = useForm({ mode: 'onChange' });
     
     const { mutate, isPending } = useMutation({
         mutationFn: async (inputsData) => {
-            console.log(inputsData)
             await axios.post('mailer/add', inputsData, {
                 headers: {'Content-Type': 'application/json'},
                 withCredentials: true
             });
         },
         onSuccess: () => {
-            toast.success('Naujienlaiškis užprenumeruotas sėkmingas!');
+            toast.success('Ačiū! 💚');
+            reset();
         },
         onError: (err) => {
             const { response: {data: {errors: serverErrors}} } = err;
