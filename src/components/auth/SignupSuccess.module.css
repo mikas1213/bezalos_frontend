@@ -76,7 +76,7 @@
     }
 
     .signupSuccess button {
-        height: clamp(0rem, 9.722vw, 3.5rem);
+        height: clamp(0rem, 11.1vw, 4rem);
         font-size: var(--font-size-dynamic-h6-sm);
     }
 }
