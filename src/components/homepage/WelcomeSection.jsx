@@ -1,6 +1,7 @@
 import styles from './WelcomeSection.module.css';
 import Section from './ui/Section';
 import MainContainer from './ui/MainContainer';
+import { useNavigate } from "react-router-dom";
 
 // import Burger from '../../assets/images/homepage/meal-burger.webp';
 import Burger from '../../assets/images/homepage/meal-burgeriukas.png';
@@ -16,6 +17,7 @@ const randomIntFromInterval = (min, max) => Math.floor(Math.random() * (max - mi
 const rndNum = randomIntFromInterval(0, 4);
 
 const WelcomeSection = () => {
+    const navigate = useNavigate();
     const [isAnimate, setIsAnimate] = useState();
     
     useEffect(() => {
@@ -40,7 +42,7 @@ const WelcomeSection = () => {
                     </div>
 
                     <div className={styles.btnContainer}>
-                        <button className={styles.btn}>Virtuvė</button>
+                        <button className={styles.btn} onClick={() => navigate('/virtuve')}>Virtuvė</button>
                     </div>
                 </div>
 

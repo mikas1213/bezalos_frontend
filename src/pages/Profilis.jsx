@@ -13,7 +13,7 @@ const Profilis = () => {
         <>
             <Navbar />
             <Main>
-                <div className="profilis">{user_name}  </div>
+                {/* <div className="profilis">{user_name}  </div> */}
                 <InformationSoon />
             </Main>
         </>
