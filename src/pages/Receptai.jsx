@@ -1,6 +1,6 @@
 import Main from '../components/UI/Main';
 import Navbar from '../components/navbar/Navbar';
-
+import InformationSoon from '../components/information_soon/InformationSoon';
 import { useEffect } from 'react';
 
 const Receptai = () => {
@@ -14,9 +14,7 @@ const Receptai = () => {
         <>
             <Navbar />
             <Main>
-                <div>
-                    <h1>Receptai</h1>
-                </div>
+                <InformationSoon />
             </Main>
         </>
     );

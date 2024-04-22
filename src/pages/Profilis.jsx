@@ -2,7 +2,7 @@ import Navbar from "../components/navbar/Navbar";
 import Main from "../components/UI/Main";
 import { jwtDecode } from "jwt-decode";
 import useAuth  from '../hooks/useAuth';
-
+import InformationSoon from "../components/information_soon/InformationSoon";
 
 const Profilis = () => {
 
@@ -13,7 +13,8 @@ const Profilis = () => {
         <>
             <Navbar />
             <Main>
-                <div className="profilis">Labas, {user_name} čia yra tavo profilis</div>
+                <div className="profilis">{user_name}  </div>
+                <InformationSoon />
             </Main>
         </>
     );
