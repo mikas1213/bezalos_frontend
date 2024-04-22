@@ -13,7 +13,6 @@ const UpdatePasswordPage = () => {
         queryFn: async () => {
             try {
                 return await axios.get(`/auth/reset-password/${token}`);
-                
             } catch(err) {
                 return err?.response?.data
             }

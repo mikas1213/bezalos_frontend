@@ -7,8 +7,9 @@ import { FormStateContext } from "./Authentication";
 
 const SignupSuccess = () => {
     const { setFormState } = useContext(FormStateContext);
+
     return (
-        <div className={styles.signupSuccess}>
+        <div className={styles.succesContainer}>
 
             <ImCheckmark2 className={styles.icon}/>
             <h2>Tavo profilis sukurtas</h2>
@@ -18,7 +19,7 @@ const SignupSuccess = () => {
                 <p>Valgau be žalos bendruomenės dalimi 💚</p>
             </div>
             
-            <button onClick={() => setFormState('signin')}>PRISIJUNGTI</button>
+            <button onClick={() => setFormState('signin')}>Prisijungti</button>
         </div>
     );
 };

@@ -5,20 +5,22 @@
 }
 
 .inputContainer {
+    display: flex;
     position: relative;
+    width: 100%;
 }
 
 .inputGroup input {
     cursor: pointer;
     width: 100%;
-    height: 3.5rem;
+    height: clamp(0rem, 3.906vw, 2.5rem);
     outline: transparent;
     border: none;
-    font-size: var(--font-size-p);
+    font-size: var(--font-size-dynamic-small-1-lg);
     font-weight: 500;
-    padding: 0 3.4rem;
-    line-height: 4rem;
-    border-radius: 10rem;
+    padding: 0 clamp(0rem, 4.063vw, 2.6rem);
+    /* line-height: 4rem; */
+    border-radius: clamp(0rem, 15.625vw, 10rem);
     background: transparent;
     box-shadow: #a7aba671 1px 3px 8px;
 }
@@ -30,11 +32,11 @@
 .inputGroup .icon {
     cursor: pointer;
     position: absolute;
-    font-size: 1.3rem;
+    font-size: clamp(0rem, 1.719vw, 1.1rem);
     color: var(--color-bgr-top);
     top: 50%;
     transform: translateY(-50%);
-    left: 1.2rem;
+    left: clamp(0rem, 1.563vw, 1rem);
 }
 
 .eyeIconContainer {
@@ -43,51 +45,46 @@
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    right: 1.1rem;
+    right: clamp(0rem, 1.719vw, 1.1rem);
 }
 
 .eyeIcon {
-    font-size: 2rem;
+    font-size: clamp(0rem, 2.188vw, 1.4rem);
     color: var(--color-radio-border);
 }
 
 .inputError {
-    padding-left: 3.4rem;
+    padding-left: clamp(0rem, 4.063vw, 2.6rem);
     display: inline-block;
     margin-top: 0.2rem;
     color: var(--color-error);
-    font-size: 1.1rem;
+    font-size: clamp(0rem, 1.25vw, 0.8rem);
     font-weight: 500;
 }
 
-@media only screen and (max-width: 768px) {
+
+@media only screen and (max-width: 576px) {
     .inputGroup input {
-        height: clamp(0rem, 7.292vw, 3.5rem);
-        font-size: var(--font-size-dynamic-h5-lg);
-        padding: 0 clamp(0rem, 7.083vw, 3.4rem);
+        height: clamp(0rem, 11.163vw, 3rem);
+        font-size: clamp(0rem, 2.977vw, 0.8rem);
+        padding: 0 clamp(0rem, 8.93vw, 2.4rem);
     }
 
     .inputGroup .icon {
-        font-size: clamp(0rem, 2.708vw, 1.3rem);
-        left: clamp(0rem, 2.5vw, 1.2rem);
+        font-size: clamp(0rem, 1.719vw, 1.1rem);
+        font-size: clamp(0rem, 4.093vw, 1.1rem); 
+        left: clamp(0rem, 2.977vw, 0.8rem);
     }
-    
+
     .eyeIconContainer {
-        right: clamp(0rem, 2.292vw, 1.1rem);
+        right: clamp(0rem, 3.721vw, 1rem);
     }
     .eyeIcon {
-        font-size: clamp(0rem, 4.167vw, 2rem);
+        font-size: clamp(0rem, 5.209vw, 1.4rem);
     }
 
     .inputError {
-        padding-left: clamp(0rem, 7.083vw, 3.4rem);
-        font-size: var(--font-size-dynamic-h6-lg) !important;    
-    }
-}
-
-@media only screen and (max-width: 430px) {
-    .inputGroup input {
-        height: clamp(0rem, 9.674vw, 2.6rem);
-        font-size: var(--font-size-dynamic-h6-sm);
+        padding-left: clamp(0rem, 8.558vw, 2.3rem);
+        font-size: clamp(0rem, 2.977vw, 0.8rem);
     }
 }

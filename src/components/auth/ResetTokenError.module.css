@@ -1,65 +1,60 @@
 .resetTokenErrorPage {
     background-image: url('../../assets/images/auth/registration_bgr.jpg');
+    background-size: cover;
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.resetTokenCard {
-    /* width: 30rem; */
-    /* padding: 3rem; */
-    width: 24rem;
-    height: 24rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    border-radius: 2rem;
-    background-color: #eff1ef77;
-    
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+.succesContainer {
+    display: grid;
+    grid-template-rows: 2fr 1fr 1fr 1fr;
+    justify-items: center;
+    width: clamp(10rem, 37.5vw, 24rem);
+    height: clamp(10rem, 37.5vw, 24rem);
+    padding: clamp(0rem, 4.688vw, 3rem);
+    background-color: #eff1ef;
+    border-radius: 1.5rem;
+    padding-top: 0;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
     animation: auth_anime 0.1s ease-in-out;
 }
 
 .icon {
-    font-size: 4rem;
-    color: var(--color-error);
+    align-self: center;
+    font-size: clamp(1rem, 7.813vw, 5rem);
+    color: var(--color-btn-secondary);
     filter: drop-shadow(1px 1px 1px #a7aba6);
-    /* margin: 0rem 0 2rem 0; */
-    flex: 1;
+    color: var(--color-error);
 }
-.resetTokenCard h2 {
-    font-size: var(--font-size-h5);
-}
-.smallText {
-    align-content: center;
-    text-align: center;
-    font-size: var(--font-size-p);
-    font-weight: 500;
-    flex: 1;
+.succesContainer h2 {
+    color: var(--color-text-dark);
+    font-size: var(--font-size-dynamic-h5-lg);
 }
 
-.griztiContainer {
-    flex: 1;
+.smallText {
+    text-align: center;
+    font-weight: 500;
+    font-size: var(--font-size-dynamic-small-1-lg);
 }
-.griztiContainer button {
-    width: 16rem;
-    height: 3.5rem;
-    font-size: var(--font-size-h5);
+
+.succesContainer button {
+    align-self: end;
+    width: 70%;
+    font-size: var(--font-size-dynamic-p-lg);
     font-weight: 600 !important;
     border: none;
-    border-radius: 2rem;
+    border-radius: 10rem;
     background-color: var(--color-btn-primary);
     color: var(--color-text-dark);
-    
+    height: clamp(0rem, 4.688vw, 3rem);
     box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
     font-weight: 500;
     transition: background-color 0.1s ease;
-    
 }
 
-.griztiContainer button:hover {
+.succesContainer button:hover {
     background-color: var(--color-btn-secondary);
     transition: background-color 0.1s ease;
 }
@@ -69,23 +64,29 @@
     to { opacity: 1; }
 }
 
-@media only screen and (max-width: 430px) {
-    .resetTokenCard {
+@media only screen and (max-width: 576px) {
+    .succesContainer {
         width: clamp(0rem, 89.302vw, 24rem);
         height: clamp(0rem, 89.302vw, 24rem);
+
+        padding: clamp(0rem, 8.186vw, 2.2rem);
+        padding-top: 0;
     }
+
     .icon {
-        font-size: clamp(0rem, 14.884vw, 4rem);
+        font-size: clamp(1rem, 16.744vw, 4.5rem);
     }
-    .resetTokenCard h2 {
-        font-size: var(--font-size-dynamic-h4-sm);
+
+    .succesContainer h2 {
+        font-size: clamp(0rem, 5.816vw, 1.563rem);
     }
+    
     .smallText {
-        font-size: var(--font-size-dynamic-h5-sm);
+        font-size: clamp(0rem, 2.977vw, 0.8rem);
     }
-    .griztiContainer button {
-        width: clamp(0rem, 59.535vw, 16rem);
-        height: clamp(0rem, 13.023vw, 3.5rem);
-        font-size: var(--font-size-dynamic-h5-sm);
+
+    .succesContainer button {
+        height: clamp(0rem, 11.163vw, 3rem);
+        font-size: clamp(0rem, 3.721vw, 1rem);
     }
 }

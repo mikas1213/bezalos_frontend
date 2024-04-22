@@ -11,7 +11,7 @@ const ResetTokenError = () => {
 
     return (
         <div className={styles.resetTokenErrorPage}>
-            <div className={styles.resetTokenCard}>
+            <div className={styles.succesContainer}>
 
                 <PiXCircleFill className={styles.icon} />
                 <h2>Nuoroda neaktyvi</h2>
@@ -21,9 +21,7 @@ const ResetTokenError = () => {
                     <p>į prisijungimo langą</p>
                 </div>
 
-                <div className={styles.griztiContainer}>
-                    <button onClick={handleCloseBtn}>Grįžti</button>
-                </div>
+                <button onClick={handleCloseBtn}>Grįžti</button>
             </div>
         </div>
     );

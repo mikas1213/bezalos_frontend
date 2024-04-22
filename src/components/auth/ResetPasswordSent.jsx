@@ -13,7 +13,7 @@ const SignupSuccess = () => {
     };
 
     return (
-        <div className={styles.signupSuccess}>
+        <div className={styles.succesContainer}>
 
             <FaRegPaperPlane className={styles.icon} />
             <h2>Pasitikrink el. paštą</h2>
@@ -23,9 +23,7 @@ const SignupSuccess = () => {
                 <p>išsiuntėme el. paštu</p>
             </div>
             
-            <div className={styles.griztiContainer}>
-                <button onClick={handleCloseBtn}>Į pradžią</button>
-            </div>
+            <button onClick={handleCloseBtn}>Į pradžią</button>
         </div>
     );
 };
