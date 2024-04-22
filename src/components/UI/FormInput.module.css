@@ -58,7 +58,7 @@
     display: inline-block;
     margin-top: 0.2rem;
     color: var(--color-error);
-    font-size: clamp(0rem, 1.25vw, 0.8rem);
+    font-size: clamp(0rem, 0.938vw, 0.6rem);
     font-weight: 500;
 }
 
@@ -85,6 +85,6 @@
 
     .inputError {
         padding-left: clamp(0rem, 8.558vw, 2.3rem);
-        font-size: clamp(0rem, 2.977vw, 0.8rem);
+        font-size: clamp(0rem, 2.233vw, 0.6rem);
     }
 }
