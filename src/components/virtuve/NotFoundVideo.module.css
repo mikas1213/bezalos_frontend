@@ -1,0 +1,35 @@
+.container {
+    height: calc(100dvh - 9rem);
+    display: grid;
+    place-items: center;
+}
+
+.container div {
+    display: grid;
+    place-items: center;
+    gap: 1rem;
+}
+
+.container img {
+    width:  30%;
+    opacity: 0.4;
+}
+
+.container span {
+    color: var(--color-radio);
+    font-size: var(--font-size-h6);
+    font-weight: 600;
+}
+
+
+
+@media only screen and (max-width: 576px) {
+    .container img {
+        width:  70%;
+        opacity: 0.4;
+    }
+
+    .container span {
+        font-size: var(--font-size-dynamic-h6-sm);
+    }
+}

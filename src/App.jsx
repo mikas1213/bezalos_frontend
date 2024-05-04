@@ -8,6 +8,7 @@ import LoginPage from './pages/LoginPage';
 
 import Homepage from './pages/Homepage';
 import Virtuve from './pages/Virtuve';
+import VirtuveVideo from './pages/VirtuveVideo';
 import Receptai from './pages/Receptai';
 import Paslaugos from './pages/Paslaugos';
 import Profilis from './pages/Profilis';
@@ -36,6 +37,7 @@ function App() {
                         <Route element={<PersistLogin /> }>
                             <Route path='/' element={<Homepage />} />
                             <Route path='/virtuve' element={<Virtuve />} />
+                           
                             <Route path='/receptai' element={<Receptai />} />
                             <Route path='/paslaugos' element={<Paslaugos />} />
                         
@@ -48,6 +50,7 @@ function App() {
                                 <Route path='/profilis' element={<Profilis /> }>
                                         
                                 </Route>
+                                <Route path='/virtuve/:video' element={<VirtuveVideo />} />
                             </Route>
                         </Route>
                         {/* <Route path='*' element={<NotFound />} /> */}

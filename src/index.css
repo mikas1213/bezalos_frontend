@@ -14,6 +14,9 @@
     --color-error: #c00;
     --color-success: #60c040;
 
+    --color-filter-btn: #d9ddd7;
+    --color-filter-btn-hover: #cdd1cb;
+
 /*    green: {
         100: "#dff2d9",
         200: "#bfe6b3",
