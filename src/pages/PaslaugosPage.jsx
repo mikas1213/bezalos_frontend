@@ -3,13 +3,11 @@ import Navbar from '../components/navbar/Navbar';
 import InformationSoon from '../components/information_soon/InformationSoon';
 import { useEffect } from 'react';
 
-const Receptai = () => {
-
+const PaslaugosPage = () => {
     useEffect(() => {
         // document.body.style.backgroundColor = '#eff1ef';
-        document.title = 'Be žalos | Receptai';
+        document.title = 'Be žalos | Paslaugos';
     }, []);
-
     return (
         <>
             <Navbar />
@@ -17,7 +15,8 @@ const Receptai = () => {
                 <InformationSoon />
             </Main>
         </>
+        
     );
 };
 
-export default Receptai;
+export default PaslaugosPage;

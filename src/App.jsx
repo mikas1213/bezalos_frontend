@@ -6,12 +6,12 @@ import { Toaster } from 'react-hot-toast';
 import styles from './App.module.css';
 import LoginPage from './pages/LoginPage';
 
-import Homepage from './pages/Homepage';
-import Virtuve from './pages/Virtuve';
-import VirtuveVideo from './pages/VirtuveVideo';
-import Receptai from './pages/Receptai';
-import Paslaugos from './pages/Paslaugos';
-import Profilis from './pages/Profilis';
+import HomePage from './pages/HomePage';
+import VirtuvePage from './pages/VirtuvePage';
+import VirtuveVideoPage from './pages/VirtuveVideoPage';
+import ReceptaiPage from './pages/ReceptaiPage';
+import PaslaugosPage from './pages/PaslaugosPage';
+import ProfilisPage from './pages/ProfilisPage';
 import UpdatePasswordPage from './pages/UpdatePasswordPage';
 import NotFoundPage from './pages/NotFoundPages/NotFoundPage';
 
@@ -35,11 +35,11 @@ function App() {
                 <AuthProvider>
                     <Routes>
                         <Route element={<PersistLogin /> }>
-                            <Route path='/' element={<Homepage />} />
-                            <Route path='/virtuve' element={<Virtuve />} />
+                            <Route path='/' element={<HomePage />} />
+                            <Route path='/virtuve' element={<VirtuvePage />} />
                            
-                            <Route path='/receptai' element={<Receptai />} />
-                            <Route path='/paslaugos' element={<Paslaugos />} />
+                            <Route path='/receptai' element={<ReceptaiPage />} />
+                            <Route path='/paslaugos' element={<PaslaugosPage />} />
                         
                             <Route path='/prisijungti' element={<LoginPage />} />
                             <Route path='/keisti-slaptazodi/:token' element={<UpdatePasswordPage /> } />
@@ -47,10 +47,10 @@ function App() {
 
                             {/* <Route element={<PersistLogin /> }> */}
                             <Route element={<RequireAuth /> }>
-                                <Route path='/profilis' element={<Profilis /> }>
+                                <Route path='/profilis' element={<ProfilisPage /> }>
                                         
                                 </Route>
-                                <Route path='/virtuve/:video' element={<VirtuveVideo />} />
+                                <Route path='/virtuve/:video' element={<VirtuveVideoPage />} />
                             </Route>
                         </Route>
                         {/* <Route path='*' element={<NotFound />} /> */}

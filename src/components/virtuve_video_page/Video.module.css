@@ -1,0 +1,43 @@
+.video {
+    margin-top: 1rem;
+    border-radius: 1rem;
+    width: 100%;
+    animation: fadeIn 0.7s;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+.video video {
+    display: block;
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+}
+
+.cardBottom {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(0rem, 1.563vw, 1rem);
+    padding: clamp(0rem, 1.563vw, 1rem);
+}
+
+.title {
+    font-weight: 600;
+    font-size: var(--font-size-dynamic-h6-lg);
+    line-height: 130%;
+}
+.showMore {
+    color: var(--color-radio-border);
+    font-size: var(--font-size-dynamic-small-1-lg);
+    text-decoration: underline;
+    cursor: pointer;
+}
+.description {
+    
+    /* margin-top: 0.8rem; */
+    
+    font-size: var(--font-size-dynamic-small-1-lg);
+}
+
+
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}

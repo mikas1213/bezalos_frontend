@@ -12,7 +12,7 @@ import { useState, useRef, useEffect } from "react";
 
 // import axios from '../apis/axios';
 
-const Homepage = () => {
+const HomePage = () => {
 
     const ref = useRef(null);
     const [isIntersecting, setIsIntersecting] = useState(false);
@@ -20,12 +20,6 @@ const Homepage = () => {
     useEffect(() => {
         document.title = "Be žalos";
         window.scrollTo(0, 0);
-
-        // const getData = async () => {
-        //     await axios.get("/");
-        // };
-        // getData();
-        
     }, []);
     
     useEffect(() => {
@@ -67,4 +61,4 @@ const Homepage = () => {
     );
 };
 
-export default Homepage;
+export default HomePage;

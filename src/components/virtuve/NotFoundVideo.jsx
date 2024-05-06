@@ -6,7 +6,7 @@ const NotFoundVideo = () => {
         <div className={styles.container}>
             <div>
                 <img src={img} alt="cat not found" />
-                <span>Deja, pagal šią užklausą nieko rasti nepavyko</span>
+                <span>Deja, pagal šią užklausą nieko rasti nepavyko 😭</span>
             </div>
         </div>
     );

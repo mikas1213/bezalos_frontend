@@ -5,7 +5,7 @@ import Videos from '../components/virtuve/Videos';
 // import { jwtDecode } from "jwt-decode";
 // import useAuth  from '../hooks/useAuth';
 
-const Virtuve = () => {  
+const VirtuvePage = () => {  
     // const { auth } = useAuth();
     // if(auth) {
         // const { user_name } = jwtDecode(auth?.accessToken);
@@ -24,4 +24,4 @@ const Virtuve = () => {
     );
 };
 
-export default Virtuve;
+export default VirtuvePage;

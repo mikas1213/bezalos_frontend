@@ -33,7 +33,7 @@ const BenefitsSection = () => {
     const text = 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text.';
     return (
         
-        <Section customClass={`${styles.benefitsSection} section--hiddenn`}>
+        <Section customClass={`${styles.benefitsSection} section--hidden`}>
             <MainContainer customClass={styles.benefitsContainer}>
                 <div className={styles.benefits}>
                     <BenefitItem icon={Icon1} title='Interaktyvų mitybos planą' text={text}/>

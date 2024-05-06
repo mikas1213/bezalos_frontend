@@ -16,7 +16,7 @@ const Videos = () => {
     const searchItem = searchParams.get('search');
    
     let queryParams = '';
-    let queryString = '/video';
+    let queryString = '/videos';
     const paramsArr = ['vebinaras', 'mokymai', 'emocinis', 'mityba', 'psichologija'];
 
     if(paramsArr.includes(searchParams.get('cat')) || searchParams.get('search')) {
@@ -26,7 +26,6 @@ const Videos = () => {
     if(queryParams) queryString = queryString + `?${queryParams.slice(0, -1)}`;
     
     useEffect(() => {
-        
         async function getData(signal) {
             setIsLoading(true);
             const data = await axios.get(queryString, { signal });

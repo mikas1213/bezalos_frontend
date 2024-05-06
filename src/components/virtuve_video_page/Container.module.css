@@ -3,7 +3,10 @@
     padding: 0 var(--content-padding-lg);
     margin: 0 auto;
 
-    
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: 1fr;
 }
 
 @media only screen and (max-width: 576px) {

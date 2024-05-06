@@ -1,0 +1,7 @@
+.comments {
+    grid-row: 2 / -1;
+    grid-column: 1 / -2;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    border-radius: 1rem;
+    padding: 1rem;
+}
