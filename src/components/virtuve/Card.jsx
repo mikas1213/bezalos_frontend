@@ -4,7 +4,7 @@ import vebinarasImg from '../../assets/images/virtuve/vebinaras.webp';
 import mokymaiImg from '../../assets/images/virtuve/mokymai.webp';
 
 const Card = ({ video }) => {
-    
+    console.log(video)
     const created_video = new Date(Date.parse(video.created_at)).toLocaleString('lt-LT', {
         day: 'numeric', 
         weekday: 'short', 
@@ -13,7 +13,7 @@ const Card = ({ video }) => {
     });
     
     return (
-        <Link to={video.src.replace('.mp4', '')}>
+        <Link to={video.video_url}>
             <div className={styles.VideoCard}>
                 <section>
                     <img src={video.category === 'Mokymai' ? mokymaiImg : vebinarasImg} alt='video cover'/>
@@ -22,7 +22,7 @@ const Card = ({ video }) => {
                 <div className={styles.cardProperties}>
                     <div className={styles.title}>{video.title}</div>
                     <div className={styles.description}>
-                            Loreipsum adf asdf asdf asdf asdf adsf asfa asdf asdf adsf asdfadsfasdfasdfas Loreipsum adf asdf asdf asdf asdf adsf asfa asdf asdf adsf asdfadsfasdfasdfas Loreipsum adf asdf asdf asdf asdf adsf asfa asdf asdf adsf asdfadsfasdfasdfas
+                        {video.description}
                     </div>
 
                     <div className={styles.category}>

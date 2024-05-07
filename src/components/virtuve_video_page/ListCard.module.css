@@ -1,24 +1,80 @@
 .listCard {
-    /* margin: 1rem; */
-    border-radius: 0.55rem;
+    border-radius: 1rem;
+    margin-bottom: 1rem;
     cursor: pointer;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-    
+}
+
+.imageContainer {
+    position: relative;
 }
 
 .image {
+    display: block;
     width: 100%;
-    border-radius: 0.55rem;
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+}
+
+.icon {
+    position: absolute;
+    font-size: clamp(0rem, 4.688vw, 3rem);
+    color: #eff1efaa;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.time {
+    display: flex;
+    position: absolute;
+    flex-direction: column;
+    justify-content: center;
+    color: var(--color-text-dark);
+    background: #eff1efcc;
+    border-radius: 10rem;
+    padding: 0.1rem 0.5rem;
+    font-size: var(--font-size-dynamic-small-1-lg);
+    font-weight: 600;
+    bottom: 6%;
+    left: 3%;
+}
+
+.cardBottom {
+    padding: 0.6rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
 }
 
 .title {
-    margin-top: 0.2rem;
     font-size: var(--font-size-dynamic-p-lg);
     font-weight: 600;
-
     overflow: hidden;
     display: -webkit-box;
     line-clamp: 1; 
     -webkit-line-clamp: 1;
     -webkit-box-orient: vertical;
+}
+
+.cardFooter {
+    display: flex;
+    justify-content: space-between;
+}
+
+.category {
+    font-size: var(--font-size-dynamic-small-1-lg);
+    font-weight: 600;
+}
+
+.category span {
+    color: var(--color-bgr-light);
+    background-color: var(--color-radio);
+    padding: 0.1rem 0.5rem;
+    border-radius: 1rem;
+}
+
+.created_at {
+    font-size: var(--font-size-dynamic-small-1-lg);
+    color: var(--color-radio);
 }

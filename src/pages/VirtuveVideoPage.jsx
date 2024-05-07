@@ -16,18 +16,20 @@ const VirtuveVideoPage = () => {
     const [video, setVideo] = useState();
     const [videos, setVideos] = useState();
     const [isLoading, setIsLoading] = useState(false);
+    
 
+    
     useEffect(() => {
+        
         const getData = async () => {
             try {
                 setIsLoading(true);
-                const data = await axios.get(`/videos/${params.video}`);
+                const data = await axios.get(`/videos/${params.video}`); 
                 const videos = await axios.get('/videos');
                 
                 setVideo(data.data);
                 setVideos(videos.data.videos);
 
-                document.querySelector('video')?.setAttribute('oncontextmenu', 'return false;');
                 setIsLoading(false);
 
             } catch(err) {
@@ -36,7 +38,7 @@ const VirtuveVideoPage = () => {
 
         };
         getData();
-    }, []);
+    }, [params]);
 
     return (
         <>
@@ -46,7 +48,6 @@ const VirtuveVideoPage = () => {
                     <Video video={video} isLoading={isLoading}/>
                     <List videos={videos}/>
                     <Comments />
-                    
                 </Container>
             </Main>
         </>

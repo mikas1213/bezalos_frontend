@@ -17,7 +17,7 @@ const Filters = ({ searchItem }) => {
 
     return (
         <div className={styles.filters}>
-            <div className={`${styles.filterItem} ${searchParams.get('cat') === null ? styles.active : ''}`} onClick={() => handleOnClick('')}>All</div>
+            <div className={`${styles.filterItem} ${searchParams.get('cat') === null ? styles.active : ''}`} onClick={() => handleOnClick('')}>Visi</div>
             <div className={`${styles.filterItem} ${searchParams.get('cat') === 'vebinaras' ? styles.active : ''}`} onClick={() => handleOnClick('vebinaras')}>Vebinarai</div>
             <div className={`${styles.filterItem} ${searchParams.get('cat') === 'mokymai' ? styles.active : ''}`} onClick={() => handleOnClick('mokymai')}>Mokymai</div>
             <div className={`${styles.filterItem} ${searchParams.get('cat') === 'emocinis' ? styles.active : ''}`} onClick={() => handleOnClick('emocinis')}>Emocinis valgymas</div>

@@ -16,44 +16,6 @@ const Comments = () => {
                 <li>comments</li>
                 <li>commentw</li>
                 <li>commentw</li>
-                <li>commentw</li>
-                <li>commentw</li>
-                <li>commentw</li>
-                <li>commentw</li>
-                <li>commentw</li>
-                <li>commentw</li>
-                <li>commentw</li>
-                <li>commentw</li>
-                <li>commentw</li>
-                <li>commentw</li>
-                <li>commentw</li>
-                <li>commentw</li>
-                <li>commentw</li>
-                <li>commentw</li>
-                <li>commentw</li>
-                <li>commentw</li>
-                <li>commentw</li>
-                <li>commentw</li>
-                <li>commentw</li>
-                <li>commentw</li>
-                <li>commentw</li>
-                <li>commentw</li>
-                <li>commentw</li>
-                <li>commentw</li>
-                <li>commentw</li>
-                <li>commentw</li>
-                <li>commentw</li>
-                <li>commentw</li>
-                <li>commentw</li>
-                <li>commentw</li>
-                <li>commentw</li>
-                <li>commentw</li>
-                <li>commentw</li>
-                <li>commentw</li>
-                <li>commentw</li>
-                <li>commentw</li>
-                <li>commentw</li>
-                <li>commentw</li>
             </ul>
         </div>
     );

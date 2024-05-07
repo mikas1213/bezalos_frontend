@@ -1,16 +1,19 @@
 .container {
     max-width: var(--content-width);
-    padding: 0 var(--content-padding-lg);
-    margin: 0 auto;
+    padding-left: var(--content-padding-lg); 
+    padding-right: 1rem;
+    margin: 0 auto 5rem;
 
     display: grid;
-    gap: 1rem;
     grid-template-columns: 2fr 1fr;
-    grid-template-rows: 1fr;
+    grid-template-rows: auto 1fr;
 }
 
 @media only screen and (max-width: 576px) {
     .container {
-        padding: 0 var(--content-padding-sm);
+        grid-template-columns: 1fr;
+        /* grid-template-rows: 0; */
+        padding-left: var(--content-padding-sm);
+        padding-right: 0;
     }
 }

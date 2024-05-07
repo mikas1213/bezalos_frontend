@@ -1,19 +1,16 @@
 import styles from './Video.module.css';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 const Video = ({ video, isLoading }) => {
     const [showMore, setShowMore] = useState(false);
-    const desc = 'asdfjald fjalsdkfj paisjdfpoi ajdfpiajsp fiajsdpf iajsdpfi jaspdfi japdiof japsdoif japsodif japsodifj paosdifj paosdifj paoidfj paoijdf japsodifj paosdifj paosdifj paoidfj paoijdf japsodifj paosdifj paosdifj paoidfj paoijdf';
-    useEffect(() => {
-        document.querySelector('video')?.setAttribute('oncontextmenu', 'return false;');
-    }, []);
-    
-    
+    const desc = video?.data.description || '';
+
     return (
         <div className={styles.video}>
             {!isLoading && <video 
-                controls 
-                autoPlay={true} 
+                onContextMenu={ event => event.preventDefault() }
+                controls={true}
+                // autoPlay
                 controlsList='nodownload' 
                 width='100%'
             >

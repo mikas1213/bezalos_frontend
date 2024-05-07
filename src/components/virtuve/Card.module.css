@@ -61,7 +61,7 @@
     align-items: end;
     justify-content: end;
     font-size: var(--font-size-dynamic-small-1-lg);
-    color: var(--color-radio)
+    color: var(--color-radio);
 }
 
 .category {
