@@ -29,7 +29,7 @@ const ListCard = ({ video }) => {
                     className={styles.image}
                 />
                 <FaCirclePlay className={styles.icon} />
-                <span className={styles.time}>30:49</span>
+                <span className={styles.time}>{video.duration}</span>
             </div>
 
             <div className={styles.cardBottom}>

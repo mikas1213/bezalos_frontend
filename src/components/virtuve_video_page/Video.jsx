@@ -4,13 +4,14 @@ import { useState } from 'react';
 const Video = ({ video, isLoading }) => {
     const [showMore, setShowMore] = useState(false);
     const desc = video?.data.description || '';
-
+    
     return (
         <div className={styles.video}>
             {!isLoading && <video 
                 onContextMenu={ event => event.preventDefault() }
                 controls={true}
-                // autoPlay
+                autoPlay
+                playsInline
                 controlsList='nodownload' 
                 width='100%'
             >
