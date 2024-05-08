@@ -17,9 +17,13 @@ const VirtuveVideoPage = () => {
     const [video, setVideo] = useState();
     const [videos, setVideos] = useState();
     const [isLoading, setIsLoading] = useState(false);
+    const [filter, setFilter] = useState('');
     
+    const handleFilter = (fil) => {
+        setFilter(fil)
+    }
+
     useEffect(() => {
-        
         const getData = async () => {
             try {
                 setIsLoading(true);
@@ -28,7 +32,7 @@ const VirtuveVideoPage = () => {
                 
                 setVideo(data.data);
                 setVideos(videos.data.videos);
-
+                
                 setIsLoading(false);
 
             } catch(err) {
@@ -44,10 +48,10 @@ const VirtuveVideoPage = () => {
             <Navbar />
             <Main>
                 <Container>
-                    <Filters />
+                    <Filters handleClick={handleFilter} filter={filter}/>
                     <Video video={video} isLoading={isLoading}/>
                     <Comments />
-                    <List videos={videos}/>
+                    <List videos={videos} filter={filter}/>
                 </Container>
             </Main>
         </>

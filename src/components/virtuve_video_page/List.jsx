@@ -2,7 +2,7 @@ import styles from './List.module.css';
 import ListCard from './ListCard';
 // import { useState } from 'react';
 
-const List = ({ videos }) => {
+const List = ({ videos, filter }) => {
     
     // const [filter, setFilter] = useState('');
     // const handleClick = fil => setFilter(fil);
@@ -18,8 +18,8 @@ const List = ({ videos }) => {
                 <span className={filter === 'psichologija' ? styles.active : ''} onClick={() => handleClick('psichologija')}>Valgymo psichologija</span>
             </div> */}
             
-            {/* {videos?.filter(v => v.search_tag.indexOf(filter) > -1).map(video => <ListCard video={video} key={video.id} /> )} */}
-            {videos?.map(video => <ListCard video={video} key={video.id} /> )}
+            {videos?.filter(v => v.search_tag.indexOf(filter) > -1).map(video => <ListCard video={video} key={video.id} /> )}
+            {/* {videos?.map(video => <ListCard video={video} key={video.id} /> )} */}
         </div>
     );
 };

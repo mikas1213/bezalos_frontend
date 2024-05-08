@@ -1,9 +1,6 @@
 import styles from './Filters.module.css';
-import { useState } from 'react';
 
-const Filters = () => {
-    const [filter, setFilter] = useState('');
-    const handleClick = fil => setFilter(fil);
+const Filters = ({handleClick, filter}) => {
 
     return (
         <div className={styles.filters}>
