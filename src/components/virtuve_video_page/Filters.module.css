@@ -1,0 +1,31 @@
+.filters {
+    overflow: scroll;    
+    margin: 1rem 1rem 0 1rem;
+    display: flex;
+    gap: 0.5rem;
+    grid-area: 1 / 2 / 2 / -1;
+}
+
+.filters span {
+    cursor: pointer;
+    text-wrap: nowrap;
+    font-size: var(--font-size-small-1);
+    font-weight: 600;
+    background-color: var(--color-filter-btn);
+    color: var(--color-text-dark);
+    border-radius: 10rem;
+    padding: 0.4rem 1rem;
+    transition: background-color 0.2s ease;
+}
+
+.filters .active {
+    background-color: var(--color-text-dark);
+    color:  var(--color-filter-btn);
+}
+
+@media only screen and (max-width: 576px) {
+    .filters {
+        margin-left: 0;
+        grid-area: 1 / 1 / 2 / 3;
+    }
+}

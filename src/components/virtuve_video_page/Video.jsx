@@ -10,7 +10,7 @@ const Video = ({ video, isLoading }) => {
             {!isLoading && <video 
                 onContextMenu={ event => event.preventDefault() }
                 controls={true}
-                autoPlay
+                // autoPlay
                 playsInline
                 controlsList='nodownload' 
                 width='100%'

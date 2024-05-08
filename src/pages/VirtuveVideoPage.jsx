@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom';
 import Navbar from '../components/navbar/Navbar';
 import Main from '../components/UI/Main';
 import Container from '../components/virtuve_video_page/Container';
+import Filters from '../components/virtuve_video_page/Filters';
 import Video from '../components/virtuve_video_page/Video';
 import Comments from '../components/virtuve_video_page/Comments';
 import List from '../components/virtuve_video_page/List';
@@ -16,8 +17,6 @@ const VirtuveVideoPage = () => {
     const [video, setVideo] = useState();
     const [videos, setVideos] = useState();
     const [isLoading, setIsLoading] = useState(false);
-    
-
     
     useEffect(() => {
         
@@ -45,9 +44,10 @@ const VirtuveVideoPage = () => {
             <Navbar />
             <Main>
                 <Container>
+                    <Filters />
                     <Video video={video} isLoading={isLoading}/>
-                    <List videos={videos}/>
                     <Comments />
+                    <List videos={videos}/>
                 </Container>
             </Main>
         </>
