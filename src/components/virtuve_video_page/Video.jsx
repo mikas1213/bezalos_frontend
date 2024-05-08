@@ -11,11 +11,12 @@ const Video = ({ video, isLoading }) => {
                 onContextMenu={ event => event.preventDefault() }
                 controls={true}
                 // autoPlay
+                poster="data:image/gif,0000"
                 playsInline
                 controlsList='nodownload' 
                 width='100%'
             >
-                <source src={video?.url+'#t=0.1'} type='video/mp4' />
+                <source src={video?.url+'#t=0.0'} type='video/mp4' />
             </video>}
             
             <div className={styles.cardBottom}>

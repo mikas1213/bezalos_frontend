@@ -6,6 +6,8 @@
     grid-area: 1 / 1 / 5 / 2;
 }
 .video video {
+    background-image: url('../../assets/images/virtuve/video_cover.webp');
+    background-size: 100%;
     display: block;
     border-top-left-radius: 1rem;
     border-top-right-radius: 1rem;
@@ -40,6 +42,12 @@
 @keyframes fadeIn {
     0% { opacity: 0; }
     100% { opacity: 1; }
+}
+
+@media only screen and (max-width: 768px) {
+    .video {
+        /* margin-top: 0.5rem; */
+    }
 }
 
 @media only screen and (max-width: 576px) {
