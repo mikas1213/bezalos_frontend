@@ -4,7 +4,11 @@ import MainContainer from "./ui/MainContainer";
 
 import { FaStar } from "react-icons/fa6";
 
-const text = 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s.';
+const reviews = [
+    {title: 'Narystė Virtuvėje', text: 'Kuriamas turinys labai patinka, video visi naudingi, visus perklausiau, ir po truputi stengiuosi įtvirtinti išgirstą informaciją savo rutinoje'},
+    {title: 'Produktų keitimo funkcija', text: 'Keityklės dėka vietoj alyvuogių galiu legaliai valgyti šokoladą ir tai puikiai atitinka mano mitybos planą! Ačiū tau, pagaliau esu visiškai rami dėl savo maisto pasirinkimų'},
+    {title: 'Svorio pokyčiai', text: 'Vien sekant tavo turinį nuo per 5 mėnesius man pavyko atsikratyti net 17 kilogramų! Ačiū tau už tokį naudingą ir praktiškai lengvai taikomą turinį 💚'}
+];
 const TestimonialCard = ({title, text}) => {
     return (
         <div className={styles.testimonialCard}>
@@ -22,9 +26,7 @@ const TestimonialSection = () => {
     return (
         <Section customClass='section--hidden'>
             <MainContainer customClass={styles.testimonialContainer}>
-                <TestimonialCard title='Awesome tool!' text={text}/>
-                <TestimonialCard title='Awesome tool!' text={text}/>
-                <TestimonialCard title='Awesome tool!' text={text}/>
+                {reviews.map((t, i) => <TestimonialCard title={t.title} text={t.text} key={i}/> )}
             </MainContainer>
         </Section>
     );

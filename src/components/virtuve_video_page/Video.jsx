@@ -4,7 +4,7 @@ import { useState } from 'react';
 const Video = ({ video, isLoading }) => {
     const [showMore, setShowMore] = useState(false);
     const desc = video?.data.description || '';
-    
+    console.log(desc.split('\n'))
     return (
         <div className={styles.video}>
             {!isLoading && <video 

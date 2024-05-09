@@ -13,11 +13,11 @@ const AboutSection = () => {
                         Labas, su tavim sveikinuosi aš, Sandra, iš projekto Valgau Be Žalos
                     </div>
                     <div className={styles.aboutText}>
-                        Lorem ipsum, dolor sit amet consectetur adipisicing elit Reiciendis neque repellat maxime sint pariatur voluptatem consectetur asperiores animi dignissimos. Laborum sint eos vitae quis et ab facere corporis, aliquam libero?
+                        Čia stiprų apkabinimą ras tos, kurios pavargo nuo nuolatinio savęs alinimo vis nauja dieta, ataugančio su kaupu svorio ar kitų savęs ribojimų. Šioje bendruomenėje išmoksi sveikatai palankios mitybos pagrindų, kurie be ribojimo leis tau atkurti sveiką santykį su maistu.
                     </div>
                         
                     <div className={styles.aboutText}>
-                        Lorem ipsum, dolor sit amet consectetur adipisicing elit Reiciendis neque repellat maxime sint pariatur voluptatem consectetur asperiores animi dignissimos. Laborum sint eos vitae quis et ab facere corporis, aliquam libero?
+                        Taip pat padėsiu tau geriau pažinti save, savo mintis, emocijas ir kūno pojūčius, kurie tave atveda į apsivalgymus ar kitus su valgymu susijusius iššūkius. Kartu galime įveikti visus, su valgymu susijusius sunkumus 💚
                     </div>
                     <img className={styles.signature} src={SignatureImg} alt="Su Meile Be Žalos" />
                 </div>
