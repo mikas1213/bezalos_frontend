@@ -28,9 +28,12 @@ const VirtuveVideoPage = () => {
 
     useEffect(() => {
         const getData = async () => {
+            
             try {
                 setIsLoading(true);
                 const data = await axios.get(`/videos/${params.video}`); 
+                console.log('data: ', data)
+                console.log('data.data: ', data.data)
                 const video = {url: data.data.url , ...data.data.videos.find(v => v.video_url === params.video)};
                 
                 const users = data.data.users; 

@@ -4,6 +4,7 @@ import styles from './Video.module.css';
 import { useState } from 'react';
 
 const Video = ({ video, isLoading, comments }) => {
+    
     const [showMore, setShowMore] = useState(false);
     const desc = video?.description || '';
     const [showComments, setShowComments] = useState(false);
@@ -48,11 +49,10 @@ const Video = ({ video, isLoading, comments }) => {
                         <span>Komentarai</span>&nbsp;
                         <span>({comments.length})</span>
                     </div>
-                    {/* <div className={styles.likesCount}> */}
+
                     <div className={styles.like}>
                         <FaRegHeart className={styles.icon}/> <span>10</span>
                     </div>
-                    {/* </div> */}
                 </div>
 
                 <div className={styles.writeComment}>
@@ -62,11 +62,10 @@ const Video = ({ video, isLoading, comments }) => {
                     <form className={styles.writeCommentForm}>
                         <input  type="text" placeholder='Pridėti komentarą' />
                     </form>
-                    
                 </div>
 
                 <div className={`${styles.comments} ${showComments ? styles.show : ''}`}>
-                    {comments.map(v => <li>{v.comment}</li>)}   
+                    {comments.map(v => <li key={v.id}>{v.comment}</li>)}   
                 </div>
             </div>
         </div>
