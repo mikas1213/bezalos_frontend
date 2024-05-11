@@ -17,31 +17,31 @@ const ListCard = ({ video }) => {
 
     return (
         <Link to={`/virtuve/${video.video_url}`}>
-        <div className={styles.listCard}>
-            <div className={styles.imageContainer}>
-                <img
-                    src={
-                        video.category === "Vebinaras"
-                            ? vebinarasImg
-                            : mokymaiImg
-                    }
-                    alt={video.title}
-                    className={styles.image}
-                />
-                <FaCirclePlay className={styles.icon} />
-                <span className={styles.time}>{video.duration}</span>
-            </div>
+            <div className={styles.listCard}>
+                <div className={styles.imageContainer}>
+                    <img
+                        src={
+                            video.category === "Vebinaras"
+                                ? vebinarasImg
+                                : mokymaiImg
+                        }
+                        alt={video.title}
+                        className={styles.image}
+                    />
+                    <FaCirclePlay className={styles.icon} />
+                    <span className={styles.time}>{video.duration}</span>
+                </div>
 
-            <div className={styles.cardBottom}>
-                <div className={styles.title}>{video.title}</div>
-                <div className={styles.cardFooter}>
-                    <div className={styles.category}>
-                        <span>{video.category}</span>
+                <div className={styles.cardBottom}>
+                    <div className={styles.title}>{video.title}</div>
+                    <div className={styles.cardFooter}>
+                        <div className={styles.category}>
+                            <span>{video.category}</span>
+                        </div>
+                        <div className={styles.created_at}>{created_video}</div>
                     </div>
-                    <div className={styles.created_at}>{created_video}</div>
                 </div>
             </div>
-        </div>
         </Link>
     );
 };

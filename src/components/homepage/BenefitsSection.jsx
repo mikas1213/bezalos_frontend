@@ -29,17 +29,19 @@ const BenefitItem = ({icon, title, text}) => {
 };
 
 const BenefitsSection = () => {
-  
-    const text = 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text.';
+    const benefits = [
+        {title: 'Interaktyvus mitybos planas', text: 'Mitybos planas leis tau mokytis sveikatai palankios mitybos pagrindų, kurių dėka galiu garantuoti tau ilgalaikius rezultatus!', icon: Icon1},
+        {title: 'Merginų bendruomenė', text: 'Virtuvėje turėsi nuolatinį merginų palaikymą, galimybę klausti, dalintis kasdieniais iššūkiais ir juos spręsti 💚', icon: Icon2},
+        {title: 'Emocinio valgymo dienoraštis', text: 'Dienoraštis suteiks tau galimybę geriau pažintis emocijas, kurias esi likusi malšinti maistu, rasti naujų įveikos būdų.', icon: Icon3},
+        {title: 'Pokyčių statistika', text: 'Lengvai ir interantyviai galėsi stebėti savo ilgalaikius pokyčius, kurie suteiks papildomos motyvacijos nuosekliai judėti tikslų link.', icon: Icon4}
+    ];
+
     return (
         
         <Section customClass={`${styles.benefitsSection} section--hidden`}>
             <MainContainer customClass={styles.benefitsContainer}>
                 <div className={styles.benefits}>
-                    <BenefitItem icon={Icon1} title='Interaktyvų mitybos planą' text={text}/>
-                    <BenefitItem icon={Icon2} title='Merginų bendruomenę' text={text}/>
-                    <BenefitItem icon={Icon3} title='Emocinio valgymo dienoraštį' text={text}/>
-                    <BenefitItem icon={Icon4} title='Pokyčių statistiką' text={text}/>
+                    {benefits.map((b, i) => <BenefitItem key={i} icon={b.icon} title={b.title} text={b.text}/> )}
                 </div>
             </MainContainer>
         </Section> 

@@ -4,7 +4,7 @@ import vebinarasImg from '../../assets/images/virtuve/vebinaras.webp';
 import mokymaiImg from '../../assets/images/virtuve/mokymai.webp';
 
 const Card = ({ video }) => {
-    console.log(video)
+    
     const created_video = new Date(Date.parse(video.created_at)).toLocaleString('lt-LT', {
         day: 'numeric', 
         weekday: 'short', 
@@ -13,7 +13,7 @@ const Card = ({ video }) => {
     });
     
     return (
-        <Link to={video.video_url}>
+        <Link to={video.video_url}  onClick={() => window.scrollTo(0, 0)}>
             <div className={styles.VideoCard}>
                 <section>
                     <img src={video.category === 'Mokymai' ? mokymaiImg : vebinarasImg} alt='video cover'/>

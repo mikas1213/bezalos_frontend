@@ -17,7 +17,7 @@ const AboutSection = () => {
                     </div>
                         
                     <div className={styles.aboutText}>
-                        Taip pat padėsiu tau geriau pažinti save, savo mintis, emocijas ir kūno pojūčius, kurie tave atveda į apsivalgymus ar kitus su valgymu susijusius iššūkius. Kartu galime įveikti visus, su valgymu susijusius sunkumus 💚
+                    Taip pat padėsiu tau geriau pažinti save, savo mintis, emocijas ir kūno pojūčius, kurie tave atveda į apsivalgymus ar kitus iššūkius. Kartu galime įveikti visus, su valgymu susijusius sunkumus 💚
                     </div>
                     <img className={styles.signature} src={SignatureImg} alt="Su Meile Be Žalos" />
                 </div>

@@ -36,7 +36,7 @@ const Videos = () => {
 
         const controller = new AbortController();
         getData(controller.signal);
-
+        
         return () => controller.abort();
         
     }, [queryString]);

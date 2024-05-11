@@ -1,13 +1,13 @@
-import { useState } from "react";
-import { NavLink, useLocation, useNavigate } from "react-router-dom";
+import { useState } from 'react';
+import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import MainContainer from '../homepage/ui/MainContainer';
 
-import styles from "./Navbar.module.css";
-import { Logo } from "./Logo";
+import styles from './Navbar.module.css';
+import { Logo } from './Logo';
 
 import Modal from '../UI/Modal';
-import Authentication from "../auth/Authentication";
-import useAuth from "../../hooks/useAuth";
+import Authentication from '../auth/Authentication';
+import useAuth from '../../hooks/useAuth';
 import useLogout from '../../hooks/useLogout';
 
             
@@ -17,8 +17,9 @@ import useLogout from '../../hooks/useLogout';
 import { VirtuveIcon, ReceptaiIcon, PaslaugosIcon, ProfilisIcon, PrisijungtiIcon, AtsijungtiIcon } from './NavIcons';
 
 const Navbar = ({ isHome = false }) => {
-
+    
     const location = useLocation();
+    const [_, page] = location.pathname.split('/');
     const navigate = useNavigate();
     const logout = useLogout();
     
@@ -46,7 +47,7 @@ const Navbar = ({ isHome = false }) => {
             <nav className={`${styles.nav} ${changeStyleClass}`}>
                 <MainContainer customClass={styles.navContainer}>
                     <div className={styles.logo}>
-                        <NavLink to="/">
+                        <NavLink to='/'>
                             <Logo isChangeColor={{ isHome, isScroll }} />
                         </NavLink>
                     </div>
@@ -58,22 +59,22 @@ const Navbar = ({ isHome = false }) => {
                     
                     <ul className={styles.navList}>
                         <li className={styles.listItem}>
-                            <NavLink to="/virtuve">Virtuvė</NavLink>
+                            <NavLink to='/virtuve'>Virtuvė</NavLink>
                             <div className={styles.indicator}></div>
                         </li>
 
                         <li className={styles.listItem}>
-                            <NavLink to="/receptai">Receptai</NavLink>
+                            <NavLink to='/receptai'>Receptai</NavLink>
                             <div className={styles.indicator}></div>
                         </li>
 
                         <li className={styles.listItem}>
-                            <NavLink to="/paslaugos">Paslaugos</NavLink>
+                            <NavLink to='/paslaugos'>Paslaugos</NavLink>
                             <div className={styles.indicator}></div>
                         </li>
 
                         {auth?.accessToken && <li className={styles.listItem}>
-                            <NavLink to="/profilis" >Profils</NavLink>
+                            <NavLink to='/profilis'>Profilis</NavLink>
                             <div className={styles.indicator}></div>
                         </li>}
                         
@@ -93,38 +94,38 @@ const Navbar = ({ isHome = false }) => {
                 <div className={`${styles.navContainerMobile} ${isOpenBurger ? styles.show : ''}`}>
                     <ul className={styles.navListMobile}>
 
-                        <li className={`${styles.listItemMobile} ${location.pathname.indexOf('virtuve') > -1 ? styles.active : ''}`} 
+                        <li className={`${styles.listItemMobile} ${page === 'virtuve' ? styles.active : ''}`} 
                             onClick={() => navigate('/virtuve')}>  
                             <VirtuveIcon 
-                                active={location.pathname.indexOf('virtuve') > -1 ? true : false} 
+                                active={page === 'virtuve' ? true : false} 
                                 stroke={iconStroke}
                             />
                             <span>Virtuvė</span>
                         </li>
                         
-                        <li className={`${styles.listItemMobile} ${location.pathname.indexOf('receptai') > -1 ? styles.active : ''}`} 
+                        <li className={`${styles.listItemMobile} ${page === 'receptai' ? styles.active : ''}`} 
                             onClick={() => navigate('/receptai')}>
                             <ReceptaiIcon 
-                                active={location.pathname.indexOf('receptai') > -1 ? true : false} 
+                                active={page === 'receptai' ? true : false} 
                                 stroke={iconStroke}
                             />
                             <span>Receptai</span>
                         </li>
                         
-                        <li className={`${styles.listItemMobile} ${location.pathname.indexOf('paslaugos') > -1 ? styles.active : ''}`}
+                        <li className={`${styles.listItemMobile} ${page === 'paslaugos' ? styles.active : ''}`}
                             onClick={() => navigate('/paslaugos')}>
                             <PaslaugosIcon 
-                                active={location.pathname.indexOf('paslaugos') > -1 ? true : false} 
+                                active={page === 'paslaugos' ? true : false} 
                                 stroke={iconStroke}
                             />
                             <span>Paslaugos</span>
                         </li>
                         
 
-                        {auth?.accessToken && <li className={`${styles.listItemMobile} ${location.pathname.indexOf('profilis') > -1 ? styles.active : ''}`}
+                        {auth?.accessToken && <li className={`${styles.listItemMobile} ${page === 'profilis' ? styles.active : ''}`}
                             onClick={() => navigate('/profilis')}>
                             <ProfilisIcon 
-                                active={location.pathname.indexOf('profilis') > -1 ? true : false} 
+                                active={page === 'profilis'? true : false} 
                                 stroke={iconStroke}
                             />
                             <span>Profilis</span>

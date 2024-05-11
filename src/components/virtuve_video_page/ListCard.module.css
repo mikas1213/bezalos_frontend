@@ -31,7 +31,7 @@
     flex-direction: column;
     justify-content: center;
     color: var(--color-text-dark);
-    background: #eff1efcc;
+    background-color: #eff1efcc;
     border-radius: 10rem;
     padding: 0.1rem 0.5rem;
     font-size: var(--font-size-dynamic-small-1-lg);
@@ -77,4 +77,24 @@
 .created_at {
     font-size: var(--font-size-dynamic-small-1-lg);
     color: var(--color-radio);
+}
+
+@media only screen and (max-width: 576px) {
+    .cardBottom {
+        gap: 0.5rem;
+        padding: clamp(0rem, 2.778vw, 1rem);
+    }
+    .title {
+        font-size: var(--font-size-dynamic-h6-sm);
+    }
+
+    .category {
+        font-size: var(--font-size-dynamic-p-sm);
+        font-weight: 600;
+    }
+
+    .created_at {
+        font-size: var(--font-size-dynamic-p-sm);
+        color: var(--color-radio);
+    }
 }
