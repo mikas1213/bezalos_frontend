@@ -22,7 +22,7 @@
     display: flex;
     flex-direction: column;
     gap: clamp(0rem, 1.563vw, 1rem);
-    padding: clamp(0rem, 1.563vw, 1rem) clamp(0rem, 1.563vw, 1rem) 0;
+    padding: clamp(0rem, 1.563vw, 1rem) clamp(0rem, 1.563vw, 1rem);
 }
 
 .title {
@@ -58,7 +58,7 @@
 }
 
 .like {
-    padding: clamp(0rem, 0.313vw, 0.2rem) clamp(0rem, 1.25vw, 0.8rem);
+    padding: clamp(0rem, 0.625vw, 0.4rem) clamp(0rem, 1.563vw, 1rem);
     border-radius: 10rem;
     background-color: #a7aba666;
     display: flex;
@@ -80,23 +80,19 @@
     height: clamp(0rem, 3.906vw, 2.5rem);
     border-radius: 100%;
     background-color: #a7aba699;
-}
-.userName {
     color: var(--color-text-dark);
     font-weight: 300;
     font-size: var(--font-size-dynamic-h6-lg);
 }
-
 .writeComment {
+    /* margin-bottom: clamp(0rem, 3.125vw, 2rem); */
     display: flex;
     gap: clamp(0rem, 1.563vw, 1rem);
-    /* width: 100%; */
 }
 .writeCommentForm {
-    /* width: 100%; */
+    position: relative;
     display: flex;
     flex-grow: 1;
-    /* padding-left: clamp(0rem, 1.563vw, 1rem); */
 }
 .writeCommentForm input {
     flex-grow: 1;
@@ -105,45 +101,64 @@
     background: none;
     border-radius: 10rem;
     padding-left: clamp(0rem, 1.563vw, 1rem);
-    border: 1px solid #a7aba677;
+    padding-right: clamp(0rem, 4.688vw, 3rem);
+    outline: 1px solid #a7aba677;
     font-size: var(--font-size-dynamic-small-1-lg);
+    transition: outline 0.2s  ease-in-out;
+}
+.writeCommentForm input:focus {
+    outline: 1px solid #a7aba6;
+}
+.writeCommentForm .icon {
+    cursor: pointer;
+    width: clamp(0rem, 2.656vw, 1.7rem);
+    height: clamp(0rem, 2.656vw, 1.7rem);
+    right: clamp(0rem, 1.094vw, 0.7rem);
+    top: 50%;
+    transform: translateY(-50%);
+    position: absolute;
+}
+.writeCommentForm button {
+    border: none;
+}
+input ~ button .icon path {
+    fill: #a7aba677;
+    transition: fill 0.2s  ease-in-out;
+}
+input:focus ~ button .icon path {
+    fill: #a7aba6;
+}
+input ~ button .icon.active path {
+    fill: #60c040;
+}
+
+.commentsContainer {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.3s ease-in-out;
+}
+.commentsContainer .comments {
+    overflow: hidden;
+}
+
+.show.commentsContainer {
+    overflow: scroll;
+    grid-template-rows: 1fr;
+    margin-bottom: clamp(0rem, 1.563vw, 1rem);
 }
 
 .comments {
-    height: 0;
-    opacity: 0;
-    overflow: hidden;
-    transition: all 0.5s ease-in-out;
-    /* animation: slideDown 1s; */
-}
-
-.show.comments {
-    overflow: scroll;
-    /* height: 100dvh; */
-    height: 300px;
-    opacity: 1;
-}
-
-@keyframes slideDown {
-    from {
-        height: 0px;
-      /* transform: translateY(-100%); */
-      /* opacity: 0; */
-    }
-    to {
-        height: 100px;
-      /* transform: translateY(0); */
-      /* opacity: 1; */
-    }
+    display: flex;
+    flex-direction: column;
+    gap: clamp(0rem, 1.563vw, 1rem);
 }
 
 @media only screen and (max-width: 576px) {
     .video {
-        margin-top: 0.5rem;
-        margin-right: 1rem;
+        margin-top: 0;
+        margin-right: var(--content-padding-sm);
         grid-area: 2 / 1 / 3 / 3;
     }
-
     .title {
         font-size: var(--font-size-dynamic-h4-sm);
     }
@@ -156,11 +171,12 @@
 
     /*- - -C-A-R-D---B-O-T-T-O-M- - -*/
     .cardBottom {
-        gap: clamp(0rem, 3.333vw,1.2rem);
-        padding: clamp(0rem, 2.778vw, 1rem) clamp(0rem, 2.778vw, 1rem) 0;
+        gap: clamp(0rem, 3.333vw, 1.2rem);
+        padding: clamp(0rem, 2.778vw, 1rem) clamp(0rem, 2.778vw, 1rem);
     }
     .writeComment {
-        /* gap: 2rem; */
+        /* margin-bottom: clamp(0rem, 5.556vw, 2rem); */
+        gap: clamp(0rem, 2.778vw, 1rem);
     }
     .commentsCount {
         cursor: pointer;
@@ -168,26 +184,53 @@
         font-weight: 600;
     }
     .like {
-        padding: clamp(0rem, 0.556vw, 0.2rem) clamp(0rem, 2.222vw, 0.8rem);
-        /* gap: 0.5rem; */
+        padding: clamp(0rem, 0.847vw, 0.4rem) clamp(0rem, 2.54vw, 1.2rem);
         font-size: var(--font-size-dynamic-h6-sm);
     }
-
     .avatar {
-        width: clamp(0rem, 8.333vw, 3rem);
-        height: clamp(0rem, 8.333vw, 3rem);
-    }
-    .userName {
+        width: clamp(1rem, 9.722vw, 3.5rem);
+        height: clamp(1rem, 9.722vw, 3.5rem);
         font-weight: 400;
         font-size: var(--font-size-dynamic-h5-sm);
     }
+    .writeCommentForm input {
+        padding-left: clamp(0rem, 2.778vw, 1rem);
+        font-size: var(--font-size-dynamic-h6-sm);
+    }
+    .writeCommentForm .icon {
+        width: clamp(0rem, 6.667vw, 2.4rem);
+        height: clamp(0rem, 6.667vw, 2.4rem);
+        right: clamp(0rem, 1.944vw, 0.7rem);
+    }
+    .show.commentsContainer {
+        margin-bottom: clamp(0rem, 2.778vw, 1rem);
+    }
+    .comments {
+        gap: clamp(0rem, 3.333vw, 1.2rem);
+    }
+}
 
-    .writeCommentForm {
-        /* padding-left: clamp(0rem, 1.563vw, 1rem); */
-        /* paddig */
+@media only screen and (max-width: 375px) {
+    .video {
+        margin-right: var(--content-padding-xs);
+    }
+    .commentsCount {
+        font-size: var(--font-size-dynamic-h5-sm);
+    }
+    .like {
+        font-size: var(--font-size-dynamic-h5-sm);
+    }
+    .avatar {
+        width: clamp(0rem, 11.111vw, 4rem);
+        height: clamp(0rem, 11.111vw, 4rem);
+        font-size: var(--font-size-dynamic-h4-sm);
     }
     .writeCommentForm input {
-        /* padding-left: clamp(0rem, 1.563vw, 1rem); */
-        font-size: var(--font-size-dynamic-p-sm);
+        font-size: var(--font-size-dynamic-h6-sm);
+    }
+    .writeCommentForm .icon {
+        width: clamp(0rem, 7.68vw, 1.8rem);
+        height: clamp(0rem, 7.68vw, 1.8rem);
+        right: clamp(0rem, 2.56vw, 0.6rem);
     }
 }

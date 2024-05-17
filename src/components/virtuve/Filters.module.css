@@ -1,8 +1,13 @@
 .filters {
     overflow: scroll;
+    -ms-overflow-style: none; /* Internet Explorer 10+ */
+    scrollbar-width: none; /* Firefox */
     display: flex;
     gap: 0.8rem;
     padding: 0.8rem 0;
+}
+.filters::-webkit-scrollbar { 
+    display: none;  /* Safari and Chrome */
 }
 
 .filterItem {
@@ -35,7 +40,7 @@
     border-top-left-radius: 10rem;
     transition: border 0.2s ease;
     /* width: 14rem; */
-    padding: 0.32rem 1rem; 
+    padding: 0.32rem 0.8rem; 
 }
 .filters button {
     border-bottom-right-radius: 10rem;
@@ -58,6 +63,19 @@
     outline: none;
 }
 
+@media only screen and (max-width: 375px) {
+    .filters {
+        gap: calc(var(--content-padding-xs));
+        padding: var(--content-padding-xs) 0;
+    }
+    .filterItem {
+        padding: 0 var(--content-padding-xs);
+    }
+    .filters input {
+        padding: 0.32rem 0.7rem; 
+    }
+}
+
 @media (hover: hover) {
     .filters div:hover {
         cursor: pointer;
@@ -71,3 +89,4 @@
         background-color: var(--color-filter-btn);
     }
 }
+

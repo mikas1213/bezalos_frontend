@@ -44,6 +44,7 @@
     --content-width-responsive: 100vw;
     --content-padding-lg: 2rem;
     --content-padding-sm: 1rem;
+    --content-padding-xs: 0.7rem;
 
     --signature-size-lg: clamp(0rem, 17.188vw, 11rem);
     --signature-size-sm: clamp(0rem, 33.333vw, 12rem);

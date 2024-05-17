@@ -11,3 +11,9 @@
         padding: 0 var(--content-padding-sm);
     }
 }
+
+@media only screen and (max-width: 375px) {
+    .mainContainer {
+        padding: 0 var(--content-padding-xs);
+    }
+}

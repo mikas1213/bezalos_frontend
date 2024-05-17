@@ -11,8 +11,6 @@ import { RiEyeCloseLine } from 'react-icons/ri';
 import { BsEyeFill } from 'react-icons/bs';
 
 import { FormStateContext } from './Authentication';
-
-
 import Spinner from '../UI/Spinner';
 
 const Signup = () => {

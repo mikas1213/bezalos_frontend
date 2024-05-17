@@ -1,19 +1,88 @@
 // import { Link } from 'react-router-dom';
+import axios from '../../api/axios';
 import { FaHeart, FaRegHeart } from "react-icons/fa6";
 import styles from './Video.module.css';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+import CommentCard from "./CommentCard";
+import { useForm } from 'react-hook-form';
+import toast from 'react-hot-toast';
 
-const Video = ({ video, isLoading, comments }) => {
-    
+const Send = ({active}) => {
+    return (
+        <svg 
+            className={`${styles.icon} ${active}`}
+            viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'>
+            <g id='SVGRepo_bgCarrier' strokeWidth='0'/>
+            <g id='SVGRepo_tracerCarrier' strokeLinecap='round' strokeLinejoin='round' />
+            <g id='SVGRepo_iconCarrier'> 
+                <path d='M18.0693 8.50867L9.50929 4.22867C3.75929 1.34867 1.39929 3.70867 4.27929 9.45867L5.14929 11.1987C5.39929 11.7087 5.39929 12.2987 5.14929 12.8087L4.27929 14.5387C1.39929 20.2887 3.74929 22.6487 9.50929 19.7687L18.0693 15.4887C21.9093 13.5687 21.9093 10.4287 18.0693 8.50867ZM14.8393 12.7487H9.43929C9.02929 12.7487 8.68929 12.4087 8.68929 11.9987C8.68929 11.5887 9.02929 11.2487 9.43929 11.2487H14.8393C15.2493 11.2487 15.5893 11.5887 15.5893 11.9987C15.5893 12.4087 15.2493 12.7487 14.8393 12.7487Z' /> 
+            </g>
+        </svg>
+    );
+};
+
+
+const Video = ({ user_id, video }) => {
+    console.log('video', video)
+    // const params = useParams();
+    // const [video, setVideo] = useState([]);
+    // const [comments, setComments] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
     const [showMore, setShowMore] = useState(false);
     const desc = video?.description || '';
     const [showComments, setShowComments] = useState(false);
-    // const [desc, list] = full_desc.split(':');
     
+    // const { register, formState: { errors }, setError, watch, reset, handleSubmit } = useForm(
+    //     {defaultValues: {
+    //     video_id: '',
+    //     user_id: ''
+    //   }}
+    // );
     
+    // const submit = async ({comment, video_id, user_id}) => {
+    //     if(!watch('comment')) return;
+        
+    //     try{
+    //         await axios.post('/videos/add_comment', {
+    //             video_id, 
+    //             user_id,
+    //             comment: comment?.trim()
+    //         });
+            
+    //         setShowComments(true);
+    //         reset();
+    //     } catch(err) {
+    //         toast.error('Kažkas negerai');
+    //     }
+    // };
+    
+    useState(() => {
+        
+        const getData = async () => {
+            
+            // const data = await axios.get(`/videos/${params.video}`);
+                    
+            // setVideo({ ...data.data.video, url: data.data.url });
+            
+            // setComments(() => {
+            //     if(data.data.video.video_comments.length === 1 && data.data.video.video_comments[0] === null) {
+            //         return [];
+            //     } else {
+            //         return data.data.video.video_comments;
+            //     }
+                
+            // });
+
+            // setIsLoading(false);
+        };
+
+        // getData();
+    }, []);
+
     return (
         <div className={styles.video}>
-            {!isLoading && <video 
+            <video 
                 onContextMenu={ event => event.preventDefault() }
                 controls={true}
                 // autoPlay
@@ -23,17 +92,16 @@ const Video = ({ video, isLoading, comments }) => {
                 width='100%'
             >
                 <source src={video?.url+'#t=0.0'} type='video/mp4' />
-            </video>}
+            </video>
             
             <div className={styles.cardBottom}>
                 <div className={styles?.title}>
-                    {video?.title}
+                    {video.title}
                 </div>
 
                 <div className={styles.description}>
                     {desc.length <  180 ? desc : <>
                         { showMore ? desc+' ' : desc.substring(0, 180)+'... '}
-                     
                         <span 
                             className={styles.showMore} 
                             onClick={() => setShowMore(show => !show)}>
@@ -42,31 +110,51 @@ const Video = ({ video, isLoading, comments }) => {
                     </>}
                 </div>
 
-                <div className={styles.divider}></div>
+                {/* <div className={styles.divider}></div>
 
                 <div className={styles.commentsLikesHeader}>
                     <div className={styles.commentsCount} onClick={() => setShowComments(show => !show)}>
                         <span>Komentarai</span>&nbsp;
-                        <span>({comments.length})</span>
+                        <span>({video?.video_comments[0] !== null ? video?.video_comments.length : '0'})</span>
                     </div>
 
                     <div className={styles.like}>
-                        <FaRegHeart className={styles.icon}/> <span>10</span>
+                        <FaRegHeart /> <span>10</span>
                     </div>
-                </div>
+                </div> */}
 
-                <div className={styles.writeComment}>
-                    <div className={styles.avatar}>
-                        <span className={styles.userName}>M</span>
-                    </div>
-                    <form className={styles.writeCommentForm}>
-                        <input  type="text" placeholder='Pridėti komentarą' />
+                {/* <div className={styles.writeComment}>
+                    <div className={styles.avatar}>M</div>
+                    <form className={styles.writeCommentForm} onSubmit={handleSubmit(submit)}>
+                        <input type='hidden' {...register('video_id')} value={video.id}/>
+                        <input type='hidden' {...register('user_id')} value={user_id}/>
+                        <input 
+                            type='text'
+                            autoComplete='off'
+                            placeholder='Pridėti komentarą' 
+                            {...register('comment', {
+                                
+                                // required: 'Neįvestas el. paštas',
+                            })}
+                        />
+                        <button type='submit'>
+                            <Send active={watch('comment') ? styles.active : ''}/>
+                        </button>
                     </form>
-                </div>
+                </div> */}
 
-                <div className={`${styles.comments} ${showComments ? styles.show : ''}`}>
-                    {comments.map(v => <li key={v.id}>{v.comment}</li>)}   
-                </div>
+                {/* <div className={`${styles.commentsContainer} ${(showComments && video.video_comments[0] !== null) ? styles.show : ''}`}>
+                    <div className={styles.comments}>
+                        {video.video_comments[0] !== null && video.video_comments.map(v => 
+                            <CommentCard 
+                                key={v.id} 
+                                name={v.user_name} 
+                                comment={v.comment}
+                                isBin={user_id === v.user_id}
+                            />
+                        )}
+                    </div>
+                </div> */}
             </div>
         </div>
     );

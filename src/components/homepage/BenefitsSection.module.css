@@ -80,3 +80,12 @@
         width: clamp(0rem, 13.889vw, 5rem);
     }
 }
+
+@media only screen and (max-width: 375px) {
+    .benefitsSection {
+        padding: 0 var(--content-padding-xs);
+    }
+    .benefitsContainer {
+        padding: 1.8rem var(--content-padding-xs);
+    }
+}

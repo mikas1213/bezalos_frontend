@@ -4,7 +4,7 @@ import InformationSoon from '../components/information_soon/InformationSoon';
 import { useEffect } from 'react';
 
 const ReceptaiPage = () => {
-
+    
     useEffect(() => {
         // document.body.style.backgroundColor = '#eff1ef';
         document.title = 'Be žalos | Receptai';

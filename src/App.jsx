@@ -68,16 +68,25 @@ function App() {
                 containerStyle={{ margin: '6px' }} 
                 toastOptions={{
                     success: {
-                        duration: 1000
+                        duration: 1000,
+                        iconTheme: {
+                            primary: 'var(--color-btn-secondary)',
+                            secondary: 'var(--color-bgr-light)',
+                        }
                     },
                     error: {
-                        duration: 5000
+                        duration: 5000,
+                        iconTheme: {
+                            primary: 'var(--color-error)',
+                            secondary: 'var(--color-bgr-light)'
+                        }
                     },
                     // icon: '🥰',
-                    iconTheme: {
-                        primary: 'var(--color-btn-secondary)',
-                        secondary: 'var(--color-bgr-light)',
-                    },
+                    // iconTheme: {
+                    //     primary: 'var(--color-btn-secondary)',
+                    //     secondary: 'var(--color-bgr-light)',
+
+                    // },
                     className: `${styles.myToast}`,
                     style: {
                         // fontSize: '1rem',

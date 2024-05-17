@@ -10,8 +10,6 @@ import FooterSection from "../components/homepage/FooterSection";
 
 import { useState, useRef, useEffect } from "react";
 
-// import axios from '../apis/axios';
-
 const HomePage = () => {
 
     const ref = useRef(null);
