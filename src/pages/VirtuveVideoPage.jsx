@@ -13,6 +13,7 @@ import useAuth  from '../hooks/useAuth';
 
 const VirtuveVideoPage = () => {
     
+    
     const { auth }  = useAuth();
     let loggedUser = {};
     
@@ -48,11 +49,16 @@ const VirtuveVideoPage = () => {
     }, []);
 
     useEffect(() => {
+        // window.scrollTo(0, -100);
+        
+        if(document.getElementsByTagName('main')[0] !== undefined) {
+            document.getElementsByTagName('main')[0].scrollIntoView({behavior: 'smooth'});
+        }
         const getData = async () => {
             try {
                 const video = await axios.get(`/videos/${params.video}`);
                 
-                setVideo({...video.data.video});
+                setVideo({...video.data.video, url: video.data.url});
                 setIsLoadingVideo(false);
             } catch(err) {
                 setIsError(true);

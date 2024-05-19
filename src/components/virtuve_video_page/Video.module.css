@@ -1,6 +1,8 @@
 .video {
     margin-top: 1rem;
     border-radius: 1rem;
+    /* position: fixed; */
+    /* width: 54%; */
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
     grid-area: 1 / 1 / 5 / 2;
     animation: fadeIn 0.7s;
@@ -31,13 +33,31 @@
     line-height: 130%;
 }
 .showMore {
+    margin-top: 0.5rem;
     color: var(--color-radio-border);
     font-size: var(--font-size-dynamic-small-1-lg);
     text-decoration: underline;
     cursor: pointer;
 }
-.description {
+.descriptionContainer div {
     font-size: var(--font-size-dynamic-p-lg);
+}
+
+.description {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.2s ease-in-out;
+}
+
+.descriptionInner {
+    overflow: hidden;
+    /* mask-image: linear-gradient(to bottom, black 10%, transparent 100%); */
+}
+.descriptionInner li {
+    font-size: var(--font-size-dynamic-p-lg);
+}
+.show.description {
+    grid-template-rows: 1fr;
 }
 
 .divider {
@@ -152,7 +172,11 @@ input ~ button .icon.active path {
     flex-direction: column;
     gap: clamp(0rem, 1.563vw, 1rem);
 }
-
+@media only screen and (max-width: 768px) {
+    .showMore {
+        font-size: var(--font-size-dynamic-p-lg);
+    }
+}
 @media only screen and (max-width: 576px) {
     .video {
         margin-top: 0;
@@ -162,7 +186,7 @@ input ~ button .icon.active path {
     .title {
         font-size: var(--font-size-dynamic-h4-sm);
     }
-    .description {
+    .descriptionContainer div, .descriptionInner li {
         font-size: var(--font-size-dynamic-h6-sm);
     }
     .showMore {
@@ -213,6 +237,9 @@ input ~ button .icon.active path {
 @media only screen and (max-width: 375px) {
     .video {
         margin-right: var(--content-padding-xs);
+    }
+    .showMore {
+        font-size: var(--font-size-dynamic-h5-sm);
     }
     .commentsCount {
         font-size: var(--font-size-dynamic-h5-sm);

@@ -2,8 +2,8 @@
     padding: 0 1rem 1rem;
     /* padding-top: 0.5rem; */
     grid-row: 1 / 3;
-    height: 159dvh;
-    overflow: scroll;
+    /* height: 159dvh; */
+    /* overflow: scroll; */
     gap: 1rem;
     grid-area: 2 / 2 / 8 / -1;
 }
@@ -13,7 +13,7 @@
         height: 100dvh;
         padding-left: 0;
         padding-top: 1rem;
-        overflow: visible;
+        /* overflow: visible; */
         grid-area: 5 / 1 / 6 / 3;
     }
 }

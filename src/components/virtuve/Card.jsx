@@ -2,6 +2,7 @@ import styles from './Card.module.css';
 import { Link } from 'react-router-dom';
 import vebinarasImg from '../../assets/images/virtuve/vebinaras.webp';
 import mokymaiImg from '../../assets/images/virtuve/mokymai.webp';
+import { FaLock } from "react-icons/fa";
 
 const Card = ({ video }) => {
     
@@ -13,10 +14,13 @@ const Card = ({ video }) => {
     });
     
     return (
-        <Link to={video.video_url}  onClick={() => window.scrollTo(0, 0)}>
-            <div className={styles.VideoCard}>
+        <Link to={video.video_url}>
+            <div className={`${styles.VideoCard} ${styles.cardLock}`}>
                 <section>
                     <img src={video.category === 'Mokymai' ? mokymaiImg : vebinarasImg} alt='video cover'/>
+                    <div className={styles.iconContainer}>
+                        <FaLock className={styles.icon} />
+                    </div>
                 </section>
 
                 <div className={styles.cardProperties}>

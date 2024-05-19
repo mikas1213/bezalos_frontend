@@ -1,9 +1,10 @@
 // import { Link } from 'react-router-dom';
 import axios from '../../api/axios';
 import { FaHeart, FaRegHeart } from "react-icons/fa6";
+
 import styles from './Video.module.css';
-import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useState, useEffect} from 'react';
+import { Link, useParams } from 'react-router-dom';
 import CommentCard from "./CommentCard";
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
@@ -24,15 +25,16 @@ const Send = ({active}) => {
 
 
 const Video = ({ user_id, video }) => {
-    console.log('video', video)
+    
+    // console.log('video', video)
     // const params = useParams();
     // const [video, setVideo] = useState([]);
     // const [comments, setComments] = useState([]);
-    const [isLoading, setIsLoading] = useState(true);
+    // const [isLoading, setIsLoading] = useState(true);
     const [showMore, setShowMore] = useState(false);
-    const desc = video?.description || '';
-    const [showComments, setShowComments] = useState(false);
-    
+    const [desc1, desc2] = video?.description.split(':');
+    const desctList = desc2.trim().split('\n');
+    // const [showComments, setShowComments] = useState(false);
     // const { register, formState: { errors }, setError, watch, reset, handleSubmit } = useForm(
     //     {defaultValues: {
     //     video_id: '',
@@ -57,35 +59,12 @@ const Video = ({ user_id, video }) => {
     //     }
     // };
     
-    useState(() => {
-        
-        const getData = async () => {
-            
-            // const data = await axios.get(`/videos/${params.video}`);
-                    
-            // setVideo({ ...data.data.video, url: data.data.url });
-            
-            // setComments(() => {
-            //     if(data.data.video.video_comments.length === 1 && data.data.video.video_comments[0] === null) {
-            //         return [];
-            //     } else {
-            //         return data.data.video.video_comments;
-            //     }
-                
-            // });
-
-            // setIsLoading(false);
-        };
-
-        // getData();
-    }, []);
 
     return (
         <div className={styles.video}>
             <video 
                 onContextMenu={ event => event.preventDefault() }
                 controls={true}
-                // autoPlay
                 poster="data:image/gif,0000"
                 playsInline
                 controlsList='nodownload' 
@@ -98,8 +77,23 @@ const Video = ({ user_id, video }) => {
                 <div className={styles?.title}>
                     {video.title}
                 </div>
-
-                <div className={styles.description}>
+                <div className={styles.descriptionContainer}>
+                    <div>
+                        {desc1}:
+                    </div>
+                    
+                    <div className={`${styles.description} ${showMore ? styles.show : ''}`}>
+                        <div className={styles.descriptionInner}>
+                            {desctList.map((listItem, i) => <li key={i}>{listItem}</li>)}
+                        </div>
+                    </div>
+                    <span 
+                        className={styles.showMore} 
+                        onClick={() => setShowMore(show => !show)}>
+                        {showMore ? 'mažiau' : 'daugiau'}
+                    </span>
+                </div>
+                {/* <div className={styles.description}>
                     {desc.length <  180 ? desc : <>
                         { showMore ? desc+' ' : desc.substring(0, 180)+'... '}
                         <span 
@@ -108,7 +102,7 @@ const Video = ({ user_id, video }) => {
                             {showMore ? 'mažiau' : 'daugiau'}
                         </span>
                     </>}
-                </div>
+                </div> */}
 
                 {/* <div className={styles.divider}></div>
 
