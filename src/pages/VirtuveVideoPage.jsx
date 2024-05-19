@@ -1,4 +1,5 @@
 import axios from '../api/axios';
+import useAxiosPrivate from "../hooks/useAxiosPrivate";
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import Navbar from '../components/navbar/Navbar';
@@ -13,7 +14,8 @@ import useAuth  from '../hooks/useAuth';
 
 const VirtuveVideoPage = () => {
     
-    
+    const axiosPrivate = useAxiosPrivate();
+
     const { auth }  = useAuth();
     let loggedUser = {};
     
@@ -39,7 +41,7 @@ const VirtuveVideoPage = () => {
     useEffect(() => {
         const getData = async () => {
             try {
-                const data = await axios.get('/videos'); 
+                const data = await axiosPrivate.get('/videos'); 
                 setVideos(data.data.videos);
             } catch (err) {
                 console.log(err.message)
