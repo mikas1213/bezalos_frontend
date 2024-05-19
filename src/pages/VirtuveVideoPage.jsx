@@ -1,4 +1,4 @@
-import axios from '../api/axios';
+// import axios from '../api/axios';
 import useAxiosPrivate from "../hooks/useAxiosPrivate";
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
@@ -25,7 +25,7 @@ const VirtuveVideoPage = () => {
     const params = useParams();
     const [video, setVideo] = useState();
     const [videos, setVideos] = useState();
-    const [comments, setComments] = useState([]);
+    // const [comments, setComments] = useState([]);
     const [isLoadingVideo, setIsLoadingVideo] = useState(true);
     const [isError, setIsError] = useState(false);
     const [filter, setFilter] = useState('');
@@ -58,7 +58,7 @@ const VirtuveVideoPage = () => {
         }
         const getData = async () => {
             try {
-                const video = await axios.get(`/videos/${params.video}`);
+                const video = await axiosPrivate.get(`/videos/${params.video}`);
                 
                 setVideo({...video.data.video, url: video.data.url});
                 setIsLoadingVideo(false);

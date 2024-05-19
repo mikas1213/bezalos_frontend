@@ -5,7 +5,8 @@ import Card from './Card';
 import Spinner from '../../components/UI/Spinner';
 import NotFoundVideo from './NotFoundVideo';
 
-import axios from '../../api/axios';
+import useAxiosPrivate from "../../hooks/useAxiosPrivate";
+    
 import { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 
@@ -13,8 +14,9 @@ const Videos = () => {
     const [videos, setVideos] = useState();
     const [isLoading, setIsLoading] = useState(false);
     const [searchParams] = useSearchParams();
+    const axiosPrivate = useAxiosPrivate();
     const searchItem = searchParams.get('search');
-   
+
     let queryParams = '';
     let queryString = '/videos';
     const paramsArr = ['vebinaras', 'mokymai', 'emocinis', 'mityba', 'psichologija'];
@@ -28,7 +30,7 @@ const Videos = () => {
     useEffect(() => {
         async function getData(signal) {
             setIsLoading(true);
-            const data = await axios.get(queryString, { signal });
+            const data = await axiosPrivate.get(queryString, { signal });
             
             setVideos(data.data.videos);
             setIsLoading(false);
