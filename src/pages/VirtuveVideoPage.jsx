@@ -25,7 +25,7 @@ const VirtuveVideoPage = () => {
     const params = useParams();
     const [video, setVideo] = useState();
     const [videos, setVideos] = useState();
-    // const [comments, setComments] = useState([]);
+    const [comments, setComments] = useState(video?.data?.video.video_comments);
     const [isLoadingVideo, setIsLoadingVideo] = useState(true);
     const [isError, setIsError] = useState(false);
     const [filter, setFilter] = useState('');
@@ -33,10 +33,14 @@ const VirtuveVideoPage = () => {
     const handleFilter = (fil) => {
         setFilter(fil)
     }
-    // const onHandleVideo = (videoo) => {
-    //     console.log('cia: ', videoo)
-    //     setVideo({...videoo});
-    // };
+    const onAddVideoComment = (comment) => {
+        setComments(com => [comment, ...com]);
+    };
+    const onDeleteVideoComment = async (id) => {
+        await axiosPrivate.delete(`/videos/comment/${id}`); 
+        setComments(prevPrev => prevPrev.filter(v => v.id !== id));
+        console.log('comment id: ', id)
+    };
     
     useEffect(() => {
         const getData = async () => {
@@ -57,7 +61,11 @@ const VirtuveVideoPage = () => {
         const getData = async () => {
             try {
                 const video = await axiosPrivate.get(`/videos/${params.video}`);
+                
                 setVideo({...video.data.video, url: video.data.url});
+                setComments(() => {
+                    return video.data.video.video_comments[0] !== null ? video.data.video.video_comments : []
+                });
                 setIsLoadingVideo(false);
             } catch(err) {
                 if(err.response.status === 402) navigate('/prenumeruoti');
@@ -67,7 +75,7 @@ const VirtuveVideoPage = () => {
         };
         
         getData();
-    }, [params.video]);
+    }, [params.video, axiosPrivate, navigate]);
     
     return (
         <>
@@ -80,6 +88,9 @@ const VirtuveVideoPage = () => {
                             video={video} 
                             user_id={user_id} 
                             user_name={user_name}
+                            comments={comments}
+                            onAddVideoComment={onAddVideoComment}
+                            onDeleteVideoComment={onDeleteVideoComment}
                         />}
                         {!isError && <List videos={videos} filter={filter} />}
                 </Container> : <NotFoundVideo />}

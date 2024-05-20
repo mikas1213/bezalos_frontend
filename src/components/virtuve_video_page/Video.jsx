@@ -1,10 +1,12 @@
-// import { Link } from 'react-router-dom';
-import axios from '../../api/axios';
-import { FaHeart, FaRegHeart } from "react-icons/fa6";
+import useAxiosPrivate from '../../hooks/useAxiosPrivate';
+import { 
+    // FaHeart, 
+    FaRegHeart 
+} from "react-icons/fa6";
 
 import styles from './Video.module.css';
-import { useState, useEffect} from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { useState} from 'react';
+
 import CommentCard from "./CommentCard";
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
@@ -23,32 +25,32 @@ const Send = ({active}) => {
     );
 };
 
+const Video = ({ user_id, user_name, video, comments, onAddVideoComment, onDeleteVideoComment }) => {
 
-const Video = ({ user_id, user_name, video }) => {
-    
-    // console.log('video', video)
-    // const params = useParams();
-    // const [video, setVideo] = useState([]);
-    // const [comments, setComments] = useState([]);
-    // const [isLoading, setIsLoading] = useState(true);
+    const axiosPrivate = useAxiosPrivate();
     const [showMore, setShowMore] = useState(false);
     const [desc1, desc2] = video.description.split(':');
     const desctList = desc2.trim().split('\n');
 
     const [showComments, setShowComments] = useState(false);
-    const { register, formState: { errors }, setError, watch, reset, handleSubmit } = useForm(
-    //     {defaultValues: {
-    //     video_id: '',
-    //     user_id: ''
-    //   }}
+    const { register, 
+        // formState: { errors }, 
+        // setError, 
+        watch, reset, handleSubmit } = useForm(
+        {defaultValues: {
+        video_id: video.id,
+        user_id,
+        user_name
+      }}
     );
     
     const submit = async ({comment, video_id, user_id, user_name}) => {
         
         if(!watch('comment')) return;
+        onAddVideoComment({video_id, user_id, user_name, comment: comment?.trim()});
         
         try{
-            await axios.post('/videos/add_comment', {
+            await axiosPrivate.post('/videos/comment', {
                 video_id, 
                 user_id,
                 user_name,
@@ -98,12 +100,12 @@ const Video = ({ user_id, user_name, video }) => {
                 </div>
 
 
-                {/* <div className={styles.divider}></div>
+                <div className={styles.divider}></div>
 
                 <div className={styles.commentsLikesHeader}>
                     <div className={styles.commentsCount} onClick={() => setShowComments(show => !show)}>
                         <span>Komentarai</span>&nbsp;
-                        <span>({video?.video_comments[0] !== null ? video?.video_comments.length : '0'})</span>
+                        <span>({comments[0] !== null ? comments.length : '0'})</span>
                     </div>
 
                     <div className={styles.like}>
@@ -112,11 +114,11 @@ const Video = ({ user_id, user_name, video }) => {
                 </div>
 
                 <div className={styles.writeComment}>
-                    <div className={styles.avatar}>M</div>
+                    <div className={styles.avatar}>{user_name.toUpperCase().substring(0, 1)}</div>
                     <form className={styles.writeCommentForm} onSubmit={handleSubmit(submit)}>
-                        <input type='hidden' {...register('video_id')} value={video.id}/>
-                        <input type='hidden' {...register('user_id')} value={user_id}/>
-                        <input type='hidden' {...register('user_name')} value={user_name}/>
+                        {/* <input type='hidden' {...register('video_id')} value={video.id}/> */}
+                        {/* <input type='hidden' {...register('user_id')} value={user_id}/> */}
+                        {/* <input type='hidden' {...register('user_name')} value={user_name}/> */}
                         <input 
                             type='text'
                             autoComplete='off'
@@ -130,9 +132,10 @@ const Video = ({ user_id, user_name, video }) => {
                             <Send active={watch('comment') ? styles.active : ''}/>
                         </button>
                     </form>
-                </div> */}
-
-                <div className={`${styles.commentsContainer} ${(showComments && video.video_comments[0] !== null) ? styles.show : ''}`}>
+                </div>
+                
+                {/* VARIANT ONE */}
+                {/* <div className={`${styles.commentsContainer} ${(showComments && video.video_comments[0] !== null) ? styles.show : ''}`}>
                     <div className={styles.comments}>
                         {video.video_comments[0] !== null && video.video_comments.map(v => 
                             <CommentCard 
@@ -140,6 +143,22 @@ const Video = ({ user_id, user_name, video }) => {
                                 name={v.user_name} 
                                 comment={v.comment}
                                 isBin={user_id === v.user_id}
+                            />
+                        )}
+                    </div>
+                </div> */}
+
+
+                {/* VARIANT TWO */}
+                <div className={`${styles.commentsContainer} ${(showComments && comments[0] !== null) ? styles.show : ''}`}>
+                    <div className={styles.comments}>
+                        {comments[0] !== null && comments.map(v => 
+                            <CommentCard 
+                                key={v.id || Math.random()} 
+                                name={v.user_name} 
+                                comment={v}
+                                isBin={user_id === v.user_id}
+                                onDeleteVideoComment={onDeleteVideoComment}
                             />
                         )}
                     </div>

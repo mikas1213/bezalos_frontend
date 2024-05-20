@@ -21,22 +21,20 @@ const Bin = () => {
     );
 }
 
-const CommentCard = ({ name, comment, isBin }) => {
+const CommentCard = ({ name, comment, isBin, onDeleteVideoComment }) => {
     
     return (
         <div className={styles.commentCard}>
             <div className={styles.userAvatar}>
-                { name?.substring(0, 1)}
+                { name?.toUpperCase().substring(0, 1)}
             </div>
             <div className={styles.comment}>
-                { comment }
+                { comment.comment }
             </div>
 
             {isBin && 
-                <div className={styles.recycleBin}>
-                    <span >
-                        <Bin />
-                    </span>
+                <div className={styles.recycleBin} onClick={() => onDeleteVideoComment(comment.id)}>
+                    <span><Bin /></span>
                 </div>
             }
         </div>
