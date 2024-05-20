@@ -1,11 +1,13 @@
 import styles from './Card.module.css';
 import { Link } from 'react-router-dom';
+
 import vebinarasImg from '../../assets/images/virtuve/vebinaras.webp';
 import mokymaiImg from '../../assets/images/virtuve/mokymai.webp';
 import { FaLock } from "react-icons/fa";
 
-const Card = ({ video }) => {
-    
+
+const Card = ({ video, user_id, user_subscription }) => {
+
     const created_video = new Date(Date.parse(video.created_at)).toLocaleString('lt-LT', {
         day: 'numeric', 
         weekday: 'short', 
@@ -15,7 +17,7 @@ const Card = ({ video }) => {
     
     return (
         <Link to={video.video_url}>
-            <div className={`${styles.VideoCard} ${styles.cardLock}`}>
+            <div className={`${styles.VideoCard} ${(user_id && user_subscription) ? '' : styles.cardLock}`}>
                 <section>
                     <img src={video.category === 'Mokymai' ? mokymaiImg : vebinarasImg} alt='video cover'/>
                     <div className={styles.iconContainer}>

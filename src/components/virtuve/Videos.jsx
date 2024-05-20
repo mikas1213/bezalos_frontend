@@ -10,7 +10,7 @@ import useAxiosPrivate from "../../hooks/useAxiosPrivate";
 import { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 
-const Videos = () => {
+const Videos = ({user_id, user_subscription}) => {
     const [videos, setVideos] = useState();
     const [isLoading, setIsLoading] = useState(false);
     const [searchParams] = useSearchParams();
@@ -49,7 +49,7 @@ const Videos = () => {
                 {isLoading ? <Spinner /> : videos?.length === 0
                     ? <NotFoundVideo />
                     : <div className={styles.videos}>
-                        {videos?.map(video => <Card key={video.id} video={video} />)}
+                        {videos?.map(video => <Card key={video.id} video={video} user_id={user_id} user_subscription={user_subscription} />)}
                     </div>
                 }
         </Container>

@@ -4,19 +4,37 @@
     height: 100vh;
     justify-content: center;
     align-items: center;
-    /* gap: 3rem; */
-    flex: 0;
 }
 
 .numbers {
     display: flex;
-    gap: 5rem;
+    align-items: center;
+    gap: clamp(0rem, 2.344vw, 1.5rem);
 }
 
 .numbers div {
     display: flex;
     flex-direction: column;
-    font-size: 30rem;
-    color: var(--color-bgr-card);
+    /* font-size: 10rem; */
+    color: var(--color-text-dark);
     flex-grow: 0;
+}
+
+.numbers div:nth-child(1) {
+    font-size: var(--font-size-dynamic-h4-lg);
+    border-right: 1px solid var(--color-text-dark);
+    padding-right: clamp(0rem, 2.344vw, 1.5rem);
+}
+.numbers div:nth-child(2) {
+    align-items: center;
+    font-size: var(--font-size-dynamic-h6-lg);
+}
+
+@media only screen and (max-width: 576px) {
+    .numbers div:nth-child(1) {
+        font-size: var(--font-size-dynamic-h3-sm);
+    }
+    .numbers div:nth-child(2) {
+        font-size: var(--font-size-dynamic-h5-sm);
+    }
 }

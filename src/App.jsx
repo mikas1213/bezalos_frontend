@@ -1,3 +1,4 @@
+import { lazy, Suspense } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
@@ -5,15 +6,19 @@ import { AuthProvider } from "./context/AuthProvider";
 import { Toaster } from 'react-hot-toast';
 import styles from './App.module.css';
 import LoginPage from './pages/LoginPage';
+import Spinner from './components/UI/Spinner';
 
-import HomePage from './pages/HomePage';
-import VirtuvePage from './pages/VirtuvePage';
+// import HomePage from './pages/HomePage';
+const HomePage = lazy(() => import('./pages/HomePage'));
+// import VirtuvePage from './pages/VirtuvePage';
+const VirtuvePage = lazy(() => import('./pages/VirtuvePage'));
 import VirtuveVideoPage from './pages/VirtuveVideoPage';
 import ReceptaiPage from './pages/ReceptaiPage';
 import PaslaugosPage from './pages/PaslaugosPage';
 import ProfilisPage from './pages/ProfilisPage';
 import UpdatePasswordPage from './pages/UpdatePasswordPage';
 import NotFoundPage from './pages/NotFoundPages/NotFoundPage';
+import NeedSubscription from './pages/NotFoundPages/NeedSubscription';
 
 import RequireAuth from './pages/RequireAuth';
 import PersistLogin from './pages/PersistLogin';
@@ -33,6 +38,7 @@ function App() {
             <ReactQueryDevtools initialIsOpen={false}/>
             <BrowserRouter>
                 <AuthProvider>
+                    <Suspense fallback={<Spinner />}>
                     <Routes>
                         <Route element={<PersistLogin /> }>
                             <Route path='/' element={<HomePage />} />
@@ -43,9 +49,9 @@ function App() {
                         
                             <Route path='/prisijungti' element={<LoginPage />} />
                             <Route path='/keisti-slaptazodi/:token' element={<UpdatePasswordPage /> } />
+                            <Route path='/prenumeruoti' element={<NeedSubscription />} />
                             <Route path='*' element={<NotFoundPage />} />
 
-                            {/* <Route element={<PersistLogin /> }> */}
                             <Route element={<RequireAuth /> }>
                                 <Route path='/profilis' element={<ProfilisPage /> }>
                                         
@@ -53,13 +59,9 @@ function App() {
                                 <Route path='/virtuve/:video' element={<VirtuveVideoPage />} />
                             </Route>
                         </Route>
-                        {/* <Route path='*' element={<NotFound />} /> */}
-                        {/* <Route path='/profilis' element={<Profilis />}>
-
-                        </Route> */}
                         
                     </Routes>
-   
+                    </Suspense>
                 </AuthProvider>
             </BrowserRouter>
             <Toaster 
@@ -68,7 +70,7 @@ function App() {
                 containerStyle={{ margin: '6px' }} 
                 toastOptions={{
                     success: {
-                        duration: 1000,
+                        duration: 1500,
                         iconTheme: {
                             primary: 'var(--color-btn-secondary)',
                             secondary: 'var(--color-bgr-light)',
