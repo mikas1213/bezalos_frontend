@@ -1,4 +1,4 @@
-// import { lazy, Suspense } from 'react';
+import { lazy, Suspense } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
@@ -6,25 +6,30 @@ import { AuthProvider } from "./context/AuthProvider";
 import { Toaster } from 'react-hot-toast';
 import styles from './App.module.css';
 import LoginPage from './pages/LoginPage';
-// import Spinner from './components/UI/Spinner';
+import Spinner from './components/UI/Spinner';
 
-import HomePage from './pages/HomePage';
-import VirtuvePage from './pages/VirtuvePage';
-import VirtuveVideoPage from './pages/VirtuveVideoPage';
-import ReceptaiPage from './pages/ReceptaiPage';
-import PaslaugosPage from './pages/PaslaugosPage';
-import ProfilisPage from './pages/ProfilisPage';
-import UpdatePasswordPage from './pages/UpdatePasswordPage';
-import NotFoundPage from './pages/NotFoundPages/NotFoundPage';
-import NeedSubscription from './pages/NotFoundPages/NeedSubscription';
+// import HomePage from './pages/HomePage';
+// import VirtuvePage from './pages/VirtuvePage';
+// import VirtuveVideoPage from './pages/VirtuveVideoPage';
+// import ReceptaiPage from './pages/ReceptaiPage';
+// import PaslaugosPage from './pages/PaslaugosPage';
+// import ProfilisPage from './pages/ProfilisPage';
+// import UpdatePasswordPage from './pages/UpdatePasswordPage';
+// import NotFoundPage from './pages/NotFoundPages/NotFoundPage';
+// import NeedSubscription from './pages/NotFoundPages/NeedSubscription';
 
 import RequireAuth from './pages/RequireAuth';
 import PersistLogin from './pages/PersistLogin';
 
-
-// const VirtuvePage = lazy(() => import('./pages/VirtuvePage'));
-// const HomePage = lazy(() => import('./pages/HomePage'));
-// const VirtuveVideoPage = lazy(() => import('./pages/VirtuveVideoPage'));
+const VirtuvePage = lazy(() => import('./pages/VirtuvePage'));
+const HomePage = lazy(() => import('./pages/HomePage'));
+const VirtuveVideoPage = lazy(() => import('./pages/VirtuveVideoPage'));
+const ReceptaiPage = lazy(() => import('./pages/ReceptaiPage'));
+const PaslaugosPage = lazy(() => import('./pages/PaslaugosPage'));
+const ProfilisPage = lazy(() => import('./pages/ProfilisPage'));
+const UpdatePasswordPage = lazy(() => import('./pages/UpdatePasswordPage'));
+const NotFoundPage = lazy(() => import('./pages/NotFoundPages/NotFoundPage'));
+const NeedSubscription = lazy(() => import('./pages/NotFoundPages/NeedSubscription'));
 
 const queryClient = new QueryClient({
     defaultOptions: {
@@ -41,7 +46,7 @@ function App() {
             <ReactQueryDevtools initialIsOpen={false}/>
             <BrowserRouter>
                 <AuthProvider>
-                    {/* <Suspense fallback={<Spinner />}> */}
+                    <Suspense fallback={<Spinner />}>
                     <Routes>
                         <Route element={<PersistLogin /> }>
                             <Route path='/' element={<HomePage />} />
@@ -64,7 +69,7 @@ function App() {
                         </Route>
                         
                     </Routes>
-                    {/* </Suspense> */}
+                    </Suspense>
                 </AuthProvider>
             </BrowserRouter>
             <Toaster 

@@ -20,7 +20,7 @@ const VirtuveVideoPage = () => {
     
     if(auth.accessToken) loggedUser = jwtDecode(auth?.accessToken);
     
-    const { user_id = ''} = loggedUser;
+    const { user_id = '', user_name = ''} = loggedUser;
     
     const params = useParams();
     const [video, setVideo] = useState();
@@ -42,7 +42,7 @@ const VirtuveVideoPage = () => {
         const getData = async () => {
             try {
                 const data = await axiosPrivate.get('/videos'); 
-                if(!isError) setVideos(data.data.videos);
+                setVideos(data.data.videos);
             } catch (err) {
                 console.log(err.message)
             }
@@ -60,7 +60,7 @@ const VirtuveVideoPage = () => {
                 setVideo({...video.data.video, url: video.data.url});
                 setIsLoadingVideo(false);
             } catch(err) {
-                navigate('/prenumeruoti');
+                if(err.response.status === 402) navigate('/prenumeruoti');
                 setIsError(true);
                 setVideos(err.response.data.videos);
             }
@@ -75,7 +75,12 @@ const VirtuveVideoPage = () => {
             <Main>
                 {!isError ? <Container>
                         {!isError && <Filters handleClick={handleFilter} filter={filter}/>}
-                        {!isLoadingVideo && <Video user_id={user_id} video={video} />}
+                        {!isLoadingVideo && !isError && <Video 
+                            key={video.url} 
+                            video={video} 
+                            user_id={user_id} 
+                            user_name={user_name}
+                        />}
                         {!isError && <List videos={videos} filter={filter} />}
                 </Container> : <NotFoundVideo />}
             </Main>

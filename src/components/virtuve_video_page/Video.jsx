@@ -24,7 +24,7 @@ const Send = ({active}) => {
 };
 
 
-const Video = ({ user_id, video }) => {
+const Video = ({ user_id, user_name, video }) => {
     
     // console.log('video', video)
     // const params = useParams();
@@ -32,32 +32,35 @@ const Video = ({ user_id, video }) => {
     // const [comments, setComments] = useState([]);
     // const [isLoading, setIsLoading] = useState(true);
     const [showMore, setShowMore] = useState(false);
-    const [desc1, desc2] = video?.description.split(':');
+    const [desc1, desc2] = video.description.split(':');
     const desctList = desc2.trim().split('\n');
-    // const [showComments, setShowComments] = useState(false);
-    // const { register, formState: { errors }, setError, watch, reset, handleSubmit } = useForm(
+
+    const [showComments, setShowComments] = useState(false);
+    const { register, formState: { errors }, setError, watch, reset, handleSubmit } = useForm(
     //     {defaultValues: {
     //     video_id: '',
     //     user_id: ''
     //   }}
-    // );
+    );
     
-    // const submit = async ({comment, video_id, user_id}) => {
-    //     if(!watch('comment')) return;
+    const submit = async ({comment, video_id, user_id, user_name}) => {
         
-    //     try{
-    //         await axios.post('/videos/add_comment', {
-    //             video_id, 
-    //             user_id,
-    //             comment: comment?.trim()
-    //         });
+        if(!watch('comment')) return;
+        
+        try{
+            await axios.post('/videos/add_comment', {
+                video_id, 
+                user_id,
+                user_name,
+                comment: comment?.trim()
+            });
             
-    //         setShowComments(true);
-    //         reset();
-    //     } catch(err) {
-    //         toast.error('Kažkas negerai');
-    //     }
-    // };
+            setShowComments(true);
+            reset();
+        } catch(err) {
+            toast.error('Kažkas negerai');
+        }
+    };
     
 
     return (
@@ -93,16 +96,7 @@ const Video = ({ user_id, video }) => {
                         {showMore ? 'mažiau' : 'daugiau'}
                     </span>
                 </div>
-                {/* <div className={styles.description}>
-                    {desc.length <  180 ? desc : <>
-                        { showMore ? desc+' ' : desc.substring(0, 180)+'... '}
-                        <span 
-                            className={styles.showMore} 
-                            onClick={() => setShowMore(show => !show)}>
-                            {showMore ? 'mažiau' : 'daugiau'}
-                        </span>
-                    </>}
-                </div> */}
+
 
                 {/* <div className={styles.divider}></div>
 
@@ -115,13 +109,14 @@ const Video = ({ user_id, video }) => {
                     <div className={styles.like}>
                         <FaRegHeart /> <span>10</span>
                     </div>
-                </div> */}
+                </div>
 
-                {/* <div className={styles.writeComment}>
+                <div className={styles.writeComment}>
                     <div className={styles.avatar}>M</div>
                     <form className={styles.writeCommentForm} onSubmit={handleSubmit(submit)}>
                         <input type='hidden' {...register('video_id')} value={video.id}/>
                         <input type='hidden' {...register('user_id')} value={user_id}/>
+                        <input type='hidden' {...register('user_name')} value={user_name}/>
                         <input 
                             type='text'
                             autoComplete='off'
@@ -137,7 +132,7 @@ const Video = ({ user_id, video }) => {
                     </form>
                 </div> */}
 
-                {/* <div className={`${styles.commentsContainer} ${(showComments && video.video_comments[0] !== null) ? styles.show : ''}`}>
+                <div className={`${styles.commentsContainer} ${(showComments && video.video_comments[0] !== null) ? styles.show : ''}`}>
                     <div className={styles.comments}>
                         {video.video_comments[0] !== null && video.video_comments.map(v => 
                             <CommentCard 
@@ -148,7 +143,7 @@ const Video = ({ user_id, video }) => {
                             />
                         )}
                     </div>
-                </div> */}
+                </div>
             </div>
         </div>
     );
