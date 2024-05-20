@@ -14,8 +14,6 @@
     display: flex;
     display: -webkit-flex;
     text-wrap: nowrap;
-    overflow-wrap: break-word;
-    word-break: break-word;
     align-items: center;
     padding: 0.4rem 1rem;
     font-size: var(--font-size-small-1);

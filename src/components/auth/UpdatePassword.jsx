@@ -13,6 +13,7 @@ import FlexContainer from '../UI/FlexContainer';
 import FormInput from '../UI/FormInput';
 
 const UpdatePassword = () => {
+    
     const { token } = useParams();
     const navigate = useNavigate();
     const type_password = 'password';
@@ -30,6 +31,7 @@ const UpdatePassword = () => {
 
     const { mutate, isPending } = useMutation({
         mutationFn: async (inputsData) => {
+            // console.log(inputsData)
             await axios.patch(`auth/reset-password/${token}`, inputsData, {
                 headers: { "Content-Type": "application/json" },
                 withCredentials: true,
