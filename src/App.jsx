@@ -9,10 +9,8 @@ import LoginPage from './pages/LoginPage';
 import Spinner from './components/UI/Spinner';
 
 // import HomePage from './pages/HomePage';
-const HomePage = lazy(() => import('./pages/HomePage'));
 // import VirtuvePage from './pages/VirtuvePage';
-const VirtuvePage = lazy(() => import('./pages/VirtuvePage'));
-import VirtuveVideoPage from './pages/VirtuveVideoPage';
+// import VirtuveVideoPage from './pages/VirtuveVideoPage';
 import ReceptaiPage from './pages/ReceptaiPage';
 import PaslaugosPage from './pages/PaslaugosPage';
 import ProfilisPage from './pages/ProfilisPage';
@@ -22,6 +20,11 @@ import NeedSubscription from './pages/NotFoundPages/NeedSubscription';
 
 import RequireAuth from './pages/RequireAuth';
 import PersistLogin from './pages/PersistLogin';
+
+
+const VirtuvePage = lazy(() => import('./pages/VirtuvePage'));
+const HomePage = lazy(() => import('./pages/HomePage'));
+const VirtuveVideoPage = lazy(() => import('./pages/VirtuveVideoPage'));
 
 const queryClient = new QueryClient({
     defaultOptions: {
