@@ -78,7 +78,10 @@ const VirtuveVideoPage = () => {
         const getData = async () => {
             try {
                 const video = await axiosPrivate.get(`/videos/${params.video}`);
-                setVideo({...video.data.video, url: video.data.url, is_liked: video.data.is_liked, likes_count: video.data.likes_count});
+                setVideo({...video.data.video, url: video.data.url, 
+                    // is_liked: video.data.is_liked, 
+                    // likes_count: video.data.likes_count
+                });
                 setIsLike(video.data.is_liked);
                 setLikesCount(video.data.likes_count);
                 setComments(() => {

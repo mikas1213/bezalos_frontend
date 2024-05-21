@@ -13,17 +13,26 @@
     100% { opacity: 1; }
 }
   
-
-.userAvatar {
+.userAvatar, .authorAvatar {
     width: clamp(0rem, 3.906vw, 2.5rem);
     height: clamp(0rem, 3.906vw, 2.5rem);
     flex-shrink: 0;
     display: grid;
     place-items: center;
     border-radius: 10rem;
+}
+.userAvatar {
+    color: var(--color-text-dark);
     background-color: #a0d98c;
     font-size: var(--font-size-dynamic-h6-lg);
     font-weight: 300;
+}
+
+.authorAvatar {
+    color: var(--color-text-light);
+    background-color: var(--color-text-dark);
+    font-size: var(--font-size-dynamic-p-lg);
+    font-weight: 400;
 }
 
 .comment {
@@ -31,7 +40,6 @@
     border-radius: 1rem;
     padding: 0.5rem 0.6rem;
     font-size: var(--font-size-dynamic-small-1-lg);
-    /* flex: 0 2 2; */
 }
 
 .recycleBin {
@@ -72,13 +80,14 @@ span:hover .icon path {
     .commentCard {
         gap: clamp(0rem, 3.333vw, 1.2rem);
     }
-    .userAvatar {
+    .userAvatar, .authorAvatar {
         width: clamp(1rem, 9.722vw, 3.5rem);
         height: clamp(1rem, 9.722vw, 3.5rem);
         font-weight: 400;
         font-size: var(--font-size-dynamic-h5-sm);
     }
-    .comment {
+    
+    .comment { 
         padding: 0.6rem 0.8rem;
         font-size: var(--font-size-dynamic-h6-sm);
     }
@@ -90,11 +99,12 @@ span:hover .icon path {
 } 
 
 @media only screen and (max-width: 375px) {
-    .userAvatar {
+    .userAvatar, .authorAvatar {
         width: clamp(0rem, 11.111vw, 4rem);
         height: clamp(0rem, 11.111vw, 4rem);
-        font-size: var(--font-size-dynamic-h4-sm);
     }
+    .userAvatar { font-size: var(--font-size-dynamic-h4-sm); }
+    .authorAvatar { font-size: var(--font-size-dynamic-h5-sm); }
     .comment {
         font-size: var(--font-size-dynamic-h5-sm);
     }

@@ -31,9 +31,17 @@ const CommentCard = ({ name, comment, isBin, onDeleteVideoComment }) => {
     
     return (
         <div className={styles.commentCard} ref={delCom}>
-            <div className={styles.userAvatar}>
-                { name?.toUpperCase().substring(0, 1)}
-            </div>
+            {/* <div className={styles.userAvatar : styles.authorAvatar}`}>
+                { name?.toUpperCase().substring(0, 1) }
+            </div> */}
+            {name !== "jat.sandra@gmail.com" ? 
+                <div className={styles.userAvatar}>
+                    { name?.toUpperCase().substring(0, 1) }
+                </div>
+                :
+                <div className={styles.authorAvatar}>BŽ</div>
+            }
+
             <div className={styles.comment}>
                 { comment.comment }
             </div>
