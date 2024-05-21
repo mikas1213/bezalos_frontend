@@ -76,6 +76,8 @@
 
 .like {
     padding: clamp(0rem, 0.625vw, 0.4rem) clamp(0rem, 1.563vw, 1rem);
+    min-width: 4.8rem;
+    justify-content: space-between;
     border-radius: 10rem;
     background-color: #a7aba666;
     display: flex;
