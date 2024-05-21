@@ -10,6 +10,7 @@ import List from '../components/virtuve_video_page/List';
 import NotFoundVideo from '../components/virtuve/NotFoundVideo';
 import { jwtDecode } from "jwt-decode";
 import useAuth  from '../hooks/useAuth';
+import toast from 'react-hot-toast';
 
 const VirtuveVideoPage = () => {
     const navigate = useNavigate();
@@ -21,11 +22,12 @@ const VirtuveVideoPage = () => {
     if(auth.accessToken) loggedUser = jwtDecode(auth?.accessToken);
     
     const { user_id = '', user_name = ''} = loggedUser;
-    
     const params = useParams();
     const [video, setVideo] = useState();
     const [videos, setVideos] = useState();
     const [comments, setComments] = useState(video?.data?.video.video_comments);
+    const [isLike, setIsLike] = useState();
+    const [likesCount, setLikesCount] = useState();
     const [isLoadingVideo, setIsLoadingVideo] = useState(true);
     const [isError, setIsError] = useState(false);
     const [filter, setFilter] = useState('');
@@ -36,12 +38,25 @@ const VirtuveVideoPage = () => {
     const onAddVideoComment = (comment) => {
         setComments(com => [comment, ...com]);
     };
-    const onDeleteVideoComment = async (id) => {
-        await axiosPrivate.delete(`/videos/comment/${id}`); 
-        setTimeout(() => {
-            setComments(prevPrev => prevPrev.filter(v => v.id !== id));
-        }, 400);
-        
+    const onDeleteVideoComment = async (id, user_id) => {
+        try {
+            await axiosPrivate.delete(`/videos/comment/${id}/${user_id}`); 
+            setTimeout(() => {
+                setComments(prevPrev => prevPrev.filter(v => v.id !== id));
+            }, 400);
+        } catch (err) {
+            toast.error('Kažkas negerai');
+        }
+    };
+
+    const onToggleLikes = async (video_id, user_id) => {
+        try {
+            const like = await axiosPrivate.post(`/videos/like/${video_id}/${user_id}`); 
+            setIsLike(like.data.isLiked);
+            setLikesCount(like.data.likesCount);
+        } catch (err) {
+            toast.error('Kažkas negerai');
+        }
     };
     
     useEffect(() => {
@@ -63,11 +78,13 @@ const VirtuveVideoPage = () => {
         const getData = async () => {
             try {
                 const video = await axiosPrivate.get(`/videos/${params.video}`);
-                
-                setVideo({...video.data.video, url: video.data.url});
+                setVideo({...video.data.video, url: video.data.url, is_liked: video.data.is_liked, likes_count: video.data.likes_count});
+                setIsLike(video.data.is_liked);
+                setLikesCount(video.data.likes_count);
                 setComments(() => {
                     return video.data.video.video_comments[0] !== null ? video.data.video.video_comments : []
                 });
+                
                 setIsLoadingVideo(false);
             } catch(err) {
                 if(err.response.status === 402) navigate('/prenumeruoti');
@@ -91,6 +108,9 @@ const VirtuveVideoPage = () => {
                             user_id={user_id} 
                             user_name={user_name}
                             comments={comments}
+                            isLike={isLike}
+                            likesCount={likesCount}
+                            onToggleLikes={onToggleLikes}
                             onAddVideoComment={onAddVideoComment}
                             onDeleteVideoComment={onDeleteVideoComment}
                         />}

@@ -1,7 +1,7 @@
 import useAxiosPrivate from '../../hooks/useAxiosPrivate';
-// import { useEffect } from 'react'; 
+import { useEffect } from 'react'; 
 import { 
-    // FaHeart, 
+    FaHeart, 
     FaRegHeart 
 } from "react-icons/fa6";
 
@@ -27,8 +27,8 @@ const Send = ({active}) => {
     );
 };
 
-const Video = ({ user_id, user_name, video, comments, onAddVideoComment, onDeleteVideoComment }) => {
-    
+const Video = ({ user_id, user_name, video, comments, onToggleLikes, onAddVideoComment, onDeleteVideoComment, isLike, likesCount }) => {
+
     const axiosPrivate = useAxiosPrivate();
     const [showMore, setShowMore] = useState(false);
     const [desc1, desc2] = video.description.split(':');
@@ -45,21 +45,13 @@ const Video = ({ user_id, user_name, video, comments, onAddVideoComment, onDelet
         user_name
       }}
     );
-
-    // useEffect(() => {
-    //     if(!comments.length) {
-    //         setShowComments(false);
-    //     }
-    // }, []);
     
     const submit = async ({comment, video_id, user_id, user_name}) => {
-        
         if(!watch('comment')) return;
         const new_comment = {
             id: uuidv4(), video_id, user_id, user_name, comment: comment?.trim()
         };
         onAddVideoComment(new_comment);
-
         
         try{
             await axiosPrivate.post('/videos/comment', new_comment);
@@ -85,9 +77,7 @@ const Video = ({ user_id, user_name, video, comments, onAddVideoComment, onDelet
             </video>
             
             <div className={styles.cardBottom}>
-                <div className={styles?.title}>
-                    {video.title}
-                </div>
+                <div className={styles?.title}>{video.title}</div>
                 <div className={styles.descriptionContainer}>
                     <div>
                         {desc1}:
@@ -116,9 +106,11 @@ const Video = ({ user_id, user_name, video, comments, onAddVideoComment, onDelet
                         <span>{comments.length}</span>
                     </div>
 
-                    <div className={styles.like}>
-                        <FaRegHeart /> <span>10</span>
+                    <div className={styles.like} onClick={() => onToggleLikes(video.id, user_id)}>
+                        {isLike ? <FaHeart /> : <FaRegHeart />}
+                        <span>{likesCount}</span>
                     </div>
+   
                 </div>
 
                 <div className={styles.writeComment}>
@@ -135,23 +127,7 @@ const Video = ({ user_id, user_name, video, comments, onAddVideoComment, onDelet
                         </button>
                     </form>
                 </div>
-                
-                {/* VARIANT ONE */}
-                {/* <div className={`${styles.commentsContainer} ${(showComments && video.video_comments[0] !== null) ? styles.show : ''}`}>
-                    <div className={styles.comments}>
-                        {video.video_comments[0] !== null && video.video_comments.map(v => 
-                            <CommentCard 
-                                key={v.id} 
-                                name={v.user_name} 
-                                comment={v.comment}
-                                isBin={user_id === v.user_id}
-                            />
-                        )}
-                    </div>
-                </div> */}
 
-
-                {/* VARIANT TWO */}
                 <div className={`${styles.commentsContainer} ${(showComments && comments.length) ? styles.show : ''}`}>
                     <div className={styles.comments}>
                         {comments[0] !== null && comments.map(v => 

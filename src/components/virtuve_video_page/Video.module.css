@@ -1,8 +1,6 @@
 .video {
     margin-top: 1rem;
     border-radius: 1rem;
-    /* position: fixed; */
-    /* width: 54%; */
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
     grid-area: 1 / 1 / 5 / 2;
     animation: fadeIn 0.7s;
@@ -51,7 +49,6 @@
 
 .descriptionInner {
     overflow: hidden;
-    /* mask-image: linear-gradient(to bottom, black 10%, transparent 100%); */
 }
 .descriptionInner li {
     font-size: var(--font-size-dynamic-p-lg);

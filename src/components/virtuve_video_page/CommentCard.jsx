@@ -25,9 +25,8 @@ const Bin = () => {
 const CommentCard = ({ name, comment, isBin, onDeleteVideoComment }) => {
     const delCom = useRef(null);
     const handleDeleteVideo = () => {
-        console.log(delCom.current)
-        delCom.current.classList.add(styles.deleted)
-        onDeleteVideoComment(comment.id);
+        delCom.current.classList.add(styles.deleted);
+        onDeleteVideoComment(comment.id, comment.user_id);
     }
     
     return (

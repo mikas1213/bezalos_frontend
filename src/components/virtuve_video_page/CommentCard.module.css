@@ -21,10 +21,11 @@
     display: grid;
     place-items: center;
     border-radius: 10rem;
-    background-color: lightpink;
+    background-color: #a0d98c;
     font-size: var(--font-size-dynamic-h6-lg);
     font-weight: 300;
 }
+
 .comment {
     background-color: #a7aba633;
     border-radius: 1rem;
