@@ -24,7 +24,7 @@
     display: flex;
     flex-direction: column;
     gap: clamp(0rem, 1.563vw, 1rem);
-    padding: clamp(0rem, 1.563vw, 1rem) clamp(0rem, 1.563vw, 1rem);
+    padding: clamp(0rem, 1.563vw, 1rem) clamp(0rem, 1.563vw, 1rem) 0;
 }
 
 .title {
@@ -196,7 +196,7 @@ input ~ button .icon.active path {
     /*- - -C-A-R-D---B-O-T-T-O-M- - -*/
     .cardBottom {
         gap: clamp(0rem, 3.333vw, 1.2rem);
-        padding: clamp(0rem, 2.778vw, 1rem) clamp(0rem, 2.778vw, 1rem);
+        padding: clamp(0rem, 2.778vw, 1rem) clamp(0rem, 2.778vw, 1rem) 0;
     }
     .writeComment {
         /* margin-bottom: clamp(0rem, 5.556vw, 2rem); */

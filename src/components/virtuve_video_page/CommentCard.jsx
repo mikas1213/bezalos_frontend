@@ -1,4 +1,5 @@
 import styles from './CommentCard.module.css';
+import { useRef } from 'react';
 
 const Bin = () => {
     return (
@@ -22,9 +23,15 @@ const Bin = () => {
 }
 
 const CommentCard = ({ name, comment, isBin, onDeleteVideoComment }) => {
+    const delCom = useRef(null);
+    const handleDeleteVideo = () => {
+        console.log(delCom.current)
+        delCom.current.classList.add(styles.deleted)
+        onDeleteVideoComment(comment.id);
+    }
     
     return (
-        <div className={styles.commentCard}>
+        <div className={styles.commentCard} ref={delCom}>
             <div className={styles.userAvatar}>
                 { name?.toUpperCase().substring(0, 1)}
             </div>
@@ -33,7 +40,7 @@ const CommentCard = ({ name, comment, isBin, onDeleteVideoComment }) => {
             </div>
 
             {isBin && 
-                <div className={styles.recycleBin} onClick={() => onDeleteVideoComment(comment.id)}>
+                <div className={styles.recycleBin} onClick={handleDeleteVideo}>
                     <span><Bin /></span>
                 </div>
             }

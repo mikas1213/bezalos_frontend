@@ -38,8 +38,10 @@ const VirtuveVideoPage = () => {
     };
     const onDeleteVideoComment = async (id) => {
         await axiosPrivate.delete(`/videos/comment/${id}`); 
-        setComments(prevPrev => prevPrev.filter(v => v.id !== id));
-        console.log('comment id: ', id)
+        setTimeout(() => {
+            setComments(prevPrev => prevPrev.filter(v => v.id !== id));
+        }, 400);
+        
     };
     
     useEffect(() => {

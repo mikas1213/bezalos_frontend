@@ -1,4 +1,5 @@
 import useAxiosPrivate from '../../hooks/useAxiosPrivate';
+// import { useEffect } from 'react'; 
 import { 
     // FaHeart, 
     FaRegHeart 
@@ -10,6 +11,7 @@ import { useState} from 'react';
 import CommentCard from "./CommentCard";
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
+import { v4 as uuidv4 } from 'uuid';
 
 const Send = ({active}) => {
     return (
@@ -26,7 +28,7 @@ const Send = ({active}) => {
 };
 
 const Video = ({ user_id, user_name, video, comments, onAddVideoComment, onDeleteVideoComment }) => {
-
+    
     const axiosPrivate = useAxiosPrivate();
     const [showMore, setShowMore] = useState(false);
     const [desc1, desc2] = video.description.split(':');
@@ -43,20 +45,24 @@ const Video = ({ user_id, user_name, video, comments, onAddVideoComment, onDelet
         user_name
       }}
     );
+
+    // useEffect(() => {
+    //     if(!comments.length) {
+    //         setShowComments(false);
+    //     }
+    // }, []);
     
     const submit = async ({comment, video_id, user_id, user_name}) => {
         
         if(!watch('comment')) return;
-        onAddVideoComment({video_id, user_id, user_name, comment: comment?.trim()});
+        const new_comment = {
+            id: uuidv4(), video_id, user_id, user_name, comment: comment?.trim()
+        };
+        onAddVideoComment(new_comment);
+
         
         try{
-            await axiosPrivate.post('/videos/comment', {
-                video_id, 
-                user_id,
-                user_name,
-                comment: comment?.trim()
-            });
-            
+            await axiosPrivate.post('/videos/comment', new_comment);
             setShowComments(true);
             reset();
         } catch(err) {
@@ -103,9 +109,11 @@ const Video = ({ user_id, user_name, video, comments, onAddVideoComment, onDelet
                 <div className={styles.divider}></div>
 
                 <div className={styles.commentsLikesHeader}>
-                    <div className={styles.commentsCount} onClick={() => setShowComments(show => !show)}>
+                    <div className={styles.commentsCount} onClick={() => {
+                        comments.length ? setShowComments(show => !show) : null;
+                    }}>
                         <span>Komentarai</span>&nbsp;
-                        <span>({comments[0] !== null ? comments.length : '0'})</span>
+                        <span>{comments.length}</span>
                     </div>
 
                     <div className={styles.like}>
@@ -116,17 +124,11 @@ const Video = ({ user_id, user_name, video, comments, onAddVideoComment, onDelet
                 <div className={styles.writeComment}>
                     <div className={styles.avatar}>{user_name.toUpperCase().substring(0, 1)}</div>
                     <form className={styles.writeCommentForm} onSubmit={handleSubmit(submit)}>
-                        {/* <input type='hidden' {...register('video_id')} value={video.id}/> */}
-                        {/* <input type='hidden' {...register('user_id')} value={user_id}/> */}
-                        {/* <input type='hidden' {...register('user_name')} value={user_name}/> */}
                         <input 
                             type='text'
                             autoComplete='off'
                             placeholder='Pridėti komentarą' 
-                            {...register('comment', {
-                                
-                                // required: 'Neįvestas el. paštas',
-                            })}
+                            {...register('comment')}
                         />
                         <button type='submit'>
                             <Send active={watch('comment') ? styles.active : ''}/>
@@ -150,7 +152,7 @@ const Video = ({ user_id, user_name, video, comments, onAddVideoComment, onDelet
 
 
                 {/* VARIANT TWO */}
-                <div className={`${styles.commentsContainer} ${(showComments && comments[0] !== null) ? styles.show : ''}`}>
+                <div className={`${styles.commentsContainer} ${(showComments && comments.length) ? styles.show : ''}`}>
                     <div className={styles.comments}>
                         {comments[0] !== null && comments.map(v => 
                             <CommentCard 
