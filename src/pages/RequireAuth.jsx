@@ -1,13 +1,20 @@
 import { useLocation, Navigate, Outlet } from 'react-router-dom';
 import useAuth from '../hooks/useAuth';
+import { jwtDecode } from "jwt-decode";
 
-
-const RequireAuth = () => {
+const RequireAuth = ({ allowedRoles }) => {
+    
     const { auth } = useAuth();
     const location = useLocation();
+    let loggedUser = {};
+    if(auth.accessToken) loggedUser = jwtDecode(auth?.accessToken);
 
     return (
-        auth?.accessToken ? <Outlet /> : <Navigate to='/prisijungti' state={{from: location}} replace />
+        allowedRoles?.includes(loggedUser.user_role)
+            ? <Outlet />
+            : auth?.accessToken 
+                ?  <Navigate to='/notFound' state={{from: location}} replace /> 
+                : <Navigate to='/prisijungti' state={{from: location}} replace />
     );
 };
 

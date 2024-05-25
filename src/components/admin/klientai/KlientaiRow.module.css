@@ -1,0 +1,94 @@
+.userRow {
+    display: grid;
+    grid-template-columns: 1fr 1fr 0.5fr 1fr 1fr 1fr;
+    align-items: center;
+    padding: 0.5rem;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+.headerRow div {
+    font-weight: 700;
+}
+.userRow div {
+    font-size: var(--font-size-dynamic-small-1-lg);
+}
+
+.naryste span {
+    border-radius: 4px;
+    padding: 0.3rem 0.5rem;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+
+.naryste :global(.free) {
+    background-color: #CCCDC6;
+}
+
+.naryste :global(.Virtuvė) {
+    color: var(--color-text-light);
+    background-color: #476930;
+    
+}
+.naryste :global(.Profilis) {
+    color: var(--color-text-light);
+    background-color: #245D6B;
+}
+
+.mitybaSeka {
+    /* border-radius: 5rem;
+    ::-webkit-datetime-edit { 
+        padding: 1em; 
+    }
+    ::-webkit-datetime-edit-fields-wrapper { background: silver; }    
+    ::-webkit-datetime-edit-text { color: red; padding: 0 0.3em; }
+    ::-webkit-inner-spin-button { display: none; }
+    ::-webkit-calendar-picker-indicator { background: orange; } */
+}
+
+.mitybaSeka input[type='date'] {
+    /* background-color: #EB3E1B; */
+    /* color: white; */
+    /* border-radius: 5px; */
+    /* padding: 1rem 1.5rem; */
+    
+    /* font-size: 1rem; */
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 0.3rem 0.5rem;
+    border-radius: 4px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+
+.mitybaSeka ::-webkit-calendar-picker-indicator { 
+    cursor: pointer;
+    background-color: white; 
+    padding: 0.2rem;
+    border-radius: 5px;
+}
+
+.seka input[type='date'] {
+    color: var(--color-text-light);
+    color: white;
+    background-color: #EB3E1B;
+}
+
+
+
+
+
+/* @media only screen and (max-width: 768px) {
+    .userRow {
+        grid-template-columns: 2fr 2fr;
+        grid-template-rows: 2fr 2fr;
+    }
+}
+
+@media only screen and (max-width: 375px) {
+    .userRow {
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr 1fr;
+    }
+} */
+
+/* inpute date edit:  */
+/* https://stackoverflow.com/questions/14946091/are-there-any-style-options-for-the-html5-date-picker */

@@ -108,7 +108,9 @@ const Video = ({ user_id, user_name, video, comments, onToggleLikes, onAddVideoC
 
                     <div className={styles.like} onClick={() => onToggleLikes(video.id, user_id)}>
                         {isLike ? <FaHeart /> : <FaRegHeart />}
-                        <span>{likesCount}</span>
+                        <span>{
+                            +likesCount > 999 ? parseInt(likesCount / 1000)+'k+' : likesCount
+                        }</span>
                     </div>
    
                 </div>

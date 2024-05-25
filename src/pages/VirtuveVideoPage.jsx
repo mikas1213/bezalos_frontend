@@ -18,7 +18,6 @@ const VirtuveVideoPage = () => {
 
     const { auth }  = useAuth();
     let loggedUser = {};
-    
     if(auth.accessToken) loggedUser = jwtDecode(auth?.accessToken);
     
     const { user_id = '', user_name = ''} = loggedUser;
@@ -78,6 +77,8 @@ const VirtuveVideoPage = () => {
         const getData = async () => {
             try {
                 const video = await axiosPrivate.get(`/videos/${params.video}`);
+                
+                document.title = `Be Žalos | ${video.data.video.title}`;
                 setVideo({...video.data.video, url: video.data.url, 
                     // is_liked: video.data.is_liked, 
                     // likes_count: video.data.likes_count

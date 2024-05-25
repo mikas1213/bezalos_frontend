@@ -31,6 +31,11 @@ const UpdatePasswordPage = lazy(() => import('./pages/UpdatePasswordPage'));
 const NotFoundPage = lazy(() => import('./pages/NotFoundPages/NotFoundPage'));
 const NeedSubscription = lazy(() => import('./pages/NotFoundPages/NeedSubscription'));
 
+import AdminLayout from './components/admin/layout/AdminLayout';
+import KlientaiPage from './pages/admin/KlientaiPage';
+import Maistas from './pages/admin/Maistas';
+import Receptai from './pages/admin/Receptai';
+
 const queryClient = new QueryClient({
     defaultOptions: {
         queries: {
@@ -47,28 +52,37 @@ function App() {
             <BrowserRouter>
                 <AuthProvider>
                     <Suspense fallback={<Spinner />}>
-                    <Routes>
-                        <Route element={<PersistLogin /> }>
-                            <Route path='/' element={<HomePage />} />
-                            <Route path='/virtuve' element={<VirtuvePage />} />
-                           
-                            <Route path='/receptai' element={<ReceptaiPage />} />
-                            <Route path='/paslaugos' element={<PaslaugosPage />} />
-                        
-                            <Route path='/prisijungti' element={<LoginPage />} />
-                            <Route path='/keisti-slaptazodi/:token' element={<UpdatePasswordPage /> } />
-                            <Route path='/prenumeruoti' element={<NeedSubscription />} />
-                            <Route path='*' element={<NotFoundPage />} />
+                        <Routes>
+                            <Route element={<PersistLogin /> }>
+                                <Route path='/' element={<HomePage />} />
+                                <Route path='/virtuve' element={<VirtuvePage />} />
+                            
+                                <Route path='/receptai' element={<ReceptaiPage />} />
+                                <Route path='/paslaugos' element={<PaslaugosPage />} />
+                            
+                                <Route path='/prisijungti' element={<LoginPage />} />
+                                <Route path='/keisti-slaptazodi/:token' element={<UpdatePasswordPage /> } />
+                                <Route path='/prenumeruoti' element={<NeedSubscription />} />
+                                <Route path='*' element={<NotFoundPage />} />
 
-                            <Route element={<RequireAuth /> }>
-                                <Route path='/profilis' element={<ProfilisPage /> }>
-                                        
+                                <Route element={<RequireAuth allowedRoles={[1213, 2324]}/> }>
+                                    <Route path='/virtuve/:video' element={<VirtuveVideoPage />} />
+                                    <Route path='/profilis' element={<ProfilisPage /> }>
+                                        {/* <Route index element={<Users />} /> */}
+                                        {/* <Route path='maistas' element={<Food />} /> */}
+                                    </Route>
                                 </Route>
-                                <Route path='/virtuve/:video' element={<VirtuveVideoPage />} />
+
+                                <Route element={<RequireAuth allowedRoles={[1213]}/> }>
+                                    <Route path='/admin' element={<AdminLayout /> }>
+                                        <Route index element={<KlientaiPage />} />
+                                        <Route path='maistas' element={<Maistas />} />
+                                        <Route path='receptai' element={<Receptai />} />
+                                    </Route>
+                                </Route>
                             </Route>
-                        </Route>
-                        
-                    </Routes>
+                            
+                        </Routes>
                     </Suspense>
                 </AuthProvider>
             </BrowserRouter>

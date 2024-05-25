@@ -1,0 +1,75 @@
+.adminNav {
+    overflow: scroll;
+    -ms-overflow-style: none; /* Internet Explorer 10+ */
+    scrollbar-width: none; /* Firefox */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    height: 3.2rem;
+    background-color: var(--color-bgr-light);
+    margin: 1rem 0;
+    border-radius: 0.4rem;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+}
+.adminNav::-webkit-scrollbar { 
+    display: none;  /* Safari and Chrome */
+}
+.usersCount {
+    padding: 0 0.4rem;
+    border-radius: 10rem;
+    font-size: 0.7rem;
+    font-weight: 500;
+
+    background-color: var(--color-text-dark);
+    color: var(--color-text-light);
+}
+.active .usersCount {
+    background-color: var(--color-bgr-light);
+    color: #60c040;
+}
+
+.navItem {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    border-radius: 0.2rem;
+    height: 2rem;
+    padding: 0 1rem;
+    text-wrap: nowrap;
+    /* font-size: var(--font-size-dynamic-p-lg); */
+}
+.navItemHome {
+    border: 2px solid #60c040;
+    margin-left: 0.6rem;
+    color: #60c040;
+    transition: background-color 0.3s;
+}
+.navItemHome:hover {
+    background-color: #60c04322;
+    transition: background-color 0.3s;
+}
+
+.navItem a {
+    align-items: center;
+    gap: 0.3rem;
+}
+
+.adminNav .active {
+    /* background-color: #60c040; */
+        
+    background-image: linear-gradient(40deg, #30c040 0%, #72d252 100%);
+    color: #eff1ef;
+    transition: color 0.1s, background-color 0.3s;
+}
+
+
+@media only screen and (max-width: 768px) {
+    .adminNav {
+
+    }
+
+    .adminNav::-webkit-scrollbar { 
+
+    }
+}
