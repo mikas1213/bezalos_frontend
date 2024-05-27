@@ -43,8 +43,8 @@ const KlientaiRow = ({ user, users, setUsers }) => {
     
     return (    
         <div className={styles.userRow}>
-            <div>{user.name}</div>
-            <div>{user.email}</div>
+            <div className={styles.name}>{user.name}</div>
+            <div className={styles.email}>{user.email}</div>
             <div className={styles.naryste}>
                 <span className={user.subscription_type}>{user.subscription_type}</span>
             </div>

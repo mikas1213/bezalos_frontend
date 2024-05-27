@@ -6,18 +6,18 @@ export const date_to_yyyy_mm_dd = (my_date) => {
 };
 
 export const isTodayOrFiveDaysBefore = (date) => {
-
-    const date_before = new Date();
+    
+    const date_before = new Date(date);
     date_before.setDate(date_before.getDate() - 5);
     
     const subscription_expires = Date.parse(date_to_yyyy_mm_dd(date));
-    const five_days_before = date_before.toLocaleString('lt-LT', {dateStyle: 'short'});
+    const five_days_before = Date.parse(date_before.toLocaleString('lt-LT', {dateStyle: 'short'}));
     const today = Date.parse(new Date().toLocaleString('lt-LT', {dateStyle: 'short'}));
-    let setColor = '';
-    
-    if(subscription_expires >= Date.parse(five_days_before)) setColor = 'colorWarning';
-    if(subscription_expires >= today) setColor = 'colorDanger';
 
+    let setColor = '';
+    if(today >= five_days_before) setColor = 'colorWarning';
+    if(subscription_expires <= today) setColor = 'colorDanger';
+    if(!subscription_expires) setColor = ''
     return setColor;
 };
 
@@ -25,7 +25,7 @@ export const isTodayOrLater = (date) => {
     
     const today = Date.parse(new Date().toLocaleString('lt-LT', {dateStyle: 'short'}));
     const nutrition_tracking = Date.parse(date_to_yyyy_mm_dd(date));
-    return nutrition_tracking >= today ? 'colorDanger' : '';
+    return nutrition_tracking <= today ? 'colorDanger' : '';
 };
 
 

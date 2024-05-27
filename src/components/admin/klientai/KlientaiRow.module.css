@@ -59,13 +59,29 @@
     background-color: #FFA500;
 }
 
-/* @media only screen and (max-width: 768px) {
+@media only screen and (max-width: 768px) {
     .userRow {
-        grid-template-columns: 2fr 2fr;
-        grid-template-rows: 2fr 2fr;
+        grid-template-columns: 0.8fr 1.5fr 1fr 1fr 1fr 1fr;
+        /* grid-template-rows: 1fr 1fr; */
+    }
+
+    .dateInput input[type='date'], .dateSelect {
+        padding: 0.2rem 0.4rem;
+        font-size: var(--font-size-dynamic-small-2-sm);
     }
 }
 
+@media only screen and (max-width: 576px) {
+    .userRow {
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr 1fr;
+    }
+
+    .name {
+
+    }
+}
+/*
 @media only screen and (max-width: 375px) {
     .userRow {
         grid-template-columns: 1fr 1fr 1fr;
