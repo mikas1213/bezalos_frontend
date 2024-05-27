@@ -33,24 +33,7 @@
     background-color: #245D6B;
 }
 
-.mitybaSeka {
-    /* border-radius: 5rem;
-    ::-webkit-datetime-edit { 
-        padding: 1em; 
-    }
-    ::-webkit-datetime-edit-fields-wrapper { background: silver; }    
-    ::-webkit-datetime-edit-text { color: red; padding: 0 0.3em; }
-    ::-webkit-inner-spin-button { display: none; }
-    ::-webkit-calendar-picker-indicator { background: orange; } */
-}
-
-.mitybaSeka input[type='date'] {
-    /* background-color: #EB3E1B; */
-    /* color: white; */
-    /* border-radius: 5px; */
-    /* padding: 1rem 1.5rem; */
-    
-    /* font-size: 1rem; */
+.dateInput input[type='date'], .dateSelect {
     border: none;
     outline: none;
     cursor: pointer;
@@ -59,22 +42,22 @@
     box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
 }
 
-.mitybaSeka ::-webkit-calendar-picker-indicator { 
+.dateInput ::-webkit-calendar-picker-indicator { 
     cursor: pointer;
     background-color: white; 
     padding: 0.2rem;
     border-radius: 5px;
 }
 
-.seka input[type='date'] {
-    color: var(--color-text-light);
+.colorDanger  {
     color: white;
     background-color: #EB3E1B;
 }
 
-
-
-
+.colorWarning {
+    color: white;
+    background-color: #FFA500;
+}
 
 /* @media only screen and (max-width: 768px) {
     .userRow {

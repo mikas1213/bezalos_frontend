@@ -1,75 +1,44 @@
 import useAxiosPrivate from '../../../hooks/useAxiosPrivate';
 import styles from './KlientaiRow.module.css';
 import { useState } from 'react';
+import { date_to_yyyy_mm_dd, isTodayOrFiveDaysBefore, isTodayOrLater } from '../../../utils/helpers';
 
-const KlientaiRow = ({ user, users, onSetUsers }) => {
+const KlientaiRow = ({ user, users, setUsers }) => {
     
-    // var datee = new Date();
-    // datee.setDate(datee.getDate() + 14);
-    // console.log(Date.parse(user.assigned_plan) > Date.parse(datee));
-
-    // var datee = new Date(user.assigned_plan);
-    // datee.setDate(datee.getDate() + 14);
-    // console.log(new Date(Date.parse(user.assigned_plan)).toLocaleString('lt-LT', {dateStyle: 'short'}), ' - - ', datee.toLocaleString('lt-LT', {dateStyle: 'short'}), datee < Date.now())
-    
-
-    // const subs_exp_date = user.subscription_expires !== null ? new Date(Date.parse(user.subscription_expires)).toLocaleString('lt-LT', {
-    //     year: '2-digit',
-    //     month: 'short', 
-    //     // weekday: 'short',
-    //     day: 'numeric', 
-    //     // hour: '2-digit', 
-    //     // minute:'2-digit',
-    //     // hour12: true,
-    //     // dateStyle: 'long', 
-    //     // timeStyle: 'short'
-    // }) : 'Nepriskirta'
-
-    
-    // const isNutritionTrack = Date.parse(user.nutrition_tracking) >= Date.now();
-    // const [mitybaSeka, setMitybaSeka] = useState(new Date(user.nutrition_tracking ? user.nutrition_tracking : '').toLocaleString('lt-LT', {year: 'numeric', month: 'short', day: 'numeric'}));
-    // const onMitybaSeka = e => {
-    //     console.log(e.target.name)
-    //     setMitybaSeka(e.target.value);
-    // };
     const axiosPrivate = useAxiosPrivate();
-    const parseDate = myDate => new Date(Date.parse(myDate)).toLocaleString('lt-LT', {year: 'numeric', month: 'short', day: 'numeric'});
     const [userData, setUserDate] = useState({
-        subscription_expires: user.subscription_expires ? parseDate(user.subscription_expires) : '',
-        nutrition_tracking: user.nutrition_tracking ? parseDate(user.nutrition_tracking) : '',
+        subscription_expires: date_to_yyyy_mm_dd(user.subscription_expires),
+        nutrition_tracking: date_to_yyyy_mm_dd(user.nutrition_tracking),
         nutrition_plan_status: user.nutrition_plan_status
     });
 
-    const handleChange = e => setUserDate({ ...userData, [e.target.name]: e.target.value });
-    const handleBlur = async (e, user_id) => {
-        
+    const onHandleChange = async (e, user_id) => {
         try {
             await axiosPrivate.patch(`/admin/user/${user_id}`, {
                 column: e.target.name,
                 value: e.target.value
             });
-
-            // const newArr = [...users];
-            // const index = newArr.findIndex(usr => usr.id === user.id);
             
-            // const newUser = newArr.find(v => v.id = user.id);
-            // newUser[e.target.name] = e.target.value;
-            // newArr[index] = newUser;
-            // onSetUsers(newArr);
-            // console.log(newArr)
-            // onSetUsers(users.map(u =>
-            //     u.id === user.id ? { ...u, subscription_expires: e.target.value } : user
-            // ));
-
+            const newUsers = [...users];
+            const newUser = newUsers.find(u => u.id === user_id);
+            const index = newUsers.findIndex(u => u.id === user_id);
             
+            newUser[e.target.name] = e.target.value;
+            if(e.target.name === 'subscription_expires') {
+                newUser.subscription_type = e.target.value ? 'Virtuvė' : 'free'
+            }
+            
+            newUsers[index] = newUser;
+            setUsers(newUsers);
+        
         } catch (err) {
             console.log(err.message)
         }
     };
 
-    const handleChangeSelect = (e, user_id) => {
-        handleChange(e);
-        handleBlur(e, user_id);
+    const handleInputChange = (e, user_id) => {
+        setUserDate({ ...userData, [e.target.name]: e.target.value });
+        onHandleChange(e, user_id);
     };
     
     return (    
@@ -79,30 +48,30 @@ const KlientaiRow = ({ user, users, onSetUsers }) => {
             <div className={styles.naryste}>
                 <span className={user.subscription_type}>{user.subscription_type}</span>
             </div>
-            <div>
+            <div className={styles.dateInput}>
                 <input 
+                    className={styles[isTodayOrFiveDaysBefore(user.subscription_expires)]}
                     type='date' 
                     name='subscription_expires' 
                     value={userData.subscription_expires}
-                    onBlur={e => handleBlur(e, user.id)}
-                    onChange={handleChange}
+                    onChange={e => handleInputChange(e, user.id)}  
                 />
             </div>
-            <div className={`${styles.mitybaSeka} ${user.mityba_seka ? styles.seka : ''}`}>
+            <div className={styles.dateInput}>
                 <input 
+                    className={styles[isTodayOrLater(user.nutrition_tracking)]}
                     type='date' 
                     name='nutrition_tracking' 
                     value={userData.nutrition_tracking} 
-                    onBlur={e => handleBlur(e, user.id)}
-                    onChange={handleChange}
+                    onChange={e => handleInputChange(e, user.id)}  
                 />
             </div>
             <div>
                 <select 
+                    className={`${styles.dateSelect} ${user.nutrition_plan_status === 'Tinka' ? styles.colorDanger : ''}`}
                     name='nutrition_plan_status' 
                     value={userData.nutrition_plan_status} 
-                    // onBlur={e => handleBlur(e, user.id)}
-                    onChange={e => handleChangeSelect(e, user.id)}
+                    onChange={e => handleInputChange(e, user.id)}
                 >
                     <option>Pasirinkti</option>
                     <option>Paklausta</option>

@@ -36,7 +36,7 @@ const AdminNavbar = () => {
                 <NavLink to={path.admin}>
                     <FaUserGroup />
                     Klientai
-                    {!isLoading && <span className={styles.usersCount}>{users.length}</span>}
+                    {!isLoading && <span className={styles.usersCount}>{users.length-1}</span>}
                 </NavLink>
             </li>
 
