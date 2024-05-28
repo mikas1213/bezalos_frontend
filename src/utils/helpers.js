@@ -1,17 +1,23 @@
 export const date_to_yyyy_mm_dd = (my_date) => {
     let setDate = '';
     if(my_date) setDate = new Date(Date.parse(my_date)).toLocaleString('lt-LT', { dateStyle: 'short' }); 
-    
     return setDate;
 };
 
-export const isTodayOrFiveDaysBefore = (date) => {
+export const isTodayOrLater = (date) => {
     
+    const today = Date.parse(new Date().toLocaleString('lt-LT', {dateStyle: 'short'}));
+    const nutrition_tracking = Date.parse(date_to_yyyy_mm_dd(date));
+    return nutrition_tracking <= today ? 'colorDanger' : '';
+};
+
+export const isTodayOrFiveDaysBefore = (date) => {
+
     const date_before = new Date(date);
     date_before.setDate(date_before.getDate() - 5);
+    const five_days_before = Date.parse(date_before.toLocaleString('lt-LT', {dateStyle: 'short'}));
     
     const subscription_expires = Date.parse(date_to_yyyy_mm_dd(date));
-    const five_days_before = Date.parse(date_before.toLocaleString('lt-LT', {dateStyle: 'short'}));
     const today = Date.parse(new Date().toLocaleString('lt-LT', {dateStyle: 'short'}));
 
     let setColor = '';
@@ -21,12 +27,27 @@ export const isTodayOrFiveDaysBefore = (date) => {
     return setColor;
 };
 
-export const isTodayOrLater = (date) => {
+export const isTwoOrFourWeeks = (date) => {
     
+    let setColor = '';
+    const two_weeks = new Date(date);
+    const four_weeks = new Date(date);
+
+    two_weeks.setDate(two_weeks.getDate() + 14);
+    four_weeks.setDate(four_weeks.getDate() + 28);
+
+    const two_week_later = Date.parse(two_weeks.toLocaleString('lt-LT', {dateStyle: 'short'}));
+    const four_week_later = Date.parse(four_weeks.toLocaleString('lt-LT', {dateStyle: 'short'}));
+
     const today = Date.parse(new Date().toLocaleString('lt-LT', {dateStyle: 'short'}));
-    const nutrition_tracking = Date.parse(date_to_yyyy_mm_dd(date));
-    return nutrition_tracking <= today ? 'colorDanger' : '';
+
+    if(today >= two_week_later) setColor = 'colorWarning';
+    if(today >= four_week_later) setColor = 'colorDanger';
+    if(date === null) setColor = '';
+    
+    return setColor;
 };
+
 
 
 

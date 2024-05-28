@@ -1,6 +1,6 @@
 .userRow {
     display: grid;
-    grid-template-columns: 1fr 1fr 0.5fr 1fr 1fr 1fr;
+    grid-template-columns: 0.7fr 1.5fr 0.5fr 1fr 1fr 1fr 1fr 0.2fr;
     align-items: center;
     padding: 0.5rem;
     border-radius: 5px;
@@ -8,6 +8,9 @@
 }
 .headerRow div {
     font-weight: 700;
+}
+.headerRow span {
+    cursor: pointer;
 }
 .userRow div {
     font-size: var(--font-size-dynamic-small-1-lg);
@@ -19,18 +22,17 @@
     box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
 }
 
-.naryste :global(.free) {
+.naryste .free {
     background-color: #CCCDC6;
 }
 
-.naryste :global(.Virtuvė) {
+.naryste .Virtuvė {
     color: var(--color-text-light);
-    background-color: #476930;
-    
+    background-color: #467F8D;
 }
-.naryste :global(.Profilis) {
+.naryste .Profilis {
     color: var(--color-text-light);
-    background-color: #245D6B;
+    /* background-color: #245D6B; */
 }
 
 .dateInput input[type='date'], .dateSelect {
@@ -39,7 +41,9 @@
     cursor: pointer;
     padding: 0.3rem 0.5rem;
     border-radius: 4px;
+    font-size: var(--font-size-dynamic-small-1-lg);
     box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+
 }
 
 .dateInput ::-webkit-calendar-picker-indicator { 
@@ -52,22 +56,38 @@
 .colorDanger  {
     color: white;
     background-color: #EB3E1B;
+    background-color: #FF5C5C;
+    background-color: #FF000088;
 }
-
 .colorWarning {
     color: white;
-    background-color: #FFA500;
+    background-color: #FFA500BB;
+}
+.colorSuccess {
+    color: white;
+    background-color: #03C03C;
+    background-color: #50C878;
+    /* background-color: #D0F0C0; */
+}
+
+input[name='support_over'] {
+    cursor: pointer;
 }
 
 @media only screen and (max-width: 768px) {
     .userRow {
-        grid-template-columns: 0.8fr 1.5fr 1fr 1fr 1fr 1fr;
-        /* grid-template-rows: 1fr 1fr; */
+        grid-template-columns: 0.8fr 1.5fr 0.5fr 1fr 1fr 1fr 1fr 0.2fr;
+        /* gap: 0.5rem; */
     }
 
+    .naryste span {
+        border-radius: 4px;
+        padding: 0.2rem 0.3rem;
+        font-size: var(--font-size-dynamic-small-1-lg);
+    }
     .dateInput input[type='date'], .dateSelect {
-        padding: 0.2rem 0.4rem;
-        font-size: var(--font-size-dynamic-small-2-sm);
+        padding: 0.2rem 0.3rem;
+        font-size: var(--font-size-dynamic-small-1-lg);
     }
 }
 

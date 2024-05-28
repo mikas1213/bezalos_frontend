@@ -13,7 +13,7 @@ const RequireAuth = ({ allowedRoles }) => {
         allowedRoles?.includes(loggedUser.user_role)
             ? <Outlet />
             : auth?.accessToken 
-                ?  <Navigate to='/notFound' state={{from: location}} replace /> 
+                ?  <Navigate to='/puslapis-nerastas' state={{from: location}} replace /> 
                 : <Navigate to='/prisijungti' state={{from: location}} replace />
     );
 };
