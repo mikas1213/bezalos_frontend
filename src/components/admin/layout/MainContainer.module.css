@@ -3,6 +3,7 @@
     padding: 0 1rem;
     margin: 0 auto;
     height: 100dvh;
+    margin-bottom: 5rem;
 }
 
 @media only screen and (max-width: 768px) {

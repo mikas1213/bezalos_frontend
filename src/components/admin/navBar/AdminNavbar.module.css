@@ -7,7 +7,8 @@
     justify-content: space-between;
     gap: 1rem;
     height: 3.2rem;
-    background-color: var(--color-bgr-light);
+    /* background-color: var(--color-bgr-light); */
+    background-color: white;
     margin: 1rem 0;
     border-radius: 0.4rem;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
@@ -22,10 +23,12 @@
     font-weight: 500;
 
     background-color: var(--color-text-dark);
-    color: var(--color-text-light);
+    /* color: var(--color-text-light); */
+    color: white
 }
 .active .usersCount {
-    background-color: var(--color-bgr-light);
+    /* background-color: var(--color-bgr-light); */
+    background-color: white;
     color: #60c040;
 }
 

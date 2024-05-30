@@ -1,6 +1,9 @@
 export const date_to_yyyy_mm_dd = (my_date) => {
     let setDate = '';
-    if(my_date) setDate = new Date(Date.parse(my_date)).toLocaleString('lt-LT', { dateStyle: 'short' }); 
+    if(my_date) setDate = new Date(Date.parse(my_date)).toLocaleString('lt-LT', { 
+        dateStyle: 'short', 
+        // day: '2-digit' 
+    }); 
     return setDate;
 };
 
@@ -8,7 +11,7 @@ export const isTodayOrLater = (date) => {
     
     const today = Date.parse(new Date().toLocaleString('lt-LT', {dateStyle: 'short'}));
     const nutrition_tracking = Date.parse(date_to_yyyy_mm_dd(date));
-    return nutrition_tracking <= today ? 'colorDanger' : '';
+    return nutrition_tracking <= today ? 'colorDanger' : 'colorLight';
 };
 
 export const isTodayOrFiveDaysBefore = (date) => {
@@ -20,10 +23,10 @@ export const isTodayOrFiveDaysBefore = (date) => {
     const subscription_expires = Date.parse(date_to_yyyy_mm_dd(date));
     const today = Date.parse(new Date().toLocaleString('lt-LT', {dateStyle: 'short'}));
 
-    let setColor = '';
+    let setColor = 'colorLight';
     if(today >= five_days_before) setColor = 'colorWarning';
     if(subscription_expires <= today) setColor = 'colorDanger';
-    if(!subscription_expires) setColor = ''
+    if(!subscription_expires) setColor = 'colorLight'
     return setColor;
 };
 
@@ -43,7 +46,7 @@ export const isTwoOrFourWeeks = (date) => {
 
     if(today >= two_week_later) setColor = 'colorWarning';
     if(today >= four_week_later) setColor = 'colorDanger';
-    if(date === null) setColor = '';
+    if(date === null) setColor = 'colorLight';
     
     return setColor;
 };
@@ -62,6 +65,7 @@ timeStyle	"full"
 "long"
 "medium"
 "short"
+
 localeMatcher
 "best-fit" (default)
 "lookup"
