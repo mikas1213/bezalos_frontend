@@ -135,11 +135,14 @@ const KlientaiRow = ({ user, users, setUsers }) => {
 export default KlientaiRow;
 
 export const KlientaiRowHeader = ({ setSearch, sort, setSort }) => {
-    const [changeSort, setChangeSort] = useState('nutrition_tracking');
+    const [changeSort, setChangeSort] = useState('subscription_expires');
 
 
     const handleChange = (e) => {        
-        setChangeSort(e.target.value)
+        setChangeSort(e.target.value);
+        setSort(prevSort => ({
+            ...prevSort, column: e.target.value
+        }))
     }
 
     return (    
@@ -147,7 +150,6 @@ export const KlientaiRowHeader = ({ setSearch, sort, setSort }) => {
             <input 
                 type='text' 
                 placeholder='Paieška'
-                // value={search}
                 onChange={e => setSearch(e.target.value.toLocaleLowerCase())}
             />
             <select 
