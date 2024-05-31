@@ -26,13 +26,14 @@ const KlientaiPage = () => {
         }
         getData();
     }, [sort, axiosPrivate]);
-
-
-    
+    const [search, setSearch] = useState('');
+    const searchFn = u => {
+        return u.email.toLowerCase().indexOf(search) > -1 || u.name.toLowerCase().indexOf(search) > -1;
+    };
     return (
         <Klientai>
-            <KlientaiRowHeader setSort={setSort} sort={sort}/>
-            {!isLoading && users.map(user => <KlientaiRow 
+            <KlientaiRowHeader setSearch={setSearch} sort={sort} setSort={setSort} />
+            {!isLoading && users.filter(searchFn).map(user => <KlientaiRow 
                 key={user.id} 
                 user={user} 
                 users={users}

@@ -32,7 +32,7 @@ export const isTodayOrFiveDaysBefore = (date) => {
 
 export const isTwoOrFourWeeks = (date) => {
     
-    let setColor = '';
+    let setColor = 'colorLight';
     const two_weeks = new Date(date);
     const four_weeks = new Date(date);
 

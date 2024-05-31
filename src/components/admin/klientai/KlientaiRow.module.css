@@ -1,13 +1,47 @@
 .headerRow {
-    cursor: pointer;
-    font-weight: 700;
-    font-size: var(--font-size-dynamic-small-1-lg);
+    display: grid;
+    grid-template-columns: 1.5fr repeat(2, 1fr) 0.5fr repeat(1, 1fr);
+    background-color: var(--color-bgr-light);
+    background-color: white;
+    align-items: center;
+    padding: 0.5rem;
+    gap: 0.5rem;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+.headerRow :is(input, select, input:focus) {
+    border: 1px solid #999;
+    outline: none;
+    height: 2rem;
+    border-radius: 4px;
+    padding: 0.3rem 4px;
+}
+.headerRow select {
+    height: 2rem;
+    color: #777;
+    background-color: white;
+}
+.headerRow button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 2rem;
+    width: 2rem;
+    background: white;
+    border: 1px solid #999;
+    outline: none;
+    border-radius: 4px;
+
+}
+.headerRow .icon {
+    display: flex;
+    font-size: 1.7rem;
+    color: #999;
 }
 
 .userRow {
     display: grid;
-    /* grid-template-columns: minmax(10rem, 1.5fr) repeat(2, minmax(8rem, auto)) 0.2fr 0.6fr; */
-    grid-template-columns: 1.5fr repeat(2, 1fr) 0.5fr repeat(2, 1fr);
+    grid-template-columns: 1.5fr repeat(2, 1fr) 0.5fr repeat(1, 1fr);
     background-color: var(--color-bgr-light);
     background-color: white;
     align-items: center;
@@ -19,9 +53,13 @@
 .userBox {
     display: flex;
     flex-direction: column;    
-    /* gap: 0.2rem; */
-    height: 100%;
+    row-gap: 0.5rem;
     justify-content: space-between;
+}
+.userBoxDate {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
 }
 .lastActivity {
     color: #999;
@@ -39,28 +77,21 @@
     font-size: var(--font-size-dynamic-p-lg);
 }
 .name {
-    /* display: flex; */
-    /* gap: 0.5rem; */
-    /* justify-content: space-between; */
     color: #999;
     font-size: var(--font-size-dynamic-small-1-lg);
 }
 
 .naryste {
-    /* margin-top: 2px; */
     display: flex;
     gap: 0.5rem;
 }
-/* .naryste span[class*='color'] { */
-    /* cursor: pointer; */
-/* } */
+
 .naryste span {
     display: flex;
     align-items: center;
     border-radius: 4px;
     padding: 0 0.4rem;
     font-size: var(--font-size-dynamic-small-2-lg);
-    /* box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px; */
 }
 .naryste .free {
     color: white;
@@ -68,7 +99,7 @@
 }
 .naryste .Virtuvė {
     color: white;
-    background-color: var(--color-btn-secondary);
+    background: #65cbe9;
 }
 .naryste .Profilis {
     color: white;
@@ -78,7 +109,7 @@
 .userRow input[type='date'], .dateSelect {
     border: none;
     outline: none;
-    max-width: 6.5rem;
+    max-width: 8rem;
     border-radius: 4px;
     padding: 0.1rem 0.4rem;
     font-size: var(--font-size-dynamic-small-2-lg);
@@ -107,11 +138,10 @@
     background-color: var(--color-btn-secondary);
 }
 .colorLight {
-    outline: 1px solid #bbb !important;
     color: #999;
+    background-color: white;
+    outline: 1px solid #bbb !important;
 }
-
-
 
 .mitybaBox {
     display: flex;
@@ -128,46 +158,138 @@
     gap: 0.1rem;
 }
 
+.planasBox {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+.planas, .prieziura {
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+    color: #999;
+    font-size: var(--font-size-dynamic-small-1-lg);
+}
+.prieziura input {
+    align-self: start;
+}
 
 input[name='support_over'] {
     cursor: pointer;
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 1024px) {
     .userRow {
-        grid-template-columns: 0.5fr 1fr 1fr 1fr 1fr 0.2fr 0.2re;
-        /* gap: 0.5rem; */
+        column-gap: 0.5rem;
+    }
+}
+@media only screen and (max-width: 768px) {
+    .headerRow {
+        gap: 0.5rem;
+    }
+    .userRow, .headerRow {
+        grid-template-columns: minmax(auto, 1fr) minmax(auto, 1fr) auto;
+        row-gap: 0.5rem;
+    }
+    .userBox {
+        grid-area: 1 / 1 / 2 / -1;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        flex-direction: row;
+        justify-content: start;
+        align-items: center;
+    }
+    .userBoxName, .userBoxDate {
+        display: flex;
+        flex-direction: column;
+    }
+    .userBoxName {
+        gap: 0.3rem;
+    }
+    .userBoxDate {
+        justify-content: space-between;
+    }
+    .email { 
+        line-height: 100%;
+        order: 1; 
+        font-size: var(--font-size-dynamic-p-sm);
+    }
+    .name { 
+        line-height: 100%;
+        order: 2; 
+        font-size: var(--font-size-dynamic-small-1-sm);
+    }
+    .naryste { 
+        order: 4; 
+    }
+    .naryste :is(span, input[type='date']) {
+        font-size: var(--font-size-dynamic-small-1-sm);
+    }
+    .lastActivity { 
+        order: 3; 
+        font-size: var(--font-size-dynamic-small-1-sm);
+    }
+    .lastActivity span {
+        font-size: var(--font-size-dynamic-p-sm);
     }
 
-    .naryste span {
-        /* border-radius: 4px; */
-        /* padding: clamp(0rem, 0.417vw, 0.2rem) clamp(0rem, 0.625vw, 0.3rem); */
-        /* font-size: var(--font-size-dynamic-small-1-lg); */
-    }
-    .dateInput input[type='date'], .dateSelect {
-        /* width: 5.5rem; */
-        /* padding: 0.2rem 0.3rem; */
-        /* font-size: var(--font-size-dynamic-small-1-lg); */
+    .mityba span, .mityba input[type='date'], .paklausta span, .dateSelect, .planas span, .planas input[type='date'], .prieziura span {
+        min-width: 3rem;
+        font-size: var(--font-size-dynamic-small-1-sm);
     }
 }
 
-@media only screen and (max-width: 576px) {
-    .userRow {
+/* @media only screen and (max-width: 576px) { */
+    /* .userRow { */
         /* grid-template-columns: 1fr 1fr 1fr 1fr; */
         /* grid-template-rows: 1fr 1fr; */
+    /* } */
+
+    /* .name {
+
+    } */
+/* } */
+
+@media only screen and (max-width: 375px) {
+    .headerRow :is(input, select, input:focus) {
+        font-size: var(--font-size-dynamic-h6-sm);
     }
 
-    .name {
-
+    .headerRow button {
+        height: clamp(0rem, 8.533vw, 2rem);
+        width: clamp(0rem, 8.533vw, 2rem);
+    }
+    
+    .headerRow .icon {
+        font-size: var(--font-size-dynamic-h3-sm);
+    }
+    .userRow, .userBox {
+        grid-template-columns: 0.8fr 1.2fr;
+    }
+    .email, .lastActivity span {
+        font-size: var(--font-size-dynamic-h6-sm);
+    }
+    .name, .lastActivity, .mityba span, .paklausta span, .planas span, .prieziura span {
+        font-size: var(--font-size-dynamic-p-sm);
     }
 }
-/*
-@media only screen and (max-width: 375px) {
-    .userRow {
-        grid-template-columns: 1fr 1fr 1fr;
-        grid-template-rows: 1fr 1fr 1fr;
+
+@media only screen and (max-width: 320px) {
+    .headerRow {
+        grid-template-columns: 1fr auto;
     }
-} */
+    .headerRow input {
+        grid-area: 1 / 1 / 2 / -1;
+    }
+    .headerRow button {
+        height: 2rem;
+        width: 2rem;
+    }
+    .userRow, .userBox {
+        grid-template-columns: 1.1fr 0.9fr;
+        column-gap: 0.5rem;
+    }
+}
 
 /* inpute date edit:  */
 /* https://stackoverflow.com/questions/14946091/are-there-any-style-options-for-the-html5-date-picker */

@@ -1,9 +1,9 @@
 import useAxiosPrivate from '../../../hooks/useAxiosPrivate';
 import styles from './KlientaiRow.module.css';
 import { useState } from 'react';
-// import { FaPlus } from "react-icons/fa";
 import { date_to_yyyy_mm_dd, isTodayOrFiveDaysBefore, isTodayOrLater, isTwoOrFourWeeks } from '../../../utils/helpers';
-
+import check_box_styles from './CheckBox.module.css';
+import { IoIosArrowRoundDown, IoIosArrowRoundUp } from "react-icons/io";
 const KlientaiRow = ({ user, users, setUsers }) => {
     
     const axiosPrivate = useAxiosPrivate();
@@ -32,7 +32,6 @@ const KlientaiRow = ({ user, users, setUsers }) => {
             }
             
             newUsers[index] = newUser;
-            // const compareFn = (a, b) => new Date(b.subscription_expires) - new Date(a.subscription_expires);
             setUsers(newUsers);
         
         } catch (err) {
@@ -48,24 +47,29 @@ const KlientaiRow = ({ user, users, setUsers }) => {
     return (    
         <div className={styles.userRow}>
             <div className={styles.userBox}>
-                <div className={styles.email}>{user.email}</div>
-                <div className={styles.name}>{user.name}</div>
-                <div className={styles.naryste}>
-                    <span className={styles[user.subscription_type]}>{user.subscription_type}</span>
-                    <input 
-                        className={styles[isTodayOrFiveDaysBefore(user.subscription_expires)]}
-                        type='date' 
-                        min='2024-01-01'                    
-                        name='subscription_expires'  
-                        value={userData.subscription_expires}
-                        onChange={e => handleInputChange(e, user.id)}  
-                    />
+                <div className={styles.userBoxName}>
+                    <div className={styles.email}>{user.email}</div>
+                    <div className={styles.name}>{user.name}</div>
                 </div>
-                <div className={styles.lastActivity}>
-                    Prisijungė:
-                    <span> {date_to_yyyy_mm_dd(user.last_activity)}</span>
+
+                <div className={styles.userBoxDate}>
+                    <div className={styles.naryste}>
+                        <span className={styles[user.subscription_type]}>{user.subscription_type}</span>
+                        <input 
+                            placeholder='yyyy-mm-dd'
+                            className={styles[isTodayOrFiveDaysBefore(user.subscription_expires)]}
+                            type='date' 
+                            min='2024-01-01'                    
+                            name='subscription_expires'  
+                            value={userData.subscription_expires}
+                            onChange={e => handleInputChange(e, user.id)}  
+                        />
+                    </div>
+                    <div className={styles.lastActivity}>
+                        Prisijungė:
+                        {user.last_activity ? <span>&nbsp;&nbsp;{date_to_yyyy_mm_dd(user.last_activity)}</span> : <span>&nbsp;&nbsp;Nežinoma</span>}
+                    </div>
                 </div>
-                
             </div>
         
             <div className={styles.mitybaBox}>
@@ -98,80 +102,69 @@ const KlientaiRow = ({ user, users, setUsers }) => {
                 </div>
             </div>
 
-            
+            <div className={styles.planasBox}>
+                <div className={styles.planas}>
+                    <span>Planas priskirtas</span>
+                    <input 
+                        className={!user.support_over ? styles[isTwoOrFourWeeks(user.assigned_plan)] : styles.colorSuccess}
+                        type='date' 
+                        name='assigned_plan' 
+                        min='2024-01-01'                    
+                        value={userData.assigned_plan} 
+                        onChange={e => handleInputChange(e, user.id)}  
+                    />
+                </div>
 
-            <div>
-                <input 
-                    className={!user.support_over ? styles[isTwoOrFourWeeks(user.assigned_plan)] : styles.colorSuccess}
-                    type='date' 
-                    name='assigned_plan' 
-                    min='2024-01-01'                    
-                    value={userData.assigned_plan} 
-                    onChange={e => handleInputChange(e, user.id)}  
-                />
+                <div className={styles.prieziura}>
+                    <span>Priežiūra baigta</span>
+                    
+                    <input 
+                        className={`${styles['sc-gJwTLC']} ${check_box_styles.ikxBAC}`}
+                        type='checkbox' 
+                        name='support_over' 
+                        value={userData.support_over} 
+                        defaultChecked={userData.support_over} 
+                        onChange={e => handleInputChange(e, user.id)}  
+                    />
+                </div>
             </div>
-
-            <div>
-                <input 
-                    type='checkbox' 
-                    name='support_over' 
-                    value={userData.support_over} 
-                    defaultChecked={userData.support_over} 
-                    onChange={e => handleInputChange(e, user.id)}  
-                />
-            </div>
-{/* 
-            <div >
-                <span>{new Date(Date.parse(user.last_activity)).toLocaleString('lt-LT', { dateStyle: 'short', })}</span>
-            </div> */}
         </div>
     );
 }
 
 export default KlientaiRow;
 
-export const KlientaiRowHeader = ({ setSort }) => {
-    // const handleClick = () => {}
+export const KlientaiRowHeader = ({ setSearch, sort, setSort }) => {
+    const [changeSort, setChangeSort] = useState('nutrition_tracking');
+
+
+    const handleChange = (e) => {        
+        setChangeSort(e.target.value)
+    }
 
     return (    
-        <div className={`${styles.userRow} ${styles.headerRow}`}>
-            <div>
-                <span onClick={() => setSort(prevSort => {
-                    return {column: 'email', value: prevSort.value === 'ASC' ? 'DESC' : 'ASC'}
-                })}>Klientas</span>
-            </div>
-
-            {/* <div>
-                <span onClick={() => setSort(prevSort => {
-                    return {column: 'email', value: prevSort.value === 'ASC' ? 'DESC' : 'ASC'}
-                })}>El. paštas</span>
-            </div> */}
-
-            {/* <div><span>Narystė</span></div> */}
-
-            {/* <div>
-                <span onClick={() => setSort(prevSort => {
-                    return {column: 'subscription_expires', value: prevSort.value === 'ASC' ? 'DESC' : 'ASC'}
-                })}>Galioja iki</span>
-            </div> */}
-
-            <div>
-                <span onClick={() => setSort(prevSort => {
-                    return {column: 'nutrition_tracking', value: prevSort.value === 'ASC' ? 'DESC' : 'ASC'}
-                })}>Mitybą seka iki</span>
-            </div>
-            <div><span>Paklausta</span></div>
-            <div>
-                <span onClick={() => setSort(prevSort => {
-                    return {column: 'assigned_plan', value: prevSort.value === 'ASC' ? 'DESC' : 'ASC'}
-                })}>Planas priskirtas</span>
-            </div>
-
-            <div>
-                <span onClick={() => setSort(prevSort => {
-                    return {column: 'support_over', value: prevSort.value === 'ASC' ? 'DESC' : 'ASC'}
-                })}>OK</span>
-            </div>
+        <div className={styles.headerRow}>
+            <input 
+                type='text' 
+                placeholder='Paieška'
+                // value={search}
+                onChange={e => setSearch(e.target.value.toLocaleLowerCase())}
+            />
+            <select 
+                name='sort' 
+                value={changeSort}
+                onChange={(e) => handleChange(e)}
+            >
+                <option value='name'>Vardas</option>
+                <option value='email'>El. paštas</option>
+                <option value='subscription_expires'>Narystė galioja</option>
+                <option value='nutrition_tracking'>Mitybą seka iki</option>
+                <option value='assigned_plan'>Planas priskirtas</option>
+                <option value='support_over'>Priežiūros pabaiga</option>
+            </select>
+            <button onClick={() => setSort(prevState => ({...prevState, value: prevState.value === 'DESC'? 'ASC' : 'DESC'}))}>
+                {sort.value === 'ASC' ? <IoIosArrowRoundDown className={styles.icon} /> : <IoIosArrowRoundUp className={styles.icon} />}
+            </button>
         </div>
     );
 }
