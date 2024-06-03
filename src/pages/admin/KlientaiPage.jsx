@@ -5,6 +5,7 @@ import KlientaiRow, { KlientaiRowHeader } from '../../components/admin/klientai/
 
 const KlientaiPage = () => {
     const [users, setUsers] = useState([]);
+    const [search, setSearch] = useState('');
     const [sort, setSort] = useState({
         column: 'subscription_expires',
         value: 'ASC'
@@ -26,13 +27,14 @@ const KlientaiPage = () => {
         }
         getData();
     }, [sort, axiosPrivate]);
-    const [search, setSearch] = useState('');
+
+    
     const searchFn = u => {
         return u.email.toLowerCase().indexOf(search) > -1 || u.name.toLowerCase().indexOf(search) > -1;
     };
     return (
         <Klientai>
-            <KlientaiRowHeader setSearch={setSearch} sort={sort} setSort={setSort} />
+            <KlientaiRowHeader setSearch={setSearch} search={search} sort={sort} setSort={setSort} />
             {!isLoading && users.filter(searchFn).map(user => <KlientaiRow 
                 key={user.id} 
                 user={user} 

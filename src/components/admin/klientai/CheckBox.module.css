@@ -43,7 +43,21 @@
     transition-duration: 0s;
 }
 
-.ikxBAC:checked {
+/* .ikxBAC:checked {
+    background-color: #60c040;
+} */
+
+/* .ikxBAC.week:checked {
+    background-color: #FFA500;;
+}
+.ikxBAC.month:checked {
+    background-color: #60c040;
+} */
+
+.ikxBAC.week {
+    background-color: #FFA500;;
+}
+.ikxBAC.month {
     background-color: #60c040;
 }
 
@@ -56,6 +70,6 @@
     outline: 0;
 }
 
-.ikxBAC:checked:hover {
+/* .ikxBAC:checked:hover {
     background-color: #4d9a33;
-}
+} */

@@ -35,6 +35,7 @@ import AdminLayout from './components/admin/layout/AdminLayout';
 import KlientaiPage from './pages/admin/KlientaiPage';
 import Maistas from './pages/admin/Maistas';
 import Receptai from './pages/admin/Receptai';
+import VideosPage from './pages/admin/VideosPage';
 
 const queryClient = new QueryClient({
     defaultOptions: {
@@ -78,6 +79,7 @@ function App() {
                                         <Route index element={<KlientaiPage />} />
                                         <Route path='maistas' element={<Maistas />} />
                                         <Route path='receptai' element={<Receptai />} />
+                                        <Route path='videos' element={<VideosPage />} />
                                     </Route>
                                 </Route>
                             </Route>

@@ -3,30 +3,37 @@ import styles from './KlientaiRow.module.css';
 import { useState } from 'react';
 import { date_to_yyyy_mm_dd, isTodayOrFiveDaysBefore, isTodayOrLater, isTwoOrFourWeeks } from '../../../utils/helpers';
 import check_box_styles from './CheckBox.module.css';
-import { IoIosArrowRoundDown, IoIosArrowRoundUp } from "react-icons/io";
+import { IoIosArrowRoundDown, IoIosArrowRoundUp } from 'react-icons/io';
+import { AiFillCloseSquare } from 'react-icons/ai';
+
 const KlientaiRow = ({ user, users, setUsers }) => {
     
     const axiosPrivate = useAxiosPrivate();
+    const [week, setWeek] = useState(user.support_over === 'week' ? true : false );
+    const [month, setMonth] = useState(user.support_over === 'month' ? true : false );
+    
     const [userData, setUserDate] = useState({
         subscription_expires: date_to_yyyy_mm_dd(user.subscription_expires),
         nutrition_tracking: date_to_yyyy_mm_dd(user.nutrition_tracking),
         nutrition_plan_status: user.nutrition_plan_status,
         assigned_plan: date_to_yyyy_mm_dd(user.assigned_plan),
-        support_over: user.support_over
+        support_over: user.support_over,
     });
-    
-    const onHandleChange = async (e, user_id) => {
+
+    const onHandleChange = async (e, user_id, period) => {
+        
         try {
             await axiosPrivate.patch(`/admin/user/${user_id}`, {
                 column: e.target.name,
-                value: e.target.name !== 'support_over' ? e.target.value : e.target.checked
+                value: e.target.name !== 'support_over' ? e.target.value : (e.target.checked ? period : 'none')
             });
             
             const newUsers = [...users];
             const newUser = newUsers.find(u => u.id === user_id);
             const index = newUsers.findIndex(u => u.id === user_id);
-            
-            newUser[e.target.name] = e.target.name !== 'support_over' ? e.target.value : e.target.checked;
+
+            // newUser[e.target.name] = e.target.name !== 'support_over' ? e.target.value : (e.target.checked ? e.target.value : 'none');
+            newUser[e.target.name] = e.target.value;
             if(e.target.name === 'subscription_expires') {
                 newUser.subscription_type = e.target.value ? 'Virtuvė' : 'free'
             }
@@ -39,9 +46,24 @@ const KlientaiRow = ({ user, users, setUsers }) => {
         }
     };
 
-    const handleInputChange = (e, user_id) => {
+    const handleInputChange = (e, user_id, period = null) => {
+        
+        if(e.target.name === 'assigned_plan' && e.target.value === '') {
+            console.log(e.target.name, e.target.value);
+            setWeek(false);
+            setMonth(false);
+        }
+        if(period === 'week') {
+            setWeek(w => !w);
+            setMonth(false);
+        }
+        if(period === 'month') {
+            setMonth(m => !m);
+            setWeek(false);
+        }
+        
         setUserDate({ ...userData, [e.target.name]: e.target.value });
-        onHandleChange(e, user_id);
+        onHandleChange(e, user_id, period);
     };
     
     return (    
@@ -106,26 +128,39 @@ const KlientaiRow = ({ user, users, setUsers }) => {
                 <div className={styles.planas}>
                     <span>Planas priskirtas</span>
                     <input 
-                        className={!user.support_over ? styles[isTwoOrFourWeeks(user.assigned_plan)] : styles.colorSuccess}
+                        className={month ? styles.colorSuccess : styles[isTwoOrFourWeeks(user.assigned_plan)]}
                         type='date' 
                         name='assigned_plan' 
                         min='2024-01-01'                    
-                        value={userData.assigned_plan} 
+                        value={userData.assigned_plan}  
                         onChange={e => handleInputChange(e, user.id)}  
                     />
                 </div>
 
                 <div className={styles.prieziura}>
-                    <span>Priežiūra baigta</span>
-                    
-                    <input 
-                        className={`${styles['sc-gJwTLC']} ${check_box_styles.ikxBAC}`}
-                        type='checkbox' 
-                        name='support_over' 
-                        value={userData.support_over} 
-                        defaultChecked={userData.support_over} 
-                        onChange={e => handleInputChange(e, user.id)}  
-                    />
+                    {(!week && !month) && <span>Statusas</span>}
+                    {week && <span>2 savaitės</span>}
+                    {month && <span>1 mėnesis</span>}
+
+                    <div className={styles.checkBoxes}>
+                        <input 
+                            className={`${check_box_styles.ikxBAC} ${week ? check_box_styles.week : ''}`}
+                            type='checkbox' 
+                            name='support_over' 
+                            value='week' 
+                            checked={week}
+                            onChange={e => handleInputChange(e, user.id, 'week')}  
+                        />
+
+                        <input 
+                            className={`${check_box_styles.ikxBAC} ${month ? check_box_styles.month : ''}`}
+                            type='checkbox' 
+                            name='support_over' 
+                            value='month' 
+                            checked={month}
+                            onChange={e => handleInputChange(e, user.id, 'month')}  
+                        />
+                    </div>
                 </div>
             </div>
         </div>
@@ -134,7 +169,7 @@ const KlientaiRow = ({ user, users, setUsers }) => {
 
 export default KlientaiRow;
 
-export const KlientaiRowHeader = ({ setSearch, sort, setSort }) => {
+export const KlientaiRowHeader = ({ setSearch, search, sort, setSort }) => {
     const [changeSort, setChangeSort] = useState('subscription_expires');
 
 
@@ -142,16 +177,20 @@ export const KlientaiRowHeader = ({ setSearch, sort, setSort }) => {
         setChangeSort(e.target.value);
         setSort(prevSort => ({
             ...prevSort, column: e.target.value
-        }))
+        }));
     }
 
     return (    
         <div className={styles.headerRow}>
-            <input 
-                type='text' 
-                placeholder='Paieška'
-                onChange={e => setSearch(e.target.value.toLocaleLowerCase())}
-            />
+            <div className={styles.paieskaContainer}>
+                <input 
+                    type='text' 
+                    placeholder='Paieška'
+                    value={search}
+                    onChange={e => setSearch(e.target.value.toLocaleLowerCase())}
+                />
+                <AiFillCloseSquare className={styles.icon} onClick={() => setSearch('')} />
+            </div>
             <select 
                 name='sort' 
                 value={changeSort}
@@ -160,9 +199,11 @@ export const KlientaiRowHeader = ({ setSearch, sort, setSort }) => {
                 <option value='name'>Vardas</option>
                 <option value='email'>El. paštas</option>
                 <option value='subscription_expires'>Narystė galioja</option>
+                <option value='last_activity'>Prisijungta</option>
                 <option value='nutrition_tracking'>Mitybą seka iki</option>
                 <option value='assigned_plan'>Planas priskirtas</option>
                 <option value='support_over'>Priežiūros pabaiga</option>
+                <option value='subscription_type'>free</option>
             </select>
             <button onClick={() => setSort(prevState => ({...prevState, value: prevState.value === 'DESC'? 'ASC' : 'DESC'}))}>
                 {sort.value === 'ASC' ? <IoIosArrowRoundDown className={styles.icon} /> : <IoIosArrowRoundUp className={styles.icon} />}

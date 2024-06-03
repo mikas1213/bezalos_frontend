@@ -8,7 +8,8 @@ import useAxiosPrivate from '../../../hooks/useAxiosPrivate';
 const path = {
     admin: '/admin',
     maistas: '/admin/maistas',
-    receptai: '/admin/receptai'
+    receptai: '/admin/receptai',
+    videos: '/admin/videos',
 }
 
 const AdminNavbar = () => {
@@ -51,10 +52,10 @@ const AdminNavbar = () => {
                     <IoFastFoodSharp />
                     Receptai
                 </NavLink></li>
-            <li className={styles.navItem}>
-                <NavLink to={path.receptai}>
+            <li className={`${styles.navItem} ${location.pathname === path.videos ? styles.active : ''}`}>
+                <NavLink to={path.videos}>
                     <FaFilm />
-                    Video
+                    Videos
                 </NavLink>
             </li>
             <li className={styles.navItem}>test 6</li>
