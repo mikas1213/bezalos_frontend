@@ -38,7 +38,7 @@ const PaslaugosPage = () => {
                 plan_name: plan.plan_name, 
                 user_id, 
             });
-            
+
             window.location = res.data.session.url;
         } catch (err) {
             console.log(err.message);
@@ -62,6 +62,7 @@ const PaslaugosPage = () => {
                         />)}
                     </Paslaugos>
                     {/* <a href="https://billing.stripe.com/p/login/test_14kg0Meu27G4gdGcMN">Valdyt paslaugas</a> */}
+                    <a href="https://billing.stripe.com/p/login/6oE150ggf1WJ4Qo3cc">Tvarkyti narystę</a>
                 </Container>
             </Main>
         </>
