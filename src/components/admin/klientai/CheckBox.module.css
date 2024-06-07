@@ -1,6 +1,6 @@
 .ikxBAC {
     appearance: none;
-    background-color: #dfe1e4;
+    background-color: #bbbbbb99;
     border-radius: 72px;
     border-style: none;
     flex-shrink: 0;
@@ -70,6 +70,6 @@
     outline: 0;
 }
 
-/* .ikxBAC:checked:hover {
+.ikxBAC:checked:hover {
     background-color: #4d9a33;
-} */
+}

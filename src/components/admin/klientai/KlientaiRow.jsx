@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { date_to_yyyy_mm_dd, isTodayOrFiveDaysBefore, isTodayOrLater, isTwoOrFourWeeks } from '../../../utils/helpers';
 import check_box_styles from './CheckBox.module.css';
 import { IoIosArrowRoundDown, IoIosArrowRoundUp } from 'react-icons/io';
-import { AiFillCloseSquare } from 'react-icons/ai';
+import { IoCloseCircle } from 'react-icons/io5';
 
 const KlientaiRow = ({ user, users, setUsers }) => {
     
@@ -189,7 +189,7 @@ export const KlientaiRowHeader = ({ setSearch, search, sort, setSort }) => {
                     value={search}
                     onChange={e => setSearch(e.target.value.toLocaleLowerCase())}
                 />
-                <AiFillCloseSquare className={styles.icon} onClick={() => setSearch('')} />
+                <IoCloseCircle className={styles.icon} onClick={() => setSearch('')} />
             </div>
             <select 
                 name='sort' 
@@ -202,7 +202,7 @@ export const KlientaiRowHeader = ({ setSearch, search, sort, setSort }) => {
                 <option value='last_activity'>Prisijungta</option>
                 <option value='nutrition_tracking'>Mitybą seka iki</option>
                 <option value='assigned_plan'>Planas priskirtas</option>
-                <option value='support_over'>Priežiūros pabaiga</option>
+                {/* <option value='support_over'>Priežiūros pabaiga</option> */}
                 <option value='subscription_type'>free</option>
             </select>
             <button onClick={() => setSort(prevState => ({...prevState, value: prevState.value === 'DESC'? 'ASC' : 'DESC'}))}>

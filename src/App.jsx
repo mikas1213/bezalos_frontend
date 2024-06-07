@@ -29,7 +29,9 @@ const PaslaugosPage = lazy(() => import('./pages/PaslaugosPage'));
 const ProfilisPage = lazy(() => import('./pages/ProfilisPage'));
 const UpdatePasswordPage = lazy(() => import('./pages/UpdatePasswordPage'));
 const NotFoundPage = lazy(() => import('./pages/NotFoundPages/NotFoundPage'));
-const NeedSubscription = lazy(() => import('./pages/NotFoundPages/NeedSubscription'));
+const NeedSubscription = lazy(() => import('./pages/SubscriptionPages/NeedSubscription'));
+const SuccessSubscription = lazy(() => import('./pages/SubscriptionPages/SuccessSubscription'));
+const CancelSubscription = lazy(() => import('./pages/SubscriptionPages/CancelSubscription'));
 
 import AdminLayout from './components/admin/layout/AdminLayout';
 import KlientaiPage from './pages/admin/KlientaiPage';
@@ -60,11 +62,12 @@ function App() {
                             
                                 <Route path='/receptai' element={<ReceptaiPage />} />
                                 <Route path='/paslaugos' element={<PaslaugosPage />} />
-                            
+
                                 <Route path='/prisijungti' element={<LoginPage />} />
                                 <Route path='/keisti-slaptazodi/:token' element={<UpdatePasswordPage /> } />
                                 <Route path='/prenumeruoti' element={<NeedSubscription />} />
                                 <Route path='*' element={<NotFoundPage />} />
+                                
 
                                 <Route element={<RequireAuth allowedRoles={[1213, 2324]}/> }>
                                     <Route path='/virtuve/:video' element={<VirtuveVideoPage />} />
@@ -72,6 +75,8 @@ function App() {
                                         {/* <Route index element={<Users />} /> */}
                                         {/* <Route path='maistas' element={<Food />} /> */}
                                     </Route>
+                                    <Route path='/apmoketa-sekmingai' element={<SuccessSubscription /> }/>
+                                    <Route path='/mokejimo-klaida' element={<CancelSubscription /> }/>
                                 </Route>
 
                                 <Route element={<RequireAuth allowedRoles={[1213]}/> }>

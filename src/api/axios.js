@@ -6,12 +6,12 @@ export default axios.create({ baseURL });
 
 export const axiosPrivate = axios.create({
     baseURL: baseURL,
-    headers: { 
+    // headers: { 
         // 'Content-Type': 'application/josn',  
         // 'Access-Control-Allow-Origin': '*',
         // "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE",
         // "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept, Authorization, access-control-allow-origin"
         
-    },
+    // },
     withCredentials: true
 });

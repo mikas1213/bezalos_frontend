@@ -8,7 +8,7 @@ import useAuth  from '../hooks/useAuth';
 
 const VirtuvePage = () => {  
     useEffect(() => {
-        document.title = 'Be Žalos | Virtuvė';
+        document.title = 'Be žalos | Virtuvė';
     }, []);
     
     const { auth }  = useAuth();

@@ -1,0 +1,5 @@
+.successSubscription {
+    height: calc(100dvh - var(--nav-height-80));
+    display: grid;
+    place-items: center;
+}
