@@ -24,9 +24,8 @@ const SuccessSubscription = () => {
             
             try {
                 const sid = searchParams.get('session_id');
-                
                 const data = await axios.post(`/payments/payment-success?session_id=${sid}`);
-                console.log('data:', data)
+                
             } catch (err) {
                 console.log(err.message);
                 navigate('/mokejimo-klaida');

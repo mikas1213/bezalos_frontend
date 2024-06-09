@@ -15,14 +15,14 @@ export const isTodayOrLater = (date) => {
 };
 
 export const isTodayOrFiveDaysBefore = (date) => {
-
+    
     const date_before = new Date(date);
     date_before.setDate(date_before.getDate() - 5);
     const five_days_before = Date.parse(date_before.toLocaleString('lt-LT', {dateStyle: 'short'}));
     
     const subscription_expires = Date.parse(date_to_yyyy_mm_dd(date));
     const today = Date.parse(new Date().toLocaleString('lt-LT', {dateStyle: 'short'}));
-
+    
     let setColor = 'colorLight';
     if(today >= five_days_before) setColor = 'colorWarning';
     if(subscription_expires <= today) setColor = 'colorDanger';

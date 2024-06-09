@@ -1,0 +1,12 @@
+.serviceCard {
+    border-radius: 1rem;
+    border: 1px solid #999;
+    padding: 1rem;
+}
+.title {
+    font-size: 0.8rem;
+}
+.price {
+    font-size: 1rem;
+    font-weight: 600;
+}

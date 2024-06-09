@@ -2,7 +2,7 @@ import styles from './Naryste_card.module.css';
 // import { useContext } from 'react';
 // import { NarysteContext } from '../../../pages/PaslaugosPage';
 
-const Naryste_card = ({ plan, handleCheckout }) => {
+const Naryste_card = ({ plan, handleSubscriptionCheckout }) => {
     // const bilekas = useContext(NarysteContext);
     
 
@@ -10,7 +10,7 @@ const Naryste_card = ({ plan, handleCheckout }) => {
         <div className={styles.naryste_card}>
             <h3>{ plan.plan_name }</h3>
             <div>€{ plan.price }</div>
-            <button onClick={ () => handleCheckout({plan}) }>Užsakyti</button>
+            <button onClick={ () => handleSubscriptionCheckout({plan}) }>Užsakyti</button>
         </div>
     );
 };

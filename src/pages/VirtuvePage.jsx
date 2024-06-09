@@ -14,14 +14,14 @@ const VirtuvePage = () => {
     const { auth }  = useAuth();
     let loggedUser = {};
     if(auth.accessToken) loggedUser = jwtDecode(auth?.accessToken);
-    const { user_id = '', user_subscription} = loggedUser;
+    const { user_id = '', user_subscription, s_status} = loggedUser;
 
 
     return (
         <>
             <Navbar />
             <Main>
-                <Videos user_id={user_id} user_subscription={user_subscription} />
+                <Videos user_id={user_id} user_subscription={user_subscription} s_status={s_status} />
             </Main>
         </>
     );

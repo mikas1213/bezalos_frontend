@@ -6,7 +6,7 @@ import mokymaiImg from '../../assets/images/virtuve/mokymai.webp';
 import { FaLock } from "react-icons/fa";
 
 
-const Card = ({ video, user_id, user_subscription }) => {
+const Card = ({ video, user_id, user_subscription, s_status }) => {
 
     const created_video = new Date(Date.parse(video.created_at)).toLocaleString('lt-LT', {
         day: 'numeric', 
@@ -17,7 +17,7 @@ const Card = ({ video, user_id, user_subscription }) => {
     
     return (
         <Link to={video.video_url}>
-            <div className={`${styles.VideoCard} ${(user_id && user_subscription) ? '' : styles.cardLock}`}>
+            <div className={`${styles.VideoCard} ${(user_id && (user_subscription || s_status === 'virtuve')) ? '' : styles.cardLock}`}>
                 <section>
                     <img src={video.category === 'Mokymai' ? mokymaiImg : vebinarasImg} alt='video cover'/>
                     <div className={styles.iconContainer}>

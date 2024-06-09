@@ -5,6 +5,8 @@ import { date_to_yyyy_mm_dd, isTodayOrFiveDaysBefore, isTodayOrLater, isTwoOrFou
 import check_box_styles from './CheckBox.module.css';
 import { IoIosArrowRoundDown, IoIosArrowRoundUp } from 'react-icons/io';
 import { IoCloseCircle } from 'react-icons/io5';
+// import stripe_img from '../../../assets/images/admin/stripe_jpg.jpeg';
+import stripe_img from '../../../assets/images/admin/stripe_png.png';
 
 const KlientaiRow = ({ user, users, setUsers }) => {
     
@@ -76,16 +78,28 @@ const KlientaiRow = ({ user, users, setUsers }) => {
 
                 <div className={styles.userBoxDate}>
                     <div className={styles.naryste}>
-                        <span className={styles[user.subscription_type]}>{user.subscription_type}</span>
-                        <input 
-                            placeholder='yyyy-mm-dd'
-                            className={styles[isTodayOrFiveDaysBefore(user.subscription_expires)]}
-                            type='date' 
-                            min='2024-01-01'                    
-                            name='subscription_expires'  
-                            value={userData.subscription_expires}
-                            onChange={e => handleInputChange(e, user.id)}  
-                        />
+                        <div className={styles.inputGroup}>
+                            <span className={styles[user.subscription_type]}>{user.subscription_type}</span>
+                            <input 
+                                placeholder='yyyy-mm-dd'
+                                className={styles[isTodayOrFiveDaysBefore(user.subscription_expires)]}
+                                type='date' 
+                                min='2024-01-01'                    
+                                name='subscription_expires'  
+                                value={userData.subscription_expires}
+                                onChange={e => handleInputChange(e, user.id)}  
+                            />
+                        </div>
+
+
+                        <div className={styles.inputGroup}>
+                            <img className={styles.stripeImg} src={stripe_img} alt='logo-img' />
+                            <span className={styles[isTodayOrFiveDaysBefore(user.s_subscription_expires)]}>
+                                {user.s_subscription_expires ? date_to_yyyy_mm_dd(user.s_subscription_expires) : 'Negalioja'}
+                            </span>
+                            {/* <span>{user.s_subscription_expires}</span> */}
+                        </div>
+                        
                     </div>
                     <div className={styles.lastActivity}>
                         Prisijungė:
