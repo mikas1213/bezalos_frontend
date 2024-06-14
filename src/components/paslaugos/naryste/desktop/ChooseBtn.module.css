@@ -1,0 +1,8 @@
+.chooseBtnContainer {
+    grid-column: 1 / -1;
+    border-top: 1px solid #082b1d15;
+}
+
+.chooseBtnContainer button {
+    margin-top: 1rem;
+}

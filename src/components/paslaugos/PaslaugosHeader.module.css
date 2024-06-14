@@ -1,0 +1,21 @@
+.titleContainer {
+    /* margin-top: 3rem; */
+    display: flex;
+    gap: 0.5rem;
+    flex-direction: column;
+    align-items: center;
+}
+
+.title {
+    font-size: var(--font-size-dynamic-h2-lg);
+    font-weight: 600;
+    color: var(--color-text-dark);
+}
+
+.paragraph {
+    font-size: var(--font-size-dynamic-h6-lg);
+    font-weight: 400;
+    color: #555;
+    color: var(--color-bgr-top);
+    animation: fadeIn 0.2s;
+}

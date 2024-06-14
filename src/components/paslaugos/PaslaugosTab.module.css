@@ -1,0 +1,56 @@
+.wrapper {
+    border-radius: 37px;
+    background-color: #f7f7f7;
+    padding: 0.2rem;
+    width: 100%;
+    max-width: 20rem;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+.tabSwitch {
+    position: relative;
+}
+.textCenter {
+    text-align: center;
+}
+  
+.tabSwitch:after {
+    content: "";
+    position: absolute;
+    width: 50%;
+    top: 0;
+    transition: left ease 0.3s;
+    border-radius: 27.5px;
+    background-color: var(--color-btn-primary);
+    height: 100%;
+    z-index: 0;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+  
+.tabSwitch.naryste:after {
+    left: 0;
+}
+  
+.tabSwitch.paslaugos:after {
+    left: 50%;
+}
+  
+.tabSwitch .tab {
+    display: inline-block;
+    width: 50%;
+    padding: 0.3rem 0;
+    z-index: 1;
+    position: relative;
+    cursor: pointer;
+    transition: color 200ms;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--color-radio-border);
+    line-height: normal;
+    user-select: none;
+}
+  
+.tabSwitch .tab.active {
+    color: var(--color-text-dark);
+}

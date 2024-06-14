@@ -1,0 +1,22 @@
+.features {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 2.5rem;
+    background-color: #082b1d0a;
+    border-radius: 0.8rem;
+}
+.feature {
+    display: flex;
+    justify-content: space-between;
+    color: var(--color-text-dark);
+    font-size: var(--font-size-small-1);
+}
+.feature div:nth-child(2) {
+    align-self: center;
+}
+.feature div:nth-child(2) svg {
+    color: var(--color-text-dark);
+    display: flex;
+    /* font-size: 0.9rem; */
+}

@@ -1,6 +1,6 @@
 .nav {
     position: fixed;
-    z-index: 1;
+    z-index: 10;
     width: 100%;
     transition: all .3s ease;
 }
@@ -107,8 +107,8 @@
 .indicator {
     position: absolute;
     border-radius: 50px;
-    margin-top: -4px;
-    margin-left: -2px;
+    margin-top: -2px;
+    /* margin-left: -2px; */
     height: 1.2px;
     width: 0px;
     transition: all 0.2s ease-in-out;
@@ -122,11 +122,13 @@
     cursor: pointer;
 }
 .listItem:hover .indicator {
-    width: calc(100% + 4px);
+    /* width: calc(100% + 0px); */
+    width: 100%;
     transition: all 0.2s ease-in-out;
 }
 :global(.active) ~ .indicator {
-    width: calc(100% + 4px);
+    /* width: calc(100% + 0px); */
+    width: 100%;
 }
 
 @media only screen and (max-width: 576px) {

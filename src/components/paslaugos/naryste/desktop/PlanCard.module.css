@@ -1,0 +1,92 @@
+.planCard:hover {
+    cursor: pointer;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+.planCard {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: box-shadow 0.2s;
+    flex-grow: 1;
+    border: 1px solid #082b1d15;
+    border-radius: 0.8rem;
+    padding: 1.6rem;
+    transition: background-color 0.2s ease;
+}
+
+.cardHeader {
+    display: flex;
+    gap: 0.5rem;
+}
+.cardHeader span {
+    align-self: end;
+    line-height: 120%;
+}
+.planName {
+    font-size: var(--font-size-p);
+    font-weight: 500;
+    color: var(--color-text-dark);
+    transition: color 0.2s ease;
+}
+.markContainer {
+    flex-grow: 1;
+    display: flex;
+    justify-content: end;
+}
+.mark {
+    position: relative;
+    background: #082b1d20;
+    border: 1px solid #082b1d0a;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 10rem;
+    transition: all 0.2 ease;
+}
+.mark::after {
+    content: ' ';
+    position: absolute;
+    background-color: #082b1d20;
+    background-color: var(--color-text-light);
+    /* width: 1rem; */
+    /* height: 1rem; */
+    /* height: 100%; */
+    width: 0.8rem;
+    height: 0.8rem;
+    border-radius: 10rem;
+    transition: all 0.2 ease;
+}
+
+.price {
+    font-size: var(--font-size-h3);
+    line-height: 100%;
+    font-weight: 600;
+    color: var(--color-text-dark);
+    transition: color 0.2s ease;
+}
+.period {
+    color: #082b1d90;
+    font-size: var(--font-size-small-1);
+    transition: color 0.2 ease;
+}
+
+.active.planCard  {
+    background-color: var(--color-bgr-bottom);
+    background-image: linear-gradient(to bottom right, var(--color-bgr-top), var(--color-bgr-bottom));
+}
+.active :is(.planName, .price) {
+    color: var(--color-text-light);
+}
+
+.active .period {
+    color: #eff1ef88;
+}
+.active .mark {
+    border: 1px solid #082b1dff;
+    background-color: var(--color-text-light);
+}
+.active .mark:after {
+    background-color: #082b1dee;
+}

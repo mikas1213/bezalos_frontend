@@ -1,6 +1,6 @@
-import styles from './Service_card.module.css';
+import styles from './Mitybos_planas_card.module.css';
 
-const Service_card = ({handleServiceCheckout, product}) => {
+const Mitybos_planas_card = ({handleServiceCheckout, product}) => {
     return (
         <div className={styles.serviceCard}>
             <div className={styles.title}>{product.title}</div>
@@ -10,4 +10,4 @@ const Service_card = ({handleServiceCheckout, product}) => {
     );
 };
 
-export default Service_card;
+export default Mitybos_planas_card;
