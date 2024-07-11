@@ -14,8 +14,10 @@ const plans = {
         virtuve: {plan_price: 'virtuve_year', plan_name: 'virtuve', plan_name_lt: 'Virtuvė', plan_period: 'metams', price: '99,90'}
     }
 };
-
+/*
 const handleSubscriptionCheckout = async ({ plan }) => {
+    
+    console.log(user_id)
     if(user_id) {
         try {
             const res = await axiosPrivate.post('/payments/checkout-session', {
@@ -34,7 +36,7 @@ const handleSubscriptionCheckout = async ({ plan }) => {
         navigate('/prisijungti');
     }
 };
-
+*/
 const PaymentContext = createContext();
 const PaymentProvider = ({ children }) => {
     const { auth } = useAuth();
@@ -46,6 +48,7 @@ const PaymentProvider = ({ children }) => {
 
     const [period, setPeriod] = useState('month');
     const [variant, setVariant] = useState('virtuve');
+
     const selectedPlan = plans[period][variant];
     const plan = plans[period];
 
@@ -53,7 +56,8 @@ const PaymentProvider = ({ children }) => {
     //     console.log('selectedPlan', selectedPlan);
     // };
 
-    const handleSubscriptionCheckout = async ({ plan }) => {
+    const handleSubscriptionCheckout = async (/*{ plan }*/) => {
+        
         if(user_id) {
             try {
                 const res = await axiosPrivate.post('/payments/checkout-session', 
@@ -64,7 +68,7 @@ const PaymentProvider = ({ children }) => {
                 // }
                 selectedPlan
             );
-                console.log(res);
+                // console.log(res);
                 window.location = res.data.session.url;
             } catch (err) {
                 if(err.response.status === 401) {

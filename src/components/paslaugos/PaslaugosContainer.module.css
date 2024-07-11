@@ -5,3 +5,9 @@
     flex-direction: column;
     gap: 3rem;
 }
+
+@media only screen and (max-width: 576px) {
+    .paslaugosContainer {
+        gap: clamp(0rem, 5.556vw, 2rem);
+    }
+}

@@ -6,7 +6,7 @@ import Plans from './desktop/Plans';
 import PlanCard from './desktop/PlanCard';
 import ChooseBtn from './desktop/ChooseBtn';
 
-import NarysteMobile from './mobile/NarysteMobile';
+// import NarysteMobile from './mobile/NarysteMobile';
 
 
 const Naryste = () => {
@@ -24,7 +24,7 @@ const Naryste = () => {
                 <ChooseBtn />
             </NarysteDeskotop>
 
-            <NarysteMobile />
+            {/* <NarysteMobile /> */}
             
         </>
     );

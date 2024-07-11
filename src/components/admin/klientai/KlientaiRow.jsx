@@ -51,7 +51,7 @@ const KlientaiRow = ({ user, users, setUsers }) => {
     const handleInputChange = (e, user_id, period = null) => {
         
         if(e.target.name === 'assigned_plan' && e.target.value === '') {
-            console.log(e.target.name, e.target.value);
+            
             setWeek(false);
             setMonth(false);
         }

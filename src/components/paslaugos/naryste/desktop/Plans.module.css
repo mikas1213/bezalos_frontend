@@ -3,3 +3,14 @@
     flex-direction: column;
     gap: 1rem;
 }
+
+@media only screen and (max-width: 576px) {
+    .features {
+        order: 1;
+    }
+}
+@media only screen and (max-width: 375px) {
+    .plans { 
+        gap: 0.7rem;
+    }
+}

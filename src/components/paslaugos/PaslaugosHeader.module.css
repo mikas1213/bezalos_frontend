@@ -13,9 +13,18 @@
 }
 
 .paragraph {
-    font-size: var(--font-size-dynamic-h6-lg);
+    font-size: var(--font-size-dynamic-h5-lg);
     font-weight: 400;
     color: #555;
     color: var(--color-bgr-top);
     animation: fadeIn 0.2s;
+}
+
+@media only screen and (max-width: 576px) {
+    .title {
+        font-size: var(--font-size-dynamic-h4-sm);
+    }
+    .paragraph {
+        font-size: var(--font-size-dynamic-h5-sm);
+    }
 }

@@ -3,7 +3,8 @@
     grid-template-columns: 1.2fr 0.8fr;
     column-gap: 1rem;
     row-gap: 1rem;
-    width: 45rem;
+    /* width: 45rem; */
+    width: clamp(0rem, 91vw, 45rem);
     margin: 0 auto;
     animation: fadeIn 0.2s;
 }
@@ -12,9 +13,20 @@
     100% { opacity: 1; }
 }
 
-
+@media only screen and (max-width: 768px) {
+    .narysteDesktop {
+        width: 100%;
+    }
+}
 @media only screen and (max-width: 576px) {
     .narysteDesktop {
-        display: none;
+        /* display: none; */
+        grid-template-columns: 1fr;
+    }
+}
+
+@media only screen and (max-width: 375px) {
+    .narysteDesktop {
+        row-gap: 0.7rem;
     }
 }

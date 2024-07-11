@@ -10,6 +10,15 @@ const Features = () => {
             <div className={styles.monthYearTab}>
                 <MonthYearTab />
             </div>
+            
+
+            <div className={styles.feature}>
+                <div>Kažkas PLUS dar</div>
+                <div><FaCircleCheck /></div>
+            </div>
+
+
+
             <div className={styles.feature}>
                 <div>Rezultatų sekimas</div>
                 <div><FaCircleCheck /></div>
