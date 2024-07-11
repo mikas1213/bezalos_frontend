@@ -2,6 +2,7 @@ import styles from './Card.module.css';
 import { Link } from 'react-router-dom';
 
 import vebinarasImg from '../../assets/images/virtuve/vebinaras.webp';
+import vebinarasGydytojaiImg from '../../assets/images/virtuve/policistiniu-kiausidziu-sindromas.webp';
 import mokymaiImg from '../../assets/images/virtuve/mokymai.webp';
 import { FaLock } from "react-icons/fa";
 
@@ -14,12 +15,15 @@ const Card = ({ video, user_id, user_subscription, s_status }) => {
         month: 'long', 
         // year: 'numeric'
     });
-    
+    console.log(video)
     return (
         <Link to={video.video_url}>
             <div className={`${styles.VideoCard} ${(user_id && (user_subscription || s_status === 'virtuve')) ? '' : styles.cardLock}`}>
                 <section>
-                    <img src={video.category === 'Mokymai' ? mokymaiImg : vebinarasImg} alt='video cover'/>
+                    {video.video_url === 'policistiniu-kiausidziu-sindromas' 
+                    ? <img src={video.category === 'Mokymai' ? mokymaiImg : vebinarasGydytojaiImg} alt='video cover'/>
+                    : <img src={video.category === 'Mokymai' ? mokymaiImg : vebinarasImg} alt='video cover'/>
+                    }
                     <div className={styles.iconContainer}>
                         <FaLock className={styles.icon} />
                     </div>

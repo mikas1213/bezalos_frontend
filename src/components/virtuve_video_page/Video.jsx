@@ -1,5 +1,4 @@
 import useAxiosPrivate from '../../hooks/useAxiosPrivate';
-// import { useEffect } from 'react'; 
 import { 
     FaHeart, 
     FaRegHeart 
@@ -28,7 +27,7 @@ const Send = ({active}) => {
 };
 
 const Video = ({ user_id, user_name, video, comments, onToggleLikes, onAddVideoComment, onDeleteVideoComment, isLike, likesCount }) => {
-
+    
     const axiosPrivate = useAxiosPrivate();
     const [showMore, setShowMore] = useState(false);
     const [desc1, desc2] = video.description.split(':');
@@ -66,6 +65,7 @@ const Video = ({ user_id, user_name, video, comments, onToggleLikes, onAddVideoC
     return (
         <div className={styles.video}>
             <video 
+                className={styles[video.video_url === 'policistiniu-kiausidziu-sindromas' && 'gydytojaiCover']}
                 onContextMenu={ event => event.preventDefault() }
                 controls={true}
                 poster="data:image/gif,0000"

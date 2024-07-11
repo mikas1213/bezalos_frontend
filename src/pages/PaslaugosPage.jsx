@@ -9,6 +9,7 @@ import PaslaugosTab from '../components/paslaugos/PaslaugosTab';
 import PaslaugosHeader from '../components/paslaugos/PaslaugosHeader';
 import Naryste from '../components/paslaugos/naryste/Naryste';
 
+
 const PaslaugosPage = () => {
 
     const [side, setSide] = useState('naryste');
@@ -33,10 +34,10 @@ const PaslaugosPage = () => {
                 <Container>
                     <PaslaugosContainer>    
                         <PaslaugosTab side={side} setSide={setSide} />    
-                        <PaslaugosHeader paragraph={side === 'naryste' ? 'Rinktis narystės planą' : 'Rinktis paslaugą'}/> 
+                        <PaslaugosHeader paragraph={side === 'naryste' ? 'Rinktis narystės planą' : 'Eiti į paslaugas'}/> 
                         <PaymentProvider>
                             {side === 'naryste' && <Naryste /> }
-                            {side === 'paslaugos' && <div>Paslaugos</div> }
+                            {/* {side === 'paslaugos' && <div>Paslaugos</div> } */}
                         </PaymentProvider>
                     </PaslaugosContainer>
                 </Container>

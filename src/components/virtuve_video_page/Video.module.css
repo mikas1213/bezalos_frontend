@@ -11,12 +11,19 @@
 }
 
 .video video {
-    background-image: url('../../assets/images/virtuve/video_cover.webp');
     background-size: cover;
     display: block;
     border-top-left-radius: 1rem;
     border-top-right-radius: 1rem;
 }
+
+.video video:not(.gydytojaiCover) {
+    background-image: url('../../assets/images/virtuve/video_cover.webp');
+}
+.video video.gydytojaiCover {
+    background-image: url('../../assets/images/virtuve/policistiniu-kiausidziu-sindromas.webp'); 
+}
+
 
 .cardBottom {
     display: flex;

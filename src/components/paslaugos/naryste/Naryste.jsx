@@ -10,9 +10,7 @@ import ChooseBtn from './desktop/ChooseBtn';
 
 
 const Naryste = () => {
-    
     const { plan } = usePayment();
-
     return (
         <>
             <NarysteDeskotop>
@@ -21,7 +19,7 @@ const Naryste = () => {
                     <PlanCard  planVariant='profilis' plan={plan.profilis} />
                     <PlanCard  planVariant='virtuve' plan={plan.virtuve} />
                 </Plans>
-                <ChooseBtn />
+                <ChooseBtn key={Math.random()}/>
             </NarysteDeskotop>
 
             {/* <NarysteMobile /> */}

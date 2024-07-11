@@ -1,8 +1,9 @@
-import styles from "./ListCard.module.css";
-import { Link } from "react-router-dom";
-import { FaCirclePlay } from "react-icons/fa6";
-import vebinarasImg from "../../assets/images/virtuve/vebinaras.webp";
-import mokymaiImg from "../../assets/images/virtuve/mokymai.webp";
+import styles from './ListCard.module.css';
+import { Link } from 'react-router-dom';
+import { FaCirclePlay } from 'react-icons/fa6';
+import vebinarasImg from '../../assets/images/virtuve/vebinaras.webp';
+import vebinarasGydytojaiImg from '../../assets/images/virtuve/policistiniu-kiausidziu-sindromas.webp';
+import mokymaiImg from '../../assets/images/virtuve/mokymai.webp';
 
 const ListCard = ({ video }) => {
     const created_video = new Date(Date.parse(video.created_at)).toLocaleString(
@@ -19,15 +20,10 @@ const ListCard = ({ video }) => {
         <Link to={`/virtuve/${video.video_url}`}>
             <div className={styles.listCard}>
                 <div className={styles.imageContainer}>
-                    <img
-                        src={
-                            video.category === "Vebinaras"
-                                ? vebinarasImg
-                                : mokymaiImg
-                        }
-                        alt={video.title}
-                        className={styles.image}
-                    />
+                    {video.video_url === 'policistiniu-kiausidziu-sindromas'
+                        ? <img src={video.category === 'Vebinaras' ? vebinarasGydytojaiImg : mokymaiImg} alt={video.title} className={styles.image} />
+                        : <img src={video.category === 'Vebinaras' ? vebinarasImg : mokymaiImg} alt={video.title} className={styles.image} />
+                    }   
                     <FaCirclePlay className={styles.icon} />
                     <span className={styles.duration}>{video.duration}</span>
                 </div>
