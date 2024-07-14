@@ -13,7 +13,6 @@
 
 .successSubscriptionContent svg {
     width: 17rem;
-    /* stroke: red; */
 }
 
 .textContainer h3 {
@@ -38,4 +37,11 @@
 }
 .successSubscriptionContent button:hover {
     background-color: var(--color-btn-primary);
+}
+
+
+@media only screen and (max-width: 375px) {
+    .successSubscriptionContent svg {
+        width: 15rem;
+    }
 }

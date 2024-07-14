@@ -2,6 +2,7 @@ import styles from './Features.module.css';
 import MonthYearTab from './MonthYearTab';
 import { FaRegCircleXmark, FaCircleCheck } from "react-icons/fa6";
 import usePayment from '../../../../hooks/usePayment';
+
 const Features = () => {
     const { variant } = usePayment();
     
@@ -10,33 +11,25 @@ const Features = () => {
             <div className={styles.monthYearTab}>
                 <MonthYearTab />
             </div>
-            
-
             <div className={styles.feature}>
-                <div>Kažkas PLUS dar</div>
-                <div><FaCircleCheck /></div>
-            </div>
-
-
-
-            <div className={styles.feature}>
-                <div>Rezultatų sekimas</div>
+                <div>Rezultatų sekimas <span>(Kuriama)</span></div>
                 <div><FaCircleCheck /></div>
             </div>
             <div className={styles.feature}>
-                <div>Produktų keitimas</div>
+                <div>Produktų keitimas <span>(Kuriama)</span></div>
                 <div><FaCircleCheck /></div>
             </div>
             <div className={styles.feature}>
-                <div>Receptų kūrimas</div>
+                <div>Receptų kūrimas <span>(Kuriama)</span></div>
                 <div><FaCircleCheck /></div>
             </div>
             <div className={styles.feature}>
                 <div>Video mokymai ir dirbtuvės</div>
                 <div>
-                    {variant === 'virtuve' &&  <FaCircleCheck />}
+                    {variant === 'virtuve' && <FaCircleCheck />}
                     {variant === 'profilis' &&  <FaRegCircleXmark />}
                 </div>
+                
             </div>
             <div className={styles.feature}>
                 <div>Merginų bendruomenė</div>
@@ -47,6 +40,13 @@ const Features = () => {
             </div>
             <div className={styles.feature}>
                 <div>Online ir gyvi susitikimai</div>
+                <div>
+                    {variant === 'virtuve' && <FaCircleCheck />}
+                    {variant === 'profilis' && <FaRegCircleXmark />}
+                </div>
+            </div>
+            <div className={styles.feature}>
+                <div>Grupinė terapija <span>(Nuo rugsėjo)</span></div>
                 <div>
                     {variant === 'virtuve' && <FaCircleCheck />}
                     {variant === 'profilis' && <FaRegCircleXmark />}

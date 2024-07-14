@@ -12,13 +12,17 @@
     color: var(--color-text-dark);
     font-size: var(--font-size-small-1);
 }
+.feature div:nth-child(1) span {
+    color: var(--color-radio-border);
+    /* font-weight: 500; */
+}
 .feature div:nth-child(2) {
     align-self: center;
 }
 .feature div:nth-child(2) svg {
     color: var(--color-text-dark);
     display: flex;
-    /* font-size: 0.9rem; */
+    font-size: 1rem;
 }
 
 @media only screen and (max-width: 768px) {

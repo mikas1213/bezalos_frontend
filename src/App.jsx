@@ -32,6 +32,8 @@ const NotFoundPage = lazy(() => import('./pages/NotFoundPages/NotFoundPage'));
 const NeedSubscription = lazy(() => import('./pages/SubscriptionPages/NeedSubscription'));
 const SuccessSubscription = lazy(() => import('./pages/SubscriptionPages/SuccessSubscription'));
 const CancelSubscription = lazy(() => import('./pages/SubscriptionPages/CancelSubscription'));
+const PirkimoTaisyklesPage = lazy(() => import('./pages/PirkimoTaisyklesPage'));
+const PrivatumoPolitikaPage = lazy(() => import('./pages/PrivatumoPolitikaPage'));
 
 import AdminLayout from './components/admin/layout/AdminLayout';
 import KlientaiPage from './pages/admin/KlientaiPage';
@@ -66,6 +68,8 @@ function App() {
                                 <Route path='/prisijungti' element={<LoginPage />} />
                                 <Route path='/keisti-slaptazodi/:token' element={<UpdatePasswordPage /> } />
                                 <Route path='/prenumeruoti' element={<NeedSubscription />} />
+                                <Route path='/pirkimo-taisykles' element={<PirkimoTaisyklesPage />} />
+                                <Route path='/privatumo-politika' element={<PrivatumoPolitikaPage />} />
                                 <Route path='*' element={<NotFoundPage />} />
                                 
 

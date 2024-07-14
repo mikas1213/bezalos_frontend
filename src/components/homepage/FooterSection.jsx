@@ -76,7 +76,7 @@ const FooterSection = () => {
                     </div>
                     <div className={styles.termsOfUse}>
                         <Link to='/kontaktai'>Kontaktai</Link>
-                        <Link to='/taisykles'>Taisyklės</Link>
+                        <Link to='/pirkimo-taisykles'>Pirkimo taisyklės</Link>
                         <Link to='/privatumo-politika'>Privatumo politika</Link>
                     </div>
                     <div className={styles.socialIcons}>
