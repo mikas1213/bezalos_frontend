@@ -15,7 +15,7 @@ const Card = ({ video, user_id, user_subscription, s_status }) => {
         month: 'long', 
         // year: 'numeric'
     });
-    console.log(video)
+    
     return (
         <Link to={video.video_url}>
             <div className={`${styles.VideoCard} ${(user_id && (user_subscription || s_status === 'virtuve')) ? '' : styles.cardLock}`}>
