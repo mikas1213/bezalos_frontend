@@ -1,13 +1,22 @@
 .chooseBtnContainer {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    padding-top: 1rem;
     grid-column: 1 / -1;
     border-top: 1px solid #082b1d15;
 }
 
-.sutinkuText {
+.sutinkuText, .sutinkuText2 {
     font-size: var(--font-size-small-1);
+}
+.sutinkuText2 {
+    color: #00000099;
+    /* font-size: var(--font-size-small-2); */
+    font-weight: 500;
+}
+.taisyklesLink {
+    text-decoration: underline;
+    cursor: pointer;
 }
 
 /* SUBSCRIPTION BUTTON */
@@ -15,9 +24,11 @@
     border: none;
     border-radius: 2rem;
     padding: 0.5rem 1rem;
+    /* height: 3rem; */
+    width: 100%;
     color: var(--color-text-dark);
     font-weight: 600;
-    margin-top: 1rem;
+    /* margin-top: 1rem; */
     background-color: var(--color-btn-primary);
     transition: background-color 0.2s ease;
     transition: background-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
@@ -37,6 +48,8 @@
 /* CHECK BOX */
 .checkboxWrapper {
     display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
 }
 .checkboxWrapper * {
     box-sizing: border-box;
@@ -147,12 +160,11 @@
 @media only screen and (max-width: 576px) {
     .chooseBtnContainer {
         order: 3;
-    }
-    .chooseBtnContainer {
         flex-direction: column;
+        gap: 1rem;
     }
     .checkboxWrapper {
-        margin-top: 1rem;
+        /* margin-top: 1rem; */
     }
 }
 @media only screen and (max-width: 430px) {
@@ -164,8 +176,12 @@
     }
 }
 @media only screen and (max-width: 375px) {
+    .chooseBtnContainer {
+        padding-top: 0.7rem;
+        gap: 0rem;
+    }
     .checkboxWrapper {
-        margin-top: 0.7rem;
+        margin-top: 0rem;
     }
     .chooseBtnContainer button {
         font-size: var(--font-size-p);
