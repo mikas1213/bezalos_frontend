@@ -1,0 +1,16 @@
+.accHeader {
+    display: flex;
+    justify-content: center;
+    margin: 2rem 0;
+}
+.accHeader h1 {
+    color: #082b1dcc;
+    font-size: var(--font-size-dynamic-h3-lg);
+    font-weight: 500;
+}
+
+@media only screen and (max-width: 576px) {
+    .accHeader {
+
+    }
+}

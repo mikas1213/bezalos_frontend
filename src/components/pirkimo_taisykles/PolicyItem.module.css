@@ -1,0 +1,30 @@
+.polices {
+    display: flex;
+    align-items: start;
+    gap: 0.5rem;
+    
+}
+.polices {
+    font-size: var(--font-size-p);
+    color: #082b1dcc;
+}
+
+.polices span {
+    line-height: 100%;
+    font-size: var(--font-size-h5);
+}
+
+.reasons {
+    margin: 0.5rem 0;
+    margin-left: 2.5rem;
+    gap: 1rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.reason {
+    /* margin-top: 0.5rem; */
+    color: #082b1dcc;
+    /* font-size: var(--font-size-small-1); */
+    
+}

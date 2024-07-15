@@ -7,7 +7,7 @@ const ChooseBtn = () => {
     const { handleSubscriptionCheckout, variant } = usePayments();
     const [sutinku, setSutinku] = useState(false);
     
-    const planPreparingText =<span className={styles.sutinkuText}>Planas dar ruošiamas</span>
+    const planPreparingText =<span className={styles.sutinkuText}>Narystės planas kuriamas</span>
     const agreement = <> 
         <label className={styles.cbx} htmlFor='sutinku'>
             <span>
