@@ -1,11 +1,10 @@
 import styles from './AccordionItem.module.css';
-import { RiArrowLeftSLine } from "react-icons/ri";
-import { useRef, useState } from 'react';
+import { useState } from 'react';
+import AccordionHeader from './AccordionHeader';
+import AccordionBody from './AccordionBody';
 import PolicyItem from './PolicyItem';
 
-const AccordionItem = ({ policy, isFirstChild }) => {
-    
-    const contentHeight = useRef(null);
+const AccordionItem = ({ policies, isFirstChild }) => {
     const [isOpen, setIsOpen] = useState(false);
     return (
         
@@ -13,21 +12,18 @@ const AccordionItem = ({ policy, isFirstChild }) => {
             className={`${styles.accordionItem} ${isOpen ? styles.open : ''}`} 
             onClick={() => setIsOpen(open => !open)}
         >
-            {isFirstChild && <div className={styles.bottomLine}></div>}
-            <div className={styles.title}>
-                <p>{policy.title}</p>
-                <span><RiArrowLeftSLine className={styles.icon}/></span>
-            </div>
-            
-            <div ref={contentHeight} className={styles.policyContainer} style={
-                isOpen 
-                ? {height: contentHeight.current?.scrollHeight}
-                : {height : '0px'}
-            }>
-                <div className={styles.policy}>
-                    {policy.policy.map((pol, i) => <PolicyItem key={i} policy={pol} reasons={policy.reasons}/>)}
+            {isFirstChild && <div className={styles.topLine}></div>}
+
+            <AccordionHeader policies={policies} isOpen={isOpen} />
+            <AccordionBody isOpen={isOpen}>
+                <div className={styles.policies}>
+                    {policies.policies.map((policy, i) => <PolicyItem 
+                        key={i} 
+                        policy={policy} 
+                        reasons={policies.reasons}
+                    />)}
                 </div>
-            </div>
+            </AccordionBody>
         </div>
     )
 };

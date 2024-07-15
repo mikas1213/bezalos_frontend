@@ -95,7 +95,7 @@ const FooterSection = () => {
                 <div className={styles.footerDivider}></div>
                 <div className={styles.footerBottom}>
                     <span className={styles.copy}>&copy;</span>
-                    <span>2024 Valgau be žalos</span>
+                    <span>2024 Be žalos</span>
                 </div>
             </MainContainer>
         </footer>
