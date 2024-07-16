@@ -69,8 +69,8 @@ const Navbar = ({ isHome = false }) => {
                         </li>
 
                         <li className={styles.listItem}>
-                            <NavLink to='/paslaugos'>Paslaugos</NavLink>
-                            {/* <a href='https://bezalos.lt/paslaugos'>Paslaugos</a> */}
+                            {/* <NavLink to='/paslaugos'>Paslaugos</NavLink> */}
+                            <a href='https://bezalos.lt/paslaugos'>Paslaugos</a>
                             <div className={styles.indicator}></div>
                         </li>
 
