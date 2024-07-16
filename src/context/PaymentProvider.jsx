@@ -52,10 +52,6 @@ const PaymentProvider = ({ children }) => {
     const selectedPlan = plans[period][variant];
     const plan = plans[period];
 
-    // const testFn = () => {
-    //     console.log('selectedPlan', selectedPlan);
-    // };
-
     const handleSubscriptionCheckout = async (/*{ plan }*/) => {
         
         if(user_id) {
