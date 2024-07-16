@@ -6,7 +6,7 @@ const RequireAuth = ({ allowedRoles }) => {
     
     const { auth } = useAuth();
     const location = useLocation();
-    console.log('RequireAuth: ', location)
+    
     let loggedUser = {};
     if(auth.accessToken) loggedUser = jwtDecode(auth?.accessToken);
 

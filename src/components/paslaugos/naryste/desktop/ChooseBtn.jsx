@@ -27,6 +27,7 @@ const ChooseBtn = () => {
                 <input className={styles.inpCbx} id='sutinku' type='checkbox' onChange={() => setSutinku(su => !su)}/>
                 {/* <label className={styles.cbx} htmlFor='sutinku'> */}
                     {variant === 'profilis' ? planPreparingText : agreement}
+                    
                     {/* <span>
                         <svg width='12px' height='10px'>
                             <use xlinkHref='#check-4'></use>
