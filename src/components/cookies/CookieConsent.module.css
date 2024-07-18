@@ -12,7 +12,7 @@
     bottom: 1rem;
     left: 50%;
     transform: translateX(-50%);
-    z-index: 11;
+    z-index: 12;
     animation: slidein 1s ease-in-out;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }

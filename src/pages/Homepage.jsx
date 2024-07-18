@@ -7,16 +7,25 @@ import BenefitsSection from "../components/homepage/BenefitsSection";
 import ClientStorySection from '../components/homepage/ClientStorySection';
 import TestimonialSection from '../components/homepage/TestimonialSection';
 import FooterSection from "../components/homepage/FooterSection";
-
+import Offer from '../components/offer/Offer';
 import { useState, useRef, useEffect } from "react";
 const HomePage = () => {
 
     const ref = useRef(null);
     const [isIntersecting, setIsIntersecting] = useState(false);
+    const [isShowOffer, setIsShowOffer] = useState(false);
+    
+    useEffect(() => {
+        document.title = 'Be žalos';
+        window.scrollTo(0, 0);
+    }, []);
 
     useEffect(() => {
-        document.title = "Be žalos";
-        window.scrollTo(0, 0);
+        
+        setTimeout(() => {
+            setIsShowOffer(true);
+        }, 2000);
+ 
     }, []);
     
     useEffect(() => {
@@ -46,6 +55,7 @@ const HomePage = () => {
         <>
             <Navbar isHome={true} />
             <Main isHome={true} myRef={ref}>
+                {/* {isShowOffer && <Offer setIsShowOffer={setIsShowOffer} />} */}
                 <WelcomeSection />
                 <ExperienceSection />
                 <AboutSection />

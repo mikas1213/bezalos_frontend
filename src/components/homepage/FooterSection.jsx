@@ -11,7 +11,6 @@ import toast from 'react-hot-toast';
 import { PiFacebookLogo, PiInstagramLogo, PiAt } from 'react-icons/pi';
 
 const FooterSection = () => {
-
     const { register, formState: { errors }, setError, watch, reset, handleSubmit } = useForm({ mode: 'onChange' });
     
     const { mutate, isPending } = useMutation({
@@ -38,8 +37,6 @@ const FooterSection = () => {
         });
     };
 
-
-    
     return (
         <footer className={styles.footerSection}>
             <MainContainer customClass={styles.footerContainer}>

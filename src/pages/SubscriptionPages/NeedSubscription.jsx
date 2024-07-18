@@ -1,11 +1,12 @@
-import styles from "./NeedSubscription.module.css";
-import Navbar from "../../components/navbar/Navbar";
-import Main from "../../components/UI/Main";
-import FlexContainer from "../../components/UI/FlexContainer";
-// import { ImCheckmark2 } from "react-icons/im";
+import styles from './NeedSubscription.module.css';
+import Navbar from '../../components/navbar/Navbar';
+import Main from '../../components/UI/Main';
+import { useNavigate } from 'react-router-dom';
+import FlexContainer from '../../components/UI/FlexContainer';
 import NeedSubscriptionIcon from '../../assets/icons/png/needSubscription/needSubscriptionIcon.png';
 
 const NeedSubscription = () => {
+    const navigate = useNavigate();
     return (
         <>
             <Navbar />
@@ -20,10 +21,9 @@ const NeedSubscription = () => {
                             <p>bendruomenės dalimi 💚</p>
                         </div>
 
-                        {/* <button onClick={() => console.log('prenumeruoti')}>
+                        <button onClick={() => navigate('/paslaugos') }>
                             Į narystę
-                        </button> */}
-                        <a href="https://www.bezalos.lt/paslaugos" target='_blank' rel='noreferrer'>Į narystę</a>
+                        </button>
                     </div>
                 </FlexContainer>
             </Main>

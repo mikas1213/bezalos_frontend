@@ -27,7 +27,7 @@
     font-size: var(--font-size-dynamic-small-1-lg);
 }
 
-.needSubscriptionContainer a {
+.needSubscriptionContainer :is(a, button) {
     align-self: end;
     align-items: center;
     justify-content: center;
@@ -44,7 +44,7 @@
     transition: background-color 0.1s ease;
 }
 
-.needSubscriptionContainer a:hover {
+.needSubscriptionContainer :is(a, button):hover {
     background-color: var(--color-btn-secondary);
     transition: background-color 0.1s ease;
 }
@@ -77,7 +77,7 @@
         font-size: clamp(0rem, 2.977vw, 0.8rem);
     }
 
-    .needSubscriptionContainer a {
+    .needSubscriptionContainer :is(a, button) {
         height: clamp(0rem, 11.163vw, 3rem);
         font-size: clamp(0rem, 3.721vw, 1rem);
     }

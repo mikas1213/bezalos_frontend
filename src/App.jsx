@@ -56,6 +56,7 @@ const queryClient = new QueryClient({
 
 function App() {
     const [cookies, setCookie] = useCookies(['COOKIE_CONSENT']);
+    
     return (
         <QueryClientProvider client={queryClient}>
             

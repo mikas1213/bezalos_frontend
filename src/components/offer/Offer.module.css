@@ -1,0 +1,146 @@
+.offerModal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: clamp(0rem, 66.667vw, 32rem);
+    padding: 2.2rem;
+    opacity: 1;
+    border-radius: 0.8rem;
+    overflow: hidden;
+    background-color: var(--color-bgr-light);
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    animation: openModal 0.2s ease-in-out;
+}
+.icon {
+    cursor: pointer;
+    position: absolute;
+    font-size: 1.9rem;
+    color: var(--color-bgr-dark);
+    top: 0.5rem;
+    right: 0.5rem;
+}
+.offerContent {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+}
+.imgContainer img {
+    width: 100%; 
+    border-radius: 0.4rem;
+}
+
+.textContainer {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
+}
+.textContainer h1 {
+    font-size: var(--font-size-h3);
+    color: var(--color-text-dark);
+}
+.textContainer p {
+    color: var(--color-text-dark);
+    font-size: var(--font-size-p);
+}
+.textContainer span {
+    font-weight: 600;
+}
+
+.formGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.formGroup input {
+    font-size: var(--font-size-p);
+    border: 2px solid var(--color-text-dark);
+    background-color: var(--color-bgr-light);
+    border-radius: 2rem;
+    padding: 0.5rem 2rem;
+}
+
+.formGroup button {
+    font-size: var(--font-size-p);
+    font-weight: 500;
+    border: none;
+    background-color: var(--color-btn-secondary);
+    border-radius: 2rem;
+    padding: 0.5rem 2rem;
+    transition: background-color 0.2s ease-in-out;
+}
+.formGroup button:hover {
+    background-color: var(--color-btn-primary);
+}
+
+@media only screen and (max-width: 576px) {
+    .offerModal {
+        padding: 1.4rem;
+    }
+
+    .textContainer h1 {
+        font-size: var(--font-size-dynamic-h3-sm);
+        color: var(--color-text-dark);
+    }
+    .textContainer p {
+        color: var(--color-text-dark);
+        font-size: var(--font-size-dynamic-p-sm);
+    }
+    .formGroup {
+        align-items: center;
+    }
+    .formGroup :is(input, button) {
+        width: clamp(0rem, 52.093vw, 16rem);
+        font-size: var(--font-size-p);
+        padding: 0.5rem 2rem;
+    }
+}
+
+@media only screen and (max-width: 430px) {
+    .offerModal {
+        width: clamp(0rem, 81.86vw, 22rem);
+        padding: 1.2rem;
+    }
+    
+    .offerContent {
+        gap: 1rem;
+    }
+    .textContainer {
+        gap: 0.5rem;
+    }
+
+    .textContainer h1 {
+        font-size: var(--font-size-dynamic-h3-sm);
+        color: var(--color-text-dark);
+    }
+    .textContainer p {
+        color: var(--color-text-dark);
+        font-size: var(--font-size-dynamic-h6-sm);
+    }
+    .formGroup {
+        gap: 0.5rem;
+    }
+    .formGroup button {
+        font-size: var(--font-size-dynamic-h6-sm);
+        padding: 0.5rem 0rem;
+    }
+    .formGroup input {
+        font-size: var(--font-size-dynamic-h6-sm);
+        padding: 0.5rem 1rem;
+    }
+}
+
+
+@keyframes openModal {
+    from {
+        opacity: 0;
+    }
+  
+    to {
+        opacity: 1;
+    }
+}
