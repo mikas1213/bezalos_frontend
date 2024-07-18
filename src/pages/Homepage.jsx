@@ -9,7 +9,6 @@ import TestimonialSection from '../components/homepage/TestimonialSection';
 import FooterSection from "../components/homepage/FooterSection";
 
 import { useState, useRef, useEffect } from "react";
-
 const HomePage = () => {
 
     const ref = useRef(null);

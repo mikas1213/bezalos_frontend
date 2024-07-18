@@ -9,7 +9,7 @@ import { IoCloseCircle } from 'react-icons/io5';
 import stripe_img from '../../../assets/images/admin/stripe_png.png';
 
 const KlientaiRow = ({ user, users, setUsers }) => {
-    console.log('USER: ', user.s_status)
+    
     const axiosPrivate = useAxiosPrivate();
     const [week, setWeek] = useState(user.support_over === 'week' ? true : false );
     const [month, setMonth] = useState(user.support_over === 'month' ? true : false );

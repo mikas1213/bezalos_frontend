@@ -1,9 +1,11 @@
 import { lazy, Suspense } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { useCookies } from 'react-cookie';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { AuthProvider } from "./context/AuthProvider";
 import { Toaster } from 'react-hot-toast';
+
 import styles from './App.module.css';
 import LoginPage from './pages/LoginPage';
 import Spinner from './components/UI/Spinner';
@@ -41,6 +43,9 @@ import Maistas from './pages/admin/Maistas';
 import Receptai from './pages/admin/Receptai';
 import VideosPage from './pages/admin/VideosPage';
 
+import CookieConsent from './components/cookies/CookieConsent';
+
+
 const queryClient = new QueryClient({
     defaultOptions: {
         queries: {
@@ -50,9 +55,10 @@ const queryClient = new QueryClient({
 });
 
 function App() {
-    
+    const [cookies, setCookie] = useCookies(['COOKIE_CONSENT']);
     return (
         <QueryClientProvider client={queryClient}>
+            
             <ReactQueryDevtools initialIsOpen={false}/>
             <BrowserRouter>
                 <AuthProvider>
@@ -82,7 +88,6 @@ function App() {
                                     <Route path='/apmoketa-sekmingai' element={<SuccessSubscription /> }/>
                                     <Route path='/mokejimo-klaida' element={<CancelSubscription /> }/>
                                 </Route>
-
                                 <Route element={<RequireAuth allowedRoles={[1213]}/> }>
                                     <Route path='/admin' element={<AdminLayout /> }>
                                         <Route index element={<KlientaiPage />} />
@@ -97,6 +102,8 @@ function App() {
                     </Suspense>
                 </AuthProvider>
             </BrowserRouter>
+            {!cookies.COOKIE_CONSENT && <CookieConsent setCookie={setCookie} />}
+
             <Toaster 
                 position='top-center' 
                 gutter={12} 
@@ -135,6 +142,7 @@ function App() {
                 }}
             />
         </QueryClientProvider>
+        
     );
 }
 
