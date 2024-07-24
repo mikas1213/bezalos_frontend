@@ -1,6 +1,7 @@
 .headerRow {
     display: grid;
-    grid-template-columns: 1.5fr repeat(2, 1fr) 0.5fr repeat(1, 1fr);
+    /* grid-template-columns: 1.5fr repeat(2, 1fr) 0.5fr repeat(1, 1fr); */
+    grid-template-columns: 1.5fr 1fr auto repeat(1, 1fr);
     background-color: var(--color-bgr-light);
     background-color: white;
     align-items: center;
@@ -8,6 +9,9 @@
     gap: 0.5rem;
     border-radius: 5px;
     box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+.filters {
+    display: flex;
 }
 .paieskaContainer {
     position: relative;

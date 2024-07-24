@@ -3,6 +3,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: clamp(0rem, 80vw, 28.8rem);
     padding: 2.2rem;
     gap: 1.5rem;
 }
@@ -34,7 +35,7 @@
     width: 100%;
     display: flex;
     flex-direction: column;
-    gap: 0.8rem;
+    gap: 1rem;
 }
 .formGroup:has(.inputError) {
     gap: 0;
@@ -51,8 +52,10 @@
 
 .formGroup button {
     font-size: var(--font-size-p);
-    font-weight: 500;
+    font-weight: 600;
     border: none;
+    color: var(--color-text-dark);
+    text-decoration: none;
     background-color: var(--color-btn-secondary);
     border-radius: 2rem;
     padding: 0.5rem 2rem;

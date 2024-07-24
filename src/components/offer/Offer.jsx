@@ -57,7 +57,7 @@ const Offer = ({ setIsShowOffer, setIsOfferSent, isOfferSent, setCookie }) => {
                     <div className={styles.textContainer}>
                         <h1>DOVANA 🎁</h1>
                         <p>
-                            Įrašyk savo el. paštą ir NEMOKAMAI gauk vieną žiūrimiausių Be žalos | Virtuvės merginų įrašą&nbsp;<br />
+                            Įrašyk savo el. paštą ir NEMOKAMAI gauk žiūrimiausią Be žalos | Virtuvės merginų įrašą&nbsp;<br />
                             <span>&quot;Fizinis ir emocinis alkis&quot;</span> 
                         </p>
                     </div>

@@ -216,12 +216,18 @@ export const KlientaiRowHeader = ({ setSearch, search, sort, setSort }) => {
                 <option value='last_activity'>Prisijungta</option>
                 <option value='nutrition_tracking'>Mitybą seka iki</option>
                 <option value='assigned_plan'>Planas priskirtas</option>
-                {/* <option value='support_over'>Priežiūros pabaiga</option> */}
+                <option value='s_subscription_expires'>Stripe</option>
                 <option value='subscription_type'>free</option>
             </select>
             <button onClick={() => setSort(prevState => ({...prevState, value: prevState.value === 'DESC'? 'ASC' : 'DESC'}))}>
                 {sort.value === 'ASC' ? <IoIosArrowRoundDown className={styles.icon} /> : <IoIosArrowRoundUp className={styles.icon} />}
             </button>
+            
+            {/* <div className={styles.filters}>
+                <input type="checkbox" />Narystes tipas
+                <input type="checkbox" />asdfasdf
+            </div> */}
+            
         </div>
     );
 }

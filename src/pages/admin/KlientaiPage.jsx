@@ -18,7 +18,7 @@ const KlientaiPage = () => {
             try {
                 const data = await axiosPrivate.get(`/admin/users?column=${sort.column}&sort=${sort.value}`);
                 const changedUsers = [...data.data.users];
-                
+                            
                 setUsers(changedUsers);
                 setIsLoading(false);
             } catch (err) {
@@ -32,6 +32,7 @@ const KlientaiPage = () => {
     const searchFn = u => {
         return u.email.toLowerCase().indexOf(search) > -1 || u.name.toLowerCase().indexOf(search) > -1;
     };
+    
     return (
         <Klientai>
             <KlientaiRowHeader setSearch={setSearch} search={search} sort={sort} setSort={setSort} />
