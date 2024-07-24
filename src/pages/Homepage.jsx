@@ -60,7 +60,7 @@ const HomePage = () => {
         <>
             <Navbar isHome={true} />
             <Main isHome={true} myRef={ref}>
-                {/* {(!cookies.COOKIE_OFFER && isShowOffer || isOfferSent) && <Offer setIsShowOffer={setIsShowOffer} setIsOfferSent={setIsOfferSent} isOfferSent={isOfferSent} setCookie={setCookie} />} */}
+                {(!cookies.COOKIE_OFFER && isShowOffer || isOfferSent) && <Offer setIsShowOffer={setIsShowOffer} setIsOfferSent={setIsOfferSent} isOfferSent={isOfferSent} setCookie={setCookie} />}
                 <WelcomeSection />
                 <ExperienceSection />
                 <AboutSection />
