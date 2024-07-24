@@ -5,16 +5,10 @@ import cookieImg from '../../assets/icons/png/cookies/cookie.png';
 
 const CookieConsent = ({ setCookie }) => {
     const [show, setShow] = useState(false);
-
     const giveCookieConsent = () => {
         setShow(s => !s);
-        // var today = new Date();
-        // today.setSeconds(today.getSeconds() + 10);
         setTimeout(() => {
-            setCookie('COOKIE_CONSENT', true, {
-                path: '/', 
-                // expires: today
-            });
+            setCookie('COOKIE_CONSENT', true, {path: '/'});
         }, 500);
     };
 

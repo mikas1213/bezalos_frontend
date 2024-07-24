@@ -27,7 +27,7 @@ const FooterSection = () => {
         onError: (err) => {
             const { response: {data: {errors: serverErrors}} } = err;
             const { path, msg } = serverErrors[0]
-            setError(path, { type: "server", message: msg });
+            setError(path, { type: 'server', message: msg });
         }
     });
     

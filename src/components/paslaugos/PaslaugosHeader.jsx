@@ -8,7 +8,7 @@ const PaslaugosHeader = ({ paragraph }) => {
                 Keliaukime į pokyčius kartu!
             </div>
             <div className={styles.paragraph}>
-                {paragraph === 'Eiti į paslaugas' ? <a href='https://bezalos.lt/paslaugos'>{paragraph}</a> : paragraph}
+                {paragraph === 'Eiti į paslaugas' ? <a href='https://senas.bezalos.lt/paslaugos'>{paragraph}</a> : paragraph}
             </div>
         </div>
     );

@@ -1,9 +1,14 @@
 import styles from './Overlay.module.css';
+import { IoCloseSharp } from 'react-icons/io5';
 
-const Overlay = ({children}) => {
+const Overlay = ({ children, handleSentOffer }) => {
+
     return (
-        <div className={styles.overLay}>
-            {children}
+        <div className={styles.overLay}>      
+            <div className={styles.offerModal}>
+                <IoCloseSharp className={styles.icon} onClick={() => handleSentOffer()} />            
+                {children}
+            </div>
         </div>
     );
 };

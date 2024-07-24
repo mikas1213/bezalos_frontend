@@ -8,12 +8,18 @@ import ClientStorySection from '../components/homepage/ClientStorySection';
 import TestimonialSection from '../components/homepage/TestimonialSection';
 import FooterSection from "../components/homepage/FooterSection";
 import Offer from '../components/offer/Offer';
-import { useState, useRef, useEffect } from "react";
+
+import { useCookies } from 'react-cookie';
+import { useState, useRef, useEffect } from 'react';
+
 const HomePage = () => {
 
     const ref = useRef(null);
     const [isIntersecting, setIsIntersecting] = useState(false);
+
     const [isShowOffer, setIsShowOffer] = useState(false);
+    const [isOfferSent, setIsOfferSent] = useState(false);
+    const [cookies, setCookie] = useCookies(['COOKIE_OFFER']);
     
     useEffect(() => {
         document.title = 'Be žalos';
@@ -21,7 +27,6 @@ const HomePage = () => {
     }, []);
 
     useEffect(() => {
-        
         setTimeout(() => {
             setIsShowOffer(true);
         }, 2000);
@@ -43,7 +48,7 @@ const HomePage = () => {
             // threshold: 0.15
         });
 
-        ref.current.querySelectorAll(".section--hidden").forEach((section) => {
+        ref.current.querySelectorAll('.section--hidden').forEach((section) => {
             sectionObserver.observe(section)
         });
 
@@ -55,7 +60,7 @@ const HomePage = () => {
         <>
             <Navbar isHome={true} />
             <Main isHome={true} myRef={ref}>
-                {/* {isShowOffer && <Offer setIsShowOffer={setIsShowOffer} />} */}
+                {/* {(!cookies.COOKIE_OFFER && isShowOffer || isOfferSent) && <Offer setIsShowOffer={setIsShowOffer} setIsOfferSent={setIsOfferSent} isOfferSent={isOfferSent} setCookie={setCookie} />} */}
                 <WelcomeSection />
                 <ExperienceSection />
                 <AboutSection />

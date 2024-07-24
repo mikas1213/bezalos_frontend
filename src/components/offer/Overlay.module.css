@@ -9,6 +9,46 @@
     z-index: 11;
     animation: offerApear 0.2s ease-in-out;
 }
+.offerModal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 1;
+    border-radius: 0.8rem;
+    overflow: hidden;
+    background-color: var(--color-bgr-light);
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    animation: openModal 0.2s ease-in-out;
+}
+.icon {
+    cursor: pointer;
+    position: absolute;
+    font-size: 1.9rem;
+    color: var(--color-bgr-dark);
+    top: 0.5rem;
+    right: 0.5rem;
+    z-index: 20;
+}
+@media only screen and (max-width: 576px) {
+    .icon {
+        font-size: 1.5rem;
+        top: 0.3rem;
+        right: 0.3rem;
+    }
+}
+
+@media only screen and (max-width: 430px) {
+
+}
+
+@media only screen and (max-width: 375px) {
+    .icon {
+        font-size: 1.2rem;
+        top: 0.3rem;
+        right: 0.3rem;
+    }
+}
 
 @keyframes offerApear {
     from {
@@ -19,5 +59,15 @@
     to {
         background-color: #00000040;
         backdrop-filter: blur(px);
+    }
+}
+
+@keyframes openModal {
+    from {
+        opacity: 0;
+    }
+  
+    to {
+        opacity: 1;
     }
 }

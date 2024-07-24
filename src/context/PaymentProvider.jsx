@@ -57,6 +57,7 @@ const PaymentProvider = ({ children }) => {
         if(user_id) {
             try {
                 const res = await axiosPrivate.post('/payments/checkout-session', {...selectedPlan, user_id});
+                // console.log(res)
                 window.location = res.data.session.url;
             } catch (err) {
                 if(err.response.status === 401) {
