@@ -42,6 +42,7 @@ import KlientaiPage from './pages/admin/KlientaiPage';
 import Maistas from './pages/admin/Maistas';
 import Receptai from './pages/admin/Receptai';
 import VideosPage from './pages/admin/VideosPage';
+import MailsPage from './pages/admin/MailsPage';
 
 import CookieConsent from './components/cookies/CookieConsent';
 
@@ -95,6 +96,7 @@ function App() {
                                         <Route path='maistas' element={<Maistas />} />
                                         <Route path='receptai' element={<Receptai />} />
                                         <Route path='videos' element={<VideosPage />} />
+                                        <Route path='mails' element={<MailsPage />} />
                                     </Route>
                                 </Route>
                             </Route>

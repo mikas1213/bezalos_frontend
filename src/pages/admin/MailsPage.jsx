@@ -1,16 +1,17 @@
 import { useState, useEffect } from 'react';
 import useAxiosPrivate from '../../hooks/useAxiosPrivate';
 
-const VideosPage = () => {
+const MailsPage = () => {
+
     const axiosPrivate = useAxiosPrivate();
-    const [videos, setVideos] = useState([]);
+    const [offers, setOffers] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     
     useEffect(() => {
         const getData = async () => {
             try {
-                const data = await axiosPrivate.get('/admin/videos');
-                setVideos(data.data.videos);
+                const data = await axiosPrivate.get('/admin/offers');
+                setOffers(data.data.offers);
                 setIsLoading(false);
             } catch (err) {
                 console.log(err.message);
@@ -18,14 +19,14 @@ const VideosPage = () => {
         };
         getData();
     }, [axiosPrivate]);
-
     return (
-        <div>
-            {!isLoading && videos.map(video => {
-                return (<p key={video.id}>{video.title} {video.duration}</p>);
+        <>
+            <span>Total: {offers.length}</span>
+            {!isLoading && offers.map(offer => {
+                return (<p key={offer.id}>{offer.email} {offer.created_at.split('T').shift()}</p>);
             })}
-        </div>
+        </>
     );
 };
 
-export default VideosPage;
+export default MailsPage;

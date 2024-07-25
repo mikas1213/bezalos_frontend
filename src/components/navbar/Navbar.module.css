@@ -40,6 +40,18 @@
     align-items: center;
     gap: 3.125vw;
 }
+.senasBezalos {
+    text-align: center;
+}
+.senasBezalos a {
+    border: none;
+    border-radius: 0.2rem;
+    padding: 0.1rem 0.6rem;
+    font-size: var(--font-size-dynamic-p-lg);
+    font-weight: 600;
+    color: var(--color-text-dark);
+    background-color: var(--color-btn-secondary);
+}
 
 .hamburger {
     height:50%;
@@ -147,6 +159,12 @@
     .navList {
         display: none;
         gap: var(--content-padding);
+    }
+    .senasBezalos {
+        display: none;
+    }
+    .senasBezalosLink {
+
     }
     .hamburger {
         cursor: pointer;

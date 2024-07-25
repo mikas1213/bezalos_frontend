@@ -28,6 +28,7 @@ const BenefitItem = ({icon, title, text}) => {
     );
 };
 
+// icons collenction https://www.svgrepo.com/collection/ecommerce-15/
 const BenefitsSection = () => {
     const benefits = [
         {title: 'Interaktyvus mitybos planas', text: 'Mitybos planas leis tau mokytis sveikatai palankios mitybos pagrindų, kurių dėka galiu garantuoti tau ilgalaikius rezultatus!', icon: Icon1},

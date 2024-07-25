@@ -1,6 +1,6 @@
 import styles from './AdminNavbar.module.css';
 import { NavLink, useLocation } from 'react-router-dom';
-import { FaHouse, FaUserGroup, FaList, FaFilm } from 'react-icons/fa6';
+import { FaHouse, FaUserGroup, FaList, FaFilm, FaRegEnvelope } from 'react-icons/fa6';
 import { IoFastFoodSharp } from 'react-icons/io5';
 import { useEffect, useState } from 'react';
 import useAxiosPrivate from '../../../hooks/useAxiosPrivate';
@@ -10,6 +10,7 @@ const path = {
     maistas: '/admin/maistas',
     receptai: '/admin/receptai',
     videos: '/admin/videos',
+    mails: '/admin/mails'
 }
 
 const AdminNavbar = () => {
@@ -37,7 +38,7 @@ const AdminNavbar = () => {
                 <NavLink to={path.admin}>
                     <FaUserGroup />
                     Klientai
-                    {!isLoading && <span className={styles.usersCount}>{users.length-1}</span>}
+                    {!isLoading && <span className={styles.usersCount}>{users.length}</span>}
                 </NavLink>
             </li>
 
@@ -58,7 +59,12 @@ const AdminNavbar = () => {
                     Videos
                 </NavLink>
             </li>
-            <li className={styles.navItem}>test 6</li>
+            <li className={`${styles.navItem} ${location.pathname === path.mails ? styles.active : ''}`}>
+                <NavLink to={path.mails}>
+                    <FaRegEnvelope />
+                    Mails
+                </NavLink>
+            </li>
             <li className={styles.navItem}>test 7</li>
             <li className={styles.navItem}>test 8</li>
             <li className={styles.navItem}>test 9</li>

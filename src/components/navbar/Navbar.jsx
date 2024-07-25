@@ -14,7 +14,8 @@ import useLogout from '../../hooks/useLogout';
 
 // ICONS
 // https://www.svgrepo.com/collection/solar-broken-line-icons
-import { VirtuveIcon, ReceptaiIcon, PaslaugosIcon, ProfilisIcon, PrisijungtiIcon, AtsijungtiIcon } from './NavIcons';
+
+import { SenasBezalos, VirtuveIcon, ReceptaiIcon, PaslaugosIcon, ProfilisIcon, PrisijungtiIcon, AtsijungtiIcon } from './NavIcons';
 
 const Navbar = ({ isHome = false }) => {
     
@@ -56,8 +57,9 @@ const Navbar = ({ isHome = false }) => {
                         <div className={styles.burgerMiddle}></div>
                         <div className={styles.burgerBottom}></div>
                     </div>
-                    
+                   
                     <ul className={styles.navList}>
+                        
                         <li className={styles.listItem}>
                             <NavLink to='/virtuve'>Virtuvė</NavLink>
                             <div className={styles.indicator}></div>
@@ -70,7 +72,6 @@ const Navbar = ({ isHome = false }) => {
 
                         <li className={styles.listItem}>
                             <NavLink to='/paslaugos'>Paslaugos</NavLink>
-                            {/* <a href='https://bezalos.lt/paslaugos'>Paslaugos</a> */}
                             <div className={styles.indicator}></div>
                         </li>
 
@@ -89,11 +90,30 @@ const Navbar = ({ isHome = false }) => {
                             <button className={styles.loginBtn} onClick={async () => await logout()}>Atsijungti</button>
                             }
                         </li>
+                        <div className={styles.senasBezalos}>
+                            <a href='https://senas.bezalos.lt'>Sena versija</a>
+                        </div>
                     </ul>
+   
                 </MainContainer>
                 
                 <div className={`${styles.navContainerMobile} ${isOpenBurger ? styles.show : ''}`}>
                     <ul className={styles.navListMobile}>
+                        
+                        {/* Temporary for old page version */}
+                        <li className={`${styles.listItemMobile} ${page === 'sena-versija' ? styles.active : ''}`} 
+                            // onClick={() => navigate('www.delfi.lt')}
+                            >  
+                            <a  href='https://senas.bezalos.lt'>
+                                <SenasBezalos 
+                                    active={page === 'sena-versija' ? true : false} 
+                                    stroke={iconStroke}
+                                />
+                            </a>
+                            <a href='https://senas.bezalos.lt'>
+                                <span>Sena versija</span>
+                            </a>
+                        </li>
 
                         <li className={`${styles.listItemMobile} ${page === 'virtuve' ? styles.active : ''}`} 
                             onClick={() => navigate('/virtuve')}>  
