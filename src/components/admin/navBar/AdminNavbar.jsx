@@ -18,6 +18,7 @@ const AdminNavbar = () => {
     const axiosPrivate = useAxiosPrivate();
     const [users, setUsers] = useState();
     const [isLoading, setIsLoading] = useState(true);
+
     useEffect(() => {
         const getData = async () => {
             try {
@@ -38,7 +39,9 @@ const AdminNavbar = () => {
                 <NavLink to={path.admin}>
                     <FaUserGroup />
                     Klientai
-                    {!isLoading && <span className={styles.usersCount}>{users.length}</span>}
+                    {!isLoading && <span className={styles.usersCount}>
+                        {users.length} / {users.filter(user => user.subscription_expires !== null || user.s_subscription_expires !== null).length}
+                    </span>}
                 </NavLink>
             </li>
 

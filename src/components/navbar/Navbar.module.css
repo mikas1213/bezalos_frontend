@@ -214,11 +214,11 @@
         box-shadow: inset 5px 5px 10px #d5d6d5, inset -5px -5px 10px #ffffff;            
     }
 
-    .listItemMobile.active span {
+    .listItemMobile.active :is(span, a) {
         color: var(--color-btn-secondary);
     }
 
-    .listItemMobile span {
+    .listItemMobile :is(span, a) {
         font-size: var(--font-size-dynamic-h5-sm);
         font-weight: 500;
     }
