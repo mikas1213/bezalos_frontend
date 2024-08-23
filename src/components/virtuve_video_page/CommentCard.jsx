@@ -44,8 +44,8 @@ const CommentCard = ({ name, comment, isBin, onDeleteVideoComment }) => {
             </div>
 
             {isBin && 
-                <div className={styles.recycleBin} onClick={handleDeleteVideo}>
-                    <span><Bin /></span>
+                <div className={styles.recycleBin}>
+                    <span onClick={handleDeleteVideo}><Bin /></span>
                 </div>
             }
         </div>

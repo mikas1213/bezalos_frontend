@@ -1,8 +1,8 @@
 import useAxiosPrivate from '../../../hooks/useAxiosPrivate';
 import styles from './KlientaiRow.module.css';
+import check_box_styles from './CheckBox.module.css';
 import { useState } from 'react';
 import { date_to_yyyy_mm_dd, isTodayOrFiveDaysBefore, isTodayOrLater, isTwoOrFourWeeks } from '../../../utils/helpers';
-import check_box_styles from './CheckBox.module.css';
 import { IoIosArrowRoundDown, IoIosArrowRoundUp } from 'react-icons/io';
 import { IoCloseCircle } from 'react-icons/io5';
 // import stripe_img from '../../../assets/images/admin/stripe_jpg.jpeg';
@@ -37,7 +37,7 @@ const KlientaiRow = ({ user, users, setUsers }) => {
             // newUser[e.target.name] = e.target.name !== 'support_over' ? e.target.value : (e.target.checked ? e.target.value : 'none');
             newUser[e.target.name] = e.target.value;
             if(e.target.name === 'subscription_expires') {
-                newUser.subscription_type = e.target.value ? 'Virtuvė' : 'free'
+                if(!newUser.s_status) newUser.subscription_type = e.target.value ? 'Virtuvė' : 'free'
             }
             
             newUsers[index] = newUser;
@@ -184,7 +184,7 @@ const KlientaiRow = ({ user, users, setUsers }) => {
 export default KlientaiRow;
 
 export const KlientaiRowHeader = ({ setSearch, search, sort, setSort }) => {
-    const [changeSort, setChangeSort] = useState('subscription_expires');
+    const [changeSort, setChangeSort] = useState('s_subscription_expires');
 
 
     const handleChange = (e) => {        

@@ -1,77 +1,70 @@
 import styles from './AdminNavbar.module.css';
 import { NavLink, useLocation } from 'react-router-dom';
-import { FaHouse, FaUserGroup, FaList, FaFilm, FaRegEnvelope } from 'react-icons/fa6';
+import { FaHouse, FaUserGroup, FaList, FaFilm, FaNoteSticky } from 'react-icons/fa6';
+import { TbMailFilled } from "react-icons/tb";
 import { IoFastFoodSharp } from 'react-icons/io5';
+import { HiTemplate } from 'react-icons/hi';
 import { useEffect, useState } from 'react';
 import useAxiosPrivate from '../../../hooks/useAxiosPrivate';
 
-const path = {
-    admin: '/admin',
-    maistas: '/admin/maistas',
-    receptai: '/admin/receptai',
-    videos: '/admin/videos',
-    mails: '/admin/mails'
-}
+const AdminNavbarItem = ({ icon, title, url, notification = null }) => {    
+    const location = useLocation();
+    return (
+        <li className={`${styles.navItem} ${location.pathname === url ? styles.active : ''}`}>
+            <NavLink to={url}>
+                {icon}{title} 
+                {notification && <span className={styles.notification}>{notification}</span>}
+            </NavLink>
+        </li>
+    );
+};
 
 const AdminNavbar = () => {
-    const location = useLocation();
+    
     const axiosPrivate = useAxiosPrivate();
-    const [users, setUsers] = useState();
+    const [stats, setStats] = useState();
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
         const getData = async () => {
             try {
-                const data = await axiosPrivate.get('/admin/users');
-                setUsers(data.data.users);
+                const data = await axiosPrivate.get('/admin/stats');
+                setStats(data.data.data);
                 setIsLoading(false);
             } catch (err) {
                 console.log(err.message)
             }
         }
         getData();
-    }, []);
+    }, [axiosPrivate]);
+
+    const NavBarItems = {
+        admin: {title: 'Klientai', icon: <FaUserGroup />, notification: !isLoading && `${stats.users} / ${stats.active_subscriptions}`},
+        planai: {title: 'Mitybos planai', icon: <HiTemplate />},
+        maistas: {title: 'Maistas', icon: <FaList />},
+        receptai: {title: 'Receptai', icon: <IoFastFoodSharp />},
+        videos: {title: 'Videos', icon: <FaFilm />},
+        mails: {title: 'Mails', icon: <TbMailFilled />, notification: !isLoading && stats.mails},
+        // test1: {title: 'Test', icon: <FaNoteSticky />},
+        // test2: {title: 'Test', icon: <FaNoteSticky />},
+        test3: {title: 'Test', icon: <FaNoteSticky />}
+    }
 
     return (
         <div className={styles.adminNav}>
-            <li className={`${styles.navItem} ${styles.navItemHome}`}><NavLink to='/'><FaHouse />Pradžia</NavLink></li>
-            <li className={`${styles.navItem} ${location.pathname === path.admin ? styles.active : ''}`}>
-                <NavLink to={path.admin}>
-                    <FaUserGroup />
-                    Klientai
-                    {!isLoading && <span className={styles.usersCount}>
-                        {users.length} / {users.filter(user => user.subscription_expires !== null || user.s_subscription_expires !== null).length}
-                    </span>}
-                </NavLink>
+            <li className={`${styles.navItem} ${styles.navItemHome}`}>
+                <NavLink to='/'><FaHouse />Pradžia</NavLink>
             </li>
-
-            <li className={`${styles.navItem} ${location.pathname === path.maistas ? styles.active : ''}`}>
-                <NavLink to={path.maistas}>
-                    <FaList />
-                    Maistas
-                </NavLink>
-            </li>
-            <li className={`${styles.navItem} ${location.pathname === path.receptai ? styles.active : ''}`}>
-                <NavLink to={path.receptai}>
-                    <IoFastFoodSharp />
-                    Receptai
-                </NavLink></li>
-            <li className={`${styles.navItem} ${location.pathname === path.videos ? styles.active : ''}`}>
-                <NavLink to={path.videos}>
-                    <FaFilm />
-                    Videos
-                </NavLink>
-            </li>
-            <li className={`${styles.navItem} ${location.pathname === path.mails ? styles.active : ''}`}>
-                <NavLink to={path.mails}>
-                    <FaRegEnvelope />
-                    Mails
-                </NavLink>
-            </li>
-            <li className={styles.navItem}>test 7</li>
-            <li className={styles.navItem}>test 8</li>
-            <li className={styles.navItem}>test 9</li>
-            <li className={styles.navItem}>test 10</li>
+            
+            {Object.keys(NavBarItems).map(key => 
+                <AdminNavbarItem 
+                    key={key} 
+                    url={`/admin${key === 'admin' ? '' : `/${key}`}`}
+                    icon={NavBarItems[key].icon}
+                    title={NavBarItems[key].title} 
+                    notification={NavBarItems[key].notification}
+                />
+            )}
         </div>
     );
 };

@@ -7,16 +7,32 @@ const KlientaiPage = () => {
     const [users, setUsers] = useState([]);
     const [search, setSearch] = useState('');
     const [sort, setSort] = useState({
-        column: 'subscription_expires',
+        column: 's_subscription_expires',
         value: 'ASC'
     });
     const [isLoading, setIsLoading] = useState(true);
     const axiosPrivate = useAxiosPrivate();
     
+    // useEffect(() => {
+    //     const getData = async () => {
+    //         try {
+    //             const data = await axiosPrivate.get(`/admin/users?column=${sort.column}&sort=${sort.value}`);
+    //             const changedUsers = [...data.data.users];
+                            
+    //             setUsers(changedUsers);
+    //             setIsLoading(false);
+    //         } catch (err) {
+    //             console.log(err);
+    //         }
+    //     }
+    //     getData();
+    // }, [sort, axiosPrivate]);
+
     useEffect(() => {
         const getData = async () => {
+            
             try {
-                const data = await axiosPrivate.get(`/admin/users?column=${sort.column}&sort=${sort.value}`);
+                const data = await axiosPrivate.post('/admin/users', {column: sort.column, sort: sort.value});
                 const changedUsers = [...data.data.users];
                             
                 setUsers(changedUsers);
@@ -30,7 +46,9 @@ const KlientaiPage = () => {
 
     
     const searchFn = u => {
-        return u.email.toLowerCase().indexOf(search) > -1 || u.name.toLowerCase().indexOf(search) > -1;
+        return u.email.toLowerCase().indexOf(search) > -1 || 
+        u.name.toLowerCase().indexOf(search) > -1 || 
+        u.last_activity.toLowerCase().indexOf(search) > -1;
     };
     
     return (

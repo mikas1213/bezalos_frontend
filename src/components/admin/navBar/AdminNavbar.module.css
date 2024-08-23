@@ -15,7 +15,7 @@
 .adminNav::-webkit-scrollbar { 
     display: none;  /* Safari and Chrome */
 }
-.usersCount {
+.notification {
     padding: 0 0.4rem;
     border-radius: 10rem;
     font-size: 0.7rem;
@@ -25,8 +25,7 @@
     /* color: var(--color-text-light); */
     color: white
 }
-.active .usersCount {
-    /* background-color: var(--color-bgr-light); */
+.active .notification {
     background-color: white;
     color: #60c040;
 }
@@ -39,7 +38,6 @@
     height: 2rem;
     padding: 0 1rem;
     text-wrap: nowrap;
-    /* font-size: var(--font-size-dynamic-p-lg); */
 }
 .navItemHome {
     border: 2px solid #60c040;

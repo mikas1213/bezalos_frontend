@@ -1,14 +1,15 @@
 import { Outlet } from 'react-router-dom';
-import MainContainer from './MainContainer';
+import styles from './AdminLayout.module.css';
 import AdminNavbar from '../navBar/AdminNavbar';
 
 const AdminLayout = () => {
     document.body.style.backgroundColor = '#ECECEC';
+
     return (
-        <MainContainer>
+        <div className={styles.mainContainer}>
             <AdminNavbar />
             <Outlet />
-        </MainContainer>
+        </div>
     );
 };
 

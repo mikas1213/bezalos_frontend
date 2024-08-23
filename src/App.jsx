@@ -39,13 +39,13 @@ const PrivatumoPolitikaPage = lazy(() => import('./pages/PrivatumoPolitikaPage')
 
 import AdminLayout from './components/admin/layout/AdminLayout';
 import KlientaiPage from './pages/admin/KlientaiPage';
-import Maistas from './pages/admin/Maistas';
+import MitybosPlanaiPage from './pages/admin/MitybosPlanaiPage';
+import MaistasPage from './pages/admin/MaistasPage';
 import Receptai from './pages/admin/Receptai';
 import VideosPage from './pages/admin/VideosPage';
 import MailsPage from './pages/admin/MailsPage';
 
 import CookieConsent from './components/cookies/CookieConsent';
-
 
 const queryClient = new QueryClient({
     defaultOptions: {
@@ -93,7 +93,8 @@ function App() {
                                 <Route element={<RequireAuth allowedRoles={[1213]}/> }>
                                     <Route path='/admin' element={<AdminLayout /> }>
                                         <Route index element={<KlientaiPage />} />
-                                        <Route path='maistas' element={<Maistas />} />
+                                        <Route path='planai' element={<MitybosPlanaiPage /> }/>
+                                        <Route path='maistas' element={<MaistasPage />} />
                                         <Route path='receptai' element={<Receptai />} />
                                         <Route path='videos' element={<VideosPage />} />
                                         <Route path='mails' element={<MailsPage />} />

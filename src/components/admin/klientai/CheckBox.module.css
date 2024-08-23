@@ -55,7 +55,7 @@
 } */
 
 .ikxBAC.week {
-    background-color: #FFA500;;
+    background-color: #FFA500;
 }
 .ikxBAC.month {
     background-color: #60c040;
@@ -70,6 +70,9 @@
     outline: 0;
 }
 
-.ikxBAC:checked:hover {
+.ikxBAC.week:checked:hover {
+    background-color: #F59000;
+}
+.ikxBAC.month:checked:hover {
     background-color: #4d9a33;
 }

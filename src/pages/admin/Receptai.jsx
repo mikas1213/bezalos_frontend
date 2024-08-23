@@ -1,7 +1,7 @@
-const Recipes = () => {
+const Receptai = () => {
     return (
-        <div>Receptai</div>
+        <div>ReceptaiPage</div>
     );
 };
 
-export default Recipes;
+export default Receptai;
