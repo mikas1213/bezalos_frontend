@@ -48,7 +48,7 @@ const KlientaiPage = () => {
     const searchFn = u => {
         return u.email.toLowerCase().indexOf(search) > -1 || 
         u.name.toLowerCase().indexOf(search) > -1 || 
-        u.last_activity.toLowerCase().indexOf(search) > -1;
+        u.last_activity?.toLowerCase()?.indexOf(search) > -1;
     };
     
     return (
