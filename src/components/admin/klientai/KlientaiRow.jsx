@@ -3,9 +3,6 @@ import styles from './KlientaiRow.module.css';
 import check_box_styles from './CheckBox.module.css';
 import { useState } from 'react';
 import { date_to_yyyy_mm_dd, isTodayOrFiveDaysBefore, isTodayOrLater, isTwoOrFourWeeks } from '../../../utils/helpers';
-import { IoIosArrowRoundDown, IoIosArrowRoundUp } from 'react-icons/io';
-import { IoCloseCircle } from 'react-icons/io5';
-// import stripe_img from '../../../assets/images/admin/stripe_jpg.jpeg';
 import stripe_img from '../../../assets/images/admin/stripe_png.png';
 
 const KlientaiRow = ({ user, users, setUsers }) => {
@@ -21,7 +18,7 @@ const KlientaiRow = ({ user, users, setUsers }) => {
         assigned_plan: date_to_yyyy_mm_dd(user.assigned_plan),
         support_over: user.support_over,
     });
-
+    console.log(userData)
     const onHandleChange = async (e, user_id, period) => {
         
         try {
@@ -182,55 +179,6 @@ const KlientaiRow = ({ user, users, setUsers }) => {
 }
 
 export default KlientaiRow;
-
-export const KlientaiRowHeader = ({ setSearch, search, sort, setSort }) => {
-    const [changeSort, setChangeSort] = useState('s_subscription_expires');
-
-
-    const handleChange = (e) => {        
-        setChangeSort(e.target.value);
-        setSort(prevSort => ({
-            ...prevSort, column: e.target.value
-        }));
-    }
-
-    return (    
-        <div className={styles.headerRow}>
-            <div className={styles.paieskaContainer}>
-                <input 
-                    type='text' 
-                    placeholder='Paieška'
-                    value={search}
-                    onChange={e => setSearch(e.target.value.toLocaleLowerCase())}
-                />
-                <IoCloseCircle className={styles.icon} onClick={() => setSearch('')} />
-            </div>
-            <select 
-                name='sort' 
-                value={changeSort}
-                onChange={(e) => handleChange(e)}
-            >
-                <option value='name'>Vardas</option>
-                <option value='email'>El. paštas</option>
-                <option value='subscription_expires'>Narystė galioja</option>
-                <option value='last_activity'>Prisijungta</option>
-                <option value='nutrition_tracking'>Mitybą seka iki</option>
-                <option value='assigned_plan'>Planas priskirtas</option>
-                <option value='s_subscription_expires'>Stripe</option>
-                <option value='subscription_type'>free</option>
-            </select>
-            <button onClick={() => setSort(prevState => ({...prevState, value: prevState.value === 'DESC'? 'ASC' : 'DESC'}))}>
-                {sort.value === 'ASC' ? <IoIosArrowRoundDown className={styles.icon} /> : <IoIosArrowRoundUp className={styles.icon} />}
-            </button>
-            
-            {/* <div className={styles.filters}>
-                <input type="checkbox" />Narystes tipas
-                <input type="checkbox" />asdfasdf
-            </div> */}
-            
-        </div>
-    );
-}
 
 /*
 day:

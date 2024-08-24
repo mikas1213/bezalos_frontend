@@ -1,0 +1,104 @@
+.headerRow {
+    display: grid;
+    grid-template-columns: 2fr 2fr auto 2fr;
+    background-color: var(--color-bgr-light);
+    background-color: white;
+    align-items: center;
+    padding: 0.5rem;
+    gap: 0.5rem;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+
+.searchContainer {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+.searchContainer input {
+    width: 100%;
+}
+.searchContainer .icon {
+    cursor: pointer;
+    position: absolute;
+    display: flex;
+    right: 0.3rem;
+    font-size: 1.5rem;
+    color: #999;
+}
+.searchContainer .icon:hover {
+    color: #EB3E1B;
+}
+.headerRow :is(input, select, input:focus) {
+    border: 1px solid #999;
+    outline: none;
+    height: 2rem;
+    border-radius: 4px;
+    padding: 0.3rem 4px;
+}
+.headerRow select {
+    height: 2rem;
+    color: #777;
+    background-color: white;
+}
+.headerRow select option {
+    background-color: red;
+}
+.headerRow button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 2rem;
+    width: 2rem;
+    background: white;
+    border: 1px solid #999;
+    outline: none;
+    border-radius: 4px;
+
+}
+.headerRow button .icon {
+    display: flex;
+    font-size: 1.7rem;
+    color: #999;
+}
+
+@media only screen and (max-width: 768px) {
+    .headerRow {
+        gap: 0.5rem;
+        grid-template-columns: minmax(auto, 1fr) minmax(auto, 1fr) auto;
+    }
+}
+
+/* @media only screen and (max-width: 576px) { 
+    .naryste {
+        flex-direction: column;
+    }
+} */
+
+@media only screen and (max-width: 375px) {
+    .headerRow :is(input, select, input:focus) {
+        font-size: var(--font-size-dynamic-h6-sm);
+    }
+
+    .headerRow button {
+        height: clamp(0rem, 8.533vw, 2rem);
+        width: clamp(0rem, 8.533vw, 2rem);
+    }
+    
+    .headerRow .icon {
+        font-size: var(--font-size-dynamic-h3-sm);
+    }
+}
+
+@media only screen and (max-width: 320px) {
+    .headerRow {
+        /* grid-template-columns: 1fr auto; */
+    }
+    .headerRow input {
+        grid-area: 1 / 1 / 2 / -1;
+    }
+    .headerRow button {
+        height: 2rem;
+        width: 2rem;
+    }
+}

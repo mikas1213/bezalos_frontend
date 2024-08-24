@@ -1,15 +1,19 @@
 import { useState, useEffect } from 'react';
 import useAxiosPrivate from '../../hooks/useAxiosPrivate';
 import Klientai from "../../components/admin/klientai/Klientai";
-import KlientaiRow, { KlientaiRowHeader } from '../../components/admin/klientai/KlientaiRow';
+import KlientaiRow from '../../components/admin/klientai/KlientaiRow';
+import KlientaiHeaderRow from '../../components/admin/klientai/KlientaiHeaderRow';
 
 const KlientaiPage = () => {
     const [users, setUsers] = useState([]);
     const [search, setSearch] = useState('');
     const [sort, setSort] = useState({
         column: 's_subscription_expires',
-        value: 'ASC'
+        sort: 'ASC',
+        week: false,
+        month: false
     });
+    
     const [isLoading, setIsLoading] = useState(true);
     const axiosPrivate = useAxiosPrivate();
     
@@ -32,7 +36,7 @@ const KlientaiPage = () => {
         const getData = async () => {
             
             try {
-                const data = await axiosPrivate.post('/admin/users', {column: sort.column, sort: sort.value});
+                const data = await axiosPrivate.post('/admin/users', sort);
                 const changedUsers = [...data.data.users];
                             
                 setUsers(changedUsers);
@@ -53,7 +57,7 @@ const KlientaiPage = () => {
     
     return (
         <Klientai>
-            <KlientaiRowHeader setSearch={setSearch} search={search} sort={sort} setSort={setSort} />
+            <KlientaiHeaderRow setSearch={setSearch} search={search} sort={sort} setSort={setSort} />
             {!isLoading && users.filter(searchFn).map(user => <KlientaiRow 
                 key={user.id} 
                 user={user} 
