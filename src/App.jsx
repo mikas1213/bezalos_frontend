@@ -10,16 +10,6 @@ import styles from './App.module.css';
 import LoginPage from './pages/LoginPage';
 import Spinner from './components/UI/Spinner';
 
-// import HomePage from './pages/HomePage';
-// import VirtuvePage from './pages/VirtuvePage';
-// import VirtuveVideoPage from './pages/VirtuveVideoPage';
-// import ReceptaiPage from './pages/ReceptaiPage';
-// import PaslaugosPage from './pages/PaslaugosPage';
-// import ProfilisPage from './pages/ProfilisPage';
-// import UpdatePasswordPage from './pages/UpdatePasswordPage';
-// import NotFoundPage from './pages/NotFoundPages/NotFoundPage';
-// import NeedSubscription from './pages/NotFoundPages/NeedSubscription';
-
 import RequireAuth from './pages/RequireAuth';
 import PersistLogin from './pages/PersistLogin';
 
@@ -80,7 +70,6 @@ function App() {
                                 <Route path='/privatumo-politika' element={<PrivatumoPolitikaPage />} />
                                 <Route path='*' element={<NotFoundPage />} />
                                 
-
                                 <Route element={<RequireAuth allowedRoles={[1213, 2324]}/> }>
                                     <Route path='/virtuve/:video' element={<VirtuveVideoPage />} />
                                     <Route path='/profilis' element={<ProfilisPage /> }>

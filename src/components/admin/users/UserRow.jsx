@@ -1,37 +1,37 @@
 import useAxiosPrivate from '../../../hooks/useAxiosPrivate';
-import styles from './KlientaiRow.module.css';
+import styles from './UserRow.module.css';
 import check_box_styles from './CheckBox.module.css';
 import { useState } from 'react';
 import { date_to_yyyy_mm_dd, isTodayOrFiveDaysBefore, isTodayOrLater, isTwoOrFourWeeks } from '../../../utils/helpers';
 import stripe_img from '../../../assets/images/admin/stripe_png.png';
+import UserBox, { SideBox} from './UserBox';
 
-const KlientaiRow = ({ user, users, setUsers }) => {
+const UserRow = ({ user, users, setUsers }) => {
     
     const axiosPrivate = useAxiosPrivate();
-    const [week, setWeek] = useState(user.support_over === 'week' ? true : false );
-    const [month, setMonth] = useState(user.support_over === 'month' ? true : false );
+    const [week, setWeek] = useState(user.plan_assign_status === 'week' ? true : false );
+    const [month, setMonth] = useState(user.plan_assign_status === 'month' ? true : false );
     
     const [userData, setUserDate] = useState({
         subscription_expires: date_to_yyyy_mm_dd(user.subscription_expires),
-        nutrition_tracking: date_to_yyyy_mm_dd(user.nutrition_tracking),
-        nutrition_plan_status: user.nutrition_plan_status,
-        assigned_plan: date_to_yyyy_mm_dd(user.assigned_plan),
-        support_over: user.support_over,
+        plan_prepare: date_to_yyyy_mm_dd(user.plan_prepare),
+        plan_prepare_status: user.plan_prepare_status,
+        plan_assign: date_to_yyyy_mm_dd(user.plan_assign),
+        plan_assign_status: user.plan_assign_status,
     });
-    console.log(userData)
+    
     const onHandleChange = async (e, user_id, period) => {
         
         try {
             await axiosPrivate.patch(`/admin/user/${user_id}`, {
                 column: e.target.name,
-                value: e.target.name !== 'support_over' ? e.target.value : (e.target.checked ? period : 'none')
+                value: e.target.name !== 'plan_assign_status' ? e.target.value : (e.target.checked ? period : 'none')
             });
             
             const newUsers = [...users];
             const newUser = newUsers.find(u => u.id === user_id);
             const index = newUsers.findIndex(u => u.id === user_id);
 
-            // newUser[e.target.name] = e.target.name !== 'support_over' ? e.target.value : (e.target.checked ? e.target.value : 'none');
             newUser[e.target.name] = e.target.value;
             if(e.target.name === 'subscription_expires') {
                 if(!newUser.s_status) newUser.subscription_type = e.target.value ? 'Virtuvė' : 'free'
@@ -47,7 +47,7 @@ const KlientaiRow = ({ user, users, setUsers }) => {
 
     const handleInputChange = (e, user_id, period = null) => {
         
-        if(e.target.name === 'assigned_plan' && e.target.value === '') {
+        if(e.target.name === 'plan_assign' && e.target.value === '') {
             
             setWeek(false);
             setMonth(false);
@@ -67,19 +67,20 @@ const KlientaiRow = ({ user, users, setUsers }) => {
     
     return (    
         <div className={styles.userRow}>
-            <div className={styles.userBox}>
-                <div className={styles.userBoxName}>
-                    <div className={styles.email}>{user.email}</div>
-                    <div className={styles.name}>{user.name}</div>
-                </div>
 
-                <div className={styles.userBoxDate}>
+            <UserBox>
+                <SideBox>
+                    <div className={styles.userEmail}>{user.email}</div>
+                    <div className={styles.userName}>{user.name}</div>
+                </SideBox>
+
+                <SideBox>
                     <div className={styles.naryste}>
                         <div className={styles.inputGroup}>
                             <span className={styles[user.subscription_type]}>{user.subscription_type}</span>
                             <input 
                                 placeholder='yyyy-mm-dd'
-                                className={styles[isTodayOrFiveDaysBefore(user.subscription_expires)]}
+                                className={`${styles.inputDate} ${styles[isTodayOrFiveDaysBefore(user.subscription_expires)]}`}
                                 type='date' 
                                 min='2024-01-01'                    
                                 name='subscription_expires'  
@@ -88,13 +89,11 @@ const KlientaiRow = ({ user, users, setUsers }) => {
                             />
                         </div>
 
-
                         <div className={styles.inputGroup}>
                             <img className={styles.stripeImg} src={stripe_img} alt='logo-img' />
                             <span className={styles[isTodayOrFiveDaysBefore(user.s_subscription_expires)]}>
                                 {user.s_subscription_expires ? date_to_yyyy_mm_dd(user.s_subscription_expires) : 'Negalioja'}
                             </span>
-                            {/* <span>{user.s_subscription_expires}</span> */}
                         </div>
                         
                     </div>
@@ -102,28 +101,28 @@ const KlientaiRow = ({ user, users, setUsers }) => {
                         Prisijungė:
                         {user.last_activity ? <span>&nbsp;&nbsp;{date_to_yyyy_mm_dd(user.last_activity)}</span> : <span>&nbsp;&nbsp;Nežinoma</span>}
                     </div>
-                </div>
-            </div>
+                </SideBox>
+            </UserBox>
         
-            <div className={styles.mitybaBox}>
-                <div className={styles.mityba}>
-                    <span>Mitybą seka iki</span>
+            <UserBox>
+                <SideBox>
+                    <span className={styles.sideBoxTitle}>Mitybą seka iki</span>
                     <input 
-                        className={styles[isTodayOrLater(user.nutrition_tracking)]}
+                        className={`${styles.inputDate} ${styles[isTodayOrLater(user.plan_prepare)]}`}
                         type='date' 
                         min='2024-01-01'
-                        name='nutrition_tracking' 
-                        value={userData.nutrition_tracking} 
+                        name='plan_prepare' 
+                        value={userData.plan_prepare} 
                         onChange={e => handleInputChange(e, user.id)}  
                     />
-                </div>
-
-                <div className={styles.paklausta}>
-                    <span>Paklausta</span>
+                </SideBox>
+                
+                <SideBox>
+                    <span className={styles.sideBoxTitle}>Statusas</span>
                     <select 
-                        className={`${styles.dateSelect} ${user.nutrition_plan_status === 'Tinka' ? styles.colorDanger : styles.colorLight}`}
-                        name='nutrition_plan_status' 
-                        value={userData.nutrition_plan_status} 
+                        className={`${styles.statusSelect} ${user.plan_prepare_status === 'Tinka' ? styles.colorDanger : styles.colorLight}`}
+                        name='plan_prepare_status' 
+                        value={userData.plan_prepare_status} 
                         onChange={e => handleInputChange(e, user.id)}
                     >
                         <option>Pasirinkti</option>
@@ -132,32 +131,32 @@ const KlientaiRow = ({ user, users, setUsers }) => {
                         <option>Tinka</option>
                         <option>Trūksta anketos</option>
                     </select>
-                </div>
-            </div>
+                </SideBox>
+            </UserBox>
 
-            <div className={styles.planasBox}>
-                <div className={styles.planas}>
-                    <span>Planas priskirtas</span>
+            <UserBox>
+                <SideBox>
+                    <span className={styles.sideBoxTitle}>Planas priskirtas</span>
                     <input 
-                        className={month ? styles.colorSuccess : styles[isTwoOrFourWeeks(user.assigned_plan)]}
+                        className={`${styles.inputDate} ${month ? styles.colorSuccess : styles[isTwoOrFourWeeks(user.plan_assign)]}`}
                         type='date' 
-                        name='assigned_plan' 
+                        name='plan_assign' 
                         min='2024-01-01'                    
-                        value={userData.assigned_plan}  
+                        value={userData.plan_assign}  
                         onChange={e => handleInputChange(e, user.id)}  
                     />
-                </div>
+                </SideBox>
 
-                <div className={styles.prieziura}>
-                    {(!week && !month) && <span>Statusas</span>}
-                    {week && <span>2 savaitės</span>}
-                    {month && <span>1 mėnesis</span>}
+                <SideBox>
+                    {(!week && !month) && <span className={styles.sideBoxTitle}>Statusas</span>}
+                    {week && <span className={styles.sideBoxTitle}>2 savaitės</span>}
+                    {month && <span className={styles.sideBoxTitle}>1 mėnesis</span>}
 
                     <div className={styles.checkBoxes}>
                         <input 
                             className={`${check_box_styles.ikxBAC} ${week ? check_box_styles.week : ''}`}
                             type='checkbox' 
-                            name='support_over' 
+                            name='plan_assign_status' 
                             value='week' 
                             checked={week}
                             onChange={e => handleInputChange(e, user.id, 'week')}  
@@ -166,19 +165,24 @@ const KlientaiRow = ({ user, users, setUsers }) => {
                         <input 
                             className={`${check_box_styles.ikxBAC} ${month ? check_box_styles.month : ''}`}
                             type='checkbox' 
-                            name='support_over' 
+                            name='plan_assign_status' 
                             value='month' 
                             checked={month}
                             onChange={e => handleInputChange(e, user.id, 'month')}  
                         />
                     </div>
-                </div>
-            </div>
+                </SideBox>
+            </UserBox>
+
+            <UserBox>
+                <SideBox>Top</SideBox>
+                <SideBox>Bottom</SideBox>
+            </UserBox>
         </div>
     );
 }
 
-export default KlientaiRow;
+export default UserRow;
 
 /*
 day:

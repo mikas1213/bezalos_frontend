@@ -10,8 +10,8 @@ export const date_to_yyyy_mm_dd = (my_date) => {
 export const isTodayOrLater = (date) => {
     
     const today = Date.parse(new Date().toLocaleString('lt-LT', {dateStyle: 'short'}));
-    const nutrition_tracking = Date.parse(date_to_yyyy_mm_dd(date));
-    return nutrition_tracking <= today ? 'colorDanger' : 'colorLight';
+    const plan_prepare = Date.parse(date_to_yyyy_mm_dd(date));
+    return plan_prepare <= today ? 'colorDanger' : 'colorLight';
 };
 
 export const isTodayOrFiveDaysBefore = (date) => {

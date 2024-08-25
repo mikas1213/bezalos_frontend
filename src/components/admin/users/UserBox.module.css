@@ -1,0 +1,36 @@
+.userBox {
+    display: flex;
+    flex-direction: column;    
+    row-gap: 0.5rem;
+    justify-content: space-between;
+}
+
+.sideBox {
+    display: flex;
+    flex-direction: column;    
+    row-gap: 0.1rem;
+    justify-content: space-between;
+}
+
+@media only screen and (max-width: 768px) {
+    /* .userBox {
+        grid-area: 1 / 1 / 2 / -1;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        flex-direction: row;
+        justify-content: start;
+        align-items: center;
+    } */
+}
+
+@media only screen and (max-width: 375px) {
+    /* .userBox {
+        grid-template-columns: 0.8fr 1.2fr;
+    } */
+}
+@media only screen and (max-width: 320px) {
+    /* .userBox {
+        grid-template-columns: 1.1fr 0.9fr;
+        column-gap: 0.5rem;
+    } */
+}

@@ -1,17 +1,9 @@
-import styles from './KlientaiHeaderRow.module.css';
+import styles from './UserHeaderRow.module.css';
 import { IoIosArrowRoundDown, IoIosArrowRoundUp } from 'react-icons/io';
 import { IoCloseCircle } from 'react-icons/io5';
 import Filters from './Filters';
-const KlientaiHeaderRow = ({ setSearch, search, sort, setSort }) => {
-    
-    // const [changeSort, setChangeSort] = useState('s_subscription_expires');
-    // const handleChange = (e) => {        
-        // setChangeSort(e.target.value);
-        // setSort(prevSort => ({
-        //     ...prevSort, column: e.target.value
-        // }));
-    // }
 
+const UserHeaderRow = ({ setSearch, search, sort, setSort }) => {
     return (    
         <div className={styles.headerRow}>
             <div className={styles.searchContainer}>
@@ -33,8 +25,8 @@ const KlientaiHeaderRow = ({ setSearch, search, sort, setSort }) => {
                 <option value='subscription_expires'>Narystė galioja ranka</option>
                 <option value='s_subscription_expires'>Narystė galioja Stripe</option>
                 <option value='last_activity'>Prisijungta</option>
-                <option value='nutrition_tracking'>Mitybą seka iki</option>
-                <option value='assigned_plan'>Planas priskirtas</option>
+                <option value='plan_prepare'>Mitybą seka iki</option>
+                <option value='plan_assign'>Planas priskirtas</option>
                 <option value='subscription_type'>free</option>
             </select>
             <button onClick={() => setSort(prevState => ({...prevState, sort: prevState.sort === 'DESC'? 'ASC' : 'DESC'}))}>
@@ -46,4 +38,4 @@ const KlientaiHeaderRow = ({ setSearch, search, sort, setSort }) => {
     );
 }
 
-export default KlientaiHeaderRow;
+export default UserHeaderRow;

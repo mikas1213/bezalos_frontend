@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import useAxiosPrivate from '../../hooks/useAxiosPrivate';
-import Klientai from "../../components/admin/klientai/Klientai";
-import KlientaiRow from '../../components/admin/klientai/KlientaiRow';
-import KlientaiHeaderRow from '../../components/admin/klientai/KlientaiHeaderRow';
+import UsersContainer from '../../components/admin/users/UsersContainer';
+import UserRow from '../../components/admin/users/UserRow';
+import UserHeaderRow from '../../components/admin/users/UserHeaderRow';
 
 const KlientaiPage = () => {
     const [users, setUsers] = useState([]);
@@ -56,15 +56,15 @@ const KlientaiPage = () => {
     };
     
     return (
-        <Klientai>
-            <KlientaiHeaderRow setSearch={setSearch} search={search} sort={sort} setSort={setSort} />
-            {!isLoading && users.filter(searchFn).map(user => <KlientaiRow 
+        <UsersContainer>
+            <UserHeaderRow setSearch={setSearch} search={search} sort={sort} setSort={setSort} />
+            {!isLoading && users.filter(searchFn).map(user => <UserRow 
                 key={user.id} 
                 user={user} 
                 users={users}
                 setUsers={setUsers}
             />)}
-        </Klientai>
+        </UsersContainer>
     );
 };
 

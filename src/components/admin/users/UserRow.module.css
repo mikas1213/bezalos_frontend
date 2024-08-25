@@ -1,0 +1,163 @@
+.userRow {
+    display: grid;
+    grid-template-columns: 1.5fr repeat(3, 1fr);
+    background-color: var(--color-bgr-light);
+    background-color: white;
+    align-items: center;
+    padding: 0.5rem;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+
+.userEmail {
+    line-height: 100%;
+    color: #333;
+    font-weight: 600;
+    font-size: var(--font-size-dynamic-p-lg);
+}
+.userName {
+    line-height: 100%;
+    color: #999;
+    font-size: var(--font-size-dynamic-small-1-lg);
+}
+
+.naryste {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.naryste span {
+    display: flex;
+    align-items: center;
+    border-radius: 4px;
+    padding: 0 0.4rem;
+    color: #fff;
+    font-size: var(--font-size-dynamic-small-2-lg);
+}
+.naryste .free { background-color: #bbb; }
+.naryste .Virtuvė { background: #65cbe9; }
+.naryste .Profilis { background-color: #245D6B; }
+
+.lastActivity {
+    color: #999;
+    font-size: var(--font-size-dynamic-small-1-lg);
+}
+.lastActivity span {
+    color: #444;
+    font-weight: 600;
+    font-size: var(--font-size-dynamic-small-1-lg);
+}
+
+.inputGroup {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.stripeImg {
+    height: 1.3rem;
+    border-radius: 4px;
+}
+
+.inputDate, 
+.statusSelect {
+    cursor: pointer;
+    border: none;
+    outline: none;
+    max-width: 8rem;
+    border-radius: 4px;
+    padding: 0.1rem 0.4rem;
+    font-size: var(--font-size-dynamic-small-2-lg);
+}
+
+.inputDate::-webkit-calendar-picker-indicator {
+    cursor: pointer;
+    background-color: white; 
+    padding: 0.15rem;
+    border-radius: 4px;
+}
+.sideBoxTitle {
+    color: #999;
+    font-size: var(--font-size-dynamic-small-1-lg);
+}
+.colorDanger  {
+    color: white;
+    background-color: #EB3E1B;
+}
+.colorWarning {
+    color: white;
+    background-color: #FFA500;
+}
+.colorSuccess {
+    color: white;
+    background-color: var(--color-btn-secondary);
+}
+.colorLight {
+    color: #999 !important;
+    background-color: white;
+    outline: 1px solid #bbb !important;
+}
+.checkBoxes {
+    display: flex;
+    gap: 1rem;
+}
+
+@media only screen and (max-width: 1024px) {
+    .userRow {
+        grid-template-columns: 2fr 1fr 1fr 1fr;
+        column-gap: 0.5rem;
+    }
+}
+@media only screen and (max-width: 768px) {
+    .userRow {
+        /* grid-template-columns: minmax(auto, 1fr) minmax(auto, 1fr) auto; */
+        row-gap: 0.5rem;
+    }
+
+    .userEmail { 
+        order: 1; 
+        font-size: var(--font-size-dynamic-p-sm);
+    }
+    .userName { 
+        order: 2; 
+        font-size: var(--font-size-dynamic-small-1-sm);
+    }
+
+    .naryste { 
+        order: 4; 
+    }
+    .naryste {
+        flex-direction: column;
+    }
+    .inputDate {
+        font-size: var(--font-size-dynamic-small-1-sm);
+    }
+    .lastActivity { 
+        order: 3; 
+        font-size: var(--font-size-dynamic-small-1-sm);
+    }
+    .lastActivity span {
+        font-size: var(--font-size-dynamic-p-sm);
+    }
+    .statusSelect {
+        min-width: 3rem;
+        font-size: var(--font-size-dynamic-small-1-sm);
+    }
+}
+
+@media only screen and (max-width: 375px) {
+    .userRow { grid-template-columns: 0.8fr 1.2fr; }
+    .userEmail { font-size: var(--font-size-dynamic-h6-sm); }
+    .usernName{ font-size: var(--font-size-dynamic-p-sm); }
+    .lastActivity { font-size: var(--font-size-dynamic-p-sm); }
+    .lastActivity span { font-size: var(--font-size-dynamic-h6-sm); }
+}
+
+@media only screen and (max-width: 320px) {
+    .userRow {
+        grid-template-columns: 1.1fr 0.9fr;
+        column-gap: 0.5rem;
+    }
+}
+
+/* inpute date edit:  */
+/* https://stackoverflow.com/questions/14946091/are-there-any-style-options-for-the-html5-date-picker */

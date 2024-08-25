@@ -1,4 +1,5 @@
 .ikxBAC {
+    cursor: pointer;
     appearance: none;
     background-color: #bbbbbb99;
     border-radius: 72px;
@@ -42,17 +43,6 @@
     background-color: #c9cbcd;
     transition-duration: 0s;
 }
-
-/* .ikxBAC:checked {
-    background-color: #60c040;
-} */
-
-/* .ikxBAC.week:checked {
-    background-color: #FFA500;;
-}
-.ikxBAC.month:checked {
-    background-color: #60c040;
-} */
 
 .ikxBAC.week {
     background-color: #FFA500;
