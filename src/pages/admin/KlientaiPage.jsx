@@ -16,21 +16,6 @@ const KlientaiPage = () => {
     
     const [isLoading, setIsLoading] = useState(true);
     const axiosPrivate = useAxiosPrivate();
-    
-    // useEffect(() => {
-    //     const getData = async () => {
-    //         try {
-    //             const data = await axiosPrivate.get(`/admin/users?column=${sort.column}&sort=${sort.value}`);
-    //             const changedUsers = [...data.data.users];
-                            
-    //             setUsers(changedUsers);
-    //             setIsLoading(false);
-    //         } catch (err) {
-    //             console.log(err);
-    //         }
-    //     }
-    //     getData();
-    // }, [sort, axiosPrivate]);
 
     useEffect(() => {
         const getData = async () => {

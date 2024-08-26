@@ -2,7 +2,7 @@ import useAxiosPrivate from '../../../hooks/useAxiosPrivate';
 import styles from './UserRow.module.css';
 import check_box_styles from './CheckBox.module.css';
 import { useState } from 'react';
-import { date_to_yyyy_mm_dd, isTodayOrFiveDaysBefore, isTodayOrLater, isTwoOrFourWeeks } from '../../../utils/helpers';
+import { date_to_yyyy_mm_dd, isTodayOrFiveDaysBefore, isTodayOrLater, isTwoOrFourWeeks, isMaintenance } from '../../../utils/helpers';
 import stripe_img from '../../../assets/images/admin/stripe_png.png';
 import UserBox, { SideBox} from './UserBox';
 
@@ -18,8 +18,10 @@ const UserRow = ({ user, users, setUsers }) => {
         plan_prepare_status: user.plan_prepare_status,
         plan_assign: date_to_yyyy_mm_dd(user.plan_assign),
         plan_assign_status: user.plan_assign_status,
+        maintenance: date_to_yyyy_mm_dd(user.maintenance),
+        maintenance_status: user.maintenance_status
     });
-    
+    console.log(isMaintenance(userData.maintenance, userData.maintenance_status))
     const onHandleChange = async (e, user_id, period) => {
         
         try {
@@ -48,7 +50,6 @@ const UserRow = ({ user, users, setUsers }) => {
     const handleInputChange = (e, user_id, period = null) => {
         
         if(e.target.name === 'plan_assign' && e.target.value === '') {
-            
             setWeek(false);
             setMonth(false);
         }
@@ -175,45 +176,35 @@ const UserRow = ({ user, users, setUsers }) => {
             </UserBox>
 
             <UserBox>
-                <SideBox>Top</SideBox>
-                <SideBox>Bottom</SideBox>
+                <SideBox>
+                    <span className={styles.sideBoxTitle}>Priežiūra</span>
+                    <input 
+                        className={`${styles.inputDate} ${styles[isMaintenance(user.maintenance, user.maintenance_status).setClass]}`}
+                        type='date' 
+                        name='maintenance' 
+                        min='2024-01-01'                    
+                        value={userData.maintenance}  
+                        onChange={e => handleInputChange(e, user.id)}  
+                    />
+                </SideBox>
+                <SideBox>
+                    <span className={styles.sideBoxTitle}>Statusas</span>
+                    <select 
+                        className={`${styles.statusSelect} ${styles.colorLight}`}
+                        name='maintenance_status' 
+                        value={userData.maintenance_status} 
+                        onChange={e => handleInputChange(e, user.id)}
+                    >
+                        <option>Pasirinkti</option>
+                        <option disabled={isMaintenance(user.maintenance, user.maintenance_status).sav !== '1_sav'}>1 sav</option>
+                        <option disabled={isMaintenance(user.maintenance, user.maintenance_status).sav !== '2_sav'}>2 sav</option>
+                        <option disabled={isMaintenance(user.maintenance, user.maintenance_status).sav !== '3_sav'}>3 sav</option>
+                        <option disabled={isMaintenance(user.maintenance, user.maintenance_status).sav !== '4_sav'}>4 sav</option>
+                    </select>
+                </SideBox>
             </UserBox>
         </div>
     );
 }
 
 export default UserRow;
-
-/*
-day:
-The representation of the day.
-Possible values are "numeric", "2-digit".
-
-weekday:
-The representation of the weekday.
-Possible values are "narrow", "short", "long".
-
-year:
-The representation of the year.
-Possible values are "numeric", "2-digit".
-
-month:
-The representation of the month.
-Possible values are "numeric", "2-digit", "narrow", "short", "long".
-
-hour:
-The representation of the hour.
-Possible values are "numeric", "2-digit".
-
-minute: The representation of the minute.
-Possible values are "numeric", "2-digit".
-
-second:
-The representation of the second.
-Possible values are "numeric", 2-digit".
-
-hour12:
-The representation of time format.
-Accepts boolean true or false
-
-*/

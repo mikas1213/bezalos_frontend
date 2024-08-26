@@ -7,13 +7,7 @@ export const date_to_yyyy_mm_dd = (my_date) => {
     return setDate;
 };
 
-export const isTodayOrLater = (date) => {
-    
-    const today = Date.parse(new Date().toLocaleString('lt-LT', {dateStyle: 'short'}));
-    const plan_prepare = Date.parse(date_to_yyyy_mm_dd(date));
-    return plan_prepare <= today ? 'colorDanger' : 'colorLight';
-};
-
+// For subscription date
 export const isTodayOrFiveDaysBefore = (date) => {
     
     const date_before = new Date(date);
@@ -30,9 +24,16 @@ export const isTodayOrFiveDaysBefore = (date) => {
     return setColor;
 };
 
-export const isTwoOrFourWeeks = (date) => {
+// For plano paruošimui / mitybą seka
+export const isTodayOrLater = (date) => {
     
-    let setColor = 'colorLight';
+    const today = Date.parse(new Date().toLocaleString('lt-LT', {dateStyle: 'short'}));
+    const plan_prepare = Date.parse(date_to_yyyy_mm_dd(date));
+    return plan_prepare <= today ? 'colorDanger' : 'colorLight';
+};
+
+// Planas priskirtas
+export const isTwoOrFourWeeks = (date) => {
     const two_weeks = new Date(date);
     const four_weeks = new Date(date);
 
@@ -44,6 +45,7 @@ export const isTwoOrFourWeeks = (date) => {
 
     const today = Date.parse(new Date().toLocaleString('lt-LT', {dateStyle: 'short'}));
 
+    let setColor = 'colorLight';
     if(today >= two_week_later) setColor = 'colorWarning';
     if(today >= four_week_later) setColor = 'colorDanger';
     if(date === null) setColor = 'colorLight';
@@ -51,6 +53,49 @@ export const isTwoOrFourWeeks = (date) => {
     return setColor;
 };
 
+export const isMaintenance = (date, status) => {
+    
+    const week_1 = new Date(date);
+    const week_2 = new Date(date);
+    const week_3 = new Date(date);
+    const week_4 = new Date(date);
+
+    week_1.setDate(week_1.getDate() + 7);
+    week_2.setDate(week_2.getDate() + 14);
+    week_3.setDate(week_3.getDate() + 21);
+    week_4.setDate(week_4.getDate() + 28);
+
+    const today = Date.parse(new Date().toLocaleString('lt-LT', {dateStyle: 'short'}));
+    const after_week_1 = Date.parse(week_1.toLocaleString('lt-LT', {dateStyle: 'short'}));
+    const after_week_2 = Date.parse(week_2.toLocaleString('lt-LT', {dateStyle: 'short'}));
+    const after_week_3 = Date.parse(week_3.toLocaleString('lt-LT', {dateStyle: 'short'}));
+    const after_week_4 = Date.parse(week_4.toLocaleString('lt-LT', {dateStyle: 'short'}));
+    
+    let sav = '';
+    let setClass = 'colorLight';
+
+    // Conditions for color change
+    if(after_week_1 <= today && after_week_2 > today) {
+        sav = '1_sav';
+        if(status !== '1 sav') setClass = 'colorDanger';
+        
+    } else if(after_week_2 <= today && after_week_3 > today) {
+        sav = '2_sav'
+        if(status !== '2 sav') setClass = 'colorDanger';
+
+    } else if(after_week_3 <= today && after_week_4 > today) {
+        sav = '3_sav';
+        if(status !== '3 sav') setClass = 'colorDanger';
+        
+    } else if(after_week_4 <= today) {
+        sav = '4_sav';
+        if(status !== '4 sav') setClass = 'colorDanger';
+    }
+
+    if(date === null) setClass = 'colorLight';
+    console.log(setClass, sav)
+    return { setClass, sav };
+};
 
 
 
@@ -99,4 +144,40 @@ second	"2-digit"
 "numeric"
 timeZoneName	"long"
 "short"
+*/
+
+
+
+/*
+day:
+The representation of the day.
+Possible values are "numeric", "2-digit".
+
+weekday:
+The representation of the weekday.
+Possible values are "narrow", "short", "long".
+
+year:
+The representation of the year.
+Possible values are "numeric", "2-digit".
+
+month:
+The representation of the month.
+Possible values are "numeric", "2-digit", "narrow", "short", "long".
+
+hour:
+The representation of the hour.
+Possible values are "numeric", "2-digit".
+
+minute: The representation of the minute.
+Possible values are "numeric", "2-digit".
+
+second:
+The representation of the second.
+Possible values are "numeric", 2-digit".
+
+hour12:
+The representation of time format.
+Accepts boolean true or false
+
 */
