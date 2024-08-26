@@ -86,14 +86,17 @@ export const isMaintenance = (date, status) => {
     } else if(after_week_3 <= today && after_week_4 > today) {
         sav = '3_sav';
         if(status !== '3 sav') setClass = 'colorDanger';
-        
+
     } else if(after_week_4 <= today) {
         sav = '4_sav';
         if(status !== '4 sav') setClass = 'colorDanger';
     }
 
-    if(date === null) setClass = 'colorLight';
-    console.log(setClass, sav)
+    if(date === null) {
+        sav = '';
+        setClass = 'colorLight';
+    }
+    
     return { setClass, sav };
 };
 

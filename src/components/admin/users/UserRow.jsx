@@ -2,6 +2,7 @@ import useAxiosPrivate from '../../../hooks/useAxiosPrivate';
 import styles from './UserRow.module.css';
 import check_box_styles from './CheckBox.module.css';
 import { useState } from 'react';
+import { FaRegCopy } from 'react-icons/fa';
 import { date_to_yyyy_mm_dd, isTodayOrFiveDaysBefore, isTodayOrLater, isTwoOrFourWeeks, isMaintenance } from '../../../utils/helpers';
 import stripe_img from '../../../assets/images/admin/stripe_png.png';
 import UserBox, { SideBox} from './UserBox';
@@ -21,7 +22,7 @@ const UserRow = ({ user, users, setUsers }) => {
         maintenance: date_to_yyyy_mm_dd(user.maintenance),
         maintenance_status: user.maintenance_status
     });
-    console.log(isMaintenance(userData.maintenance, userData.maintenance_status))
+    
     const onHandleChange = async (e, user_id, period) => {
         
         try {
@@ -71,7 +72,9 @@ const UserRow = ({ user, users, setUsers }) => {
 
             <UserBox>
                 <SideBox>
-                    <div className={styles.userEmail}>{user.email}</div>
+                    <div className={styles.userEmail} onClick={() => {navigator.clipboard.writeText(user.email)}}>
+                        {user.email} <FaRegCopy className={styles.icon} />
+                    </div>
                     <div className={styles.userName}>{user.name}</div>
                 </SideBox>
 

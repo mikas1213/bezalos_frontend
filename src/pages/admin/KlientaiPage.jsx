@@ -11,7 +11,8 @@ const KlientaiPage = () => {
         column: 's_subscription_expires',
         sort: 'ASC',
         week: false,
-        month: false
+        month: false,
+        maintenance: false
     });
     
     const [isLoading, setIsLoading] = useState(true);

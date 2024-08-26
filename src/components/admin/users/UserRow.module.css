@@ -20,6 +20,14 @@
     color: #999;
     font-size: var(--font-size-dynamic-small-1-lg);
 }
+.icon {
+    cursor: pointer;
+    color: #aaa;
+    transition: color 0.1s ease-in-out;
+}
+.icon:hover {
+    color: #333;
+}
 
 .naryste {
     display: flex;

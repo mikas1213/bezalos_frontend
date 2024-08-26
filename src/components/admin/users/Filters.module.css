@@ -1,8 +1,9 @@
 .filters {
     display: flex;
+    gap: 0.5rem;
 }
 
-.planasPriskirtasFilter {
+.filterGroup {
     display: flex;
     border: 1px solid #999;
     border-radius: 4px;
