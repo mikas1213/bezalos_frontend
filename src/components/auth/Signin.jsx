@@ -65,7 +65,7 @@ const Signin = () => {
 
     const submit = ({ email, password }) => {
         mutate({
-            email,
+            email: email?.toLowerCase(),
             password
         });
     };

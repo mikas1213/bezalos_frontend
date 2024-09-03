@@ -27,7 +27,7 @@ const ChooseBtn = () => {
                 <input className={styles.inpCbx} id='sutinku' type='checkbox' onChange={() => setSutinku(su => !su)}/>
                 {/* <label className={styles.cbx} htmlFor='sutinku'> */}
                     {variant === 'profilis' ? planPreparingText : agreement}
-                    
+                    {/* {agreement} */}
                     {/* <span>
                         <svg width='12px' height='10px'>
                             <use xlinkHref='#check-4'></use>
@@ -46,6 +46,7 @@ const ChooseBtn = () => {
             </div>
             <div>
                 <button onClick={handleSubscriptionCheckout} disabled={!sutinku || variant === 'profilis'}>Prenumeruoti</button>
+                {/* <button onClick={handleSubscriptionCheckout}>Prenumeruoti</button> */}
             </div>
         </div>
     );

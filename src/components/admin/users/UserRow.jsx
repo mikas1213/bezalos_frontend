@@ -7,7 +7,9 @@ import { date_to_yyyy_mm_dd, isTodayOrFiveDaysBefore, isTodayOrLater, isTwoOrFou
 import stripe_img from '../../../assets/images/admin/stripe_png.png';
 import UserBox, { SideBox} from './UserBox';
 
-const UserRow = ({ user, users, setUsers }) => {
+const UserRow = ({ user, 
+    // users, setUsers, 
+    onChangeUsers }) => {
     
     const axiosPrivate = useAxiosPrivate();
     const [week, setWeek] = useState(user.plan_assign_status === 'week' ? true : false );
@@ -31,18 +33,27 @@ const UserRow = ({ user, users, setUsers }) => {
                 value: e.target.name !== 'plan_assign_status' ? e.target.value : (e.target.checked ? period : 'none')
             });
             
-            const newUsers = [...users];
-            const newUser = newUsers.find(u => u.id === user_id);
-            const index = newUsers.findIndex(u => u.id === user_id);
+            // const newUsers = [...users];
+            // const newUser = newUsers.find(u => u.id === user_id);
+            // const index = newUsers.findIndex(u => u.id === user_id);
 
-            newUser[e.target.name] = e.target.value;
-            if(e.target.name === 'subscription_expires') {
-                if(!newUser.s_status) newUser.subscription_type = e.target.value ? 'Virtuvė' : 'free'
-            }
+            // newUser[e.target.name] = e.target.value;
+            // if(e.target.name === 'subscription_expires') {
+            //     if(!newUser.s_status) newUser.subscription_type = e.target.value ? 'Virtuvė' : 'free'
+            // }
             
-            newUsers[index] = newUser;
-            setUsers(newUsers);
-        
+            // newUsers[index] = newUser;
+            // setUsers(newUsers);
+
+            // T-E-S-T-I-N-G
+            let newUser = {user_id, [e.target.name]: e.target.value};
+
+            // For manual setting subscription
+            if(e.target.name === 'subscription_expires') {
+                if(!user.s_status) newUser.subscription_type = e.target.value ? 'Virtuvė' : 'free'
+            }
+            onChangeUsers(newUser);
+            
         } catch (err) {
             console.log(err.message)
         }

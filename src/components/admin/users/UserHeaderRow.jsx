@@ -1,11 +1,15 @@
 import styles from './UserHeaderRow.module.css';
 import { IoIosArrowRoundDown, IoIosArrowRoundUp } from 'react-icons/io';
 import { IoCloseCircle } from 'react-icons/io5';
+import { FaRegCopy } from 'react-icons/fa';
 import Filters from './Filters';
 
-const UserHeaderRow = ({ setSearch, search, sort, setSort }) => {
+const UserHeaderRow = ({ usersEmailsForCopy, setSearch, search, sort, setSort }) => {
     return (    
         <div className={styles.headerRow}>
+            <div className={styles.copyAllUsers} onClick={() => {navigator.clipboard.writeText(usersEmailsForCopy)}}>
+                <FaRegCopy className={styles.icon} />
+            </div>
             <div className={styles.searchContainer}>
                 <input 
                     type='text' 
@@ -14,7 +18,9 @@ const UserHeaderRow = ({ setSearch, search, sort, setSort }) => {
                     onChange={e => setSearch(e.target.value.toLocaleLowerCase())}
                 />
                 <IoCloseCircle className={styles.icon} onClick={() => setSearch('')} />
+                
             </div>
+            
             <select 
                 name='sort' 
                 value={sort.column}

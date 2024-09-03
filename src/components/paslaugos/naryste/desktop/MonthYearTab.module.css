@@ -1,12 +1,8 @@
 .wrapper {
     border-radius: 37px;
-    background-color: #f7f7f7;
-    /* padding: 0.2rem; */
+    background-color: var(--color-bgr-tab);
     width: 100%;
     max-width: 11.5rem;
-    /* margin-left: auto; */
-    /* margin-right: auto; */
-    /* box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px; */
 }
 .tabSwitch { position: relative; }
 .textCenter { text-align: center; }

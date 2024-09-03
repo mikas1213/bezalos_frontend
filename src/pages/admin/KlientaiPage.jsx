@@ -24,7 +24,7 @@ const KlientaiPage = () => {
             try {
                 const data = await axiosPrivate.post('/admin/users', sort);
                 const changedUsers = [...data.data.users];
-                            
+                                
                 setUsers(changedUsers);
                 setIsLoading(false);
             } catch (err) {
@@ -34,21 +34,50 @@ const KlientaiPage = () => {
         getData();
     }, [sort, axiosPrivate]);
 
-    
     const searchFn = u => {
         return u.email.toLowerCase().indexOf(search) > -1 || 
         u.name.toLowerCase().indexOf(search) > -1 || 
         u.last_activity?.toLowerCase()?.indexOf(search) > -1;
     };
+
+    const onChangeUsers = (newUser) => {
+        // const newUsers = [...users];
+        // const newUser = newUsers.find(u => u.id === user_id);
+        // const index = newUsers.findIndex(u => u.id === user_id);
+
+        // newUser[e.target.name] = e.target.value;
+        // if(e.target.name === 'subscription_expires') {
+        //     if(!newUser.s_status) newUser.subscription_type = e.target.value ? 'Virtuvė' : 'free'
+        // }
+        
+        // newUsers[index] = newUser;
+        
+
+        const currentUsers = [...users];
+        const currentUser = currentUsers.find(u => u.id === newUser.user_id);
+        const index = currentUsers.findIndex(u => u.id === newUser.user_id);
+        const updatedUser = {...currentUser, ...newUser};
+        currentUsers[index] = {...updatedUser}
+        
+        console.log(currentUsers)
+        setUsers(currentUsers)
+    };
     
     return (
         <UsersContainer>
-            <UserHeaderRow setSearch={setSearch} search={search} sort={sort} setSort={setSort} />
+            <UserHeaderRow  
+                setSearch={setSearch} 
+                search={search} 
+                sort={sort} 
+                setSort={setSort} 
+                usersEmailsForCopy={users.map(user => user.email).join(' ')}
+            />
             {!isLoading && users.filter(searchFn).map(user => <UserRow 
                 key={user.id} 
                 user={user} 
-                users={users}
-                setUsers={setUsers}
+                // users={users}
+                // setUsers={setUsers}
+                onChangeUsers={onChangeUsers}
             />)}
         </UsersContainer>
     );

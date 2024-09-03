@@ -210,7 +210,7 @@
     
     .listItemMobile.active {
         border-radius: 3rem;
-        background: #eff1ef;
+        background: var(--color-bgr-light);
         box-shadow: inset 5px 5px 10px #d5d6d5, inset -5px -5px 10px #ffffff;            
     }
 

@@ -1,6 +1,6 @@
 .wrapper {
     border-radius: 37px;
-    background-color: #f7f7f7;
+    background-color: var(--color-bgr-tab);
     padding: 0.2rem;
     width: 100%;
     max-width: 20rem;

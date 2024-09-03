@@ -14,7 +14,7 @@
     width: clamp(10rem, 37.5vw, 24rem);
     height: clamp(10rem, 37.5vw, 24rem);
     padding: clamp(0rem, 4.688vw, 3rem);
-    background-color: #eff1ef;
+    background-color: var(--color-bgr-card);
     border-radius: 1.5rem;
     padding-top: 0;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;

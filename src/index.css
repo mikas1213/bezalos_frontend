@@ -1,10 +1,14 @@
 :root {
     /* Colors CMD + k + g */
     --color-bgr-light: #eff1ef;
+    --color-bgr-tab: #f7f7f7;
     --color-bgr-card: #d1d6cf;
     --color-bgr-top: #084747;
     --color-bgr-bottom: #082b1d;
     --color-text-light: #eff1ef;
+    --color-text-light-88: #eff1ef88;
+    --color-text-light-aa: #eff1efaa;
+    --color-text-light-cc: #eff1efcc;
     --color-text-dark: #082b1d;
     --color-radio-border: #a7aba6; 
     --color-radio: #878b86;

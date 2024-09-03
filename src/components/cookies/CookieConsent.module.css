@@ -2,8 +2,7 @@
     display: grid;
     grid-template-columns: auto 5fr 1fr;
     position: fixed;
-    background: #eff1ef;
-    /* background-color: var(--color-bgr-card); */
+    background-color: var(--color-bgr-light);
     border-radius: 0.8rem;
     padding: 1rem;
     gap: 1rem;

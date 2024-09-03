@@ -82,7 +82,7 @@
 }
 
 .active .period {
-    color: #eff1ef88;
+    color: var(--color-text-light-88);
 }
 .active .mark {
     border: 1px solid #082b1dff;

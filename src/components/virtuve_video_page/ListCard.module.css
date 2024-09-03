@@ -19,7 +19,7 @@
 .icon {
     position: absolute;
     font-size: clamp(0rem, 4.688vw, 3rem);
-    color: #eff1efaa;
+    color: var(--color-text-light-aa);
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -31,7 +31,7 @@
     flex-direction: column;
     justify-content: center;
     color: var(--color-text-dark);
-    background-color: #eff1efcc;
+    background-color: var(--color-text-light-cc);
     border-radius: 10rem;
     padding: 0.1rem 0.5rem;
     font-size: var(--font-size-dynamic-small-1-lg);

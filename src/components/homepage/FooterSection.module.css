@@ -107,8 +107,8 @@
 
 .footerEmail button:disabled {
     cursor: not-allowed;
-    color: #eff1ef;
-    background: #a7aba6;
+    color: var(--color-text-light);
+    background: var(--color-radio-border);
     
 }
 
