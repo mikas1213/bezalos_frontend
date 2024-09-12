@@ -1,0 +1,80 @@
+.wrapper {
+    /* border-radius: 37px; */
+    
+    border-top-left-radius: 5rem;
+    border-bottom-left-radius: 5rem;
+    border-top-right-radius: 5rem;
+    border-bottom-right-radius: 5rem;
+    background-color: #fff;
+    /* padding: 0.3rem; */
+    width: 100%;
+    max-width: 30rem;
+    margin: 1rem auto;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+}
+.tabSwitch {
+    position: relative;
+}
+.textCenter {
+    text-align: center;
+}
+  
+.tabSwitch:after {
+    content: '';
+    position: absolute;
+    width: calc(100% / 3);
+    top: 0;
+    transition: left ease 0.3s, border-radius 0.2s ease;
+    background-color: #245D6B;
+    height: 100%;
+    z-index: 0;
+}
+  
+.tabSwitch.templates:after {
+    left: 0;
+    border-top-left-radius: 5rem;
+    border-bottom-left-radius: 5rem;
+}
+.tabSwitch.meals:after {
+    left: calc(100% / 3);
+}
+.tabSwitch.products:after {
+    left: calc((100% / 3) * 2);
+    border-top-right-radius: 5rem;
+    border-bottom-right-radius: 5rem;
+}
+  
+.tabSwitch .tab {
+    display: inline-block;
+    width: calc(100% / 3);
+    z-index: 1;
+    position: relative;
+    cursor: pointer;
+    transition: color 200ms;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #245D6B;
+    line-height: normal;
+    user-select: none;
+}
+.tab a {
+    justify-content: center;
+    padding: 0.5rem 0;
+}
+.tabSwitch .tab.active {
+    color: #245D6B;
+    color: #fff;
+}
+
+@media only screen and (max-width: 375px) {
+    .tabSwitch .tab {
+        padding: 0.4rem 0;
+    }
+}
+
+@media only screen and (max-width: 320px) {
+    .tabSwitch .tab {
+        padding: 0.3rem 0;
+        font-size: 0.9rem;
+    }
+}

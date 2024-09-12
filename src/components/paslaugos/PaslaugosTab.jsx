@@ -1,4 +1,4 @@
-import styles from "./PaslaugosTab.module.css";
+import styles from './PaslaugosTab.module.css';
 
 const PaslaugosTab = ({ side, setSide }) => {
     return (

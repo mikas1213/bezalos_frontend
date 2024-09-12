@@ -3,7 +3,7 @@ import Navbar from '../components/navbar/Navbar';
 import Videos from '../components/virtuve/Videos';
 
 import { useEffect } from 'react';
-import { jwtDecode } from "jwt-decode";
+import { jwtDecode } from 'jwt-decode';
 import useAuth  from '../hooks/useAuth';
 
 const VirtuvePage = () => {  

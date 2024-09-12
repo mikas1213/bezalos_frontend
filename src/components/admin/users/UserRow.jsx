@@ -7,9 +7,7 @@ import { date_to_yyyy_mm_dd, isTodayOrFiveDaysBefore, isTodayOrLater, isTwoOrFou
 import stripe_img from '../../../assets/images/admin/stripe_png.png';
 import UserBox, { SideBox} from './UserBox';
 
-const UserRow = ({ user, 
-    // users, setUsers, 
-    onChangeUsers }) => {
+const UserRow = ({ user, onChangeUsers }) => {
     
     const axiosPrivate = useAxiosPrivate();
     const [week, setWeek] = useState(user.plan_assign_status === 'week' ? true : false );

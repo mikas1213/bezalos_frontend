@@ -34,13 +34,13 @@ const KlientaiPage = () => {
         getData();
     }, [sort, axiosPrivate]);
 
-    const searchFn = u => {
-        return u.email.toLowerCase().indexOf(search) > -1 || 
-        u.name.toLowerCase().indexOf(search) > -1 || 
-        u.last_activity?.toLowerCase()?.indexOf(search) > -1;
+    const searchFn = user => {
+        return user.email.toLowerCase().indexOf(search) > -1 || 
+        user.name.toLowerCase().indexOf(search) > -1 || 
+        user.last_activity?.toLowerCase()?.indexOf(search) > -1;
     };
 
-    const onChangeUsers = (newUser) => {
+    const onChangeUsers = newUser => {
         // const newUsers = [...users];
         // const newUser = newUsers.find(u => u.id === user_id);
         // const index = newUsers.findIndex(u => u.id === user_id);
@@ -56,10 +56,10 @@ const KlientaiPage = () => {
         const currentUsers = [...users];
         const currentUser = currentUsers.find(u => u.id === newUser.user_id);
         const index = currentUsers.findIndex(u => u.id === newUser.user_id);
-        const updatedUser = {...currentUser, ...newUser};
-        currentUsers[index] = {...updatedUser}
+        // const updatedUser = {...currentUser, ...newUser};
+        // currentUsers[index] = {...updatedUser}
+        currentUsers[index] = {...currentUser, ...newUser};
         
-        console.log(currentUsers)
         setUsers(currentUsers)
     };
     
@@ -70,13 +70,11 @@ const KlientaiPage = () => {
                 search={search} 
                 sort={sort} 
                 setSort={setSort} 
-                usersEmailsForCopy={users.map(user => user.email).join(' ')}
+                usersEmailsForCopy={users.map(user => user.email).join('\n')}
             />
             {!isLoading && users.filter(searchFn).map(user => <UserRow 
                 key={user.id} 
                 user={user} 
-                // users={users}
-                // setUsers={setUsers}
                 onChangeUsers={onChangeUsers}
             />)}
         </UsersContainer>

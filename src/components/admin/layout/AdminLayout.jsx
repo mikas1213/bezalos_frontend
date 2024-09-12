@@ -3,7 +3,7 @@ import styles from './AdminLayout.module.css';
 import AdminNavbar from '../navBar/AdminNavbar';
 
 const AdminLayout = () => {
-    document.body.style.backgroundColor = '#ECECEC';
+    document.body.style.backgroundColor = '#ececec';
 
     return (
         <div className={styles.mainContainer}>

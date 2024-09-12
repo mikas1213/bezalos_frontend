@@ -1,0 +1,20 @@
+.cell {
+    cursor: pointer;
+    padding-left: 0.2rem;
+}
+
+.input {
+    width: 90%;
+    border: none;
+    font-size: 1rem;
+    color: #555;
+    outline: 1px solid #ccc;
+    border-radius: 0.2rem;
+    padding: 0 0.2rem;
+    /* transition: all 1s ease-in-out; */
+}
+.input:focus {
+    outline: 1px solid #245D6B;
+
+    /* transition: all 1s ease-in-out; */
+}

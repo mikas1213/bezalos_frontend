@@ -9,8 +9,16 @@ import useAxiosPrivate from '../../../hooks/useAxiosPrivate';
 
 const AdminNavbarItem = ({ icon, title, url, notification = null }) => {    
     const location = useLocation();
+    let compatiblePath = false;
+
+    if(location.pathname === url || 
+        location.pathname === url+'/' || 
+        (location.pathname.indexOf(url) > -1 && url !== '/admin')) {
+        compatiblePath = true;
+    }
+
     return (
-        <li className={`${styles.navItem} ${location.pathname === url ? styles.active : ''}`}>
+        <li className={`${styles.navItem} ${compatiblePath ? styles.active : ''}`}>
             <NavLink to={url}>
                 {icon}{title} 
                 {notification && <span className={styles.notification}>{notification}</span>}
@@ -45,8 +53,6 @@ const AdminNavbar = () => {
         receptai: {title: 'Receptai', icon: <IoFastFoodSharp />},
         videos: {title: 'Videos', icon: <FaFilm />},
         mails: {title: 'Mails', icon: <TbMailFilled />, notification: !isLoading && stats.mails},
-        // test1: {title: 'Test', icon: <FaNoteSticky />},
-        // test2: {title: 'Test', icon: <FaNoteSticky />},
         test3: {title: 'Test', icon: <FaNoteSticky />}
     }
 

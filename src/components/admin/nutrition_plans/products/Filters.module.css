@@ -1,0 +1,19 @@
+.filters {
+    display: flex;
+    align-items: center;
+    height: 3rem;
+    border-left: 1px solid #ccc;
+    padding-left: 0.5rem;
+    gap: 0.5rem;
+}
+
+.filters input {
+    cursor: pointer;
+    border: 1px solid #ccc;
+    padding: 0.25rem;
+    padding-left: 0.5rem;
+    border-radius: 0.25rem;
+    color: #555;
+    background-color: #fff;
+    transition: all 0.1s ease-in-out;
+}

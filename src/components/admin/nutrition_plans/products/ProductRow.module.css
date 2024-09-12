@@ -1,0 +1,79 @@
+.rowH {
+    font-weight: 600;
+}
+
+.rowH, .row {
+    display: flex;
+    padding: 0.5rem;
+}
+.rowH {
+    color: #fff;
+    background-color: #245D6B;
+    border-top-left-radius: 0.4rem;
+    border-top-right-radius: 0.4rem;
+}
+.rowH .count {
+    background-color: #fff;
+    color: #245D6B;
+    margin-left: 0.5rem;
+    border-radius: 10rem;
+    padding: 0.1rem 0.5rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+.row {
+    color: #555;
+}
+.row:not(:last-child) {
+    border-bottom: 0.8px solid #ddd;
+}
+.row:hover {
+    background: #245D6B09;
+}
+
+
+.title {
+    min-width: 25rem;   
+} 
+
+.proteins, .carbs, .fat {
+    width: 5rem;
+    
+}
+.rowH :is(.title, .proteins, .carbs, .fat, .category, .sub_category) {
+    padding-left: 0.2rem;
+}
+.category {
+    width: 12rem;
+}
+.sub_category {
+    width: 10rem;
+}
+.icon {
+    display: flex;
+    align-items: center;
+    width: 2cqmax;
+    font-size: 1.2rem;
+    transition: all 0.1s ease-in-out;
+}
+.row .icon:hover {
+    cursor: pointer;
+    color: #111;
+}
+.deleteBtn {
+    border: 1px solid #aa000044;
+    border: none;
+    color: #fff;
+    background: #aa0000aa;
+    padding: 0 0.5rem;
+    border-radius: 0.4rem;
+    transition: all 0.1s ease-in-out;
+}
+.deleteBtn:hover {
+    background-color: #aa0000;
+}
+
+.deleted {
+    opacity: 0;
+    transition: all 0.5s ease-in-out;
+}

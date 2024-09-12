@@ -5,6 +5,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { AuthProvider } from "./context/AuthProvider";
 import { Toaster } from 'react-hot-toast';
+import CookieConsent from './components/cookies/CookieConsent';
 
 import styles from './App.module.css';
 import LoginPage from './pages/LoginPage';
@@ -29,13 +30,17 @@ const PrivatumoPolitikaPage = lazy(() => import('./pages/PrivatumoPolitikaPage')
 
 import AdminLayout from './components/admin/layout/AdminLayout';
 import KlientaiPage from './pages/admin/KlientaiPage';
-import MitybosPlanaiPage from './pages/admin/MitybosPlanaiPage';
+import MitybosPlanaiLayout from './pages/admin/mitybosPlanai/MitybosPlanaiLayout';
+import TemplatesPage from './pages/admin/mitybosPlanai/TemplatesPage';
+import MealsPage from './pages/admin/mitybosPlanai/MealsPage';
+import ProductsPage from './pages/admin/mitybosPlanai/ProductsPage';
 import MaistasPage from './pages/admin/MaistasPage';
 import Receptai from './pages/admin/Receptai';
 import VideosPage from './pages/admin/VideosPage';
 import MailsPage from './pages/admin/MailsPage';
 
-import CookieConsent from './components/cookies/CookieConsent';
+
+
 
 const queryClient = new QueryClient({
     defaultOptions: {
@@ -79,16 +84,22 @@ function App() {
                                     <Route path='/apmoketa-sekmingai' element={<SuccessSubscription /> }/>
                                     <Route path='/mokejimo-klaida' element={<CancelSubscription /> }/>
                                 </Route>
+
                                 <Route element={<RequireAuth allowedRoles={[1213]}/> }>
                                     <Route path='/admin' element={<AdminLayout /> }>
                                         <Route index element={<KlientaiPage />} />
-                                        <Route path='planai' element={<MitybosPlanaiPage /> }/>
+                                        <Route path='planai' element={<MitybosPlanaiLayout /> }>
+                                            <Route index element={<TemplatesPage />} />
+                                            <Route path='valgiai' element={<MealsPage />} />
+                                            <Route path='produktai' element={<ProductsPage />} />
+                                        </Route>
                                         <Route path='maistas' element={<MaistasPage />} />
                                         <Route path='receptai' element={<Receptai />} />
                                         <Route path='videos' element={<VideosPage />} />
                                         <Route path='mails' element={<MailsPage />} />
                                     </Route>
                                 </Route>
+
                             </Route>
                             
                         </Routes>

@@ -1,0 +1,44 @@
+.addProduct {
+    display: flex;
+    align-items: center;
+    height: 3rem;
+    border-radius: 5px;
+    padding-left: 0.5rem;
+    gap: 0.5rem;
+}
+
+.addProduct input {
+    cursor: pointer;
+    border: 1px solid #ccc;
+    padding: 0.25rem;
+    padding-left: 0.5rem;
+    border-radius: 0.25rem;
+    background-color: #fff;
+    color: #555;
+    transition: all 0.1s ease-in-out;
+}
+.addProduct input:hover {
+    border: 1px solid #999;
+}
+.addProduct input:focus {
+    border: 1px solid #999;
+}
+.addProduct input.macro {
+    width: 4rem;
+}
+.addProduct input::placeholder {
+    color: #777;
+}
+
+.addProduct button {
+    border: none;
+    border-radius: 5px;
+    padding: 0.25rem 1.5rem;
+    color: #eee;
+    background-color: #245D6B;
+    transition: all 0.1s ease-in-out;
+}
+.addProduct button:hover {
+    background-color: #245D6Bee;
+    color: #fefefe;
+}

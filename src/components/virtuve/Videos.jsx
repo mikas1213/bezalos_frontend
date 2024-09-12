@@ -46,12 +46,12 @@ const Videos = ({user_id, user_subscription, s_status}) => {
     return (
         <Container>
             <Filters searchItem={searchItem} />
-                {isLoading ? <Spinner /> : videos?.length === 0
-                    ? <NotFoundVideo />
-                    : <div className={styles.videos}>
-                        {videos?.map(video => <Card key={video.id} video={video} user_id={user_id} user_subscription={user_subscription} s_status={s_status} />)}
-                    </div>
-                }
+            {isLoading ? <Spinner /> : videos?.length === 0
+                ? <NotFoundVideo />
+                : <div className={styles.videos}>
+                    {videos?.map(video => <Card key={video.id} video={video} user_id={user_id} user_subscription={user_subscription} s_status={s_status} />)}
+                </div>
+            }
         </Container>
     );
 };
