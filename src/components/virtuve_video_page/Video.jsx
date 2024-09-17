@@ -2,15 +2,16 @@ import useAxiosPrivate from '../../hooks/useAxiosPrivate';
 import { 
     FaHeart, 
     FaRegHeart 
-} from "react-icons/fa6";
+} from 'react-icons/fa6';
 
 import styles from './Video.module.css';
 import { useState} from 'react';
 
-import CommentCard from "./CommentCard";
+import CommentCard from './CommentCard';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import { v4 as uuidv4 } from 'uuid';
+import { getImageURL } from '../../utils/images';
 
 const Send = ({active}) => {
     return (
@@ -61,11 +62,11 @@ const Video = ({ user_id, user_name, video, comments, onToggleLikes, onAddVideoC
         }
     };
     
-
     return (
         <div className={styles.video}>
             <video 
-                className={styles[video.video_url === 'policistiniu-kiausidziu-sindromas' && 'gydytojaiCover']}
+                // className={styles[video.video_url === 'policistiniu-kiausidziu-sindromas' && 'gydytojaiCover']}
+                style={{backgroundImage: `url("${getImageURL(`virtuve/${video.video_url}.webp`)}")`}}
                 onContextMenu={ event => event.preventDefault() }
                 controls={true}
                 poster="data:image/gif,0000"

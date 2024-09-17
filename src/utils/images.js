@@ -1,1 +1,5 @@
-export const getImageURL = name => new URL(`../assets/images/${name}`, import.meta.url).href;
+export const getImageURL = (img_url) => {
+    const url = new URL(`../assets/images/${img_url}`, import.meta.url).href;
+    console.log('cia', url)
+    return url;
+};
