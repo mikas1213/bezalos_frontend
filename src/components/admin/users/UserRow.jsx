@@ -3,7 +3,7 @@ import styles from './UserRow.module.css';
 import check_box_styles from './CheckBox.module.css';
 import { useState } from 'react';
 import { FaRegCopy } from 'react-icons/fa';
-import { date_to_yyyy_mm_dd, isTodayOrFiveDaysBefore, isTodayOrLater, isTwoOrFourWeeks, isMaintenance } from '../../../utils/helpers';
+import { date_to_yyyy_mm_dd, isTodayOrFiveDaysBefore, isTodayOrLater, isTwoOrFourWeeks, isMaintenance } from '../../../utils/dateHelpers';
 import stripe_img from '../../../assets/images/admin/stripe_png.png';
 import UserBox, { SideBox} from './UserBox';
 

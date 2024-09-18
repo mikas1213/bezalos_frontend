@@ -4,13 +4,14 @@ import Select from 'react-select';
 import { useState, useRef } from 'react';
 import { FaRegCircleXmark } from 'react-icons/fa6';
 import Checkbox from './Checkbox';
+import { kcal } from '../../../../utils/calculationsHelpers';
 
 const Meal = ({ 
     meal, 
     handleMealUpdate, 
     handleMealDelete, 
-    handleMealProductEdit,
-    handleMealProductGramsEdit
+    handleMealProductEdit
+
 }) => {
     let color = '';
     const form = useRef(null);
@@ -153,7 +154,8 @@ const Meal = ({
                         name='title' 
                         value={mealData.title} 
                         onChange={onChangeValue} 
-                        onBlur={e => handleMealUpdate(meal.id, e.target.name, e.target.value)} />
+                        onBlur={e => handleMealUpdate(meal.id, e.target.name, e.target.value)} 
+                    />
                 </form>
             </div>
 
@@ -163,7 +165,6 @@ const Meal = ({
                     key={prod.id} 
                     prod={prod} 
                     handleMealProductEdit={handleMealProductEdit}
-                    handleMealProductGramsEdit={handleMealProductGramsEdit}
                 />)}
             </div>
 
@@ -181,7 +182,7 @@ const Meal = ({
                     <span>{Math.round(meal.r)} g</span>
                 </div>
                 <div className={styles.kcal}>
-                    <span>Kcal</span><span>{Math.round(meal.kcal)} kcal</span>
+                    <span>Kcal</span><span>{Math.round(kcal(meal.b, meal.a, meal.r))} kcal</span>
                 </div>
             </div>
         </div>

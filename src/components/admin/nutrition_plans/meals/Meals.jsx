@@ -4,9 +4,8 @@ import Meal from './Meal';
 const Meals = ({ 
     meals, 
     handleMealUpdate, 
-    handleMealDelete, 
-    handleMealProductEdit, 
-    handleMealProductGramsEdit 
+    handleMealDelete,
+    handleMealProductEdit
 }) => {
      
     return (
@@ -17,7 +16,6 @@ const Meals = ({
                 handleMealUpdate={handleMealUpdate} 
                 handleMealDelete={handleMealDelete}
                 handleMealProductEdit={handleMealProductEdit}
-                handleMealProductGramsEdit={handleMealProductGramsEdit}
             />)}
         </div>
     );

@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import useAxiosPrivate from '../../../hooks/useAxiosPrivate';
 import Meals from '../../../components/admin/nutrition_plans/meals/Meals';
+import { bar } from '../../../utils/calculationsHelpers';
+
 const MealsPage = () => {
     const axiosPrivate = useAxiosPrivate();
     const [meals, setMeals] = useState([]);
@@ -14,14 +16,10 @@ const MealsPage = () => {
 
                 setMeals(() => {
                     data.map(meal => {
-                        meal.products.map(prod => prod.b = prod.b_100 * prod.grams / 100);
-                        meal.products.map(prod => prod.a = prod.a_100 * prod.grams / 100);
-                        meal.products.map(prod => prod.r = prod.r_100 * prod.grams / 100);
-
-                        meal.b = meal.products.map(prod => prod.b).reduce(sum, 0);
-                        meal.a = meal.products.map(prod => prod.a).reduce(sum, 0);
-                        meal.r = meal.products.map(prod => prod.r).reduce(sum, 0);
-                        meal.kcal = (meal.b * 4) + (meal.a * 4) + (meal.r * 9);
+                        ['b', 'a', 'r'].forEach(char => {
+                            meal.products.map(prod => prod[char] = bar(prod[`${char}_100`], prod.grams))
+                            meal[char] = meal.products.map(prod => prod[char]).reduce(sum, 0)
+                        });
                     });
                     
                     return [...data];
@@ -59,76 +57,29 @@ const MealsPage = () => {
         }
     };
 
-    const handleMealProductEdit = async (id, value, meal_id, prod_title, grams, b_100, a_100, r_100) => {
+    const handleMealProductEdit = async (e_type, id, meal_id, title, prod_id, grams, b_100, a_100, r_100) => {
         try {
-            const sum = (acc, val) => acc + val;
-            const currentMeals = [...meals];
-            const currMealIndex = currentMeals.findIndex(meal => meal.id === meal_id);
-
-            const currentProduct = currentMeals[currMealIndex].products.find(prod => prod.id === id);
-            const currProdIndex = currentMeals[currMealIndex].products.findIndex(prod => prod.id === id);
-            
-            currentProduct.product_id = value;
-            currentProduct.title = prod_title;
-
-            currentProduct.b = +b_100 * grams / 100;
-            currentProduct.a = +a_100 * grams / 100;
-            currentProduct.r = +r_100 * grams / 100;
-            
-            currentProduct.b_100 = +b_100;
-            currentProduct.a_100 = +a_100;
-            currentProduct.r_100 = +r_100;
-            currentMeals[currMealIndex].products[currProdIndex] = currentProduct;
-
-
-            const b_sum = currentMeals[currMealIndex].products.map(prod => prod.b).reduce(sum, 0);
-            const a_sum = currentMeals[currMealIndex].products.map(prod => prod.a).reduce(sum, 0);
-            const r_sum = currentMeals[currMealIndex].products.map(prod => prod.r).reduce(sum, 0);
-
-            currentMeals[currMealIndex].b = b_sum;
-            currentMeals[currMealIndex].a = a_sum;
-            currentMeals[currMealIndex].r = r_sum;
-            currentMeals[currMealIndex].kcal = (b_sum * 4) + (a_sum * 4) + (r_sum * 9);
-            
-            setMeals([...currentMeals]);
-
-            await axiosPrivate.patch('admin/plans/meal/product', {id, value, meal_id, column: 'product_id'});
-        } catch (err) {
-            console.log(err.message);
-        }
-    };
-
-    const handleMealProductGramsEdit = async (event, id, value, meal_id) => {
-        try {
-            const sum = (acc, val) => acc + val;
-            const currentMeals = [...meals];
-            const currMealIndex = currentMeals.findIndex(meal => meal.id === meal_id);
-
-            const currentProduct = currentMeals[currMealIndex].products.find(prod => prod.id === id);
-            const currProdIndex = currentMeals[currMealIndex].products.findIndex(prod => prod.id === id);
-            
-            if(!isNaN(value)) {
-                currentProduct.b = currentProduct.b_100 * value / 100;
-                currentProduct.a = currentProduct.a_100 * value / 100;
-                currentProduct.r = currentProduct.r_100 * value / 100;
-                currentProduct.grams = value;
+            if(!isNaN(grams)) {
                 
-                currentMeals[currMealIndex].products[currProdIndex] = currentProduct;
+                const sum = (acc, val) => acc + val;
+                setMeals(prevMeals => ([
+                    ...prevMeals.map(meal => meal.id === meal_id ? {
+                        ...meal,
+                        products: meal.products.map(prod => prod.id === id ? {
+                            ...prod, grams, title, product_id: prod_id,
+                            b_100, b: bar(b_100, grams), 
+                            a_100, a: bar(a_100, grams),
+                            r_100, r: bar(r_100, grams),
+                        } : prod),
+                        b: meal.products.map(prod => prod.id === id ? bar(b_100, grams) : prod.b).reduce(sum, 0),
+                        a: meal.products.map(prod => prod.id === id ? bar(a_100, grams) : prod.a).reduce(sum, 0),
+                        r: meal.products.map(prod => prod.id === id ? bar(r_100, grams) : prod.r).reduce(sum, 0),
+                    } : meal)
+                ]));   
 
-
-                const b_sum = currentMeals[currMealIndex].products.map(prod => prod.b).reduce(sum, 0);
-                const a_sum = currentMeals[currMealIndex].products.map(prod => prod.a).reduce(sum, 0);
-                const r_sum = currentMeals[currMealIndex].products.map(prod => prod.r).reduce(sum, 0);
-
-                currentMeals[currMealIndex].b = b_sum;
-                currentMeals[currMealIndex].a = a_sum;
-                currentMeals[currMealIndex].r = r_sum;
-                currentMeals[currMealIndex].kcal = (b_sum * 4) + (a_sum * 4) + (r_sum * 9);
-
-                setMeals([...currentMeals]);
-
-                if(event === 'blur' || event === 'submit') {
-                    await axiosPrivate.patch('admin/plans/meal/product', {id, value, meal_id, column: 'grams'});
+            
+                if(e_type !== 'change') {
+                    await axiosPrivate.patch('admin/plans/meal/product', {id, prod_id, grams});
                 }
             }
         } catch (err) {
@@ -138,12 +89,11 @@ const MealsPage = () => {
 
     return (
         <div>
-            {!isLoading && <Meals 
+            {!isLoading && <Meals
                 meals={meals} 
                 handleMealUpdate={handleMealUpdate} 
                 handleMealDelete={handleMealDelete}
                 handleMealProductEdit={handleMealProductEdit}
-                handleMealProductGramsEdit={handleMealProductGramsEdit}
             />}
         </div>
     );

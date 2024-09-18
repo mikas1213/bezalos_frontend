@@ -2,6 +2,7 @@ import styles from './ProdItem.module.css';
 import AsyncSelect from 'react-select/async';
 import useAxiosPrivate from '../../../../hooks/useAxiosPrivate';
 import { useState, useRef } from 'react';
+import { kcal } from '../../../../utils/calculationsHelpers';
 
 const height = 26;
 const minHeight = 0;
@@ -44,20 +45,17 @@ const customStyles = {
     })
 }
 
-const ProdItem = ({ prod, handleMealProductEdit, handleMealProductGramsEdit }) => {
+const ProdItem = ({ prod, handleMealProductEdit }) => {
+    
     const inputGrams = useRef(null);
     const [gramsValue, setGramsValue] = useState(prod.grams);
-    const [currentSelectValue, setCurrentSelectValue] = useState({ label: prod.title, value: prod.product_id, b_100: prod.b_100, a_100: prod.a_100, r_100: prod.r_100});
-
-    const handleEditProdTitle = (e) => {
-        setCurrentSelectValue(e)
-        handleMealProductEdit(prod.id, e.value, prod.meal_id, e.label, prod.grams, e.b_100, e.a_100, e.r_100);
-    };
-
-    const handleEditProdGrams = e => {
-        setGramsValue(e.target.value);
-        handleMealProductGramsEdit(e.type, prod.id, Math.round(e.target.value.replace(',', '.')), prod.meal_id);
-    };
+    const [currentSelectValue, setCurrentSelectValue] = useState({ 
+        label: prod.title, 
+        value: prod.product_id, 
+        b_100: prod.b_100, 
+        a_100: prod.a_100, 
+        r_100: prod.r_100
+    });
 
     const axiosPrivate = useAxiosPrivate();
     const loadOptions = (inputValue, callback) => {
@@ -66,9 +64,9 @@ const ProdItem = ({ prod, handleMealProductEdit, handleMealProductGramsEdit }) =
                 const options = response.data.data.map(item => ({
                     label: item.title,
                     value: item.id,
-                    b_100: item.proteins,
-                    a_100: item.carbs,
-                    r_100: item.fat
+                    b_100: +item.proteins,
+                    a_100: +item.carbs,
+                    r_100: +item.fat
                 }));
 
                 callback(options);
@@ -77,6 +75,35 @@ const ProdItem = ({ prod, handleMealProductEdit, handleMealProductGramsEdit }) =
                 callback([]);
             });
         }
+    };
+
+    const handleEditProdTitle = (e, e_sel) => {
+        setCurrentSelectValue(e);
+        handleMealProductEdit(
+            e_sel.action, 
+            prod.id, 
+            prod.meal_id, 
+            e.label, 
+            e.value, 
+            prod.grams,
+            e.b_100,
+            e.a_100,
+            e.r_100
+        );
+    };
+
+    const handleEditProdGrams = e => {
+        handleMealProductEdit(
+            e.type, 
+            prod.id, 
+            prod.meal_id, 
+            currentSelectValue.label, 
+            currentSelectValue.value, 
+            +e.target.value.replace(',', '.'),
+            currentSelectValue.b_100,
+            currentSelectValue.a_100,
+            currentSelectValue.r_100
+        );
     };
 
     return (
@@ -90,24 +117,24 @@ const ProdItem = ({ prod, handleMealProductEdit, handleMealProductGramsEdit }) =
                     defaultOptions={[currentSelectValue]}
                     loadingMessage={() => null}
                     styles={customStyles}
-                    name='products'
+                    name='product_id'
                     onChange={handleEditProdTitle}
-                    // onInputChange={onInputChange}
                     value={currentSelectValue}
                 />
                 <div className={styles.grams}>
                     <form onSubmit={e => {
                         e.preventDefault();
                         inputGrams.current.blur();
-                        console.log(gramsValue)
-                        handleMealProductGramsEdit(e.type, prod.id, Math.round(gramsValue.replace(',', '.')), prod.meal_id);
-                    }}>
+                    }} 
+                        onChange={handleEditProdGrams} 
+                        onBlur={handleEditProdGrams}
+                    >
                         <input 
                             ref={inputGrams}
                             type='text' 
+                            name='grams'
                             value={gramsValue} 
-                            onChange={handleEditProdGrams} 
-                            onBlur={handleEditProdGrams} 
+                            onChange={e => setGramsValue(e.target.value)} 
                         />
                     </form>
                     
@@ -120,7 +147,7 @@ const ProdItem = ({ prod, handleMealProductEdit, handleMealProductGramsEdit }) =
                 <span className={styles.b}>B {prod.b.toFixed(1)}</span>
                 <span className={styles.a}>A {prod.a.toFixed(1)}</span>
                 <span className={styles.r}>R {prod.r.toFixed(1)}</span>
-                {/* <span className={styles.kcal}>Kcal {prod.kcal.toFixed(1)}</span> */}
+                <span className={styles.kcal}>Kcal {kcal(prod.b, prod.a, prod.r).toFixed(0)}</span>
             </div>
         </div>
     );

@@ -24,6 +24,7 @@
     border: 1px solid #fff;
     border-radius: 5px;
     font-size: 0.8rem;
+    /* font-size: var(--font-size-dynamic-small-1-lg); */
     font-weight: 600;
     color: #444;
     transition: border 0.1s ease-in-out;
