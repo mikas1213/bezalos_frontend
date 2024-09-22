@@ -122,6 +122,7 @@ const ProdItem = ({ prod, handleMealProductEdit, handleMealProductDelete}) => {
                 <AsyncSelect 
                     components={{ DropdownIndicator: null, IndicatorSeparator: null }}
                     cacheOptions
+                    menuPosition='fixed'
                     isSearchable={true}
                     loadOptions={loadOptions} 
                     defaultOptions={[currentSelectValue]}

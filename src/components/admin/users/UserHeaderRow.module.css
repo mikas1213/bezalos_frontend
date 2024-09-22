@@ -39,9 +39,10 @@
     font-size: 1.5rem;
     color: #999;
 }
-.searchContainer .icon:hover {
+/* .searchContainer, .icon:hover {
     color: #EB3E1B;
-}
+    background-color:  #EB3E1B;
+} */
 .headerRow :is(input, select, input:focus) {
     border: 1px solid #999;
     outline: none;
@@ -54,9 +55,9 @@
     color: #777;
     background-color: white;
 }
-.headerRow select option {
+/* .headerRow select option {
     background-color: red;
-}
+} */
 .headerRow button {
     display: flex;
     justify-content: center;

@@ -45,7 +45,11 @@
 .naryste .free { background-color: #bbb; }
 .naryste .Virtuvė { background: #65cbe9; }
 .naryste .Profilis { background-color: #245D6B; }
+.naryste .Cancel { background-color: var(--color-admin-red) }
 
+
+/* #DAA520 */
+/* #F4C430 */
 .lastActivity {
     color: #999;
     font-size: var(--font-size-dynamic-small-1-lg);
@@ -89,7 +93,7 @@
 }
 .colorDanger  {
     color: white;
-    background-color: #EB3E1B;
+    background-color: var(--color-admin-red);
 }
 .colorWarning {
     color: white;
