@@ -2,20 +2,22 @@ import styles from './Meal.module.css';
 import ProdItem from './ProdItem';
 import Select from 'react-select';
 import { useState, useRef } from 'react';
-import { FaRegCircleXmark } from 'react-icons/fa6';
 import Checkbox from './Checkbox';
 import { kcal } from '../../../../utils/calculationsHelpers';
+import { DeleteX_icon } from '../../../../svg/icons';
+import { GoPlus } from 'react-icons/go';
 
 const Meal = ({ 
     meal, 
     handleMealUpdate, 
     handleMealDelete, 
-    handleMealProductEdit
-
+    handleMealProductAdd,
+    handleMealProductEdit,
+    handleMealProductDelete
 }) => {
     let color = '';
     const form = useRef(null);
-    const deletedMeal = useRef(null);
+    const deletedMealRef = useRef(null);
 
     switch(meal.logic) {
         case 'A+B':
@@ -36,7 +38,7 @@ const Meal = ({
         {value: 'B+R', label: 'B+R', name: 'logic'},
         {value: 'A+R', label: 'A+R', name: 'logic'}
     ];
-
+    
     const customStyles = {
         control: (provided) => ({
             ...provided,
@@ -120,12 +122,12 @@ const Meal = ({
             setTimeout(() => {
                 handleMealDelete(meal_id);
             }, 500);
-            deletedMeal.current.classList.add(styles.deleted);
+            deletedMealRef.current.classList.add(styles.deleted);
         }
     };
-
+    
     return (
-        <div ref={deletedMeal} className={styles.meal}>
+        <div ref={deletedMealRef} className={styles.meal}>
             <div className={styles.mealHeader}>
                 <div className={styles.mealParams}>
                     <Select 
@@ -141,12 +143,12 @@ const Meal = ({
 
                     <Checkbox id={meal.id} label='be glitimo' value={mealData.is_gluten} name='is_gluten' onChangeValue={onChangeValue} />
                     <Checkbox id={meal.id} label='be laktozės' value={mealData.is_lactose} name='is_lactose' onChangeValue={onChangeValue} />
-                    <FaRegCircleXmark className={styles.icon} onClick={() => onDeleteMeal(meal.id)} />
+                    <span onClick={() => onDeleteMeal(meal.id)}><DeleteX_icon icon={styles.icon} /></span>
                 </div>
                 <form className={styles.title} onSubmit={e => {
                     form.current.blur();
                     e.preventDefault();
-                    handleMealUpdate(meal.id, 'title', mealData.title);
+                    // handleMealUpdate(meal.id, 'title', mealData.title);
                 }}>
                     <input 
                         ref={form} 
@@ -159,13 +161,16 @@ const Meal = ({
                 </form>
             </div>
 
-            
             <div className={styles.products}>
                 {meal.products.map(prod => <ProdItem 
                     key={prod.id} 
                     prod={prod} 
                     handleMealProductEdit={handleMealProductEdit}
+                    handleMealProductDelete={handleMealProductDelete}
                 />)}
+                 <div className={styles.addProduct}>
+                    <span onClick={() => handleMealProductAdd(meal.id)}><GoPlus className={styles.icon}/></span>
+                </div>
             </div>
 
             <div className={styles.bar}>
@@ -182,7 +187,8 @@ const Meal = ({
                     <span>{Math.round(meal.r)} g</span>
                 </div>
                 <div className={styles.kcal}>
-                    <span>Kcal</span><span>{Math.round(kcal(meal.b, meal.a, meal.r))} kcal</span>
+                    <span>Kcal</span>
+                    <span>{Math.round(kcal(meal.b, meal.a, meal.r))} kcal</span>
                 </div>
             </div>
         </div>

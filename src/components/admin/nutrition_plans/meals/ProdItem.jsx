@@ -3,15 +3,16 @@ import AsyncSelect from 'react-select/async';
 import useAxiosPrivate from '../../../../hooks/useAxiosPrivate';
 import { useState, useRef } from 'react';
 import { kcal } from '../../../../utils/calculationsHelpers';
+import { DeleteBin_icon } from '../../../../svg/icons';
 
 const height = 26;
 const minHeight = 0;
 const customStyles = {
     control: (provided, state) => ({
         ...provided,
-        '&:hover': { cursor: 'pointer', borderColor: '#999', boxShadow: '#999' },
-        boxShadow: state.isFocused || state.isSelected ? '#999' : '#fff',
-        borderColor: state.isFocused || state.isSelected ? '#999' : '#fff',
+        '&:hover': { cursor: 'pointer', borderColor: '#ddd', boxShadow: '#ddd' },
+        boxShadow: state.isFocused || state.isSelected ? '#ddd' : '#fff',
+        borderColor: state.isFocused || state.isSelected ? '#ddd' : '#fff',
         fontSize: 14,
         fontWeight: 600,
         minHeight,
@@ -45,9 +46,10 @@ const customStyles = {
     })
 }
 
-const ProdItem = ({ prod, handleMealProductEdit }) => {
+const ProdItem = ({ prod, handleMealProductEdit, handleMealProductDelete}) => {
     
     const inputGrams = useRef(null);
+    const prodcutcRef = useRef(null);
     const [gramsValue, setGramsValue] = useState(prod.grams);
     const [currentSelectValue, setCurrentSelectValue] = useState({ 
         label: prod.title, 
@@ -78,6 +80,7 @@ const ProdItem = ({ prod, handleMealProductEdit }) => {
     };
 
     const handleEditProdTitle = (e, e_sel) => {
+        inputGrams.current.focus();
         setCurrentSelectValue(e);
         handleMealProductEdit(
             e_sel.action, 
@@ -106,8 +109,15 @@ const ProdItem = ({ prod, handleMealProductEdit }) => {
         );
     };
 
+    const handleDelete = async (id, meal_id) => {
+        prodcutcRef.current.classList.add(styles.deleted);
+        setTimeout(() => {
+            handleMealProductDelete(id, meal_id);        
+        }, 250);
+    };
+    
     return (
-        <div className={styles.prodItem}>
+        <div ref={prodcutcRef} className={styles.prodItem}>
             <div className={styles.title}>
                 <AsyncSelect 
                     components={{ DropdownIndicator: null, IndicatorSeparator: null }}
@@ -137,17 +147,17 @@ const ProdItem = ({ prod, handleMealProductEdit }) => {
                             onChange={e => setGramsValue(e.target.value)} 
                         />
                     </form>
-                    
                     <span>g</span>
                 </div>
-                
             </div>
-               
             <div className={styles.bar}>
                 <span className={styles.b}>B {prod.b.toFixed(1)}</span>
                 <span className={styles.a}>A {prod.a.toFixed(1)}</span>
                 <span className={styles.r}>R {prod.r.toFixed(1)}</span>
                 <span className={styles.kcal}>Kcal {kcal(prod.b, prod.a, prod.r).toFixed(0)}</span>
+                <span onClick={() => handleDelete(prod.id, prod.meal_id)}>
+                    <DeleteBin_icon icon={styles.icon}  />
+                </span>
             </div>
         </div>
     );

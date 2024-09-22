@@ -5,7 +5,9 @@ const Meals = ({
     meals, 
     handleMealUpdate, 
     handleMealDelete,
-    handleMealProductEdit
+    handleMealProductAdd,
+    handleMealProductEdit,
+    handleMealProductDelete
 }) => {
      
     return (
@@ -15,7 +17,9 @@ const Meals = ({
                 meal={meal} 
                 handleMealUpdate={handleMealUpdate} 
                 handleMealDelete={handleMealDelete}
+                handleMealProductAdd={handleMealProductAdd}
                 handleMealProductEdit={handleMealProductEdit}
+                handleMealProductDelete={handleMealProductDelete}
             />)}
         </div>
     );

@@ -1,3 +1,7 @@
+:root {
+    --check-stroke: 1.5px;
+}
+
 .checkbox *,
 .checkbox ::after,
 .checkbox ::before {
@@ -12,10 +16,10 @@
     position: relative;
     display: block;
     float: left;
-    width: 1.2rem;
-    height: 1.2rem;
+    width: 18px;
+    height: 18px;
     border-radius: 4px;
-    border: 2px solid #bbb;
+    border: var(--check-stroke) solid #bbb;
     transition: all 0.15s ease;
 }
 .checkbox .cbx svg {
@@ -26,7 +30,7 @@
     stroke-linecap: round;
     stroke-linejoin: round;
     stroke: #bbb;
-    stroke-width: 2;
+    stroke-width: var(--check-stroke);
     stroke-dasharray: 17;
     stroke-dashoffset: 17;
     transform: translate3d(0, 0, 0);
@@ -39,10 +43,15 @@
     user-select: none;
 }
 .checkbox label {
-    color: #333;
+    color: #777;
     cursor: pointer;
     display: inline-block;
     order: 2;
+    font-size: 0.7rem;
+    transition: color 0.1s ease-in-out;
+}
+.checkbox label:hover {
+    color: #333;
 }
 .checkbox input[type="checkbox"] {
     display: none;
@@ -50,7 +59,7 @@
 }
 
 .checkbox input[type="checkbox"]:checked + .cbx {
-    border: 2px solid #30c040;
+    border: var(--check-stroke) solid #30c040;
 }
 .checkbox input[type="checkbox"]:checked + .cbx svg {
     stroke: #30c040;

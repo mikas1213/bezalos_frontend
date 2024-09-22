@@ -1,14 +1,14 @@
-import styles from './ProductsHeader.module.css';
+import styles from './Navbar.module.css';
 import AddProduct from './AddProduct';
 import Filters from './Filters';
 
-const ProductsHeader = ({ handleAddProduct, handleSearchProduct }) => {
+const Navbar = ({ handleAddProduct, handleSearchProduct }) => {
     return (
-        <div className={styles.productsHeader}>
+        <div className={styles.navbar}>
             <AddProduct handleAddProduct={handleAddProduct} />
             <Filters handleSearchProduct={handleSearchProduct} />
         </div>
     );
 };
 
-export default ProductsHeader;
+export default Navbar;

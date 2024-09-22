@@ -1,4 +1,5 @@
 .prodItem {
+    /* position: relative; */
     display: flex;
     flex-direction: column;
     gap: 0.3rem;
@@ -24,15 +25,24 @@
     border: 1px solid #fff;
     border-radius: 5px;
     font-size: 0.8rem;
-    /* font-size: var(--font-size-dynamic-small-1-lg); */
     font-weight: 600;
     color: #444;
     transition: border 0.1s ease-in-out;
 }
 
 .grams :is(input:hover, input:focus) {
-    border: 1px solid #999;
+    border: 1px solid #ddd;
 }
+
+span .icon {
+    cursor: pointer;
+    stroke: #a7aba6;
+    width: 1.05rem;
+    height: 1.05rem;
+    transition: all 0.1s;
+}
+
+span:hover .icon { stroke: #d00; }
 
 .bar {
     display: flex;
@@ -40,6 +50,7 @@
     gap: 1rem;
     margin-left: 0.2rem;
     font-size: 0.7rem;
+    height: 1rem;
 }
 .b { color: #245D6B; }
 .a { color: #30c040; }
@@ -54,5 +65,9 @@
 }
 .grams span {
     font-weight: 600;
-    /* font-size: 0.4rem; */
+}
+
+.deleted {
+    opacity: 0;
+    transition: all 0.15s ease-in-out;
 }

@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react';
 import useAxiosPrivate from '../../../hooks/useAxiosPrivate';
+import Navbar from '../../../components/admin/nutrition_plans/meals/Navbar';
 import Meals from '../../../components/admin/nutrition_plans/meals/Meals';
 import { bar } from '../../../utils/calculationsHelpers';
+import toast from 'react-hot-toast';
 
 const MealsPage = () => {
     const axiosPrivate = useAxiosPrivate();
@@ -13,7 +15,7 @@ const MealsPage = () => {
             try {
                 const sum = (acc, val) => acc + val;
                 const { data } = await axiosPrivate.get('/admin/plans/meals');
-
+                
                 setMeals(() => {
                     data.map(meal => {
                         ['b', 'a', 'r'].forEach(char => {
@@ -31,6 +33,21 @@ const MealsPage = () => {
         };
         getData();
     }, [axiosPrivate]);
+
+    const handleMealAdd = async () => {
+        try {
+            const { data: { new_meal_id } } = await axiosPrivate.post('admin/plans/meals');
+            setMeals(prevState => [{
+                id: new_meal_id,
+                logic: '-',
+                products: [],
+                title: '-'
+            }, ...prevState]);
+            
+        } catch (err) {
+            toast.error('Valgis neprisidėjo!');
+        }
+    };
 
     const handleMealUpdate = async (meal_id, column, value) => {
         const index = meals.findIndex(v => v.id === meal_id);
@@ -57,10 +74,33 @@ const MealsPage = () => {
         }
     };
 
+    const handleMealProductAdd = async meal_id => {
+        try {
+            const {data: {data: {id: new_prod_id, product_id}}} = await axiosPrivate.post('admin/plans/meal/product', { meal_id });
+            setMeals(prevMeals => ([
+                ...prevMeals.map(meal => meal.id === meal_id ? {
+                    ...meal,
+                    products: [...meal.products, {
+                        id: new_prod_id,
+                        product_id, 
+                        meal_id: meal.id,
+                        title: '-',
+                        b: 0, b_100: 0, 
+                        a: 0, a_100: 0, 
+                        r: 0, r_100: 0, 
+                        grams: ''
+                    }],
+                } : meal)
+            ]));
+
+        } catch (err) {
+            toast.error('Klaida!\nProduktas nebuvo pridėtas');
+        }
+    };
+    
     const handleMealProductEdit = async (e_type, id, meal_id, title, prod_id, grams, b_100, a_100, r_100) => {
         try {
             if(!isNaN(grams)) {
-                
                 const sum = (acc, val) => acc + val;
                 setMeals(prevMeals => ([
                     ...prevMeals.map(meal => meal.id === meal_id ? {
@@ -87,15 +127,38 @@ const MealsPage = () => {
         }
     };
 
+    const handleMealProductDelete = async (id, meal_id) => {
+
+        try {
+            const sum = (acc, val) => acc + val;
+            setMeals(prevMeals => ([
+                ...prevMeals.map(meal => meal.id === meal_id ? {
+                    ...meal,
+                    products: meal.products.filter(prod => prod.id !== id),
+                    b: meal.products.filter(prod => prod.id !== id).map(prod => prod.b).reduce(sum, 0),
+                    a: meal.products.filter(prod => prod.id !== id).map(prod => prod.a).reduce(sum, 0),
+                    r: meal.products.filter(prod => prod.id !== id).map(prod => prod.r).reduce(sum, 0),
+                } : meal)
+            ]));
+            await axiosPrivate.delete('admin/plans/meal/product', {data: {id}});
+        } catch (err) {
+            toast.error('kažkas negerai 🤔');
+        }
+    };
+
     return (
-        <div>
+        <>
+            <Navbar handleMealAdd={handleMealAdd} />
             {!isLoading && <Meals
                 meals={meals} 
+                handleMealAdd={handleMealAdd}
                 handleMealUpdate={handleMealUpdate} 
                 handleMealDelete={handleMealDelete}
+                handleMealProductAdd={handleMealProductAdd}
                 handleMealProductEdit={handleMealProductEdit}
+                handleMealProductDelete={handleMealProductDelete}
             />}
-        </div>
+        </>
     );
 };
 

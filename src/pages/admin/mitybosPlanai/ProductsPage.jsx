@@ -1,7 +1,7 @@
 import Products from '../../../components/admin/nutrition_plans/products/Products';
 import useAxiosPrivate from '../../../hooks/useAxiosPrivate';
 import { useState, useEffect } from 'react';
-import ProductsHeader from '../../../components/admin/nutrition_plans/products/ProductsHeader';
+import Navbar from '../../../components/admin/nutrition_plans/products/Navbar';
 
 const ProductsPage = () => {
     const axiosPrivate = useAxiosPrivate();
@@ -68,7 +68,7 @@ const ProductsPage = () => {
 
     return (
         <>
-            <ProductsHeader 
+            <Navbar 
                 handleAddProduct={handleAddProduct} 
                 handleSearchProduct={handleSearchProduct} 
             />  

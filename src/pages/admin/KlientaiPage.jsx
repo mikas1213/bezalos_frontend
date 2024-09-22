@@ -41,23 +41,10 @@ const KlientaiPage = () => {
     };
 
     const onChangeUsers = newUser => {
-        // const newUsers = [...users];
-        // const newUser = newUsers.find(u => u.id === user_id);
-        // const index = newUsers.findIndex(u => u.id === user_id);
-
-        // newUser[e.target.name] = e.target.value;
-        // if(e.target.name === 'subscription_expires') {
-        //     if(!newUser.s_status) newUser.subscription_type = e.target.value ? 'Virtuvė' : 'free'
-        // }
-        
-        // newUsers[index] = newUser;
-        
 
         const currentUsers = [...users];
         const currentUser = currentUsers.find(u => u.id === newUser.user_id);
         const index = currentUsers.findIndex(u => u.id === newUser.user_id);
-        // const updatedUser = {...currentUser, ...newUser};
-        // currentUsers[index] = {...updatedUser}
         currentUsers[index] = {...currentUser, ...newUser};
         
         setUsers(currentUsers)
