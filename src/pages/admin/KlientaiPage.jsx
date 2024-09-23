@@ -35,8 +35,8 @@ const KlientaiPage = () => {
     }, [sort, axiosPrivate]);
 
     const searchFn = user => {
-        return user.email.toLowerCase().indexOf(search) > -1 || 
-        user.name.toLowerCase().indexOf(search) > -1 || 
+        return user.email?.toLowerCase().indexOf(search) > -1 || 
+        user.name?.toLowerCase().indexOf(search) > -1 || 
         user.last_activity?.toLowerCase()?.indexOf(search) > -1;
     };
 

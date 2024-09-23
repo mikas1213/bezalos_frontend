@@ -8,7 +8,6 @@ import stripe_img from '../../../assets/images/admin/stripe_png.png';
 import UserBox, { SideBox} from './UserBox';
 
 const UserRow = ({ user, onChangeUsers }) => {
-    console.log(user)
     const axiosPrivate = useAxiosPrivate();
     const [week, setWeek] = useState(user.plan_assign_status === 'week' ? true : false );
     const [month, setMonth] = useState(user.plan_assign_status === 'month' ? true : false );
