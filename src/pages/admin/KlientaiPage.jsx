@@ -36,6 +36,7 @@ const KlientaiPage = () => {
 
     const searchFn = user => {
         return user.email?.toLowerCase().indexOf(search) > -1 || 
+        user.stripe_username?.toLowerCase().indexOf(search) > -1 || 
         user.name?.toLowerCase().indexOf(search) > -1 || 
         user.last_activity?.toLowerCase()?.indexOf(search) > -1;
     };

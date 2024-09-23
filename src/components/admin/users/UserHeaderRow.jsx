@@ -18,7 +18,6 @@ const UserHeaderRow = ({ usersEmailsForCopy, setSearch, search, sort, setSort })
                     onChange={e => setSearch(e.target.value.toLocaleLowerCase())}
                 />
                 <IoCloseCircle className={styles.icon} onClick={() => setSearch('')} />
-                
             </div>
             
             <select 
