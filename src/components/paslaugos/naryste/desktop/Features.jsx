@@ -12,15 +12,15 @@ const Features = () => {
                 <MonthYearTab />
             </div>
             <div className={styles.feature}>
-                <div>Rezultatų sekimas <span>(Kuriama)</span></div>
+                <div>Rezultatų sekimas <span style={{color: '#a00'}}>(Kuriama)</span></div>
                 <div><FaCircleCheck /></div>
             </div>
             <div className={styles.feature}>
-                <div>Produktų keitimas <span>(Kuriama)</span></div>
+                <div>Produktų keitimas <span style={{color: '#a00'}}>(Kuriama)</span></div>
                 <div><FaCircleCheck /></div>
             </div>
             <div className={styles.feature}>
-                <div>Receptų kūrimas <span>(Kuriama)</span></div>
+                <div>Receptų kūrimas <span style={{color: '#a00'}}>(Kuriama)</span></div>
                 <div><FaCircleCheck /></div>
             </div>
             <div className={styles.feature}>
@@ -46,7 +46,9 @@ const Features = () => {
                 </div>
             </div>
             <div className={styles.feature}>
-                <div>Grupinė terapija <span>(Nuo rugsėjo)</span></div>
+                <div>Grupinė terapija 
+                    {/* <span style={{color: '#a00'}}>(Nuo rugsėjo)</span> */}
+                </div>
                 <div>
                     {variant === 'virtuve' && <FaCircleCheck />}
                     {variant === 'profilis' && <FaRegCircleXmark />}
