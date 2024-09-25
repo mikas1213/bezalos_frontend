@@ -17,7 +17,8 @@ const customStyles = {
         fontWeight: 600,
         minHeight,
         height,
-        maxWidth: '150px',
+        maxWidth: '245px',
+        width: '220px',
         minWidth: '150px',
     }),
     valueContainer: (provided) => ({
@@ -37,12 +38,12 @@ const customStyles = {
     }),
     option: (provider, state) => ({
         ...provider,
-        backgroundColor: state.isSelected ? '#245D6B' : state.isFocused ? '#245D6B11' : '#fff',
-        color: state.isSelected ? '#fff' : state.isFocused ? '#245D6B' : '#777',
-        '&:hover': {
-            backgroundColor: state.isSelected ? '#245D6B' : '#245D6B11',
-            color: state.isSelected ? '#fff' : '#245D6B',
-        }
+        fontSize: 13,
+        fontWeight: 500,
+        padding: '3px 5px 3px 5px',
+        borderBottom: '0.5px solid #ccc',
+        backgroundColor: state.isFocused ? '#245D6B' : '#fff',
+        color: state.isFocused ? '#fff' : '#245D6B',
     })
 }
 
@@ -142,6 +143,7 @@ const ProdItem = ({ prod, handleMealProductEdit, handleMealProductDelete}) => {
                     >
                         <input 
                             ref={inputGrams}
+                            autoFocus={!!prod.isGramsFocus}
                             type='text' 
                             name='grams'
                             value={gramsValue} 

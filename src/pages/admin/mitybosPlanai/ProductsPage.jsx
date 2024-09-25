@@ -54,7 +54,7 @@ const ProductsPage = () => {
         const getData = async (signal) => {
             try {
                 const data = await axiosPrivate.get(`/admin/plans/products${queryStr}`, { signal });
-                setProducts(data.data.data);
+                setProducts(data?.data?.data);
                 setIsLoading(false);
             } catch (err) {
                 console.log(err);

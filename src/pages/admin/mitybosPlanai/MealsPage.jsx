@@ -9,30 +9,35 @@ const MealsPage = () => {
     const axiosPrivate = useAxiosPrivate();
     const [meals, setMeals] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
-
+    const [filters, setFilters] = useState({});
+    
     useEffect(() => {
-        const getData = async () => {
+        const getData = async (signal) => {
+            
             try {
+                let query = '';
+                if(Object.keys(filters).length) query = '?' + new URLSearchParams(filters).toString();
+            
                 const sum = (acc, val) => acc + val;
-                const { data } = await axiosPrivate.get('/admin/plans/meals');
-                
-                setMeals(() => {
-                    data.map(meal => {
-                        ['b', 'a', 'r'].forEach(char => {
-                            meal.products.map(prod => prod[char] = bar(prod[`${char}_100`], prod.grams))
-                            meal[char] = meal.products.map(prod => prod[char]).reduce(sum, 0)
-                        });
+                const { data } = await axiosPrivate.get(`/admin/plans/meals${query}`, { signal });
+
+                const currentMeals = data ? data.map(meal => {
+                    ['b', 'a', 'r'].forEach(char => {
+                        meal.products.map(prod => prod[char] = bar(prod[`${char}_100`], prod.grams))
+                        meal[char] = meal.products.map(prod => prod[char]).reduce(sum, 0)
                     });
-                    
-                    return [...data];
-                });
+                    return meal;    
+                }) : [];
+                setMeals([...currentMeals]);
                 setIsLoading(false);
             } catch (err) {
                 console.log(err.message)
             }
         };
-        getData();
-    }, [axiosPrivate]);
+        const controller = new AbortController();
+        getData(controller.signal);
+        return () => controller.abort();
+    }, [axiosPrivate, filters]);
 
     const handleMealAdd = async () => {
         try {
@@ -41,7 +46,8 @@ const MealsPage = () => {
                 id: new_meal_id,
                 logic: '-',
                 products: [],
-                title: '-'
+                title: '-',
+                b: 0, a: 0, r:0
             }, ...prevState]);
             
         } catch (err) {
@@ -74,21 +80,23 @@ const MealsPage = () => {
         }
     };
 
-    const handleMealProductAdd = async meal_id => {
+    const handleMealProductAdd = async (new_prod) => {
         try {
-            const {data: {data: {id: new_prod_id, product_id}}} = await axiosPrivate.post('admin/plans/meal/product', { meal_id });
+            const {data: {data: {id: new_prod_id }}} = await axiosPrivate.post('admin/plans/meal/product', new_prod);
+
             setMeals(prevMeals => ([
-                ...prevMeals.map(meal => meal.id === meal_id ? {
+                ...prevMeals.map(meal => meal.id === new_prod.meal_id ? {
                     ...meal,
                     products: [...meal.products, {
                         id: new_prod_id,
-                        product_id, 
-                        meal_id: meal.id,
-                        title: '-',
-                        b: 0, b_100: 0, 
-                        a: 0, a_100: 0, 
-                        r: 0, r_100: 0, 
-                        grams: ''
+                        product_id: new_prod.value, 
+                        meal_id: new_prod.meal_id,
+                        title: new_prod.label,
+                        b: 0, b_100: new_prod.b_100, 
+                        a: 0, a_100: new_prod.a_100, 
+                        r: 0, r_100: new_prod.r_100, 
+                        grams: '',
+                        isGramsFocus: true
                     }],
                 } : meal)
             ]));
@@ -148,7 +156,7 @@ const MealsPage = () => {
 
     return (
         <>
-            <Navbar handleMealAdd={handleMealAdd} />
+            <Navbar handleMealAdd={handleMealAdd} setFilters={setFilters} />
             {!isLoading && <Meals
                 meals={meals} 
                 handleMealAdd={handleMealAdd}

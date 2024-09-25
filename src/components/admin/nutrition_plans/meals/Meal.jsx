@@ -1,11 +1,13 @@
 import styles from './Meal.module.css';
 import ProdItem from './ProdItem';
-import Select from 'react-select';
+import { default as LogicSelect } from 'react-select';
+import { default as AddProductSelect } from 'react-select/async';
 import { useState, useRef } from 'react';
-import Checkbox from './Checkbox';
+import useAxiosPrivate from '../../../../hooks/useAxiosPrivate';
+import CheckboxMeal from './CheckboxMeal';
 import { kcal } from '../../../../utils/calculationsHelpers';
 import { DeleteX_icon } from '../../../../svg/icons';
-import { GoPlus } from 'react-icons/go';
+
 
 const Meal = ({ 
     meal, 
@@ -16,9 +18,6 @@ const Meal = ({
     handleMealProductDelete
 }) => {
     let color = '';
-    const form = useRef(null);
-    const deletedMealRef = useRef(null);
-
     switch(meal.logic) {
         case 'A+B':
             color = '#30c040';
@@ -33,12 +32,17 @@ const Meal = ({
             color = '';
     }
 
+    const form = useRef(null);
+    const deletedMealRef = useRef(null);
+    const axiosPrivate = useAxiosPrivate();
     const options = [
         {value: 'A+B', label: 'A+B', name: 'logic'},
         {value: 'B+R', label: 'B+R', name: 'logic'},
         {value: 'A+R', label: 'A+R', name: 'logic'}
     ];
-    
+
+    const [isMenuOpen, setIsMenuOpen] = useState('');
+
     const customStyles = {
         control: (provided) => ({
             ...provided,
@@ -72,16 +76,11 @@ const Meal = ({
         option: (provider, state) => ({
             ...provider,
             fontSize: '0.9rem',
-            // fontWeight: 500,
             display: 'flex',
             justifyContent: 'center',
             alignItems: 'center',
             height: 30,
-
-            // margin: 0, 
-            // padding: 5,
             backgroundColor: state.isSelected ? color : state.isFocused ? '#245D6B11' : '#fff',
-            // color: state.isSelected ? '#fff' : state.isFocused ? '#245D6B' : '#777',
             '&:hover': {
                 cursor: 'pointer',
                 backgroundColor: state.isSelected ? color : '#245D6B11',
@@ -90,24 +89,79 @@ const Meal = ({
         })
     }
 
+    const customAddProdStyles = {
+        container: (provider) => ({
+            ...provider,
+            width: '100%'
+        }),
+        control: (provider, state) => ({
+            ...provider,
+            '&:hover': { cursor: 'pointer', 
+                borderColor: !state.isFocused ? '#ccc' : '#245D6B', 
+                boxShadow: !state.isFocused ? '#ccc' : '#245D6B'
+            },
+            boxShadow: state.isFocused ? '#245D6B' : '#ddd',
+            borderColor: state.isFocused ? '#245D6B' : '#ddd',
+            fontSize: 12,
+            minHeight: 0,
+            height: 28
+        }),
+        valueContainer: (provider) => ({
+            ...provider,
+            minHeight: 0,
+            height: 28
+        }),
+        singleValue: (provider) =>({
+            ...provider,
+            color: '#999',
+            minHeight: 0
+        }),
+        input: (provider) => ({
+            ...provider,
+            minHeight: 0
+        }),
+        // loadingIndicator: (provider) => ({
+        //     ...provider,
+        //     color: 'red',
+        //     height: 1,
+        //     width: 1
+        // }),
+        menu: (provider) => ({
+            ...provider,
+            marginTop: 2,
+            boxShadow: '0 2px 10px rgba(0,0,0,0.2)',
+        }),
+        option: (provider, state) => ({
+            ...provider,
+            fontSize: 13,
+            fontWeight: 500,
+            padding: '3px 5px 3px 5px',
+            borderBottom: '0.5px solid #ccc',
+            backgroundColor: state.isFocused ? '#245D6B' : '#fff',
+            color: state.isFocused ? '#fff' : '#245D6B',
+        })
+    }
+
     const [mealData, setMealData] = useState({
         logic: { value: meal.logic, label: meal.logic, name: 'logic'},
-        is_gluten: meal.is_gluten,
-        is_lactose: meal.is_lactose,
+        intolerance: meal.intolerance,
         title: meal.title
     });
+
+    const [addProduct, setAddProduct] = useState({
+        label: 'ieškoti...', value: 'ieškoti'
+    });
     
-    const onChangeValue = e => {
+    const onEditMeal = e => {
         const name = e?.name || e.target.name;
         switch(name) {
             case 'logic':
                 setMealData(prevState => ({...prevState, logic: e}));
                 handleMealUpdate(meal.id, name, e.value);
                 break;
-            case 'is_gluten':
-            case 'is_lactose':
-                setMealData(prevState => ({...prevState, [e.target.name]: !prevState[e.target.name]}));
-                handleMealUpdate(meal.id, name, !mealData[name]);
+            case 'intolerance':
+                setMealData(prevState => ({...prevState, [e.target.name]: mealData.intolerance === e.target.value ? null : e.target.value}));
+                handleMealUpdate(meal.id, name, mealData.intolerance === e.target.value ? null : e.target.value);
                 break;
             case 'title':
                 setMealData(prevState => ({...prevState, title: e.target.value}));
@@ -116,6 +170,7 @@ const Meal = ({
                 return;
         }
     }
+
     const onDeleteMeal = meal_id => {
         const confirm = window.confirm('Trinti?');
         if(confirm) {
@@ -125,37 +180,60 @@ const Meal = ({
             deletedMealRef.current.classList.add(styles.deleted);
         }
     };
+
+    const onAddMealProduct = (new_prod) => {
+        setAddProduct({value: 'ieškoti...', label: 'ieškoti...'});
+        handleMealProductAdd({...new_prod, meal_id: meal.id})
+    };
+
+    const loadNewProductOptions = (inputValue, callback) => {
+        if(inputValue && inputValue.length > 2) {
+            axiosPrivate.get(`/admin/plans/products?search=${inputValue}`).then(response => {
+                const options = response.data.data.map(item => ({
+                    label: item.title,
+                    value: item.id,
+                    b_100: +item.proteins,
+                    a_100: +item.carbs,
+                    r_100: +item.fat
+                }));
+
+                callback(options);
+            }).catch(error => {
+                console.error('Error fetching data:', error);
+                callback([]);
+            });
+        }
+    };
     
     return (
         <div ref={deletedMealRef} className={styles.meal}>
             <div className={styles.mealHeader}>
                 <div className={styles.mealParams}>
-                    <Select 
+                    <LogicSelect 
                         isSearchable={false}
                         components={{ DropdownIndicator: null, IndicatorSeparator: null }}
                         styles={customStyles}
                         defaultOptions={[mealData.logic]}
                         name='logic'
                         options={options}
-                        onChange={onChangeValue}
+                        onChange={onEditMeal}
                         value={mealData.logic}
                     />
-
-                    <Checkbox id={meal.id} label='be glitimo' value={mealData.is_gluten} name='is_gluten' onChangeValue={onChangeValue} />
-                    <Checkbox id={meal.id} label='be laktozės' value={mealData.is_lactose} name='is_lactose' onChangeValue={onChangeValue} />
+                    
+                    <CheckboxMeal id={meal.id} label='be glitimo' value='gluten_free' check={mealData.intolerance} onEditMeal={onEditMeal} />
+                    <CheckboxMeal id={meal.id} label='be laktozės' value='lactose_free' check={mealData.intolerance} onEditMeal={onEditMeal} />
                     <span onClick={() => onDeleteMeal(meal.id)}><DeleteX_icon icon={styles.icon} /></span>
                 </div>
                 <form className={styles.title} onSubmit={e => {
                     form.current.blur();
                     e.preventDefault();
-                    // handleMealUpdate(meal.id, 'title', mealData.title);
                 }}>
                     <input 
                         ref={form} 
                         type='text' 
                         name='title' 
                         value={mealData.title} 
-                        onChange={onChangeValue} 
+                        onChange={onEditMeal} 
                         onBlur={e => handleMealUpdate(meal.id, e.target.name, e.target.value)} 
                     />
                 </form>
@@ -169,7 +247,21 @@ const Meal = ({
                     handleMealProductDelete={handleMealProductDelete}
                 />)}
                  <div className={styles.addProduct}>
-                    <span onClick={() => handleMealProductAdd(meal.id)}><GoPlus className={styles.icon}/></span>
+                    <AddProductSelect 
+                        components={{ DropdownIndicator: null, IndicatorSeparator: null, LoadingIndicator: null }}
+                        cacheOptions
+                        menuPosition='fixed'
+                        isSearchable={true}
+                        loadOptions={loadNewProductOptions} 
+                        defaultOptions={false}
+                        loadingMessage={() => null}
+                        menuIsOpen={isMenuOpen.length > 2}
+                        styles={customAddProdStyles}
+                        name='product_id'
+                        onChange={onAddMealProduct}
+                        onInputChange={setIsMenuOpen}
+                        value={addProduct}
+                    />
                 </div>
             </div>
 

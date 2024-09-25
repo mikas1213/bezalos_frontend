@@ -9,9 +9,9 @@ const Products =({ products, isLoading, handleDeleteProduct, handleEditProduct }
     const [clickedCell, setClickedCell] = useState({});
     return (
         <>
-            <ProductRowH count={products.length}/>
+            <ProductRowH count={products?.length || 0}/>
             <div className={styles.products}>  
-                {!isLoading && products.map(product => (
+                {!isLoading && products?.length && products.map(product => (
                     <ProductRow key={product.id} 
                         product={product}
 
