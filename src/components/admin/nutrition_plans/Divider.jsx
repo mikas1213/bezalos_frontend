@@ -1,0 +1,1 @@
+export const Divider = () => <div style={{ borderRight: '0.8px solid #ccc', height: '1.9rem'}}></div>

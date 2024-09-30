@@ -1,23 +1,34 @@
 import { useState, useEffect } from 'react';
 import useAxiosPrivate from '../../../hooks/useAxiosPrivate';
-import Navbar from '../../../components/admin/nutrition_plans/meals/Navbar';
+import Navbar from '../../../components/admin/nutrition_plans/Navbar';
+import { AddNewBtn } from '../../../components/admin/nutrition_plans/AddNewBtn';
 import Meals from '../../../components/admin/nutrition_plans/meals/Meals';
+import { RadioFilters } from '../../../components/admin/nutrition_plans/RadioFilters';
+import { CheckBoxFilters } from '../../../components/admin/nutrition_plans/CheckBoxFilters';
+import { Divider } from '../../../components/admin/nutrition_plans/Divider';
+import SearchInput from '../../../components/admin/nutrition_plans/SearchInput';
 import { bar } from '../../../utils/calculationsHelpers';
+import { LiaPizzaSliceSolid } from 'react-icons/lia';
 import toast from 'react-hot-toast';
 
 const MealsPage = () => {
     const axiosPrivate = useAxiosPrivate();
     const [meals, setMeals] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
-    const [filters, setFilters] = useState({});
+
+    const [searchString, setSearchString] = useState('');
+    const [logicFilter, setLogicFilter] = useState('');
+    const [intoleranceFilter, setIntoleranceFilter] = useState('');
     
     useEffect(() => {
+        let queryString = {...intoleranceFilter};
+        queryString = logicFilter ? {...queryString, logic: logicFilter} : queryString;
+        queryString = searchString ? {...queryString, search: searchString} : queryString;
+            
         const getData = async (signal) => {
-            
-            try {
-                let query = '';
-                if(Object.keys(filters).length) query = '?' + new URLSearchParams(filters).toString();
-            
+            try {                
+                let query = Object.keys(queryString).length ? '?' + new URLSearchParams(queryString).toString() : '';
+
                 const sum = (acc, val) => acc + val;
                 const { data } = await axiosPrivate.get(`/admin/plans/meals${query}`, { signal });
 
@@ -37,7 +48,7 @@ const MealsPage = () => {
         const controller = new AbortController();
         getData(controller.signal);
         return () => controller.abort();
-    }, [axiosPrivate, filters]);
+    }, [axiosPrivate, logicFilter, intoleranceFilter, searchString]);
 
     const handleMealAdd = async () => {
         try {
@@ -154,12 +165,30 @@ const MealsPage = () => {
         }
     };
 
+    const logicOptions = [
+        {value: 'A+B', label: 'A+B', color: '#30c040'},
+        {value: 'B+R', label: 'B+R', color: '#245D6B'},
+        {value: 'A+R', label: 'A+R', color: '#ec9f11'}
+    ];
+
+    const intoleranceOptions = [
+        {value: false, label: 'be glitimo', name: 'is_gluten'},
+        {value: false, label: 'be laktozės', name: 'is_lactose'}
+    ];
+
     return (
         <>
-            <Navbar handleMealAdd={handleMealAdd} setFilters={setFilters} />
+            <Navbar>
+                <AddNewBtn label='Naujas valgis' Icon={LiaPizzaSliceSolid} fontSize='1.4rem' onHandleClick={handleMealAdd} />
+                <Divider />
+                <RadioFilters options={logicOptions} setFilter={logicFilter} onSetFilter={setLogicFilter} />
+                <Divider />
+                <CheckBoxFilters options={intoleranceOptions} onSetFilter={setIntoleranceFilter} grow={1} />
+                <SearchInput onChangeValue={setSearchString} />
+            </Navbar>
+            
             {!isLoading && <Meals
                 meals={meals} 
-                handleMealAdd={handleMealAdd}
                 handleMealUpdate={handleMealUpdate} 
                 handleMealDelete={handleMealDelete}
                 handleMealProductAdd={handleMealProductAdd}

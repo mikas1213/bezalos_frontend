@@ -79,7 +79,9 @@ const SuccessSubscription = () => {
                                 <h3>Ačiū Tau!</h3>
                                 <span>Tavo narystė jau aktyvi</span>
                                 
-                                <a href='https://www.facebook.com/sandra.jatulyte' target='_blank' rel='noreferrer'>Susisiek 💌</a>    
+                                <a href='https://www.facebook.com/sandra.jatulyte' target='_blank' rel='noreferrer'>
+                                    Susisiek!&nbsp;<span className={styles.heartIcon}>💌</span>
+                                </a>    
                             </div>
                             
                             <button onClick={() => navigate('/virtuve')}>Į Virtuvę</button>                            

@@ -1,7 +1,6 @@
 .addProduct {
     display: flex;
-    align-items: center;
-    height: 3rem;
+    flex-grow: 1;
     border-radius: 5px;
     padding-left: 0.5rem;
     gap: 0.5rem;
@@ -21,7 +20,8 @@
     border: 1px solid #999;
 }
 .addProduct input:focus {
-    border: 1px solid #999;
+    border: 1px solid #245D6B;
+    outline: none;
 }
 .addProduct input.macro {
     width: 4rem;
@@ -41,4 +41,9 @@
 .addProduct button:hover {
     background-color: #245D6Bee;
     color: #fefefe;
+}
+.addProduct button:focus {
+    outline: none;
+    color: #fff;
+    background-image: linear-gradient(40deg, #30c040 0%, #72d252 100%);
 }

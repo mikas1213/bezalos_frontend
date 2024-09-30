@@ -8,6 +8,7 @@
     box-sizing: border-box;
 }
 .checkbox {
+    user-select: none;
     display: flex;
     align-items: center;
     gap: 0.3rem;
@@ -39,9 +40,7 @@
     float: left;
     margin-left: 6px;
 }
-.checkbox {
-    user-select: none;
-}
+
 .checkbox label {
     color: #777;
     cursor: pointer;

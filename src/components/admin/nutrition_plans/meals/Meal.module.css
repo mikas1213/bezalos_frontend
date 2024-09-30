@@ -53,6 +53,7 @@ span .icon:hover {
 
 .title :is(input:hover, input:focus) {
     border: 1px solid #ddd;
+    outline: none;
 }
 
 .products {

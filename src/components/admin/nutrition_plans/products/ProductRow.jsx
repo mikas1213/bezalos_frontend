@@ -16,16 +16,15 @@ const ProductRow = ({
 }) => {
     const del = useRef(null);
     const isDelete = product.id === clickedProduct && isClickedDelete;
-    const subCategoryVal = product.sub_category ? product.sub_category : '- - - - - -';
-
+    
     return (
         <div ref={del} className={styles.row}>
-            {['title', 'proteins', 'carbs', 'fat', 'category', 'sub_category'].map(item=> 
+            {['title', 'proteins', 'carbs', 'fat', 'category', 'sub_category', 'intolerance'].map(item=> 
                 <ProdCell key={item}
                     prodId={product.id} 
                     cellName={item} 
                     className={styles[item]} 
-                    value={item === 'sub_category' ? subCategoryVal : product[item]} 
+                    value={product[item]} 
                     handleEditProduct={handleEditProduct} 
                     setClickedCell={setClickedCell} 
                     clickedCell={clickedCell} 
@@ -58,6 +57,7 @@ export const ProductRowH = ({ count }) => {
             <span className={styles.fat}>R</span>
             <span className={styles.category}>Kategorija</span>
             <span className={styles.sub_category}>Sub kategorija</span>
+            <span className={styles.intolerance}>Alergenai</span>
             <span className={styles.icon}><IoTrashBin /></span>
         </div>
     );

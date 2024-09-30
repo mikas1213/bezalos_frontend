@@ -10,7 +10,7 @@ const ProdCell = ({
     cellName,
     handleEditProduct
 }) => {
-    // const subCatVal = cellName === 'sub_category' && !value.length ? '- - - -': value;
+    
     const isClickedCell = prodId === clickedCell.selProdId && cellName === clickedCell.selCellName;    
     const [currentValue, setCurrentValue] = useState(value);
     const [isShowCell, setIsShowCell] = useState(false);
@@ -47,6 +47,7 @@ const ProdCell = ({
 };
 
 const Input = ({ val, prodId, cellName, setCurrentValue, setIsShowCell, handleEditProduct }) => {
+
     const refInput = useRef(null);
     const refForm = useRef(null);
 
@@ -80,11 +81,13 @@ const Input = ({ val, prodId, cellName, setCurrentValue, setIsShowCell, handleEd
 };
 
 const Select = ({ val, prodId, cellName, setCurrentValue, setIsShowCell, handleEditProduct }) => {
+    
     return (
         <select className={styles.input} 
             value={val} 
             onBlur={() => setIsShowCell(false)}
             onChange={e => {
+                
                 setCurrentValue(e.target.value);
                 setIsShowCell(false);
                 handleEditProduct(prodId, cellName, e.target.value);
@@ -98,9 +101,15 @@ const Select = ({ val, prodId, cellName, setCurrentValue, setIsShowCell, handleE
             </>}
 
             {cellName === 'sub_category' && <>
-                <option value='null'>Be subkategorijos</option>
+                <option value='-'>Be subkategorijos</option>
                 <option value='pieno produktas'>Pieno produktas</option>
                 <option value='uzkandis'>Užkandis</option>
+            </>}
+
+            {cellName === 'intolerance' && <>
+                <option value='-'>Valgo viską</option>
+                <option value='Be glitimo'>Be glitimo</option>
+                <option value='Be laktozės'>Be loktozės</option>
             </>}
             
         </select>

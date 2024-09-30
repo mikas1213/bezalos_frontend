@@ -1,18 +1,16 @@
 .wrapper {
-    /* border-radius: 37px; */
-    
-    border-top-left-radius: 5rem;
-    border-bottom-left-radius: 5rem;
-    border-top-right-radius: 5rem;
-    border-bottom-right-radius: 5rem;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
     background-color: #fff;
-    /* padding: 0.3rem; */
     width: 100%;
-    max-width: 30rem;
-    margin: 1rem auto;
+    max-width: 100%;
+    margin: 0 auto;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
 }
 .tabSwitch {
+    display: flex;
     position: relative;
 }
 .textCenter {
@@ -32,16 +30,16 @@
   
 .tabSwitch.templates:after {
     left: 0;
-    border-top-left-radius: 5rem;
-    border-bottom-left-radius: 5rem;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
 }
 .tabSwitch.meals:after {
     left: calc(100% / 3);
 }
 .tabSwitch.products:after {
     left: calc((100% / 3) * 2);
-    border-top-right-radius: 5rem;
-    border-bottom-right-radius: 5rem;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
 }
   
 .tabSwitch .tab {
@@ -59,11 +57,18 @@
 }
 .tab a {
     justify-content: center;
-    padding: 0.5rem 0;
+    align-items: center;
+    height: 3rem;
 }
 .tabSwitch .tab.active {
     color: #245D6B;
     color: #fff;
+}
+
+.icon {
+    display: flex;
+    margin-right: 0.2rem;
+    font-size: 1.4rem;
 }
 
 @media only screen and (max-width: 375px) {

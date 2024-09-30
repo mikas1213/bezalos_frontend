@@ -38,15 +38,17 @@
 
 .proteins, .carbs, .fat {
     width: 5rem;
-    
 }
-.rowH :is(.title, .proteins, .carbs, .fat, .category, .sub_category) {
+.rowH :is(.title, .proteins, .carbs, .fat, .category, .sub_category, .intolerance) {
     padding-left: 0.2rem;
 }
 .category {
     width: 12rem;
 }
 .sub_category {
+    width: 10rem;
+}
+.intolerance {
     width: 10rem;
 }
 .icon {

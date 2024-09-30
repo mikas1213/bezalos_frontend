@@ -2,6 +2,11 @@ import styles from './NutritionTab.module.css';
 import { NavLink, useLocation } from 'react-router-dom';
 import { useState } from 'react';
 
+import { TiShoppingCart } from 'react-icons/ti';
+import { GiOpenedFoodCan } from 'react-icons/gi';
+import { CgTemplate } from 'react-icons/cg';
+
+
 const NutritionTab = () => {
     const location = useLocation();
     const [side, setSide] = useState(() => {
@@ -24,13 +29,13 @@ const NutritionTab = () => {
         <div className={styles.wrapper}>
             <div className={`${styles.tabSwitch} ${styles[side]} ${styles.textCenter}`}>
                 <div className={`${styles.tab} ${side === 'templates' ? styles.active : ''}`} onClick={() => setSide('templates')}>
-                    <NavLink to='/admin/planai'>Šablonai</NavLink>
+                    <NavLink to='/admin/planai'><CgTemplate className={styles.icon} />Šablonai</NavLink>
                 </div>
                 <div className={`${styles.tab} ${side === 'meals' ? styles.active : ''}`} onClick={() => setSide('meals')}>
-                    <NavLink to='/admin/planai/valgiai'>Valgiai</NavLink>
+                    <NavLink to='/admin/planai/valgiai'><GiOpenedFoodCan className={styles.icon} />Valgiai</NavLink>
                 </div>
                 <div className={`${styles.tab} ${side === 'products' ? styles.active : ''}`} onClick={() => setSide('products')}>
-                    <NavLink to='/admin/planai/produktai'>Produktai</NavLink>
+                    <NavLink to='/admin/planai/produktai'><TiShoppingCart className={styles.icon} />Produktai</NavLink>
                 </div>
             </div>
         </div>

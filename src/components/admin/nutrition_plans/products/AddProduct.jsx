@@ -10,32 +10,37 @@ const categoryOptions = [
     { value: 'Angliavandeniai', label: 'Angliavandeniai' },
     { value: 'Riebalai', label: 'Riebalai' },
     { value: 'Vaisiai/uogos', label: 'Vaisiai / uogos' }
-  ];
+];
 
 const subCategoryOptions = [
-    { value: 'null', label: 'Be subkategorijos' },
+    { value: '-', label: 'Be subkategorijos' },
     { value: 'pieno produktas', label: 'Pieno produktas'},
     { value: 'uzkandis', label: 'Užkandis' },
 ];
+
+const intoleranceOptions = [
+    { value: '-', label: 'Valgo viską' },
+    { value: 'gluten_free', label: 'Be glitimo' },
+    { value: 'lactose_free', label: 'Be laktozės'},
+];
+
 const customStyles = {
     control: (provided, state) => ({
         ...provided,
-        border: '1px solid #ccc',
-        // border: !state.isFocused || !state.isSelected ? '1px solid #ccc' : '1px solid #245D6B',
-        boxShadow: state.isFocused ? 'none' : state.borderColor,
-        borderColor: state.isFocused ? 'none' : state.borderColor,
-        
-        // borderColor: state.isFocused ? '#000' : '#c0f',
+        border: !state.isFocused && '1px solid #ccc',
+        boxShadow: state.isFocused ? '#245D6B' : state.borderColor,
+        borderColor: state.isFocused ? '#245D6B' : state.borderColor,
+
         '&:hover': {
-            border: '1px solid #999',
+            border: !state.isFocused && '1px solid #999',
             cursor: 'pointer'
         },
         fontSize: '13px',
         padding: 0,
-        height: '30px',
+        height: '32px',
         minHeight: '0px',
         width: '165px',
-        
+        '&placeholder': {color: 'red'}
         // '@media only screen and (max-width: 375px)': {
         //     ...baseStyles['@media only screen and (max-width: 375px)'],
         //     fontSize: '4.5rem',
@@ -43,25 +48,24 @@ const customStyles = {
     }),
     singleValue: (provided) =>({
         ...provided,
-        color: '#555',
-        // borderColor: '#0ff'
+        color: '#777',
+        
     }),
-    option:(provided, state) => ({
-        ...provided,
+    option:(provider, state) => ({
+        ...provider,
+        fontSize: 13,
+        borderBottom: '0.5px solid #ccc',
+        backgroundColor: state.isFocused ? '#245D6B' : '#fff',
+        color: state.isFocused ? '#fff' : '#245D6B',
         cursor: 'pointer',
         height: '2.1rem',
-        fontSize: '0.8rem',
-        backgroundColor: state.isSelected ? '#245D6B' : state.isFocused ? '#245D6B11' : '#fff',
-        color: state.isSelected ? '#fff' : state.isFocused ? '#245D6B' : '#777',
-        '&:hover': {
-            backgroundColor: state.isSelected ? '#245D6B' : '#245D6B11',
-            color: state.isSelected ? '#fff' : '#245D6B',
+        '&:hover': { cursor: 'pointer', 
+            backgroundColor: '#245D6B',
+            boxShadow: '#245D6B'
         }
     }),
     valueContainer: (provided) => ({
         ...provided,
-        // minHeight: '50px',
-        // height: '50px',
         paddingTop: 0,
         paddingBottom: 0,
     }),
@@ -75,31 +79,12 @@ const customStyles = {
         ...provided,
         minHeight: 0,
         height: '30px',
-    }),
-    // dropdownIndicator: provider => ({
-        // ...provider,
-        // fontSize: '20px'
-    // }),
-    // clearIndicator: provider => ({
-        // ...provider,
-        // padding: '5px',
-        // fontSize: '20px'
-    // })
-    // input: (provided, state) => ({
-        // ...provided,
-        // margin: '0px',
-        // lineHeight: '5px'
-    // }),
-
-    // container: (baseStyles) => ({
-    //     ...baseStyles,
-        
-    //     paddingRight: 20,
-    // }),
+    })
 }
 
 const AddProduct = ({ handleAddProduct }) => {
     const [formData, setFormData] = useState({});
+    
     const handleFormData = (e1, e2) => {
         setFormData(prev => ({...prev, [e1.target?.name || e2.name]: e1.target?.value || e1.value}));
     };
@@ -146,6 +131,16 @@ const AddProduct = ({ handleAddProduct }) => {
                 styles={customStyles}
                 name='sub_category'
                 defaultValue={formData.sub_category}
+                onChange={handleFormData}
+            />
+            <Select 
+                required={true}
+                options={intoleranceOptions} 
+                isSearchable={false}
+                placeholder='Netoleravimas'
+                styles={customStyles}
+                name='intolerance'
+                defaultValue={intoleranceOptions[0]}
                 onChange={handleFormData}
             />
             <button>Pridėti</button>

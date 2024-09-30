@@ -1,5 +1,4 @@
 .prodItem {
-    /* position: relative; */
     display: flex;
     flex-direction: column;
     gap: 0.3rem;
@@ -32,6 +31,7 @@
 
 .grams :is(input:hover, input:focus) {
     border: 1px solid #ddd;
+    outline: none;
 }
 
 span .icon {

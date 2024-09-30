@@ -44,6 +44,11 @@ const customStyles = {
         borderBottom: '0.5px solid #ccc',
         backgroundColor: state.isFocused ? '#245D6B' : '#fff',
         color: state.isFocused ? '#fff' : '#245D6B',
+        
+        '&:hover': { cursor: 'pointer', 
+            backgroundColor: '#245D6B',
+            boxShadow: '#245D6B'
+        }
     })
 }
 

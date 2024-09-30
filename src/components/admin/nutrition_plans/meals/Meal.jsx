@@ -43,7 +43,7 @@ const Meal = ({
 
     const [isMenuOpen, setIsMenuOpen] = useState('');
 
-    const customStyles = {
+    const customLogicStyles = {
         control: (provided) => ({
             ...provided,
             '&:hover': { cursor: 'pointer', },
@@ -139,6 +139,11 @@ const Meal = ({
             borderBottom: '0.5px solid #ccc',
             backgroundColor: state.isFocused ? '#245D6B' : '#fff',
             color: state.isFocused ? '#fff' : '#245D6B',
+
+            '&:hover': { cursor: 'pointer', 
+                backgroundColor: '#245D6B',
+                boxShadow: '#245D6B'
+            }
         })
     }
 
@@ -195,6 +200,9 @@ const Meal = ({
                     b_100: +item.proteins,
                     a_100: +item.carbs,
                     r_100: +item.fat
+
+                    // label: 'Mikas Dulevičius',
+                    // options: [{value: 'test', label: 'mikas1213@gmail.com'}, {value: 'test', label: 'mikas1213@gmail.com'}],
                 }));
 
                 callback(options);
@@ -212,7 +220,7 @@ const Meal = ({
                     <LogicSelect 
                         isSearchable={false}
                         components={{ DropdownIndicator: null, IndicatorSeparator: null }}
-                        styles={customStyles}
+                        styles={customLogicStyles}
                         defaultOptions={[mealData.logic]}
                         name='logic'
                         options={options}

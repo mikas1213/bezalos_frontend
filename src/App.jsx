@@ -27,11 +27,16 @@ const SuccessSubscription = lazy(() => import('./pages/SubscriptionPages/Success
 const CancelSubscription = lazy(() => import('./pages/SubscriptionPages/CancelSubscription'));
 const PirkimoTaisyklesPage = lazy(() => import('./pages/PirkimoTaisyklesPage'));
 const PrivatumoPolitikaPage = lazy(() => import('./pages/PrivatumoPolitikaPage'));
-
-import AdminLayout from './components/admin/layout/AdminLayout';
-import KlientaiPage from './pages/admin/KlientaiPage';
+const AdminLayout = lazy(() => import('./components/admin/layout/AdminLayout'));
+const KlientaiPage = lazy(() => import('./pages/admin/KlientaiPage'));
+// const MitybosPlanaiLayout = lazy(() => import('./pages/admin/mitybosPlanai/MitybosPlanaiLayout'));
+// const PlanaiPage = lazy(() => import('./pages/admin/mitybosPlanai/PlanaiPage'));
+// const MealsPage = lazy(() => import('./pages/admin/mitybosPlanai/MealsPage'));
+// const ProductsPage = lazy(() => import('./pages/admin/mitybosPlanai/ProductsPage'));
+// import AdminLayout from './components/admin/layout/AdminLayout';
+// import KlientaiPage from './pages/admin/KlientaiPage';
 import MitybosPlanaiLayout from './pages/admin/mitybosPlanai/MitybosPlanaiLayout';
-import TemplatesPage from './pages/admin/mitybosPlanai/TemplatesPage';
+import PlanaiPage from './pages/admin/mitybosPlanai/PlanaiPage';
 import MealsPage from './pages/admin/mitybosPlanai/MealsPage';
 import ProductsPage from './pages/admin/mitybosPlanai/ProductsPage';
 import MaistasPage from './pages/admin/MaistasPage';
@@ -89,7 +94,7 @@ function App() {
                                     <Route path='/admin' element={<AdminLayout /> }>
                                         <Route index element={<KlientaiPage />} />
                                         <Route path='planai' element={<MitybosPlanaiLayout /> }>
-                                            <Route index element={<TemplatesPage />} />
+                                            <Route index element={<PlanaiPage />} />
                                             <Route path='valgiai' element={<MealsPage />} />
                                             <Route path='produktai' element={<ProductsPage />} />
                                         </Route>
