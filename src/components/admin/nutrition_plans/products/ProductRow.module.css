@@ -23,6 +23,7 @@
 }
 .row {
     color: #555;
+    background-color: #fff;
 }
 .row:not(:last-child) {
     border-bottom: 0.8px solid #ddd;

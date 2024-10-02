@@ -1,6 +1,7 @@
-import Products from '../../../components/admin/nutrition_plans/products/Products';
+import ProductRow, { ProductRowH } from '../../../components/admin/nutrition_plans/products/ProductRow';
 import useAxiosPrivate from '../../../hooks/useAxiosPrivate';
 import { useState, useEffect } from 'react';
+import Wrapper from './Wrapper';
 import Navbar from '../../../components/admin/nutrition_plans/Navbar';
 import AddProduct from '../../../components/admin/nutrition_plans/products/AddProduct';
 import SearchInput from '../../../components/admin/nutrition_plans/SearchInput';
@@ -68,6 +69,10 @@ const ProductsPage = () => {
     const [categoryFilter, setCategoryFilter] = useState('');
     const [searchFilter, setSearchFilter] = useState('');
 
+    const [clickedProduct, setClickedProduct] = useState('');
+    const [isClickedDelete, setIsClickedDelete] = useState(false);
+    const [clickedCell, setClickedCell] = useState({});
+
     useEffect(() => {
 
         let filters = {};
@@ -89,9 +94,8 @@ const ProductsPage = () => {
         return () => controller.abort();
 
     }, [axiosPrivate, categoryFilter, searchFilter]);
-
+    
     const handleAddProduct = newProduct => {
-        // if(newProduct.sub_category === 'null') newProduct.sub_category = null;
         setProducts(prevState => [newProduct, ...prevState]);
     };
 
@@ -134,12 +138,26 @@ const ProductsPage = () => {
                 <SearchInput onChangeValue={setSearchFilter} />
             </Navbar>
 
-            <Products 
-                products={products} 
-                isLoading={isLoading} 
-                handleDeleteProduct={handleDeleteProduct}
-                handleEditProduct={handleEditProduct}
-            />
+            <Wrapper layout='products'>
+                <ProductRowH count={products?.length}/>
+                {!isLoading && products?.map(prod => 
+                <ProductRow 
+                    key={prod.id} 
+                    product={prod}
+
+                    clickedProduct={clickedProduct}
+                    setClickedProduct={setClickedProduct}
+
+                    setIsClickedDelete={setIsClickedDelete}
+                    isClickedDelete={isClickedDelete}
+
+                    clickedCell={clickedCell}
+                    setClickedCell={setClickedCell}
+
+                    handleEditProduct={handleEditProduct}
+                    handleDeleteProduct={handleDeleteProduct}
+                />)}
+            </Wrapper>
         </>
     );
 };

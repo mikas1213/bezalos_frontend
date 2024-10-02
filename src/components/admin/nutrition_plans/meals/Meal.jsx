@@ -200,9 +200,6 @@ const Meal = ({
                     b_100: +item.proteins,
                     a_100: +item.carbs,
                     r_100: +item.fat
-
-                    // label: 'Mikas Dulevičius',
-                    // options: [{value: 'test', label: 'mikas1213@gmail.com'}, {value: 'test', label: 'mikas1213@gmail.com'}],
                 }));
 
                 callback(options);

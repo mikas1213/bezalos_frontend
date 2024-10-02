@@ -1,4 +1,3 @@
-// import styles from './Navbar.module.css';
 const styles = {
     display: 'flex',
     alignItems: 'center',

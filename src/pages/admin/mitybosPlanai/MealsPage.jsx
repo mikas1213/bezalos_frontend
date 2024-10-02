@@ -2,7 +2,8 @@ import { useState, useEffect } from 'react';
 import useAxiosPrivate from '../../../hooks/useAxiosPrivate';
 import Navbar from '../../../components/admin/nutrition_plans/Navbar';
 import { AddNewBtn } from '../../../components/admin/nutrition_plans/AddNewBtn';
-import Meals from '../../../components/admin/nutrition_plans/meals/Meals';
+import Wrapper from './Wrapper';
+import Meal from '../../../components/admin/nutrition_plans/meals/Meal';
 import { RadioFilters } from '../../../components/admin/nutrition_plans/RadioFilters';
 import { CheckBoxFilters } from '../../../components/admin/nutrition_plans/CheckBoxFilters';
 import { Divider } from '../../../components/admin/nutrition_plans/Divider';
@@ -19,6 +20,18 @@ const MealsPage = () => {
     const [searchString, setSearchString] = useState('');
     const [logicFilter, setLogicFilter] = useState('');
     const [intoleranceFilter, setIntoleranceFilter] = useState('');
+
+    const logicOptions = [
+        {value: 'A+B', label: 'A+B', color: '#30c040'},
+        {value: 'B+R', label: 'B+R', color: '#245D6B'},
+        {value: 'A+R', label: 'A+R', color: '#ec9f11'}
+    ];
+
+    const intoleranceOptions = [
+        {value: false, label: 'be glitimo', name: 'is_gluten'},
+        {value: false, label: 'be laktozės', name: 'is_lactose'}
+    ];
+
     
     useEffect(() => {
         let queryString = {...intoleranceFilter};
@@ -165,17 +178,6 @@ const MealsPage = () => {
         }
     };
 
-    const logicOptions = [
-        {value: 'A+B', label: 'A+B', color: '#30c040'},
-        {value: 'B+R', label: 'B+R', color: '#245D6B'},
-        {value: 'A+R', label: 'A+R', color: '#ec9f11'}
-    ];
-
-    const intoleranceOptions = [
-        {value: false, label: 'be glitimo', name: 'is_gluten'},
-        {value: false, label: 'be laktozės', name: 'is_lactose'}
-    ];
-
     return (
         <>
             <Navbar>
@@ -186,15 +188,18 @@ const MealsPage = () => {
                 <CheckBoxFilters options={intoleranceOptions} onSetFilter={setIntoleranceFilter} grow={1} />
                 <SearchInput onChangeValue={setSearchString} />
             </Navbar>
-            
-            {!isLoading && <Meals
-                meals={meals} 
-                handleMealUpdate={handleMealUpdate} 
-                handleMealDelete={handleMealDelete}
-                handleMealProductAdd={handleMealProductAdd}
-                handleMealProductEdit={handleMealProductEdit}
-                handleMealProductDelete={handleMealProductDelete}
-            />}
+
+            <Wrapper layout='meals'>
+                {!isLoading && meals.map(meal => <Meal 
+                    key={meal.id} 
+                    meal={meal}
+                    handleMealUpdate={handleMealUpdate} 
+                    handleMealDelete={handleMealDelete}
+                    handleMealProductAdd={handleMealProductAdd}
+                    handleMealProductEdit={handleMealProductEdit}
+                    handleMealProductDelete={handleMealProductDelete}
+                />)}
+            </Wrapper>
         </>
     );
 };

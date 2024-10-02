@@ -20,8 +20,8 @@ const subCategoryOptions = [
 
 const intoleranceOptions = [
     { value: '-', label: 'Valgo viską' },
-    { value: 'gluten_free', label: 'Be glitimo' },
-    { value: 'lactose_free', label: 'Be laktozės'},
+    { value: 'Be glitimo', label: 'Be glitimo' },
+    { value: 'Be laktozės', label: 'Be laktozės'},
 ];
 
 const customStyles = {
@@ -83,7 +83,7 @@ const customStyles = {
 }
 
 const AddProduct = ({ handleAddProduct }) => {
-    const [formData, setFormData] = useState({});
+    const [formData, setFormData] = useState({intolerance: '-'});
     
     const handleFormData = (e1, e2) => {
         setFormData(prev => ({...prev, [e1.target?.name || e2.name]: e1.target?.value || e1.value}));
@@ -94,8 +94,9 @@ const AddProduct = ({ handleAddProduct }) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        
+          
         try {
+            console.log(formData)
             const data = await axiosPrivate.post('/admin/plans/products', formData);
             handleAddProduct({...formData, id: data.data.id});
             setFormData({});
