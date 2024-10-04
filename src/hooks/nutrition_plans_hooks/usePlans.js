@@ -15,10 +15,10 @@ export const usePlans = (filters) => {
                 
                 const calculatedPlans = data.map(plan => ({
                     ...plan, 
-                    b: plan.meals.filter(meal => !meal.is_sport).map(meal => meal.b).reduce((acc, val) => acc + val, 0).toFixed(0),
-                    a: plan.meals.filter(meal => !meal.is_sport).map(meal => meal.a).reduce((acc, val) => acc + val, 0).toFixed(0),
-                    r: plan.meals.filter(meal => !meal.is_sport).map(meal => meal.r).reduce((acc, val) => acc + val, 0).toFixed(0),
-                    kcal: plan.meals.filter(meal => !meal.is_sport).map(meal => meal.kcal).reduce((acc, val) => acc + val, 0).toFixed(0)
+                    b: plan.meals.filter(meal => !meal.is_sport).map(meal => meal.b).reduce((acc, val) => acc + val, 0),
+                    a: plan.meals.filter(meal => !meal.is_sport).map(meal => meal.a).reduce((acc, val) => acc + val, 0),
+                    r: plan.meals.filter(meal => !meal.is_sport).map(meal => meal.r).reduce((acc, val) => acc + val, 0),
+                    
                 }));
                 
                 setPlans([...calculatedPlans]);

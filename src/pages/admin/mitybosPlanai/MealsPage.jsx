@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import useAxiosPrivate from '../../../hooks/useAxiosPrivate';
 import Navbar from '../../../components/admin/nutrition_plans/Navbar';
 import { AddNewBtn } from '../../../components/admin/nutrition_plans/AddNewBtn';
@@ -11,12 +11,10 @@ import SearchInput from '../../../components/admin/nutrition_plans/SearchInput';
 import { bar } from '../../../utils/calculationsHelpers';
 import { LiaPizzaSliceSolid } from 'react-icons/lia';
 import toast from 'react-hot-toast';
+import { useMeals } from '../../../hooks/nutrition_plans_hooks/useMeals';
 
 const MealsPage = () => {
     const axiosPrivate = useAxiosPrivate();
-    const [meals, setMeals] = useState([]);
-    const [isLoading, setIsLoading] = useState(true);
-
     const [searchString, setSearchString] = useState('');
     const [logicFilter, setLogicFilter] = useState('');
     const [intoleranceFilter, setIntoleranceFilter] = useState('');
@@ -32,36 +30,13 @@ const MealsPage = () => {
         {value: false, label: 'be laktozės', name: 'is_lactose'}
     ];
 
+    let filters = {};
+    filters = logicFilter ? {...filters, logic: logicFilter} : filters;
+    filters = intoleranceFilter && intoleranceFilter.is_gluten ? {...filters, is_gluten: intoleranceFilter.is_gluten} : filters;
+    filters = intoleranceFilter && intoleranceFilter.is_lactose ? {...filters, is_lactose: intoleranceFilter.is_lactose} : filters;
+    filters = searchString ? {...filters, search: searchString} : filters;
     
-    useEffect(() => {
-        let queryString = {...intoleranceFilter};
-        queryString = logicFilter ? {...queryString, logic: logicFilter} : queryString;
-        queryString = searchString ? {...queryString, search: searchString} : queryString;
-            
-        const getData = async (signal) => {
-            try {                
-                let query = Object.keys(queryString).length ? '?' + new URLSearchParams(queryString).toString() : '';
-
-                const sum = (acc, val) => acc + val;
-                const { data } = await axiosPrivate.get(`/admin/plans/meals${query}`, { signal });
-
-                const currentMeals = data ? data.map(meal => {
-                    ['b', 'a', 'r'].forEach(char => {
-                        meal.products.map(prod => prod[char] = bar(prod[`${char}_100`], prod.grams))
-                        meal[char] = meal.products.map(prod => prod[char]).reduce(sum, 0)
-                    });
-                    return meal;    
-                }) : [];
-                setMeals([...currentMeals]);
-                setIsLoading(false);
-            } catch (err) {
-                console.log(err.message)
-            }
-        };
-        const controller = new AbortController();
-        getData(controller.signal);
-        return () => controller.abort();
-    }, [axiosPrivate, logicFilter, intoleranceFilter, searchString]);
+    const { meals, setMeals, isLoading } = useMeals(filters);
 
     const handleMealAdd = async () => {
         try {
@@ -80,11 +55,11 @@ const MealsPage = () => {
     };
 
     const handleMealUpdate = async (meal_id, column, value) => {
-        const index = meals.findIndex(v => v.id === meal_id);
-        const currentMeals = [...meals];
-        currentMeals[index][column] = value;
-        setMeals([...currentMeals]);
-        
+        // const index = meals.findIndex(v => v.id === meal_id);
+        // const currentMeals = [...meals];
+        // currentMeals[index][column] = value;
+        // setMeals([...currentMeals]);
+        setMeals(prevMeals => prevMeals.map(meal => meal.id === meal_id ? {...meal, [column]: value} : meal));
         try {
             await axiosPrivate.patch('admin/plans/meals', {meal_id, column, value});
         } catch (err) {
@@ -94,7 +69,7 @@ const MealsPage = () => {
     
     const handleMealDelete = async meal_id => {
         try {
-            
+    
             await axiosPrivate.delete('admin/plans/meals', {data: {meal_id}});
             setMeals(prevState => ([
                 ...prevState.filter(meal => meal.id !== meal_id)
@@ -149,7 +124,6 @@ const MealsPage = () => {
                     } : meal)
                 ]));   
 
-            
                 if(e_type !== 'change') {
                     await axiosPrivate.patch('admin/plans/meal/product', {id, prod_id, grams});
                 }

@@ -177,12 +177,12 @@ const Meal = ({
     }
 
     const onDeleteMeal = meal_id => {
-        const confirm = window.confirm('Trinti?');
+        const confirm = window.confirm('Trinti valgį?');
         if(confirm) {
+            deletedMealRef.current.classList.add(styles.deleted);
             setTimeout(() => {
                 handleMealDelete(meal_id);
             }, 500);
-            deletedMealRef.current.classList.add(styles.deleted);
         }
     };
 

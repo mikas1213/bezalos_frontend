@@ -7,6 +7,10 @@
     border-radius: 5px;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
 }
+.deleted {
+    opacity: 0;
+    transition: all 0.5s ease-in-out;
+}
 
 .planHeader {
     display: flex;
@@ -113,3 +117,4 @@ button.addSportBtn:hover {
 .bar div:nth-child(1) span:nth-child(1) { color: #245D6B; }
 .bar div:nth-child(2) span:nth-child(1) { color: #30c040; }
 .bar div:nth-child(3) span:nth-child(1) { color: #ec9f11; }
+

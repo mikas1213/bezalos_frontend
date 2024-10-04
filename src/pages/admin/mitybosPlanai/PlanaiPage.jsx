@@ -11,6 +11,7 @@ import { CheckBoxFilters } from '../../../components/admin/nutrition_plans/Check
 import { Divider } from '../../../components/admin/nutrition_plans/Divider';
 import toast from 'react-hot-toast';
 import { usePlans } from '../../../hooks/nutrition_plans_hooks/usePlans';
+import { bar } from '../../../utils/calculationsHelpers';
 
 const PlanaiPage = () => {
 
@@ -32,12 +33,20 @@ const PlanaiPage = () => {
     filters = search ? {...filters, search} : filters;
     
     const { plans, setPlans, isLoading } = usePlans(filters);
-    
     const axiosPrivate = useAxiosPrivate();
+
     const handlePlanAdd = async () => {
         try {
             const { data: {id} } = await axiosPrivate.post('admin/plans');
-            setPlans(prevState => ([{id, title: '-'}, ...prevState]));
+            setPlans(prevState => ([{
+                id, 
+                b: 0,
+                a: 0,
+                r: 0,
+                kcal: 0,
+                title: '-', 
+                meals: [],
+            }, ...prevState]));
         } catch (err) {
             toast.error('Klaida: \n'+err.response.data.message);
         }
@@ -45,6 +54,7 @@ const PlanaiPage = () => {
 
     const handlePlanEdit = async (plan_id, column, value) => {
         try {
+            setPlans(prevPlans => ([...prevPlans.map(plan => plan.id === plan_id ? {...plan, [column]: value } : plan)]));
             await axiosPrivate.patch('admin/plans', {plan_id, column, value})
         } catch (err) {
             toast.error('Klaida: \n'+err.response.data.message);
@@ -52,31 +62,50 @@ const PlanaiPage = () => {
     };
 
     const handlePlanDelete = async (id) => {
-        const confirm = window.confirm('Trinti planą?');
+        
         try {
-            if(confirm) {
-                setPlans(prevState => [...prevState.filter(plan => plan.id !== id)]);
-                await axiosPrivate.delete('admin/plans', {data: {id}});
-            }
+            setPlans(prevState => [...prevState.filter(plan => plan.id !== id)]);
+            await axiosPrivate.delete('admin/plans', {data: {id}});
         } catch (err) {
             toast.error('Klaida! \n'+err.response.data.message);
         }
     };
 
-    const handleAddPlanMeal = async (plan_id, meal_id, is_sport) => {
-        
+    const handleAddPlanMeal = async (plan_id, new_meal, is_sport) => {
         try {
-            await axiosPrivate.post('admin/plans/plan/meals', {plan_id, meal_id, is_sport});
+            const { data: {id} } = await axiosPrivate.post('admin/plans/plan/meals', {plan_id, meal_id: new_meal.value, is_sport});
+            setPlans(prevPlans => ([...prevPlans.map(plan => plan.id === plan_id ? {
+                ...plan,
+                b: [...plan.meals, {products: new_meal.products}].filter(meal => !meal.is_sport).map(meal => meal.products.map(prod => bar(prod.b_100, prod.grams)).reduce((acc, val) => acc + val, 0)).reduce((acc, val) => acc + val, 0),
+                a: [...plan.meals, {products: new_meal.products}].filter(meal => !meal.is_sport).map(meal => meal.products.map(prod => bar(prod.a_100, prod.grams)).reduce((acc, val) => acc + val, 0)).reduce((acc, val) => acc + val, 0),
+                r: [...plan.meals, {products: new_meal.products}].filter(meal => !meal.is_sport).map(meal => meal.products.map(prod => bar(prod.r_100, prod.grams)).reduce((acc, val) => acc + val, 0)).reduce((acc, val) => acc + val, 0),
+                meals: [...plan.meals, (!is_sport ? {
+                    id,
+                    meal_id: new_meal.value,
+                    logic: new_meal.logic,
+                    title: new_meal.label,
+                    products: new_meal.products,
+                    b: new_meal.products.map(prod => bar(prod.b_100, prod.grams)).reduce((acc, val) => acc + val, 0),
+                    a: new_meal.products.map(prod => bar(prod.a_100, prod.grams)).reduce((acc, val) => acc + val, 0),
+                    r: new_meal.products.map(prod => bar(prod.r_100, prod.grams)).reduce((acc, val) => acc + val, 0),
+                    kcal: 0
+                } : { 
+                    id,
+                    meal_id: new_meal.meal_id,
+                    meal_time_from: '00:00',
+                    meal_time_to: '00:00'
+                })]
+            } : plan)]));
+            
         } catch (err) {
             toast.error('Klaida!\n'+err.response.data.message);
         }
     };
 
-
     return (
         <>
             <Navbar>
-                <AddNewBtn label='Naujas planas' Icon={ImPlus} fontSize='1rem' onHandleClick={handlePlanAdd} />
+                <AddNewBtn label='Sukurti šabloną' Icon={ImPlus} fontSize='1rem' onHandleClick={handlePlanAdd} />
                 <Divider />
                 <RadioFilters 
                     options={mealsFiltersOptions} 

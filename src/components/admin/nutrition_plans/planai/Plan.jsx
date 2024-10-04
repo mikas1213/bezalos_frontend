@@ -7,6 +7,7 @@ import { LuVegan } from "react-icons/lu";
 import { ImPlus } from 'react-icons/im';
 import { default as AddPlanSelect } from 'react-select/async';
 import MealItem, { SportItem } from './MealItem';
+import { kcal } from '../../../../utils/calculationsHelpers';
 
 const customAddProdStyles = {
     container: (provider) => ({
@@ -61,6 +62,7 @@ const customAddProdStyles = {
 }
 
 const Plan = ({ plan, handlePlanEdit, handlePlanDelete, handleAddPlanMeal }) => {
+
     const axiosPrivate = useAxiosPrivate();
     const [title, setTitle] = useState(plan.title);
     const [addMeal, setAddMeal] = useState({
@@ -72,7 +74,9 @@ const Plan = ({ plan, handlePlanEdit, handlePlanDelete, handleAddPlanMeal }) => 
             axiosPrivate.get(`/admin/plans/meals?search=${inputValue}`).then(response => {
                 const options = response.data.map(meal => ({
                     label: meal.title,
-                    value: meal.id
+                    value: meal.id,
+                    logic: meal.logic,
+                    products: meal.products
                 }));
 
                 callback(options);
@@ -85,11 +89,21 @@ const Plan = ({ plan, handlePlanEdit, handlePlanDelete, handleAddPlanMeal }) => 
     
     const onAddNewMeal = e => {
         setAddMeal(e);
-        handleAddPlanMeal(plan.id, e.value, false);
+        handleAddPlanMeal(plan.id, e, false);
+    };
+
+    const onPlanDelete = (e, plan_id) => {
+        const confirm = window.confirm('Trinti planą?');
+        if(confirm) {
+            e.target.closest('.plan').classList.add(styles.deleted)
+            setTimeout(() => {
+                handlePlanDelete(plan_id);
+            }, 500);
+        }
     };
 
     return (
-        <div className={styles.plan}>
+        <div className={`${styles.plan} plan`}>
             <div className={styles.planHeader}>
                 <form onSubmit={e => {
                     e.preventDefault();
@@ -110,7 +124,7 @@ const Plan = ({ plan, handlePlanEdit, handlePlanDelete, handleAddPlanMeal }) => 
                 </span>
                 <span 
                     style={{display: 'flex'}} 
-                    onClick={() => handlePlanDelete(plan.id)}><DeleteX_icon icon={styles.deletePlanIcon} />
+                    onClick={e => onPlanDelete(e, plan.id)}><DeleteX_icon icon={styles.deletePlanIcon} />
                 </span>
             </div>
 
@@ -137,17 +151,18 @@ const Plan = ({ plan, handlePlanEdit, handlePlanDelete, handleAddPlanMeal }) => 
 
                 <button 
                     className={styles.addSportBtn} 
-                    onClick={() => handleAddPlanMeal(plan.id, null, true)}
+                    onClick={() => handleAddPlanMeal(plan.id, {meal_id: null}, true)}
                 >
                     <ImPlus className={styles.addSportIcon}/>
                     sportas
                 </button>
             </div>
             <div className={styles.bar}>
-                <div><span>B</span><span>{plan.b}</span></div>
-                <div><span>A</span><span>{plan.a}</span></div>
-                <div><span>R</span><span>{plan.r}</span></div>
-                <div><span>Kcal</span><span>{plan.kcal}</span></div>
+                <div><span>B</span><span>{plan.b.toFixed(0)}</span></div>
+                <div><span>A</span><span>{plan.a.toFixed(0)}</span></div>
+                <div><span>R</span><span>{plan.r.toFixed(0)}</span></div>
+                <div><span>Kcal</span><span>{kcal(plan.b, plan.a, plan.r).toFixed(0)}</span></div>
+
             </div>
         </div>
     );
