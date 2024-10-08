@@ -1,13 +1,14 @@
 import styles from './Plan.module.css';
 import { useState } from 'react';
 import useAxiosPrivate from '../../../../hooks/useAxiosPrivate';
-
 import { DeleteX_icon } from '../../../../svg/icons';
-import { LuVegan } from "react-icons/lu";
+import { LuVegan } from 'react-icons/lu';
+import { SlSettings } from 'react-icons/sl';
 import { ImPlus } from 'react-icons/im';
 import { default as AddPlanSelect } from 'react-select/async';
 import MealItem, { SportItem } from './MealItem';
 import { kcal } from '../../../../utils/calculationsHelpers';
+import { useNavigate } from 'react-router-dom';
 
 const customAddProdStyles = {
     container: (provider) => ({
@@ -62,7 +63,7 @@ const customAddProdStyles = {
 }
 
 const Plan = ({ plan, handlePlanEdit, handlePlanDelete, handleAddPlanMeal }) => {
-
+    const navigate = useNavigate();
     const axiosPrivate = useAxiosPrivate();
     const [title, setTitle] = useState(plan.title);
     const [addMeal, setAddMeal] = useState({
@@ -117,7 +118,12 @@ const Plan = ({ plan, handlePlanEdit, handlePlanDelete, handleAddPlanMeal }) => 
                         onBlur={e => handlePlanEdit(plan.id, e.target.name, e.target.value)} 
                     />
                 </form>
-
+                <span 
+                    style={{display: 'flex'}}
+                    onClick={() => navigate(`/admin/planai/${plan.id}`, { replace: false })}
+                >
+                    <SlSettings className={styles.editIcon} />
+                </span>
                 <span style={{display: 'flex'}} 
                     onClick={() => handlePlanEdit(plan.id, 'is_vegetarian', !plan.is_vegetarian)}>
                     <LuVegan className={`${styles.vegaIcon} ${plan.is_vegetarian ? styles['vega'] : ''}`} />
@@ -162,10 +168,11 @@ const Plan = ({ plan, handlePlanEdit, handlePlanDelete, handleAddPlanMeal }) => 
                 <div><span>A</span><span>{plan.a.toFixed(0)}</span></div>
                 <div><span>R</span><span>{plan.r.toFixed(0)}</span></div>
                 <div><span>Kcal</span><span>{kcal(plan.b, plan.a, plan.r).toFixed(0)}</span></div>
-
             </div>
         </div>
     );
 };
 
 export default Plan;
+
+

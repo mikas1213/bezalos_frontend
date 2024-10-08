@@ -4,7 +4,7 @@ import { createPortal } from 'react-dom';
 import { HiXMark } from "react-icons/hi2";
 import styles from './Modal.module.css';
 
-const Modal = ({children, onClose}) => {
+const Modal = ({children, onClose, closeIcon = true}) => {
     
     const ref = useRef(null);
     useEffect(() => {
@@ -23,7 +23,7 @@ const Modal = ({children, onClose}) => {
     return createPortal(
         <div className={styles.modalOverlay}>
             <div ref={ref} className={styles.modal}>
-                <HiXMark className={styles.icon} onClick={onClose} />
+                {closeIcon && <HiXMark className={styles.icon} onClick={onClose} />}
                 {children}
             </div>
         </div>, document.body

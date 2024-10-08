@@ -21,7 +21,7 @@ const NutritionTab = () => {
             case '/admin/planai/produktai/':
                 return 'products';
             default:
-                return;
+                return 'templates'
         }
     });
 

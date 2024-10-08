@@ -23,6 +23,7 @@ const PlanaiPage = () => {
     const withoutMeatOptions = [
         {value: false, label: 'Be mėsos', name: 'is_vegetarian'}
     ];
+
     const [meal_count, setMealCount] = useState(null);
     const [is_vegetarian, setIsVegetarian] = useState(false);
     const [search, setSearch] = useState('');
@@ -76,9 +77,10 @@ const PlanaiPage = () => {
             const { data: {id} } = await axiosPrivate.post('admin/plans/plan/meals', {plan_id, meal_id: new_meal.value, is_sport});
             setPlans(prevPlans => ([...prevPlans.map(plan => plan.id === plan_id ? {
                 ...plan,
-                b: [...plan.meals, {products: new_meal.products}].filter(meal => !meal.is_sport).map(meal => meal.products.map(prod => bar(prod.b_100, prod.grams)).reduce((acc, val) => acc + val, 0)).reduce((acc, val) => acc + val, 0),
-                a: [...plan.meals, {products: new_meal.products}].filter(meal => !meal.is_sport).map(meal => meal.products.map(prod => bar(prod.a_100, prod.grams)).reduce((acc, val) => acc + val, 0)).reduce((acc, val) => acc + val, 0),
-                r: [...plan.meals, {products: new_meal.products}].filter(meal => !meal.is_sport).map(meal => meal.products.map(prod => bar(prod.r_100, prod.grams)).reduce((acc, val) => acc + val, 0)).reduce((acc, val) => acc + val, 0),
+                ...(!is_sport && {b: [...plan.meals, {products: new_meal.products}].filter(meal => !meal.is_sport).map(meal => meal.products.map(prod => bar(prod.b_100, prod.grams)).reduce((acc, val) => acc + val, 0)).reduce((acc, val) => acc + val, 0)}),
+                ...(!is_sport && {a: [...plan.meals, {products: new_meal.products}].filter(meal => !meal.is_sport).map(meal => meal.products.map(prod => bar(prod.a_100, prod.grams)).reduce((acc, val) => acc + val, 0)).reduce((acc, val) => acc + val, 0)}),
+                ...(!is_sport && {r: [...plan.meals, {products: new_meal.products}].filter(meal => !meal.is_sport).map(meal => meal.products.map(prod => bar(prod.r_100, prod.grams)).reduce((acc, val) => acc + val, 0)).reduce((acc, val) => acc + val, 0)}),
+
                 meals: [...plan.meals, (!is_sport ? {
                     id,
                     meal_id: new_meal.value,
@@ -87,13 +89,12 @@ const PlanaiPage = () => {
                     products: new_meal.products,
                     b: new_meal.products.map(prod => bar(prod.b_100, prod.grams)).reduce((acc, val) => acc + val, 0),
                     a: new_meal.products.map(prod => bar(prod.a_100, prod.grams)).reduce((acc, val) => acc + val, 0),
-                    r: new_meal.products.map(prod => bar(prod.r_100, prod.grams)).reduce((acc, val) => acc + val, 0),
-                    kcal: 0
+                    r: new_meal.products.map(prod => bar(prod.r_100, prod.grams)).reduce((acc, val) => acc + val, 0)
                 } : { 
                     id,
                     meal_id: new_meal.meal_id,
-                    meal_time_from: '00:00',
-                    meal_time_to: '00:00'
+                    meal_time: '00:00 - 00:00',
+                    products: []
                 })]
             } : plan)]));
             

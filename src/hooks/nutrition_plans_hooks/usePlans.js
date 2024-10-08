@@ -12,7 +12,6 @@ export const usePlans = (filters) => {
         const getData = async (signal) => {
             try {
                 const { data: { data } } = await axiosPrivate.get(`admin/plans${query}`, { signal });
-                
                 const calculatedPlans = data.map(plan => ({
                     ...plan, 
                     b: plan.meals.filter(meal => !meal.is_sport).map(meal => meal.b).reduce((acc, val) => acc + val, 0),

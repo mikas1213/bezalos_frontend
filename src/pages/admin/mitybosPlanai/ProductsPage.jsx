@@ -1,11 +1,12 @@
 import ProductRow, { ProductRowH } from '../../../components/admin/nutrition_plans/products/ProductRow';
 import useAxiosPrivate from '../../../hooks/useAxiosPrivate';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import Wrapper from './Wrapper';
 import Navbar from '../../../components/admin/nutrition_plans/Navbar';
 import AddProduct from '../../../components/admin/nutrition_plans/products/AddProduct';
 import SearchInput from '../../../components/admin/nutrition_plans/SearchInput';
 import { default as CategorySelect } from 'react-select';
+import { useProducts } from '../../../hooks/nutrition_plans_hooks/useProducts';
 import toast from 'react-hot-toast';
 
 const categoryOptions = [
@@ -64,8 +65,6 @@ const categorySelectStyles = {
 
 const ProductsPage = () => {
     const axiosPrivate = useAxiosPrivate();
-    const [products, setProducts] = useState([]);
-    const [isLoading, setIsLoading] = useState(true);
     const [categoryFilter, setCategoryFilter] = useState('');
     const [searchFilter, setSearchFilter] = useState('');
 
@@ -73,27 +72,11 @@ const ProductsPage = () => {
     const [isClickedDelete, setIsClickedDelete] = useState(false);
     const [clickedCell, setClickedCell] = useState({});
 
-    useEffect(() => {
+    let filters = {};
+    filters = categoryFilter ? {filter: categoryFilter} : filters;
+    filters = searchFilter ? {search: searchFilter} : filters;
 
-        let filters = {};
-        filters = categoryFilter ? {filter: categoryFilter} : filters;
-        filters = searchFilter ? {search: searchFilter} : filters;
-        
-        let queryString = Object.keys(filters).length ? '?' + new URLSearchParams(filters).toString() : '';
-        const getData = async (signal) => {
-            try {
-                const data = await axiosPrivate.get(`/admin/plans/products${queryString}`, { signal });
-                setProducts(data?.data?.data);
-                setIsLoading(false);
-            } catch (err) {
-                console.log(err);
-            }
-        }
-        const controller = new AbortController();
-        getData(controller.signal);
-        return () => controller.abort();
-
-    }, [axiosPrivate, categoryFilter, searchFilter]);
+    const {products, setProducts, isLoading} = useProducts(filters);
     
     const handleAddProduct = newProduct => {
         setProducts(prevState => [newProduct, ...prevState]);

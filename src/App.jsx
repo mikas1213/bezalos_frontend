@@ -36,6 +36,7 @@ const KlientaiPage = lazy(() => import('./pages/admin/KlientaiPage'));
 // import AdminLayout from './components/admin/layout/AdminLayout';
 // import KlientaiPage from './pages/admin/KlientaiPage';
 import MitybosPlanaiLayout from './pages/admin/mitybosPlanai/MitybosPlanaiLayout';
+import ManagePlanPage from './pages/admin/mitybosPlanai/ManagePlanPage';
 import PlanaiPage from './pages/admin/mitybosPlanai/PlanaiPage';
 import MealsPage from './pages/admin/mitybosPlanai/MealsPage';
 import ProductsPage from './pages/admin/mitybosPlanai/ProductsPage';
@@ -95,6 +96,7 @@ function App() {
                                         <Route index element={<KlientaiPage />} />
                                         <Route path='planai' element={<MitybosPlanaiLayout /> }>
                                             <Route index element={<PlanaiPage />} />
+                                            <Route path=':id' element={<ManagePlanPage />} />
                                             <Route path='valgiai' element={<MealsPage />} />
                                             <Route path='produktai' element={<ProductsPage />} />
                                         </Route>
@@ -103,6 +105,7 @@ function App() {
                                         <Route path='videos' element={<VideosPage />} />
                                         <Route path='mails' element={<MailsPage />} />
                                     </Route>
+                                    
                                 </Route>
 
                             </Route>

@@ -39,6 +39,7 @@
     display: flex;
     align-items: center;
     gap: 3.125vw;
+    user-select: none;
 }
 .senasBezalos {
     text-align: center;
@@ -196,6 +197,7 @@
         display: flex;
         padding: var(--content-padding-sm);
         flex-direction: column;
+        user-select: none;
     }
 
     .listItemMobile {

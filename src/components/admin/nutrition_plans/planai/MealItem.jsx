@@ -26,7 +26,7 @@ export const SportItem = ({ sport }) => {
     return (
         <div className={styles.sportItem}>
             <span>Sportas</span>
-            <span>{sport.meal_time_from} - {sport.meal_time_to}</span>
+            <span>{sport.meal_time_from}</span>
         </div>
     );
 };

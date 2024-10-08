@@ -20,7 +20,7 @@
     background-color: var(--color-bgr-light);
     animation: openModal 0.2s;
     border-radius: 1.5rem;
-    overflow: hidden;
+    overflow: scroll;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 

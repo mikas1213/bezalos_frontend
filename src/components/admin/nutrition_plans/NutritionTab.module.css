@@ -61,7 +61,7 @@
     height: 3rem;
 }
 .tabSwitch .tab.active {
-    color: #245D6B;
+    /* color: #245D6B; */
     color: #fff;
 }
 

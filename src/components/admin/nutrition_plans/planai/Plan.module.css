@@ -28,8 +28,17 @@
 }
 .vegaIcon:not(.vega):hover {color: #999; }
 .vega { color: #30c040; }
-/* .vega:hover { color: #00a020}  */
-
+.editIcon {
+    cursor: pointer;
+    color: #245D6B;
+    font-size: 1.38rem;
+    margin: 0 0.09rem 0 0.3rem;
+    stroke-width: 1.5px;
+    transition: color 0.1s ease-in-out;
+}
+.editIcon:hover {
+    color: #003A47;
+}
 .planHeader input {
     cursor: pointer;
     color: #444;

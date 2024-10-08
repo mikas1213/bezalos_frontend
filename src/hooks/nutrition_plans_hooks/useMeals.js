@@ -10,11 +10,13 @@ export const useMeals = (filters) => {
     let query = Object.keys(filters).length ? '?' + new URLSearchParams(filters).toString() : '';
 
     useEffect(() => {
+        
         const getData = async (signal) => {
             try {                
                 const sum = (acc, val) => acc + val;
+                
                 const { data } = await axiosPrivate.get(`/admin/plans/meals${query}`, { signal });
-
+                
                 const currentMeals = data ? data.map(meal => {
                     ['b', 'a', 'r'].forEach(char => {
                         meal.products.map(prod => prod[char] = bar(prod[`${char}_100`], prod.grams))
@@ -24,6 +26,7 @@ export const useMeals = (filters) => {
                 }) : [];
                 setMeals([...currentMeals]);
                 setIsLoading(false);
+                
             } catch (err) {
                 toast('Klaida! \n'+err.message);
             }
