@@ -70,8 +70,10 @@ const Plan = ({ plan, handlePlanEdit, handlePlanDelete, handleAddPlanMeal }) => 
         label: 'ieškoti...', value: 'ieškoti'
     });
     const [isMenuOpen, setIsMenuOpen] = useState('');
+
     const loadMealsOptions = (inputValue, callback) => {
-        // if(inputValue && inputValue.length > 2) {
+        
+        if(inputValue && inputValue.length > 2) {
             axiosPrivate.get(`/admin/plans/meals?search=${inputValue}`).then(response => {
                 const options = response.data.map(meal => ({
                     label: meal.title,
@@ -85,7 +87,7 @@ const Plan = ({ plan, handlePlanEdit, handlePlanDelete, handleAddPlanMeal }) => 
                 console.error('Error fetching data:', error);
                 callback([]);
             });
-        // }
+        }
     };
     
     const onAddNewMeal = e => {
@@ -148,7 +150,7 @@ const Plan = ({ plan, handlePlanEdit, handlePlanDelete, handleAddPlanMeal }) => 
                     loadOptions={loadMealsOptions} 
                     defaultOptions={false}
                     loadingMessage={() => null}
-                    menuIsOpen={isMenuOpen.length > 0}
+                    menuIsOpen={isMenuOpen.length > 2}
                     styles={customAddProdStyles}
                     onInputChange={setIsMenuOpen}
                     onChange={onAddNewMeal}

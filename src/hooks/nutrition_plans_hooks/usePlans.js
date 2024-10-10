@@ -11,13 +11,12 @@ export const usePlans = (filters) => {
     useEffect(() => {
         const getData = async (signal) => {
             try {
-                const { data: { data } } = await axiosPrivate.get(`admin/plans${query}`, { signal });
+                const { data } = await axiosPrivate.get(`admin/plans${query}`, { signal });
                 const calculatedPlans = data.map(plan => ({
                     ...plan, 
                     b: plan.meals.filter(meal => !meal.is_sport).map(meal => meal.b).reduce((acc, val) => acc + val, 0),
                     a: plan.meals.filter(meal => !meal.is_sport).map(meal => meal.a).reduce((acc, val) => acc + val, 0),
-                    r: plan.meals.filter(meal => !meal.is_sport).map(meal => meal.r).reduce((acc, val) => acc + val, 0),
-                    
+                    r: plan.meals.filter(meal => !meal.is_sport).map(meal => meal.r).reduce((acc, val) => acc + val, 0)
                 }));
                 
                 setPlans([...calculatedPlans]);

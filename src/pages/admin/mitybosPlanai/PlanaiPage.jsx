@@ -93,7 +93,7 @@ const PlanaiPage = () => {
                 } : { 
                     id,
                     meal_id: new_meal.meal_id,
-                    meal_time: '00:00 - 00:00',
+                    meal_time: '00:00',
                     products: []
                 })]
             } : plan)]));

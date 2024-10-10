@@ -5,15 +5,15 @@ export const useProducts = (filters) => {
     const axiosPrivate = useAxiosPrivate();
     const [products, setProducts] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
-    let query = Object.keys(filters).length ? '?' + new URLSearchParams(filters).toString() : '';
-
+    let query = Object.keys(filters).length && filters.search.length > 2 ? '?' + new URLSearchParams(filters).toString() : '';
+    
     useEffect(() => {
-        
         const getData = async (signal) => {
             try {
-                const data = await axiosPrivate.get(`/admin/plans/products${query}`, { signal });
-                setProducts(data?.data?.data);
+                const { data }  = await axiosPrivate.get(`/admin/plans/products${query}`, { signal });
+                setProducts(data);
                 setIsLoading(false);
+        
             } catch (err) {
                 console.log(err);
             }

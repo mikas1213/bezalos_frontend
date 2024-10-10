@@ -55,11 +55,10 @@ const MealsPage = () => {
     };
 
     const handleMealUpdate = async (meal_id, column, value) => {
-        // const index = meals.findIndex(v => v.id === meal_id);
-        // const currentMeals = [...meals];
-        // currentMeals[index][column] = value;
-        // setMeals([...currentMeals]);
-        setMeals(prevMeals => prevMeals.map(meal => meal.id === meal_id ? {...meal, [column]: value} : meal));
+        setMeals(prevMeals => prevMeals.map(meal => meal.id === meal_id 
+            ? {...meal, [column]: value} 
+            : meal
+        ));
         try {
             await axiosPrivate.patch('admin/plans/meals', {meal_id, column, value});
         } catch (err) {

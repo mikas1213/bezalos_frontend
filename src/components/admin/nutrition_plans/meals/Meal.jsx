@@ -191,10 +191,10 @@ const Meal = ({
         handleMealProductAdd({...new_prod, meal_id: meal.id})
     };
 
-    const loadNewProductOptions = (inputValue, callback) => {
+    const loadProductOptions = (inputValue, callback) => {
         if(inputValue && inputValue.length > 2) {
             axiosPrivate.get(`/admin/plans/products?search=${inputValue}`).then(response => {
-                const options = response.data.data.map(item => ({
+                const options = response.data.map(item => ({
                     label: item.title,
                     value: item.id,
                     b_100: +item.proteins,
@@ -257,7 +257,7 @@ const Meal = ({
                         cacheOptions
                         menuPosition='fixed'
                         isSearchable={true}
-                        loadOptions={loadNewProductOptions} 
+                        loadOptions={loadProductOptions} 
                         defaultOptions={false}
                         loadingMessage={() => null}
                         menuIsOpen={isMenuOpen.length > 2}

@@ -30,7 +30,6 @@ const Offer = ({ setIsShowOffer, setIsOfferSent, isOfferSent, setCookie }) => {
             });
         },
         onSuccess: () => {
-
             setCookie('COOKIE_OFFER', true, {path: '/'});
             setIsOfferSent(sent => !sent);
         },

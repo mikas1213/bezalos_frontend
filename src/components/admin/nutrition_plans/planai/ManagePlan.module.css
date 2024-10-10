@@ -3,7 +3,7 @@
     flex-direction: column;
     gap: 2rem;
     background-color: #fff;
-    border-radius: 30px;
+    border-radius: 25px;
 
     padding: 2rem;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
@@ -46,7 +46,7 @@
 }
 .meal {
     display: flex;
-    border-radius: 30px;
+    border-radius: 25px;
     background-color: var(--color-bgr-light);
 }
 
@@ -125,31 +125,66 @@ svg.intolerance {
 .prod {
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
 
 .prod input {
     color: var(--color-bgr-top);
     font-size: var(--font-size-h6);
     font-weight: 600;
-    width: 6rem;
+    width: 3.5rem;
     align-self: center;
+    text-align: start;
     border:none;
     outline: none;
-    border-radius: 50px;
-    padding: 0.1rem 1rem;
-    border: 1px solid var(--color-bgr-light);
-    background-color: var(--color-bgr-light);
+    padding-left: 0.9rem;
+    background: transparent;
     transition: all 0.15s ease-in-out;
 }
 
 .prod input:hover {
     cursor: pointer;
-    background-color: #d1d6cf77;
+}
+.deleteProdIcon {
+    display: flex;
+}
+.deletedProd {
+    opacity: 0;
+    transition: opacity 0.1s ease-in-out;
 }
 
-.prod input:focus {
-    border: 1px solid #d1d6cf;
+.icon {
+    cursor: pointer;
+    stroke: var(--color-radio);
+    stroke-width: 5px;
+    width: 1.5rem;
+    transition: stroke 0.15s ease-in-out;
+}
+.icon:hover {
+    stroke: var(--color-admin-red);
+}
+.grams {
+    cursor: pointer;
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    border-radius: 50px;
+    border: 1px solid var(--color-bgr-light);
+    transition: all 0.15s ease-in-out;
+}
+.grams:hover  {
     background-color: #d1d6cf77;
+    
+}
+.grams:has(input:focus) {
+    background-color: #d1d6cf77;
+    border: 1px solid #d1d6cf;
+}
+.grams span {
+    color: var(--color-bgr-top);
+    font-size: var(--font-size-h6);
+    font-weight: 600;
+    padding-right: 1rem;
 }
 
 .sport {
@@ -183,3 +218,4 @@ svg.intolerance {
     border: 1px solid #d1d6cf;
     background-color: #d1d6cf77;
 }
+

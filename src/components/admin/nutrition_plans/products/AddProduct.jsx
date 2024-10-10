@@ -96,7 +96,6 @@ const AddProduct = ({ handleAddProduct }) => {
         e.preventDefault();
           
         try {
-            console.log(formData)
             const data = await axiosPrivate.post('/admin/plans/products', formData);
             handleAddProduct({...formData, id: data.data.id});
             setFormData({});
