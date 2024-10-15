@@ -14,7 +14,7 @@ import { usePlans } from '../../../hooks/nutrition_plans_hooks/usePlans';
 import { bar } from '../../../utils/calculationsHelpers';
 
 const PlanaiPage = () => {
-
+    const localStoragePlanId = JSON.parse(localStorage.getItem('localPlan'))?.id;
     const mealsFiltersOptions = [
         {value: 4, label: '4 V'},
         {value: 5, label: '5 V'},
@@ -125,6 +125,7 @@ const PlanaiPage = () => {
                     handlePlanEdit={handlePlanEdit}
                     handlePlanDelete={handlePlanDelete}
                     handleAddPlanMeal={handleAddPlanMeal}
+                    localStoragePlanId={localStoragePlanId}
                 />)}
             </Wrapper>
         </>

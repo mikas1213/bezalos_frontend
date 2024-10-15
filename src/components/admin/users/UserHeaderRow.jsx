@@ -4,7 +4,7 @@ import { IoCloseCircle } from 'react-icons/io5';
 import { FaRegCopy } from 'react-icons/fa';
 import Filters from './Filters';
 
-const UserHeaderRow = ({ usersEmailsForCopy, setSearch, search, sort, setSort }) => {
+const UserHeaderRow = ({ usersEmailsForCopy, setSearch, search, sort, setSort, setCurrentPage }) => {
     return (    
         <div className={styles.headerRow}>
             <div className={styles.copyAllUsers} onClick={() => {navigator.clipboard.writeText(usersEmailsForCopy)}}>
@@ -15,7 +15,10 @@ const UserHeaderRow = ({ usersEmailsForCopy, setSearch, search, sort, setSort })
                     type='text' 
                     placeholder='Paieška'
                     value={search}
-                    onChange={e => setSearch(e.target.value.toLocaleLowerCase())}
+                    onChange={e => {
+                        setCurrentPage(1);
+                        setSearch(e.target.value.toLocaleLowerCase())
+                    }}
                 />
                 <IoCloseCircle className={styles.icon} onClick={() => setSearch('')} />
             </div>
@@ -38,7 +41,7 @@ const UserHeaderRow = ({ usersEmailsForCopy, setSearch, search, sort, setSort })
                 {sort.sort === 'ASC' ? <IoIosArrowRoundDown className={styles.icon} /> : <IoIosArrowRoundUp className={styles.icon} />}
             </button>
             
-            <Filters sort={sort} setSort={setSort} />
+            <Filters sort={sort} setSort={setSort} setCurrentPage={setCurrentPage} />
         </div>
     );
 }

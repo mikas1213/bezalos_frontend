@@ -1,12 +1,12 @@
 import styles from './Overlay.module.css';
-import { IoCloseSharp } from 'react-icons/io5';
+import { IoIosCloseCircleOutline } from 'react-icons/io';
 
 const Overlay = ({ children, handleSentOffer }) => {
 
     return (
         <div className={styles.overLay}>      
             <div className={styles.offerModal}>
-                <IoCloseSharp className={styles.icon} onClick={() => handleSentOffer()} />            
+                <IoIosCloseCircleOutline className={styles.icon} onClick={() => handleSentOffer()} />            
                 {children}
             </div>
         </div>

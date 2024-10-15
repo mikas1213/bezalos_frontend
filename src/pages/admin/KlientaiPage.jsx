@@ -1,11 +1,14 @@
-import { useState, useEffect } from 'react';
-import useAxiosPrivate from '../../hooks/useAxiosPrivate';
-import UsersContainer from '../../components/admin/users/UsersContainer';
+import { useState } from 'react';
+import { useUsers } from '../../hooks/useUsers';
 import UserRow from '../../components/admin/users/UserRow';
 import UserHeaderRow from '../../components/admin/users/UserHeaderRow';
+import Pagination from '../../components/admin/users/Pagination';
+import toast from 'react-hot-toast';
+import useAxiosPrivate from '../../hooks/useAxiosPrivate';
 
 const KlientaiPage = () => {
-    const [users, setUsers] = useState([]);
+    const axiosPrivate = useAxiosPrivate();
+    const [currentPage, setCurrentPage] = useState(1);
     const [search, setSearch] = useState('');
     const [sort, setSort] = useState({
         column: 's_subscription_expires',
@@ -14,58 +17,72 @@ const KlientaiPage = () => {
         month: false,
         maintenance: false
     });
-    
-    const [isLoading, setIsLoading] = useState(true);
-    const axiosPrivate = useAxiosPrivate();
+    const { users, setUsers, isLoading, totalPages } = useUsers(currentPage, search, sort);
 
-    useEffect(() => {
-        const getData = async () => {
+    const handleSubscriptionUpdate = async (user_id, value, stripe_type) => {
+        
+        setUsers(prevState => prevState.map(user => user.id === user_id ? {
+            ...user,
+            subscription_type: stripe_type ? 'Virtuvė' : value ? 'Virtuvė' : 'free',
+            subscription_expires: value
+        } : user));
+
+        try {
+            value ||= null;
+            await axiosPrivate.patch(`/admin/user/${user_id}`, {
+                value,
+                stripe_type,
+                column: 'subscription_expires'
+            });
             
-            try {
-                const data = await axiosPrivate.post('/admin/users', sort);
-                const changedUsers = [...data.data.users];
-                                
-                setUsers(changedUsers);
-                setIsLoading(false);
-            } catch (err) {
-                console.log(err);
-            }
+        } catch (err) {
+            toast.error('Klaida!', {
+                icon: <span style={{fontSize: '1.6rem'}}>😬</span>
+            });
         }
-        getData();
-    }, [sort, axiosPrivate]);
-
-    const searchFn = user => {
-        return user.email?.toLowerCase().indexOf(search) > -1 || 
-        user.stripe_username?.toLowerCase().indexOf(search) > -1 || 
-        user.name?.toLowerCase().indexOf(search) > -1 || 
-        user.last_activity?.toLowerCase()?.indexOf(search) > -1;
     };
 
-    const onChangeUsers = newUser => {
-
-        const currentUsers = [...users];
-        const currentUser = currentUsers.find(u => u.id === newUser.user_id);
-        const index = currentUsers.findIndex(u => u.id === newUser.user_id);
-        currentUsers[index] = {...currentUser, ...newUser};
-        
-        setUsers(currentUsers)
+    const handleUserUpdate = async (user_id, column, value) => {
+        setUsers(prevState => prevState.map(user => user.id === user_id ? {
+            ...user,
+            [column]: value
+        } : user));
+        try {
+            await axiosPrivate.patch(`/admin/user/${user_id}`, {
+                column, 
+                value: value === '' ? null : value
+            });
+        } catch (err) {
+            toast.error('Klaida!\n'+err.response.data.message, {
+                icon: <span style={{fontSize: '1.6rem'}}>😬</span>
+            });
+        }
     };
     
     return (
-        <UsersContainer>
+        <div style={{display: 'flex', flexDirection: 'column', gap: '0.5rem'}}>
             <UserHeaderRow  
                 setSearch={setSearch} 
                 search={search} 
                 sort={sort} 
                 setSort={setSort} 
+                setCurrentPage={setCurrentPage}
                 usersEmailsForCopy={users.map(user => user.email).join('\n')}
             />
-            {!isLoading && users.filter(searchFn).map(user => <UserRow 
+
+            {!isLoading && users.map(user => <UserRow 
                 key={user.id} 
                 user={user} 
-                onChangeUsers={onChangeUsers}
+                handleSubscriptionUpdate={handleSubscriptionUpdate}
+                handleUserUpdate={handleUserUpdate}
             />)}
-        </UsersContainer>
+
+            <Pagination 
+                setCurrentPage={setCurrentPage} 
+                currentPage={currentPage} 
+                totalPages={totalPages} 
+            />
+        </div>
     );
 };
 

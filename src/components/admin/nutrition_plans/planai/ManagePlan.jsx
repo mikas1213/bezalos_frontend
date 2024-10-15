@@ -118,6 +118,7 @@ const productStyles = {
 }
 
 const ManagePlan = ({ plan: currentPlan, setPlan: setCurrentPlan }) => {
+
     const axiosPrivate = useAxiosPrivate();
     const [mealTitle, setMealTitle] = useState('');
     const [prodTitle, setProdTitle] = useState('');
@@ -391,7 +392,7 @@ const ManagePlan = ({ plan: currentPlan, setPlan: setCurrentPlan }) => {
                 </div>
             )}
             <button onClick={() => {
-                 localStorage.removeItem('plan');
+                 localStorage.removeItem('localPlan');
             }}>Rest Local Storage</button>
         </div>
     );

@@ -5,6 +5,7 @@ import { DeleteX_icon } from '../../../../svg/icons';
 import { LuVegan } from 'react-icons/lu';
 import { SlSettings } from 'react-icons/sl';
 import { ImPlus } from 'react-icons/im';
+import { MdOutlineEditNote } from 'react-icons/md';
 import { default as AddPlanSelect } from 'react-select/async';
 import MealItem, { SportItem } from './MealItem';
 import { kcal } from '../../../../utils/calculationsHelpers';
@@ -62,7 +63,8 @@ const customAddProdStyles = {
     })
 }
 
-const Plan = ({ plan, handlePlanEdit, handlePlanDelete, handleAddPlanMeal }) => {
+const Plan = ({ plan, handlePlanEdit, handlePlanDelete, handleAddPlanMeal, localStoragePlanId }) => {
+    console.log(localStorage.getItem('localPlan'), JSON.stringify(plan))
     const navigate = useNavigate();
     const axiosPrivate = useAxiosPrivate();
     const [title, setTitle] = useState(plan.title);
@@ -120,6 +122,9 @@ const Plan = ({ plan, handlePlanEdit, handlePlanDelete, handleAddPlanMeal }) => 
                         onBlur={e => handlePlanEdit(plan.id, e.target.name, e.target.value)} 
                     />
                 </form>
+                {/* {localStoragePlanId === plan.id && <span className={styles.editedPlan}>
+                    <MdOutlineEditNote />    
+                </span>} */}
                 <span 
                     style={{display: 'flex'}}
                     onClick={() => navigate(`/admin/planai/${plan.id}`, { replace: false })}

@@ -1,6 +1,6 @@
 .userRow {
     display: grid;
-    grid-template-columns: 1.5fr repeat(3, 1fr);
+    grid-template-columns: 1.7fr repeat(4, 0.8fr);
     background-color: var(--color-bgr-light);
     background-color: white;
     align-items: center;
@@ -48,10 +48,6 @@
 .naryste :is(.Cancel_virtuve, .Cancel_profilis) { background-color: var(--color-admin-yellow) }
 .naryste :is(.Canceled_virtuve, .Canceled_profilis) { background-color: var(--color-admin-red) }
 
-
-
-/* #DAA520 */
-/* #F4C430 */
 .lastActivity {
     color: #999;
     font-size: var(--font-size-dynamic-small-1-lg);
@@ -81,6 +77,25 @@
     border-radius: 4px;
     padding: 0.1rem 0.4rem;
     font-size: var(--font-size-dynamic-small-2-lg);
+}
+
+.eats_calories {
+    cursor: pointer;
+    width: 6rem;
+    color: #999;
+    border: 1px solid #fff;
+    border-radius: 4px;
+    /* padding: 0 0.4rem; */
+    font-size: var(--font-size-dynamic-small-1-lg);
+    transition: all 0.15s ease-in-out;
+}
+.eats_calories:focus {
+    color: #999;
+    border: 1px solid #999;
+}
+.eats_calories:hover {
+    color: #999;
+    border: 1px solid #999;
 }
 
 .inputDate::-webkit-calendar-picker-indicator {
@@ -117,7 +132,7 @@
 
 @media only screen and (max-width: 1024px) {
     .userRow {
-        grid-template-columns: 2fr 1fr 1fr 1fr;
+        grid-template-columns: 2fr repeat(4, 1fr);
         column-gap: 0.5rem;
     }
 }

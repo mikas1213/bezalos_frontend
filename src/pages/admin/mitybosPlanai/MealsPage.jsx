@@ -46,7 +46,7 @@ const MealsPage = () => {
                 logic: '-',
                 products: [],
                 title: '-',
-                b: 0, a: 0, r:0
+                b: 0, a: 0, r: 0
             }, ...prevState]);
             
         } catch (err) {
@@ -150,6 +150,8 @@ const MealsPage = () => {
             toast.error('kažkas negerai 🤔');
         }
     };
+
+
 
     return (
         <>

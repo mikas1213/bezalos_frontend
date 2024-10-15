@@ -41,7 +41,7 @@
 
 .ikxBAC:hover {
     background-color: #c9cbcd;
-    transition-duration: 0s;
+    transition-duration: 0.15s;
 }
 
 .ikxBAC.week {
@@ -50,7 +50,18 @@
 .ikxBAC.month {
     background-color: #60c040;
 }
-
+.ikxBAC.eat {
+    background-color: #DC143C;
+}
+.ikxBAC.week:checked:hover {
+    background-color: #F59000;
+}
+.ikxBAC.month:checked:hover {
+    background-color: #4d9a33;
+}
+.ikxBAC.eat:checked:hover {
+    background-color: #A90109;
+} 
 .ikxBAC:checked::after {
     background-color: #fff;
     left: 13px;
@@ -60,9 +71,4 @@
     outline: 0;
 }
 
-.ikxBAC.week:checked:hover {
-    background-color: #F59000;
-}
-.ikxBAC.month:checked:hover {
-    background-color: #4d9a33;
-}
+

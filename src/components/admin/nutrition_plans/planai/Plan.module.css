@@ -39,6 +39,13 @@
 .editIcon:hover {
     color: #003A47;
 }
+.editedPlan {
+    display: flex;
+    /* height: 10px; */
+    /* background-color: red; */
+    color:#65cbe9; 
+    font-size: 1.8rem;
+}
 .planHeader input {
     cursor: pointer;
     color: #444;

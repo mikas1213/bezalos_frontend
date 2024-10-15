@@ -9,7 +9,6 @@ export const date_to_yyyy_mm_dd = (my_date) => {
 
 // For subscription date
 export const isTodayOrFiveDaysBefore = (date) => {
-    
     const date_before = new Date(date);
     date_before.setDate(date_before.getDate() - 5);
     const five_days_before = Date.parse(date_before.toLocaleString('lt-LT', {dateStyle: 'short'}));
@@ -24,11 +23,10 @@ export const isTodayOrFiveDaysBefore = (date) => {
     return setColor;
 };
 
-// For plano paruošimui / mitybą seka
+// plan_prepare / mitybą seka
 export const isTodayOrLater = (date) => {
-    
     const today = Date.parse(new Date().toLocaleString('lt-LT', {dateStyle: 'short'}));
-    const plan_prepare = Date.parse(date_to_yyyy_mm_dd(date));
+    const plan_prepare = Date.parse(date);
     return plan_prepare <= today ? 'colorDanger' : 'colorLight';
 };
 
