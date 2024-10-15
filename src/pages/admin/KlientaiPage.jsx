@@ -78,10 +78,12 @@ const KlientaiPage = () => {
             />)}
 
             <Pagination 
+                pagesLimit={5}
                 setCurrentPage={setCurrentPage} 
                 currentPage={currentPage} 
                 totalPages={totalPages} 
             />
+
         </div>
     );
 };

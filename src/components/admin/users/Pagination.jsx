@@ -1,9 +1,10 @@
 import styles from './Pagination.module.css';
 import { useState } from 'react';
+import { MdKeyboardDoubleArrowLeft, MdKeyboardDoubleArrowRight } from "react-icons/md";
 
-const Pagination = ({ setCurrentPage, currentPage, totalPages}) => {
-    const [pageNumberLimit] = useState(5);
-    const [maxPageNumberLimit, setMaxPageNumberLimit] = useState(5);
+const Pagination = ({ setCurrentPage, currentPage, totalPages, pagesLimit}) => {
+    const [pageNumberLimit] = useState(pagesLimit);
+    const [maxPageNumberLimit, setMaxPageNumberLimit] = useState(pagesLimit);
     const [minPageNumberLimit, setMinPageNumberLimit] = useState(0);
 
     const handlePrevPage = () => {
@@ -40,7 +41,8 @@ const Pagination = ({ setCurrentPage, currentPage, totalPages}) => {
                 <button
                     key={i}
                     onClick={() => handlePageClick(i)}
-                    disabled={i === currentPage}
+                    // disabled={i === currentPage}
+                    className={i === currentPage ? styles.activePage : ''}
                 >{i}</button>);
             }
         }
@@ -50,11 +52,12 @@ const Pagination = ({ setCurrentPage, currentPage, totalPages}) => {
     return (
         <div className={styles.pagination}>
             <button onClick={handlePrevPage} disabled={currentPage === 1}>
-                Previous Page
+                <MdKeyboardDoubleArrowLeft className={styles.icon} />
             </button>
             {renderPageNumbers()}
+            {/* {(totalPages > pagesLimit) && <button onClick={() => setCurrentPage(totalPages)}>{totalPages}</button>} */}
             <button onClick={handleNextPage} disabled={currentPage === totalPages}>
-                Next Page
+                <MdKeyboardDoubleArrowRight className={styles.icon} />
             </button>
         </div>
     );

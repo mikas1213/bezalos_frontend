@@ -158,9 +158,7 @@ const UserRow = ({
                         className={`${styles.inputDate} ${styles[isMaintenance(user.maintenance, user.maintenance_status).setClass]}`}
                         type='date' 
                         name='maintenance' 
-                        min='2024-01-01'                    
-                        // value={userData.maintenance}  
-                        // onChange={e => handleInputChange(e, user.id)}  
+                        min='2024-01-01'                     
                         value={user.maintenance || ''}
                         onChange={e => handleUserUpdate(user.id, e.target.name, e.target.value)}
                     />
@@ -170,8 +168,6 @@ const UserRow = ({
                     <select 
                         className={`${styles.statusSelect} ${styles.colorLight}`}
                         name='maintenance_status' 
-                        // value={userData.maintenance_status} 
-                        // onChange={e => handleInputChange(e, user.id)}
                         value={user.maintenance_status} 
                         onChange={e => handleUserUpdate(user.id, e.target.name, e.target.value)}
                     >
