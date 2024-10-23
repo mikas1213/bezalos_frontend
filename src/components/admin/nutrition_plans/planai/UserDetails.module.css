@@ -1,6 +1,18 @@
 .userDetais {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    align-items: center;
     border-radius: 25px;
     padding: 2rem;
     background-color: #fff;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+    width: 100%;
+}
+
+.userDetails {
+    align-self: start;
+    display: flex;
+    flex-direction: column;
+
 }

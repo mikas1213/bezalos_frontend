@@ -10,15 +10,15 @@
     color: var(--color-text-light);
 }
 .navHomeAndScroll {
-    background-color: var(--color-bgr-light);
+    background-color: var(--color-background);
     box-shadow: rgba(0, 0, 0, 0.05) 0px 0.5px 10px 0px;
 }
 .navNotHomeNotScroll {
-    background-color: var(--color-bgr-light);
+    background-color: var(--color-background);
     border-bottom: 0.5px solid #a7aba644;
 }
 .navNotHomeAndScroll {
-    background-color: var(--color-bgr-light);
+    background-color: var(--color-background);
     box-shadow: rgba(0, 0, 0, 0.05) 0px 0.5px 10px 0px;
     border-bottom: 0.5px solid #a7aba644;
 }
@@ -59,7 +59,7 @@
     display: none;
 }
 .navHomeNotScroll :is(.burgerTop, .burgerMiddle, .burgerBottom) {
-    border-bottom: 2px solid var(--color-bgr-light);
+    border-bottom: 2px solid var(--color-background);
 }
 :is(.navHomeAndScroll, .navNotHomeNotScroll, .navNotHomeAndScroll) 
 :is(.burgerTop, .burgerMiddle, .burgerBottom) {
@@ -90,30 +90,20 @@
     border: none;
     height: 2.5rem;
     font-size: var(--font-size-dynamic-h6-lg);
-    
-    /* border-radius: 10rem; */
-    /* border: 1px solid var(--color-text-light); */
-    /* color: var(--color-text-light); */
     color: var(--color-btn-primary);
     font-weight: 600;
     background-color: #00000000;
     transition: background 0.07s ease-out;
 }
 
-/* .navHomeNotScroll .loginBtn { box-shadow: 0px 10px 20px 5px rgba(0, 0, 0, 0.1); } */
 :is(.navHomeAndScroll, .navNotHomeNotScroll, .navNotHomeAndScroll) .loginBtn { 
-    /* border: 1px solid var(--color-text-dark); */
-    /* color: var(--color-text-dark); */
     color: var(--color-btn-secondary);
-    /* box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;  */
 }
 
 .navHomeNotScroll .loginBtn:hover { 
-    /* background-color: #ffffff33;  */
     color: var(--color-btn-secondary);
 }
 :is(.navHomeAndScroll, .navNotHomeNotScroll, .navNotHomeAndScroll) .loginBtn:hover {
-    /* background-color: #aaaaaa33; */
     color: var(--color-btn-primary);
 } 
 
@@ -121,7 +111,6 @@
     position: absolute;
     border-radius: 50px;
     margin-top: -2px;
-    /* margin-left: -2px; */
     height: 1.2px;
     width: 0px;
     transition: all 0.2s ease-in-out;
@@ -135,12 +124,10 @@
     cursor: pointer;
 }
 .listItem:hover .indicator {
-    /* width: calc(100% + 0px); */
     width: 100%;
     transition: all 0.2s ease-in-out;
 }
 :global(.active) ~ .indicator {
-    /* width: calc(100% + 0px); */
     width: 100%;
 }
 
@@ -164,9 +151,6 @@
     .senasBezalos {
         display: none;
     }
-    .senasBezalosLink {
-
-    }
     .hamburger {
         cursor: pointer;
         display: flex;
@@ -175,13 +159,10 @@
         align-items: center;
         position: relative;
     }
-    /* .navList { */
-        /* display: none; */
-    /* } */
     .navContainerMobile {
         display: flex;
-        overflow: hidden;;
-        background-color: var(--color-text-light); 
+        overflow: hidden;
+        background-color: var(--color-background); 
         border-top: 0px solid var(--color-bgr-top);
         transition: all 0.5s ease-in-out;
     }
@@ -211,9 +192,9 @@
     }
     
     .listItemMobile.active {
-        border-radius: 3rem;
-        background: var(--color-bgr-light);
-        box-shadow: inset 5px 5px 10px #d5d6d5, inset -5px -5px 10px #ffffff;            
+        border-radius: 2rem;
+        background: var(--color-background-secondary);
+        /* box-shadow: inset 5px 5px 10px #d5d6d5, inset -5px -5px 10px #ffffff;             */
     }
 
     .listItemMobile.active :is(span, a) {

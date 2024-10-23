@@ -33,12 +33,13 @@ const UserHeaderRow = ({ usersEmailsForCopy, setSearch, search, sort, setSort, s
                 <option value='subscription_expires'>Narystė galioja ranka</option>
                 <option value='s_subscription_expires'>Narystė galioja Stripe</option>
                 <option value='last_activity'>Prisijungta</option>
+                <option value='created_at'>Užsiregistravo</option>
                 <option value='plan_prepare'>Mitybą seka iki</option>
                 <option value='plan_assign'>Planas priskirtas</option>
                 <option value='subscription_type'>free</option>
             </select>
             <button onClick={() => setSort(prevState => ({...prevState, sort: prevState.sort === 'DESC'? 'ASC' : 'DESC'}))}>
-                {sort.sort === 'ASC' ? <IoIosArrowRoundDown className={styles.icon} /> : <IoIosArrowRoundUp className={styles.icon} />}
+                {sort.sort === 'DESC' ? <IoIosArrowRoundUp className={styles.icon} /> : <IoIosArrowRoundDown className={styles.icon} />}
             </button>
             
             <Filters sort={sort} setSort={setSort} setCurrentPage={setCurrentPage} />
@@ -47,3 +48,4 @@ const UserHeaderRow = ({ usersEmailsForCopy, setSearch, search, sort, setSort, s
 }
 
 export default UserHeaderRow;
+

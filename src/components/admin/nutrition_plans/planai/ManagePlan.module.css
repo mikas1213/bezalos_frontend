@@ -218,3 +218,18 @@ svg.intolerance {
     background-color: #d1d6cf77;
 }
 
+.assignPlanBtn {
+    border: none;
+    outline: none;
+    border-radius: 100px;
+    padding: 0.7rem 0;
+    font-size: var(--font-size-h5);
+    color: var(--color-bgr-top);
+    background-color: var(--color-bgr-light);
+    transition: all 0.15s ease-in-out;
+}
+
+.assignPlanBtn:hover {
+    background-color: var(--color-filter-btn);
+}
+

@@ -1,3 +1,7 @@
+body {
+    background-color: var(--color-background-secondary);
+}
+
 .mainContainer {
     max-width: 1440px;
     padding: 0 1rem;

@@ -1,0 +1,92 @@
+.availablePlans {
+    opacity: 0;
+    position: absolute;
+    z-index: 1;
+    top: 5.8rem;
+    left:1rem;
+    background-color: var(--color-background);
+    border: 1px solid #eee;
+    overflow: hidden;
+    width: calc(100% - 2rem);
+    border-radius: 0.75rem;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+    user-select: none;
+    transition: all 0.15s ease-in-out;
+}
+
+.open {
+    opacity: 1;
+}
+.open.icon {
+    transform: rotate(-90deg);
+    transition: all 0.15s ease-in-out;
+}
+
+.availablePlan {
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    padding: 0.4rem 0.8rem;
+    justify-content: center;
+}
+
+.availablePlan .title {
+    color: var(--color-bgr-top);
+    font-size: var(--font-size-p);
+    font-weight: 600;
+}
+
+.availablePlan .bar {
+    display: flex;
+    gap: 0.8rem;
+    color: var(--color-bgr-top);
+    font-weight: 500;
+    font-size: var(--font-size-small-2);
+}
+
+.availablePlan:hover {
+    background-color: var(--color-background-hover);
+}
+
+.planTitle {
+    position: relative;
+    cursor: pointer;
+    z-index: 0;
+    cursor: pointer;
+    padding: 0.8rem;
+    display: flex;
+    justify-content: space-between;
+    line-height: 145%;
+    align-items: center;
+    border-radius: 0.75rem;
+    background-color: var(--color-bgr-top);
+    transition: all 0.15s ease-in-out;
+    user-select: none;
+}
+.planTitle:hover {
+    background-color: #084747ee;
+}
+.planTitle .icon {
+    color: #fff;
+    font-size: 1.3rem;
+    transition: all 0.15s ease-in-out;
+}
+.planTitle div {
+    display: flex;
+    flex-direction: column;
+}
+.planTitle span:nth-child(1) {
+    color: #fff;
+    font-size: var(--font-size-h6);
+    font-weight: 600;
+}
+.planTitle span:nth-child(2) {
+    color: #bbb;
+    font-size: var(--font-size-small-1);
+}
+
+
+
+/* @media only screen and (max-width: 320px) {
+
+} */

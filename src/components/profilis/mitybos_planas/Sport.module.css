@@ -1,0 +1,18 @@
+.sport {
+    display: flex;
+    gap: 3rem;
+    justify-content: center;    
+    border-radius: 0.75rem;
+    padding: 0.3rem;
+}
+
+.sport span:nth-child(1) {
+    color: var(--color-bgr-top);
+    font-weight: 600;
+}
+
+.sport span:nth-child(2) {
+    color: #ccc;
+    color: var(--color-bgr-top);
+    font-weight: 600;
+}

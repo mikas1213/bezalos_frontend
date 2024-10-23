@@ -1,0 +1,66 @@
+.meal {
+    background-color: #fff;
+    border-radius: 0.75rem;
+}
+
+.mealInner {
+    cursor: pointer;
+    padding: 0.8rem;
+}
+
+.mealHeader {
+    display: flex;
+    align-items: center;
+}
+.titleContainer {
+    flex-grow: 1;
+}
+
+.timeLogic {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    line-height: 140%;
+    padding-right: 0.8rem;
+}
+
+.timeLogic span:nth-child(1) {
+    color: #999;
+    font-size: var(--font-size-h6);
+}
+
+.timeLogic span:nth-child(2) {
+    font-size: var(--font-size-p);
+    font-weight: 600;
+}
+.B_R .timeLogic span:nth-child(2) { color: var(--color-b); }
+.A_B .timeLogic span:nth-child(2) { color: var(--color-a); }
+.A_R .timeLogic span:nth-child(2) { color: var(--color-r); }
+
+.titleContainer {
+    display: flex;
+    flex-direction: column;
+    border-left: 1px solid #eee;
+    padding-left: 0.8rem;
+}
+.mealTitle {
+    color: var(--color-bgr-top);
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.bar {
+    display: flex;
+    gap: 1rem;
+    color: #999;
+    font-size: 0.9rem;
+}
+
+.mealHeader .icon {
+    color: var(--color-bgr-top);
+    transition: all 0.15s ease-in-out;
+}
+.meal.show .icon {
+    transform: rotate(-90deg);
+}

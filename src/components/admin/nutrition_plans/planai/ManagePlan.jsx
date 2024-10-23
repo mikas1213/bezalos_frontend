@@ -117,8 +117,8 @@ const productStyles = {
     })
 }
 
-const ManagePlan = ({ plan: currentPlan, setPlan: setCurrentPlan }) => {
-
+const ManagePlan = ({ plan: currentPlan, setPlan: setCurrentPlan, assignPlanToUser }) => {
+    
     const axiosPrivate = useAxiosPrivate();
     const [mealTitle, setMealTitle] = useState('');
     const [prodTitle, setProdTitle] = useState('');
@@ -160,6 +160,7 @@ const ManagePlan = ({ plan: currentPlan, setPlan: setCurrentPlan }) => {
                 b: mealProdBarSum(e.products, 'b_100'),
                 a: mealProdBarSum(e.products, 'a_100'),
                 r: mealProdBarSum(e.products, 'r_100'),
+                kcal: 100,
                 products: e.products
             } : meal)
         }));
@@ -341,7 +342,6 @@ const ManagePlan = ({ plan: currentPlan, setPlan: setCurrentPlan }) => {
 
                                 {meal.intolerance === 'gluten_free' && <LuWheatOff className={styles.intolerance}/>}
                                 {meal.intolerance === 'lactose_free' && <LuMilkOff className={styles.intolerance}/>}
-
                             </div>
 
                             <div className={styles.bar}>
@@ -391,9 +391,12 @@ const ManagePlan = ({ plan: currentPlan, setPlan: setCurrentPlan }) => {
                     }))}/>
                 </div>
             )}
-            <button onClick={() => {
-                 localStorage.removeItem('localPlan');
-            }}>Rest Local Storage</button>
+            <button
+                className={styles.assignPlanBtn}
+                onClick={() => {
+                    localStorage.removeItem('localPlan');
+                    assignPlanToUser();
+            }}>Priskirti</button>
         </div>
     );
 };

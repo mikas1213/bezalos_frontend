@@ -14,7 +14,8 @@ export const useManagePlan = (plan_id) => {
                 ...data, 
                 b: data.meals.filter(meal => !meal.is_sport).map(meal => meal.b).reduce((acc, val) => acc + val, 0),
                 a: data.meals.filter(meal => !meal.is_sport).map(meal => meal.a).reduce((acc, val) => acc + val, 0),
-                r: data.meals.filter(meal => !meal.is_sport).map(meal => meal.r).reduce((acc, val) => acc + val, 0)
+                r: data.meals.filter(meal => !meal.is_sport).map(meal => meal.r).reduce((acc, val) => acc + val, 0),
+                kcal: data.meals.filter(meal => !meal.is_sport).map(meal => meal.kcal).reduce((acc, val) => acc + val, 0)
             }
             setPlan(currentPlan);
         } catch (err) {

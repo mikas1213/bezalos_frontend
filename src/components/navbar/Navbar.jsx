@@ -10,8 +10,7 @@ import Authentication from '../auth/Authentication';
 import useAuth from '../../hooks/useAuth';
 import useLogout from '../../hooks/useLogout';
 
-            
-
+        
 // ICONS
 // https://www.svgrepo.com/collection/solar-broken-line-icons
 

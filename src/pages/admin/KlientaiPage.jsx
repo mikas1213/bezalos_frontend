@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useUsers } from '../../hooks/useUsers';
+import { useUsers } from '../../hooks/nutrition_plans_hooks/useUsers';
 import UserRow from '../../components/admin/users/UserRow';
 import UserHeaderRow from '../../components/admin/users/UserHeaderRow';
 import Pagination from '../../components/admin/users/Pagination';
@@ -78,7 +78,7 @@ const KlientaiPage = () => {
             />)}
 
             <Pagination 
-                pagesLimit={5}
+                pagesLimit={7}
                 setCurrentPage={setCurrentPage} 
                 currentPage={currentPage} 
                 totalPages={totalPages} 

@@ -1,0 +1,25 @@
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.kcalNum {
+    font-size: 2rem;
+    font-weight: 600;
+    fill: var(--color-bgr-top);
+    animation: fadeIn 1.2s ease-in-out;
+}
+
+.bar {
+    font-size: 0.9rem;
+    font-weight: 600;
+    animation: fadeIn 1.6s ease-in-out;
+};
+
+
+  
+  

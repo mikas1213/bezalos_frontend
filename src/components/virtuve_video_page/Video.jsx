@@ -89,6 +89,7 @@ const Video = ({ user_id, user_name, video, comments, onToggleLikes, onAddVideoC
                             {desctList.map((listItem, i) => <li key={i}>{listItem}</li>)}
                         </div>
                     </div>
+                    
                     <span 
                         className={styles.showMore} 
                         onClick={() => setShowMore(show => !show)}>

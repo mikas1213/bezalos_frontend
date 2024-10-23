@@ -19,7 +19,13 @@ const HomePage = lazy(() => import('./pages/HomePage'));
 const VirtuveVideoPage = lazy(() => import('./pages/VirtuveVideoPage'));
 const ReceptaiPage = lazy(() => import('./pages/ReceptaiPage'));
 const PaslaugosPage = lazy(() => import('./pages/PaslaugosPage'));
-const ProfilisPage = lazy(() => import('./pages/ProfilisPage'));
+import ProfilisPageLayout from'./pages/profilisPages/ProfilisPageLayout';
+import UserPlansPage from './pages/profilisPages/UserPlansPage';
+import AnketaPage from './pages/profilisPages/AnketaPage';
+import ProduktuKeitimasPage from './pages/profilisPages/ProduktuKeitimasPage';
+import ManoReceptaiPage from './pages/profilisPages/ManoReceptaiPage';
+import StatistikaPage from './pages/profilisPages/StatistikaPage';
+import NustatymaiPage from './pages/profilisPages/NustatymaiPage';
 const UpdatePasswordPage = lazy(() => import('./pages/UpdatePasswordPage'));
 const NotFoundPage = lazy(() => import('./pages/NotFoundPages/NotFoundPage'));
 const NeedSubscription = lazy(() => import('./pages/SubscriptionPages/NeedSubscription'));
@@ -83,9 +89,13 @@ function App() {
                                 
                                 <Route element={<RequireAuth allowedRoles={[1213, 2324]}/> }>
                                     <Route path='/virtuve/:video' element={<VirtuveVideoPage />} />
-                                    <Route path='/profilis' element={<ProfilisPage /> }>
-                                        {/* <Route index element={<Users />} /> */}
-                                        {/* <Route path='maistas' element={<Food />} /> */}
+                                    <Route path='/profilis' element={<ProfilisPageLayout /> }>
+                                        <Route index element={<UserPlansPage />} />
+                                        <Route path='anketa' element={<AnketaPage />} />
+                                        <Route path='produktu-keitimas' element={<ProduktuKeitimasPage />}/>
+                                        <Route path='mano-receptai' element={<ManoReceptaiPage />} />
+                                        <Route path='statistika' element={<StatistikaPage />} />
+                                        <Route path='nustatymai' element={<NustatymaiPage /> } />
                                     </Route>
                                     <Route path='/apmoketa-sekmingai' element={<SuccessSubscription /> }/>
                                     <Route path='/mokejimo-klaida' element={<CancelSubscription /> }/>
@@ -148,6 +158,7 @@ function App() {
                         // width: '25vw',
                         // maxWidth: '80vw',
                         // padding: '12px 24px',
+                        // padding: 0,
                         // backgroundColor: 'var(--color-bgr-light)',
                         color: 'var(--color-text-dark)'
                     }

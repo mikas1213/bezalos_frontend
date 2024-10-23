@@ -1,5 +1,6 @@
 .main { 
     padding-top: var(--nav-height-80); 
+    background-color: var(--color-background);
 }
 
 @media only screen and (max-width: 576px) {

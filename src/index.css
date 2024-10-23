@@ -1,10 +1,18 @@
 :root {
     /* Colors CMD + k + g */
+    --color-background: #fff;
+    --color-background-secondary: #eff1ef;
+    --color-background-hover: #cdd1cb;
+                                
+
+    
     --color-bgr-light: #eff1ef;
-    --color-bgr-tab: #f7f7f7;
+    --color-bgr-tab: #f1f5fa;
     --color-bgr-card: #d1d6cf;
     --color-bgr-top: #084747;
+                        
     --color-bgr-bottom: #082b1d;
+
     --color-text-light: #eff1ef;
     --color-text-light-88: #eff1ef88;
     --color-text-light-aa: #eff1efaa;
@@ -23,18 +31,10 @@
     --color-filter-btn: #d9ddd7;
     --color-filter-btn-hover: #cdd1cb;
 
-/*    green: {
-        100: "#dff2d9",
-        200: "#bfe6b3",
-        300: "#a0d98c",
-        400: "#80cd66",
-        500: "#60c040",
-        600: "#4d9a33",
-        700: "#3a7326",
-        800: "#264d1a",
-        900: "#13260d"
-}*/
-
+    --color-b: #245D6B;
+    --color-a: #30c040; 
+    --color-r: #ec9f11; 
+    
     /* Main Sizes */
     /* Units converter */
     /* https://cssunitconverter.vercel.app/rem-to-vw */
@@ -117,7 +117,7 @@ html {
 }
 
 body {
-    background-color: var(--color-bgr-light);
+    background-color: var(--color-background);
     overflow-x: hidden;
 }
 

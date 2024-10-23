@@ -1,0 +1,71 @@
+.profileNavbar {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    display: flex; 
+    justify-content: center;
+    gap: 1rem;
+    overflow-y: scroll;
+    -ms-overflow-style: none; 
+    scrollbar-width: none;  
+}
+.profileNavbar::-webkit-scrollbar {
+    display: none; 
+} 
+
+.profileNavbar a {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    padding: 0.3rem 0.8rem;
+    font-size: 0.9rem;
+    border-radius: 50px;
+    text-wrap: nowrap;
+    font-weight: 600;
+    color: var(--color-bgr-top);
+    /* background-color: var(--color-filter-btn); */
+    background-color: var(--color-background-secondary);
+    transition: all 0.15s ease-in-out;
+}
+
+.profileNavbar a:hover:not(.active) {
+    background-color: var(--color-filter-btn-hover);
+}
+
+.profileNavbar .active {
+    color: var(--color-text-light);
+    background-color: var(--color-bgr-top);
+}
+
+.icon {
+    font-size: 1.1rem;
+}
+
+.anketa_icon {
+    font-size: 1.3rem;
+}
+@media only screen and (max-width: 1024px) {
+    .profileNavbar {
+        justify-content: start; 
+    }
+}
+
+@media only screen and (max-width: 375px) {
+    .profileNavbar {
+        gap: 0.8rem;
+    }
+}
+@media only screen and (max-width: 320px) {
+    .profileNavbar {
+        gap: 0.4rem;
+    }
+    .profileNavbar a {
+        font-size: 0.75rem;
+        padding: 0.28rem 0.7rem;
+    }
+    .icon {
+        font-size: 0.9rem;
+    }
+    .anketa_icon {
+        font-size: 1rem;
+    }
+}
