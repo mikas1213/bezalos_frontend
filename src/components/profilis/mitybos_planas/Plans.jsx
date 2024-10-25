@@ -18,7 +18,7 @@ import Sport from './Sport';
 */
 
 
-const Plans = ({ plans }) => {
+const Plans = ({ plans, is_subscription }) => {
     const [selectedPlan, setSelectedPlan] = useState(plans[0]);
     return (
         <div className={styles.plans}>
@@ -37,6 +37,7 @@ const Plans = ({ plans }) => {
                     {selectedPlan.meals.map(meal => !meal.is_sport ? <Meal 
                         key={meal.id}
                         meal={meal}
+                        is_subscription={is_subscription}
                     /> : <Sport key={meal.id} meal={meal} />)}
                 </div>
             </div>

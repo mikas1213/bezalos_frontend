@@ -7,16 +7,18 @@ import { jwtDecode } from "jwt-decode";
 import useAuth  from '../../hooks/useAuth';
 
 const ProfilisPageLayout = () => {
-
+    document.body.style.backgroundColor = '#fff';
     const { auth } = useAuth();
-    const { user_id } = jwtDecode(auth.accessToken);
+    const { user_id, user_s_subscription, user_subscription } = jwtDecode(auth.accessToken);
+    
+    const is_subscription = user_s_subscription || user_subscription;
     return (
         <>
             <Navbar />
             <Main>          
                 <Container>
                     <ProfileNavbar />
-                    <Outlet context={{ user_id }} />
+                    <Outlet context={{ user_id, is_subscription }} />
                 </Container>      
             </Main>
         </>

@@ -4,7 +4,6 @@ import { IoIosSearch } from "react-icons/io";
 import { useSearchParams } from 'react-router-dom';
 
 const Filters = ({ searchItem }) => {
-    console.log(searchItem)
     const inputVal = useRef();
     const [searchParams, setSearchParams] = useSearchParams();
 

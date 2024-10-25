@@ -11,13 +11,8 @@
     border-radius: 0.75rem;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
     user-select: none;
-    transition: all 0.15s ease-in-out;
-    animation: fadeIn 0.15s ease-in-out;
 }
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
+
 .open {
     display: block;
 }
@@ -28,7 +23,6 @@
 
 .planTitle {
     position: relative;
-    cursor: pointer;
     z-index: 0;
     padding: 0.8rem;
     display: flex;
@@ -37,12 +31,11 @@
     align-items: center;
     border-radius: 0.75rem;
     background-color: var(--color-bgr-top);
+    background-color: #ccc;
     transition: all 0.15s ease-in-out;
     user-select: none;
 }
-.planTitle:hover {
-    background-color: #084747ee;
-}
+
 .planTitle .icon {
     color: #fff;
     font-size: 1.3rem;
@@ -58,7 +51,7 @@
     font-weight: 600;
 }
 .planTitle span:nth-child(2) {
-    color: #bbb;
+    color: #999;
     font-size: var(--font-size-small-1);
 }
 
@@ -85,12 +78,9 @@
     font-size: var(--font-size-small-1);
 }
 
-.availablePlan:hover {
-    background-color: var(--color-background-hover);
-}
+
 .activePlan {
     background-color: #245D6B20;
-    /* border: 1px solid #245D6B20; */
 }
 .activePlan .title {
     color: #245D6B;

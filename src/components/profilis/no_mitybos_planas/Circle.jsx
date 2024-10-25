@@ -1,19 +1,9 @@
-/*
-    auto: The default value, which lets the browser choose the most appropriate baseline1
-    use-script: Aligns the text according to the script of the first character.
-    no-change: Keeps the current alignment without any changes.
-    central: Centers the text vertically.
-    middle: Aligns the text to the middle of the text's height.
-    alphabetic: Aligns the text to the alphabetic baseline (the baseline used for most letters).
-    hanging: Aligns the text to the hanging baseline (used for characters like "j" or "g").
-    text-before-edge: Aligns the text to the top of the text's height.
-    text-after-edge: Aligns the text to the bottom of the text's height.
-*/
+
 import styles from './Circle.module.css';
 import { PieChart, Pie, Cell, ResponsiveContainer } from 'recharts';
 import { useState, useEffect } from 'react';
 
-const Circle = ({ plan }) => {
+const Circle = () => {
     const [circle, setCircle] = useState({ inner: 92, outer: 105, bar_space: 15, dy: 22,  height: 290 });
     
     useEffect(() => {
@@ -42,9 +32,9 @@ const Circle = ({ plan }) => {
 
 
     const data = [
-        { id: 'b', value: +plan.b, color: '#245D6B' },
-        { id: 'a', value: +plan.a, color: '#30c040' },
-        { id: 'r', value: +plan.r, color: '#ec9f11' },
+        { id: 'b', value: 15, color: '#4E4E4E77' },
+        { id: 'a', value: 30, color: '#65656577' },
+        { id: 'r', value: 25, color: '#89898977' },
     ];
 
     return (
@@ -73,16 +63,16 @@ const Circle = ({ plan }) => {
                         className={styles.kcalNum}
                         textAnchor='middle' 
                     >
-                        {plan.kcal}
+                        {0}
                         <tspan >kcal</tspan>
                     </text>
 
                     <text x={'50%'} y={'50%'} dy={circle.dy} className={styles.bar} 
                         textAnchor='middle' 
                     >
-                        <tspan fill='var(--color-b)'>B {plan.b}</tspan>
-                        <tspan dx={circle.bar_space} fill='var(--color-a)'>A {plan.a}</tspan>
-                        <tspan dx={circle.bar_space} fill='var(--color-r)'>R {plan.r}</tspan>
+                        <tspan fill='#4E4E4E77'>B {0}</tspan>
+                        <tspan dx={circle.bar_space} fill='#65656577'>A {0}</tspan>
+                        <tspan dx={circle.bar_space} fill='#89898977'>R {0}</tspan>
                     </text>
                 </PieChart>
             </ResponsiveContainer>

@@ -4,7 +4,6 @@
 }
 
 .mealInner {
-    cursor: pointer;
     padding: 0.8rem 0;
 }
 
@@ -27,7 +26,7 @@
 }
 
 .timeLogic span:nth-child(1) {
-    color: #999;
+    color: #aaa;
     font-size: var(--font-size-h6);
     justify-self: center;
 }
@@ -36,17 +35,21 @@
     font-size: var(--font-size-p);
     font-weight: 600;
 }
-.B_R .timeLogic span:nth-child(2) { color: var(--color-b); }
-.A_B .timeLogic span:nth-child(2) { color: var(--color-a); }
-.A_R .timeLogic span:nth-child(2) { color: var(--color-r); }
+.B_R { color: #4E4E4E77; }
+.A_B { color: #65656577; }
+.A_R { color: #89898977; }
 
+
+.timeLogic {
+    color: #ccc;
+}
 .titleContainer {
     display: flex;
     flex-direction: column;
     border-left: 1px solid #eee;
 }
 .mealTitle {
-    color: var(--color-bgr-top);
+    color: #ccc;
     font-size: 1.1rem;
     font-weight: 600;
 }
@@ -54,17 +57,13 @@
 .bar {
     display: flex;
     gap: 1rem;
-    color: #999;
+    color: #aaa;
     font-size: 0.9rem;
 }
 
 .mealHeader .icon {
-    color: var(--color-bgr-top);
-    transition: all 0.15s ease-in-out;
+    color: #aaa;
     justify-self: center;
-}
-.meal.show .icon {
-    transform: rotate(-90deg);
 }
 @media only screen and (max-width: 430px) {
     .mealTitle {
@@ -82,12 +81,10 @@
         line-height: 120%;
     }
     .timeLogic span:nth-child(1) {
-        /* font-size: var(--font-size-h6); */
         font-size: 18px;
     }
     
     .timeLogic span:nth-child(2) {
-        /* font-size: var(--font-size-p); */
         font-size: 14px;
     }
 
