@@ -114,12 +114,6 @@
 @media only screen and (max-width: 375px) {
     .cardBottom {
         gap: clamp(0rem, 4.267vw, 1rem);
-        /* padding: clamp(0rem, 2.778vw, 1rem); */
-    }
-    .duration {
-        /* padding: 0.1rem 0.5rem; */
-        /* font-size: var(--font-size-dynamic-p-sm); */
-
     }
     .title {
         font-size: var(--font-size-dynamic-h4-sm);

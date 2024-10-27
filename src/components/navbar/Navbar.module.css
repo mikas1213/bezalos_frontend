@@ -194,7 +194,6 @@
     .listItemMobile.active {
         border-radius: 2rem;
         background: var(--color-background-secondary);
-        /* box-shadow: inset 5px 5px 10px #d5d6d5, inset -5px -5px 10px #ffffff;             */
     }
 
     .listItemMobile.active :is(span, a) {

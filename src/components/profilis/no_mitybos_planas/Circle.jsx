@@ -50,8 +50,7 @@ const Circle = () => {
                         cornerRadius={10}
                         paddingAngle={5} 
                         dataKey='value'
-                        animationBegin={100}
-                        animationDuration={800}
+                        isAnimationActive={false}
                     >
                         {data.map(bar => (
                             <Cell key={`cell-${bar.id}`} fill={bar.color} />

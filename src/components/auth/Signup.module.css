@@ -188,7 +188,6 @@ input:checked + .check:after {
 .bottom {
     display: flex;
     justify-content: center;
-    /* margin-bottom: 2rem; */
 }
 
 .bottom button {
@@ -259,16 +258,12 @@ input:checked + .check:after {
     .inputs {
         gap: clamp(0rem, 2.977vw, 0.8rem);
         flex-shrink: 0;
-        /* width: clamp(0rem, 78.14vw, 30rem); */
         width: 100%;
-        /* flex: 1; */
     }
     .inputGroup {
         padding: 0;
     }
     .inputGroup input {
-        /* width: clamp(0rem, 78.14vw, 30rem); */
-        /* width: 100%; */
         line-height: clamp(0rem, 12.651vw, 3.4rem);
         font-size: var(--font-size-dynamic-h6-sm);
         padding: 0 clamp(0rem, 10.419vw, 2.8rem);

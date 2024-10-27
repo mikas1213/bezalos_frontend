@@ -1,7 +1,23 @@
+.assignPlanBtn {
+    border: none;
+    outline: none;
+    width: 350px;
+    border-radius: 100px;
+    padding: 0.4rem 0;
+    font-size: var(--font-size-h6);
+    color: var(--color-bgr-top);
+    background-color: var(--color-bgr-light);
+    transition: all 0.15s ease-in-out;
+}
+
+.assignPlanBtn:hover {
+    background-color: var(--color-filter-btn);
+}
+
 .userDetais {
     display: flex;
     flex-direction: column;
-    gap: 3rem;
+    gap: 1rem;
     align-items: center;
     border-radius: 25px;
     padding: 2rem;
@@ -14,5 +30,4 @@
     align-self: start;
     display: flex;
     flex-direction: column;
-
 }

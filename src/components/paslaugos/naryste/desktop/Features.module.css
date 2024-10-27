@@ -14,7 +14,6 @@
 }
 .feature div:nth-child(1) span {
     color: var(--color-radio-border);
-    /* font-weight: 500; */
 }
 .feature div:nth-child(2) {
     align-self: center;

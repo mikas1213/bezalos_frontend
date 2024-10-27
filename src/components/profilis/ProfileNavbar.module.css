@@ -22,7 +22,6 @@
     text-wrap: nowrap;
     font-weight: 600;
     color: var(--color-bgr-top);
-    /* background-color: var(--color-filter-btn); */
     background-color: var(--color-background-secondary);
     transition: all 0.15s ease-in-out;
 }

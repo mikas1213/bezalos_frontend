@@ -3,11 +3,9 @@ import useAxiosPrivate from '../../../../hooks/useAxiosPrivate';
 import { default as UsersSelect } from 'react-select/async';
 import { useState } from 'react';
 
-
 const customUsersLoadStyles = {
     container: (provider) => ({
-        ...provider,
-        // width: '100%'
+        ...provider
     }),
     control: (provider, state) => ({
         ...provider,
@@ -19,8 +17,6 @@ const customUsersLoadStyles = {
         },
         boxShadow: state.isFocused ? '#245D6B' : '#ddd',
         borderColor: state.isFocused ? '#245D6B' : '#ddd',
-        // fontSize: 12,
-        
         minHeight: 0,
         width: 350,
         height: 75,
@@ -69,7 +65,7 @@ const customUsersLoadStyles = {
     })
 }
 
-const UserDetails = ({ user, setUser }) => {
+const UserDetails = ({ user, setUser, assignPlanToUser }) => {
     const axiosPrivate = useAxiosPrivate();
     const [isMenuOpen, setIsMenuOpen] = useState('');
     const [userDetails, setUserDetails] = useState({});
@@ -126,6 +122,13 @@ const UserDetails = ({ user, setUser }) => {
                 onChange={onHandleChange}
                 value={user}
             />
+
+            <button
+                className={styles.assignPlanBtn}
+                onClick={() => {
+                    localStorage.removeItem('localPlan');
+                    assignPlanToUser();
+            }}>Priskirti</button>
 
             <div className={styles.userDetails}>
                 <span>Vardas: {userDetails.name}</span>

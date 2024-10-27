@@ -2,7 +2,6 @@
     height: calc(100dvh - var(--nav-height-80));
     display: grid;
     place-items: center;
-    /* height: 100dvh; */
 }
 .successSubscriptionContent {
     display: flex;

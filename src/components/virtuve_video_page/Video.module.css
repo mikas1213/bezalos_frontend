@@ -17,14 +17,6 @@
     border-top-right-radius: 1rem;
 }
 
-/* .video video:not(.gydytojaiCover) {
-    background-image: url('../../assets/images/virtuve/video_cover.webp');
-}
-.video video.gydytojaiCover {
-    background-image: url('../../assets/images/virtuve/policistiniu-kiausidziu-sindromas.webp'); 
-} */
-
-
 .cardBottom {
     display: flex;
     flex-direction: column;
@@ -109,7 +101,6 @@
     font-size: var(--font-size-dynamic-h6-lg);
 }
 .writeComment {
-    /* margin-bottom: clamp(0rem, 3.125vw, 2rem); */
     display: flex;
     gap: clamp(0rem, 1.563vw, 1rem);
 }
@@ -203,7 +194,6 @@ input ~ button .icon.active path {
         padding: clamp(0rem, 2.778vw, 1rem) clamp(0rem, 2.778vw, 1rem) 0;
     }
     .writeComment {
-        /* margin-bottom: clamp(0rem, 5.556vw, 2rem); */
         gap: clamp(0rem, 2.778vw, 1rem);
     }
     .commentsCount {

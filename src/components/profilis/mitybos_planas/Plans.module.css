@@ -35,12 +35,14 @@
 }
 
 @media only screen and (max-width: 375px) {
-    .meals {
-        gap: 0.7rem;
-    }
     .plans {
         padding: 0.7rem;
     }
+
+    .meals {
+        gap: 0.7rem;
+    }
+
     .overlay {
         width: 480px;
         height: 345px;
@@ -48,6 +50,9 @@
 }
 
 @media only screen and (max-width: 320px) {
+    .plans {
+        background-color: red;
+    }
     .overlay {
         width: 390px;
         height: 295px;

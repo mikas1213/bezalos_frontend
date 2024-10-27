@@ -12,7 +12,7 @@ const ManagePlanPage = () => {
     const axiosPrivate = useAxiosPrivate();
     const [user, setUser] = useState({label: 'Paieška...', value: ''});
     const { plan, setPlan, isLoading } = useManagePlan(params.id);
-    
+
     const handleSumbit = async () => {
         try {
             if(!user.value) throw new Error('Nepasirinktas klientas!');
@@ -59,8 +59,8 @@ const ManagePlanPage = () => {
             gap: '1rem'
         }}>
             {isLoading && <Spinner />}
-            {!isLoading && <ManagePlan plan={plan} setPlan={setPlan} assignPlanToUser={assignPlanToUser} />}
-            <UserDetails setUser={setUser} user={user} />
+            {!isLoading && <ManagePlan plan={plan} setPlan={setPlan} />}
+            <UserDetails setUser={setUser} user={user} assignPlanToUser={assignPlanToUser}  />
             
         </div>
     );

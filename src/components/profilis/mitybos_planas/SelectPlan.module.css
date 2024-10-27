@@ -90,7 +90,6 @@
 }
 .activePlan {
     background-color: #245D6B20;
-    /* border: 1px solid #245D6B20; */
 }
 .activePlan .title {
     color: #245D6B;
@@ -117,10 +116,6 @@
     .availablePlan .title {
         font-size: var(--font-size-p);
     }
-    
-    /* .availablePlan .bar {
-        font-size: var(--font-size-small-1);
-    } */
 }
 
 @media only screen and (max-width: 320px) {

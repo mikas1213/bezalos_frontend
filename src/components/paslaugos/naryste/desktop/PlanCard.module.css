@@ -35,8 +35,6 @@
 }
 .mark {
     position: relative;
-    /* background: #082b1d20; */
-    /* border: 1px solid #082b1d30; */
     border: 1px solid #082b1d2a;
     display: flex;
     justify-content: center;
@@ -49,11 +47,6 @@
 .mark::after {
     content: ' ';
     position: absolute;
-    /* background-color: #082b1d20; */
-    /* background-color: var(--color-text-light); */
-    /* width: 1rem; */
-    /* height: 1rem; */
-    /* height: 100%; */
     width: 0.8rem;
     height: 0.8rem;
     border-radius: 10rem;

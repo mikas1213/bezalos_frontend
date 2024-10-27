@@ -82,12 +82,10 @@
         line-height: 120%;
     }
     .timeLogic span:nth-child(1) {
-        /* font-size: var(--font-size-h6); */
         font-size: 18px;
     }
     
     .timeLogic span:nth-child(2) {
-        /* font-size: var(--font-size-p); */
         font-size: 14px;
     }
 

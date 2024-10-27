@@ -33,10 +33,6 @@ const categorySelectStyles = {
         minHeight: '0px',
         minWidth: '165px',
         width: '100%'
-        // '@media only screen and (max-width: 375px)': {
-        //     ...baseStyles['@media only screen and (max-width: 375px)'],
-        //     fontSize: '4.5rem',
-        // },
     }),
     option:(provided, state) => ({
         ...provided,
@@ -116,9 +112,9 @@ const ProductsPage = () => {
                     styles={categorySelectStyles} 
                     isSearchable={false}
                     placeholder='Kategorija'
-                    onChange={e => setCategoryFilter(e.value)}
+                    onChange={e => {setCategoryFilter(e.value); setSearchFilter('')}}
                 />
-                <SearchInput onChangeValue={setSearchFilter} />
+                <SearchInput onChangeValue={setSearchFilter} setCategoryFilter={setCategoryFilter} />
             </Navbar>
 
             <Wrapper layout='products'>

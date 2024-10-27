@@ -8,6 +8,7 @@ import { LuWheatOff, LuMilkOff } from 'react-icons/lu';
 import { DeleteBin_icon } from '../../../../svg/icons';
 import { bar, mealProdBarSum } from '../../../../utils/calculationsHelpers';
 
+
 const mealStyles = {
     container: (provider) => ({
         ...provider,
@@ -117,8 +118,8 @@ const productStyles = {
     })
 }
 
-const ManagePlan = ({ plan: currentPlan, setPlan: setCurrentPlan, assignPlanToUser }) => {
-    
+const ManagePlan = ({ plan: currentPlan, setPlan: setCurrentPlan}) => {
+
     const axiosPrivate = useAxiosPrivate();
     const [mealTitle, setMealTitle] = useState('');
     const [prodTitle, setProdTitle] = useState('');
@@ -129,22 +130,16 @@ const ManagePlan = ({ plan: currentPlan, setPlan: setCurrentPlan, assignPlanToUs
         setCurrentPlan(prevState => ({
             ...prevState,
             b: prevState.meals.filter(meal => !meal.is_sport).map(meal => meal.id === m_id 
-                // ? e.products.map(prod => bar(prod.b_100, prod.grams)).reduce((acc, val) => acc + val, 0)
-                // : meal.products.map(prod => bar(prod.b_100, prod.grams)).reduce((acc, val) => acc + val, 0)
                 ? mealProdBarSum(e.products, 'b_100')
                 : mealProdBarSum(meal.products, 'b_100')
             ).reduce((acc, val) => acc + val, 0),
 
             a: prevState.meals.filter(meal => !meal.is_sport).map(meal => meal.id === m_id 
-                // ? e.products.map(prod => bar(prod.a_100, prod.grams)).reduce((acc, val) => acc + val, 0)
-                // : meal.products.map(prod => bar(prod.a_100, prod.grams)).reduce((acc, val) => acc + val, 0)
                 ? mealProdBarSum(e.products, 'a_100')
                 : mealProdBarSum(meal.products, 'a_100')
             ).reduce((acc, val) => acc + val, 0),
 
             r: prevState.meals.filter(meal => !meal.is_sport).map(meal => meal.id === m_id 
-                // ? e.products.map(prod => bar(prod.r_100, prod.grams)).reduce((acc, val) => acc + val, 0)
-                // : meal.products.map(prod => bar(prod.r_100, prod.grams)).reduce((acc, val) => acc + val, 0)
                 ? mealProdBarSum(e.products, 'r_100')
                 : mealProdBarSum(meal.products, 'r_100')
             ).reduce((acc, val) => acc + val, 0),
@@ -154,9 +149,6 @@ const ManagePlan = ({ plan: currentPlan, setPlan: setCurrentPlan, assignPlanToUs
                 title: e.label,
                 logic: e.logic,
                 intolerance: e.intolerance,
-                // b: e.products.map(prod => bar(prod.b_100, prod.grams)).reduce((acc, val) => acc + val, 0),
-                // a: e.products.map(prod => bar(prod.a_100, prod.grams)).reduce((acc, val) => acc + val, 0),
-                // r: e.products.map(prod => bar(prod.r_100, prod.grams)).reduce((acc, val) => acc + val, 0),
                 b: mealProdBarSum(e.products, 'b_100'),
                 a: mealProdBarSum(e.products, 'a_100'),
                 r: mealProdBarSum(e.products, 'r_100'),
@@ -189,6 +181,8 @@ const ManagePlan = ({ plan: currentPlan, setPlan: setCurrentPlan, assignPlanToUs
                 products: meal.products.map(prod => prod.id === p_id ? {
                     ...prod,
                     title: e.label,
+                    category: e.category,
+                    sub_category: e.sub_category,
                     b_100: e.b_100,
                     a_100: e.a_100,
                     r_100: e.r_100
@@ -276,11 +270,15 @@ const ManagePlan = ({ plan: currentPlan, setPlan: setCurrentPlan, assignPlanToUs
                 const options = data.map(item => ({
                     label: item.title,
                     value: item.id,
+                        // jei renkiesi valg5
                     ...(type === 'meals' ? {
                         logic: item.logic,
                         intolerance: item.intolerance,
                         products: item.products
                     } : {
+                        // jei renkiesi produktą
+                        category: item.category,
+                        sub_category: item.sub_category,
                         b_100: +item.proteins,
                         a_100: +item.carbs,
                         r_100: +item.fat
@@ -391,12 +389,6 @@ const ManagePlan = ({ plan: currentPlan, setPlan: setCurrentPlan, assignPlanToUs
                     }))}/>
                 </div>
             )}
-            <button
-                className={styles.assignPlanBtn}
-                onClick={() => {
-                    localStorage.removeItem('localPlan');
-                    assignPlanToUser();
-            }}>Priskirti</button>
         </div>
     );
 };

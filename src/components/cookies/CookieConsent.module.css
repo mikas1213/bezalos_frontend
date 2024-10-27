@@ -54,7 +54,6 @@
 }
 .btn button:hover {
     background: #082b1d55;
-    /* color: var(--color-text-light); */
 }
 
 .remove {
@@ -126,7 +125,6 @@
         text-align: center;
         font-size: var(--font-size-p);
         font-size: var(--font-size-small-1);
-        /* margin-top: 1.2rem; */
     }
     .paragraph p {
         text-align: center;
@@ -205,7 +203,6 @@
 @media only screen and (max-width: 320px) {
     .cookieConsentContainer { 
         padding: 0.5rem;
-        /* gap: 0.5rem; */
     }
     .img {
         width: 4rem;

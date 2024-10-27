@@ -48,9 +48,7 @@
         gap: var(--content-padding-xs);
     }
 
-    @media only screen and (max-width: 375px) {
-        .filters div {
-            padding: 0.4rem var(--content-padding-xs);
-        }
+    .filters div {
+        padding: 0.4rem var(--content-padding-xs);
     }
 }

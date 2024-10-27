@@ -41,10 +41,6 @@ const customStyles = {
         minHeight: '0px',
         width: '165px',
         '&placeholder': {color: 'red'}
-        // '@media only screen and (max-width: 375px)': {
-        //     ...baseStyles['@media only screen and (max-width: 375px)'],
-        //     fontSize: '4.5rem',
-        // },
     }),
     singleValue: (provided) =>({
         ...provided,

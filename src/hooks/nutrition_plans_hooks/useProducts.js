@@ -5,7 +5,7 @@ export const useProducts = (filters) => {
     const axiosPrivate = useAxiosPrivate();
     const [products, setProducts] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
-    let query = Object.keys(filters).length && filters.search.length > 2 ? '?' + new URLSearchParams(filters).toString() : '';
+    let query = Object.keys(filters).length || (filters.search && filters.search.length > 2) ? '?' + new URLSearchParams(filters).toString() : '';
     
     useEffect(() => {
         const getData = async (signal) => {

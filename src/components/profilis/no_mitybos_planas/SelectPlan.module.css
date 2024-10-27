@@ -107,10 +107,6 @@
     .availablePlan .title {
         font-size: var(--font-size-p);
     }
-    
-    /* .availablePlan .bar {
-        font-size: var(--font-size-small-1);
-    } */
 }
 
 @media only screen and (max-width: 320px) {

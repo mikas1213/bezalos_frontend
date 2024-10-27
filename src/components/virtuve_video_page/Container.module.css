@@ -3,11 +3,9 @@
     padding-left: var(--content-padding-lg); 
     padding-right: 1rem;
     margin: 0 auto 5rem;
-
     display: grid;
     grid-template-columns: 2fr 1fr;
     grid-template-rows: auto;
-    /* margin-bottom: 20dvh; */
 }
 
 @media only screen and (max-width: 576px) {

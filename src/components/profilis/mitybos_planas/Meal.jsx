@@ -19,6 +19,7 @@ const Meal = ({ meal, is_subscription }) => {
                             <span>B {meal.b}</span>
                             <span>A {meal.a}</span>
                             <span>R {meal.r}</span>
+                            <span>Kcal {meal.kcal}</span>
                         </div>
                     </div>
                     <IoIosArrowBack className={styles.icon}/>
