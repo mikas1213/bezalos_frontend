@@ -1,4 +1,5 @@
 .products {
+    position: relative;
     display: grid;
     grid-template-rows: 0fr;
     transition: grid-template-rows 0.2s ease-in-out;
@@ -18,6 +19,7 @@
     border-top: 1px solid #eee;
 }
 .prodContainer .product {
+    
     display: grid;
     grid-template-columns: 5rem 8fr 3.5rem;
 }

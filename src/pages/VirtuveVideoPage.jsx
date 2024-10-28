@@ -19,7 +19,7 @@ const VirtuveVideoPage = () => {
     const { auth }  = useAuth();
     let loggedUser = {};
     if(auth.accessToken) loggedUser = jwtDecode(auth?.accessToken);
-    
+
     const { user_id = '', user_name = ''} = loggedUser;
     const params = useParams();
     const [video, setVideo] = useState();

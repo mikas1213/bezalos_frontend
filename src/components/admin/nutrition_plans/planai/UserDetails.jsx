@@ -9,8 +9,8 @@ const customUsersLoadStyles = {
     }),
     control: (provider, state) => ({
         ...provider,
-        borderRadius: 50,
-        borderWidth: '2px',
+        borderRadius: 20,
+        borderWidth: '1px',
         '&:hover': { cursor: 'pointer', 
             borderColor: !state.isFocused ? '#ccc' : '#245D6B', 
             boxShadow: !state.isFocused ? '#ccc' : '#245D6B'
@@ -19,26 +19,26 @@ const customUsersLoadStyles = {
         borderColor: state.isFocused ? '#245D6B' : '#ddd',
         minHeight: 0,
         width: 350,
-        height: 75,
-        paddingRight: 12,
-        paddingLeft: 12
+        // height: 65,
+        // paddingRight: 12,
+        // paddingLeft: 12
     }),
     valueContainer: (provider) => ({
         ...provider,
         minHeight: 0,
-        height: 65
+        height: 60
     }),
     singleValue: (provider) =>({
         ...provider,
         color: '#999',
         minHeight: 0,
-        fontSize: 24
+        fontSize: 18
     }),
     input: (provider) => ({
         ...provider,
         minHeight: 0,
         color: '#999',
-        fontSize: 24
+        fontSize: 18
     }),
     placeholder: (provided) => ({
         ...provided,
@@ -76,7 +76,7 @@ const UserDetails = ({ user, setUser, assignPlanToUser }) => {
                 const resp = await axiosPrivate.get(`/admin/users?search=${inputValue}`);
                 const options = resp.data.map(user => ({
                     label: (<div style={{display: 'flex', flexDirection: 'column', gap: '0.1rem'}}>
-                        <span style={{color: '#999', fontSize: '1.2rem'}}>{user.stripe_username}</span>
+                        <span style={{color: '#999', fontSize: '1rem'}}>{user.stripe_username || user.name}</span>
                         <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'end'}}>
                             <span style={{fontWeight: '700', fontSize: '0.9rem'}}>{user.email}</span>
                             <span style={{fontSize: '12px'}}>({user.name})</span>

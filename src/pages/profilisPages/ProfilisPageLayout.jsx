@@ -3,7 +3,7 @@ import Main from '../../components/UI/Main';
 import Container from '../../components/UI/Container';
 import ProfileNavbar from '../../components/profilis/ProfileNavbar';
 import { Outlet } from 'react-router-dom';
-import { jwtDecode } from "jwt-decode";
+import { jwtDecode } from 'jwt-decode';
 import useAuth  from '../../hooks/useAuth';
 
 const ProfilisPageLayout = () => {

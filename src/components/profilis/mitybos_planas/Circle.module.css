@@ -22,11 +22,6 @@
     font-weight: 600;
     animation: fadeIn 1.6s ease-in-out;
 }
-
-@media only screen and (max-width: 375px) {
-
-}
-
 @media only screen and (max-width: 320px) {
     .kcalNum {
         font-size: 1.5rem;

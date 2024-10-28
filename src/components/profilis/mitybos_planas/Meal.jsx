@@ -3,11 +3,11 @@ import { useState } from 'react';
 import { IoIosArrowBack } from 'react-icons/io';
 import Products from './Products';
 
-const Meal = ({ meal, is_subscription }) => {
+const Meal = ({ meal, is_subscription, onChangeProduct, setIsShowChageProdList, setClickedProd, clickedProd }) => {
     const [isShowProd, setIsShowProd] = useState(false);
     return (
         <div className={`${styles.meal} ${styles[meal.logic?.replace('+', '_')]} ${isShowProd ? styles.show : ''}`}>
-            <div className={styles.mealInner} onClick={() => setIsShowProd(on => !on)}>
+            <div className={styles.mealInner} onClick={() => {setIsShowProd(on => !on); setIsShowChageProdList(false)}}>
                 <div className={styles.mealHeader}>
                     <div className={styles.timeLogic}>
                         <span>{meal.meal_time}</span>
@@ -26,7 +26,14 @@ const Meal = ({ meal, is_subscription }) => {
                 </div>
             </div>
 
-            <Products isShowProd={isShowProd} meal={meal} is_subscription={is_subscription} />
+            <Products 
+                isShowProd={isShowProd} 
+                meal={meal} 
+                onChangeProduct={onChangeProduct}
+                is_subscription={is_subscription} 
+                setClickedProd={setClickedProd}
+                clickedProd={clickedProd}
+            />
         </div>
     );
 };

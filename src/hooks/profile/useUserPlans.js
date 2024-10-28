@@ -1,4 +1,4 @@
-import useAxiosPrivate from './useAxiosPrivate';
+import useAxiosPrivate from '../useAxiosPrivate';
 import { useState, useEffect } from 'react';
 import toast from 'react-hot-toast';
 
@@ -10,7 +10,7 @@ export const useUserPlans = (user_id) => {
     useEffect(() => {
         const getData = async () => {
             try {
-                const { data } = await axiosPrivate.get(`/profile?id=${user_id}`);
+                const { data } = await axiosPrivate.get(`/profile/plans?id=${user_id}`);
                 setPlans(data);
                 setIsLoading(false);
             } catch (err) {
