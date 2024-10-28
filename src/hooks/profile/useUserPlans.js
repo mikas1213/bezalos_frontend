@@ -5,6 +5,7 @@ import toast from 'react-hot-toast';
 export const useUserPlans = (user_id) => {
     const axiosPrivate = useAxiosPrivate();
     const [plans, setPlans] = useState([]);
+    const [selectedPlan, setSelectedPlan] = useState(plans[0]);
     const [isLoading, setIsLoading] = useState(true);
     
     useEffect(() => {
@@ -12,6 +13,7 @@ export const useUserPlans = (user_id) => {
             try {
                 const { data } = await axiosPrivate.get(`/profile/plans?id=${user_id}`);
                 setPlans(data);
+                setSelectedPlan(data[0] || null)
                 setIsLoading(false);
             } catch (err) {
                 toast.error('Klaida!\n'+err.response.data.message);
@@ -21,5 +23,5 @@ export const useUserPlans = (user_id) => {
         getData();
     }, [axiosPrivate, user_id]);
 
-    return { plans, setPlans, isLoading}
+    return { plans, selectedPlan, setPlans, setSelectedPlan, isLoading}
 };

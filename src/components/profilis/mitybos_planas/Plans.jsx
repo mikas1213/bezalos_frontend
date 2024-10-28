@@ -1,13 +1,12 @@
 import styles from './Plans.module.css';
-import { useState } from 'react';
 import SelectPlan from './SelectPlan';
 import Circle from './Circle';
 import Meal from './Meal';
 import Sport from './Sport';
 import ChangeProductList from './ChangeProductList';
+import InfoSubscribe from './InfoSubscribe';
 
-const Plans = ({ plans, is_subscription, onChangeProduct, topPosition, isShowChageProdList, setIsShowChageProdList, setClickedProd, clickedProd, filteredProducts }) => {
-    const [selectedPlan, setSelectedPlan] = useState(plans[0]);
+const Plans = ({ plans, selectedPlan, setSelectedPlan, is_subscription, onChangeProduct, onUpdateProduct, topPosition, isShowChageProdList, setIsShowChageProdList, setClickedProd, clickedProd, filteredProducts }) => {
 
     return (
         <div className={styles.plans}>
@@ -33,7 +32,14 @@ const Plans = ({ plans, is_subscription, onChangeProduct, topPosition, isShowCha
                     /> : <Sport key={meal.id} meal={meal} />)}
                 </div>
             </div>
-            {isShowChageProdList && <ChangeProductList key={Date.now()} top={topPosition} filteredProducts={filteredProducts} />}
+            {is_subscription ? isShowChageProdList && <ChangeProductList 
+                key={Date.now()} 
+                top={topPosition} 
+                onUpdateProduct={onUpdateProduct}
+                setIsShowChageProdList={setIsShowChageProdList}
+                filteredProducts={filteredProducts} 
+            /> : isShowChageProdList && <InfoSubscribe setIsShowChageProdList={setIsShowChageProdList} />
+            }
         </div>
     );
 };

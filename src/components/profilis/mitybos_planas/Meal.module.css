@@ -99,3 +99,8 @@
         font-size: var(--font-size-small-1);
     }
 }
+@media only screen and (max-width: 320px) {
+    .bar {
+        font-size: var(--font-size-small-2);
+    }
+}

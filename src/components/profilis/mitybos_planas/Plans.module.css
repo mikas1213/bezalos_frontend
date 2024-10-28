@@ -35,6 +35,9 @@
 }
 
 @media only screen and (max-width: 430px) {
+    .plans {
+        width: 100%;
+    }
     .overlay {
         width: 490px;
         height: 390px;
@@ -42,15 +45,12 @@
 }
 
 @media only screen and (max-width: 375px) {
-    /* .plans {
-        padding: 0.7rem;
-    } */
     .planHeader {     
-        padding: 0.7rem;
+        padding: 0.6rem;
     }
 
     .meals {
-        gap: 0.7rem;
+        gap: 0.6rem;
     }
 
     .overlay {

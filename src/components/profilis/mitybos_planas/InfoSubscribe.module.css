@@ -1,0 +1,65 @@
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    backdrop-filter: blur(1px);
+    background: #f0f0f077;
+    animation: openModalOverlay 0.2s;
+}
+
+.info {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    width: 18rem;
+    top: calc(var(--nav-height-80) + 50%);
+    transform: translate(-50%, -50%);
+    left: 50%;
+    border-radius: 1.2rem;
+    background-color: #fff;
+
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.infoText {
+    color: #555;
+    text-align: center;
+    padding: 1.5rem 0.5rem;
+    border-bottom: 0.5px solid #ccc;
+}
+.btn {
+    color: #555;
+    cursor: pointer;
+    text-align: center;
+    font-weight: 600;
+    padding: 0.5rem 0.5rem;
+    transition: all 0.15s ease-in-out;
+}
+.btn:hover {
+    color: var(--color-bgr-top);
+}
+
+@media only screen and (max-width: 320px) {
+    .info {
+        width: 14rem;
+    }
+    .infoText {
+        padding: 1.5rem 0.8rem;
+    }
+    .btn {
+        font-size: 0.9rem;
+    }
+}
+
+@keyframes openModalOverlay {
+    from {
+        opacity: 0;
+        backdrop-filter:  blur(0px);
+    }
+    to {
+        opacity: 1;
+        backdrop-filter:  blur(3px);
+    } 
+}

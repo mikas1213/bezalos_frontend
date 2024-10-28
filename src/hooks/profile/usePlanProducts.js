@@ -12,7 +12,7 @@ export const usePlanProducts = (is_subscription) => {
         let isMounted = true;
         const getData = async () => {
             try {
-                if (isMounted && is_subscription) {
+                if (isMounted/*&& is_subscription*/) {
                     const { data } = await axiosPrivate.get(`/profile/products`);
                     setProdList(data);
                     setIsLoading(false);
