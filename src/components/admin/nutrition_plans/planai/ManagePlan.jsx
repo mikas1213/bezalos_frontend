@@ -12,7 +12,7 @@ import { bar, mealProdBarSum } from '../../../../utils/calculationsHelpers';
 const mealStyles = {
     container: (provider) => ({
         ...provider,
-        width: '100%'
+        // width: '50%'
     }),
     control: (provider, state) => ({
         ...provider,
@@ -26,15 +26,24 @@ const mealStyles = {
             boxShadow: !state.isFocused ? 'var(--color-bgr-card)' : 'var(--color-radio-border)'
         },
         transition: 'all 0.15s ease-in-out',
-        width: 400,
+        width: 400, 
         minHeight: 0,
-        height: '2.6rem'
+        height: '2.6rem',
+        '@media only screen and (max-width: 576px)': {
+            width: 'clamp(0rem, 50vw, 18rem)',
+            height: 'clamp(0rem, 6.944vw, 2.5rem)',
+        },
     }),
     valueContainer: (provider) => ({
         ...provider,
         minHeight: 0,
         height: '2.6rem',
         fontSize: 'var(--font-size-h5)',
+        '@media only screen and (max-width: 576px)': {
+            fontSize: 'var(--font-size-dynamic-h4-sm)',
+            fontWeight: '500',
+            height: 'clamp(0rem, 6.944vw, 2.5rem)',
+        },
     }),
     singleValue: (provider) =>({
         ...provider,
@@ -296,7 +305,6 @@ const ManagePlan = ({ plan: currentPlan, setPlan: setCurrentPlan}) => {
             <div className={styles.title}>
                 <input type='text' 
                     value={currentPlan.title} 
-                    onFocus={(e) => e.target.value = ''}
                     onBlur={(e) => e.target.value = e.target.value.length > 0 ? e.target.value : currentPlan.title}
                     onChange={e => setCurrentPlan(prevState => ({...prevState, title: e.target.value}))}
                 />

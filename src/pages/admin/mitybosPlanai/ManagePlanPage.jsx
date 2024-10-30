@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useManagePlan } from '../../../hooks/nutrition_plans_hooks/useManagePlan';
 import ManagePlan from '../../../components/admin/nutrition_plans/planai/ManagePlan';
@@ -12,6 +12,26 @@ const ManagePlanPage = () => {
     const axiosPrivate = useAxiosPrivate();
     const [user, setUser] = useState({label: 'Paieška...', value: ''});
     const { plan, setPlan, isLoading } = useManagePlan(params.id);
+    const [flexDirection, setFlexDirection] = useState('row');
+
+    useEffect(() => {
+        document.body.style.overflowX = 'auto';
+        const mediaQuery_576 = window.matchMedia('(max-width: 576px)');
+        const applyMediaQueryStyles = () => {
+            if (mediaQuery_576.matches) {
+                setFlexDirection('column');
+            } else {
+                setFlexDirection('row');
+            }
+        }
+        mediaQuery_576.addEventListener('change', applyMediaQueryStyles);
+        applyMediaQueryStyles();
+
+        return () => {
+            mediaQuery_576.removeEventListener('change', applyMediaQueryStyles);
+            document.body.style.overflowX = 'hidden';
+        };      
+    }, []);
 
     const handleSumbit = async () => {
         try {
@@ -55,13 +75,13 @@ const ManagePlanPage = () => {
     return (
         <div style={{
             display: 'flex',
+            flexDirection: flexDirection,
             marginTop: '1rem',
             gap: '1rem'
         }}>
             {isLoading && <Spinner />}
             {!isLoading && <ManagePlan plan={plan} setPlan={setPlan} />}
             <UserDetails setUser={setUser} user={user} assignPlanToUser={assignPlanToUser}  />
-            
         </div>
     );
 };

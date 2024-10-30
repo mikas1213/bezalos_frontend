@@ -1,0 +1,23 @@
+.radioFilters {
+    display: flex;
+    gap: 0.5rem;
+    user-select: none;
+}
+
+.radioLabel {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    border-radius: 5px;
+    height: 2rem;
+    padding: 0 0.5rem;
+    transition: all 0.15s ease-in-out;
+}
+
+@media only screen and (max-width: 576px) {
+    .radioLabel {
+        text-wrap: nowrap;
+        font-size: 0.8rem;
+        font-weight: 600;
+    }
+}

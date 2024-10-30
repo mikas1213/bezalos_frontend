@@ -1,40 +1,13 @@
-import { useState } from 'react';
+import styles from './AddNewBtn.module.css';
 
-const divStyle = {
-    marginLeft: '0.5rem',
-    cursor: 'pointer',
-    display: 'flex',
-    gap: '0.4rem',
-    justifyContent: 'center',
-    alignItems: 'center',
-    padding: '0.25rem 0.8rem',
-    paddingRight: '1.05rem',
-    height: '2rem',
-    fontSize: '0.8rem',
-    border: 'none',
-    borderRadius: '5px',
-    transition: 'all 0.1s ease-in-out',
-};
-
-
-export const AddNewBtn = ({ label, Icon, fontSize = '1rem', onHandleClick }) => {
-    const [isHover, setIsHover] = useState(false);
+export const AddNewBtn = ({ label, Icon, onHandleClick }) => {
 
     return (
         <div 
-            style={{
-                ...divStyle, 
-                color: isHover ? '#fefefe' : '#fff',
-                backgroundColor: isHover ? '#245D6Bee' : '#245D6B'
-            }}
+            className={styles.addNewBtn}
             onClick={onHandleClick}
-            onMouseEnter={() => setIsHover(true)}
-            onMouseLeave={() => setIsHover(false)}
         >
-            <Icon style={{
-                color: '#fff',
-                fontSize
-            }} />
+            <Icon className={styles.icon} />
             <span>{ label }</span>
         </div>
     );

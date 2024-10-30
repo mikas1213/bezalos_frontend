@@ -18,8 +18,8 @@ const ProfilisPageLayout = () => {
             <Main>          
                 <Container>
                     <ProfileNavbar />
-                    <Outlet context={{ user_id, is_subscription }} />
                 </Container>      
+                <Outlet context={{ user_id, is_subscription }} />
             </Main>
         </>
     );

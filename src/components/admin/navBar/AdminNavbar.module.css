@@ -20,9 +20,7 @@
     border-radius: 10rem;
     font-size: 0.7rem;
     font-weight: 500;
-
     background-color: var(--color-text-dark);
-    /* color: var(--color-text-light); */
     color: white
 }
 .active .notification {
@@ -62,12 +60,6 @@
 }
 
 
-/* @media only screen and (max-width: 768px) {
-    .adminNav {
-
-    }
-
-    .adminNav::-webkit-scrollbar { 
-
-    }
-} */
+@media only screen and (max-width: 375px) {
+    
+}

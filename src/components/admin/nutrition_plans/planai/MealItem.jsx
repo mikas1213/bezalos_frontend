@@ -21,7 +21,6 @@ const MealItem = ({ meal }) => {
 
 export default MealItem;
 
-
 export const SportItem = ({ sport }) => {
     return (
         <div className={styles.sportItem}>

@@ -73,13 +73,19 @@
 
 @media only screen and (max-width: 375px) {
     .tabSwitch .tab {
-        padding: 0.4rem 0;
+        font-size: 0.9rem;
+        /* padding: 0.4rem 0; */
+    }
+    .tab a {
+        height: 2.5rem;
     }
 }
 
 @media only screen and (max-width: 320px) {
     .tabSwitch .tab {
-        padding: 0.3rem 0;
-        font-size: 0.9rem;
+        font-size: 0.7rem;
+    }
+    .tab a {
+        height: 2rem;
     }
 }

@@ -21,7 +21,7 @@ const Products = ({ isShowProd, meal, onChangeProduct, setClickedProd, clickedPr
                             {prod.title}
                         </span>
                         <div className={styles.grams}>
-                            <span>{prod.grams}</span><span>g</span>
+                            <span>{prod.grams?.toFixed(0)}</span><span>g</span>
                         </div>
                     </div>)}
                 </div>

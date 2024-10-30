@@ -106,7 +106,7 @@ const PlanaiPage = () => {
     return (
         <>
             <Navbar>
-                <AddNewBtn label='Sukurti šabloną' Icon={ImPlus} fontSize='1rem' onHandleClick={handlePlanAdd} />
+                <AddNewBtn label='Sukurti šabloną' Icon={ImPlus} onHandleClick={handlePlanAdd} />
                 <Divider />
                 <RadioFilters 
                     options={mealsFiltersOptions} 

@@ -6,6 +6,7 @@ const labelStyles = {
     display: 'inline-block',
     order: 2,
     fontSize: '0.7rem',
+    textWrap: 'nowrap',
     transition: 'color 0.1s ease-in-out'
 };
 const checkBoxStyles = {
@@ -26,7 +27,6 @@ const spanStyles = {
     width: '18px',
     height: '18px',
     borderRadius: '4px',
-    // border: '1.5px solid #bbb',
     transition: 'all 0.15s ease'
 };
 const svgStyles = {
