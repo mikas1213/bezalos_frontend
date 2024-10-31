@@ -34,13 +34,11 @@ const CancelSubscription = lazy(() => import('./pages/SubscriptionPages/CancelSu
 const PirkimoTaisyklesPage = lazy(() => import('./pages/PirkimoTaisyklesPage'));
 const PrivatumoPolitikaPage = lazy(() => import('./pages/PrivatumoPolitikaPage'));
 const AdminLayout = lazy(() => import('./components/admin/layout/AdminLayout'));
-const KlientaiPage = lazy(() => import('./pages/admin/KlientaiPage'));
-// const MitybosPlanaiLayout = lazy(() => import('./pages/admin/mitybosPlanai/MitybosPlanaiLayout'));
-// const PlanaiPage = lazy(() => import('./pages/admin/mitybosPlanai/PlanaiPage'));
-// const MealsPage = lazy(() => import('./pages/admin/mitybosPlanai/MealsPage'));
-// const ProductsPage = lazy(() => import('./pages/admin/mitybosPlanai/ProductsPage'));
-// import AdminLayout from './components/admin/layout/AdminLayout';
-// import KlientaiPage from './pages/admin/KlientaiPage';
+
+import UsersPage from './pages/admin/users/UsersPage';
+import UserPageLayout from './pages/admin/users/UserPageLayout';
+import UserPlanPage from './pages/admin/users/UserPlanPage';
+import UserAnketa from './pages/admin/users/UserAnketa';
 import MitybosPlanaiLayout from './pages/admin/mitybosPlanai/MitybosPlanaiLayout';
 import ManagePlanPage from './pages/admin/mitybosPlanai/ManagePlanPage';
 import PlanaiPage from './pages/admin/mitybosPlanai/PlanaiPage';
@@ -50,9 +48,7 @@ import MaistasPage from './pages/admin/MaistasPage';
 import Receptai from './pages/admin/Receptai';
 import VideosPage from './pages/admin/VideosPage';
 import MailsPage from './pages/admin/MailsPage';
-
-
-
+// import UserPlans from './pages/admin/users/UserPlan';
 
 const queryClient = new QueryClient({
     defaultOptions: {
@@ -103,7 +99,12 @@ function App() {
 
                                 <Route element={<RequireAuth allowedRoles={[1213]}/> }>
                                     <Route path='/admin' element={<AdminLayout /> }>
-                                        <Route index element={<KlientaiPage />} />
+                                        <Route index element={<UsersPage />} />
+                                        <Route path='user' element={ <UserPageLayout /> } >
+                                            <Route index element={<UserPlanPage /> } />
+                                            <Route path='anketa' element={<UserAnketa /> } />
+                                        </Route>
+
                                         <Route path='planai' element={<MitybosPlanaiLayout /> }>
                                             <Route index element={<PlanaiPage />} />
                                             <Route path=':id' element={<ManagePlanPage />} />

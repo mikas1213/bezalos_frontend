@@ -13,7 +13,9 @@ const AdminNavbarItem = ({ icon, title, url, notification = null }) => {
 
     if(location.pathname === url || 
         location.pathname === url+'/' || 
-        (location.pathname.indexOf(url) > -1 && url !== '/admin')) {
+        (location.pathname.indexOf(url) > -1 && url !== '/admin') ||
+        (location.pathname.search(/user/) > -1 && url === '/admin')
+    ) {
         compatiblePath = true;
     }
 

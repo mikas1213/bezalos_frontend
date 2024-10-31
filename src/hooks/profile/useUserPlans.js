@@ -11,7 +11,7 @@ export const useUserPlans = (user_id) => {
     useEffect(() => {
         const getData = async () => {
             try {
-                const { data } = await axiosPrivate.get(`/profile/plans?id=${user_id}`);
+                const { data } = await axiosPrivate.get(`/profile/plans/${user_id}`);
                 setPlans(data);
                 setSelectedPlan(data[0] || null)
                 setIsLoading(false);

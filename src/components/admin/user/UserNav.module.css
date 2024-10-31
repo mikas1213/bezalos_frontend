@@ -1,0 +1,8 @@
+.userNav {
+    display: flex;
+    gap: 1rem;
+}
+
+.userNav .active {
+    color: lightseagreen;
+}

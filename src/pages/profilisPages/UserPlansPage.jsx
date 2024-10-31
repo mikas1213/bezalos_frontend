@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import  { useOutletContext } from 'react-router-dom';
+import useAxiosPrivate from '../../hooks/useAxiosPrivate';
 import { useUserPlans } from '../../hooks/profile/useUserPlans';
 import Plans from '../../components/profilis/mitybos_planas/Plans';
 import No_Plans from '../../components/profilis/no_mitybos_planas/No_Plans';
@@ -7,6 +8,7 @@ import { usePlanProducts } from '../../hooks/profile/usePlanProducts';
 import toast from 'react-hot-toast';
 import { bar, kcal, set_grams } from '../../utils/calculationsHelpers';
 const UserPlansPage = () => {
+    const axioxPrivate = useAxiosPrivate();
     const { user_id, is_subscription } = useOutletContext();
     const { plans, selectedPlan, setSelectedPlan, isLoading } = useUserPlans(user_id);
 
@@ -36,7 +38,9 @@ const UserPlansPage = () => {
     };
     
     const onUpdateProduct = async (updatedProd) => {
+        
         try {  
+            await axioxPrivate.patch(`/profile/products/${selectedPlan.id}/${clickedProd.p_id}`, updatedProd);
             setSelectedPlan(prevState => ({
                 ...prevState, 
                 b: Math.round(prevState.meals.filter(meal => !meal.is_sport).map(meal => meal.products.map(prod => prod.id === clickedProd.p_id ? bar(updatedProd.proteins, set_grams(prod, updatedProd)) : bar(prod.b_100, prod.grams)).reduce((acc, val) => acc + val, 0)).reduce((acc, val) => acc + val, 0)),
@@ -66,9 +70,13 @@ const UserPlansPage = () => {
                         title: updatedProd.title,
                     } : prod)
                 } : meal)
-            }))
+            }));
         } catch (err) {
-            toast.error('Klaida:\n'+err.data.response.message);
+            if(err.status === 402) {
+                toast.error(err.response.statusText);
+            } else {
+                toast.error('Klaida:\n'+err.response.data.message);
+            }
         }
     };
 
