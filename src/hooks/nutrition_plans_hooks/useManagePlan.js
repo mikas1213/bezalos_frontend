@@ -3,6 +3,7 @@ import { useState, useEffect, useCallback } from 'react';
 import toast from 'react-hot-toast';
 
 export const useManagePlan = (plan_id) => {
+    
     const axiosPrivate = useAxiosPrivate();
     const [plan, setPlan] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
@@ -26,22 +27,23 @@ export const useManagePlan = (plan_id) => {
     }, [axiosPrivate, plan_id]);
 
     useEffect(() => {
-        const localPlan = JSON.parse(localStorage.getItem('localPlan'));
- 
-        if(localPlan && localPlan.id == plan_id) {
-            setPlan(localPlan);
-            setIsLoading(false);
-        } else {
-            getData();
-        }
+        // const localPlan = JSON.parse(localStorage.getItem('localPlan'));
+        // if(localPlan && localPlan.id == plan_id) {
+        //     setPlan(localPlan);
+        //     setIsLoading(false);
+        // } else {
+        //     getData();
+        // }
+
+        getData();
     }, [axiosPrivate, plan_id, getData]);
 
-    useEffect(() => {
-        if (typeof window !== 'undefined') {
-            localStorage.setItem('localPlan', JSON.stringify(plan));
-        }
+    // useEffect(() => {
+    //     if (typeof window !== 'undefined') {
+    //         localStorage.setItem('localPlan', JSON.stringify(plan));
+    //     }
 
-    }, [plan]);
+    // }, [plan]);
 
     return {plan, setPlan, isLoading};
 };

@@ -5,13 +5,14 @@ import { FaRegCopy } from 'react-icons/fa';
 import { date_to_yyyy_mm_dd, isTodayOrFiveDaysBefore, isTodayOrLater, isTwoOrFourWeeks, isMaintenance } from '../../../utils/dateHelpers';
 import stripe_img from '../../../assets/images/admin/stripe_png.png';
 import UserBox, { SideBox} from './UserBox';
+import { useNavigate } from 'react-router-dom';
 
 const UserRow = ({ 
     user, 
     handleSubscriptionUpdate,
     handleUserUpdate
 }) => {
-    
+    const navigate = useNavigate();
     const [calories, setCalories] = useState(user.eats_calories || '');
     
     return (    
@@ -19,8 +20,9 @@ const UserRow = ({
 
             <UserBox>
                 <SideBox>
-                    <div className={styles.userEmail} onClick={() => {navigator.clipboard.writeText(user.email)}}>
-                        {user.email} <FaRegCopy className={styles.icon} />
+                    <div className={styles.userEmail} >
+                        <span onClick={() => navigate(`/admin/${user.id}`)}>{user.email} </span>
+                        <FaRegCopy className={styles.icon} onClick={() => {navigator.clipboard.writeText(user.email)}} />
                     </div>
                     <div className={styles.userName}>{user.stripe_username || user.name}</div>
                 </SideBox>

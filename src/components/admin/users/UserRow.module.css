@@ -15,6 +15,13 @@
     font-weight: 600;
     font-size: var(--font-size-dynamic-p-lg);
 }
+.userEmail span {
+    transition: color 0.15s ease-in-out;
+}
+.userEmail span:hover {
+    cursor: pointer;
+    color: var(--color-btn-secondary);
+}
 .userName {
     line-height: 100%;
     color: #999;

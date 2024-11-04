@@ -1,8 +1,23 @@
 .userNav {
     display: flex;
-    gap: 1rem;
+    overflow: hidden;
+    gap: 0.5rem;
+}
+.userNav a {
+    background-color: #fff;
+    padding: 0.2rem 0.5rem;
+    flex-grow: 1;
+    justify-content: center;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+    border-radius: 0.2rem;
+    margin-bottom: 1rem;
 }
 
 .userNav .active {
-    color: lightseagreen;
+    color: #fff;
+    background-color: #084747;
 }
+
+
+
+

@@ -63,7 +63,7 @@ const customAddProdStyles = {
 }
 
 const Plan = ({ plan, handlePlanEdit, handlePlanDelete, handleAddPlanMeal }) => {
-    
+
     const navigate = useNavigate();
     const axiosPrivate = useAxiosPrivate();
     const [title, setTitle] = useState(plan.title);

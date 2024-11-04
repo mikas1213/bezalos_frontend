@@ -203,8 +203,7 @@ const Meal = ({
                 }));
 
                 callback(options);
-            }).catch(error => {
-                console.error('Error fetching data:', error);
+            }).catch(() => {
                 callback([]);
             });
         }

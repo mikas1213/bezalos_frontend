@@ -7,30 +7,8 @@ import { HiTemplate } from 'react-icons/hi';
 import { useEffect, useState } from 'react';
 import useAxiosPrivate from '../../../hooks/useAxiosPrivate';
 
-const AdminNavbarItem = ({ icon, title, url, notification = null }) => {    
-    const location = useLocation();
-    let compatiblePath = false;
-
-    if(location.pathname === url || 
-        location.pathname === url+'/' || 
-        (location.pathname.indexOf(url) > -1 && url !== '/admin') ||
-        (location.pathname.search(/user/) > -1 && url === '/admin')
-    ) {
-        compatiblePath = true;
-    }
-
-    return (
-        <li className={`${styles.navItem} ${compatiblePath ? styles.active : ''}`}>
-            <NavLink to={url}>
-                {icon}{title} 
-                {notification && <span className={styles.notification}>{notification}</span>}
-            </NavLink>
-        </li>
-    );
-};
-
 const AdminNavbar = () => {
-    
+    const location = useLocation();
     const axiosPrivate = useAxiosPrivate();
     const [stats, setStats] = useState();
     const [isLoading, setIsLoading] = useState(true);
@@ -46,17 +24,26 @@ const AdminNavbar = () => {
             }
         }
         getData();
-    }, [axiosPrivate]);
+    }, [axiosPrivate, location]);
 
-    const NavBarItems = {
-        admin: {title: 'Klientai', icon: <FaUserGroup />, notification: !isLoading && `${stats.users} / ${stats.active_subscriptions}`},
-        planai: {title: 'Mitybos planai', icon: <HiTemplate />},
-        maistas: {title: 'Maistas', icon: <FaList />},
-        receptai: {title: 'Receptai', icon: <IoFastFoodSharp />},
-        videos: {title: 'Videos', icon: <FaFilm />},
-        mails: {title: 'Mails', icon: <TbMailFilled />, notification: !isLoading && stats.mails},
-        test3: {title: 'Test', icon: <FaNoteSticky />}
-    }
+    const links = [
+        {to: '/admin', label: 'Klientai', icon: <FaUserGroup />, notification: !isLoading && `${stats.users} / ${stats.active_subscriptions}`},
+        {to: '/admin/planai' , label: 'Mitybos planai', icon: <HiTemplate />},
+        {to: '/admin/maistas' , label: 'Maistas', icon: <FaList />},
+        {to: '/admin/receptai' , label: 'Receptai', icon: <IoFastFoodSharp />},
+        {to: '/admin/videos' , label: 'Videos', icon: <FaFilm />},
+        {to: '/admin/mails' , label: 'Mails', icon: <TbMailFilled />, notification: !isLoading && stats.mails},
+        {to: '/admin/test3' , label: 'Test', icon: <FaNoteSticky />}
+    ];
+
+    const isLinkActive = (path) => {
+        
+        if(path === '/admin') {
+            return location.pathname === '/admin' || location.pathname === '/admin/';
+        } 
+        
+        return location.pathname.startsWith(path);
+    };
 
     return (
         <div className={styles.adminNav}>
@@ -64,15 +51,12 @@ const AdminNavbar = () => {
                 <NavLink to='/'><FaHouse />Pradžia</NavLink>
             </li>
             
-            {Object.keys(NavBarItems).map(key => 
-                <AdminNavbarItem 
-                    key={key} 
-                    url={`/admin${key === 'admin' ? '' : `/${key}`}`}
-                    icon={NavBarItems[key].icon}
-                    title={NavBarItems[key].title} 
-                    notification={NavBarItems[key].notification}
-                />
-            )}
+            {links.map(link =><li key={link.to} className={styles.navItem}>
+                <NavLink to={link.to} className={({ isActive }) => isActive && isLinkActive(link.to) ? styles.active : ''}>
+                    {link.icon}{link.label} 
+                    {link.notification && <span className={styles.notification}>{link.notification}</span>}
+                </NavLink>
+            </li>)}
         </div>
     );
 };

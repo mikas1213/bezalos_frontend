@@ -1,11 +1,11 @@
-import styles from './ManagePlan.module.css';
+import styles from './EditUserPlan.module.css';
 import { useState } from 'react';
-import useAxiosPrivate from '../../../../hooks/useAxiosPrivate';
+import useAxiosPrivate from '../../../hooks/useAxiosPrivate';
 import { default as MealSelect } from 'react-select/async';
 import { default as ProdSelect } from 'react-select/async';
+import { bar, kcal, mealProdBarSum } from '../../../utils/calculationsHelpers';
 import { LuWheatOff, LuMilkOff } from 'react-icons/lu';
-import { DeleteBin_icon } from '../../../../svg/icons';
-import { bar, kcal, mealProdBarSum } from '../../../../utils/calculationsHelpers';
+import { DeleteBin_icon } from '../../../svg/icons';
 
 const mealStyles = {
     container: (provider) => ({
@@ -125,15 +125,17 @@ const productStyles = {
     })
 }
 
-const ManagePlan = ({ plan: currentPlan, setPlan: setCurrentPlan}) => {
+const EditUserPlan = ({ plan: currentPlan, setPlan: setCurrentPlan, onPlanUpdate }) => {
 
     const axiosPrivate = useAxiosPrivate();
     const [mealTitle, setMealTitle] = useState('');
     const [prodTitle, setProdTitle] = useState('');
     const [selectMealIndex, setSelectMealIndex] = useState(null);
     const [selectProdIndex, setSelectProdIndex] = useState({m_index: null, p_index: null});
-    
+
     const handleMealChange = (e, m_id) => {
+        onPlanUpdate('update-meal', {meal: e, meal_id: m_id});
+
         setCurrentPlan(prevState => ({
             ...prevState,
             b: prevState.meals.filter(meal => !meal.is_sport).map(meal => meal.id === m_id 
@@ -166,6 +168,8 @@ const ManagePlan = ({ plan: currentPlan, setPlan: setCurrentPlan}) => {
     };
 
     const handleProdChange = (e, m_id, p_id) => {
+        onPlanUpdate('update-product', { prod: e, meal_id: m_id, prod_id: p_id });
+
         setCurrentPlan(prevState => ({
             ...prevState,
             b: prevState.meals.filter(meal => !meal.is_sport).map(meal => meal.products.map(prod => prod.id === p_id ? bar(e.b_100, prod.grams) : bar(prod.b_100, prod.grams)).reduce((acc, val) => acc + val, 0)).reduce((acc, val) => acc + val, 0),
@@ -228,6 +232,8 @@ const ManagePlan = ({ plan: currentPlan, setPlan: setCurrentPlan}) => {
     };
 
     const handleProdDelete = (e, m_id, p_id) => {
+        onPlanUpdate('delete-product', {meal_id: m_id, prod_id: p_id});
+
         e.target.closest(`.${styles.prod}`).classList.add(styles.deletedProd);
         setTimeout(() => {
             setCurrentPlan(prevState => ({
@@ -268,7 +274,7 @@ const ManagePlan = ({ plan: currentPlan, setPlan: setCurrentPlan}) => {
                 const options = data.map(item => ({
                     label: item.title,
                     value: item.id,
-                        // jei renkiesi valg5
+                        // jei renkiesi valgį
                     ...(type === 'meals' ? {
                         logic: item.logic,
                         intolerance: item.intolerance,
@@ -291,10 +297,32 @@ const ManagePlan = ({ plan: currentPlan, setPlan: setCurrentPlan}) => {
 
     return (
         <div className={styles.plan}>
+            <span className={styles.deleteBtnContainer} onClick={() => {
+                const isDelete = window.confirm('Ištrinti planą?');
+                if(isDelete) {
+                    onPlanUpdate('delete-plan', {});
+                    // setUser(prevState => ({
+                    //     ...prevState,
+                    //     plans: prevState.plans.filter(plan => plan.id !== currentPlan.id)
+                    // }));
+                }
+            }}>
+                <DeleteBin_icon icon={styles.planDeleteBtn} />
+            </span>
             <div className={styles.title}>
                 <input type='text' 
                     value={currentPlan.title} 
-                    onBlur={(e) => e.target.value = e.target.value.length > 0 ? e.target.value : currentPlan.title}
+                    name='title'
+                    onBlur={e => {
+                        onPlanUpdate('update-plan-title', {title: e.target.value});
+                        // setUser(prevState => ({
+                        //     ...prevState,
+                        //     plans: prevState.plans.map(plan => plan.id === currentPlan.id ? {
+                        //         ...plan,
+                        //         title: currentPlan.title
+                        //     } : plan)
+                        // }));
+                    }}
                     onChange={e => setCurrentPlan(prevState => ({...prevState, title: e.target.value}))}
                 />
                 <div className={styles.planBar}>
@@ -308,10 +336,16 @@ const ManagePlan = ({ plan: currentPlan, setPlan: setCurrentPlan}) => {
             {currentPlan.meals.map(meal => 
                 !meal.is_sport ? <div key={meal.id} className={styles.meal}>
                     <div className={styles.mealLeft}>
-                        <input type='text' value={meal.meal_time} onChange={(e) => setCurrentPlan(prevState => ({
-                            ...prevState,
-                            meals: [...prevState.meals.map(m => m.id === meal.id ? {...m, meal_time: e.target.value} : m)]
-                        }))} />
+                        <input 
+                            type='text' 
+                            name='meal_time'
+                            value={meal.meal_time} 
+                            onChange={(e) => setCurrentPlan(prevState => ({
+                                ...prevState,
+                                meals: [...prevState.meals.map(m => m.id === meal.id ? {...m, meal_time: e.target.value} : m)]}))
+                            }
+                            onBlur={e => onPlanUpdate('update-meal-time', {meal_time: e.target.value, meal_id: meal.id})} 
+                        />
                         <span className={`${styles.mealLogic} ${styles[meal.logic.replace('+', '_')]}`}>{meal.logic}</span>
                     </div>
 
@@ -321,6 +355,7 @@ const ManagePlan = ({ plan: currentPlan, setPlan: setCurrentPlan}) => {
                                 <MealSelect 
                                     components={{ DropdownIndicator: null, IndicatorSeparator: null, LoadingIndicator: null }}
                                     cacheOptions
+                                    name='title'
                                     menuPosition='fixed'
                                     isSearchable={true}
                                     styles={mealStyles}
@@ -334,7 +369,6 @@ const ManagePlan = ({ plan: currentPlan, setPlan: setCurrentPlan}) => {
                                     onChange={e => handleMealChange(e, meal.id)}
                                     value={{value: meal.meal_id, label: meal.title}}
                                 />
-
                                 {meal.intolerance === 'gluten_free' && <LuWheatOff className={styles.intolerance}/>}
                                 {meal.intolerance === 'lactose_free' && <LuMilkOff className={styles.intolerance}/>}
                             </div>
@@ -354,6 +388,7 @@ const ManagePlan = ({ plan: currentPlan, setPlan: setCurrentPlan}) => {
                                     styles={productStyles}
                                     cacheOptions
                                     menuPosition='fixed'
+                                    name='title'
                                     isSearchable={true}
                                     defaultOptions={false}
                                     loadingMessage={() => null}
@@ -366,12 +401,18 @@ const ManagePlan = ({ plan: currentPlan, setPlan: setCurrentPlan}) => {
                                     value={{value: prod.product_id ,label: prod.title}}
                                 />
                                 <div className={styles.grams}>
-                                    <input type='text' value={prod.grams} onChange={e => handleGramsChange(e, meal.id, prod.id)}/>
+                                    <input 
+                                        type='text' 
+                                        name='grams'
+                                        value={prod.grams} 
+                                        onChange={e => handleGramsChange(e, meal.id, prod.id)}
+                                        onBlur={e => onPlanUpdate('update-prod-grams', {grams: e.target.value, prod_id: prod.id})}
+                                    />
                                     <span>g</span>
                                 </div>
 
                                 <span className={styles.deleteProdIcon} onClick={(e) => handleProdDelete(e, meal.id, prod.id)}>
-                                    <DeleteBin_icon icon={styles.icon} />
+                                    <DeleteBin_icon className={styles.planDeleteBtn} icon={styles.icon} />
                                 </span>
                             </div>)}
                         </div>
@@ -380,14 +421,20 @@ const ManagePlan = ({ plan: currentPlan, setPlan: setCurrentPlan}) => {
             :
                 <div key={meal.id} className={styles.sport}>
                     <span>SPORTAS</span>
-                    <input type='text' value={meal.meal_time} onChange={(e) => setCurrentPlan(prevState => ({
-                        ...prevState,
-                        meals: [...prevState.meals.map(m => m.id === meal.id ? {...m, meal_time: e.target.value} : m)]
-                    }))}/>
+                    <input 
+                        type='text' 
+                        name='meal_time'
+                        value={meal.meal_time} 
+                        onChange={(e) => setCurrentPlan(prevState => ({
+                            ...prevState,
+                            meals: [...prevState.meals.map(m => m.id === meal.id ? {...m, meal_time: e.target.value} : m)]}))
+                        }
+                        onBlur={e => onPlanUpdate('update-meal-time', {meal_time: e.target.value, meal_id: meal.id})} 
+                    />
                 </div>
             )}
         </div>
     );
 };
 
-export default ManagePlan;
+export default EditUserPlan;

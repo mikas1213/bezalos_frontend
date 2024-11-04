@@ -5,8 +5,9 @@ import Products from './Products';
 
 const Meal = ({ meal, is_subscription, onChangeProduct, setIsShowChageProdList, setClickedProd, clickedProd }) => {
     const [isShowProd, setIsShowProd] = useState(false);
+
     return (
-        <div className={`${styles.meal} ${styles[meal.logic?.replace('+', '_')]} ${isShowProd ? styles.show : ''}`}>
+        <div className={`${styles.meal} ${styles[meal.logic.replace('+', '_')]} ${isShowProd ? styles.show : ''}`}>
             <div className={styles.mealInner} onClick={() => {setIsShowProd(on => !on); setIsShowChageProdList(false)}}>
                 <div className={styles.mealHeader}>
                     <div className={styles.timeLogic}>

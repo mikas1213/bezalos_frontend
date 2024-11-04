@@ -18,7 +18,6 @@ const UsersPage = () => {
         maintenance: false
     });
     const { users, setUsers, isLoading, totalPages } = useUsers(currentPage, search, sort);
-
     const handleSubscriptionUpdate = async (user_id, value, stripe_type) => {
         
         setUsers(prevState => prevState.map(user => user.id === user_id ? {
@@ -83,7 +82,6 @@ const UsersPage = () => {
                 currentPage={currentPage} 
                 totalPages={totalPages} 
             />
-
         </div>
     );
 };

@@ -13,6 +13,11 @@
 .assignPlanBtn:hover {
     background-color: var(--color-filter-btn);
 }
+.assignPlanBtn:disabled {
+    cursor: wait;
+    background-color: #fafafa;
+    color: #ccc;
+}
 
 .userDetais {
     display: flex;

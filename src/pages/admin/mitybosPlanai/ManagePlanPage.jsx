@@ -13,6 +13,7 @@ const ManagePlanPage = () => {
     const [user, setUser] = useState({label: 'Paieška...', value: ''});
     const { plan, setPlan, isLoading } = useManagePlan(params.id);
     const [flexDirection, setFlexDirection] = useState('row');
+    const [isPlanAssigning, setIsPlanAssigning] = useState(false);
 
     useEffect(() => {
         document.body.style.overflowX = 'auto';
@@ -35,9 +36,12 @@ const ManagePlanPage = () => {
 
     const handleSumbit = async () => {
         try {
+            setIsPlanAssigning(true);
             if(!user.value) throw new Error('Nepasirinktas klientas!');
-            await axiosPrivate.post(`/admin/plans/assign`, {user_id: user.value, plan});
 
+            await axiosPrivate.post(`/admin/plans/assign`, {user_id: user.value, plan});
+            await new Promise(resolve => setTimeout(resolve, 1200));    
+            setIsPlanAssigning(false);
         } catch (err) {
             throw new Error(err.response?.data.message || err.message);
         }
@@ -81,7 +85,7 @@ const ManagePlanPage = () => {
         }}>
             {isLoading && <Spinner />}
             {!isLoading && <ManagePlan plan={plan} setPlan={setPlan} />}
-            <UserDetails setUser={setUser} user={user} assignPlanToUser={assignPlanToUser}  />
+            <UserDetails setUser={setUser} user={user} assignPlanToUser={assignPlanToUser} isPlanAssigning={isPlanAssigning} />
         </div>
     );
 };

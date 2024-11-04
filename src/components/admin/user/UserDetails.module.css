@@ -1,0 +1,21 @@
+/* .userDetails {
+    display: g;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.row {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.row span:nth-child(1) {
+    align-self: end;
+    font-size: 0.6rem;
+}
+
+.row span:nth-child(2) {
+    line-height: 100%;
+}  */

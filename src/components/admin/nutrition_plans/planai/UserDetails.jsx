@@ -65,7 +65,7 @@ const customUsersLoadStyles = {
     })
 }
 
-const UserDetails = ({ user, setUser, assignPlanToUser }) => {
+const UserDetails = ({ user, setUser, assignPlanToUser, isPlanAssigning }) => {
     const axiosPrivate = useAxiosPrivate();
     const [isMenuOpen, setIsMenuOpen] = useState('');
     const [userDetails, setUserDetails] = useState({});
@@ -85,7 +85,8 @@ const UserDetails = ({ user, setUser, assignPlanToUser }) => {
                     value: user.id,
                     name: user.name,
                     email: user.email,
-                    stripe_username: user.stripe_username
+                    stripe_username: user.stripe_username,
+                    initial_target: user.initial_target
                 }));
                 callback(options);
             }
@@ -123,10 +124,10 @@ const UserDetails = ({ user, setUser, assignPlanToUser }) => {
                 value={user}
             />
 
-            <button
+            <button disabled={isPlanAssigning}
                 className={styles.assignPlanBtn}
                 onClick={() => {
-                    localStorage.removeItem('localPlan');
+                    // localStorage.removeItem('localPlan');
                     assignPlanToUser();
             }}>Priskirti</button>
 
@@ -135,6 +136,7 @@ const UserDetails = ({ user, setUser, assignPlanToUser }) => {
                 <span>Email: {userDetails.email}</span>
                 <span>Stripe name: {userDetails.stripe_username}</span>
                 <span>Subscription type: {userDetails.subscription_type}</span>
+                <span>Pradinis tikslas: {userDetails.initial_target}</span>
             </div>
         </div>
     );

@@ -37,8 +37,9 @@ const AdminLayout = lazy(() => import('./components/admin/layout/AdminLayout'));
 
 import UsersPage from './pages/admin/users/UsersPage';
 import UserPageLayout from './pages/admin/users/UserPageLayout';
-import UserPlanPage from './pages/admin/users/UserPlanPage';
-import UserAnketa from './pages/admin/users/UserAnketa';
+import EditUserPlanPage from './pages/admin/users/EditUserPlanPage';
+import UserAnketaPage from './pages/admin/users/UserAnketaPage';
+import UserStatistikaPage from './pages/admin/users/UserStatistikaPage';
 import MitybosPlanaiLayout from './pages/admin/mitybosPlanai/MitybosPlanaiLayout';
 import ManagePlanPage from './pages/admin/mitybosPlanai/ManagePlanPage';
 import PlanaiPage from './pages/admin/mitybosPlanai/PlanaiPage';
@@ -48,7 +49,7 @@ import MaistasPage from './pages/admin/MaistasPage';
 import Receptai from './pages/admin/Receptai';
 import VideosPage from './pages/admin/VideosPage';
 import MailsPage from './pages/admin/MailsPage';
-// import UserPlans from './pages/admin/users/UserPlan';
+
 
 const queryClient = new QueryClient({
     defaultOptions: {
@@ -100,9 +101,11 @@ function App() {
                                 <Route element={<RequireAuth allowedRoles={[1213]}/> }>
                                     <Route path='/admin' element={<AdminLayout /> }>
                                         <Route index element={<UsersPage />} />
-                                        <Route path='user' element={ <UserPageLayout /> } >
-                                            <Route index element={<UserPlanPage /> } />
-                                            <Route path='anketa' element={<UserAnketa /> } />
+                                        <Route path=':id' element={ <UserPageLayout /> } >
+                                            <Route index element={<EditUserPlanPage /> } />
+                                            <Route path='anketa' element={<UserAnketaPage /> } />
+                                            <Route path='statistika' element={<UserStatistikaPage /> } />
+                                            UserStatistikaPage
                                         </Route>
 
                                         <Route path='planai' element={<MitybosPlanaiLayout /> }>

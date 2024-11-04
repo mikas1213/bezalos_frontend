@@ -80,7 +80,6 @@ const UserPlansPage = () => {
         }
     };
 
-    
     return (
         <>
             <div style={{
