@@ -2,7 +2,7 @@ import useAxiosPrivate from '../useAxiosPrivate';
 import { useState, useEffect } from 'react';
 import toast from 'react-hot-toast';
 
-export const usePlanProducts = (is_subscription) => {
+export const usePlanProducts = () => {
     
     const axiosPrivate = useAxiosPrivate();
     const [prodList, setProdList] = useState([{test: 'test'}]);
@@ -12,7 +12,7 @@ export const usePlanProducts = (is_subscription) => {
         let isMounted = true;
         const getData = async () => {
             try {
-                if (isMounted/*&& is_subscription*/) {
+                if (isMounted) {
                     const { data } = await axiosPrivate.get(`/profile/products`);
                     setProdList(data);
                     setIsLoading(false);
@@ -26,7 +26,7 @@ export const usePlanProducts = (is_subscription) => {
 
         getData();
         return () => { isMounted = false; };
-    }, [axiosPrivate, is_subscription]);
+    }, [axiosPrivate]);
 
     return { prodList, setProdList, isLoading}
 };

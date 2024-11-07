@@ -118,7 +118,7 @@ const VirtuveVideoPage = () => {
                             onAddVideoComment={onAddVideoComment}
                             onDeleteVideoComment={onDeleteVideoComment}
                         />}
-                        {!isError && <List videos={videos} filter={filter} />}
+                        {!isLoadingVideo && !isError && <List videos={videos} filter={filter} />}
                 </Container> : <NotFoundVideo />}
             </Main>
         </>

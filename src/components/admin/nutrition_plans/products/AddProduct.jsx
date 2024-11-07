@@ -24,6 +24,15 @@ const intoleranceOptions = [
     { value: 'Be laktozės', label: 'Be laktozės'},
 ];
 
+const groupOptions = [
+    {value: '-', label: 'Grupė'},
+    {value: 'Mėsa', label: 'Mėsa'},
+    {value: 'Žuvis', label: 'Žuvis'},
+    {value: 'Kruopos', label: 'Kruopos'},
+    {value: 'Pieno produktai', label: 'Pieno produktai'},
+    {value: 'Ankštiniai', label: 'Ankštiniai'}
+];
+
 const customStyles = {
     control: (provided, state) => ({
         ...provided,
@@ -39,7 +48,7 @@ const customStyles = {
         padding: 0,
         height: '32px',
         minHeight: '0px',
-        width: '165px',
+        width: '155px',
         '&placeholder': {color: 'red'}
     }),
     singleValue: (provided) =>({
@@ -80,7 +89,6 @@ const customStyles = {
 
 const AddProduct = ({ handleAddProduct }) => {
     const [formData, setFormData] = useState({intolerance: '-'});
-    
     const handleFormData = (e1, e2) => {
         setFormData(prev => ({...prev, [e1.target?.name || e2.name]: e1.target?.value || e1.value}));
     };
@@ -127,6 +135,16 @@ const AddProduct = ({ handleAddProduct }) => {
                 styles={customStyles}
                 name='sub_category'
                 defaultValue={formData.sub_category}
+                onChange={handleFormData}
+            />
+            <Select 
+                required={true}
+                options={groupOptions} 
+                isSearchable={false}
+                placeholder='Grupė'
+                styles={customStyles}
+                name='group'
+                defaultValue={groupOptions[0]}
                 onChange={handleFormData}
             />
             <Select 

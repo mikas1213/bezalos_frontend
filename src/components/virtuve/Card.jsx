@@ -4,18 +4,17 @@ import { Link } from 'react-router-dom';
 import { FaLock } from 'react-icons/fa';
 import { getImageURL } from '../../utils/images';
 
-const Card = ({ video, user_id, user_subscription, s_status }) => {
+const Card = ({ video, user_id, u_status, s_status }) => {
     
     const created_video = new Date(Date.parse(video.created_at)).toLocaleString('lt-LT', {
         day: 'numeric', 
         weekday: 'short', 
         month: 'long', 
-        // year: 'numeric'
     });
-    
+
     return (
         <Link to={video.video_url}>
-            <div className={`${styles.VideoCard} ${(user_id && (user_subscription || s_status === 'virtuve')) ? '' : styles.cardLock}`}>
+            <div className={`${styles.VideoCard} ${(user_id && (u_status === 'Virtuvė' || s_status === 'virtuve')) ? '' : styles.cardLock}`}>
                 <section>
                     <img src={getImageURL(`virtuve/${video.video_url}.webp`)} alt={video.title} />
                     <div className={styles.iconContainer}>

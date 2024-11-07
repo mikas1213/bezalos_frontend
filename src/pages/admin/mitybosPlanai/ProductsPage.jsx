@@ -31,8 +31,9 @@ const categorySelectStyles = {
         padding: 0,
         height: '32px',
         minHeight: '0px',
-        minWidth: '165px',
-        width: '100%'
+        // minWidth: '150px',
+        width: '140px',
+        // width: '100%'
     }),
     option:(provided, state) => ({
         ...provided,

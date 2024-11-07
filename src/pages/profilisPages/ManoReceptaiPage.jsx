@@ -1,4 +1,4 @@
-import InformationSoon from "../../components/information_soon/InformationSoon";
+import InformationSoon from '../../components/information_soon/InformationSoon';
 
 const ManoReceptaiPage = () => {
     return (

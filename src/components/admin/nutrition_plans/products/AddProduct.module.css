@@ -24,7 +24,7 @@
     outline: none;
 }
 .addProduct input.macro {
-    width: 4rem;
+    width: 3rem;
 }
 .addProduct input::placeholder {
     color: #777;

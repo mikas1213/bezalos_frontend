@@ -3,8 +3,6 @@ import Section from '../homepage/ui/Section';
 import MainContainer from '../homepage/ui/MainContainer';
 import kuskis from '../../assets/images/pasimatom-netrukus.webp';
 
-
-
 const InformationSoon = () => {
     return (
         <Section>

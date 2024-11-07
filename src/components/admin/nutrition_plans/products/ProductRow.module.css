@@ -40,7 +40,7 @@
 .proteins, .carbs, .fat {
     width: 5rem;
 }
-.rowH :is(.title, .proteins, .carbs, .fat, .category, .sub_category, .intolerance) {
+.rowH :is(.title, .proteins, .carbs, .fat, .category, .sub_category, .group, .intolerance) {
     padding-left: 0.2rem;
 }
 .category {
@@ -49,13 +49,16 @@
 .sub_category {
     width: 10rem;
 }
+.group {
+    width: 10rem;
+}
 .intolerance {
     width: 10rem;
 }
 .icon {
     display: flex;
     align-items: center;
-    width: 2cqmax;
+    width: 2rem;
     font-size: 1.2rem;
     transition: all 0.1s ease-in-out;
 }

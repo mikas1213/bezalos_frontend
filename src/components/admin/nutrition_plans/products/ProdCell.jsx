@@ -87,7 +87,6 @@ const Select = ({ val, prodId, cellName, setCurrentValue, setIsShowCell, handleE
             value={val} 
             onBlur={() => setIsShowCell(false)}
             onChange={e => {
-                
                 setCurrentValue(e.target.value);
                 setIsShowCell(false);
                 handleEditProduct(prodId, cellName, e.target.value);
@@ -104,6 +103,15 @@ const Select = ({ val, prodId, cellName, setCurrentValue, setIsShowCell, handleE
                 <option value='-'>Be subkategorijos</option>
                 <option value='pieno produktas'>Pieno produktas</option>
                 <option value='uzkandis'>Užkandis</option>
+            </>}
+
+            {cellName === 'group' && <>
+                <option value='-'>Grupė</option>
+                <option value='Mėsa'>Mėsa</option>
+                <option value='Žuvis'>Žuvis</option>
+                <option value='Kruopos'>Kruops</option>
+                <option value='Pieno produktai'>Pieno produktai</option>
+                <option value='Ankštiniai'>Ankštiniai</option>
             </>}
 
             {cellName === 'intolerance' && <>

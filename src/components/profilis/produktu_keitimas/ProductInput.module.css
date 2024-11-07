@@ -1,0 +1,45 @@
+.productInput {
+    position: relative;
+    display: grid;
+    grid-template-columns: auto 4.5rem;
+    border-radius: 1.5rem;
+    background-color: #fff;
+}
+.productInput .icon {
+    position: absolute;
+    font-size: 1.3rem;
+    color: #777;
+    stroke-width: 1px;
+    top: 50%;
+    left: 1.5rem;
+    transform: translate(-50%, -50%);
+}
+
+input.prodTitle {
+    border-radius: 0px;
+    border: 1.5px solid #ddd;
+    border-top-left-radius: 1.5rem;
+    border-bottom-left-radius: 1.5rem;
+    border-top-right-radius: 0rem;
+    border-bottom-right-radius: 0rem;
+    padding: 0.5rem 0.5rem 0.5rem 2.5rem;
+}
+input.grams {
+    border: 1.5px solid #ddd;
+    border-left: none;
+    border-top-left-radius: 0rem;
+    border-bottom-left-radius: 0rem;
+    border-top-right-radius: 1.5rem;
+    border-bottom-right-radius: 1.5rem;
+    padding-left: 0.5rem;
+    padding-right: 0.8rem;
+}
+
+input.grams::placeholder {
+    text-align: right;
+}
+
+.productInput input {
+    cursor: pointer;
+    color: #777;
+}

@@ -19,7 +19,7 @@ const ProductRow = ({
     
     return (
         <div ref={del} className={styles.row}>
-            {['title', 'proteins', 'carbs', 'fat', 'category', 'sub_category', 'intolerance'].map(item=> 
+            {['title', 'proteins', 'carbs', 'fat', 'category', 'sub_category', 'group', 'intolerance'].map(item=> 
                 <ProdCell key={item}
                     prodId={product.id} 
                     cellName={item} 
@@ -57,6 +57,7 @@ export const ProductRowH = ({ count }) => {
             <span className={styles.fat}>R</span>
             <span className={styles.category}>Kategorija</span>
             <span className={styles.sub_category}>Sub kategorija</span>
+            <span className={styles.group}>Grupė</span>
             <span className={styles.intolerance}>Alergenai</span>
             <span className={styles.icon}><IoTrashBin /></span>
         </div>

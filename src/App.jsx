@@ -105,7 +105,6 @@ function App() {
                                             <Route index element={<EditUserPlanPage /> } />
                                             <Route path='anketa' element={<UserAnketaPage /> } />
                                             <Route path='statistika' element={<UserStatistikaPage /> } />
-                                            UserStatistikaPage
                                         </Route>
 
                                         <Route path='planai' element={<MitybosPlanaiLayout /> }>

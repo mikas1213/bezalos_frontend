@@ -1,22 +1,23 @@
 import { useState } from 'react';
 import  { useOutletContext } from 'react-router-dom';
 import useAxiosPrivate from '../../hooks/useAxiosPrivate';
-import { useUserPlans } from '../../hooks/profile/useUserPlans';
+// import { useUserPlans } from '../../hooks/profile/useUserPlans';
 import Plans from '../../components/profilis/mitybos_planas/Plans';
 import No_Plans from '../../components/profilis/no_mitybos_planas/No_Plans';
-import { usePlanProducts } from '../../hooks/profile/usePlanProducts';
+// import { usePlanProducts } from '../../hooks/profile/usePlanProducts';
 import toast from 'react-hot-toast';
 import { bar, kcal, set_grams } from '../../utils/calculationsHelpers';
+
 const UserPlansPage = () => {
     const axioxPrivate = useAxiosPrivate();
-    const { user_id, is_subscription } = useOutletContext();
-    const { plans, selectedPlan, setSelectedPlan, isLoading } = useUserPlans(user_id);
+    const { is_subscription, prodList, plans, selectedPlan, setSelectedPlan, isLoading } = useOutletContext();
+    // const { plans, selectedPlan, setSelectedPlan, isLoading } = useUserPlans(user_id);
 
     const [topPosition, setTopPosition] = useState(0);
     const [isShowChageProdList, setIsShowChageProdList] = useState(false);
     const [clickedProd, setClickedProd] = useState({m_id: '', p_id: ''});
     const [filteredProducts, setFilteredProducts] = useState([]);
-    const { prodList } = usePlanProducts(is_subscription);
+    // const { prodList } = usePlanProducts(is_subscription);
     
     const onChangeProduct = (e, isClickedSameProduct, meal_logic, product) => {    
         
