@@ -6,11 +6,10 @@ import SearchResults from '../../components/profilis/produktu_keitimas/SearchRes
 import AvailableProducts from '../../components/profilis/produktu_keitimas/AvailableProducts';
 import Header from '../../components/profilis/produktu_keitimas/Header';
 import InformationSoon from '../../components/information_soon/InformationSoon';
-// import Keitykle from '../../components/profilis/produktu_keitimas/Keitykle';
 import { useOutletContext } from 'react-router-dom';
 
 const ProduktuKeitimasPage = () => {
-    const { prodList } = useOutletContext();
+    const { prodList, is_subscription } = useOutletContext();
 
     const [searchQuery, setSearchQuery] = useState('');
     const [selectedProd, setSelectedProd] = useState(null);
@@ -43,7 +42,7 @@ const ProduktuKeitimasPage = () => {
 
     return (
         <Container>
-            {/* <KeitykleContainer>
+            {is_subscription ? <KeitykleContainer>
                 <Header title='Maistro produktų sąrašas' />
                 <ProductInput 
                     handleProductSearch={handleProductSearch}
@@ -62,12 +61,10 @@ const ProduktuKeitimasPage = () => {
                 />}
 
                 {selectedProd && <AvailableProducts 
-                    grams={grams}
                     prodList={prodList} 
-                    selectedProd={selectedProd} 
+                    selectedProd={{...selectedProd, grams: +grams.replace(',', '.')}} 
                 />}
-            </KeitykleContainer > */}
-            <InformationSoon />
+            </KeitykleContainer> : <InformationSoon />}
         </Container>
     );
 };

@@ -24,7 +24,7 @@ const intoleranceOptions = [
     { value: 'Be laktozės', label: 'Be laktozės'},
 ];
 
-const groupOptions = [
+const foodTypeOptions = [
     {value: '-', label: 'Grupė'},
     {value: 'Mėsa', label: 'Mėsa'},
     {value: 'Žuvis', label: 'Žuvis'},
@@ -139,12 +139,12 @@ const AddProduct = ({ handleAddProduct }) => {
             />
             <Select 
                 required={true}
-                options={groupOptions} 
+                options={foodTypeOptions} 
                 isSearchable={false}
                 placeholder='Grupė'
                 styles={customStyles}
                 name='group'
-                defaultValue={groupOptions[0]}
+                defaultValue={foodTypeOptions[0]}
                 onChange={handleFormData}
             />
             <Select 

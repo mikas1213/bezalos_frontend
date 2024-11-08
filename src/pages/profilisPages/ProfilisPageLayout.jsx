@@ -11,7 +11,8 @@ import { useUserPlans } from '../../hooks/profile/useUserPlans';
 const ProfilisPageLayout = () => {
     document.body.style.backgroundColor = '#fff';
     const { auth } = useAuth();
-    const { user_id, user_s_subscription, user_subscription } = jwtDecode(auth.accessToken);    
+    const { user_id, user_role, user_s_subscription, user_subscription } = jwtDecode(auth.accessToken); 
+
     const is_subscription = user_s_subscription || user_subscription;
     const { prodList } = usePlanProducts(is_subscription);
     const { plans, selectedPlan, setSelectedPlan, isLoading } = useUserPlans(user_id);
@@ -23,7 +24,7 @@ const ProfilisPageLayout = () => {
                 <Container>
                     <ProfileNavbar />
                 </Container>      
-                <Outlet context={{ is_subscription, prodList, plans, selectedPlan, setSelectedPlan, isLoading }} />
+                <Outlet context={{ user_role, is_subscription, prodList, plans, selectedPlan, setSelectedPlan, isLoading }} />
             </Main>
         </>
     );

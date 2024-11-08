@@ -105,8 +105,8 @@ const Select = ({ val, prodId, cellName, setCurrentValue, setIsShowCell, handleE
                 <option value='uzkandis'>Užkandis</option>
             </>}
 
-            {cellName === 'group' && <>
-                <option value='-'>Grupė</option>
+            {cellName === 'food_type' && <>
+                <option value='-'>-</option>
                 <option value='Mėsa'>Mėsa</option>
                 <option value='Žuvis'>Žuvis</option>
                 <option value='Kruopos'>Kruops</option>

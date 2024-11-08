@@ -1,6 +1,8 @@
 .searchResults {
-    position: absolute;
+    /* position: absolute; */
     overflow: hidden;
+    /* width: 10rem; */
+    width: 100%;
     margin-top: 0.5rem;
     border-radius: 1rem;
     border-radius: 0.5rem;
@@ -19,4 +21,10 @@
 }
 .searchResults p:not(:last-child) {
     border-bottom: 1px solid #ccc;
+}
+
+@media only screen and (max-width: 576px) {
+    .searchResults {
+        /* width: 100%; */
+    }
 }
