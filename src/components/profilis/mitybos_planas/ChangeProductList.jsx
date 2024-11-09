@@ -9,7 +9,6 @@ const ChangeProductList = ({ top, filteredProducts, setIsShowChageProdList, onUp
             <div className={styles.stogiukas}></div>
             <div className={styles.changeProductList}>
                 {filteredProducts.map((prod, i) => 
-                    
                     <span
                         key={i} 
                         style={{display: 'flex', justifyContent: 'space-between'}}
@@ -19,8 +18,6 @@ const ChangeProductList = ({ top, filteredProducts, setIsShowChageProdList, onUp
                         }}
                     >
                         {prod.title}
-                        {/* <span>{prod.title}</span>                    */}
-                        {/* <span>{prod.category} - {prod.sub_category}</span> */}
                     </span>
                 )}
             </div>

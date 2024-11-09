@@ -2,6 +2,7 @@ import styles from './Products.module.css';
 const cantChangeProd = ['Daržovės'];
 
 const Products = ({ isShowProd, meal, onChangeProduct, setClickedProd, clickedProd }) => {
+
     return (
         <div className={`${styles.products} ${isShowProd ? styles.show : ''}`}>
             <div className={styles.productsInner}>
@@ -12,7 +13,7 @@ const Products = ({ isShowProd, meal, onChangeProduct, setClickedProd, clickedPr
                                 disabled={cantChangeProd.includes(prod.title)} 
                                 onClick={(e) => {
                                     onChangeProduct(e, clickedProd.m_id === meal.id && clickedProd.p_id === prod.id, meal.logic, prod); 
-                                    setClickedProd({m_id: meal.id, p_id: prod.id});
+                                    setClickedProd({m_id: meal.id, p_id: prod.id, b_100: prod.b_100, a_100: prod.a_100, r_100: prod.r_100, grams: prod.grams});
                                 }}
                             >keisti</button>
                         </div>
