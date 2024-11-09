@@ -23,6 +23,7 @@ const HomePage = () => {
     
     useEffect(() => {
         document.title = 'Be žalos';
+        document.body.style.backgroundColor = '#084747';
         window.scrollTo(0, 0);
     }, []);
 

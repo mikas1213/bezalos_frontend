@@ -5,9 +5,7 @@ const ManageSubscription = () => {
 
     const handleCustomerPortal = async () => {
         try {
-            const res = await axiosPrivate.post(
-                '/payments/customer-portal-session'
-            );
+            const res = await axiosPrivate.post('/payments/customer-portal-session');
             window.location = res.data.session.url;
         } catch (err) {
             console.log(err.message);

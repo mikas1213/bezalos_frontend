@@ -70,7 +70,7 @@ function App() {
             <ReactQueryDevtools initialIsOpen={false}/>
             <Helmet> 
                 <script type="application/ld+json"> 
-                    {`{ "@context": "https://schema.org", "@type": "Organization", "name": "Be Žalos", "url": "https://www.bezalos.lt", "logo": "https://www.bezalos.lt/src/assets/icons/png/logo/icon_180x180.png", "sameAs": [ "https://www.facebook.com/sandra.jatulyte", "https://www.instagram.com/valgau_be_zalos" ], "contactPoint": { "@type": "ContactPoint", "contactType": "Customer Service", "email": "info@bezalos.lt"}}`} 
+                    {`{ "@context": "https://schema.org", "@type": "Organization", "name": "Be Žalos", "url": "https://www.bezalos.lt", "logo": "https://www.bezalos.lt/src/assets/icons/png/logo/icon_180x180.png", "sameAs": [ "https://www.facebook.com/sandra.jatulyte", "https://www.instagram.com/valgau_be_zalos" ], "contactPoint": { "@type": "ContactPoint", "contactType": "Customer Service", "email": "sandra@bezalos.lt"}}`} 
                 </script> 
             </Helmet>
             <BrowserRouter>

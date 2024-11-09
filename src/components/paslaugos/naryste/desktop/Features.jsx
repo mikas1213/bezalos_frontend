@@ -16,11 +16,15 @@ const Features = () => {
                 <div><FaCircleCheck /></div>
             </div>
             <div className={styles.feature}>
-                <div>Produktų keitimas <span style={{color: '#a00'}}>(Kuriama)</span></div>
+                <div>
+                    Produktų keitimas 
+                </div>
                 <div><FaCircleCheck /></div>
             </div>
             <div className={styles.feature}>
-                <div>Receptų kūrimas <span style={{color: '#a00'}}>(Kuriama)</span></div>
+                <div>
+                    Receptų kūrimas <span style={{color: '#a00'}}>(Kuriama)</span>
+                </div>
                 <div><FaCircleCheck /></div>
             </div>
             <div className={styles.feature}>
@@ -45,15 +49,15 @@ const Features = () => {
                     {variant === 'profilis' && <FaRegCircleXmark />}
                 </div>
             </div>
-            <div className={styles.feature}>
+            {/* <div className={styles.feature}>
                 <div>Grupinė terapija 
-                    {/* <span style={{color: '#a00'}}>(Nuo rugsėjo)</span> */}
+                    <span style={{color: '#a00'}}>(Nuo rugsėjo)</span>
                 </div>
                 <div>
                     {variant === 'virtuve' && <FaCircleCheck />}
                     {variant === 'profilis' && <FaRegCircleXmark />}
                 </div>
-            </div>
+            </div> */}
         </div>
     );
 };

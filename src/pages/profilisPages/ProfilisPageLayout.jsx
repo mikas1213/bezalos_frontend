@@ -14,7 +14,7 @@ const ProfilisPageLayout = () => {
     const { user_id, user_role, user_s_subscription, user_subscription } = jwtDecode(auth.accessToken); 
 
     const is_subscription = user_s_subscription || user_subscription;
-    const { prodList } = usePlanProducts(is_subscription);
+    const { prodList } = usePlanProducts();
     const { plans, selectedPlan, setSelectedPlan, isLoading } = useUserPlans(user_id);
 
     return (

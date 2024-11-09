@@ -5,7 +5,7 @@ import toast from 'react-hot-toast';
 export const usePlanProducts = () => {
     
     const axiosPrivate = useAxiosPrivate();
-    const [prodList, setProdList] = useState([{test: 'test'}]);
+    const [prodList, setProdList] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     
     useEffect(() => {

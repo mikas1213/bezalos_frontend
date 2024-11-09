@@ -41,9 +41,10 @@
 .heartIcon {
     font-size: 1.9rem;
 }
-.successSubscriptionContent button {
+.successSubscriptionContent .successVirtuveBtn {
     border: none;
     text-decoration: underline;
+    background-color: #fff;
     color: var(--color-text-dark);
     font-size: var(--font-size-p);
     font-weight: 500;
@@ -52,6 +53,22 @@
     background-color: var(--color-btn-primary);
 }
 
+.successSubscriptionContent .successProfileBtn {
+    font-size: var(--font-size-h6);
+    color: var(--color-text-dark);
+    border: none;
+    border-radius: 2rem;
+    padding: 0.4rem 2rem;
+    margin-top: 2rem;
+    background-color: var(--color-btn-secondary);
+    transition: background-color 0.2s ease;
+}
+.successProfileBtn .heartIcon {
+    font-size: 1.4rem;
+}
+.successSubscriptionContent .successProfileBtn:hover {
+    background-color: var(--color-btn-primary);
+}
 
 @media only screen and (max-width: 375px) {
     .successSubscriptionContent svg {

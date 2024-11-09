@@ -23,8 +23,16 @@ const UserPlansPage = () => {
 
         setFilteredProducts(() => prodList.filter(prod => {
             
-            if(product.category.indexOf('baltymai') > -1) {
-                return prod.category === product.category && prod.sub_category === product.sub_category;
+            if(product.category.indexOf('baltymai') > -1 || product.category === 'Riebalai') {
+
+                // return prod.category === product.category && prod.sub_category === product.sub_category;
+
+                if(product.sub_category === 'pieno produktas') {
+                    return prod.category === product.category
+                } else {
+                    return prod.category === product.category && prod.sub_category === product.sub_category;
+                }
+
             } else if(product.category === 'Vaisiai/uogos' && meal_logic === 'A+R') {
                 return prod.category === product.category || (prod.category === 'Angliavandeniai' && prod.sub_category === 'uzkandis');
             } else {
