@@ -7,7 +7,6 @@ export const kcal = (b, a, r) => {
 };
 
 export const set_grams = (old_prod, new_prod) => {
-    console.log('set grams: ', old_prod)
     const old_kcal = kcal(bar(old_prod.b_100, old_prod.grams), bar(old_prod.a_100, old_prod.grams), bar(old_prod.r_100, old_prod.grams));
     const new_kcal = kcal(new_prod.proteins, new_prod.carbs, new_prod.fat);
     const new_grams = old_kcal / new_kcal * 100;

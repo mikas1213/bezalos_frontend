@@ -73,7 +73,7 @@ const UserDetails = ({ user, setUser, assignPlanToUser, isPlanAssigning }) => {
     const loadUsersOptions = async (inputValue, callback) => {
         try {
             if(inputValue && inputValue.length > 2) {
-                const resp = await axiosPrivate.get(`/admin/users?search=${inputValue}`);
+                const resp = await axiosPrivate.get(`/admin/users?search=${inputValue.toLowerCase()}`);
                 const options = resp.data.map(user => ({
                     label: (<div style={{display: 'flex', flexDirection: 'column', gap: '0.1rem'}}>
                         <span style={{color: '#999', fontSize: '1rem'}}>{user.stripe_username || user.name}</span>

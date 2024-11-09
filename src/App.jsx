@@ -14,6 +14,8 @@ import Spinner from './components/UI/Spinner';
 import RequireAuth from './pages/RequireAuth';
 import PersistLogin from './pages/PersistLogin';
 
+import { Helmet } from 'react-helmet';
+
 const VirtuvePage = lazy(() => import('./pages/VirtuvePage'));
 const HomePage = lazy(() => import('./pages/HomePage'));
 const VirtuveVideoPage = lazy(() => import('./pages/VirtuveVideoPage'));
@@ -66,6 +68,11 @@ function App() {
         <QueryClientProvider client={queryClient}>
             
             <ReactQueryDevtools initialIsOpen={false}/>
+            <Helmet> 
+                <script type="application/ld+json"> 
+                    {`{ "@context": "https://schema.org", "@type": "Organization", "name": "Be Žalos", "url": "https://www.bezalos.lt", "logo": "https://www.bezalos.lt/src/assets/icons/png/logo/icon_180x180.png", "sameAs": [ "https://www.facebook.com/sandra.jatulyte", "https://www.instagram.com/valgau_be_zalos" ], "contactPoint": { "@type": "ContactPoint", "contactType": "Customer Service", "email": "info@bezalos.lt"}}`} 
+                </script> 
+            </Helmet>
             <BrowserRouter>
                 <AuthProvider>
                     <Suspense fallback={<Spinner />}>

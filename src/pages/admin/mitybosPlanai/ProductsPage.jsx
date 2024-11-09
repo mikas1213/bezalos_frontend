@@ -115,7 +115,7 @@ const ProductsPage = () => {
                     placeholder='Kategorija'
                     onChange={e => {setCategoryFilter(e.value); setSearchFilter('')}}
                 />
-                <SearchInput onChangeValue={setSearchFilter} setCategoryFilter={setCategoryFilter} />
+                <SearchInput onChangeValue={setSearchFilter} />
             </Navbar>
 
             <Wrapper layout='products'>

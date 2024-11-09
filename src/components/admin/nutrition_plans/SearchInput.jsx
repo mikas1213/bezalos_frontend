@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-const SearchInput = ({ onChangeValue, setCategoryFilter }) => {
+const SearchInput = ({ onChangeValue }) => {
     const [val, setVal] = useState('');
     const [inputStyle, setInputStyle] = useState({    
         cursor: 'pointer',
@@ -24,7 +24,6 @@ const SearchInput = ({ onChangeValue, setCategoryFilter }) => {
                 onFocus={() => setInputStyle(prevStyle => ({...prevStyle, outline: 'none'}))}
                 onChange={e => {
                     setVal(e.target.value);
-                    setCategoryFilter('');
                     onChangeValue(e.target.value);
                 }}
             />
