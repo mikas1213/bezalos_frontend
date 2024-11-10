@@ -30,15 +30,19 @@ const WelcomeSection = () => {
             <MainContainer customClass={styles.welcomeContainer}>
                 <div className={`${styles.welcomeLeft} ${ isAnimate ? styles.onload : '' }`}>
                     <div className={styles.welcomeHeader}>
-                        <p>Tavo <span>ilgalaikių</span></p>
+                        {/* <p>Tavo <span>ilgalaikių</span></p>
                         <p>mitybos pokyčių</p>
-                        <p>garantas</p>
+                        <p>garantas</p> */}
+
+                        <h1>Tavo <span>ilgalaikių</span></h1>
+                        <h1>mitybos pokyčių</h1>
+                        <h1>garantas</h1>
                     </div>
 
                     <div className={styles.welcomeTitle}>
-                        <p>
+                        <h2>
                             Čia išmoksi sveikatai palankios mitybos pagrindų, tapsi bendruomenės nare. Juk drauge įpročius formuoti lengviau!
-                        </p>
+                        </h2>
                     </div>
 
                     <div className={styles.btnContainer}>

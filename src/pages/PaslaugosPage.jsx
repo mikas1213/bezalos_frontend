@@ -15,6 +15,7 @@ const PaslaugosPage = () => {
     const [side, setSide] = useState('naryste');
     useEffect(() => {
         document.title = 'Be žalos | Paslaugos';
+        document.body.style.backgroundColor = '#fff';
     }, []);
 
     // const handleServiceCheckout = async (product) => {

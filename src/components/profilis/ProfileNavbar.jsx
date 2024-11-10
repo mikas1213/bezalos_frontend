@@ -11,10 +11,10 @@ const ProfileNavbar = () => {
     const location = useLocation();
     const links = [
         {to: '/profilis', label: 'Mitybos planas', icon: <BiSolidBowlRice className={styles.icon} />},
-        {to: '/profilis/anketa' , label: 'Anketa', icon: <HiClipboardList className={styles.anketa_icon} />},
         {to: '/profilis/produktu-keitimas', label: 'Produktų keitimas', icon: <FaArrowsRotate className={styles.icon} />},
         {to: '/profilis/mano-receptai', label: 'Mano receptai', icon: <FaBook className={styles.icon} />},
         {to: '/profilis/statistika', label: 'Statistika', icon: <IoMdAnalytics className={styles.icon} />},
+        {to: '/profilis/anketa' , label: 'Anketa', icon: <HiClipboardList className={styles.anketa_icon} />},
         {to: '/profilis/nustatymai', label: 'Nustatymai', icon: <RiSettings5Fill className={styles.icon} />}
     ];
 

@@ -1,13 +1,13 @@
 import { useState } from 'react';
 import  { useOutletContext } from 'react-router-dom';
-import useAxiosPrivate from '../../hooks/useAxiosPrivate';
+// import useAxiosPrivate from '../../hooks/useAxiosPrivate';
 import Plans from '../../components/profilis/mitybos_planas/Plans';
 import No_Plans from '../../components/profilis/no_mitybos_planas/No_Plans';
 import toast from 'react-hot-toast';
 import { bar, kcal, set_grams } from '../../utils/calculationsHelpers';
 
 const UserPlansPage = () => {
-    const axioxPrivate = useAxiosPrivate();
+    // const axioxPrivate = useAxiosPrivate();
     const { is_subscription, prodList, plans, selectedPlan, setSelectedPlan, isLoading } = useOutletContext();
 
     const [topPosition, setTopPosition] = useState(0);
@@ -24,9 +24,6 @@ const UserPlansPage = () => {
         setFilteredProducts(() => prodList.filter(prod => {
             
             if(product.category.indexOf('baltymai') > -1 || product.category === 'Riebalai') {
-
-                // return prod.category === product.category && prod.sub_category === product.sub_category;
-
                 if(product.sub_category === 'pieno produktas') {
                     return prod.category === product.category
                 } else {
@@ -44,7 +41,7 @@ const UserPlansPage = () => {
     const onUpdateProduct = async (updatedProd) => {
         
         try {  
-            await axioxPrivate.patch(`/profile/products/${selectedPlan.id}/${clickedProd.p_id}`, {...updatedProd, grams: set_grams(clickedProd, updatedProd)});
+            // await axioxPrivate.patch(`/profile/products/${selectedPlan.id}/${clickedProd.p_id}`, {...updatedProd, grams: set_grams(clickedProd, updatedProd)});
             setSelectedPlan(prevState => ({
                 ...prevState, 
                 b: Math.round(prevState.meals.filter(meal => !meal.is_sport).map(meal => meal.products.map(prod => prod.id === clickedProd.p_id ? bar(updatedProd.proteins, set_grams(prod, updatedProd)) : bar(prod.b_100, prod.grams)).reduce((acc, val) => acc + val, 0)).reduce((acc, val) => acc + val, 0)),

@@ -26,11 +26,17 @@
     justify-content: space-around;
 }
 
-.welcomeHeader p span { color: var(--color-btn-primary); }
+/* .welcomeHeader p span { color: var(--color-btn-primary); }
 .welcomeHeader p { opacity: 0.1; }
 .welcomeHeader p:nth-child(1) { transform: translateX(-5%); transition: transform 0.6s ease-out, opacity 0.5s ease; }
 .welcomeHeader p:nth-child(2) { transform: translateX(-10%); transition: transform 0.6s ease-out, opacity 0.5s ease; }
-.welcomeHeader p:nth-child(3) { transform: translateX(-15%); transition: transform 0.6s ease-out, opacity 0.5s ease; }
+.welcomeHeader p:nth-child(3) { transform: translateX(-15%); transition: transform 0.6s ease-out, opacity 0.5s ease; } */
+
+.welcomeHeader h1 span { color: var(--color-btn-primary); }
+.welcomeHeader h1 { opacity: 0.1; }
+.welcomeHeader h1:nth-child(1) { transform: translateX(-5%); transition: transform 0.6s ease-out, opacity 0.5s ease; }
+.welcomeHeader h1:nth-child(2) { transform: translateX(-10%); transition: transform 0.6s ease-out, opacity 0.5s ease; }
+.welcomeHeader h1:nth-child(3) { transform: translateX(-15%); transition: transform 0.6s ease-out, opacity 0.5s ease; }
 
 .welcomeHeader {
     display: flex;
@@ -41,19 +47,36 @@
     font-weight: 600;
 }
 
+.welcomeHeader h1 {
+    line-height: 115%;
+    font-size: var(--font-size-dynamic-h2-lg);
+    font-weight: 600;
+}
+
 .welcomeTitle {
     display: flex;
     flex-direction: column;
     gap: 0.1rem;
-    color: var(--color-text-light);
+    /* color: var(--color-text-light);
     font-size: var(--font-size-dynamic-p-lg);
-    font-weight: 400;
+    font-weight: 400; */
     transform: translateX(-2%);
     transition: transform 0.6s ease-out, opacity 0.6s ease-out;
     opacity: 0.1;
 }
 
-.welcomeLeft.onload :is(.welcomeHeader p, .welcomeTitle, .btn) {
+.welcomeTitle h2 {
+    color: var(--color-text-light);
+    font-size: var(--font-size-dynamic-p-lg);
+    font-weight: 400;
+    /* opacity: 0.1; */
+}
+
+/* .welcomeLeft.onload :is(.welcomeHeader p, .welcomeTitle, .btn) {
+    transform: translateX(0%);
+    opacity: 1;
+} */
+.welcomeLeft.onload :is(.welcomeHeader h1, .welcomeTitle, .btn) {
     transform: translateX(0%);
     opacity: 1;
 }
@@ -133,15 +156,22 @@
         gap: 1.389vw;
     }
 
-    .welcomeHeader p {
+    /* .welcomeHeader p {
+        text-align: center;
+    } */
+
+    .welcomeHeader h1 {
+        font-size: var(--font-size-dynamic-h2-sm);
+        gap: 1.389vw;
         text-align: center;
     }
-
     .welcomeTitle {
         text-align: center;
+        /* font-size: var(--font-size-dynamic-h5-sm); */
+    }
+    .welcomeTitle h2 {
         font-size: var(--font-size-dynamic-h5-sm);
     }
-
     .btnContainer {
         display: flex;
         justify-content: center;
