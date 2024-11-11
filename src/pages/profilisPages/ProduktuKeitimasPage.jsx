@@ -43,7 +43,7 @@ const ProduktuKeitimasPage = () => {
     return (
         <Container>
             {is_subscription ? <KeitykleContainer>
-                <Header title='Maistro produktų sąrašas' />
+                <Header title='Maistro produktų keitimas' />
                 <ProductInput 
                     handleProductSearch={handleProductSearch}
                     searchQuery={searchQuery}
