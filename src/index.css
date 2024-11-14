@@ -1,23 +1,32 @@
 :root {
     /* Colors CMD + k + g */
+
+/* ---N-E-W---V-A-R-I-A-B-L-E-S---F-O-R---C-O-L-O-R-S--- */
     --color-background: #fff;
     --color-background-secondary: #eff1ef;
     --color-background-hover: #cdd1cb;
-                                
+    --color-border: #cdd1cb99;
 
-    
+    --green-bgr-light: #084747;
+    --green-bgr-dark: #082b1d;
+    --green-btn-light: #7ed957;
+    --green-btn-dark: #60c040;
+    --grey-light: #cdd1cb;
+    --grey-dark: #878b86;
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - -*/
+
     --color-bgr-light: #eff1ef;
     --color-bgr-tab: #f1f5fa;
     --color-bgr-card: #d1d6cf;
     --color-bgr-top: #084747;
-                        
+    --color-text-dark: #082b1d;
     --color-bgr-bottom: #082b1d;
 
     --color-text-light: #eff1ef;
     --color-text-light-88: #eff1ef88;
     --color-text-light-aa: #eff1efaa;
     --color-text-light-cc: #eff1efcc;
-    --color-text-dark: #082b1d;
+    
     --color-radio-border: #a7aba6; 
     --color-radio: #878b86;
     --color-btn-primary: #7ed957;

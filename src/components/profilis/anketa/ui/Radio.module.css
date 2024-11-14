@@ -1,0 +1,108 @@
+:root {
+    --radio-b: 1.5px;
+
+    /* S SIZE */
+    --radio-sd: 1.2rem;
+    --radio-sd-half: calc(var(--radio-sd) / 2);
+    --radio-sd-extra: calc((var(--radio-sd) / 2) + (var(--radio-sd) / 12));
+
+    /* M SIZE */
+    --radio-md: 1.5rem;
+    --radio-md-half: calc(var(--radio-md) / 2);
+    --radio-md-extra: calc((var(--radio-md) / 2) + (var(--radio-md) / 12));
+}
+
+.radioBtn {
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+.radioBtn input {
+    display: none;
+}
+.radioBtn input:checked + .marker:after {
+    background-color: var(--color-btn-secondary);
+}
+.radioLabel {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--color-bgr-top);
+}
+
+.marker {
+    position: relative;
+    border-radius: 50rem;
+    border-style: solid;
+    border-color: var(--color-border);
+    border-width: var(--radio-b);
+    transition: all 0.1s ease-in-out;
+}
+.marker:after {
+    display: block;
+    position: absolute;
+    content: ' ';
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+}
+.radioBtn:hover .marker {
+    border: var(--radio-b) solid var(--color-btn-secondary);
+} 
+
+/* S SIZE */
+.size_s {
+    width: var(--radio-sd);
+    height: var(--radio-sd);
+}
+.size_s:after {
+    width: var(--radio-sd-half);
+    height: var(--radio-sd-half);
+}
+.radioBtn input:checked + .size_s:after {
+    animation: radioAnimation_s 0.3s ease-in-out;
+}
+
+/* M SIZE */
+.size_m {
+    width: var(--radio-md);
+    height: var(--radio-md);
+}
+.size_m:after {
+    width: var(--radio-md-half);
+    height: var(--radio-md-half);
+}
+.radioBtn input:checked + .size_m:after {
+    animation: radioAnimation_m 0.3s ease-in-out;
+}
+
+@keyframes radioAnimation_s { 
+    0% { 
+        width: 0; 
+        height: 0;
+    } 
+    50% { 
+        width: var(--radio-sd-extra);
+        height: var(--radio-sd-extra);
+    }
+    100% {
+        width: var(--radio-sd-half);
+        height: var(--radio-sd-half);
+    }
+}
+
+@keyframes radioAnimation_m { 
+    0% { 
+        width: 0; 
+        height: 0;
+    } 
+    50% { 
+        width: var(--radio-md-extra);
+        height: var(--radio-md-extra);
+    }
+    100% {
+        width: var(--radio-md-half);
+        height: var(--radio-md-half);
+    }
+}

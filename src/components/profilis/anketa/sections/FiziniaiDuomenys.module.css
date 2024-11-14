@@ -1,0 +1,11 @@
+.gender {
+    display: flex;
+    gap: 1rem;
+}
+
+.physicalData {
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}

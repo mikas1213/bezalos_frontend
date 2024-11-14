@@ -1,0 +1,13 @@
+.stepInfo {
+    margin-bottom: 2rem;
+}
+
+.stepTitle {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--color-text-dark);
+    margin-bottom: 0.5rem;
+}
+.stepNumber {
+    color: var(--color-radio);
+}

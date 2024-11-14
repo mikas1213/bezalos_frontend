@@ -1,0 +1,52 @@
+.rutinos {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+.rutina {
+    border: 1.5px solid var(--color-border);
+    border-radius: 0.5rem;
+    padding: 1rem;
+}
+
+.radios {
+    margin-top: 0.75rem;
+    margin-bottom: 0.75rem;
+    display: flex;
+    gap: 1rem;
+}
+.radioLabel {
+    color: var(--green-bgr-light);
+    font-size: 0.8rem;
+    font-weight: 400;
+}
+
+.activities {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+.activity {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--grey-dark);
+}
+
+.divider {
+    border-top: 1px solid var(--color-border);
+    margin: 0.5rem 0;
+}
+
+
+
+@media only screen and (max-width: 320px) {
+    .radios {
+        margin-top: 0.5rem;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+}

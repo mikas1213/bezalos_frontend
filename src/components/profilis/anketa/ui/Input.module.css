@@ -1,0 +1,25 @@
+.inputGroup span {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--color-bgr-top);
+    margin-left: 0.5rem;
+    margin-bottom: 0.3rem;
+}
+
+.inputGroup input {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1.5px solid var(--color-border);
+    border-radius: 0.5rem;
+    color: var(--color-text-dark);
+    transition: border-color 300ms ease, box-shadow 300ms ease;
+}
+.inputGroup input::placeholder {
+    color: var(--color-background-hover);
+}
+.inputGroup input:focus {
+    outline: none;
+    border-color: var(--color-btn-secondary);
+    box-shadow: 0 0 0 0.5px var(--color-btn-secondary);
+}

@@ -1,0 +1,39 @@
+.stepIndicator {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+    padding-left: 1rem;
+    padding-right: 1rem;   
+}
+
+.step {
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: all 300ms ease;
+}
+
+.step.active {
+    color: var(--color-btn-primary);
+    transform: scale(1.15);
+}
+
+.step.green {
+    color: var(--color-btn-primary);
+}
+.step.grey {
+    color: var(--color-background-secondary);
+}
+
+.step .icon {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.dot {
+    height: 0.5rem;
+    width: 0.5rem;
+    border-radius: 50rem;
+    background-color: currentColor;
+}
