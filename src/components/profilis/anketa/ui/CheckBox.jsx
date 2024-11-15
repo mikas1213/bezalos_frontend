@@ -13,7 +13,7 @@ const CheckBox = ({ name, label, className = '' }) => {
                 onChange={setCheck}
             />
             <div className={styles.checkmark}></div>
-            <span className={styles.container}>{ label }</span>
+            <span className={styles.label}>{ label }</span>
         </div>
     );
 };

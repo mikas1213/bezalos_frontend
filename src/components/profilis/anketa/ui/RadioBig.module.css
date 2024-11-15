@@ -21,14 +21,24 @@
     font-size: 0.9rem;
     font-weight: 600;
 }
-
+.iconContainer {
+    width: 1.8rem;
+    display: flex;
+    align-items: end;
+}
 .radio .icon {
+    display: flex;
     color: var(--color-btn-secondary);
-    width: 1.2rem;
-    height: 1.2rem;
-    margin-right: 0.2rem;
+    width: 1.3rem;
+    height: 1.3rem;
 }
 
 .radio small {
     font-weight: 300;
+}
+
+@media only screen and (max-width: 320px) {
+    .radio {
+        margin-top: 0.5rem;
+    }
 }

@@ -37,3 +37,9 @@
     border-radius: 50rem;
     background-color: currentColor;
 }
+
+@media only screen and (max-width: 576px) {
+    .stepIndicator {
+        padding: 0;
+    }
+}

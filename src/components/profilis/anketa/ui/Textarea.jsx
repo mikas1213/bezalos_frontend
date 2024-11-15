@@ -18,7 +18,6 @@ const Textarea = ({ placeholder, maxLength, className = '' }) => {
                     placeholder={placeholder}
                     value={value}
                     onChange={handleChange}
-
                 />
                 <div className={styles.counter}>
                     {value.length}/{maxLength}

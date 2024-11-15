@@ -11,10 +11,14 @@ const RadioBig = ({ formData, setFormData, name, value }) => {
             <div>
                 {value}
                 {value === 'Valgymo iššūkiai' && <small>(Persivalgymai, emocinis valgymas, dietų patirtis)</small>}
-            </div>                
+            </div>          
+
+            <div className={styles.iconContainer}>
             {formData[`${name}`] === value && (
-                <LuCheckCircle2 className={styles.icon} />
+            
+                    <LuCheckCircle2 className={styles.icon} />
             )}
+            </div>
         </div>
     );
 };

@@ -23,3 +23,17 @@
     border-color: var(--color-btn-secondary);
     box-shadow: 0 0 0 0.5px var(--color-btn-secondary);
 }
+
+@media only screen and (max-width: 576px) {
+    .inputGroup input {
+        font-size: 1rem;
+    }
+}
+
+@media only screen and (max-width: 320px) {
+    .inputGroup input {
+        font-size: 0.9rem;
+        padding: 0.4rem 0.5rem;
+    }
+    
+}

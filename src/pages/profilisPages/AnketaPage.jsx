@@ -1,7 +1,6 @@
 import { useState } from 'react';
 
 import Container from '../../components/UI/Container';
-import Title from '../../components/profilis/anketa/Title';
 import Anketa from '../../components/profilis/anketa/Anketa';
 import ProgressBar from '../../components/profilis/anketa/ProgressBar';
 import StepIndicator from '../../components/profilis/anketa/StepIndicator';
@@ -69,7 +68,6 @@ const AnketaPage = () => {
 
     return (
         <Container>
-            <Title />
             <Anketa>
                 <ProgressBar currentStep={currentStep} totalSteps={totalSteps} />
                 <StepIndicator steps={steps} currentStep={currentStep} setCurrentStep={setCurrentStep} />

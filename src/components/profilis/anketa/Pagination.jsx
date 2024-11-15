@@ -27,7 +27,7 @@ const Pagination = ({ currentStep, setCurrentStep, totalSteps }) => {
             </button>                
             <button
                 onClick={handleNext}
-                className={`${styles.btn} ${styles.next}`}
+                className={`${styles.btn} ${styles.next} ${currentStep === totalSteps ? styles.btnEnd : ''}`}
             >
                 {currentStep === totalSteps ? 'Pateikti' : 'Toliau'}
                 {currentStep !== totalSteps && <FaChevronRight className={styles.icon} />}

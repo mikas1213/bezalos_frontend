@@ -11,3 +11,10 @@
 .stepNumber {
     color: var(--color-radio);
 }
+
+
+@media only screen and (max-width: 430px) {
+    .stepNumber {
+        font-size: 0.9rem;
+    }
+}

@@ -60,3 +60,9 @@
         opacity: 1
     }
 }
+
+@media only screen and (max-width: 430px) {
+    .textarea textarea {
+        font-size: 0.9rem;
+    }
+}

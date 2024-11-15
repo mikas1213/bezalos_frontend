@@ -14,3 +14,9 @@
         padding: 1rem;
     }
 }
+
+@media (max-width: 375px) {
+    .anketa {
+        padding: 0.7rem;
+    }
+}

@@ -1,6 +1,5 @@
 .timePicker {
     position: relative;
-    /* max-width: 5rem; */
 }
 
 .card {
@@ -21,29 +20,31 @@
 .inner {
     display: flex;
     align-items: center;
-    gap: 0.1rem;
     color: #555;
 }
 .icon {
-    width: 0.8rem;
-    height: 0.8rem;
+    padding: 0.2rem;
+    display: flex;
+    width: 1.2rem;
+    height: 1.2rem;
     color: var(--color-radio);
 }
 
+
 .title {
     user-select: none;
-    width: 3rem;
-    text-align: center;
     font-size: 0.8rem;
     font-weight: 500;
+    text-align: center;
+    width: 2.6rem;
 }
 
 /* -S-E-L-E-C-T- -T-I-M-E- -C-A-R-D- -T-A-B-L-E- */
 .selectTimeCard {
     position: fixed;
+    top: 2rem;
     left: 0;
     right: 0;
-    top: 100px;
     z-index: 50;
     color: var(--color-text-dark);
     background-color: #ffffff;
@@ -147,8 +148,17 @@ span:is(.activeHour, .activeMinute) {
 
 
 @media only screen and (max-width: 320px) {
+    .selectTimeCard .header {
+        padding: 0.5rem 1rem;
+    }
+    .selectTimeCard .header div {
+        font-size: 0.9rem;
+    }
     .selectTimeCard {
         max-width: 18rem;
+    }
+    .hours, .minutes {
+        gap: 0.3rem;
     }
     .hour, .minute {
         font-size: 0.8rem;
