@@ -1,11 +1,18 @@
 import styles from './CheckBox.module.css';
 import { useState } from 'react';
 
-const CheckBox = ({ name, label, className = '' }) => {
-    const [check, setCheck] = useState(false);
+const CheckBox = ({ name, label, formData, handleForm, className = '' }) => {
+    
+    const [check, setCheck] = useState(formData[name]);
     const customClass = [styles.chbx, className].join(' ');
+    
+    const onChangeHandlre = () => {
+        setCheck(!check);
+        handleForm({name, value: !check});
+    };
+
     return (
-        <div className={customClass} onClick={() => setCheck(check => !check)}>
+        <div className={customClass} onClick={onChangeHandlre}>
             <input 
                 name={name}
                 checked={check}

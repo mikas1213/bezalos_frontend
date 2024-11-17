@@ -1,7 +1,7 @@
 import styles from './Tikslai.module.css';
 import RadioBig from '../ui/RadioBig';
 
-const Tikslai = ({ formData, setFormData}) => {
+const Tikslai = ({ formData, handleForm}) => {
     return (
         <div className={styles.radios}>
             {[
@@ -10,7 +10,7 @@ const Tikslai = ({ formData, setFormData}) => {
                 'Sveikatai palankūs mitybos įpročių formavimas',
                 'Valgymo iššūkiai'
             ].map(goal => (
-                <RadioBig key={goal} formData={formData} setFormData={setFormData} value={goal} name='goal' />
+                <RadioBig key={goal} formData={formData} handleForm={handleForm} value={goal} name='goal' />
             ))}
         </div>
     );

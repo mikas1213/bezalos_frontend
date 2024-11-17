@@ -8,6 +8,35 @@
     border-radius: 0.5rem;
     padding: 1rem;
 }
+.titleContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.rutinaTitle {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--green-bgr-light);
+}
+.binIconContainer {
+    display: inline-flex;
+    flex-grow: 0;
+    flex-shrink: 1;
+}
+.binIcon {
+    width: 1.2rem;
+    height: 1.2rem;
+    stroke: var(--grey-dark);
+    transition: stroke 0.1s ease-in-out;
+}
+.binIcon:hover {
+    cursor: pointer;
+    stroke: var(--color-admin-red);
+}
+.newRoutineBtn:hover {
+    background-color: var(--color-background-hover);
+}
+
 
 .radios {
     margin-top: 0.75rem;
@@ -40,6 +69,34 @@
     border-top: 1px solid var(--color-border);
     margin: 0.5rem 0;
 }
+
+.newRoutineBtn {
+    display: flex;
+    align-items: center;
+    gap: 0.2rem;
+    border: none;
+    color: #333;
+    background-color: var(--color-background-secondary);
+    border-radius: 0.4rem;
+    padding: 0.3rem 0.3rem;
+    padding-right: 0.8rem;
+    font-size: 0.9rem;
+    transition: background-color 0.1s ease-in-out;
+}
+
+.explanation {
+    margin-top: 0.3rem;
+    font-size: 0.7rem;
+    color: var(--grey-dark);
+}
+.icon {
+    display: flex;
+    color: #333;
+    stroke-width: 2rem;
+    padding: 0.1rem;
+    font-size: 1.5rem;
+}
+
 
 @media only screen and (max-width: 576px) {
     .radios {

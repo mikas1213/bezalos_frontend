@@ -14,7 +14,7 @@ const FiziniaiDuomenys = ({ formData, handleForm }) => {
                 <Input placeholder='Įveskite amžių' name='age' label='Amžius' formData={formData} handleForm={handleForm} />
                 <Input placeholder='Įveskite ūgį' name='height' label='Ūgis (cm)' formData={formData} handleForm={handleForm} />
                 <Input placeholder='Įveskite svorį' name='weight' label='Svoris (kg)' formData={formData} handleForm={handleForm} />
-                <Input placeholder='Įveskite vidutinį žingsnių skaičių per dieną' name='steps' label='Aktyvumas žingsniais' formData={formData} handleForm={handleForm} />
+                <Input placeholder='Įveskite vidutinį žingsnių skaičių per dieną' name='activity_steps' label='Aktyvumas žingsniais' formData={formData} handleForm={handleForm} />
             </div>
         </>
     );

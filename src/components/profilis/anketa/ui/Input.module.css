@@ -16,7 +16,7 @@
     transition: border-color 300ms ease, box-shadow 300ms ease;
 }
 .inputGroup input::placeholder {
-    color: var(--color-background-hover);
+    color: var(--color-text-placeholder);
 }
 .inputGroup input:focus {
     outline: none;

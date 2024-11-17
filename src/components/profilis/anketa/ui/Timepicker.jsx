@@ -2,10 +2,10 @@ import styles from './Timepicker.module.css';
 import { useState, useEffect, useRef } from 'react';
 import { FaRegClock } from 'react-icons/fa6';
 
-const Timepicker = () => {
+const Timepicker = ({type, name, formData, handleForm}) => {
+    
     const [isOpen, setIsOpen] = useState(false);
-    const [selectedHour, setSelectedHour] = useState('00');
-    const [selectedMinute, setSelectedMinute] = useState('00');
+    const [current_hour, current_minute] = formData[name]?.split(':') || ['00', '00']
     const dropdownRef = useRef(null);
 
     const hours = Array.from({ length: 24 }, (_, i) => String(i).padStart(2, '0'));
@@ -21,7 +21,18 @@ const Timepicker = () => {
         return () => document.removeEventListener('mousedown', handleClickOutside);
     }, []);
 
-
+    const handleSetTime = (time, val) => {
+        switch(time) {
+            case 'hours':
+                handleForm({name, value: `${val}:${current_minute}`}, type, formData.id);
+                break;
+            case 'minutes':
+                handleForm({name, value: `${current_hour}:${val}`}, type, formData.id);
+                break;
+            default:
+                return;
+        }
+    };
 
     return (
         <div className={styles.timePicker} ref={dropdownRef}>
@@ -29,7 +40,7 @@ const Timepicker = () => {
                 <div className={styles.inner}>
                     <FaRegClock className={styles.icon}/>
                     <span className={styles.title}>
-                        {`${selectedHour}:${selectedMinute}`}
+                        {`${current_hour}:${current_minute}`}
                     </span>
                 </div>
             </div>
@@ -47,8 +58,8 @@ const Timepicker = () => {
                                 <div 
                                     key={hour}
                                     className={styles.hour} 
-                                    onClick={() => setSelectedHour(hour)}>
-                                    <span className={selectedHour === hour ? styles.activeHour : ''}>{hour}</span>
+                                    onClick={() => handleSetTime('hours', hour)}>
+                                    <span className={current_hour === hour ? styles.activeHour : ''}>{hour}</span>
                                 </div> 
                             ))}
                         </div>
@@ -61,8 +72,8 @@ const Timepicker = () => {
                                 <div 
                                     key={minute} 
                                     className={styles.minute}
-                                    onClick={() => setSelectedMinute(minute)}>
-                                    <span className={selectedMinute === minute ? styles.activeMinute : ''}>{minute}</span>
+                                    onClick={() => handleSetTime('minutes', minute)}>
+                                    <span className={current_minute === minute ? styles.activeMinute : ''}>{minute}</span>
                                 </div>
                             ))}
                         </div>
@@ -71,11 +82,9 @@ const Timepicker = () => {
 
                 <div className={styles.footer}>
                     <button
-                    className="w-full p-4 bg-blue-500 text-white rounded-xl text-lg font-medium 
-                            hover:bg-blue-600 active:bg-blue-700"
-                    onClick={() => setIsOpen(false)}
-                    >
-                    Pasirinkti
+                        className={styles.footerBtn}
+                        onClick={() => setIsOpen(false)}
+                    >Pasirinkti
                     </button>
                 </div>
             </div>)}

@@ -119,13 +119,13 @@ span:is(.activeHour, .activeMinute) {
 }
 
 
-/* ---F-U-T-T-E-R--- */
+/* ---F-O-O-T-E-R--- */
 .footer {
     padding: 1rem;
     border-top: 1px solid var(--color-border);
 }
 
-.footer button {
+.footerBtn {
     width: 100%;
     padding: 1rem;
     border: none;
@@ -134,18 +134,16 @@ span:is(.activeHour, .activeMinute) {
     border-radius: 0.75rem;
     font-size: 1.125rem;
     font-weight: 500;
+    transition: background-color 0.1s ease-in-out;
 }
 
-.footer button:hover {
+.footerBtn:hover {
     background-color: var(--color-bgr-bottom);
 }
 
-.footer button:active {
+.footerBtn:active {
     background-color: var(--color-bgr-top);
 }
-
-
-
 
 @media only screen and (max-width: 320px) {
     .selectTimeCard .header {

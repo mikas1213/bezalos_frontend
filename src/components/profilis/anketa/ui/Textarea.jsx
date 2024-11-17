@@ -1,32 +1,25 @@
 import styles from './Textarea.module.css';
-import { useState } from 'react';
 
-const Textarea = ({ placeholder, maxLength, className = '' }) => {
-    const [value, setValue] = useState('');
-
-    const handleChange = (e) => {
-        if (e.target.value.length <= maxLength) {
-            setValue(e.target.value);
-        }
-      };
-
+const Textarea = ({ name, placeholder, maxLength, formData, handleForm, className = '' }) => {
     const customClass = [styles.textarea, className].join(' ');
     return (
         <div className={customClass}>
             <div>
                 <textarea
+                    name={name}
                     placeholder={placeholder}
-                    value={value}
-                    onChange={handleChange}
+                    value={formData[name] || ''}
+                    onChange={handleForm}
+
                 />
                 <div className={styles.counter}>
-                    {value.length}/{maxLength}
+                    {formData[name]?.length || 0} / {maxLength}
                 </div>
                 
             </div>
             <div 
                 className={styles.progressBar}
-                style={{ width: `${(value.length / maxLength) * 100}%` }}
+                style={{ width: `${((formData[name]?.length || 0) / maxLength) * 100}%` }}
             />
       </div>
     );

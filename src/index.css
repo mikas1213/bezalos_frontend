@@ -4,7 +4,10 @@
 /* ---N-E-W---V-A-R-I-A-B-L-E-S---F-O-R---C-O-L-O-R-S--- */
     --color-background: #fff;
     --color-background-secondary: #eff1ef;
-    --color-background-hover: #cdd1cb;
+    --color-background-hover: #E8EAE8;
+    --color-text-placeholder: #cdd1cb;
+    
+    
     --color-border: #cdd1cb99;
 
     --green-bgr-light: #084747;

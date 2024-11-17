@@ -1,11 +1,16 @@
-// import styles from './PapildomaInfo.module.css';
+import styles from './PapildomaInfo.module.css';
 import Textarea from '../ui/Textarea';
 
-const PapildomaInfo = () => {
+const PapildomaInfo = ({ formData, handleForm }) => {
     return (
-        
-            <Textarea maxLength={100}/>
-        
+        <Textarea 
+            name='additional_info'
+            formData={formData}
+            handleForm={handleForm}
+            maxLength={100}
+            placeholder='Papildoma informacija'
+            className={styles.mt_05} 
+        />
     );
 };
 
