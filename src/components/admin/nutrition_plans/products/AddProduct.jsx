@@ -95,7 +95,13 @@ const AddProduct = ({ handleAddProduct }) => {
           
         try {
             const data = await axiosPrivate.post('/admin/plans/products', formData);
-            handleAddProduct({...formData, id: data.data.id});
+            handleAddProduct({
+                ...formData, 
+                id: data.data.id, 
+                ...(!formData.sub_category ? { sub_category: '-' } : {}),
+                ...(!formData.food_type ? { food_type: '-' } : {}),
+                ...(!formData.intolerance ? { intolerance: '-' } : {})
+            });
             setFormData({});
             toast.success('Produktas pridėtas');
             
