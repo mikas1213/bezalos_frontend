@@ -3,11 +3,11 @@ import RadioBig from '../ui/RadioBig';
 import CheckBox from '../ui/CheckBox';
 import Textarea from '../ui/Textarea';
 
-const DarboGrafikas = ({ formData, handleForm }) => {
+const DarboGrafikas = ({ formData, handleForm, errors, setErrors }) => {
     return (
         <div className={styles.radios}>
             {['Pastovus', 'Slenkantis', 'Laisvas grafikas', 'Tėvystės atostogos'].map(schedule => (
-                <RadioBig key={schedule} formData={formData} handleForm={handleForm} value={schedule} name='schedule' />
+                <RadioBig key={schedule} formData={formData} handleForm={handleForm} value={schedule} name='schedule' setErrors={setErrors} />
             ))}
 
             {formData.schedule === 'Tėvystės atostogos' && 
@@ -18,8 +18,8 @@ const DarboGrafikas = ({ formData, handleForm }) => {
                         handleForm={handleForm} 
                         name='feeding' 
                         label='Ar šiuo metu maitini?' 
+                        setErrors={setErrors}
                     />
-
 
                     {formData.feeding && <Textarea 
                         name='feeding_desc'
@@ -28,9 +28,12 @@ const DarboGrafikas = ({ formData, handleForm }) => {
                         maxLength={200} 
                         formData={formData} 
                         handleForm={handleForm} 
+                        setErrors={setErrors}
                     />}
                 </>
             }
+            {errors.schedule && <span className={styles.error}>{errors.schedule}</span>}
+            {errors.feeding_desc && <span className={styles.error}>{errors.feeding_desc}</span>}
         </div>
     );
 };

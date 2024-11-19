@@ -10,15 +10,17 @@ const habits = [
     {label: 'Užkandis', name: 'snack', chbx_label: 'Užkandžių nevalgau', text_place_holder: 'aprašyk'},
     {label: 'Vakarienė', name: 'dinner', chbx_label: 'Vakarienės nevalgau', text_place_holder: 'aprašyk'}
 ];
-const DabartiniaiIprociai = ({ formData, handleForm }) => {
+const DabartiniaiIprociai = ({ formData, handleForm, errors, setErrors }) => {
+    
     return (
-        <div className={styles.dabartiniaiIprociai}>  
+        <div>  
             <div>   
                 <CheckBox 
                     name='diet' 
                     label='Yra tekę laikytis dienos' 
                     formData={formData}
                     handleForm={handleForm}
+                    setErrors={setErrors}
                 />
                 {formData.diet && <Textarea 
                     name='diet_desc' 
@@ -27,7 +29,9 @@ const DabartiniaiIprociai = ({ formData, handleForm }) => {
                     handleForm={handleForm}
                     maxLength={100} 
                     className={styles.mt_05} 
+                    setErrors={setErrors}
                 />}
+                {errors.diet_desc && <span className={styles.error}>{errors.diet_desc}</span>}
             </div>
             <div>
                 <CheckBox 
@@ -36,6 +40,7 @@ const DabartiniaiIprociai = ({ formData, handleForm }) => {
                     formData={formData}
                     handleForm={handleForm}
                     className={styles.mt_1} 
+                    setErrors={setErrors}
                 />
                 {formData.intolerance && <Textarea 
                     name='intolerance_desc'
@@ -44,11 +49,12 @@ const DabartiniaiIprociai = ({ formData, handleForm }) => {
                     formData={formData}
                     handleForm={handleForm}
                     className={styles.mt_05} 
+                    setErrors={setErrors}
                 />}
+                {errors.intolerance_desc && <span className={styles.error}>{errors.intolerance_desc}</span>}
             </div>
 
             <div className={`${styles.meals} ${styles.mt_1}`}>
-
                 {habits.map(habit => <div key={habit.name} className={styles.mealContainer}>
                     <div className={styles.meal}>
                         <span className={styles.title}>{habit.label}</span>
@@ -64,6 +70,7 @@ const DabartiniaiIprociai = ({ formData, handleForm }) => {
                         formData={formData}
                         handleForm={handleForm}
                         className={styles.mt_05} 
+                        setErrors={setErrors}
                     />
 
                     {!formData[habit.name] && <Textarea 
@@ -73,7 +80,9 @@ const DabartiniaiIprociai = ({ formData, handleForm }) => {
                         maxLength={100}
                         placeholder={habit.text_place_holder}
                         className={styles.mt_05} 
+                        setErrors={setErrors}
                     />}
+                    {errors[`${habit.name}_desc`] && <span className={styles.error}>{errors[`${habit.name}_desc`]}</span>}
                 </div>)}
 
             </div> 

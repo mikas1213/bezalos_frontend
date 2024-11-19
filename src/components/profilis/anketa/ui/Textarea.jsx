@@ -1,7 +1,8 @@
 import styles from './Textarea.module.css';
 
-const Textarea = ({ name, placeholder, maxLength, formData, handleForm, className = '' }) => {
+const Textarea = ({ name, placeholder, maxLength, formData, handleForm, setErrors, className = '' }) => {
     const customClass = [styles.textarea, className].join(' ');
+    
     return (
         <div className={customClass}>
             <div>
@@ -9,7 +10,15 @@ const Textarea = ({ name, placeholder, maxLength, formData, handleForm, classNam
                     name={name}
                     placeholder={placeholder}
                     value={formData[name] || ''}
-                    onChange={handleForm}
+                    onChange={e => {
+                        handleForm(e);
+                        
+                        setErrors(prev => {
+                            const updated = {...prev};
+                            delete updated[name];    
+                            return updated;
+                        });
+                    }}
 
                 />
                 <div className={styles.counter}>

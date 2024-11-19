@@ -1,6 +1,7 @@
 import styles from './Input.module.css';
 
-const Input = ({ handleForm, formData, placeholder, label = '', name }) => {
+const Input = ({ handleForm, formData, placeholder, label = '', name, error }) => {
+    
     return (
         <div className={styles.inputGroup}>
             {label && <span>{label}</span>}
@@ -9,10 +10,12 @@ const Input = ({ handleForm, formData, placeholder, label = '', name }) => {
                 name={name}
                 type='text' 
                 autoComplete='off'
-                value={formData[name]}
+                maxLength='5'
+                value={formData[name] || ''}
                 onChange={handleForm}
                 placeholder={placeholder}
             />
+            {error && <span className={styles.error}>{error}</span>}
         </div>
     );
 };

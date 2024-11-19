@@ -13,24 +13,24 @@ const categoryOptions = [
 ];
 
 const subCategoryOptions = [
-    { value: '-', label: 'Be subkategorijos' },
+    { value: '-', label: '-' },
     { value: 'pieno produktas', label: 'Pieno produktas'},
     { value: 'uzkandis', label: 'Užkandis' },
 ];
 
-const intoleranceOptions = [
-    { value: '-', label: 'Valgo viską' },
-    { value: 'Be glitimo', label: 'Be glitimo' },
-    { value: 'Be laktozės', label: 'Be laktozės'},
-];
-
 const foodTypeOptions = [
-    {value: '-', label: 'Grupė'},
+    {value: '-', label: '-'},
     {value: 'Mėsa', label: 'Mėsa'},
     {value: 'Žuvis', label: 'Žuvis'},
     {value: 'Kruopos', label: 'Kruopos'},
     {value: 'Pieno produktai', label: 'Pieno produktai'},
     {value: 'Ankštiniai', label: 'Ankštiniai'}
+];
+
+const intoleranceOptions = [
+    { value: '-', label: '-' },
+    { value: 'Be glitimo', label: 'Be glitimo' },
+    { value: 'Be laktozės', label: 'Be laktozės'},
 ];
 
 const customStyles = {
@@ -74,12 +74,6 @@ const customStyles = {
         paddingTop: 0,
         paddingBottom: 0,
     }),
-    // indicatorSeparator: base => ({
-        // ...base,
-        // minHeight: '1px',
-        // height: '20px',
-
-    //   }),
     indicatorsContainer: (provided) => ({
         ...provided,
         minHeight: 0,
@@ -88,7 +82,7 @@ const customStyles = {
 }
 
 const AddProduct = ({ handleAddProduct }) => {
-    const [formData, setFormData] = useState({intolerance: '-'});
+    const [formData, setFormData] = useState({});
     const handleFormData = (e1, e2) => {
         setFormData(prev => ({...prev, [e1.target?.name || e2.name]: e1.target?.value || e1.value}));
     };
@@ -124,37 +118,34 @@ const AddProduct = ({ handleAddProduct }) => {
                 placeholder='Kategorija'
                 styles={customStyles}
                 name='category'
-                defaultValue={formData.category}
+                value={formData.category ? categoryOptions.find(option => option.value === formData.category) : null}
                 onChange={handleFormData}
             />
             <Select 
-                required={true}
                 options={subCategoryOptions} 
                 isSearchable={false}
                 placeholder='Sub kategorija'
                 styles={customStyles}
                 name='sub_category'
-                defaultValue={formData.sub_category}
+                value={formData.sub_category ? subCategoryOptions.find(option => option.value === formData.sub_category) : null}
                 onChange={handleFormData}
             />
-            <Select 
-                required={true}
+            <Select
                 options={foodTypeOptions} 
                 isSearchable={false}
                 placeholder='Grupė'
                 styles={customStyles}
-                name='group'
-                defaultValue={foodTypeOptions[0]}
+                name='food_type'
+                value={formData.food_type ? foodTypeOptions.find(option => option.value === formData.food_type) : null}
                 onChange={handleFormData}
             />
             <Select 
-                required={true}
                 options={intoleranceOptions} 
                 isSearchable={false}
-                placeholder='Netoleravimas'
+                placeholder='Alergenai'
                 styles={customStyles}
                 name='intolerance'
-                defaultValue={intoleranceOptions[0]}
+                value={formData.intolerance ? intoleranceOptions.find(option => option.value === formData.intolerance) : null}
                 onChange={handleFormData}
             />
             <button>Pridėti</button>

@@ -5,12 +5,14 @@ import { FaRegClock } from 'react-icons/fa6';
 const Timepicker = ({type, name, formData, handleForm}) => {
     
     const [isOpen, setIsOpen] = useState(false);
-    const [current_hour, current_minute] = formData[name]?.split(':') || ['00', '00']
+    const [h, m] = formData[name]?.split(':') || ['00', '00'];
+    const [current_hour, setCurrent_hour] = useState(h);
+    const [current_minute, setCurrent_minute] = useState(m);
     const dropdownRef = useRef(null);
 
     const hours = Array.from({ length: 24 }, (_, i) => String(i).padStart(2, '0'));
     const minutes = Array.from({ length: 12 }, (_, i) => String(i * 5).padStart(2, '0'));
-
+    
     useEffect(() => {
         const handleClickOutside = e => {
             if(dropdownRef.current && !dropdownRef.current.contains(e.target)) {
@@ -22,18 +24,21 @@ const Timepicker = ({type, name, formData, handleForm}) => {
     }, []);
 
     const handleSetTime = (time, val) => {
+        
         switch(time) {
             case 'hours':
+                setCurrent_hour(val);
                 handleForm({name, value: `${val}:${current_minute}`}, type, formData.id);
                 break;
             case 'minutes':
+                setCurrent_minute(val);
                 handleForm({name, value: `${current_hour}:${val}`}, type, formData.id);
                 break;
             default:
                 return;
         }
     };
-
+    
     return (
         <div className={styles.timePicker} ref={dropdownRef}>
             <div className={styles.card} onClick={() => setIsOpen(!isOpen)}>
@@ -41,6 +46,7 @@ const Timepicker = ({type, name, formData, handleForm}) => {
                     <FaRegClock className={styles.icon}/>
                     <span className={styles.title}>
                         {`${current_hour}:${current_minute}`}
+                        {/* {`${h}:${m}`} */}
                     </span>
                 </div>
             </div>

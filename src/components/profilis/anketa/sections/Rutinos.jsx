@@ -5,9 +5,10 @@ import { IoIosAdd } from "react-icons/io";
 import { DeleteBin_icon } from '../../../../svg/icons';
 
 const renderHabit = (type, name, label, day, handleForm) => {
+    
     return <div className={styles.activity}>
         <span>{label}</span>
-        <Timepicker 
+        <Timepicker
             type={type}
             name={name}
             formData={day}
@@ -16,14 +17,15 @@ const renderHabit = (type, name, label, day, handleForm) => {
     </div>
 }
 
-const renderRoutine = (day, handleForm, type) => {
+const renderRoutine = (day, handleForm, deleteRoutine, type, i) => {
     
     return <div key={day.id} className={styles.rutina}>
         <div className={styles.titleContainer}>
             <span className={styles.rutinaTitle}>{type === 'workday' ? 'Darbo diena' : 'Laisvadienis'}</span>
-            <span className={styles.binIconContainer}>
+
+            {i > 0 && <span className={styles.binIconContainer} onClick={() => deleteRoutine(type, day.id)}>
                 <DeleteBin_icon icon={styles.binIcon} />
-            </span>
+            </span>}
         </div>
         
         <div className={styles.radios}>
@@ -76,108 +78,19 @@ const renderNewRoutineBtn = (addRoutine, routine) => {
     </div>
 };
 
-const Rutinos = ({ formData, handleForm, addRoutine }) => {
+const Rutinos = ({ formData, handleForm, addRoutine, deleteRoutine }) => {
     return (
         <div className={styles.rutinos}>    
-            {formData.routines.workday.map(day => 
-                renderRoutine(day, handleForm, 'workday')
+            {formData.routines.workday.map((day, i) => 
+                renderRoutine(day, handleForm, deleteRoutine, 'workday', i)
             )}
-
-            {/* <div className={styles.newRoutine}>
-                <button className={styles.newRoutineBtn} onClick={() => addRoutine('workday')}>
-                    <IoIosAdd className={styles.icon} />Papildoma rutina
-                </button>
-                <div className={styles.explanation}>(Jeigu turi kitą darbo grafiką)</div>
-            </div> */}
             {renderNewRoutineBtn(addRoutine, 'workday')}
             
-            {formData.routines.day_off.map(day => 
-                renderRoutine(day, handleForm, 'day_off')
+            {formData.routines.day_off.map((day, i) => 
+                renderRoutine(day, handleForm, deleteRoutine, 'day_off', i)
             )}
             {renderNewRoutineBtn(addRoutine, 'day_off')}
-            {/* {formData.routines.workday.map(day => <div key={day.id} className={styles.rutina}>
-                <span className={styles.rutinaTitle}>Darbot diena</span>
-                
-                <div className={styles.radios}>
-                    <Radio 
-                        type='workday'
-                        name='eat'
-                        value='Galiu valgyti betkada' 
-                        formData={day} 
-                        handleForm={handleForm} 
-                        className={styles.radioLabel}
-                        size='s'
-                    />
-                    <Radio 
-                        type='workday'
-                        name='eat'
-                        value='Negaliu valgyti betkada' 
-                        formData={day} 
-                        handleForm={handleForm} 
-                        className={styles.radioLabel}
-                        size='s'
-                    />
-                </div>
 
-                <div className={styles.activities}>
-                    {renderHabit('workday', 'get_up', 'Keliuosi', day, handleForm)}
-                    {renderHabit('workday', 'go_sleep', 'Einu miegoti', day, handleForm)}
-                    {renderHabit('workday', 'sport', 'Sportas', day, handleForm)}
-
-                    {day.eat === 'Negaliu valgyti betkada' && 
-                        <>
-                            <div className={styles.divider} />
-                            {renderHabit('workday', 'breakfast', 'Pusryčius galiu valgyti', day, handleForm)}
-                            {renderHabit('workday', 'lunch', 'Pietus galiu valgyti', day, handleForm)}
-                            {renderHabit('workday', 'snack', 'Užkandį galiu valgyti', day, handleForm)}
-                            {renderHabit('workday', 'dinner', 'Vakarienę galiu valgyti', day, handleForm)}
-
-                        </>
-                    }
-                </div>
-            </div>)}
-
-            {formData.routines.day_off.map(day =>
-                <div key={day.id} className={styles.rutina}>
-                    <span className={styles.rutinaTitle}>Laisvadienis</span>
-                    <div className={styles.radios}>
-                        <Radio 
-                            type='day_off'
-                            name='eat'
-                            value='Galiu valgyti betkada' 
-                            formData={day} 
-                            handleForm={handleForm} 
-                            className={styles.radioLabel}
-                            size='s'
-                        />
-                        <Radio 
-                            type='day_off'
-                            name='eat'
-                            value='Negaliu valgyti betkada' 
-                            formData={day} 
-                            handleForm={handleForm} 
-                            className={styles.radioLabel}
-                            size='s'
-                        />
-                    </div>
-
-                    <div className={styles.activities}>
-                        {renderHabit('day_off', 'get_up', 'Keliuosi', day, handleForm)}
-                        {renderHabit('day_off', 'go_sleep', 'Einu miegoti', day, handleForm)}
-                        {renderHabit('day_off', 'sport', 'Sportas', day, handleForm)}
-
-                        {day.eat === 'Negaliu valgyti betkada' && 
-                            <>
-                                <div className={styles.divider} />
-                                {renderHabit('day_off', 'breakfast', 'Pusryčius galiu valgyti', day, handleForm)}
-                                {renderHabit('day_off', 'lunch', 'Pietus galiu valgyti', day, handleForm)}
-                                {renderHabit('day_off', 'snack', 'Užkandį galiu valgyti', day, handleForm)}
-                                {renderHabit('day_off', 'dinner', 'Vakarienę galiu valgyti', day, handleForm)}
-                            </>
-                        }
-                    </div>
-                </div>
-            )} */}
         </div>
     );
 };

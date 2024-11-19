@@ -1,14 +1,10 @@
-.dabartiniaiIprociai {
-    /* display: flex; */
-    /* flex-direction: column; */
-    /* gap: 1rem; */
-}
 .meals {
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
 }
 .meal {
+    margin-top: 0.5rem;
     display: flex;
     gap: 0.5rem;
     align-items: center;
@@ -20,10 +16,16 @@
     font-weight: 600;
 }
 
-
-
-
-
+.error {
+    color: var(--color-admin-red);
+    font-size: 0.7rem;
+    font-weight: 500;
+}
+@media only screen and (max-width: 576px) {
+    .error {
+        font-size: 0.8rem;
+    }
+}
 
 .mt_05 {
     margin-top: 0.5rem;

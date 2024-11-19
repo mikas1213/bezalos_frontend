@@ -2,7 +2,8 @@ import styles from './Sveikata.module.css';
 import CheckBox from '../ui/CheckBox';
 import Textarea from '../ui/Textarea';
 
-const Sveikata = ({ formData, handleForm }) => {
+const Sveikata = ({ formData, handleForm, errors, setErrors }) => {
+    
     return (
         <>
             <CheckBox 
@@ -10,6 +11,7 @@ const Sveikata = ({ formData, handleForm }) => {
                 label='Turiu sveikatos problemų.' 
                 formData={formData} 
                 handleForm={handleForm}
+                setErrors={setErrors}
             />
 
             {formData.health_problems && <Textarea 
@@ -19,7 +21,9 @@ const Sveikata = ({ formData, handleForm }) => {
                 handleForm={handleForm}
                 maxLength={100} 
                 className={styles.mt_05}
+                setErrors={setErrors}
             />}
+            {errors && <span className={styles.error}>{errors}</span>}
         </>
     );
 };

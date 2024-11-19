@@ -1,12 +1,15 @@
 import styles from './RadioBig.module.css';
 import { LuCheckCircle2 } from 'react-icons/lu';
 
-const RadioBig = ({ formData, handleForm, name, value }) => {
+const RadioBig = ({ name, value, formData, handleForm, setErrors }) => {
 
     return (
         <div
             className={styles.radio}
-            onClick={() => handleForm({name, value})}
+            onClick={() => {
+                handleForm({name, value});
+                setErrors({});
+            }}
         >
             <div>
                 {value}

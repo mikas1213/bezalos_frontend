@@ -1,11 +1,16 @@
 import styles from './Pagination.module.css';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 
-const Pagination = ({ currentStep, setCurrentStep, totalSteps }) => {
+const Pagination = ({ currentStep, setCurrentStep, totalSteps, isValidFormPage }) => {
 
     const handleNext = () => {
         if (currentStep < totalSteps) {
-            setCurrentStep(prev => prev + 1);
+            if(isValidFormPage()) {
+                setCurrentStep(prev => prev + 1);
+            } 
+            // else {
+            //     alert('nekažką!');
+            // }
         }
     };
 
