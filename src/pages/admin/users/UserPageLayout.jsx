@@ -6,7 +6,7 @@ import { useParams } from 'react-router-dom';
 const UserPageLayout = () => {
     const { id: user_id } = useParams();
     const { user, setUser, selectedPlan, setSelectedPlan, isLoading } = useUserInfo(user_id);
-
+    
     return (
         <div style={{paddingBottom: '10rem'}}>
             <UserNav />
