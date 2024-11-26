@@ -182,6 +182,13 @@ img {
     /* max-width: 100vw; */
 }
 
+span.anketaError {
+    color: var(--color-admin-red);
+    font-size: 0.7rem;
+    font-weight: 400;
+    
+}
+
 
 /* -----------------t-y-p-e-s-c-a-l-e----------------- */
 /* 
@@ -213,21 +220,3 @@ img {
 	0.086rem /1.37px
 	0.069rem /1.10px
 */
-
-h1	3.815rem	
-
-h2	3.052rem	
-
-h3	2.441rem	
-
-h4	1.953rem	
-
-h5	1.563rem	
-
-h6	1.25rem	
-
-p	1rem	
-
-small 0.8rem	
-
-0.64rem	

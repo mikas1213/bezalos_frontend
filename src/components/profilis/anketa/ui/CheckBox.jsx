@@ -11,6 +11,7 @@ const CheckBox = ({ name, label, formData, handleForm, setErrors, className = ''
         setErrors(prev => {
             const updated = {...prev};
             delete updated[`${name}_desc`];
+            delete updated[`${name}_time`];
             return updated;
         });
         handleForm({name, value: !check});

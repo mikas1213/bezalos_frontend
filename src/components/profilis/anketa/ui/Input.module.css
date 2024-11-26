@@ -24,18 +24,9 @@
     box-shadow: 0 0 0 0.5px var(--color-btn-secondary);
 }
 
-.inputGroup .error {
-    color: var(--color-admin-red);
-    font-size: 0.7rem;
-    font-weight: 500;
-}
-
 @media only screen and (max-width: 576px) {
     .inputGroup input {
         font-size: 1rem;
-    }
-    .inputGroup .error {
-        font-size: 0.8rem;
     }
 }
 

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import InformationSoon from '../../components/information_soon/InformationSoon';
+import { useOutletContext } from 'react-router-dom';
 import Container from '../../components/UI/Container';
 import Anketa from '../../components/profilis/anketa/Anketa';
 import ProgressBar from '../../components/profilis/anketa/ProgressBar';
@@ -16,76 +16,17 @@ import Rutinos from '../../components/profilis/anketa/sections/Rutinos';
 import PapildomaInfo from '../../components/profilis/anketa/sections/PapildomaInfo';
 
 import { v4 as uuidv4 } from 'uuid';
+import useAxiosPrivate from '../../hooks/useAxiosPrivate';
+import toast from 'react-hot-toast';
 
 const AnketaPage = () => {
-    const [formData, setFormData] = useState({
-        gender: 'Moteris',
-        age: '',
-        height: '',
-        weight: '',
-        activity_steps: '',
-        goal: '',
-        schedule: '',
-        feeding: false,
-        feeding_desc: '',
-        health_problems: false,
-        health_problems_desc: '',
-        diet: false,
-        diet_desc: '',
-        intolerance: false, 
-        intolerance_desc: '',
-        breakfast: false,
-        breakfast_time: '--:--',
-        breakfast_desc: '',
-        lunch: false,
-        lunch_time: '--:--',
-        lunch_desc: '',
-        snack: false,
-        snack_time: '--:--',
-        snack_desc: '',
-        dinner: false,
-        dinner_time: '--:--',
-        dinner_desc: '',
-        routines: {
-            workday: [{
-                id: 'dfb14c64-7a61-4d3c-9e02-df3c8b55b28f',
-                eat: 'Galiu valgyti betkada', 
-                get_up: '08:00', 
-                go_sleep: '22:30', 
-                sport: '12:30',
-                breakfast: '09:00',
-                lunch: '13:15',
-                snack: '16:10',
-                dinner: '18:30'
-            },
-            {
-                id: '4a9e56b1-6bf6-4286-a9de-e243c89dfd2b',
-                eat: 'Negaliu valgyti betkada', 
-                get_up: '07:15', 
-                go_sleep: '23:00', 
-                sport: '13:00',
-                breakfast: '00:00',
-                lunch: '00:00',
-                snack: '00:00',
-                dinner: '00:00'
-            }],
-            day_off: [{
-                id: 'c1a853fa-553f-45a7-83d9-71215f19e707',
-                eat: 'Galiu valgyti betkada', 
-                get_up: '00:00', 
-                go_sleep: '00:00', 
-                sport: '00:00',
-                breakfast: '00:00',
-                lunch: '00:00',
-                snack: '00:00',
-                dinner: '00:00'
-            }]
-        } 
-    });
+    const { anketa: formData, setAnketa: setFormData, user_id } = useOutletContext();
+    
     const [errors, setErrors] = useState({});
     const [currentStep, setCurrentStep] = useState(1);
+    const [isLoading, setIsLoading] = useState(false);
     const totalSteps = 7;
-
+    
     const steps = [
         { id: 1, title: 'Fiziniai duomenys', icon: '👤' },
         { id: 2, title: 'Tikslas', icon: '🎯' },
@@ -96,14 +37,14 @@ const AnketaPage = () => {
         { id: 7, title: 'Papildoma informacija', icon: '📝' },
     ];
     const handleForm = (e, prop, id) => {
-        
+        isLoading && setIsLoading(false);
         let name = e.target?.name || e.current?.name || e?.name;
-        const value = e.target?.value ?? e.current?.value ?? e?.value ?? '';
-
+        let value = e.target?.value ?? e.current?.value ?? e?.value ?? '';
+        
         setFormData(prev => {
+
             if(['breakfast', 'lunch', 'snack', 'dinner'].includes(name) && !prev[name]) {
-                
-                return ({...prev, [name]: value, [`${name}_desc`]: '', [`${name}_time`]: '00:0-'});
+                return ({...prev, [name]: value, [`${name}_desc`]: '', [`${name}_time`]: '--:--'});
             }
 
             if(['feeding', 'health_problems', 'diet', 'intolerance'].includes(name) && prev[name]) {
@@ -112,7 +53,8 @@ const AnketaPage = () => {
 
             if(['workday', 'day_off'].includes(prop)) {
                 if(name.indexOf('eat') > -1) name = name.split('_').shift();
-                const index = prev.routines[prop].findIndex(el => el.id === id);
+                
+                const index = prev.routines[prop].findIndex(el => el.day_id === id);
 
                 if(index > -1) {
                     const updatedRoutines = prev.routines[prop].map((routine, i) => i === index ? { 
@@ -124,7 +66,7 @@ const AnketaPage = () => {
                     };
                 }
             }
-
+            
             return ({...prev, [name]: value});
         });
     }
@@ -135,15 +77,15 @@ const AnketaPage = () => {
             routines: {
                 ...prev.routines,
                 [routine]: [...prev.routines[routine], {
-                    id: uuidv4(),
+                    day_id: uuidv4(),
                     eat: 'Galiu valgyti betkada', 
-                    get_up: '00:00', 
-                    go_sleep: '00:00', 
-                    sport: '00:00',
-                    breakfast: '00:00',
-                    lunch: '00:00',
-                    snack: '00:00',
-                    // dinner: '00:00'
+                    get_up: '--:--', 
+                    go_sleep: '--:--', 
+                    sport: '--:--',
+                    breakfast_time: '--:--',
+                    lunch_time: '--:--',
+                    snack_time: '--:--',
+                    dinner_time: '--:--'
                 }]
             }
         }));
@@ -154,25 +96,29 @@ const AnketaPage = () => {
             ...prev,
             routines: {
                 ...prev.routines,
-                [type]: [...prev.routines[type].filter(r => r.id !== id)]
+                [type]: [...prev.routines[type].filter(r => r.day_id !== id)]
             }
         }));
     };
 
     const isValidFormPage = () => {
-
         setErrors({});
         if(currentStep === 1) {
-            const requiredFields = ['age','height', 'weight', 'activity_steps'];
-
+            const requiredFields = ['age', 'height', 'weight', 'activity_steps'];
+            const errorTexts = {
+                age: 'Neįvestas amžius',
+                height: 'Neįvestas ūgis',
+                weight: 'Neįvestas svoris',
+                activity_steps: 'Neįvestas aktyvumas'
+            }
             let newErrors = {};
             requiredFields.forEach(field => {
                 if(formData[field].trim() === '') {
-                    newErrors[field] = `Laukas yra privalomas`;
+                    newErrors[field] = errorTexts[field];
                 } else if(isNaN(formData[field].replace(',', '.'))) {
-                    newErrors[field] = `Įvesti galima tik skaičius`;
+                    newErrors[field] = 'Galimi tik skaičiai';
                 } else if (Number(formData[field].replace(',', '.')) < 0) {
-                    newErrors[field] = `Skaičiai turi būti tik teigiami`;
+                    newErrors[field] = 'Galimi tik teigiami skaičiai';
                 }
             });
 
@@ -182,7 +128,7 @@ const AnketaPage = () => {
         } else if(currentStep === 2) {
             let newErrors = {};
             if(formData.goal.trim() === '') {
-                newErrors.goal = 'Pasirinkite tikslą';
+                newErrors.goal = 'Nepasirinktas tikslas';
             }
             setErrors(newErrors);
             return Object.keys(newErrors).length === 0;
@@ -190,9 +136,9 @@ const AnketaPage = () => {
         } else if(currentStep === 3) {
             let newErrors = {};
             if(formData.schedule.trim() === '') {
-                newErrors.schedule = 'Pasirinkite darbo grafiką';
+                newErrors.schedule = 'Nepasirinktas darbo grafikas';
             } else if(formData.feeding && formData.feeding_desc === '') {
-                newErrors.feeding_desc = 'Laukas yra privalomassss';
+                newErrors.feeding_desc = 'Trūksta informacijos';
             }
             setErrors(newErrors);
             return Object.keys(newErrors).length === 0;
@@ -200,7 +146,7 @@ const AnketaPage = () => {
         } else if(currentStep === 4) {
             let newErrors = {};
             if(formData.health_problems && formData.health_problems_desc.trim() === '') {
-                newErrors.health_problems_desc = 'Laukas yra privalomas';
+                newErrors.health_problems_desc = 'Trūksta informacijos';
             }
             setErrors(newErrors);
             return Object.keys(newErrors).length === 0;
@@ -226,19 +172,100 @@ const AnketaPage = () => {
                 newErrors.dinner_desc = 'Laukas yra privalomas';
             }
 
+            const [bh, bm] = formData.breakfast_time.split(':');
+            const [lh, lm] = formData.lunch_time.split(':');
+            const [sh, sm] = formData.snack_time.split(':');
+            const [dh, dm] = formData.dinner_time.split(':');
+
+            if(!formData.breakfast && (bh === '--' || bm === '--')) {
+                newErrors.breakfast_time = 'Nepasirinkta'
+            }
+            if(!formData.lunch && (lh === '--' || lm === '--')) {
+                newErrors.lunch_time = 'Nepasirinkta'
+            }
+            if(!formData.snack && (sh === '--' || sm === '--')) {
+                newErrors.snack_time = 'Nepasirinkta'
+            }
+            if(!formData.dinner && (dh === '--' || dm === '--')) {
+                newErrors.dinner_time = 'Nepasirinkta'
+            }
+
             setErrors(newErrors);
             return Object.keys(newErrors).length === 0;
 
+        } else if(currentStep === 6) {
+            let newErrors = {};
+            const gali_negali = {
+                'Galiu valgyti betkada': ['get_up', 'go_sleep'],
+                'Negaliu valgyti betkada': ['get_up', 'go_sleep', 'breakfast_time', 'lunch_time', 'snack_time', 'dinner_time']
+            };
+            
+            const days = formData.routines.workday.concat(formData.routines.day_off);
+
+            days.forEach(day => {
+                gali_negali[day.eat].forEach(field => {
+                    const [h, m] = day[field].split(':');
+                    if(h === '--' || m === '--') {
+                        newErrors[`${field}_${day.day_id}`] = {
+                            [field]: 'Nepasirinkta'
+                        };
+                    }
+                });
+            });
+
+            setErrors(newErrors);
+            return Object.keys(newErrors).length === 0;
+        } else if(currentStep === 7) {
+            return true;
         } else {
             return false;
         }
     };
 
+    const axiosPrivate = useAxiosPrivate();
+    const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
+    const submitAnketa_api = async () => {
+        try {
+            setIsLoading(true);
+            await axiosPrivate.post(`/profile/anketa/${user_id}`, formData);
+            await delay(1200);
+            setIsLoading(false); 
+
+        } catch (err) {
+            const { status } = err;
+            const { message = 'Klaida! ' } = err.response.data;
+            const { page = 7 } = err.response.data;
+            const { field } = err.response.data;
+
+            if(status === 400) {
+                setCurrentStep(page);
+                setErrors({ [field]: message });
+                throw new Error('Klaida!');
+            } else {
+                throw new Error(message);
+            }
+        }
+    };
+
+    const submitAnketa = () => {
+        toast.promise(
+            submitAnketa_api(),
+            {
+               loading: 'Saugoma...',
+               success: <b>{formData.user_id ? 'Anketa atnaujinta!' : 'Anketa išsaugota!'}</b>,
+               error: err => <b>{err.message}</b>,
+            },
+            {
+                success: { duration: 3000 },
+                error: { duration: 3000 }
+            }
+        );
+    };
 
     const renderSections = () => {
         switch (currentStep) {
             case 1:
-                return <FiziniaiDuomenys formData={formData} handleForm={handleForm} errors={errors} />
+                return <FiziniaiDuomenys formData={formData} handleForm={handleForm} errors={errors} setErrors={setErrors} />
             case 2:
                 return <Tikslai formData={formData} handleForm={handleForm} errors={errors.goal} setErrors={setErrors} />
             case 3:
@@ -246,32 +273,39 @@ const AnketaPage = () => {
             case 4: 
                 return <Sveikata formData={formData} handleForm={handleForm} errors={errors.health_problems_desc} setErrors={setErrors} />
             case 5: 
-                return <DabartiniaiIprociai formData={formData} handleForm={handleForm} errors={errors} setErrors={setErrors}/>
+                return <DabartiniaiIprociai formData={formData} handleForm={handleForm} errors={errors} setErrors={setErrors} />
             case 6: 
-                return <Rutinos formData={formData} handleForm={handleForm} addRoutine={addRoutine} deleteRoutine={deleteRoutine} />
+                return <Rutinos formData={formData} handleForm={handleForm} addRoutine={addRoutine} deleteRoutine={deleteRoutine} errors={errors} setErrors={setErrors} />
             case 7: 
-                return <PapildomaInfo formData={formData} handleForm={handleForm} />
+                return <PapildomaInfo formData={formData} handleForm={handleForm} setErrors={setErrors} />
             default:
                 return <div>Step {currentStep}</div>;
         }
     };
 
     return (
-        // <Container>
-        //     <Anketa>
-        //         <ProgressBar currentStep={currentStep} totalSteps={totalSteps} />
-        //         <StepIndicator steps={steps} currentStep={currentStep} setCurrentStep={setCurrentStep} />
-        //         <StepInfo steps={steps} totalSteps={totalSteps} currentStep={currentStep} />
-        //         { renderSections() }
-        //         <Pagination 
-        //             currentStep={currentStep} 
-        //             setCurrentStep={setCurrentStep} 
-        //             totalSteps={totalSteps} 
-        //             isValidFormPage={isValidFormPage}
-        //         />
-        //     </Anketa>
-        // </Container>
-        <InformationSoon />
+        <Container>
+            <Anketa>
+                <ProgressBar currentStep={currentStep} totalSteps={totalSteps} />
+                <StepIndicator 
+                    steps={steps} 
+                    currentStep={currentStep} 
+                    setCurrentStep={setCurrentStep} i
+                    isValidFormPage={isValidFormPage} 
+                />
+                <StepInfo steps={steps} totalSteps={totalSteps} currentStep={currentStep} />
+                { renderSections() }
+                <Pagination 
+                    currentStep={currentStep} 
+                    setCurrentStep={setCurrentStep} 
+                    totalSteps={totalSteps} 
+                    isValidFormPage={isValidFormPage}
+                    formData={formData}
+                    isLoading={isLoading}
+                    submitAnketa={submitAnketa}
+                />
+            </Anketa>
+        </Container>
     );
 };
 

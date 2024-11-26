@@ -6,7 +6,7 @@ import { Outlet } from 'react-router-dom';
 import { jwtDecode } from 'jwt-decode';
 import useAuth  from '../../hooks/useAuth';
 import { usePlanProducts } from '../../hooks/profile/usePlanProducts';
-import { useUserPlans } from '../../hooks/profile/useUserPlans';
+import { useUserDetails } from '../../hooks/profile/useUserDetails';
 
 const ProfilisPageLayout = () => {
     document.body.style.backgroundColor = '#fff';
@@ -15,7 +15,8 @@ const ProfilisPageLayout = () => {
 
     const is_subscription = user_s_subscription || user_subscription;
     const { prodList } = usePlanProducts();
-    const { plans, selectedPlan, setSelectedPlan, isLoading } = useUserPlans(user_id);
+
+    const { plans, selectedPlan, setSelectedPlan, anketa, setAnketa, isLoading } = useUserDetails(user_id);
 
     return (
         <>
@@ -24,7 +25,7 @@ const ProfilisPageLayout = () => {
                 <Container>
                     <ProfileNavbar />
                 </Container>      
-                <Outlet context={{ user_role, is_subscription, prodList, plans, selectedPlan, setSelectedPlan, isLoading }} />
+                {!isLoading && <Outlet context={{ user_role, is_subscription, prodList, plans, selectedPlan, setSelectedPlan, anketa, setAnketa, user_id, isLoading }} />}
             </Main>
         </>
     );

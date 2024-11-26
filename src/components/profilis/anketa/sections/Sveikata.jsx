@@ -19,11 +19,10 @@ const Sveikata = ({ formData, handleForm, errors, setErrors }) => {
                 placeholder='Sveikatos problemos' 
                 formData={formData}
                 handleForm={handleForm}
-                maxLength={100} 
                 className={styles.mt_05}
                 setErrors={setErrors}
             />}
-            {errors && <span className={styles.error}>{errors}</span>}
+            {errors && <span className='anketaError'>{errors}</span>}
         </>
     );
 };

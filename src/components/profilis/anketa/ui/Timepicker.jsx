@@ -2,17 +2,15 @@ import styles from './Timepicker.module.css';
 import { useState, useEffect, useRef } from 'react';
 import { FaRegClock } from 'react-icons/fa6';
 
-const Timepicker = ({type, name, formData, handleForm}) => {
+const hours = Array.from({ length: 24 }, (_, i) => String(i).padStart(2, '0'));
+const minutes = Array.from({ length: 12 }, (_, i) => String(i * 5).padStart(2, '0'));
+
+const Timepicker = ({ type, name, formData, handleForm, setErrors }) => {
     
     const [isOpen, setIsOpen] = useState(false);
-    const [h, m] = formData[name]?.split(':') || ['00', '00'];
-    const [current_hour, setCurrent_hour] = useState(h);
-    const [current_minute, setCurrent_minute] = useState(m);
+    const [h, m] = formData[name]?.split(':') || ['--', '--'];
     const dropdownRef = useRef(null);
 
-    const hours = Array.from({ length: 24 }, (_, i) => String(i).padStart(2, '0'));
-    const minutes = Array.from({ length: 12 }, (_, i) => String(i * 5).padStart(2, '0'));
-    
     useEffect(() => {
         const handleClickOutside = e => {
             if(dropdownRef.current && !dropdownRef.current.contains(e.target)) {
@@ -22,22 +20,6 @@ const Timepicker = ({type, name, formData, handleForm}) => {
         document.addEventListener('mousedown', handleClickOutside);
         return () => document.removeEventListener('mousedown', handleClickOutside);
     }, []);
-
-    const handleSetTime = (time, val) => {
-        
-        switch(time) {
-            case 'hours':
-                setCurrent_hour(val);
-                handleForm({name, value: `${val}:${current_minute}`}, type, formData.id);
-                break;
-            case 'minutes':
-                setCurrent_minute(val);
-                handleForm({name, value: `${current_hour}:${val}`}, type, formData.id);
-                break;
-            default:
-                return;
-        }
-    };
     
     return (
         <div className={styles.timePicker} ref={dropdownRef}>
@@ -45,8 +27,7 @@ const Timepicker = ({type, name, formData, handleForm}) => {
                 <div className={styles.inner}>
                     <FaRegClock className={styles.icon}/>
                     <span className={styles.title}>
-                        {`${current_hour}:${current_minute}`}
-                        {/* {`${h}:${m}`} */}
+                        {`${h}:${m}`}
                     </span>
                 </div>
             </div>
@@ -64,8 +45,19 @@ const Timepicker = ({type, name, formData, handleForm}) => {
                                 <div 
                                     key={hour}
                                     className={styles.hour} 
-                                    onClick={() => handleSetTime('hours', hour)}>
-                                    <span className={current_hour === hour ? styles.activeHour : ''}>{hour}</span>
+                                    onClick={() => {
+                                        handleForm({name, value: `${hour}:${m}`}, type, formData.day_id)
+
+                                        setErrors(prev => {
+                                            const updated = {...prev};
+                                            const prop = formData.day_id ? `${name}_${formData.day_id}` : name;
+     
+                                            delete updated[prop];
+                                            return updated;
+                                        });
+                                    }}
+                                >
+                                    <span className={h === hour ? styles.activeHour : ''}>{hour}</span>
                                 </div> 
                             ))}
                         </div>
@@ -78,8 +70,18 @@ const Timepicker = ({type, name, formData, handleForm}) => {
                                 <div 
                                     key={minute} 
                                     className={styles.minute}
-                                    onClick={() => handleSetTime('minutes', minute)}>
-                                    <span className={current_minute === minute ? styles.activeMinute : ''}>{minute}</span>
+                                    onClick={() => {
+                                        handleForm({name, value: `${h}:${minute}`}, type, formData.day_id)
+                                        setErrors(prev => {
+                                            const updated = {...prev};
+                                            const prop = formData.day_id ? `${name}_${formData.day_id}` : name;
+       
+                                            delete updated[prop];
+                                            return updated;
+                                        })
+                                    }}
+                                >
+                                    <span className={m === minute ? styles.activeMinute : ''}>{minute}</span>
                                 </div>
                             ))}
                         </div>

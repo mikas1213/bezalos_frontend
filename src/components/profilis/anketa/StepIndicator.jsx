@@ -1,12 +1,17 @@
 import styles from './StepIndicator.module.css';
 
-const StepIndicator = ({ steps, currentStep, setCurrentStep }) => {
+const StepIndicator = ({ steps, currentStep, setCurrentStep, isValidFormPage }) => {
+    
     return (
         <div className={styles.stepIndicator}>
             {steps.map(step => (
                 <div 
                     key={step.id}
-                    onClick={() => setCurrentStep(step.id)}
+                    onClick={() => {
+                        if(isValidFormPage()) {
+                            setCurrentStep(step.id);
+                        }
+                    }}
                     className={`${styles.step} ${
                         step.id === currentStep 
                         ? `${styles.active}` 

@@ -57,14 +57,12 @@ const ManagePlanPage = () => {
             {
                 id,
                 success: {
-                    // icon: '😤🤯😳',
                     duration: Infinity,
                     style: {
                         paddingLeft: '1rem'
                     }
                 },
                 error: {
-                    // icon: '',
                     duration: Infinity,
                     style: {
                         paddingLeft: '1rem',

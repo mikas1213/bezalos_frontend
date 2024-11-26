@@ -27,10 +27,7 @@
     font-size: var(--font-size-dynamic-h6-lg);
     margin: 2rem 0;
 }
-/* .newsletterEmail {
-    display: flex;
-    flex-direction: column;
-} */
+
 .footerEmail {
     display: flex;
     justify-content: center;

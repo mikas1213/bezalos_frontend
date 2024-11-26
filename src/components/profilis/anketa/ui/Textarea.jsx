@@ -1,6 +1,8 @@
 import styles from './Textarea.module.css';
+import { limits } from '../../../../utils/anketaFieldLimits';
 
-const Textarea = ({ name, placeholder, maxLength, formData, handleForm, setErrors, className = '' }) => {
+const Textarea = ({ name, placeholder, formData, handleForm, setErrors, className = '' }) => {
+    const maxLength = limits[name];
     const customClass = [styles.textarea, className].join(' ');
     
     return (
@@ -10,6 +12,7 @@ const Textarea = ({ name, placeholder, maxLength, formData, handleForm, setError
                     name={name}
                     placeholder={placeholder}
                     value={formData[name] || ''}
+                    maxLength={maxLength}
                     onChange={e => {
                         handleForm(e);
                         

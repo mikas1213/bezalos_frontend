@@ -13,7 +13,7 @@ const Tikslai = ({ formData, handleForm, errors, setErrors }) => {
             ].map(goal => (
                 <RadioBig key={goal} formData={formData} handleForm={handleForm} value={goal} name='goal' setErrors={setErrors} />
             ))}
-            {errors && <span className={styles.error}>{errors}</span>}
+            {errors && <span className='anketaError'>{errors}</span>}
         </div>
     );
 };

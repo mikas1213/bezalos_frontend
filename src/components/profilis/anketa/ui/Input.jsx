@@ -1,7 +1,8 @@
 import styles from './Input.module.css';
+import { limits } from '../../../../utils/anketaFieldLimits';
 
-const Input = ({ handleForm, formData, placeholder, label = '', name, error }) => {
-    
+const Input = ({ handleForm, formData, placeholder, label = '', name, error, setErrors }) => {
+      
     return (
         <div className={styles.inputGroup}>
             {label && <span>{label}</span>}
@@ -10,12 +11,19 @@ const Input = ({ handleForm, formData, placeholder, label = '', name, error }) =
                 name={name}
                 type='text' 
                 autoComplete='off'
-                maxLength='5'
+                maxLength={limits[name]}
                 value={formData[name] || ''}
-                onChange={handleForm}
+                onChange={e => {
+                   handleForm(e);
+                   setErrors(prev => {
+                        const updated = {...prev};
+                        delete updated[name];
+                        return updated;
+                   });
+                }}
                 placeholder={placeholder}
             />
-            {error && <span className={styles.error}>{error}</span>}
+            {error && <span className='anketaError'>{error}</span>}
         </div>
     );
 };

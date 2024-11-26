@@ -25,15 +25,14 @@ const DarboGrafikas = ({ formData, handleForm, errors, setErrors }) => {
                         name='feeding_desc'
                         className={styles.mt_05}
                         placeholder='Kokių maisto produktų nevalgai dėl mažylio netoleravimo?'
-                        maxLength={200} 
                         formData={formData} 
                         handleForm={handleForm} 
                         setErrors={setErrors}
                     />}
                 </>
             }
-            {errors.schedule && <span className={styles.error}>{errors.schedule}</span>}
-            {errors.feeding_desc && <span className={styles.error}>{errors.feeding_desc}</span>}
+            {errors.schedule && <span className='anketaError'>{errors.schedule}</span>}
+            {errors.feeding_desc && <span className='anketaError'>{errors.feeding_desc}</span>}
         </div>
     );
 };

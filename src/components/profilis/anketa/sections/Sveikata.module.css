@@ -1,14 +1,3 @@
-.error {
-    color: var(--color-admin-red);
-    font-size: 0.7rem;
-    font-weight: 500;
-}
-@media only screen and (max-width: 576px) {
-    .error {
-        font-size: 0.8rem;
-    }
-}
-
 .mt_05 {
     margin-top: 0.5rem;
 }
