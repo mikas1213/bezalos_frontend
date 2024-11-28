@@ -1,8 +1,8 @@
 import { useOutletContext } from 'react-router-dom';
 import useAxiosPrivate from '../../../hooks/useAxiosPrivate';
-import EditUserPlan from '../../../components/admin/user/EditUserPlan';
-import UserPlans from '../../../components/admin/user/UserPlans';
-import UserDetails from '../../../components/admin/user/UserDetails';
+import EditUserPlan from '../../../components/admin/user/edit_plan/EditUserPlan';
+import UserPlans from '../../../components/admin/user/edit_plan/UserPlans';
+import UserDetails from '../../../components/admin/user/edit_plan/UserDetails';
 import toast from 'react-hot-toast';
 
 const EditUserPlanPage = () => {

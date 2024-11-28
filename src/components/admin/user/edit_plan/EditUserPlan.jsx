@@ -1,11 +1,11 @@
 import styles from './EditUserPlan.module.css';
 import { useState } from 'react';
-import useAxiosPrivate from '../../../hooks/useAxiosPrivate';
+import useAxiosPrivate from '../../../../hooks/useAxiosPrivate';
 import { default as MealSelect } from 'react-select/async';
 import { default as ProdSelect } from 'react-select/async';
-import { bar, kcal, mealProdBarSum } from '../../../utils/calculationsHelpers';
+import { bar, kcal, mealProdBarSum } from '../../../../utils/calculationsHelpers';
 import { LuWheatOff, LuMilkOff } from 'react-icons/lu';
-import { DeleteBin_icon } from '../../../svg/icons';
+import { DeleteBin_icon } from '../../../../svg/icons';
 
 const mealStyles = {
     container: (provider) => ({
@@ -301,10 +301,6 @@ const EditUserPlan = ({ plan: currentPlan, setPlan: setCurrentPlan, onPlanUpdate
                 const isDelete = window.confirm('Ištrinti planą?');
                 if(isDelete) {
                     onPlanUpdate('delete-plan', {});
-                    // setUser(prevState => ({
-                    //     ...prevState,
-                    //     plans: prevState.plans.filter(plan => plan.id !== currentPlan.id)
-                    // }));
                 }
             }}>
                 <DeleteBin_icon icon={styles.planDeleteBtn} />
@@ -315,13 +311,6 @@ const EditUserPlan = ({ plan: currentPlan, setPlan: setCurrentPlan, onPlanUpdate
                     name='title'
                     onBlur={e => {
                         onPlanUpdate('update-plan-title', {title: e.target.value});
-                        // setUser(prevState => ({
-                        //     ...prevState,
-                        //     plans: prevState.plans.map(plan => plan.id === currentPlan.id ? {
-                        //         ...plan,
-                        //         title: currentPlan.title
-                        //     } : plan)
-                        // }));
                     }}
                     onChange={e => setCurrentPlan(prevState => ({...prevState, title: e.target.value}))}
                 />

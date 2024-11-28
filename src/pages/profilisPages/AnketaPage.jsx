@@ -37,7 +37,6 @@ const AnketaPage = () => {
         { id: 7, title: 'Papildoma informacija', icon: '📝' },
     ];
     const handleForm = (e, prop, id) => {
-        isLoading && setIsLoading(false);
         let name = e.target?.name || e.current?.name || e?.name;
         let value = e.target?.value ?? e.current?.value ?? e?.value ?? '';
         
@@ -244,6 +243,8 @@ const AnketaPage = () => {
             } else {
                 throw new Error(message);
             }
+        } finally {
+            setIsLoading(false);
         }
     };
 

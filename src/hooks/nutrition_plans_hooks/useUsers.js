@@ -9,17 +9,28 @@ export const useUsers = (currentPage, search, sort) => {
     const [totalPages, setTotalPages] = useState(0);
 
     useEffect(() => {
+        
+        const abortController = new AbortController();
+
         const getData = async (page) => {
             try {
-                const { data: { data, totalPage }} = await axiosPrivate.post(`/admin/users?search=${search}&page=${page}&pageSize=${pageSize}`, sort);
+                const { data: { data, totalPage }} = await axiosPrivate.post(
+                    `/admin/users?search=${search}&page=${page}&pageSize=${pageSize}`, 
+                    sort,
+                    { signal: abortController.signal }
+                );
                 setUsers(data);
                 setTotalPages(totalPage);
                 setIsLoading(false);
             } catch (err) {
                 console.log(err);
+            } finally {
+                setIsLoading(false);
             }
         }
         getData(currentPage);
+        return () => abortController.abort();
+        
     }, [axiosPrivate, currentPage, sort, search, pageSize]);
 
     return { users, setUsers, isLoading, totalPages };

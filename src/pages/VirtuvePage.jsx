@@ -8,6 +8,7 @@ import useAuth  from '../hooks/useAuth';
 
 const VirtuvePage = () => {  
     useEffect(() => {
+        document.body.style.backgroundColor = '#fff';
         document.title = 'Be žalos | Virtuvė';
     }, []);
     

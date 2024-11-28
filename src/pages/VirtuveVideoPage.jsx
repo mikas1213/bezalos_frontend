@@ -59,6 +59,7 @@ const VirtuveVideoPage = () => {
     };
     
     useEffect(() => {
+        document.body.style.backgroundColor = '#fff';
         const getData = async () => {
             try {
                 const data = await axiosPrivate.get('/videos'); 

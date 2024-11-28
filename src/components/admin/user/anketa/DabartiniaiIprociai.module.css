@@ -1,0 +1,39 @@
+.dabartiniaiIprociai {
+    composes: container from './main.css';
+    grid-row: 1 / 2;
+    grid-column: 2 / 3;
+}
+.routines {
+    display: inline-flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+.routine {
+    display: flex;
+    gap: 0.8rem;
+    border-radius: 0.5rem;
+    padding: 0.2rem 0.5rem;
+    background-color: var(--color-background-secondary);
+    /* border: 1px solid var(--color-border); */
+}
+
+.info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.time {
+    align-self: center;
+    font-size: var(--font-size-dynamic-p-lg);
+    color: var(--green-bgr-dark);
+    font-weight: 600;
+}
+.label {
+    font-size: var(--font-size-dynamic-p-lg);
+    font-weight: 600;
+    color: var(--green-bgr-dark);
+}
+.desc {
+    color: var(--green-bgr-light);
+    font-size: var(--font-size-dynamic-small-1-lg);
+}

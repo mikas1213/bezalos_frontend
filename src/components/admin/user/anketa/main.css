@@ -1,0 +1,13 @@
+.container {
+    border-radius: 1rem;
+    background-color: var(--color-background);
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+    padding: 1rem;
+
+    h1 {
+        color: var(--green-bgr-dark);
+        font-size: var(--font-size-dynamic-h5-lg);
+        margin-bottom: 1rem;
+    }
+
+}
