@@ -5,8 +5,8 @@ const NaujiIprociai = ({ anketa }) => {
         <div className={styles.naujiIprociai}>
             <h1>Nauji įpročiai</h1>
             <div className={styles.routines}>
-                <Days dayLabel='Darbo diena' days={anketa.routines.workday} />
-                <Days dayLabel='Laisvadienis' days={anketa.routines.day_off} />
+                <Days dayLabel='Darbo diena' days={anketa?.routines.workday || []} />
+                <Days dayLabel='Laisvadienis' days={anketa?.routines.day_off || []} />
             </div>
         </div>
     );

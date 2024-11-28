@@ -1,3 +1,8 @@
+export const kmi = (w, h) => {
+    const height = h > 3 ? h / 100 * h / 100 : h * h;
+    return Number((w / height).toFixed(2));
+};
+
 export const bar = (macro, grams) => {
     return macro * grams / 100;
 };

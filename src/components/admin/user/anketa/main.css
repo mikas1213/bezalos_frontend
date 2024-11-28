@@ -1,13 +1,30 @@
 .container {
+    display: flex;
+    flex-direction: column;
     border-radius: 1rem;
     background-color: var(--color-background);
     box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
     padding: 1rem;
+    gap: 0.8rem;
 
     h1 {
         color: var(--green-bgr-dark);
-        font-size: var(--font-size-dynamic-h5-lg);
-        margin-bottom: 1rem;
+        font-size: var(--font-size-h5);
     }
 
+    h2 {
+        color: var(--green-bgr-dark);
+        font-size: var(--font-size-p);
+        font-weight: 600;
+    }
+ 
+    h3 {
+        color: var(--grey-dark);
+        font-size: var(--font-size-small-1);
+        font-weight: 400;
+    }
+
+    p {
+        color:  var(--grey-dark) !important;
+    }
 }

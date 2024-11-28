@@ -10,7 +10,7 @@ const UserAnketaPage = () => {
         <div style={{
             display: 'grid',
             gridTemplateColumns: '0.8fr 1.2fr' ,
-            gridTemplateRows: '1fr 1fr',
+            gridTemplateRows: '1fr auto',
             gap: '1rem',
             // height: '100vh'
         }}>
@@ -18,6 +18,7 @@ const UserAnketaPage = () => {
             <BendraInfo anketa={user.anketa[0]} />
             <DabartiniaiIprociai anketa={user.anketa[0]} />
             <NaujiIprociai anketa={user.anketa[0]} />
+            
         </div>
     );
 };
