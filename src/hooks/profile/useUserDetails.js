@@ -81,7 +81,7 @@ export const useUserDetails = (user_id) => {
                     ...anketa[0],
                     age: String(anketa[0].age),
                     height: String(anketa[0].height),
-                    weight: String(anketa[0].height),
+                    weight: String(anketa[0].weight),
                     activity_steps: String(anketa[0].activity_steps),
                 }) : defaultAnketa);
                 setIsLoading(false);

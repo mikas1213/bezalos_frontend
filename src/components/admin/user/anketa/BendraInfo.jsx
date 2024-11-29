@@ -15,7 +15,7 @@ const BendraInfo = ({ anketa }) => {
                 <InfoRow icon={<User />} label='Amžius' value={anketa?.age} />
                 <InfoRow icon={<Weight />} label='Svoris' value={anketa?.weight} />
                 <InfoRow icon={<Activity />} label='Aktyvumas' value={anketa?.activity_steps} />
-                <InfoRow icon={<PersonStanding />} label='KMI' value={kmi(anketa?.weight, anketa?.height)} />
+                <InfoRow icon={<PersonStanding />} label='KMI' value={kmi(anketa?.weight, anketa?.height) || '-'} />
             </div>     
 
             <div className={styles.rowsSection_2}>
@@ -39,8 +39,8 @@ const BendraInfo = ({ anketa }) => {
 };
 
 const InfoRow = ({ icon, label, value = '-'}) => {
-
-    const color = label === 'KMI' ? (value > 18.49 && value < 22.5) ? 'good' : 'bad' : '';
+    
+    const color = label === 'KMI' ? (value > 18.49 && value < 25) ? 'good' : value !== '-' ? 'bad' : '' : '';
     return (
         <div className={`${styles.infoRow} ${['Maitinu', 'Sveikata', 'Papildoma informacija'].includes(label) ? styles.prop : ''}`}>
             <div className={styles.iconContainer}>{icon}</div>
