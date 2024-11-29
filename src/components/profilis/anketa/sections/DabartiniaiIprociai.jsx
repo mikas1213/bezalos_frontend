@@ -35,7 +35,7 @@ const DabartiniaiIprociai = ({ formData, handleForm, errors, setErrors }) => {
             <div>
                 <CheckBox 
                     name='intolerance' 
-                    label='Netoleruojami maisto produktai' 
+                    label='Netoleruojami / nevalgomi maisto produktai' 
                     formData={formData}
                     handleForm={handleForm}
                     className={styles.mt_1} 

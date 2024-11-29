@@ -1,6 +1,6 @@
 import styles from './BendraInfo.module.css';
 
-import { User, Ruler, Weight, Activity, PersonStanding, Target, Calendar, Hospital, Baby } from 'lucide-react';
+import { User, Ruler, Weight, Activity, PersonStanding, Target, Calendar, Hospital, Baby, Info } from 'lucide-react';
 import { kmi } from '../../../../utils/calculationsHelpers';
 
 const BendraInfo = ({ anketa }) => {
@@ -24,6 +24,16 @@ const BendraInfo = ({ anketa }) => {
                 {anketa?.feeding && <InfoRow icon={<Baby />} label='Maitinu' value={anketa?.feeding_desc} />}
                 {anketa?.health_problems && <InfoRow icon={<Hospital />} label='Sveikata' value={anketa?.health_problems_desc} />}
             </div>
+
+            <div className={styles.rowsSection_3}>
+                <div className={`${styles.infoRow} ${styles.prop}`}>
+                    <div className={styles.iconContainer}><Info /></div>
+                    <div className={styles.infoData}>
+                        <h2>Papildoma informacija</h2>
+                        <h3>{anketa?.additional_info}</h3>
+                    </div>
+                </div>
+            </div>
         </div>
     );
 };
@@ -32,7 +42,7 @@ const InfoRow = ({ icon, label, value = '-'}) => {
 
     const color = label === 'KMI' ? (value > 18.49 && value < 22.5) ? 'good' : 'bad' : '';
     return (
-        <div className={`${styles.infoRow} ${['Maitinu', 'Sveikata'].includes(label) ? styles.prop : ''}`}>
+        <div className={`${styles.infoRow} ${['Maitinu', 'Sveikata', 'Papildoma informacija'].includes(label) ? styles.prop : ''}`}>
             <div className={styles.iconContainer}>{icon}</div>
             <div className={styles.infoData}>
                 <h3 >{label}</h3>

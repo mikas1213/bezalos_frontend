@@ -1,4 +1,5 @@
 import styles from './NaujiIprociai.module.css';
+import { Fragment } from 'react';
 
 const NaujiIprociai = ({ anketa }) => {
     return (
@@ -29,6 +30,7 @@ const gali_negali = {
 };
 
 const Days = ({ dayLabel, days }) => {
+    
     return (
         <div className={styles.days}>
             {days.map(day => <div key={day.day_id} className={styles.day}>
@@ -36,12 +38,16 @@ const Days = ({ dayLabel, days }) => {
                     <div className={styles.dayLabel}>{dayLabel}</div>
                     <div className={styles.eat}>{day.eat}</div>
                 </div>
+
                 <div className={styles.items}>
                     {gali_negali[day.eat].map(item => 
-                        <div key={item.key} className={styles.item}>
-                            <span className={styles.label}>{item.label}</span>
-                            <span className={styles.time}>{day[item.key]}</span>
-                        </div>
+                        <Fragment key={item.key}>
+                            {item.key === 'breakfast_time' && <div className={styles.break}></div>}
+                            <div key={item.key} className={styles.item}>
+                                <span className={styles.label}>{item.label}</span>
+                                <span className={styles.time}>{day[item.key]}</span>
+                            </div>
+                        </Fragment>
                     )}
                 </div>
             </div>)}

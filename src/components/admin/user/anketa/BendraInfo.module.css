@@ -1,7 +1,7 @@
 .bendraInfo {
     composes: container from './main.css';
     grid-row: 1 / 3;
-    grid-column: 1 / 2;
+    /* grid-column: 1 / 2; */
 }
 
 .rowsSection_1 {
@@ -16,6 +16,11 @@
     flex-direction: column;
     gap: 0.8rem;
 }
+.rowsSection_3 {
+    border: 1px solid var(--color-border);
+    border-radius: 0.5rem;
+    padding: 0.8rem;
+}
 
 .infoRow {
     display: flex;
@@ -29,6 +34,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    line-height: 1.6;
 }
 .iconContainer {
     display: flex;

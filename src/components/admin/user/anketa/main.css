@@ -19,12 +19,12 @@
     }
  
     h3 {
-        color: var(--grey-dark);
+        color: #696969;
         font-size: var(--font-size-small-1);
         font-weight: 400;
     }
 
     p {
-        color:  var(--grey-dark) !important;
+        color: #696969 !important;
     }
 }

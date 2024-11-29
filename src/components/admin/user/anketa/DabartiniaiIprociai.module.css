@@ -1,7 +1,8 @@
 .dabartiniaiIprociai {
     composes: container from './main.css';
-    grid-row: 1 / 2;
-    grid-column: 2 / 3;
+    /* grid-row: 1 / 2; */
+    /* grid-column: 2 / 3; */
+    
 }
 
 .additionalInfo {
@@ -14,7 +15,9 @@
     flex-direction: column;
     border: 1px solid var(--color-border);
     border-radius: 0.5rem;
-    padding: 0.2rem 0.5rem;
+    /* padding: 0.2rem 0.5rem; */
+    padding: 1rem;
+    line-height: 1.6;
 }
 .infoHeader {
     font-size: var(--font-size-dynamic-p-lg);
@@ -39,11 +42,12 @@
 .routineHeader {
     display: flex;
     gap: 0.5rem;
-    padding: 0.5rem 0.5rem;
+    padding: 0.8rem 1rem;
     border-bottom: 1px solid var(--color-border);
 }
 .routineInfo {
-    padding: 0.2rem 0.5rem;
+    padding: 1rem;
+    line-height: 1.6;
 }
 .time, .label {
     color: var(--green-bgr-dark);
@@ -51,7 +55,6 @@
     font-weight: 600;
 }
 .desc {
-    color: var(--grey-dark);
     font-size: var(--font-size-small-1);
     font-weight: 400;
 }
