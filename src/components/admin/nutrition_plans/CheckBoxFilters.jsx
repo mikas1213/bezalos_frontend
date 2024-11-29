@@ -42,7 +42,7 @@ const svgStyles = {
     transition: 'all 0.15s ease'
 };
 
-export const CheckBoxFilters = ({options, color = '#245D6B', onSetFilter, grow = 0}) => {
+export const CheckBoxFilters = ({options, color = '#245D6B', onSetFilter, grow = 0, setCurrentPage}) => {
 
     return (
         <div style={{display: 'flex', gap: '0.5rem', flexGrow: grow}}>
@@ -53,16 +53,18 @@ export const CheckBoxFilters = ({options, color = '#245D6B', onSetFilter, grow =
                 label={option.label} 
                 name={option.name}
                 onSetFilter={onSetFilter}
+                setCurrentPage={setCurrentPage}
             />)}
         </div>
     );
 };
 
-const CheckBox = ({color, value, label, name, onSetFilter}) => {
+const CheckBox = ({color, value, label, name, onSetFilter, setCurrentPage}) => {
     const [isChecked, setIsChecked] = useState(false);
     const [isHover, setIsHover] = useState(false);
 
     const handleClick = () => {
+        setCurrentPage(1);
         setIsChecked(on => !on);
         onSetFilter(prevState => ({...prevState, [name]: !isChecked}))
     };

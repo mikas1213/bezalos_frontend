@@ -59,22 +59,33 @@
     justify-content: center;
     align-items: center;
     height: 3rem;
+    gap: 0.4rem;
 }
 .tabSwitch .tab.active {
-    /* color: #245D6B; */
     color: #fff;
 }
 
 .icon {
     display: flex;
-    margin-right: 0.2rem;
     font-size: 1.4rem;
+}
+.stats {
+    display: grid;
+    place-items: center;
+    background-color: #245D6B;
+    color: #fff;
+    font-size: var(--font-size-small-1);
+    border-radius: 1rem;
+    padding: 0.1rem 0.6rem;
+}
+.active .stats {
+    background-color: #fff;
+    color: #245D6B;
 }
 
 @media only screen and (max-width: 375px) {
     .tabSwitch .tab {
         font-size: 0.9rem;
-        /* padding: 0.4rem 0; */
     }
     .tab a {
         height: 2.5rem;

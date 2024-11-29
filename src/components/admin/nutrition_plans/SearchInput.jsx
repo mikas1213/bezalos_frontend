@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-const SearchInput = ({ onChangeValue }) => {
+const SearchInput = ({ onChangeValue, setCurrentPage }) => {
     const [val, setVal] = useState('');
     const [inputStyle, setInputStyle] = useState({    
         cursor: 'pointer',
@@ -25,6 +25,7 @@ const SearchInput = ({ onChangeValue }) => {
                 onChange={e => {
                     setVal(e.target.value);
                     onChangeValue(e.target.value);
+                    setCurrentPage(1);
                 }}
             />
         </>

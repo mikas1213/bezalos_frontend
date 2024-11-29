@@ -1,7 +1,7 @@
 import styles from './RadioFilters.module.css';
 import { useState } from 'react';
 
-export const RadioFilters = ({ options, setFilter, onSetFilter }) => {
+export const RadioFilters = ({ options, setFilter, onSetFilter, setCurrentPage }) => {
     
     return (
         <div 
@@ -13,17 +13,19 @@ export const RadioFilters = ({ options, setFilter, onSetFilter }) => {
                 color={option.color}
                 setFilter={setFilter}
                 onSetFilter={onSetFilter}
+                setCurrentPage={setCurrentPage}
             />)}
         </div>
     );
 };
 
-const Radio = ({ val, label, color = '#245D6B', setFilter, onSetFilter }) => {
+const Radio = ({ val, label, color = '#245D6B', setFilter, onSetFilter, setCurrentPage }) => {
 
     const [isClicked, setIsClicked] = useState(false);
     const isChecked = setFilter === val && isClicked;
 
     const handleOnClick = () => {
+        setCurrentPage(1);
         onSetFilter(!isChecked ? val : '');
         setIsClicked(click => setFilter === val ? !click : true);
     };

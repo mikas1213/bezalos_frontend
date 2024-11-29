@@ -3,6 +3,7 @@ import useAxiosPrivate from '../../../hooks/useAxiosPrivate';
 import Navbar from '../../../components/admin/nutrition_plans/Navbar';
 import { AddNewBtn } from '../../../components/admin/nutrition_plans/AddNewBtn';
 import Wrapper from './Wrapper';
+import Pagination from '../../../components/admin/users/Pagination';
 import Meal from '../../../components/admin/nutrition_plans/meals/Meal';
 import { RadioFilters } from '../../../components/admin/nutrition_plans/RadioFilters';
 import { CheckBoxFilters } from '../../../components/admin/nutrition_plans/CheckBoxFilters';
@@ -13,8 +14,10 @@ import { LiaPizzaSliceSolid } from 'react-icons/lia';
 import toast from 'react-hot-toast';
 import { useMeals } from '../../../hooks/nutrition_plans_hooks/useMeals';
 
+
 const MealsPage = () => {
     const axiosPrivate = useAxiosPrivate();
+    const [currentPage, setCurrentPage] = useState(1);
     const [searchString, setSearchString] = useState('');
     const [logicFilter, setLogicFilter] = useState('');
     const [intoleranceFilter, setIntoleranceFilter] = useState('');
@@ -36,8 +39,7 @@ const MealsPage = () => {
     filters = intoleranceFilter && intoleranceFilter.is_lactose ? {...filters, is_lactose: intoleranceFilter.is_lactose} : filters;
     filters = searchString ? {...filters, search: searchString} : filters;
     
-    const { meals, setMeals, isLoading } = useMeals(filters);
-
+    const { meals, setMeals, totalPages, isLoading } = useMeals(filters, currentPage);
     const handleMealAdd = async () => {
         try {
             const { data: { new_meal_id } } = await axiosPrivate.post('admin/plans/meals');
@@ -156,10 +158,10 @@ const MealsPage = () => {
             <Navbar>
                 <AddNewBtn label='Naujas valgis' Icon={LiaPizzaSliceSolid} fontSize='1.4rem' onHandleClick={handleMealAdd} />
                 <Divider />
-                <RadioFilters options={logicOptions} setFilter={logicFilter} onSetFilter={setLogicFilter} />
+                <RadioFilters options={logicOptions} setFilter={logicFilter} onSetFilter={setLogicFilter} setCurrentPage={setCurrentPage} />
                 <Divider />
-                <CheckBoxFilters options={intoleranceOptions} onSetFilter={setIntoleranceFilter} grow={1} />
-                <SearchInput onChangeValue={setSearchString} />
+                <CheckBoxFilters options={intoleranceOptions} onSetFilter={setIntoleranceFilter} grow={1} setCurrentPage={setCurrentPage} />
+                <SearchInput onChangeValue={setSearchString} setCurrentPage={setCurrentPage} />
             </Navbar>
 
             <Wrapper layout='meals'>
@@ -172,7 +174,15 @@ const MealsPage = () => {
                     handleMealProductEdit={handleMealProductEdit}
                     handleMealProductDelete={handleMealProductDelete}
                 />)}
+                
             </Wrapper>
+            <Pagination 
+                pagesLimit={7}
+                setCurrentPage={setCurrentPage} 
+                currentPage={currentPage} 
+                totalPages={totalPages} 
+            />
+            <div style={{paddingBottom: '5rem'}}></div>
         </>
     );
 };

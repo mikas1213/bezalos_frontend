@@ -9,9 +9,8 @@ export const useUsers = (currentPage, search, sort) => {
     const [totalPages, setTotalPages] = useState(0);
 
     useEffect(() => {
-        
         const abortController = new AbortController();
-
+        
         const getData = async (page) => {
             try {
                 const { data: { data, totalPage }} = await axiosPrivate.post(

@@ -4,27 +4,9 @@ import { FaHouse, FaUserGroup, FaList, FaFilm, FaNoteSticky } from 'react-icons/
 import { TbMailFilled } from "react-icons/tb";
 import { IoFastFoodSharp } from 'react-icons/io5';
 import { HiTemplate } from 'react-icons/hi';
-import { useEffect, useState } from 'react';
-import useAxiosPrivate from '../../../hooks/useAxiosPrivate';
 
-const AdminNavbar = () => {
+const AdminNavbar = ({ isLoading, stats }) => {
     const location = useLocation();
-    const axiosPrivate = useAxiosPrivate();
-    const [stats, setStats] = useState();
-    const [isLoading, setIsLoading] = useState(true);
-
-    useEffect(() => {
-        const getData = async () => {
-            try {
-                const data = await axiosPrivate.get('/admin/stats');
-                setStats(data.data.data);
-                setIsLoading(false);
-            } catch (err) {
-                console.log(err.message)
-            }
-        }
-        getData();
-    }, [axiosPrivate, location]);
 
     const links = [
         {to: '/admin', label: 'Klientai', icon: <FaUserGroup />, notification: !isLoading && `${stats.users} / ${stats.virtuve_active} / ${stats.profilis_active}`},
@@ -41,7 +23,6 @@ const AdminNavbar = () => {
         if(path === '/admin') {
             return location.pathname === '/admin' || location.pathname === '/admin/';
         } 
-        
         return location.pathname.startsWith(path);
     };
 

@@ -1,10 +1,12 @@
-import { Outlet } from 'react-router-dom';
+import { Outlet, useOutletContext } from 'react-router-dom';
 import NutritionTab from '../../../components/admin/nutrition_plans/NutritionTab';
 
 const MitybosPlanaiLayout = () => {
+    const {isLoading, stats} = useOutletContext();
+
     return (
         <>
-            <NutritionTab />
+            <NutritionTab isLoading={isLoading} stats={stats} />
             <Outlet />
         </>
     );
