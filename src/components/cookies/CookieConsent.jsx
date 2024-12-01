@@ -24,7 +24,7 @@ const CookieConsent = ({ setCookie }) => {
                     </div>
             </div>
             <div className={styles.btn}>
-                    <button onClick={giveCookieConsent}>Leisti</button>
+                <button onClick={giveCookieConsent}>Leisti</button>
             </div>
         </div>, document.body
     );

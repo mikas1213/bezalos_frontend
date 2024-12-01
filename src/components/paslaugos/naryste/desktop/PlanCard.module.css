@@ -104,7 +104,7 @@
         font-size: var(--font-size-dynamic-h3-sm);
     }
 }
-@media only screen and (max-width: 430px) {
+@media only screen and (max-width: 440px) {
     .price {
         font-size: var(--font-size-dynamic-h2-sm);
     }

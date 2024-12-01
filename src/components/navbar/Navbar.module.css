@@ -209,7 +209,7 @@
     }
 }
 
-@media only screen and (max-width: 430px) {
+@media only screen and (max-width: 440px) {
     .nav { 
         width: var(--content-width-responsive);
         height: var(--nav-height-60);

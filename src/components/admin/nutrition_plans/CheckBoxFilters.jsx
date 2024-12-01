@@ -42,7 +42,7 @@ const svgStyles = {
     transition: 'all 0.15s ease'
 };
 
-export const CheckBoxFilters = ({options, color = '#245D6B', onSetFilter, grow = 0, setCurrentPage}) => {
+export const CheckBoxFilters = ({options, color = '#245D6B', onSetFilter, grow = 0, setCurrentPage = () => {}}) => {
 
     return (
         <div style={{display: 'flex', gap: '0.5rem', flexGrow: grow}}>

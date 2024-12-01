@@ -331,7 +331,7 @@ input:checked + .check:after {
         line-height: 140%;
     }
 }
-@media only screen and (max-width: 430px) {
+@media only screen and (max-width: 440px) {
     .radios, .radio {
         gap: 0.5rem;
     }

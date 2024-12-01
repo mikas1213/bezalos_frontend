@@ -40,7 +40,7 @@
     }
 }
 
-@media only screen and (max-width: 430px) {
+@media only screen and (max-width: 440px) {
     .icon {
         font-size: 1.1rem;
     }

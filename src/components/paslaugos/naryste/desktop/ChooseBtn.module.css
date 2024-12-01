@@ -147,7 +147,7 @@
         gap: 1rem;
     }
 }
-@media only screen and (max-width: 430px) {
+@media only screen and (max-width: 440px) {
     .chooseBtnContainer button {
         font-size: var(--font-size-h6);
         width: 100%;

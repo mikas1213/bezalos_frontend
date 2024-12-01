@@ -1,0 +1,54 @@
+.logicFilter {
+    display: flex;
+    justify-self: center;
+    user-select: none;
+}
+
+.filterLabel {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    font-size: var(--font-size-small-1);
+    font-weight: 500;
+    padding: 0 0.8rem;
+    height: 1.8rem;
+    transition: all 0.15s ease-in-out;
+}
+
+.A_B {
+    border: 1px solid var(--color-border);
+    border-top-left-radius: 50rem;
+    border-bottom-left-radius: 50rem;
+}
+.B_R {
+    border-top: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--color-border);
+}
+.A_R {
+    border: 1px solid var(--color-border);
+    border-top-right-radius: 50rem;
+    border-bottom-right-radius: 50rem;
+}
+
+@media only screen and (max-width: 576px) {
+    .filterLabel {
+        text-wrap: nowrap;
+        font-weight: 600;
+    }
+}
+
+@media only screen and (max-width: 440px) {
+    .filterLabel {
+        height: 2.2rem;
+    }
+}
+
+@media only screen and (max-width: 375px) {
+    .filterLabel {
+        height: 1.8rem;
+    }
+}
+
+@media only screen and (max-width: 320px) {
+
+}

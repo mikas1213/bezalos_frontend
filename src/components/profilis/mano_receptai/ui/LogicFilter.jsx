@@ -1,11 +1,12 @@
-import styles from './RadioFilters.module.css';
+import styles from './LogicFilter.module.css';
 import { useState } from 'react';
 
-export const RadioFilters = ({ options, setFilter, onSetFilter, setCurrentPage }) => {
+const LogicFilter = ({ options, setFilter, onSetFilter, setCurrentPage = () => {}}) => {
     
     return (
+        
         <div 
-            className={styles.radioFilters}>
+            className={styles.logicFilter}>
             {options.map(option => <Radio 
                 key={option.value} 
                 val={option.value} 
@@ -20,7 +21,7 @@ export const RadioFilters = ({ options, setFilter, onSetFilter, setCurrentPage }
 };
 
 const Radio = ({ val, label, color = '#245D6B', setFilter, onSetFilter, setCurrentPage = () => {} }) => {
-
+    
     const [isClicked, setIsClicked] = useState(false);
     const isChecked = setFilter === val && isClicked;
 
@@ -39,11 +40,10 @@ const Radio = ({ val, label, color = '#245D6B', setFilter, onSetFilter, setCurre
                 onChange={handleOnClick}
             />
             <span 
-                className={styles.radioLabel}
+                className={`${styles.filterLabel} ${styles[val.replace('+', '_')]}`}
                 style={{
-                    color: isChecked ? '#fff' : color, 
-                    border: `1.5px solid ${color}`,
-                    backgroundColor: isChecked ? color : '#fff'
+                    color: isChecked ? color : 'var(--grey-dark)', 
+                    backgroundColor: isChecked ? 'var(--color-background-secondary)' : '#fff',
                 }}
                 name='logic'
                 onClick={handleOnClick}
@@ -51,3 +51,5 @@ const Radio = ({ val, label, color = '#245D6B', setFilter, onSetFilter, setCurre
         </>
     );
 };
+
+export default LogicFilter;

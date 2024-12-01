@@ -1,0 +1,95 @@
+.recipeModal {
+    position: absolute;
+    background-color: #fff;
+    border: 1.5px solid var(--color-border);
+    border-radius: 1rem;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    width: clamp(100px, 92vw, 22rem);
+    min-height: 40rem;
+    top: 3rem;
+    left: 50%;
+    z-index: 10;
+    padding: 1rem;
+    transform: translateX(-50%);
+    animation: openModal 0.2s;
+}
+
+.selectMeals {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    background-color: var(--color-background-secondary);
+    color: var(--color-bgr-top);
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+    transition: background-color 0.2s ease-in-out;
+}
+.selectMeals.open {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+.selectMeals:hover {
+    cursor: pointer;
+    background-color: var(--color-background-hover);
+}
+.selectTitle {
+    flex-grow: 1;
+    font-size: var(--font-size-h6);
+    font-weight: 600;
+}
+.userMeals {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    background-color: var(--color-background-secondary);
+    padding: 0.5rem;
+    border-bottom-left-radius: 0.5rem;
+    border-bottom-right-radius: 0.5rem;
+    animation: openMeals 0.2s;
+}
+.iconContainer {
+    display: flex;
+    padding: 0.5rem;
+    background-color: #fff;
+    border-radius: 50rem;
+}
+.forkIcon {
+    width: 1.4rem;
+    height: 1.4rem;
+}
+.chevronIcon {
+    transition: all 0.2s ease-in-out;
+}
+.open .chevronIcon {
+    transform: rotate(-90deg);
+}
+
+
+@media only screen and (max-width: 375px) {
+    .recipeModal { 
+        width: clamp(100px, 93vw, 22rem);
+        padding: 0.8rem; 
+    }
+}
+@media only screen and (max-width: 320px) {
+    .recipeModal { 
+        width: clamp(100px, 94vw, 22rem);
+        padding: 0.5rem; 
+    }
+}
+
+@keyframes openModal {
+    from {
+        opacity: 0;
+        top: 2rem;
+    }
+    to {
+        opacity: 1;
+        top: 3rem;
+    } 
+}
+
+@keyframes openMeals {
+    from { opacity: 0; }
+    to { opacity: 1; } 
+}

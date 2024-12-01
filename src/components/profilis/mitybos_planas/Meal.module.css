@@ -66,7 +66,7 @@
 .meal.show .icon {
     transform: rotate(-90deg);
 }
-@media only screen and (max-width: 430px) {
+@media only screen and (max-width: 440px) {
     .mealTitle {
         line-height: 140%;
     }

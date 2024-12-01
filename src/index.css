@@ -16,6 +16,13 @@
     --green-btn-dark: #60c040;
     --grey-light: #cdd1cb;
     --grey-dark: #878b86;
+    --color-b: #245D6B;
+    --color-a: #30c040; 
+    --color-r: #ec9f11; 
+    --color-bgr-b: #245D6B22;
+    --color-bgr-a: #30c04022;
+    --color-bgr-r: #ec9f1122;
+
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - -*/
 
     --color-bgr-light: #eff1ef;
@@ -42,10 +49,6 @@
 
     --color-filter-btn: #d9ddd7;
     --color-filter-btn-hover: #cdd1cb;
-
-    --color-b: #245D6B;
-    --color-a: #30c040; 
-    --color-r: #ec9f11; 
     
     /* Main Sizes */
     /* Units converter */
