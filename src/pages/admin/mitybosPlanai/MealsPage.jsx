@@ -40,9 +40,11 @@ const MealsPage = () => {
     filters = searchString ? {...filters, search: searchString} : filters;
     
     const { meals, setMeals, totalPages, isLoading } = useMeals(filters, currentPage);
+    
     const handleMealAdd = async () => {
         try {
             const { data: { new_meal_id } } = await axiosPrivate.post('admin/plans/meals');
+            
             setMeals(prevState => [{
                 id: new_meal_id,
                 logic: '-',

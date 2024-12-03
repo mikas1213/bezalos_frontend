@@ -1,0 +1,69 @@
+.makeRecipeForm {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+.inputs {
+    cursor: pointer;
+    text-align: center;
+    border-radius: 50rem;
+    padding: 0.3rem 1rem;
+    transition: all 0.2s ease-in-out;
+    border-width: 1px;
+    border-style: solid;
+    border-color:  var(--color-background-secondary);
+}
+.recipeTitleInput {
+    composes: inputs;
+    border-color: var(--color-background-secondary);
+    background-color: var(--color-background-secondary);
+    color: var(--green-bgr-dark);
+    font-weight: 600;
+}
+.productSearchInput {
+    composes: inputs;
+    color: var(--grey-dark);
+    font-weight: 400;
+}
+
+.recipeTitleInput:focus, .productSearchInput:focus {
+    border: 1px solid var(--color-border);
+}
+
+.recipeTitleInput::placeholder {
+    text-align: center;
+    color: var(--grey-dark);
+    font-weight: 500;
+}
+.productSearchInput::placeholder {
+    text-align: center;
+    color: var(--grey-dark);
+}
+
+.productsResult {
+    position: absolute;
+    top: 4.8rem;
+    left: 0;
+    overflow: hidden;
+    border-radius: 0.5rem;
+    width: 100%;
+    background-color: #fff;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.product {
+    font-size: var(--font-size-p);
+    color: var(--color-text-grey);
+    padding: 0.2rem 0.5rem;
+}
+.product:not(:last-child) {
+    border-bottom: 0.5px solid var(--color-border);
+}
+.product:hover {
+    cursor: pointer;
+    color: var(--color-b);
+    background-color: var(--color-background-hover);
+}

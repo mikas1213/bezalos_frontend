@@ -1,4 +1,4 @@
-import styles from './Tikslai.module.css';
+// import styles from './Tikslai.module.css';
 import RadioBig from '../ui/RadioBig';
 
 const Tikslai = ({ formData, handleForm, errors, setErrors }) => {

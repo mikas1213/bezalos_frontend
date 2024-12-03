@@ -1,4 +1,4 @@
-// import InformationSoon from '../../components/information_soon/InformationSoon';
+import InformationSoon from '../../components/information_soon/InformationSoon';
 import { useState } from 'react';
 import Container from '../../components/UI/Container';
 import Header from '../../components/profilis/mano_receptai/Header';
@@ -14,19 +14,21 @@ const filterOptions = [
 
 const ManoReceptaiPage = () => {
     const [logicFilter, setLogicFilter] = useState('');
-    console.log(logicFilter)
+    
     return (
-        <Container>
-            <Header>
-                <NewRecipeBtn />
-                <LogicFilter 
-                    options={filterOptions}
-                    setFilter={logicFilter} 
-                    onSetFilter={setLogicFilter}
-                />
-                <SearchRecipe />
-            </Header>
-        </Container>
+        // <Container>
+        //     <Header>
+        //         <NewRecipeBtn />
+        //         <LogicFilter 
+        //             options={filterOptions}
+        //             setFilter={logicFilter} 
+        //             onSetFilter={setLogicFilter}
+        //         />
+        //         <SearchRecipe />
+        //     </Header>
+            
+        // </Container>
+        <InformationSoon />
     );
 };
 

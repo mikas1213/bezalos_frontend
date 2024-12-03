@@ -6,6 +6,7 @@
     padding: 0.5rem 0.5rem;
     background-color: #fff;
     border-radius: 5px;
+    width: 100%;
     transition: box-shadow 0.1s ease-in-out;
 }
 .meal:hover {
@@ -40,9 +41,7 @@
     align-items: center;
     font-size: var(--font-size-small-2);
     border-radius: 50rem;
-    /* padding: 0 0.4rem; */
     font-weight: 600;
-    /* height: 1.2rem; */
 }
 .b { color: var(--color-b); }
 .a { color: var(--color-a); }
@@ -50,10 +49,6 @@
 .k {
     gap: 0.1rem;
     color: var(--color-radio);
-    /* padding: 0 !important; */
-    /* background: linear-gradient(to right, #cffafe, #e0f7ff); */
-    /* color: #0f766e; */
-
 }
 .kcalIcon {
     display: block;

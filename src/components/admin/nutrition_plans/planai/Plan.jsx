@@ -72,11 +72,12 @@ const Plan = ({ plan, handlePlanEdit, handlePlanDelete, handleAddPlanMeal }) => 
     });
     const [isMenuOpen, setIsMenuOpen] = useState('');
 
-    const loadMealsOptions = (inputValue, callback) => {
-        
+    const loadMealsOptions = async (inputValue, callback) => {
+
         if(inputValue && inputValue.length > 2) {
-            axiosPrivate.get(`/admin/plans/meals?search=${inputValue}`).then(response => {
-                const options = response.data.map(meal => ({
+            try {
+                const { data: { data } } = await axiosPrivate.get(`/admin/plans/meals?search=${inputValue}`);
+                const options = data.map(meal => ({
                     label: meal.title,
                     value: meal.id,
                     logic: meal.logic,
@@ -84,10 +85,10 @@ const Plan = ({ plan, handlePlanEdit, handlePlanDelete, handleAddPlanMeal }) => 
                 }));
 
                 callback(options);
-            }).catch(error => {
-                console.error('Error fetching data:', error);
+            } catch (err) {
+                console.error('Error fetching data:', err.message);
                 callback([]);
-            });
+            }
         }
     };
     

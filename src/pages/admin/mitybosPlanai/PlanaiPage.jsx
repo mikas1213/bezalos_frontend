@@ -74,7 +74,7 @@ const PlanaiPage = () => {
 
     const handleAddPlanMeal = async (plan_id, new_meal, is_sport) => {
         try {
-            const { data: {id} } = await axiosPrivate.post('admin/plans/plan/meals', {plan_id, meal_id: new_meal.value, is_sport});
+            const { data: { id } } = await axiosPrivate.post('admin/plans/plan/meals', {plan_id, meal_id: new_meal.value, is_sport});
             setPlans(prevPlans => ([...prevPlans.map(plan => plan.id === plan_id ? {
                 ...plan,
                 ...(!is_sport && {b: [...plan.meals, {products: new_meal.products}].filter(meal => !meal.is_sport).map(meal => meal.products.map(prod => bar(prod.b_100, prod.grams)).reduce((acc, val) => acc + val, 0)).reduce((acc, val) => acc + val, 0)}),

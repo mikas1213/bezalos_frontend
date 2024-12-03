@@ -264,7 +264,8 @@ const ManagePlan = ({ plan: currentPlan, setPlan: setCurrentPlan}) => {
             const endpoint = type === 'meals' ? '/admin/plans/meals' : '/admin/plans/products';
 
             if(inputValue && inputValue.length > 2) {
-                const { data } = await axiosPrivate.get(`${endpoint}?search=${inputValue}`);
+                const { data: { data } } = await axiosPrivate.get(`${endpoint}?search=${inputValue}`);
+                
                 const options = data.map(item => ({
                     label: item.title,
                     value: item.id,
