@@ -260,13 +260,15 @@ const ManagePlan = ({ plan: currentPlan, setPlan: setCurrentPlan}) => {
     };
 
     const loadOptions = async (inputValue, callback, type) => {
+        
         try {
             const endpoint = type === 'meals' ? '/admin/plans/meals' : '/admin/plans/products';
-
+            
             if(inputValue && inputValue.length > 2) {
-                const { data: { data } } = await axiosPrivate.get(`${endpoint}?search=${inputValue}`);
-                
-                const options = data.map(item => ({
+                const { data } = await axiosPrivate.get(`${endpoint}?search=${inputValue}`);
+                // skirtingi resp meals ir products
+                const resp = data.length ? [...data] : [...data.data];
+                const options = resp.map(item => ({
                     label: item.title,
                     value: item.id,
                         // jei renkiesi valg5

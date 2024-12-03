@@ -42,8 +42,9 @@ const MakeRecipeForm = ({ prodList, selectedProds, setSelectedProds }) => {
                 </div>)}
             </div>}
 
-            {selectedProds.map(p => <div key={p.title}>
-                {p.title}
+            {selectedProds.map(prod => <div key={prod.id}>
+                <span>{prod.title}</span>
+                <input>{prod.grams}</input>
             </div>)}
         </div>
     );

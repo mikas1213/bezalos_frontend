@@ -11,7 +11,7 @@ const RecipeModal = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [selectedMeal, setSelectedMeal] = useState({});
     const [selectedProds, setSelectedProds] = useState([]);
-    
+    console.log(selectedProds)
     const meals = plans.map(plan => plan.meals.filter(meal => !meal.is_sport).map(meal => ({
         id: meal.id, 
         title: meal.title,
@@ -59,9 +59,7 @@ const RecipeModal = () => {
                 {Object.keys(selectedMeal).length > 0 && <div 
                     className={styles.beValgio} 
                     onClick={() => setSelectedMeal({})}
-                >
-                    Be valgio
-                </div>}
+                >Be valgio</div>}
 
                 {meals.map(meal => <Meal 
                     key={meal.id} 
