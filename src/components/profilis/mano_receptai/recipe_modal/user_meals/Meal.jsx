@@ -1,10 +1,10 @@
 import styles from './Meal.module.css';
 import { Flame } from 'lucide-react';
 
-const Meal = ({ meal, setSelectedMeal, setIsOpen }) => {
+const Meal = ({ meal, setSelectedMeal, setIsOpen, className = '' }) => {
     
     return (
-        <div className={styles.meal} onClick={() => {
+        <div className={`${styles.meal} ${styles[className]}`} onClick={() => {
             setSelectedMeal(meal);
             setIsOpen(false);
         }}>

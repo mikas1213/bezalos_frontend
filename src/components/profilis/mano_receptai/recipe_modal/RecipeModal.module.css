@@ -5,7 +5,6 @@
     border-radius: 1rem;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     width: clamp(100px, 92vw, 22rem);
-    min-height: 20rem;
     top: 3rem;
     left: 50%;
     z-index: 10;
@@ -13,77 +12,8 @@
     transform: translateX(-50%);
     animation: openModal 0.2s;
 }
-.recipeModal:has(.open) {
+.recipeModal:has(:global(.open)) {
     min-height: 37rem;
-}
-.selectMeals {
-    display: flex;
-    gap: 0.5rem;
-    align-items: center;
-    justify-content: space-between;
-    background-color: var(--color-background-secondary);
-    color: var(--color-bgr-top);
-    border-radius: 0.5rem;
-    padding: 0.5rem;
-    transition: background-color 0.2s ease-in-out;
-}
-.selectMeals.open {
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
-}
-@media (hover: hover) {
-    .selectMeals:hover {
-        cursor: pointer;
-        background-color: var(--color-background-hover);
-    }
-}
-.selectTitle {
-    flex-grow: 1;
-    font-size: var(--font-size-h6);
-    font-weight: 600;
-}
-.userMeals {
-    position: absolute;
-    z-index: 100;
-    display: flex;
-    flex-direction: column;
-    overflow: scroll;
-    height: calc(100% - 5.6rem);
-    width: calc(100% - 2rem);
-    gap: 0.5rem;
-    background-color: var(--color-background-secondary);
-    padding: 0.5rem;
-    border-bottom-left-radius: 0.5rem;
-    border-bottom-right-radius: 0.5rem;
-    animation: openMeals 0.2s;
-}
-.iconContainer {
-    display: flex;
-    padding: 0.5rem;
-    background-color: #fff;
-    border-radius: 50rem;
-}
-.forkIcon {
-    width: 1.4rem;
-    height: 1.4rem;
-}
-.chevronIcon {
-    transition: all 0.2s ease-in-out;
-}
-.open .chevronIcon {
-    transform: rotate(-90deg);
-}
-.beValgio {
-    display: grid;
-    place-items: center;
-    padding: 0.8rem;
-    border-radius: 0.5rem;
-    background-color: #fff;
-    color: var(--grey-dark);
-}
-.beValgio:hover {
-    cursor: pointer;
-    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
 
 @media only screen and (max-width: 440px) {
@@ -97,20 +27,11 @@
         width: clamp(100px, 93vw, 22rem);
         padding: 0.8rem; 
     }
-    .userMeals {
-        width: calc(100% - 1.6rem);
-    }
 }
 @media only screen and (max-width: 320px) {
     .recipeModal { 
         width: clamp(100px, 94vw, 22rem);
         padding: 0.5rem; 
-    }
-    .userMeals {
-        width: calc(100% - 1rem);
-    }
-    .selectTitle {
-        font-size: var(--font-size-p);
     }
 }
 
@@ -123,9 +44,4 @@
         opacity: 1;
         top: 3rem;
     } 
-}
-
-@keyframes openMeals {
-    from { opacity: 0; }
-    to { opacity: 1; } 
 }

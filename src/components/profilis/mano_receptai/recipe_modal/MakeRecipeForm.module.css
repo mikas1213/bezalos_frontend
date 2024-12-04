@@ -1,11 +1,11 @@
-.makeRecipeForm {
+/* .makeRecipeForm {
     position: relative;
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
-    margin-top: 1rem;
-}
-.inputs {
+    gap: 1rem;
+    
+} */
+/* .inputs {
     cursor: pointer;
     text-align: center;
     border-radius: 50rem;
@@ -14,21 +14,24 @@
     border-width: 1px;
     border-style: solid;
     border-color:  var(--color-background-secondary);
-}
-.recipeTitleInput {
-    composes: inputs;
-    border-color: var(--color-background-secondary);
-    background-color: var(--color-background-secondary);
+} */
+/* .recipeTitleInput {
+    border: none;
+    border-bottom: 1.5px solid var(--color-border);
+    padding-bottom: 0.1rem;
+    margin: 0 1rem 1rem 1rem;
+    text-align: center;
     color: var(--green-bgr-dark);
-    font-weight: 600;
-}
-.productSearchInput {
+    font-weight: 500;
+} */
+/* .productSearchInput {
     composes: inputs;
+    border-color: var(--color-border);
     color: var(--grey-dark);
     font-weight: 400;
-}
+} */
 
-.recipeTitleInput:focus, .productSearchInput:focus {
+/* .productSearchInput:focus {
     border: 1px solid var(--color-border);
 }
 
@@ -40,9 +43,9 @@
 .productSearchInput::placeholder {
     text-align: center;
     color: var(--grey-dark);
-}
+} */
 
-.productsResult {
+/* .productsResult {
     position: absolute;
     top: 4.8rem;
     left: 0;
@@ -66,4 +69,153 @@
     cursor: pointer;
     color: var(--color-b);
     background-color: var(--color-background-hover);
+} */
+
+
+/* .recipeProducts {
+    margin-top: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding-top: 0.8rem;
+    border: 1px solid var(--color-border);
+    border-radius: 0.5rem;
+} */
+/* .newProduct {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    color: var(--color-text-grey);
+    color: var(--grey-dark);
+    padding: 0 0.5rem;
+    font-size: var(--font-size-p);
+    font-weight: 500;
 }
+.prodTitle {
+    font-size: var(--font-size-small-1);
+    font-weight: 500;
+    flex-grow: 1;
+}
+
+.gramsContainer {
+    display: flex;
+
+    background-color: var(--color-background-secondary);
+    border: 1.5px solid var(--color-background-secondary);
+    border-radius: 50rem;
+    padding: 0.05rem 0.3rem;
+    transition: border 0.2s ease-in-out;
+}
+
+.gramsContainer:has(.gramsInput:focus) {
+    border: 1.5px solid var(--color-btn-secondary);
+}
+.gramsInput {
+    cursor: pointer;
+    border: none;
+    max-width: 2.2rem;
+    color: var(--green-bgr-dark);
+    font-size: var(--font-size-small-1);
+    padding: 0.0rem 0.2rem;
+    background-color: var(--color-background-secondary);
+    transition: all 0.2s ease-in-out;
+}
+
+.gramsChar {
+    font-size: var(--font-size-small-1);
+    color: var(--green-bgr-dark);
+    font-weight: 400;
+}
+
+.deleteIcon {
+    cursor: pointer;
+    display: block;
+    width: 1.3rem;
+    heigth: 1.3rem;
+    stroke: var(--grey-dark);
+    transition: stroke 0.2s ease-in-out;
+}
+.deleteIcon:hover {
+    stroke: var(--color-error);
+} */
+
+/* .recipeBottom {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    border-top: 1px solid var(--color-border);
+    padding: 1.2rem;
+    margin-top: 0.8rem;
+    border-bottom-left-radius: 0.5rem;
+    border-bottom-right-radius: 0.5rem;
+}
+.recipeBottom :is(.b, .a, .r) {
+    font-size: var(--font-size-small-1);
+    font-weight: 600;
+    padding: 0.1rem 0.8rem;
+    border-radius: 50rem;
+}
+.k {
+    font-size: var(--font-size-small-1);
+    font-weight: 600;
+}
+.bar {
+    display: flex;
+    gap: 0.7rem;
+}
+.b { 
+    color: var(--color-b); 
+    background-color: var(--color-bgr-b);
+}
+.a { 
+    color: var(--color-a); 
+    background-color: var(--color-bgr-a);
+}
+.r { 
+    color: var(--color-r); 
+    background-color: var(--color-bgr-r);
+}
+.k {
+    display: flex;
+    align-items: center;
+    gap: 0.2rem;
+    color: var(--grey-dark)
+}
+.kcalIcon {
+    width: 1rem;
+    height: 1rem;
+    color: tomato;
+} */
+/* 
+.actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 0.5rem;
+}
+.saveBtn, .cancelBtn {
+    transition: all 0.2s ease-in-out;
+    font-weight: 600;
+    border-radius: 0.5rem;
+    border: none;
+}
+.saveBtn {
+    width: 50%;
+    color: var(--green-bgr-light);
+    color: #fff;
+    background-image: linear-gradient(to right, var(--color-btn-secondary), var(--color-btn-primary));
+    padding: 0.5rem 0;
+}
+.cancelBtn {
+    padding: 0.5rem 0;
+    width: 50%;
+    color: var(--grey-dark);
+    background-color: #fff;
+    border: 1px solid var(--color-border);
+}
+.saveBtn:hover {
+    background-color: var(--color-btn-primary);
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+.cancelBtn:hover {
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+} */

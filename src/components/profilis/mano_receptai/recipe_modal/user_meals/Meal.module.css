@@ -5,13 +5,19 @@
     flex-direction: column;
     padding: 0.5rem 0.5rem;
     background-color: #fff;
-    border-radius: 5px;
+    border-bottom: 1px solid var(--color-border);
+    /* border-radius: 5px; */
     width: 100%;
-    transition: box-shadow 0.1s ease-in-out;
+    /* transition: box-shadow 0.1s ease-in-out; */
 }
-.meal:hover {
-    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+.selectedMeal {
+    border: none;
+    /* background-color: red; */
+    border-radius: 0.5rem;
 }
+/* .meal:hover {
+    background-color: #fafafa;
+} */
 .mealTop, .mealBottom {
     display: flex;
     align-items: center;

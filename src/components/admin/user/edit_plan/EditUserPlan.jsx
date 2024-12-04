@@ -10,7 +10,6 @@ import { DeleteBin_icon } from '../../../../svg/icons';
 const mealStyles = {
     container: (provider) => ({
         ...provider,
-        // width: '50%'
     }),
     control: (provider, state) => ({
         ...provider,
@@ -271,7 +270,9 @@ const EditUserPlan = ({ plan: currentPlan, setPlan: setCurrentPlan, onPlanUpdate
 
             if(inputValue && inputValue.length > 2) {
                 const { data } = await axiosPrivate.get(`${endpoint}?search=${inputValue}`);
-                const options = data.map(item => ({
+                // skirtingi resp meals ir products
+                const resp = data.length ? [...data] : [...data.data];
+                const options = resp.map(item => ({
                     label: item.title,
                     value: item.id,
                         // jei renkiesi valgį
