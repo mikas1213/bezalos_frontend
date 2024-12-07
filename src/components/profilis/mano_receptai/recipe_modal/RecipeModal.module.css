@@ -12,9 +12,9 @@
     transform: translateX(-50%);
     animation: openModal 0.2s;
 }
-.recipeModal:has(:global(.open)) {
+/* .recipeModal:has(:global(.open)) {
     min-height: 37rem;
-}
+} */
 
 @media only screen and (max-width: 440px) {
     .recipeModal:has(.open) {

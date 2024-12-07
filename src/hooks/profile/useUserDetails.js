@@ -58,12 +58,12 @@ const defaultAnketa = {
     nadditional_info: ''
 };
 
-
 export const useUserDetails = (user_id) => {
     const axiosPrivate = useAxiosPrivate();
     const [plans, setPlans] = useState([]);
     const [selectedPlan, setSelectedPlan] = useState(plans[0]);
     const [anketa, setAnketa] = useState([]);
+    const [recipes, setRecipes] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     
     useEffect(() => {
@@ -84,6 +84,7 @@ export const useUserDetails = (user_id) => {
                     weight: String(anketa[0].weight),
                     activity_steps: String(anketa[0].activity_steps),
                 }) : defaultAnketa);
+                setRecipes(data[0].recipes);
                 setIsLoading(false);
             } catch (err) {
                 toast.error('Klaida!\n'+err.response.data.message);
@@ -93,5 +94,5 @@ export const useUserDetails = (user_id) => {
         getData();
     }, [axiosPrivate, user_id]);
 
-    return { plans, selectedPlan, setPlans, setSelectedPlan, anketa, setAnketa, isLoading }
+    return { plans, selectedPlan, setPlans, setSelectedPlan, anketa, setAnketa, recipes, setRecipes, isLoading }
 };

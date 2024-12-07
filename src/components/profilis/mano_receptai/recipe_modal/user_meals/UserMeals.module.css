@@ -3,11 +3,11 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    color: var(--color-text-green-light);
     background-color: #fff;
     border: 1px solid var(--color-border);
-    color: var(--color-bgr-top);
     border-radius: 0.5rem;
-    min-height: 3.43rem;
+    min-height: 4.5rem;
     transition: background-color 0.2s ease-in-out;
 }
 
@@ -18,7 +18,7 @@
 .forkIconContainer {
     display: flex;
     padding: 0.5rem;
-    margin: 0 0.5rem;
+    margin: 0 1rem;
     background-color: var(--color-background-secondary);
     border-radius: 50rem;
 }
@@ -32,7 +32,7 @@
     font-weight: 600;
 }
 .chevronIcon {
-    margin-right: 7px;
+    margin-right: 0.6rem;
     transition: all 0.2s ease-in-out;
 }
 .open .chevronIcon {
@@ -43,7 +43,7 @@
     cursor: pointer;
     display: grid;
     place-items: center;
-    padding: 0.9rem 0;
+    padding: 1.35rem 0;
     background-color: #fff;
     border-bottom: 1px solid var(--color-border);
     color: var(--grey-dark);
@@ -54,8 +54,9 @@
     z-index: 100;
     display: flex;
     flex-direction: column;
-    overflow: scroll;
-    height: calc(100% - 5.6rem);
+    /* overflow: scroll;
+    height: calc(100% - 5.6rem); */
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     width: calc(100% - 2rem);
     background-color: var(--color-background-secondary);
     background-color: #fff;
@@ -71,16 +72,41 @@
 }
 
 @media only screen and (max-width: 375px) {
+    .selectMeals {
+        min-height: 4rem;
+    }
+    .forkIconContainer {
+        margin: 0 0.8rem;
+    }
+    .chevronIcon {
+        margin-right: 0.4rem;
+    }
     .mealsList {
         width: calc(100% - 1.6rem);
     }
+    .beValgio {
+        padding: 1.2rem 0;
+    }
+    
 }
 @media only screen and (max-width: 320px) {
+    .selectMeals {
+        min-height: 3.43rem;
+    }
+    .forkIconContainer {
+        margin: 0 0.5rem;
+    }
+    .chevronIcon {
+        margin-right: 0.2rem;
+    }
     .mealsList {
         width: calc(100% - 1rem);
     }
     .selectTitle {
         font-size: var(--font-size-p);
+    }
+    .beValgio {
+        padding: 1rem 0;
     }
 }
 

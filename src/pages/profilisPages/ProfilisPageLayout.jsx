@@ -16,7 +16,7 @@ const ProfilisPageLayout = () => {
     const is_subscription = user_s_subscription || user_subscription;
     const { prodList } = usePlanProducts();
 
-    const { plans, selectedPlan, setSelectedPlan, anketa, setAnketa, isLoading } = useUserDetails(user_id);
+    const { plans, selectedPlan, setSelectedPlan, anketa, setAnketa, recipes, setRecipes, isLoading } = useUserDetails(user_id);
 
     return (
         <>
@@ -25,7 +25,20 @@ const ProfilisPageLayout = () => {
                 <Container>
                     <ProfileNavbar />
                 </Container>      
-                {!isLoading && <Outlet context={{ user_role, is_subscription, prodList, plans, selectedPlan, setSelectedPlan, anketa, setAnketa, user_id, isLoading }} />}
+                {!isLoading && <Outlet context={{ 
+                    user_role, 
+                    is_subscription, 
+                    prodList, 
+                    plans, 
+                    selectedPlan, 
+                    setSelectedPlan, 
+                    anketa, 
+                    setAnketa, 
+                    recipes,
+                    setRecipes,
+                    user_id, 
+                    isLoading 
+                }} />}
             </Main>
         </>
     );

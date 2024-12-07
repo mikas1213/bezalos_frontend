@@ -3,29 +3,30 @@
     display: flex;
     gap: 0.1rem;
     flex-direction: column;
-    padding: 0.5rem 0.5rem;
+    padding: 1rem;
     background-color: #fff;
-    border-bottom: 1px solid var(--color-border);
-    /* border-radius: 5px; */
     width: 100%;
-    /* transition: box-shadow 0.1s ease-in-out; */
+}
+.meal:not(:last-child) {
+    border-bottom: 1px solid var(--color-border);
+}
+.meal:last-child {
+    border-bottom-right-radius: 0.5rem;
+    border-bottom-left-radius: 0.5rem;
 }
 .selectedMeal {
-    border: none;
-    /* background-color: red; */
+    border: none !important;
     border-radius: 0.5rem;
 }
-/* .meal:hover {
-    background-color: #fafafa;
-} */
+
 .mealTop, .mealBottom {
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
 
-.title {
-    color: var(--green-bgr-dark);
+.mealTitle {
+    color: var(--color-text-green-light);
     font-size: var(--font-size-small-1);
 }
 .mealTop :is(.A_B, .B_R, .A_R) {
@@ -62,4 +63,36 @@
     height: 0.7rem;
     color: tomato;
     stroke-width: 3px;
+}
+
+@media only screen and (max-width: 440px) {
+    .mealTitle {
+        font-size: var(--font-size-p);
+        font-weight: 600;
+    }
+    .mealTop :is(.A_B, .B_R, .A_R) {
+        font-size: var(--font-size-small-1);
+    }
+    .bar :is(.b, .a, .r), .kcal :is(.k) {
+        font-size: var(--font-size-small-1);
+    }
+}
+
+@media only screen and (max-width: 375px) {
+    .meal {
+        padding: 0.8rem;
+    }
+}
+
+@media only screen and (max-width: 320px) {
+    .meal {
+        padding: 0.5rem;
+    }
+    .mealTitle {
+        font-size: var(--font-size-small-1);
+        font-weight: 600;
+    }
+    .mealTop :is(.A_B, .B_R, .A_R) {
+        font-size: var(--font-size-small-2);
+    }
 }

@@ -1,13 +1,11 @@
 import { useState } from 'react';
 import  { useOutletContext } from 'react-router-dom';
-// import useAxiosPrivate from '../../hooks/useAxiosPrivate';
 import Plans from '../../components/profilis/mitybos_planas/Plans';
 import No_Plans from '../../components/profilis/no_mitybos_planas/No_Plans';
 import toast from 'react-hot-toast';
 import { bar, kcal, set_grams } from '../../utils/calculationsHelpers';
 
 const UserPlansPage = () => {
-    // const axioxPrivate = useAxiosPrivate();
     const { is_subscription, prodList, plans, selectedPlan, setSelectedPlan, isLoading } = useOutletContext();
 
     const [topPosition, setTopPosition] = useState(0);
@@ -21,8 +19,7 @@ const UserPlansPage = () => {
         setTopPosition(btn.top - prod.top + btn.height + 10);
         setIsShowChageProdList(prevState => prevState && isClickedSameProduct ? false : true);
 
-        setFilteredProducts(() => prodList.filter(prod => {
-            
+        setFilteredProducts(() => prodList.filter(prod => !(prod.proteins === 0 && prod.carbs === 0 && prod.fat === 0)).filter(prod => {
             if(product.category.indexOf('baltymai') > -1 || product.category === 'Riebalai') {
                 if(product.sub_category === 'pieno produktas') {
                     return prod.category === product.category

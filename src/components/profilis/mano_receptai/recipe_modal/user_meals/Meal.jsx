@@ -1,7 +1,7 @@
 import styles from './Meal.module.css';
 import { Flame } from 'lucide-react';
 
-const Meal = ({ meal, setSelectedMeal, setIsOpen, className = '' }) => {
+const Meal = ({ meal, setSelectedMeal = () => {}, setIsOpen = () => {}, className = '' }) => {
     
     return (
         <div className={`${styles.meal} ${styles[className]}`} onClick={() => {
@@ -9,7 +9,7 @@ const Meal = ({ meal, setSelectedMeal, setIsOpen, className = '' }) => {
             setIsOpen(false);
         }}>
             <div className={styles.mealTop}>
-                <span className={styles.title}>{meal.title}</span>
+                <span className={styles.mealTitle}>{meal.title}</span>
                 <span className={styles[meal.logic.replace('+', '_')]}>{meal.logic}</span>
             </div>
             

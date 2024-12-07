@@ -1,10 +1,9 @@
-// import styles from './Tikslai.module.css';
 import RadioBig from '../ui/RadioBig';
 
 const Tikslai = ({ formData, handleForm, errors, setErrors }) => {
     
     return (
-        <div className={styles.radios}>
+        <div>
             {[
                 'Svorio metimas', 
                 'Liesos raumenų masės auginimas', 

@@ -3,13 +3,16 @@ import { useState, useRef } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import RecipeProduct from './RecipeProduct';
 import { Flame } from 'lucide-react';
+import { kcal, mealProdBarSum, productsBarSum, isBarInRange } from '../../../../../utils/calculationsHelpers';
 
-const NewRecipe = ({ prodList, newRecipe, setNewRecipe }) => {
+const NewRecipe = ({ prodList, selectedMeal, newRecipe, setNewRecipe }) => {
+
+    const is_error = key => (Object.keys(selectedMeal).length === 0 || newRecipe.products.length === 0) || isBarInRange(newRecipe[key], selectedMeal[key], 5) ? '' : 'notInRange';
+    
     const refs = useRef({});
     const [searchInput, setSearchInput] = useState('');
     const [isShowResults, setIsShowResults] = useState(false);
     const [results, setResults] = useState([]);
-
     const handleProdSearch = e => {
         setSearchInput(e.target.value);
         const filteredResults = prodList.filter(prod => prod.title.toLowerCase().includes(e.target.value.toLowerCase()))
@@ -24,25 +27,49 @@ const NewRecipe = ({ prodList, newRecipe, setNewRecipe }) => {
     };
 
     const handleAddProduct = prod => {
+
         const newId = uuidv4();
         setIsShowResults(false);
         setSearchInput('');
         setNewRecipe(prev => ({
             ...prev,
-            products: [...prev.products, {...prod, prduct_id: prod.id, id: newId, grams: 0}]
+            products: [...prev.products, {...prod, product_id: prod.id, id: newId, grams: 0}]
         }));
+
+
         setTimeout(() => {
-            refs.current[newId]?.focus();
+            refs.current[newId]?.focus(); 
         }, 0)
     };
 
     const handleEditGrams = (e, prod) => {
+        const newGrams = e.target.value.replace(',', '.');
         setNewRecipe(prev => ({
             ...prev,
             products: prev.products.map(product => product.id === prod.id ? {
                 ...product,
-                grams: e.target.value
-            } : product)
+                grams: newGrams,
+            } : product),
+            b: productsBarSum(prev.products, prod, newGrams, 'proteins'),
+            a: productsBarSum(prev.products, prod, newGrams, 'carbs'),
+            r: productsBarSum(prev.products, prod, newGrams, 'fat'),
+            kcal: kcal(
+                productsBarSum(prev.products, prod, newGrams, 'proteins'), 
+                productsBarSum(prev.products, prod, newGrams, 'carbs'), 
+                productsBarSum(prev.products, prod, newGrams, 'fat'))
+        }));
+    };
+
+    const handleProductDelete = (prod_id) => {
+        setNewRecipe(prev => ({
+            ...prev, 
+            products: prev.products.filter(prod => prod.id !== prod_id),
+            b: mealProdBarSum(prev.products.filter(prod => prod.id !== prod_id), 'proteins'),
+            a: mealProdBarSum(prev.products.filter(prod => prod.id !== prod_id), 'carbs'),
+            r: mealProdBarSum(prev.products.filter(prod => prod.id !== prod_id), 'fat'),
+            kcal: kcal(mealProdBarSum(prev.products.filter(prod => prod.id !== prod_id), 'proteins'),
+                mealProdBarSum(prev.products.filter(prod => prod.id !== prod_id), 'carbs'),
+                mealProdBarSum(prev.products.filter(prod => prod.id !== prod_id), 'fat'))
         }));
     };
 
@@ -57,10 +84,17 @@ const NewRecipe = ({ prodList, newRecipe, setNewRecipe }) => {
             />
 
             {newRecipe.products.length > 0 && <div className={styles.recipeProducts}>
-                {newRecipe.products.map(prod => <RecipeProduct key={prod.id} prod={prod} >
+                {newRecipe.products.map(prod => <RecipeProduct 
+                    key={prod.id} 
+                    prod={prod} 
+                    handleProductDelete={handleProductDelete}
+                >
                     <input 
                         ref={el => refs.current[prod.id] = el}
                         type='text' 
+                        // maxLength={4}
+                        inputMode='numeric'
+                        autoComplete='off'
                         value={prod.grams ?? ''}
                         onChange={e => handleEditGrams(e, prod)} 
                         className={styles.gramsInput}
@@ -78,23 +112,21 @@ const NewRecipe = ({ prodList, newRecipe, setNewRecipe }) => {
                 />
 
                 {isShowResults && <div className={styles.searchProductsList}>
-                    {results.map(prod => <div onClick={() => handleAddProduct(prod)} className={styles.product} key={prod.id}>
+                    {results.map(prod => <div onClick={() => handleAddProduct(prod)} className={styles.searchProduct} key={prod.id}>
                         {prod.title}
                     </div>)}
                 </div>}
 
             </div>
             
-
             <div className={styles.recipeSummary}>
                 <div className={styles.bar}>
-                    <span className={styles.b}>B 25</span>
-                    <span className={styles.a}>A 16</span>
-                    <span className={styles.r}>R 75</span>
+                    <span className={`${styles.b} ${styles[is_error('b')]}`}>B {newRecipe.b.toFixed(0)}</span>
+                    <span className={`${styles.a} ${styles[is_error('a')]}`}>A {newRecipe.a.toFixed(0)}</span>
+                    <span className={`${styles.r} ${styles[is_error('r')]}`}>R {newRecipe.r.toFixed(0)}</span>
                 </div>
-                <span className={styles.k}><Flame className={styles.kcalIcon}/>354 <small>kcal</small></span>
+                <span className={styles.k}><Flame className={styles.kcalIcon}/>{newRecipe.kcal.toFixed(0)} <small>kcal</small></span>
             </div>
-            
         </div>
     );
 };
