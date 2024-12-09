@@ -20,6 +20,7 @@ const filterOptions = [
 
 const ManoReceptaiPage = () => {
     const { 
+        isLoading,
         is_subscription,
         setRecipes,
         logicFilter,
@@ -56,7 +57,7 @@ const ManoReceptaiPage = () => {
 
     return (
         <>
-        {is_subscription ? <Container>
+        {isLoading ? null : is_subscription ? <Container>
             <Header>
                 <NewRecipeBtn setOpen={setOpen} />
                 <LogicFilter 

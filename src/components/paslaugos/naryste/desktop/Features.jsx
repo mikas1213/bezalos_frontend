@@ -23,7 +23,8 @@ const Features = () => {
             </div>
             <div className={styles.feature}>
                 <div>
-                    Receptų kūrimas <span style={{color: '#a00'}}>(Kuriama)</span>
+                    Receptų kūrimas 
+                    {/* <span style={{color: '#a00'}}>(Kuriama)</span> */}
                 </div>
                 <div><FaCircleCheck /></div>
             </div>
