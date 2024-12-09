@@ -16,8 +16,8 @@ import PersistLogin from './pages/PersistLogin';
 
 import { Helmet } from 'react-helmet';
 
-const VirtuvePage = lazy(() => import('./pages/VirtuvePage'));
 const HomePage = lazy(() => import('./pages/HomePage'));
+const VirtuvePage = lazy(() => import('./pages/VirtuvePage'));
 const VirtuveVideoPage = lazy(() => import('./pages/VirtuveVideoPage'));
 const ReceptaiPage = lazy(() => import('./pages/ReceptaiPage'));
 const PaslaugosPage = lazy(() => import('./pages/PaslaugosPage'));
@@ -28,14 +28,16 @@ import ProduktuKeitimasPage from './pages/profilisPages/ProduktuKeitimasPage';
 import ManoReceptaiPage from './pages/profilisPages/ManoReceptaiPage';
 import StatistikaPage from './pages/profilisPages/StatistikaPage';
 import NustatymaiPage from './pages/profilisPages/NustatymaiPage';
-const UpdatePasswordPage = lazy(() => import('./pages/UpdatePasswordPage'));
-const NotFoundPage = lazy(() => import('./pages/NotFoundPages/NotFoundPage'));
-const NeedSubscription = lazy(() => import('./pages/SubscriptionPages/NeedSubscription'));
-const SuccessSubscription = lazy(() => import('./pages/SubscriptionPages/SuccessSubscription'));
-const CancelSubscription = lazy(() => import('./pages/SubscriptionPages/CancelSubscription'));
-const PirkimoTaisyklesPage = lazy(() => import('./pages/PirkimoTaisyklesPage'));
-const PrivatumoPolitikaPage = lazy(() => import('./pages/PrivatumoPolitikaPage'));
-const AdminLayout = lazy(() => import('./components/admin/layout/AdminLayout'));
+import UpdatePasswordPage from './pages/UpdatePasswordPage';
+import NotFoundPage from './pages/NotFoundPages/NotFoundPage';
+import NeedSubscription from './pages/SubscriptionPages/NeedSubscription';
+import SuccessSubscription from'./pages/SubscriptionPages/SuccessSubscription';
+import CancelSubscription from './pages/SubscriptionPages/CancelSubscription';
+import PirkimoTaisyklesPage from './pages/PirkimoTaisyklesPage';
+import PrivatumoPolitikaPage from './pages/PrivatumoPolitikaPage';
+import AdminLayout from './components/admin/layout/AdminLayout';
+
+// const AdminLayout = lazy(() => import('./components/admin/layout/AdminLayout'));
 
 import UsersPage from './pages/admin/users/UsersPage';
 import UserPageLayout from './pages/admin/users/UserPageLayout';

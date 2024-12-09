@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { Utensils, ChevronLeft } from 'lucide-react';
 import Meal from './Meal';
 
-const UserMeals = ({ userPlans, selectedMeal, setSelectedMeal }) => {
+const UserMeals = ({ userPlans, selectedMeal, setSelectedMeal, setNewRecipe }) => {
     const [isOpen, setIsOpen] = useState(false);
     const meals = userPlans.map(plan => plan.meals.filter(meal => !meal.is_sport).map(meal => ({
         id: meal.id, 
@@ -34,17 +34,19 @@ const UserMeals = ({ userPlans, selectedMeal, setSelectedMeal }) => {
             </div>
 
             {isOpen && <div className={styles.mealsList}>
-                {Object.keys(selectedMeal).length > 0 && <div 
+                {Object.keys(selectedMeal).length> 0 && <div 
                     className={styles.beValgio} 
                     onClick={() => {
                         setIsOpen(false);
                         setSelectedMeal({});
+                        setNewRecipe(prev => ({ ...prev, logic: '-', is_bar_good: true}))
                     }}
                 >Be valgio</div>}
 
                 {meals.map(meal => <Meal 
                     key={meal.id} 
                     meal={meal} 
+                    setNewRecipe={setNewRecipe}
                     setIsOpen={setIsOpen}
                     setSelectedMeal={setSelectedMeal}
                 />)}

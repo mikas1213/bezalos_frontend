@@ -52,7 +52,6 @@ const Offer = ({ setIsShowOffer, setIsOfferSent, isOfferSent, setCookie }) => {
             {isPending && <Spinner /> }
             {isOfferSent ? 
                 <OfferSent /> : 
-                // <div className={styles.offerContainer}>  
                 <>
                     <div className={styles.top}>
                         <img src={christmas_avatar} alt='avatar' />
@@ -80,7 +79,6 @@ const Offer = ({ setIsShowOffer, setIsOfferSent, isOfferSent, setCookie }) => {
 
                     </div>
                 </>
-                // </div>
             }
         </Overlay>
     );

@@ -1,6 +1,6 @@
 .left {
     width: var(--form-side-width-lg);
-    background-image: url('../../assets/images/auth/registration_bgr.jpg');
+    background-image: url('../../assets/images/auth/registration_bgr.webp');
     background-size: cover;
 
     display: grid;

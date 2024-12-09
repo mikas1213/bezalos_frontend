@@ -1,7 +1,6 @@
 import styles from './Authentication.module.css';
 import { useState, createContext } from "react";
 
-// import AuthSide from './AuthSide';
 import Left from './Left';
 import Signin from './Signin';
 import Signup from './Signup';
@@ -18,6 +17,7 @@ const Authentication = () => {
         <FormStateContext.Provider value={{formState, setFormState}}>
 
             <div className={styles.autchentication}>
+            
                 {formState === 'success' || formState === 'token-sent' 
                     ?
                     <>
@@ -32,6 +32,7 @@ const Authentication = () => {
                         {formState === 'signup' && <Signup />}
                     </>
                 }
+                
             </div>
         </FormStateContext.Provider>
     );

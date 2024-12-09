@@ -5,14 +5,16 @@ import RecipeProduct from './RecipeProduct';
 import { Flame } from 'lucide-react';
 import { kcal, mealProdBarSum, productsBarSum, isBarInRange } from '../../../../../utils/calculationsHelpers';
 
-const NewRecipe = ({ prodList, selectedMeal, newRecipe, setNewRecipe }) => {
+const NewRecipe = ({ prodList, selectedMeal, newRecipe, setNewRecipe, is_bar_error }) => {
 
-    const is_error = key => (Object.keys(selectedMeal).length === 0 || newRecipe.products.length === 0) || isBarInRange(newRecipe[key], selectedMeal[key], 5) ? '' : 'notInRange';
+    // const is_error = key => (Object.keys(selectedMeal).length === 0 || newRecipe.products.length === 0) || isBarInRange(newRecipe[key], selectedMeal[key], 5) ? '' : 'notInRange';
+    // const is_bar_good = is_error('b') !== 'notInRange' && is_error('a') !== 'notInRange' && is_error('r') !== 'notInRange';
     
     const refs = useRef({});
     const [searchInput, setSearchInput] = useState('');
     const [isShowResults, setIsShowResults] = useState(false);
     const [results, setResults] = useState([]);
+    
     const handleProdSearch = e => {
         setSearchInput(e.target.value);
         const filteredResults = prodList.filter(prod => prod.title.toLowerCase().includes(e.target.value.toLowerCase()))
@@ -36,13 +38,13 @@ const NewRecipe = ({ prodList, selectedMeal, newRecipe, setNewRecipe }) => {
             products: [...prev.products, {...prod, product_id: prod.id, id: newId, grams: 0}]
         }));
 
-
         setTimeout(() => {
             refs.current[newId]?.focus(); 
         }, 0)
     };
 
     const handleEditGrams = (e, prod) => {
+
         const newGrams = e.target.value.replace(',', '.');
         setNewRecipe(prev => ({
             ...prev,
@@ -92,7 +94,7 @@ const NewRecipe = ({ prodList, selectedMeal, newRecipe, setNewRecipe }) => {
                     <input 
                         ref={el => refs.current[prod.id] = el}
                         type='text' 
-                        // maxLength={4}
+                        maxLength={5}
                         inputMode='numeric'
                         autoComplete='off'
                         value={prod.grams ?? ''}
@@ -116,14 +118,13 @@ const NewRecipe = ({ prodList, selectedMeal, newRecipe, setNewRecipe }) => {
                         {prod.title}
                     </div>)}
                 </div>}
-
             </div>
             
             <div className={styles.recipeSummary}>
                 <div className={styles.bar}>
-                    <span className={`${styles.b} ${styles[is_error('b')]}`}>B {newRecipe.b.toFixed(0)}</span>
-                    <span className={`${styles.a} ${styles[is_error('a')]}`}>A {newRecipe.a.toFixed(0)}</span>
-                    <span className={`${styles.r} ${styles[is_error('r')]}`}>R {newRecipe.r.toFixed(0)}</span>
+                    <span className={`${styles.b} ${styles[is_bar_error('b') ? 'notInRange' : '']}`}>B {newRecipe.b.toFixed(0)}</span>
+                    <span className={`${styles.a} ${styles[is_bar_error('a') ? 'notInRange' : '']}`}>A {newRecipe.a.toFixed(0)}</span>
+                    <span className={`${styles.r} ${styles[is_bar_error('r') ? 'notInRange' : '']}`}>R {newRecipe.r.toFixed(0)}</span>
                 </div>
                 <span className={styles.k}><Flame className={styles.kcalIcon}/>{newRecipe.kcal.toFixed(0)} <small>kcal</small></span>
             </div>

@@ -1,5 +1,5 @@
 import InformationSoon from '../../components/information_soon/InformationSoon';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useOutletContext } from 'react-router-dom';
 import Container from '../../components/UI/Container';
 import Header from '../../components/profilis/mano_receptai/header/Header';
@@ -7,7 +7,9 @@ import NewRecipeBtn from '../../components/profilis/mano_receptai/header/NewReci
 import LogicFilter from '../../components/profilis/mano_receptai/header/LogicFilter';
 import SearchRecipe from '../../components/profilis/mano_receptai/header/SearchRecipe';
 import RecipeModal from '../../components/profilis/mano_receptai/recipe_modal/RecipeModal';
-import UserRecipe from '../../components/profilis/mano_receptai/user_recipes/UserRecipe';
+import RecipeList from '../../components/profilis/mano_receptai/user_recipes/RecipeList';
+import useAxiosPrivate from '../../hooks/useAxiosPrivate';
+import toast from 'react-hot-toast';
 
 const filterOptions = [
     {value: 'A+B', label: 'A+B', color: '#30c040'},
@@ -17,9 +19,26 @@ const filterOptions = [
 
 const ManoReceptaiPage = () => {
     const { recipes, setRecipes } = useOutletContext();
-    console.log('recipes: ', recipes)
+    const axiosPrivate = useAxiosPrivate();
+
     const [logicFilter, setLogicFilter] = useState('');
     const [open, setOpen] = useState(false);
+
+    useEffect(() => {
+        setRecipes(prev => [
+            ...prev.map(recipe => ({...recipe, isNew: false})) 
+        ]);
+    }, [setRecipes]);
+
+    const handleDeleteRecipe = async (recipe_id) => {
+        try {
+            await axiosPrivate.delete(`/profile/new-recipe/${recipe_id}`);
+            await new Promise(resolve => setTimeout(resolve, 500));
+            setRecipes(prev => prev.filter(recipe => recipe.id !== recipe_id));
+        } catch (err) {
+            toast.error(err.message)
+        }
+    };
 
     return (
         // <Container>
@@ -31,9 +50,9 @@ const ManoReceptaiPage = () => {
         //             onSetFilter={setLogicFilter}
         //         />
         //         <SearchRecipe />
-        //         {open && <RecipeModal setOpen={setOpen} />}
+        //         {open && <RecipeModal setOpen={setOpen} setRecipes={setRecipes} />}
         //     </Header>
-        //     <UserRecipe recipe={recipes[0]} />
+        //     <RecipeList recipes={recipes} handleDeleteRecipe={handleDeleteRecipe} />
         // </Container>
         <InformationSoon />
     );
