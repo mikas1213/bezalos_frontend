@@ -32,7 +32,7 @@ const NewRecipe = ({ prodList, newRecipe, setNewRecipe, is_bar_error }) => {
         setSearchInput('');
         setNewRecipe(prev => ({
             ...prev,
-            products: [...prev.products, {...prod, product_id: prod.id, id: newId, grams: 0}]
+            products: [...prev.products, {...prod, product_id: prod.id, id: newId}]
         }));
 
         setTimeout(() => {
@@ -95,6 +95,16 @@ const NewRecipe = ({ prodList, newRecipe, setNewRecipe, is_bar_error }) => {
                         inputMode='numeric'
                         autoComplete='off'
                         value={prod.grams ?? ''}
+                        onBlur={() => setNewRecipe(prev => ({
+                            ...prev, products: prev.products.map(p => p.id === prod.id ? ({
+                                ...p, grams: prod.grams ? prod.grams : 0
+                            }): p)
+                        }))}
+                        onFocus={() => setNewRecipe(prev => ({
+                            ...prev, products: prev.products.map(p => p.id === prod.id ? ({
+                                ...p, grams: prod.grams == '0' ? '' : prod.grams
+                            }): p)
+                        }))}
                         onChange={e => handleEditGrams(e, prod)} 
                         className={styles.gramsInput}
                     />

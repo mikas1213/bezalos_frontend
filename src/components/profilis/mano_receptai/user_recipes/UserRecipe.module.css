@@ -104,6 +104,7 @@
     color: var(--color-text-green-light);
     font-size: var(--font-size-h6);
     font-weight: 600;
+    line-height: 130%;
     padding: 0 1rem;
     text-align: center;
 }
@@ -120,7 +121,6 @@
 }
 .product {
     display: flex;
-    font-size: var(--font-size-small-1);
     font-weight: 400;
     gap: 0.5rem;
 }
@@ -134,6 +134,7 @@
     color: var(--color-text-grey);
     flex-grow: 1;
     font-weight: 700;
+    font-size: var(--font-size-small-1);
 }
 
 .gramsContainer {
@@ -149,6 +150,7 @@
 }
 .grams {
     font-weight: 600;
+    font-size: var(--font-size-small-1);
 }
 .gramChar {
     color: var(--color-text-grey);
@@ -177,5 +179,47 @@
     }
     100% {
         transform: scale(1);
+    }
+}
+
+@media only screen and (max-width: 440px) {
+    .img {
+        /* margin-top: 0.5rem; */
+        font-size: 9rem;
+    }
+
+    .bar {
+        font-size: var(--font-size-p);
+    }
+
+    .recipeTitle {
+        font-size: var(--font-size-h4);
+    }
+    .prodTitle {
+        font-size: var(--font-size-p);
+    }
+    .grams {
+        font-size: var(--font-size-p);
+    }
+}
+
+@media only screen and (max-width: 320px) {
+    .img {
+        font-size: 7rem;
+    }
+
+    .bar {
+        font-size: var(--font-size-small-1);
+    }
+
+    .recipeTitle {
+        font-size: var(--font-size-h6);
+        line-height: 150%;
+    }
+    .prodTitle {
+        font-size: var(--font-size-small-1);
+    }
+    .grams {
+        font-size: var(--font-size-small-1);
     }
 }

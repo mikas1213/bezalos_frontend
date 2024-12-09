@@ -1,4 +1,4 @@
-// import InformationSoon from '../../components/information_soon/InformationSoon';
+import InformationSoon from '../../components/information_soon/InformationSoon';
 import { useState, useEffect } from 'react';
 import { useOutletContext } from 'react-router-dom';
 import Container from '../../components/UI/Container';
@@ -20,7 +20,7 @@ const filterOptions = [
 
 const ManoReceptaiPage = () => {
     const { 
-        // recipes,
+        is_subscription,
         setRecipes,
         logicFilter,
         setLogicFilter,
@@ -55,7 +55,8 @@ const ManoReceptaiPage = () => {
     };
 
     return (
-        <Container>
+        <>
+        {is_subscription ? <Container>
             <Header>
                 <NewRecipeBtn setOpen={setOpen} />
                 <LogicFilter 
@@ -70,8 +71,9 @@ const ManoReceptaiPage = () => {
             <RecipeList recipes={paginatedRecipes} handleDeleteRecipe={handleDeleteRecipe} />
             {totalPages > 0 && <Pagination totalPages={totalPages} currentPage={currentPage } setCurrentPage={setCurrentPage} pagesLimit={5} color='var(--color-btn-secondary)' />}
 
-        </Container>
-        // <InformationSoon />
+        </Container> :
+        <InformationSoon />}
+        </>
     );
 };
 

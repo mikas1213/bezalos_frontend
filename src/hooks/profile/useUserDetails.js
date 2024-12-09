@@ -100,7 +100,7 @@ export const useUserDetails = (user_id) => {
 
 
      /* P A G I N A T I O N */
-     const recipesPerPage = 3;
+     const recipesPerPage = 4;
      const [currentPage, setCurrentPage] = useState(1);
      const [paginatedRecipes, setPaginatedRecipes] = useState([]);
      const [totalPages, setTotalPages] = useState(0);

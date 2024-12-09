@@ -2,8 +2,7 @@
     margin-top: 1rem;   
     margin-bottom: 5rem;
     display: grid;
-    /* grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr)); */
-    grid-template-columns: repeat(auto-fill, 15rem);
+    grid-template-columns: repeat(auto-fill, 14.2rem);
     justify-content: center;
     gap: 1rem;
 }
@@ -16,11 +15,23 @@
 
 @media only screen and (max-width: 576px) {
     .recipeList {
-        grid-template-columns: repeat(auto-fill, 16rem);
+        grid-template-columns: repeat(auto-fill, 15rem);
     }
 }
 
 @media only screen and (max-width: 440px) {
+    .recipeList {
+        grid-template-columns: repeat(auto-fill, 20rem);
+    }
+}
+
+@media only screen and (max-width: 375px) {
+    .recipeList {
+        grid-template-columns: repeat(auto-fill, 15rem);
+    }
+}
+
+@media only screen and (max-width: 320px) {
     .recipeList {
         grid-template-columns: repeat(auto-fill, 15rem);
     }
