@@ -16,7 +16,28 @@ const ProfilisPageLayout = () => {
     const is_subscription = user_s_subscription || user_subscription;
     const { prodList } = usePlanProducts();
 
-    const { plans, selectedPlan, setSelectedPlan, anketa, setAnketa, recipes, setRecipes, isLoading } = useUserDetails(user_id);
+    const { 
+        plans, 
+        selectedPlan, 
+        setSelectedPlan, 
+        anketa, 
+        setAnketa, 
+        recipes, 
+        setRecipes, 
+        logicFilter,
+        setLogicFilter,
+        searchRecipe,
+        setSearchRecipe,
+        isLoading,
+        
+        /* PAGINATION RETURN */
+        currentPage,
+        totalPages,
+        paginatedRecipes,
+        setPaginatedRecipes,
+        setCurrentPage
+
+    } = useUserDetails(user_id);
 
     return (
         <>
@@ -37,7 +58,17 @@ const ProfilisPageLayout = () => {
                     recipes,
                     setRecipes,
                     user_id, 
-                    isLoading 
+                    logicFilter,
+                    setLogicFilter,
+                    searchRecipe,
+                    setSearchRecipe,
+                    isLoading,
+                    /* PAGINATION RETURN */
+                    currentPage,
+                    totalPages,
+                    paginatedRecipes,
+                    setPaginatedRecipes,
+                    setCurrentPage
                 }} />}
             </Main>
         </>

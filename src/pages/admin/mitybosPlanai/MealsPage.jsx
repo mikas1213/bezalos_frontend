@@ -3,7 +3,7 @@ import useAxiosPrivate from '../../../hooks/useAxiosPrivate';
 import Navbar from '../../../components/admin/nutrition_plans/Navbar';
 import { AddNewBtn } from '../../../components/admin/nutrition_plans/AddNewBtn';
 import Wrapper from './Wrapper';
-import Pagination from '../../../components/admin/users/Pagination';
+import Pagination from '../../../components/UI/Pagination';
 import Meal from '../../../components/admin/nutrition_plans/meals/Meal';
 import { RadioFilters } from '../../../components/admin/nutrition_plans/RadioFilters';
 import { CheckBoxFilters } from '../../../components/admin/nutrition_plans/CheckBoxFilters';

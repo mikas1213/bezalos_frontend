@@ -64,8 +64,10 @@ export const useUserDetails = (user_id) => {
     const [selectedPlan, setSelectedPlan] = useState(plans[0]);
     const [anketa, setAnketa] = useState([]);
     const [recipes, setRecipes] = useState([]);
+    const [logicFilter, setLogicFilter] = useState('');
+    const [searchRecipe, setSearchRecipe] = useState('');
     const [isLoading, setIsLoading] = useState(true);
-    
+
     useEffect(() => {
         const getData = async () => {
             try {
@@ -84,15 +86,65 @@ export const useUserDetails = (user_id) => {
                     weight: String(anketa[0].weight),
                     activity_steps: String(anketa[0].activity_steps),
                 }) : defaultAnketa);
+
                 setRecipes(data[0].recipes);
                 setIsLoading(false);
             } catch (err) {
                 toast.error('Klaida!\n'+err.response.data.message);
+                setIsLoading(false);
             }
         };
 
         getData();
-    }, [axiosPrivate, user_id]);
+    }, [axiosPrivate, user_id, logicFilter]);
 
-    return { plans, selectedPlan, setPlans, setSelectedPlan, anketa, setAnketa, recipes, setRecipes, isLoading }
+
+     /* P A G I N A T I O N */
+     const recipesPerPage = 3;
+     const [currentPage, setCurrentPage] = useState(1);
+     const [paginatedRecipes, setPaginatedRecipes] = useState([]);
+     const [totalPages, setTotalPages] = useState(0);
+    
+    useEffect(() => {
+        const filteredRecipes = recipes.filter(recipe => logicFilter ? recipe.logic === logicFilter : recipe)
+        .filter(recipe => !searchRecipe.trim() ? true : recipe.title.toLowerCase().includes(searchRecipe.trim().toLowerCase()));
+        
+        if (filteredRecipes.length > 0) {
+
+            const total = Math.ceil(filteredRecipes.length / recipesPerPage);
+            setTotalPages(total);
+                        
+            const indexOfLastRecipe = currentPage * recipesPerPage;
+            const indexOfFirstRecipe = indexOfLastRecipe - recipesPerPage;
+            const currentRecipes = filteredRecipes.slice(indexOfFirstRecipe, indexOfLastRecipe);
+            setPaginatedRecipes(currentRecipes);
+        } else {
+            setPaginatedRecipes([]); 
+            setTotalPages(0);
+        }
+    }, [recipes, currentPage, logicFilter, searchRecipe]);
+
+
+    return { 
+        plans, 
+        selectedPlan, 
+        setPlans, 
+        setSelectedPlan, 
+        anketa, 
+        setAnketa, 
+        recipes, 
+        setRecipes, 
+        logicFilter,
+        setLogicFilter,
+        searchRecipe,
+        setSearchRecipe,
+        isLoading,
+
+        /* PAGINATION RETURNS */
+        currentPage,
+        totalPages,
+        paginatedRecipes,
+        setPaginatedRecipes,
+        setCurrentPage
+    }
 };

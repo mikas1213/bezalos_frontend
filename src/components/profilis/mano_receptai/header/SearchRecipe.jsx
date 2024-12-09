@@ -1,9 +1,16 @@
 import styles from './SearchRecipe.module.css';
 
-const SearchRecipe = () => {
+const SearchRecipe = ({searchRecipe, setSearchRecipe}) => {
     return (
         <div className={styles.searchRecipe}>
-            <input className={styles.searchRecipeInput} type='text' placeholder='Ieškoti'/>
+            <input 
+                type='text'
+                placeholder='Ieškoti'
+                className={styles.searchRecipeInput}
+
+                value={searchRecipe}
+                onChange={e => setSearchRecipe(e.target.value)}
+            />
         </div>
     );
 };

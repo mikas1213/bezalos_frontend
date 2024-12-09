@@ -1,8 +1,9 @@
 import styles from './Pagination.module.css';
 import { useState } from 'react';
-import { MdKeyboardDoubleArrowLeft, MdKeyboardDoubleArrowRight } from 'react-icons/md';
+// import { MdKeyboardDoubleArrowLeft, MdKeyboardDoubleArrowRight } from 'react-icons/md';
+import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from 'react-icons/md';
+const Pagination = ({ setCurrentPage, currentPage, totalPages, pagesLimit = 5, color = '#d1d6cf' }) => {
 
-const Pagination = ({ setCurrentPage, currentPage, totalPages, pagesLimit}) => {
     const [pageNumberLimit] = useState(pagesLimit);
     const [maxPageNumberLimit, setMaxPageNumberLimit] = useState(pagesLimit);
     const [minPageNumberLimit, setMinPageNumberLimit] = useState(0);
@@ -41,6 +42,7 @@ const Pagination = ({ setCurrentPage, currentPage, totalPages, pagesLimit}) => {
                 <button
                     key={i}
                     onClick={() => handlePageClick(i)}
+                    style={{'--color-bgr-card': color}}
                     className={i === currentPage ? styles.activePage : ''}
                 >{i}</button>);
             }
@@ -50,13 +52,22 @@ const Pagination = ({ setCurrentPage, currentPage, totalPages, pagesLimit}) => {
 
     return (
         <div className={styles.pagination}>
-            <button onClick={handlePrevPage} disabled={currentPage === 1}>
+            {/* <button onClick={handlePrevPage} disabled={currentPage === 1}>
                 <MdKeyboardDoubleArrowLeft className={styles.icon} />
+            
+            </button> */}
+            <button onClick={handlePrevPage} disabled={currentPage === 1}>
+                <MdKeyboardArrowLeft className={styles.icon} />
             </button>
+
             {renderPageNumbers()}
+
             <button onClick={handleNextPage} disabled={currentPage === totalPages}>
-                <MdKeyboardDoubleArrowRight className={styles.icon} />
+                <MdKeyboardArrowRight className={styles.icon} />
             </button>
+            {/* <button onClick={() => setCurrentPage(totalPages)} disabled={currentPage === totalPages}>
+                <MdKeyboardDoubleArrowRight className={styles.icon} />
+            </button> */}
         </div>
     );
 };

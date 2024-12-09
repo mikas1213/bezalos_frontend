@@ -3,13 +3,10 @@ import { useState, useRef } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import RecipeProduct from './RecipeProduct';
 import { Flame } from 'lucide-react';
-import { kcal, mealProdBarSum, productsBarSum, isBarInRange } from '../../../../../utils/calculationsHelpers';
+import { kcal, mealProdBarSum, productsBarSum } from '../../../../../utils/calculationsHelpers';
 
-const NewRecipe = ({ prodList, selectedMeal, newRecipe, setNewRecipe, is_bar_error }) => {
+const NewRecipe = ({ prodList, newRecipe, setNewRecipe, is_bar_error }) => {
 
-    // const is_error = key => (Object.keys(selectedMeal).length === 0 || newRecipe.products.length === 0) || isBarInRange(newRecipe[key], selectedMeal[key], 5) ? '' : 'notInRange';
-    // const is_bar_good = is_error('b') !== 'notInRange' && is_error('a') !== 'notInRange' && is_error('r') !== 'notInRange';
-    
     const refs = useRef({});
     const [searchInput, setSearchInput] = useState('');
     const [isShowResults, setIsShowResults] = useState(false);

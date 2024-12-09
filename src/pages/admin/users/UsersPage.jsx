@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useUsers } from '../../../hooks/nutrition_plans_hooks/useUsers';
 import UserRow from '../../../components/admin/users/UserRow';
 import UserHeaderRow from '../../../components/admin/users/UserHeaderRow';
-import Pagination from '../../../components/admin/users/Pagination';
+import Pagination from '../../../components/UI/Pagination';
 import toast from 'react-hot-toast';
 import useAxiosPrivate from '../../../hooks/useAxiosPrivate';
 

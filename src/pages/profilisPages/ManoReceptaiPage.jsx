@@ -1,4 +1,4 @@
-import InformationSoon from '../../components/information_soon/InformationSoon';
+// import InformationSoon from '../../components/information_soon/InformationSoon';
 import { useState, useEffect } from 'react';
 import { useOutletContext } from 'react-router-dom';
 import Container from '../../components/UI/Container';
@@ -8,6 +8,7 @@ import LogicFilter from '../../components/profilis/mano_receptai/header/LogicFil
 import SearchRecipe from '../../components/profilis/mano_receptai/header/SearchRecipe';
 import RecipeModal from '../../components/profilis/mano_receptai/recipe_modal/RecipeModal';
 import RecipeList from '../../components/profilis/mano_receptai/user_recipes/RecipeList';
+import Pagination from '../../components/UI/Pagination';
 import useAxiosPrivate from '../../hooks/useAxiosPrivate';
 import toast from 'react-hot-toast';
 
@@ -18,17 +19,30 @@ const filterOptions = [
 ];
 
 const ManoReceptaiPage = () => {
-    const { recipes, setRecipes } = useOutletContext();
+    const { 
+        // recipes,
+        setRecipes,
+        logicFilter,
+        setLogicFilter,
+        searchRecipe,
+        setSearchRecipe,
+        /* PAGINATION RETURNS */
+        currentPage,
+        totalPages,
+        paginatedRecipes,
+        setPaginatedRecipes,
+        setCurrentPage
+    } = useOutletContext();
+    
     const axiosPrivate = useAxiosPrivate();
-
-    const [logicFilter, setLogicFilter] = useState('');
     const [open, setOpen] = useState(false);
 
     useEffect(() => {
-        setRecipes(prev => [
-            ...prev.map(recipe => ({...recipe, isNew: false})) 
-        ]);
-    }, [setRecipes]);
+        setPaginatedRecipes(prev => 
+            prev.map(prev => ({...prev, isNew: false}))
+        );
+    }, [setPaginatedRecipes, setCurrentPage]);
+
 
     const handleDeleteRecipe = async (recipe_id) => {
         try {
@@ -41,20 +55,23 @@ const ManoReceptaiPage = () => {
     };
 
     return (
-        // <Container>
-        //     <Header>
-        //         <NewRecipeBtn setOpen={setOpen} />
-        //         <LogicFilter 
-        //             options={filterOptions}
-        //             setFilter={logicFilter} 
-        //             onSetFilter={setLogicFilter}
-        //         />
-        //         <SearchRecipe />
-        //         {open && <RecipeModal setOpen={setOpen} setRecipes={setRecipes} />}
-        //     </Header>
-        //     <RecipeList recipes={recipes} handleDeleteRecipe={handleDeleteRecipe} />
-        // </Container>
-        <InformationSoon />
+        <Container>
+            <Header>
+                <NewRecipeBtn setOpen={setOpen} />
+                <LogicFilter 
+                    options={filterOptions}
+                    setFilter={logicFilter} 
+                    onSetFilter={setLogicFilter}
+                    setCurrentPage={setCurrentPage}
+                />
+                <SearchRecipe searchRecipe={searchRecipe} setSearchRecipe={setSearchRecipe} />
+                {open && <RecipeModal setOpen={setOpen} setRecipes={setRecipes} />}
+            </Header>
+            <RecipeList recipes={paginatedRecipes} handleDeleteRecipe={handleDeleteRecipe} />
+            {totalPages > 0 && <Pagination totalPages={totalPages} currentPage={currentPage } setCurrentPage={setCurrentPage} pagesLimit={5} color='var(--color-btn-secondary)' />}
+
+        </Container>
+        // <InformationSoon />
     );
 };
 
