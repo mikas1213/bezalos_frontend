@@ -51,7 +51,7 @@ const ManoReceptaiPage = () => {
             await new Promise(resolve => setTimeout(resolve, 500));
             setRecipes(prev => prev.filter(recipe => recipe.id !== recipe_id));
         } catch (err) {
-            toast.error(err.message)
+            toast.error(err.response.data.message || err.message)
         }
     };
 

@@ -119,6 +119,76 @@
     user-select: none;
 }
 
+
+/* VIRTUVE CONFIRMATION */
+.confirmationLayout {
+    position: fixed;
+    display: grid;
+    place-items: center;
+    background-color: #00000033;
+    backdrop-filter: blur(1px);
+    animation: openModalOverlay 0.2s;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 100;
+}
+.confirmation {
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    padding: 1.5rem;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border: 1px solid var(--color-border);
+    border-radius: 0.5rem;
+}
+
+.confirmationHeader {
+    color: var(--color-text-green-dark);
+    font-size: var(--font-size-h6);
+    font-weight: 700;
+}
+.confirmationContent {
+    color: var(--color-text-grey);
+    font-size: var(--font-size-small-1);
+}
+.confirmBtn {
+    display: flex;
+    gap: 2rem;
+    justify-content: space-between;
+    margin-top: 1rem;
+}
+.confirmBtn button {
+    width: 7rem;
+}
+.social {
+    display: flex;
+    gap: 0.5rem;
+    align-items: end;
+}
+.social div {
+    display: flex;
+    align-items: center;
+    gap: 0.2rem;
+    font-size: var(--font-size-small-2);
+    color: var(--color-text-grey);
+}
+.socialIcon {
+    font-size: 1rem;
+}
+
+@keyframes openModalOverlay {
+    from {
+        opacity: 0;
+        backdrop-filter:  blur(0px);
+    }
+    to {
+        opacity: 1;
+        backdrop-filter:  blur(3px);
+    } 
+}
+
 @-moz-keyframes wave-4 {
     50% {
         transform: scale(0.9);
@@ -154,6 +224,27 @@
         padding: 0.9rem 1rem;
         margin-top: 1rem;
     }
+    /* CONFIRMATION */
+    .confirmation {
+        padding: 1rem;
+        width: clamp(0rem, 87.273vw, 24rem);
+        /* width: 24rem; */
+    }
+    .social {
+        flex-direction: column;
+        align-items: start;
+        gap: 0.3rem;
+    }
+    .confirmBtn {
+        /* align-items: start; */
+        /* width: clamp(0rem, 80vw, 22rem); */
+    }
+    .confirmBtn button {
+        font-size: var(--font-size-small-1);
+        width: 7rem;
+        padding: 0;
+        margin: 0;
+    }
 }
 @media only screen and (max-width: 375px) {
     .chooseBtnContainer {
@@ -165,9 +256,29 @@
     }
     .chooseBtnContainer button {
         font-size: var(--font-size-p);
-        
         padding: 0.8rem 1rem;
         margin-top: 1rem;
+    }
+
+    /* CONFIRMATION */
+    .confirmation {
+        width: clamp(0rem, 93.867vw, 22rem);
+    }
+    .social {
+        /* flex-direction: column; */
+        /* align-items: start; */
+        /* gap: 0.3rem; */
+    }
+    .confirmBtn {
+        /* width: 100%; */
+        /* justify-content: space-between; */
+        /* width: clamp(0rem, 80vw, 22rem); */
+    }
+    .confirmBtn button {
+        font-size: var(--font-size-small-1);
+        /* width: 7rem; */
+        padding: 0;
+        margin: 0;
     }
 }
 @media only screen and (max-width: 320px) {

@@ -38,6 +38,7 @@ const handleSubscriptionCheckout = async ({ plan }) => {
 };
 */
 const PaymentContext = createContext();
+
 const PaymentProvider = ({ children }) => {
     const { auth } = useAuth();
     let loggedUser = {};
@@ -48,29 +49,32 @@ const PaymentProvider = ({ children }) => {
 
     const [period, setPeriod] = useState('month');
     const [variant, setVariant] = useState('virtuve');
-
+    const [isLoading, setIsLoading] = useState(false);
     const selectedPlan = plans[period][variant];
     const plan = plans[period];
 
     const handleSubscriptionCheckout = async (/*{ plan }*/) => {
         
-        if(user_id) {
-            try {
-                const res = await axiosPrivate.post('/payments/checkout-session', {...selectedPlan, user_id});
-                // console.log(res)
-                window.location = res.data.session.url;
-            } catch (err) {
-                if(err.response.status === 401) {
-                    navigate('/prisijungti');
-                }
-            }
-        } else {
+
+        if(!user_id) {
             navigate('/prisijungti');
+            return;
+        }
+        try {
+            setIsLoading(true);
+            const res = await axiosPrivate.post('/payments/checkout-session', {...selectedPlan, user_id});
+            window.location = res.data.session.url;
+        } catch (err) {
+            if(err.response.status === 401) {
+                navigate('/prisijungti');
+            }
+        } finally {
+            setIsLoading(false);
         }
     };
 
     return (
-        <PaymentContext.Provider value={{ period, setPeriod, variant, setVariant, plan, handleSubscriptionCheckout }}>
+        <PaymentContext.Provider value={{ isLoading, period, setPeriod, variant, setVariant, plan, handleSubscriptionCheckout }}>
             {children}
         </PaymentContext.Provider>
     );

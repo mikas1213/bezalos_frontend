@@ -3,12 +3,6 @@ import Section from './ui/Section';
 import MainContainer from './ui/MainContainer';
 
 // ICONS collection: https://www.svgrepo.com/collection/ecommerce-15
-// PNG
-// import Icon1 from '../../assets/icons/png/benefits/interaktyvus-mitybos-planas.png';
-// import Icon2 from '../../assets/icons/png/benefits/merginu-bendruomene.png';
-// import Icon3 from '../../assets/icons/png/benefits/emocinio-valgymo-dienorastis.png';
-// import Icon4 from '../../assets/icons/png/benefits/pokyciu-statistika.png';
-
 // SVG
 import Icon1 from '../../assets/icons/svg/benefits/interaktyvus-mitybos-planas.svg';
 import Icon2 from '../../assets/icons/svg/benefits/merginu-bendruomene.svg';
@@ -28,7 +22,6 @@ const BenefitItem = ({icon, title, text}) => {
     );
 };
 
-// icons collenction https://www.svgrepo.com/collection/ecommerce-15/
 const BenefitsSection = () => {
     const benefits = [
         {title: 'Interaktyvus mitybos planas', text: 'Mitybos planas leis tau mokytis sveikatai palankios mitybos pagrindų, kurių dėka galiu garantuoti tau ilgalaikius rezultatus!', icon: Icon1},

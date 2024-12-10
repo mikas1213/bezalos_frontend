@@ -4,14 +4,22 @@ import usePayments from '../../../../hooks/usePayment';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
+import { FaFacebookSquare, FaInstagram } from "react-icons/fa";
+
 const ChooseBtn = () => {
-    const { handleSubscriptionCheckout
-        // , variant 
-    } = usePayments();
+    const { handleSubscriptionCheckout, variant } = usePayments();
     const [sutinku, setSutinku] = useState(false);
+    const [showConfirmation, setShowConfirmation] = useState(false);
     const navigate = useNavigate();
 
-    // const planPreparingText = <span className={styles.sutinkuText}>Narystės planas kuriamas</span>
+    const handlePrenumeruoti = () => {
+        if(variant === 'virtuve') {
+            setShowConfirmation(true);
+        } else {
+            handleSubscriptionCheckout();
+        }
+    };
+
     const agreement = <> 
         <label className={styles.cbx} htmlFor='sutinku'>
             <span>
@@ -23,11 +31,36 @@ const ChooseBtn = () => {
         </label>
     </>;
 
+    const Confirmation = () => {
+        return (
+            <div className={styles.confirmationLayout}>
+                <div className={styles.confirmation}>
+                    <p className={styles.confirmationHeader} >Priminimas!</p>
+                    <p className={styles.confirmationContent}>Norint prisijungti prie merginų bendruomenės būtina susisiekti</p>
+                    
+                    <div className={styles.confirmBtn}>
+                        <div className={styles.social}>
+                            <div>
+                                <FaFacebookSquare className={styles.socialIcon} />
+                                <span>Sandra Jatulytė</span>
+                            </div>
+
+                            <div>
+                                <FaInstagram className={styles.socialIcon} />
+                                <span>Valgau_be_zalos</span>
+                            </div>
+                        </div>
+                        <button onClick={handleSubscriptionCheckout}>Supratau</button>
+                    </div>
+                </div>
+            </div>
+        );
+    };
+
     return (
         <div className={styles.chooseBtnContainer}>
             <div className={styles.checkboxWrapper}>
                 <input className={styles.inpCbx} id='sutinku' type='checkbox' onChange={() => setSutinku(su => !su)}/>
-                    {/* {variant === 'profilis' ? planPreparingText : agreement} */}
                     {agreement}
                 <svg className={styles.inlineSvg}>
                     <symbol id='check-4' viewBox='0 0 12 10'>
@@ -39,8 +72,8 @@ const ChooseBtn = () => {
                 </span>
             </div>
             <div>
-                {/* <button onClick={handleSubscriptionCheckout} disabled={!sutinku || variant === 'profilis'}>Prenumeruoti</button> */}
-                <button onClick={handleSubscriptionCheckout} disabled={!sutinku}>Prenumeruoti</button>
+                {showConfirmation && Confirmation()}
+                <button onClick={handlePrenumeruoti} disabled={!sutinku}>Prenumeruoti</button>
             </div>
         </div>
     );

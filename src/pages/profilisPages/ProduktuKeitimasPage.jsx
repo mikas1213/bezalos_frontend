@@ -6,6 +6,7 @@ import SearchResults from '../../components/profilis/produktu_keitimas/SearchRes
 import AvailableProducts from '../../components/profilis/produktu_keitimas/AvailableProducts';
 import Header from '../../components/profilis/produktu_keitimas/Header';
 import InformationSoon from '../../components/information_soon/InformationSoon';
+import No_keytykle from '../../components/profilis/produktu_keitimas/no_subscription/No_keitykle';
 import { useOutletContext } from 'react-router-dom';
 
 const ProduktuKeitimasPage = () => {
@@ -42,29 +43,33 @@ const ProduktuKeitimasPage = () => {
 
     return (
         <Container>
-            {is_subscription ? <KeitykleContainer>
-                <Header title='Maistro produktų keitimas' />
-                <ProductInput 
-                    handleProductSearch={handleProductSearch}
-                    searchQuery={searchQuery}
-                    grams={grams}
-                    handleGrams={handleGrams}
-                    setGramsPlaceholder={setGramsPlaceholder}
-                    gramsPlaceholder={gramsPlaceholder}
-                />
+            {is_subscription ? 
+                <KeitykleContainer>
+                    <Header title='Maistro produktų keitimas' />
+                    <ProductInput 
+                        handleProductSearch={handleProductSearch}
+                        searchQuery={searchQuery}
+                        grams={grams}
+                        handleGrams={handleGrams}
+                        setGramsPlaceholder={setGramsPlaceholder}
+                        gramsPlaceholder={gramsPlaceholder}
+                    />
 
-                {isShowSearchResults && <SearchResults 
-                    filteredProducts={filteredProducts} 
-                    setSelectedProd={setSelectedProd}
-                    setIsShowSearchResults={setIsShowSearchResults}
-                    setSearchQuery={setSearchQuery}
-                />}
+                    {isShowSearchResults && <SearchResults 
+                        filteredProducts={filteredProducts} 
+                        setSelectedProd={setSelectedProd}
+                        setIsShowSearchResults={setIsShowSearchResults}
+                        setSearchQuery={setSearchQuery}
+                    />}
 
-                {selectedProd && <AvailableProducts 
-                    prodList={prodList} 
-                    selectedProd={{...selectedProd, grams: +grams.replace(',', '.')}} 
-                />}
-            </KeitykleContainer> : <InformationSoon />}
+                    {selectedProd && <AvailableProducts 
+                        prodList={prodList} 
+                        selectedProd={{...selectedProd, grams: +grams.replace(',', '.')}} 
+                    />}
+                </KeitykleContainer> : 
+
+                <No_keytykle />
+            }
         </Container>
     );
 };

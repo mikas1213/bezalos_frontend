@@ -31,16 +31,16 @@ const RecipeModal = ({ setOpen, setRecipes }) => {
         const is_bar_good = !is_bar_error('b') && !is_bar_error('a') && !is_bar_error('r');
 
         try {
-            const { data: { recipe_id } } = await axiosPrivate.post(`/profile/new-recipe/${user_id}`, newRecipe);
             if(!is_bar_good) {
                 return toast.error('Naujas receptas neatitinka pasirinkto valgio maistinės vertės');
-                
             }
+            
             setIsLoading(true);
+            const { data: { recipe_id } } = await axiosPrivate.post(`/profile/new-recipe/${user_id}`, newRecipe);
             await delay;
             toast.success('Receptas sėkmingai pridėtas!')
             setOpen(false);
-            setIsLoading(false);
+            // setIsLoading(false);
             setRecipes(prev => [
                 {...newRecipe,  id: recipe_id, isNew: true},
                 ...prev.map(recipe => ({...recipe, isNew: false})) 
@@ -48,7 +48,6 @@ const RecipeModal = ({ setOpen, setRecipes }) => {
         } catch (err) {
             if(err.status === 400) {
                 toast.error(err.response.data.message);
-                
             } else {
                 toast.error('Tikriausia serverio klaida.\nBandykite vėliau')
             }

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import  { useOutletContext } from 'react-router-dom';
 import Plans from '../../components/profilis/mitybos_planas/Plans';
-import No_Plans from '../../components/profilis/no_mitybos_planas/No_Plans';
+import No_Plans from '../../components/profilis/mitybos_planas/no_subscription/No_Plans';
 import toast from 'react-hot-toast';
 import { bar, kcal, set_grams } from '../../utils/calculationsHelpers';
 

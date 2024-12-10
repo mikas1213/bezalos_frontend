@@ -37,7 +37,10 @@ const Features = () => {
                 
             </div>
             <div className={styles.feature}>
-                <div>Merginų bendruomenė</div>
+                <div>
+                    Merginų bendruomenė&nbsp;
+                    {variant === 'virtuve' &&  <span style={{color: 'var(--color-btn-secondary)'}}>(Būtina susisiekti)</span>}
+                </div>
                 <div>
                     {variant === 'virtuve' &&  <FaCircleCheck />}
                     {variant === 'profilis' &&  <FaRegCircleXmark />}
