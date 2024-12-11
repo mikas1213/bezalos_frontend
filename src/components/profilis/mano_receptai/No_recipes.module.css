@@ -1,0 +1,159 @@
+.manoReceptaiNavBar {
+    composes: header from './header/Header.module.css';
+}
+.newRecipe {
+    composes: newRecipe from './header/NewRecipeBtn.module';
+}
+.newRecipeBtn {
+    composes: newRecipeBtn from './header/NewRecipeBtn.module';
+    background-color: #efefef !important;
+    color: #fff;
+    cursor: default;
+}
+.logicFilter {
+    composes: logicFilter from './header/LogicFilter.module.css';
+}
+.filterLabel {
+    composes: filterLabel from './header/LogicFilter.module.css';
+    background-color: #fff !important;
+    color: #ccc !important;
+    border-color: #eee;
+    cursor: default;
+}
+.A_B { composes: A_B from './header/LogicFilter.module.css'; }
+.B_R { composes: B_R from './header/LogicFilter.module.css'; }
+.A_R { composes: A_R from './header/LogicFilter.module.css'; }
+.searchRecipe {
+    composes: searchRecipe from './header/SearchRecipe.module.css';
+}
+.searchRecipeInput {
+    composes: searchRecipeInput from './header/SearchRecipe.module.css';
+    &::placeholder { color: #ccc; }
+}
+
+/* R-E-C-I-P-E-S */
+.recipeList { 
+    composes: recipeList from './user_recipes/RecipeList.module.css'; 
+    margin-top: 1rem;   
+    margin-bottom: 5rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 14.2rem);
+    justify-content: center;
+    gap: 1rem;
+}
+.userRecipe {
+    composes: userRecipe from './user_recipes/UserRecipe.module.css';
+    background-color: #EFEFEFaa;
+    box-shadow: none;
+}
+.header {
+    composes: header from './user_recipes/UserRecipe.module.css';
+}
+.deleteIconContainer {
+    composes: deleteIconContainer from './user_recipes/UserRecipe.module.css';
+}
+.deleteIcon {
+    color: #ccc;
+    cursor: default;
+}
+.img {
+    composes: img from './user_recipes/UserRecipe.module.css';
+    filter: grayscale(100%);
+    opacity: 0.4;
+}
+.summary {
+    composes: summary from './user_recipes/UserRecipe.module.css';
+}
+.kcal {
+    composes: kcal from './user_recipes/UserRecipe.module.css';
+    color: #bbb;
+}
+.kcalIcon {
+    width: 1rem;
+    /* composes: kcalIcon from './user_recipes/UserRecipe.module.css'; */
+}
+.bar {
+    composes: bar from './user_recipes/UserRecipe.module.css';
+}
+.bar :is(.b_r, .a_b, .a_r) {
+    display: flex;
+    gap: 0.15rem;
+}
+.b_r {
+    /* composes: b_r from './user_recipes/UserRecipe.module.css'; */
+    color: #4F4F4F99;
+}
+.a_b {
+    /* composes: a_b from './user_recipes/UserRecipe.module.css'; */
+    color: #65656599;
+}
+.a_r {
+    /* composes: a_r from './user_recipes/UserRecipe.module.css'; */
+    color: #adadad99;
+}
+.recipeTitle {
+    composes: recipeTitle from './user_recipes/UserRecipe.module.css';
+    color: #32323255;
+}
+.prdoducts {
+    composes: prdoducts from './user_recipes/UserRecipe.module.css';
+}
+.product {
+    composes: product from './user_recipes/UserRecipe.module.css';   
+}
+.dot {
+    composes: dot from './user_recipes/UserRecipe.module.css';      
+    color: #69696977;
+}
+.prodTitle {
+    composes: prodTitle from './user_recipes/UserRecipe.module.css'; 
+    color: #69696977;        
+}
+.gramsContainer {
+    composes: gramsContainer from './user_recipes/UserRecipe.module.css';            
+    small {
+        color: #69696977;
+    }
+}
+.grams {
+    composes: grams from './user_recipes/UserRecipe.module.css';   
+    color: #65656577;
+} 
+.gramChar {
+    composes: gramChar from './user_recipes/UserRecipe.module.css';            
+}
+.bottom {
+    composes: bottom from './user_recipes/UserRecipe.module.css';    
+    background-color: #65656555;        
+}
+
+
+@media only screen and (max-width: 768px) {
+    .recipeList {
+        grid-template-columns: repeat(auto-fill, 14rem);
+    }
+}
+
+@media only screen and (max-width: 576px) {
+    .recipeList {
+        grid-template-columns: repeat(auto-fill, 15rem);
+    }
+}
+
+@media only screen and (max-width: 440px) {
+    .recipeList {
+        grid-template-columns: repeat(auto-fill, 20rem);
+    }
+}
+
+@media only screen and (max-width: 375px) {
+    .recipeList {
+        grid-template-columns: repeat(auto-fill, 15rem);
+    }
+}
+
+@media only screen and (max-width: 320px) {
+    .recipeList {
+        grid-template-columns: repeat(auto-fill, 15rem);
+    }
+}

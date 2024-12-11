@@ -1,4 +1,3 @@
-import InformationSoon from '../../components/information_soon/InformationSoon';
 import { useState, useEffect } from 'react';
 import { useOutletContext } from 'react-router-dom';
 import Container from '../../components/UI/Container';
@@ -9,6 +8,7 @@ import SearchRecipe from '../../components/profilis/mano_receptai/header/SearchR
 import RecipeModal from '../../components/profilis/mano_receptai/recipe_modal/RecipeModal';
 import RecipeList from '../../components/profilis/mano_receptai/user_recipes/RecipeList';
 import Pagination from '../../components/UI/Pagination';
+import No_recipes from '../../components/profilis/mano_receptai/No_recipes';
 import useAxiosPrivate from '../../hooks/useAxiosPrivate';
 import toast from 'react-hot-toast';
 
@@ -57,7 +57,7 @@ const ManoReceptaiPage = () => {
 
     return (
         <>
-        {isLoading ? null : is_subscription ? <Container>
+        {isLoading ? null : !is_subscription ? <Container>
             <Header>
                 <NewRecipeBtn setOpen={setOpen} />
                 <LogicFilter 
@@ -73,7 +73,9 @@ const ManoReceptaiPage = () => {
             {totalPages > 0 && <Pagination totalPages={totalPages} currentPage={currentPage } setCurrentPage={setCurrentPage} pagesLimit={5} color='var(--color-btn-secondary)' />}
 
         </Container> :
-        <InformationSoon />}
+        <Container>
+            <No_recipes />
+        </Container>}
         </>
     );
 };

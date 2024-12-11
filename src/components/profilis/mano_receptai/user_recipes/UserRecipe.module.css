@@ -41,7 +41,6 @@
 }
 @media (hover: hover) {
     .deleteIconContainer:hover .deleteIcon {
-        /* stroke: var(--color-admin-red); */
         transform: scale(1.1);
     }
 }

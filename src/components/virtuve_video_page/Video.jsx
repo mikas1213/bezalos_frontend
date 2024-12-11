@@ -31,7 +31,7 @@ const Video = ({ user_id, user_name, video, comments, onToggleLikes, onAddVideoC
     
     const axiosPrivate = useAxiosPrivate();
     const [showMore, setShowMore] = useState(false);
-    const [desc1, desc2] = video.description.split(':');
+    const [desc1, desc2 = ''] = video.description.split(':');
     const desctList = desc2.trim().split('\n');
 
     const [showComments, setShowComments] = useState(false);
@@ -81,7 +81,7 @@ const Video = ({ user_id, user_name, video, comments, onToggleLikes, onAddVideoC
                 <div className={styles?.title}>{video.title}</div>
                 <div className={styles.descriptionContainer}>
                     <div>
-                        {desc1}:
+                        {desc1}{desc2 && ':'}
                     </div>
                     
                     <div className={`${styles.description} ${showMore ? styles.show : ''}`}>
@@ -90,11 +90,11 @@ const Video = ({ user_id, user_name, video, comments, onToggleLikes, onAddVideoC
                         </div>
                     </div>
                     
-                    <span 
+                    {desc2 && <span 
                         className={styles.showMore} 
                         onClick={() => setShowMore(show => !show)}>
                         {showMore ? 'mažiau' : 'daugiau'}
-                    </span>
+                    </span>}
                 </div>
 
 

@@ -1,0 +1,82 @@
+.header {
+    composes: header import from './Header.module.css';
+    color: #ccc;
+    user-select: none;
+}
+.productInput {
+    composes: productInput from './ProductInput.module.css';
+}
+.icon {
+    composes: icon from './ProductInput.module.css';
+    color: #ddd !important;
+}
+.prodTitle {
+    cursor: default !important;
+    composes: prodTitle from './ProductInput.module.css';
+    border-color: #eee !important;
+}
+.grams {
+    cursor: default !important;
+    composes: grams from './ProductInput.module.css';
+    border-color: #eee !important;
+    
+}
+.prodTitle::placeholder, .grams::placeholder {
+    color: #ccc;
+}
+
+.groupFilters {
+    composes: groupFilters from './AvailableProducts.module.css';
+    button {
+        color: #ccc;
+    }
+    button:hover {
+        cursor: default;
+        background-color: white !important;
+        color: #ccc !important;
+    }
+    .active, .active:hover {
+        cursor: default;
+        background-color: #ccc !important;
+        border-color: #ccc !important;
+        color: #fff !important;
+    }
+}
+
+.sort {
+    composes: sort from './AvailableProducts.module.css';
+    span {
+        padding-right: 0.3rem;
+        color: #ccc;
+    }
+}
+
+.availableProducts {
+    composes: availableProducts from './AvailableProducts.module.css';
+    box-shadow: none;
+    border-color: #eee;
+}
+.availProd {
+    composes: availProd from './AvailableProducts.module.css';
+}
+.prodTitle {
+    composes: prodTitle from './AvailableProducts.module.css';
+    color: #bbb !important;
+}
+.gramsContainer {
+    composes: gramsContainer from './AvailableProducts.module.css';
+    background-color: #f9f9f9;
+    color: #bbb !important;
+}
+
+
+
+
+
+
+
+
+
+
+
+

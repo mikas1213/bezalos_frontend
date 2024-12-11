@@ -68,7 +68,6 @@ const AvailableProducts = ({ prodList, selectedProd }) => {
                 {availableProducts.map(prod => ({...prod, grams: set_grams_keitykle(selectedProd, prod)})).sort(sortOrder.sort ? sortTitle : sortGrams).map(prod => 
                     <div key={prod.id} className={styles.availProd}>
                         <span className={styles.prodTitle}>{prod.title}</span>
-                        {/* <span style={{fontSize: '0.7rem'}}>{prod.food_type}</span> */}
                         <div className={styles.gramsContainer}>
                             <span>{prod.grams.toFixed(0)}</span>
                             <span>g</span>

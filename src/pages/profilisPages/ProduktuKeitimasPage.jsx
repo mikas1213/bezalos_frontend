@@ -5,8 +5,7 @@ import ProductInput from '../../components/profilis/produktu_keitimas/ProductInp
 import SearchResults from '../../components/profilis/produktu_keitimas/SearchResults';
 import AvailableProducts from '../../components/profilis/produktu_keitimas/AvailableProducts';
 import Header from '../../components/profilis/produktu_keitimas/Header';
-import InformationSoon from '../../components/information_soon/InformationSoon';
-import No_keytykle from '../../components/profilis/produktu_keitimas/no_subscription/No_keitykle';
+import No_keytykle from '../../components/profilis/produktu_keitimas/No_keitykle';
 import { useOutletContext } from 'react-router-dom';
 
 const ProduktuKeitimasPage = () => {
@@ -43,7 +42,7 @@ const ProduktuKeitimasPage = () => {
 
     return (
         <Container>
-            {is_subscription ? 
+            {!is_subscription ? 
                 <KeitykleContainer>
                     <Header title='Maistro produktų keitimas' />
                     <ProductInput 
@@ -68,7 +67,9 @@ const ProduktuKeitimasPage = () => {
                     />}
                 </KeitykleContainer> : 
 
-                <No_keytykle />
+                <KeitykleContainer>
+                    <No_keytykle />
+                </KeitykleContainer>
             }
         </Container>
     );
