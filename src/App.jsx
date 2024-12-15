@@ -26,6 +26,7 @@ import UserPlansPage from './pages/profilisPages/UserPlansPage';
 import AnketaPage from './pages/profilisPages/AnketaPage';
 import ProduktuKeitimasPage from './pages/profilisPages/ProduktuKeitimasPage';
 import ManoReceptaiPage from './pages/profilisPages/ManoReceptaiPage';
+import KalorijosPage from './pages/profilisPages/KalorijosPage';
 import StatistikaPage from './pages/profilisPages/StatistikaPage';
 import NustatymaiPage from './pages/profilisPages/NustatymaiPage';
 import UpdatePasswordPage from './pages/UpdatePasswordPage';
@@ -100,6 +101,7 @@ function App() {
                                         <Route path='anketa' element={<AnketaPage />} />
                                         <Route path='produktu-keitimas' element={<ProduktuKeitimasPage />}/>
                                         <Route path='mano-receptai' element={<ManoReceptaiPage />} />
+                                        <Route path='kalorijos' element={<KalorijosPage />} />
                                         <Route path='statistika' element={<StatistikaPage />} />
                                         <Route path='nustatymai' element={<NustatymaiPage /> } />
                                     </Route>

@@ -2,7 +2,7 @@
     margin-top: 1rem;
     margin-bottom: 1rem;
     display: flex; 
-    justify-content: center;
+    /* justify-content: center; */
     gap: 1rem;
     overflow-y: scroll;
     -ms-overflow-style: none; 

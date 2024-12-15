@@ -57,7 +57,7 @@ const ManoReceptaiPage = () => {
 
     return (
         <>
-        {isLoading ? null : !is_subscription ? <Container>
+        {isLoading ? null : is_subscription ? <Container>
             <Header>
                 <NewRecipeBtn setOpen={setOpen} />
                 <LogicFilter 

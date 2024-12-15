@@ -70,7 +70,6 @@
 }
 .kcalIcon {
     width: 1rem;
-    /* composes: kcalIcon from './user_recipes/UserRecipe.module.css'; */
 }
 .bar {
     composes: bar from './user_recipes/UserRecipe.module.css';
@@ -80,15 +79,12 @@
     gap: 0.15rem;
 }
 .b_r {
-    /* composes: b_r from './user_recipes/UserRecipe.module.css'; */
     color: #4F4F4F99;
 }
 .a_b {
-    /* composes: a_b from './user_recipes/UserRecipe.module.css'; */
     color: #65656599;
 }
 .a_r {
-    /* composes: a_r from './user_recipes/UserRecipe.module.css'; */
     color: #adadad99;
 }
 .recipeTitle {
