@@ -1,6 +1,5 @@
 .paslaugosContainer {
     margin-top: 1rem;
-    margin-bottom: 10rem;
     display: flex;
     flex-direction: column;
     gap: 3rem;

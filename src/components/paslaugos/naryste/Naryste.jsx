@@ -15,8 +15,8 @@ const Naryste = () => {
     const { auth } = useAuth();
     let loggedUser = {};
     if (auth.accessToken) loggedUser = jwtDecode(auth?.accessToken);
-    const { str_cus_id = '' } = loggedUser;
-    
+    const { user_s_subscription} = loggedUser;
+    console.log('loggedUser', loggedUser)
     return (
         <>
             <NarysteDeskotop>
@@ -25,8 +25,7 @@ const Naryste = () => {
                     <PlanCard  planVariant='profilis' plan={plan.profilis} />
                     <PlanCard  planVariant='virtuve' plan={plan.virtuve} />
                 </Plans>
-
-                {!str_cus_id ? <ChooseBtn key={Math.random()}/> : <ManageSubscription />}
+                {!user_s_subscription ? <ChooseBtn key={Math.random()}/> : <ManageSubscription />}
             </NarysteDeskotop>
         </>
     );

@@ -1,13 +1,13 @@
 import styles from './ChooseBtn.module.css';
-import usePayments from '../../../../hooks/usePayment';
+import usePayment from '../../../../hooks/usePayment';
 
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import { FaFacebookSquare, FaInstagram } from "react-icons/fa";
+import { FaFacebookSquare, FaInstagram } from 'react-icons/fa';
 
 const ChooseBtn = () => {
-    const { handleSubscriptionCheckout, variant } = usePayments();
+    const { handleSubscriptionCheckout, variant } = usePayment();
     const [sutinku, setSutinku] = useState(false);
     const [showConfirmation, setShowConfirmation] = useState(false);
     const navigate = useNavigate();

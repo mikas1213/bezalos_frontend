@@ -1,0 +1,110 @@
+.card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    border-radius: 0.5rem;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+.mostPopular {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 0.2rem;
+    padding: 0.2rem 1rem;
+    text-align: center;
+    color: #fff;
+    background-color: var(--color-btn-secondary);
+    z-index: 1;
+}
+
+.imgContainer {    
+    img {
+        width: 100%;
+        aspect-ratio: 4 / 3; 
+        object-fit: cover;
+        object-position: 0% 68%;
+        transform: scale(1);
+        border-top-left-radius: 0.5rem;
+        border-top-right-radius: 0.5rem;
+    }
+}
+.cardBody {
+    position: relative;
+    padding: 1rem;
+    padding-bottom: 0;
+    padding-top: 1.2rem;
+    flex-grow: 1;
+}
+.priceContainer {
+    position: absolute;
+    top: 0;
+    transform: translateY(-50%);
+    display: flex;
+    gap: 1rem;
+}
+.price {
+    padding: 0.1rem 0.5rem;
+    border-radius: 0.2rem;
+    font-size: var(--font-size-p);
+    color: #fff;
+    background-color: var(--color-btn-secondary);
+    font-weight: 600;
+    /* box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;     */
+}
+.wasPrice {
+    composes: price;
+    font-weight: 400;
+    color: var(--grey-dark);
+    background-color: var(--color-background-secondary);
+    background-color: var(--color-background-hover);
+    /* background-color: var(--grey-light); */
+    text-decoration:line-through;
+    text-decoration-thickness: 1px;
+}
+.discount {
+    composes: price;
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background-color: tomato;
+    z-index: 1;
+    font-weight: 400;
+}
+.title {
+    font-size: var(--font-size-h6);
+    font-weight: 600;
+}
+.desc {
+    font-size: var(--font-size-small-1);
+    color: var(--color-text-grey);
+}
+
+.buttons {
+    padding: 1rem;
+    align-self: flex-end;
+    button {
+        border: none;
+        border-radius: 0.2rem;
+        padding: 0.3rem 1.5rem;
+        font-weight: 500;
+        color: #fff;
+        background-color: var(--green-bgr-light);
+    }
+}
+
+@media only screen and (max-width: 440px) {
+    .card:has(.mostPopular) {
+        margin-top: 1rem;
+    }
+    .title {
+        font-size: var(--font-size-dynamic-h4-sm);
+    }
+    .desc {
+        font-size: var(--font-size-dynamic-h6-sm);
+    }
+    .buttons button {
+        /* font-size:  var(--font-size-p); */
+        font-size:  var(--font-size-dynamic-h6-sm);
+    }
+}

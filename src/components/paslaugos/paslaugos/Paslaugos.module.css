@@ -1,0 +1,19 @@
+.paslaugos {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 16rem);
+    justify-content: center;
+    gap: 1rem;
+}
+
+
+@media only screen and (max-width: 440px) {
+    .paslaugos {
+        grid-template-columns: repeat(auto-fill, 20rem);
+    }
+}
+
+@media only screen and (max-width: 375px) {
+    .paslaugos {
+        grid-template-columns: repeat(auto-fill, clamp(0rem, 85.333vw, 20rem));
+    }
+}

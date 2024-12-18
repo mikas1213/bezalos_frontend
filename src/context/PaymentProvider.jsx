@@ -1,6 +1,7 @@
 import { createContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { jwtDecode } from "jwt-decode";
+import { jwtDecode } from 'jwt-decode';
+import { Outlet } from 'react-router-dom';
 import useAuth from '../hooks/useAuth';
 import useAxiosPrivate from '../hooks/useAxiosPrivate';
 
@@ -43,6 +44,7 @@ const PaymentProvider = ({ children }) => {
     const { auth } = useAuth();
     let loggedUser = {};
     if(auth.accessToken) loggedUser = jwtDecode(auth?.accessToken);
+    
     const { user_id = '' } = loggedUser;
     const axiosPrivate = useAxiosPrivate();    
     const navigate = useNavigate();
@@ -52,17 +54,16 @@ const PaymentProvider = ({ children }) => {
     const [isLoading, setIsLoading] = useState(false);
     const selectedPlan = plans[period][variant];
     const plan = plans[period];
-
-    const handleSubscriptionCheckout = async (/*{ plan }*/) => {
+    
+    const handleSubscriptionCheckout = async () => {
         
-
         if(!user_id) {
             navigate('/prisijungti');
             return;
         }
         try {
             setIsLoading(true);
-            const res = await axiosPrivate.post('/payments/checkout-session', {...selectedPlan, user_id});
+            const res = await axiosPrivate.post('/payments/checkout-session', { ...selectedPlan, user_id });
             window.location = res.data.session.url;
         } catch (err) {
             if(err.response.status === 401) {
@@ -73,11 +74,33 @@ const PaymentProvider = ({ children }) => {
         }
     };
 
+    const handleServiceCheckout = async (title, price) => {
+
+        if(!user_id) {
+            navigate('/prisijungti');
+            return;
+        }
+        try {
+            setIsLoading(true);
+
+            const res = await axiosPrivate.post('/payments/service-checkout-session', {user_id, title, price});
+            window.location = res.data.session.url;
+            
+        } catch (err) {
+            if(err.response.status === 401) {
+                navigate('/prisijungti');
+            }
+        } finally {
+            setIsLoading(false);
+        }
+    };
+
     return (
-        <PaymentContext.Provider value={{ isLoading, period, setPeriod, variant, setVariant, plan, handleSubscriptionCheckout }}>
-            {children}
+        <PaymentContext.Provider value={{ isLoading, period, setPeriod, variant, setVariant, plan, handleSubscriptionCheckout, handleServiceCheckout }}>
+            {/* {children} */}
+            <Outlet />
         </PaymentContext.Provider>
     );
 };
 
-export {PaymentContext, PaymentProvider};
+export { PaymentContext, PaymentProvider };

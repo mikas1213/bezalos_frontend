@@ -1,0 +1,93 @@
+.footer {
+    margin: 5rem 0 1rem 0;
+    display: flex;
+    flex-direction: column;
+}
+.footerTop {
+    display: flex;
+    justify-content: space-between;
+}
+.footerLogo img {
+    cursor: pointer;
+    height: clamp(0rem, 4.688vw, 2rem);
+    width: clamp(0rem, 14.063vw, 6rem);
+}
+
+.termsOfUse {
+    display: flex;
+    gap: clamp(0rem, 7.813vw, 5rem);
+    align-items: flex-end;
+    color: var(--color-text-dark);
+    font-size: var(--font-size-dynamic-p-lg);
+}
+.socialIcons {
+    display: flex;
+    gap: 0.2rem;
+    align-items: flex-end;
+}
+.icon {
+    font-size: clamp(0.5rem, 3.125vw, 2rem);
+    color: var(--color-text-dark);
+}
+.footerDivider {
+    border-bottom: 1px solid var(--color-border);
+    margin: 0.5rem 0rem;
+}
+
+.footerBottom {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    color: var(--color-text-dark);
+    font-size:  var(--font-size-dynamic-h6-lg);
+    font-size: var(--font-size-dynamic-p-lg);
+    line-height: 150%;
+}
+.copy {
+    font-size: var(--font-size-dynamic-h6-lg);
+    font-weight: 400;
+}
+
+@media only screen and (max-width: 576px) {
+
+    .termsOfUse {
+        font-size: var(--font-size-dynamic-small-1-sm);
+        gap: clamp(0rem, 5.556vw, 2rem);
+    }
+    .icon {
+        font-size: clamp(0.5rem, 3.125vw, 2rem);
+        font-size: clamp(0rem, 4.167vw, 1.5rem);
+        color: var(--color-text-dark);
+    }
+
+    .footerBottom {
+        display: flex;
+        height: clamp(0rem, 12.153vw, 4.375rem);
+        justify-content: center;
+        font-size: var(--font-size-dynamic-h6-sm);
+        font-weight: 500;
+    }
+
+    .copy {
+        font-size: var(--font-size-dynamic-h4-sm);
+        font-weight: 500;
+    }
+}
+@media only screen and (max-width: 440px) {
+    .footerTop {
+        gap: 1rem;
+    }
+    .footerLogo {
+        display: none;
+    }
+    .termsOfUse {
+        justify-content: space-between;
+        font-size: var(--font-size-dynamic-p-sm);
+        font-weight: 500;
+        gap: 0;
+        width: 100%;
+    }
+    .icon {
+        stroke-width: 2px;
+    }
+}

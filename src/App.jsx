@@ -3,7 +3,8 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { useCookies } from 'react-cookie';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
-import { AuthProvider } from "./context/AuthProvider";
+import { AuthProvider } from './context/AuthProvider';
+import { PaymentProvider } from './context/PaymentProvider';
 import { Toaster } from 'react-hot-toast';
 import CookieConsent from './components/cookies/CookieConsent';
 
@@ -21,6 +22,7 @@ const VirtuvePage = lazy(() => import('./pages/VirtuvePage'));
 const VirtuveVideoPage = lazy(() => import('./pages/VirtuveVideoPage'));
 const ReceptaiPage = lazy(() => import('./pages/ReceptaiPage'));
 const PaslaugosPage = lazy(() => import('./pages/PaslaugosPage'));
+import PaslaugaPage from './pages/PaslaugaPage';
 import ProfilisPageLayout from'./pages/profilisPages/ProfilisPageLayout';
 import UserPlansPage from './pages/profilisPages/UserPlansPage';
 import AnketaPage from './pages/profilisPages/AnketaPage';
@@ -83,10 +85,11 @@ function App() {
                             <Route element={<PersistLogin /> }>
                                 <Route path='/' element={<HomePage />} />
                                 <Route path='/virtuve' element={<VirtuvePage />} />
-                            
                                 <Route path='/receptai' element={<ReceptaiPage />} />
-                                <Route path='/paslaugos' element={<PaslaugosPage />} />
-
+                                <Route element={<PaymentProvider /> }>
+                                    <Route path='/paslaugos' element={<PaslaugosPage />} />
+                                    <Route path='/paslaugos/:slug' element={<PaslaugaPage />} />
+                                </Route>
                                 <Route path='/prisijungti' element={<LoginPage />} />
                                 <Route path='/keisti-slaptazodi/:token' element={<UpdatePasswordPage /> } />
                                 <Route path='/prenumeruoti' element={<NeedSubscription />} />
@@ -129,11 +132,8 @@ function App() {
                                         <Route path='videos' element={<VideosPage />} />
                                         <Route path='mails' element={<MailsPage />} />
                                     </Route>
-                                    
                                 </Route>
-
                             </Route>
-                            
                         </Routes>
                     </Suspense>
                 </AuthProvider>

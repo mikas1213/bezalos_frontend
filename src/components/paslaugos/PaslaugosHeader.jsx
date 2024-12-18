@@ -1,15 +1,12 @@
 import styles from './PaslaugosHeader.module.css';
 
-const PaslaugosHeader = ({ paragraph }) => {
-
+const PaslaugosHeader = ({ side }) => {
+    
     return (
         <div className={styles.titleContainer}>
-            <div className={styles.title}>
-                Keliaukime į pokyčius kartu!
-            </div>
-            <div className={styles.paragraph}>
-                {paragraph === 'Eiti į paslaugas' ? <a href='https://senas.bezalos.lt/paslaugos'>{paragraph}</a> : paragraph}
-            </div>
+            <div className={styles.title}>Keliaukime į pokyčius kartu!</div>
+
+            {side === 'naryste' && <div className={styles.paragraph}>Rinktis narystės planą</div>}
         </div>
     );
 };
