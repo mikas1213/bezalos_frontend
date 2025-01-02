@@ -15,32 +15,10 @@ const plans = {
         virtuve: {plan_price: 'virtuve_year', plan_name: 'virtuve', plan_name_lt: 'Virtuvė', plan_period: 'metams', price: '99,90'}
     }
 };
-/*
-const handleSubscriptionCheckout = async ({ plan }) => {
-    
-    console.log(user_id)
-    if(user_id) {
-        try {
-            const res = await axiosPrivate.post('/payments/checkout-session', {
-                plan_price: plan.plan_price,
-                plan_name: plan.plan_name, 
-                user_id, 
-            });
-            console.log(res);
-            window.location = res.data.session.url;
-        } catch (err) {
-            if(err.response.status === 401) {
-                navigate('/prisijungti');
-            }
-        }
-    } else {
-        navigate('/prisijungti');
-    }
-};
-*/
+
 const PaymentContext = createContext();
 
-const PaymentProvider = ({ children }) => {
+const PaymentProvider = () => {
     const { auth } = useAuth();
     let loggedUser = {};
     if(auth.accessToken) loggedUser = jwtDecode(auth?.accessToken);
@@ -69,12 +47,11 @@ const PaymentProvider = ({ children }) => {
             if(err.response.status === 401) {
                 navigate('/prisijungti');
             }
-        } finally {
             setIsLoading(false);
-        }
+        } 
     };
 
-    const handleServiceCheckout = async (title, price) => {
+    const handleServiceCheckout = async (paslauga) => {
 
         if(!user_id) {
             navigate('/prisijungti');
@@ -83,21 +60,18 @@ const PaymentProvider = ({ children }) => {
         try {
             setIsLoading(true);
 
-            const res = await axiosPrivate.post('/payments/service-checkout-session', {user_id, title, price});
+            const res = await axiosPrivate.post('/payments/service-checkout-session', {user_id, paslauga});
             window.location = res.data.session.url;
-            
         } catch (err) {
             if(err.response.status === 401) {
                 navigate('/prisijungti');
             }
-        } finally {
             setIsLoading(false);
-        }
+        } 
     };
 
     return (
         <PaymentContext.Provider value={{ isLoading, period, setPeriod, variant, setVariant, plan, handleSubscriptionCheckout, handleServiceCheckout }}>
-            {/* {children} */}
             <Outlet />
         </PaymentContext.Provider>
     );

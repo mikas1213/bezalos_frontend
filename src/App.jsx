@@ -33,9 +33,10 @@ import StatistikaPage from './pages/profilisPages/StatistikaPage';
 import NustatymaiPage from './pages/profilisPages/NustatymaiPage';
 import UpdatePasswordPage from './pages/UpdatePasswordPage';
 import NotFoundPage from './pages/NotFoundPages/NotFoundPage';
-import NeedSubscription from './pages/SubscriptionPages/NeedSubscription';
-import SuccessSubscription from'./pages/SubscriptionPages/SuccessSubscription';
-import CancelSubscription from './pages/SubscriptionPages/CancelSubscription';
+import NeedSubscription from './pages/PaymentPages/NeedSubscription';
+import SuccessSubscription from'./pages/PaymentPages/SuccessSubscription';
+import SuccessBuyService from './pages/PaymentPages/SuccessBuyService';
+import CancelSubscription from './pages/PaymentPages/CancelSubscription';
 import PirkimoTaisyklesPage from './pages/PirkimoTaisyklesPage';
 import PrivatumoPolitikaPage from './pages/PrivatumoPolitikaPage';
 import AdminLayout from './components/admin/layout/AdminLayout';
@@ -108,6 +109,7 @@ function App() {
                                         <Route path='statistika' element={<StatistikaPage />} />
                                         <Route path='nustatymai' element={<NustatymaiPage /> } />
                                     </Route>
+                                    <Route path='/paslauga-apmoketa' element={<SuccessBuyService /> } />
                                     <Route path='/apmoketa-sekmingai' element={<SuccessSubscription /> }/>
                                     <Route path='/mokejimo-klaida' element={<CancelSubscription /> }/>
                                 </Route>

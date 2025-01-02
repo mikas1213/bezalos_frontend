@@ -7,7 +7,6 @@ import CountUp from 'react-countup';
 
 const Results = ({ calculations }) => {
 
-
     const authors = ['Harrris_old', 'Harris_new', 'Mifflin'];
     const formulas = {
         'Harrris_old': {

@@ -1,24 +1,27 @@
 import styles from './Card.module.css';
-import img from '../../../assets/images/products/prod_1.webp';
+import { useState } from 'react';
+import { getImageURL } from '../../../utils/images';
 import { useNavigate } from 'react-router-dom';
-import slugify from 'slugify';
 
-const Card = ({ paslauga}) => {
-    
+const Card = ({ paslauga }) => {
+
     const navigate = useNavigate();
-    const price = Math.round(paslauga.discount > 0 ?  paslauga.price - (paslauga.price * paslauga.discount / 100) : paslauga.price);
-    const wasPrice = (paslauga.discount > 0 ? paslauga.price : 0);
-    const slug = slugify(paslauga.title, {replacement: '-', lower: true, trim: true, strict: true });
-    
+    const [imageLoaded, setImageLoaded] = useState(false);
+
     return (
         <div className={`${styles.card}`}>
             <div className={styles.imgContainer}>
                 {paslauga.popular && <div className={styles.mostPopular}>Populiarus</div>}
                 {paslauga.discount > 0 && <div className={styles.discount}>-{paslauga.discount}%</div>}
+
+                {!imageLoaded && <div className={styles.skeleton}></div>}
+
                 <img 
-                    src={img} 
+                    src={getImageURL(`paslaugos/${paslauga.slug+'_small'}.webp`)} 
                     alt={paslauga.title}
-                    loading='lazy'
+                    onLoad={() => setImageLoaded(true)}
+                    style={{ opacity: imageLoaded ? 1 : 0 }}
+                    className={paslauga.slug === 'demesingo-valgymo-mokymai' ? styles.spcificImgSize : ''}
                 />
             </div>
 
@@ -26,10 +29,10 @@ const Card = ({ paslauga}) => {
                 <div className={styles.priceContainer}>
                 
                     <div className={styles.price}>
-                        €{price.toFixed(2)}
+                        €{paslauga.current_price}
                     </div>
                     {paslauga.discount > 0 && <div className={styles.wasPrice}>
-                        €{wasPrice.toFixed(2)}
+                        €{paslauga.base_price}
                     </div>}
                     
                 </div>
@@ -39,7 +42,7 @@ const Card = ({ paslauga}) => {
 
             </div>
             <div className={styles.buttons}>
-                <button onClick={() => navigate(`/paslaugos/${slug}`) }>Rinktis</button>
+                <button onClick={() => navigate(`/paslaugos/${paslauga.slug}`) }>Rinktis</button>
             </div>
         </div>
     );

@@ -11,8 +11,8 @@
     gap: 2.5rem;
 }
 
-.successSubscriptionContent svg {
-    width: 17rem;
+.successIcon {
+    width: 15rem;
 }
 .textContainer {
     display: flex;
@@ -71,7 +71,7 @@
 }
 
 @media only screen and (max-width: 375px) {
-    .successSubscriptionContent svg {
-        width: 15rem;
+    .successIcon {
+        width: 12rem;
     }
 }

@@ -1,9 +1,12 @@
+.profileNavContainer {
+    position: relative;
+}
+
 .profileNavbar {
     margin-top: 1rem;
     margin-bottom: 1rem;
     display: flex; 
-    /* justify-content: center; */
-    gap: 1rem;
+    gap: 0.5rem;
     overflow-y: scroll;
     -ms-overflow-style: none; 
     scrollbar-width: none;  
@@ -11,7 +14,45 @@
 .profileNavbar::-webkit-scrollbar {
     display: none; 
 } 
-
+.leftArrow, .rightArrow {
+    display: none;
+    position: absolute;
+    top: 0;
+    height: 100%;
+}
+.leftArrow {
+    left: 0;
+}
+.rightArrow {
+    right: 0;
+}
+.leftArrow::after {
+    content: ' ';
+    background-color: #ffffff00;
+    background-image: linear-gradient(90deg, #ffffff, #ffffff00);
+    width: 1.8rem;
+}
+.rightArrow::before {
+    content: ' ';
+    background-color: #ffffff00;
+    background-image: linear-gradient(270deg, #ffffff, #ffffff00);
+    width: 1.8rem;
+}
+.arrowBtn {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 100%;
+    background-color: #fff;
+}
+.chevronIcon {
+    color: var(--color-text-green-dark);
+}
+.showArrow {
+    display: flex;
+}
 .profileNavbar a {
     display: flex;
     align-items: center;
@@ -38,10 +79,10 @@
 .icon {
     font-size: 1.1rem;
 }
-
 .anketa_icon {
     font-size: 1.3rem;
 }
+
 @media only screen and (max-width: 1024px) {
     .profileNavbar {
         justify-content: start; 

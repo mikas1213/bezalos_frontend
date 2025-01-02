@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import { FaFacebookSquare, FaInstagram } from 'react-icons/fa';
 
 const ChooseBtn = () => {
-    const { handleSubscriptionCheckout, variant } = usePayment();
+    const { handleSubscriptionCheckout, variant, isLoading } = usePayment();
     const [sutinku, setSutinku] = useState(false);
     const [showConfirmation, setShowConfirmation] = useState(false);
     const navigate = useNavigate();
@@ -73,7 +73,7 @@ const ChooseBtn = () => {
             </div>
             <div>
                 {showConfirmation && Confirmation()}
-                <button onClick={handlePrenumeruoti} disabled={!sutinku}>Prenumeruoti</button>
+                <button onClick={handlePrenumeruoti} disabled={!sutinku || isLoading}>Prenumeruoti</button>
             </div>
         </div>
     );
