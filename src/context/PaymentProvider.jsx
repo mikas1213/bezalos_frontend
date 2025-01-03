@@ -22,8 +22,8 @@ const PaymentProvider = () => {
     const { auth } = useAuth();
     let loggedUser = {};
     if(auth.accessToken) loggedUser = jwtDecode(auth?.accessToken);
-    
-    const { user_id = '' } = loggedUser;
+
+    const { user_role, user_id = '' } = loggedUser;
     const axiosPrivate = useAxiosPrivate();    
     const navigate = useNavigate();
 
@@ -60,7 +60,7 @@ const PaymentProvider = () => {
         try {
             setIsLoading(true);
 
-            const res = await axiosPrivate.post('/payments/service-checkout-session', {user_id, paslauga});
+            const res = await axiosPrivate.post('/payments/service-checkout-session', {user_role, user_id, paslauga});
             window.location = res.data.session.url;
         } catch (err) {
             if(err.response.status === 401) {

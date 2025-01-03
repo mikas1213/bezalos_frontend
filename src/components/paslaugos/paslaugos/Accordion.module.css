@@ -34,7 +34,6 @@
 .accordionContentInner {
     padding: 16px;
     color: var(--color-text-grey);
-    /* font-size: var(--font-size-small-1); */
     white-space: pre-line;
 }
 .accordionItem:not(:last-child) {
