@@ -41,7 +41,7 @@ const PaslaugosPage = () => {
                             handleTabChange={handleTabChange} 
                         />    
 
-                        {['naryste', 'paslaugos'].includes(currentTab) ? <PaslaugosHeader side={side} /> : <NotFound />}
+                        {['naryste', 'paslaugos'].includes(currentTab) ? <PaslaugosHeader currentTab={currentTab} /> : <NotFound />}
 
                         {currentTab === 'naryste' && <Naryste /> }
                         {currentTab === 'paslaugos' && !isLoading && <Paslaugos paslaugos={paslaugos} /> }

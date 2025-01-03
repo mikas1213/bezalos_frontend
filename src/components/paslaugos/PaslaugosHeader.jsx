@@ -1,12 +1,12 @@
 import styles from './PaslaugosHeader.module.css';
 
-const PaslaugosHeader = ({ side }) => {
+const PaslaugosHeader = ({ currentTab }) => {
     
     return (
         <div className={styles.titleContainer}>
             <div className={styles.title}>Keliaukime į pokyčius kartu!</div>
 
-            {side === 'naryste' && <div className={styles.paragraph}>Rinktis narystės planą</div>}
+            {currentTab === 'naryste' && <div className={styles.paragraph}>Rinktis narystės planą</div>}
         </div>
     );
 };
