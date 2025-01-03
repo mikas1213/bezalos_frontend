@@ -90,9 +90,10 @@ const Navbar = ({ isHome = false }) => {
                             <button className={styles.loginBtn} onClick={async () => await logout()}>Atsijungti</button>
                             }
                         </li>
-                        <div className={styles.senasBezalos}>
+                        {/* Temporary for old page version */}
+                        {/* <div className={styles.senasBezalos}>
                             <a href='https://senas.bezalos.lt'>Sena versija</a>
-                        </div>
+                        </div> */}
                     </ul>
    
                 </MainContainer>
@@ -101,9 +102,7 @@ const Navbar = ({ isHome = false }) => {
                     <ul className={styles.navListMobile}>
                         
                         {/* Temporary for old page version */}
-                        <li className={`${styles.listItemMobile} ${page === 'sena-versija' ? styles.active : ''}`} 
-                            // onClick={() => navigate('www.delfi.lt')}
-                            >  
+                        {/* <li className={`${styles.listItemMobile} ${page === 'sena-versija' ? styles.active : ''}`}>  
                             <a  href='https://senas.bezalos.lt'>
                                 <SenasBezalos 
                                     active={page === 'sena-versija' ? true : false} 
@@ -113,7 +112,7 @@ const Navbar = ({ isHome = false }) => {
                             <a href='https://senas.bezalos.lt'>
                                 <span>Sena versija</span>
                             </a>
-                        </li>
+                        </li> */}
 
                         <li className={`${styles.listItemMobile} ${page === 'virtuve' ? styles.active : ''}`} 
                             onClick={() => navigate('/virtuve')}>  

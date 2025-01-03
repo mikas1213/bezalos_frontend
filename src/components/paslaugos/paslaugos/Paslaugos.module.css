@@ -1,6 +1,6 @@
 .paslaugos {
     display: grid;
-    grid-template-columns: repeat(auto-fill, 16rem);
+    grid-template-columns: repeat(auto-fill, 19rem);
     justify-content: center;
     gap: 1rem;
     animation: zoomIn 0.3s ease-out forwards;

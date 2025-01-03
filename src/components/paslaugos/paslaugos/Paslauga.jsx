@@ -9,6 +9,7 @@ import useAxiosPrivate from '../../../hooks/useAxiosPrivate';
 import { IoIosCloseCircleOutline } from 'react-icons/io';
 
 const Paslauga = ({ paslauga, setPaslauga }) => {
+
     const { handleServiceCheckout, isLoading } = usePayment();
     const [code, setCode] = useState('');
     const [isUserTyped, setIsUserTyped] = useState(false);
@@ -49,7 +50,7 @@ const Paslauga = ({ paslauga, setPaslauga }) => {
                 <img 
                     src={getImageURL(`paslaugos/${paslauga.slug}.webp`)} 
                     alt={paslauga.title}
-                    className={`${styles.paslaugaImg} ${paslauga.slug === 'demesingo-valgymo-mokymai' ? styles.spcificSizeImg : ''}`} 
+                    className={`${styles.paslaugaImg} ${paslauga.slug === 'kursas-iveik-emocini-valgyma' ? styles.spcificSizeImg : ''}`} 
                 />
             </div>
 
@@ -80,6 +81,7 @@ const Paslauga = ({ paslauga, setPaslauga }) => {
                         :
                         <button disabled={true}>IŠPARDUOTA</button>
                     }
+
                     {/* <div className={styles.promotionCodeContainer}>
                         {!isCodeApprove ? <input 
                             type='text' 
@@ -120,6 +122,7 @@ const Paslauga = ({ paslauga, setPaslauga }) => {
 
                         {error && <span className={styles.promotionError}>{error}</span>}
                     </div> */}
+
                 </div>
                 
                 {paslauga.quantity < 4 && <span className={styles.quantity}>Liko: {paslauga.quantity} <small>vnt.</small></span>}

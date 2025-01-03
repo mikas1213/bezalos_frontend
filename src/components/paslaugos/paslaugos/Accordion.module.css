@@ -33,7 +33,9 @@
 }
 .accordionContentInner {
     padding: 16px;
-    color: var(--color-text-grey)
+    color: var(--color-text-grey);
+    /* font-size: var(--font-size-small-1); */
+    white-space: pre-line;
 }
 .accordionItem:not(:last-child) {
     border-bottom: 1px solid var(--color-border);
