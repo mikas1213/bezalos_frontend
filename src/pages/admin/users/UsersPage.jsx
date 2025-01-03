@@ -15,7 +15,8 @@ const UsersPage = () => {
         sort: 'ASC',
         week: false,
         month: false,
-        maintenance: false
+        maintenance: false,
+        service: false
     });
     const { users, setUsers, isLoading, totalPages } = useUsers(currentPage, search, sort);
     const handleSubscriptionUpdate = async (user_id, value, stripe_type) => {

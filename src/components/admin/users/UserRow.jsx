@@ -2,6 +2,7 @@ import styles from './UserRow.module.css';
 import check_box_styles from './CheckBox.module.css';
 import { useState } from 'react';
 import { FaRegCopy } from 'react-icons/fa';
+import { HiTemplate } from 'react-icons/hi';
 import { date_to_yyyy_mm_dd, isTodayOrFiveDaysBefore, isTodayOrLater, isTwoOrFourWeeks, isMaintenance } from '../../../utils/dateHelpers';
 import stripe_img from '../../../assets/images/admin/stripe_png.png';
 import UserBox, { SideBox} from './UserBox';
@@ -24,7 +25,11 @@ const UserRow = ({
                         <span onClick={() => navigate(`/admin/${user.id}`)}>{user.email} </span>
                         <FaRegCopy className={styles.icon} onClick={() => {navigator.clipboard.writeText(user.email)}} />
                     </div>
-                    <div className={styles.userName}>{user.stripe_username || user.name}</div>
+                    <div className={styles.userName}>
+                        {user.stripe_username || user.name}
+                        {user.has_order && <HiTemplate className={styles.hasPlanIcon} />}
+                    </div>
+                    
                 </SideBox>
 
                 <SideBox>

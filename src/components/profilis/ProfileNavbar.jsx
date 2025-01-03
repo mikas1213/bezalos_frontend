@@ -37,6 +37,14 @@ const ProfileNavbar = () => {
             });
         }   
     }
+
+    const scrollBy = (pixels) => {
+        
+        navRef.current?.scrollBy({
+          left: pixels,
+          behavior: 'smooth'
+        });
+    };
       
     useEffect(() => {
         const container = navRef.current;
@@ -50,7 +58,7 @@ const ProfileNavbar = () => {
     return (
         <div className={styles.profileNavContainer}>
              <div className={`${styles.leftArrow} ${scrollInfo.isScrollStart ? '' : styles.showArrow}`}>
-                <div className={styles.arrowBtn}>
+                <div className={styles.arrowBtn} onClick={() => scrollBy(-200)}>
                     <ChevronLeft className={styles.chevronIcon} /> 
                 </div>
             </div>
@@ -66,7 +74,7 @@ const ProfileNavbar = () => {
             </div>
 
             <div className={`${styles.rightArrow} ${scrollInfo.isScrollEnd ? '' : styles.showArrow}`}>
-                <div className={styles.arrowBtn}>
+                <div className={styles.arrowBtn} onClick={() => scrollBy(200)}>
                     <ChevronRight className={styles.chevronIcon} /> 
                 </div>
             </div>

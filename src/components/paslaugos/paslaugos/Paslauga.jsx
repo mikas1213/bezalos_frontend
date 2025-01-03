@@ -32,7 +32,7 @@ const Paslauga = ({ paslauga, setPaslauga }) => {
         try {
             setIsLoadingCheckCode(true);
             const { data: discount } = await axiosPrivate.post(`/discount/apply/${code}`);
-            console.log('discount: ', discount)
+            // console.log('discount: ', discount)
             setPaslauga(prev => ({...prev, current_price: '84.00'}));
             setIsLoadingCheckCode(false);
             setIsUserTyped(false);
@@ -80,7 +80,7 @@ const Paslauga = ({ paslauga, setPaslauga }) => {
                         :
                         <button disabled={true}>IŠPARDUOTA</button>
                     }
-                    <div className={styles.promotionCodeContainer}>
+                    {/* <div className={styles.promotionCodeContainer}>
                         {!isCodeApprove ? <input 
                             type='text' 
                             value={code}
@@ -119,7 +119,7 @@ const Paslauga = ({ paslauga, setPaslauga }) => {
                         >Taikyti</span> : <SpinnerBtn />}
 
                         {error && <span className={styles.promotionError}>{error}</span>}
-                    </div>
+                    </div> */}
                 </div>
                 
                 {paslauga.quantity < 4 && <span className={styles.quantity}>Liko: {paslauga.quantity} <small>vnt.</small></span>}

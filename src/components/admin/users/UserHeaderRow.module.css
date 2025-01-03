@@ -1,6 +1,6 @@
 .headerRow {
     display: grid;
-    grid-template-columns: auto 2fr 2fr auto 2fr;
+    grid-template-columns: auto 1.5fr 1.5fr auto 2fr;
     background-color: var(--color-bgr-light);
     background-color: white;
     align-items: center;

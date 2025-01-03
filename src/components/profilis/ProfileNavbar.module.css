@@ -21,10 +21,10 @@
     height: 100%;
 }
 .leftArrow {
-    left: 0;
+    left: -2px;
 }
 .rightArrow {
-    right: 0;
+    right: -2px;
 }
 .leftArrow::after {
     content: ' ';

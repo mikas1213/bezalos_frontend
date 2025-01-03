@@ -44,7 +44,7 @@ const PaslaugosPage = () => {
                         {['naryste', 'paslaugos'].includes(currentTab) ? <PaslaugosHeader side={side} /> : <NotFound />}
 
                         {currentTab === 'naryste' && <Naryste /> }
-                        {/* {currentTab === 'paslaugos' && !isLoading && <Paslaugos paslaugos={paslaugos} /> } */}
+                        {currentTab === 'paslaugos' && !isLoading && <Paslaugos paslaugos={paslaugos} /> }
                         <Footer />
                     </PaslaugosContainer>
                 </Container>
