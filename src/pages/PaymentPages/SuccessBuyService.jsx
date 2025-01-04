@@ -7,10 +7,9 @@ import { House } from 'lucide-react';
 import { useEffect } from 'react';
 import { useNavigate, NavLink } from 'react-router-dom';
 
-
-
 const SuccessBuyService = () => {
     const navigate = useNavigate();
+    
     useEffect(() => {
         document.body.style.backgroundColor = '#fff';
     }, []);

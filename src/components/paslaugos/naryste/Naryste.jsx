@@ -1,33 +1,29 @@
+import styles from './Naryste.module.css';
 import usePayment from '../../../hooks/usePayment';
-
 import { jwtDecode } from 'jwt-decode';
 import useAuth from '../../../hooks/useAuth';
-
-import NarysteDeskotop from './desktop/NarysteDeskotop';
-import Features from './desktop/Features';
-import Plans from './desktop/Plans';
-import PlanCard from './desktop/PlanCard';
-import ChooseBtn from './desktop/ChooseBtn';
-import ManageSubscription from './desktop/ManageSubscription';
+import Features from './Features';
+import PlanCard from './PlanCard';
+import ChooseBtn from './ChooseBtn';
+import ManageSubscription from './ManageSubscription';
 
 const Naryste = () => {
     const { plan } = usePayment();
     const { auth } = useAuth();
+    
     let loggedUser = {};
     if (auth.accessToken) loggedUser = jwtDecode(auth?.accessToken);
     const { user_s_subscription} = loggedUser;
     
     return (
-        <>
-            <NarysteDeskotop>
-                <Features />
-                <Plans>
-                    <PlanCard  planVariant='profilis' plan={plan.profilis} />
-                    <PlanCard  planVariant='virtuve' plan={plan.virtuve} />
-                </Plans>
-                {!user_s_subscription ? <ChooseBtn key={Math.random()} /> : <ManageSubscription />}
-            </NarysteDeskotop>
-        </>
+        <div className={styles.naryste}>
+            <Features />
+            <div className={styles.plans}>
+                <PlanCard  planVariant='profilis' plan={plan.profilis} />
+                <PlanCard  planVariant='virtuve' plan={plan.virtuve} />
+            </div>
+            {!user_s_subscription ? <ChooseBtn key={Math.random()} /> : <ManageSubscription />}
+        </div>
     );
 };
 

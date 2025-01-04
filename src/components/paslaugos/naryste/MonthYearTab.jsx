@@ -1,5 +1,5 @@
 import styles from './MonthYearTab.module.css';
-import usePayment from '../../../../hooks/usePayment';
+import usePayment from '../../../hooks/usePayment';
 
 const MonthYearTab = () => {
     const { period, setPeriod } = usePayment();

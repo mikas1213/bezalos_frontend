@@ -1,77 +1,3 @@
-.paslauga {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    margin-top: 2rem;
-    margin-bottom: 5rem;
-}
-
-.right {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-}
-.paslaugaImg {
-    margin: 0 auto;
-    width: 80%;
-    object-fit: cover;
-    object-position: 50% 50%;
-    aspect-ratio: 4 / 5;
-    border-radius: 0.5rem;
-}
-
-.paslaugaTitle {
-    font-size: var(--font-size-h2);
-    line-height: 120%;
-    font-weight: 300;
-    color: var(--color-text-green-dark);
-}
-.paslaugaDesc {
-    font-size: var(--font-size-p);
-    color: var(--color-text-grey);
-    letter-spacing: 0.8px;
-}
-.price {
-    gap: 1rem;
-    line-height: 100%;
-    font-size: var(--font-size-h3);
-    color: var(--color-text-green-dark);
-}
-.wasPrice {
-    margin-left: 1rem;
-    color: var(--grey-dark);
-    text-decoration:line-through;
-    text-decoration-thickness: 1px;
-    font-size: var(--font-size-h6);
-}
-.quantity {
-    font-size: var(--font-size-p);
-    color: var(--grey-dark);
-}
-.buyBtn {
-    display: flex;
-    gap: 1rem;
-}
-.buyBtn button {
-    border: none;
-    padding: 0.5rem 1rem;
-    border-radius: 50rem;
-    color: #fff;
-    background-color: var(--color-btn-secondary);
-    font-size: var(--font-size-p);
-    transition: all 0.1s ease-in-out;
-
-    @media (hover: hover) {
-        &:not(:disabled):hover {
-            box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-            scale: 1.02;
-        }
-    }
-}
-.buyBtn button:disabled {
-    background-color: #cccccc;
-    cursor: not-allowed;
-    opacity: 0.7;
-}
 .promotionCodeContainer {
     display: flex;
     position: relative;
@@ -125,7 +51,7 @@ input.discountCode {
     background-color: var(--color-background-secondary);
     border-radius: 50rem;
     min-width: 11.5rem;
-    padding: 0 1rem;
+    padding: 0.5rem 1rem;
     outline-offset: 0px;
     color: var(--color-text-green-dark);
     text-transform: uppercase;
@@ -165,9 +91,6 @@ input.discountCode {
     font-size: 1.3rem;
     transition: all 0.1s ease-in-out;
 }
-/* .code span:nth-child(2):hover .closeIcon {
-
-} */
 @media (hover: hover) {
     input.discountCode:not(.show):not(:focus):hover {
         cursor: pointer;
@@ -188,34 +111,4 @@ input.show {
 input.discountCode::placeholder {
     text-transform: lowercase;
     color: #999;
-}
-
-@media only screen and (max-width: 576px) {
-    .paslauga {
-        grid-template-columns: 1fr;
-        margin-top: 1rem;
-        gap: 1rem;
-    }
-
-    .paslaugaImg {
-        width: 100%;
-        /* width: linear-scale(100px, 200px); */
-        aspect-ratio: 16 / 9;
-        object-position: center 35%;
-    }
-    .spcificSizeImg {
-        object-position: center 27%;
-    }
-    .paslaugaTitle {
-        font-size: var(--font-size-h3);
-    }
-    .buyBtn button {
-        font-weight: 500;
-    }
-}
-@media only screen and (max-width: 1024px) {
-    
-}
-@media only screen and (max-width: 1024px) {
-    
 }

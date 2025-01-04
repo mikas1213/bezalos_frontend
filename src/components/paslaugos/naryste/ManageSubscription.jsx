@@ -1,5 +1,5 @@
 import styles from './ManageSubscription.module.css';
-import { axiosPrivate } from '../../../../api/axios';
+import { axiosPrivate } from '../../../api/axios';
 
 const ManageSubscription = () => {
 

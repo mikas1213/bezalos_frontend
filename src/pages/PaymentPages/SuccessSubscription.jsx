@@ -1,7 +1,7 @@
-import styles from "./SuccessSubscription.module.css";
-import Navbar from "../../components/navbar/Navbar";
-import Main from "../../components/UI/Main";
-import Container from "../../components/virtuve/Container";
+import styles from './SuccessSubscription.module.css';
+import Navbar from '../../components/navbar/Navbar';
+import Main from '../../components/UI/Main';
+import Container from '../../components/virtuve/Container';
 import { useEffect } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import axios from '../../api/axios';
@@ -71,8 +71,9 @@ const SuccessSubscription = () => {
                             >Į Virtuvę</button>}
 
                             {plan === 'profilis' && <button 
-                            onClick={() => navigate('/profilis')}
-                                className={styles.successProfileBtn}>
+                                onClick={() => navigate('/profilis')}
+                                className={styles.successProfileBtn}
+                            >
                                 Į Profilį!&nbsp;
                                 <span className={styles.heartIcon}>➡️</span>
                             </button>}
