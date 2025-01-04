@@ -4,8 +4,10 @@ import { IoIosCloseCircleOutline } from 'react-icons/io';
 import SpinnerBtn from './SpinnerBtn';
 import useAxiosPrivate from '../../../hooks/useAxiosPrivate';
 
-const Promotion = ({ code, setCode, paslauga, setPaslauga, startPrice, isCodeApproved, setIsCodeApproved }) => {
+import { useNavigate } from 'react-router-dom';
 
+const Promotion = ({ code, setCode, paslauga, setPaslauga, startPrice, isCodeApproved, setIsCodeApproved }) => {
+    const navigate = useNavigate();
     const axiosPrivate = useAxiosPrivate();
     const [discountAmount, setDiscountAmount] = useState(0);
     const [isUserTyped, setIsUserTyped] = useState(false);
@@ -17,7 +19,6 @@ const Promotion = ({ code, setCode, paslauga, setPaslauga, startPrice, isCodeApp
             console.log('Norėtum 🤣');
             return;
         }
-
         try {
             setIsLoading(true);
             const { data: {new_price, discount_amount} } = await axiosPrivate.post(`/discount/apply/${code}`, {service_id: paslauga.id, service_price: Number(paslauga.current_price)});
@@ -28,6 +29,10 @@ const Promotion = ({ code, setCode, paslauga, setPaslauga, startPrice, isCodeApp
             setIsUserTyped(false);
             setIsCodeApproved(true);
         } catch (err) {
+            
+            if(err.status === 401 || err.status === 403) {
+                navigate('/prisijungti');
+            }
             setError(err.response.data.message);
             setIsLoading(false);
             setIsCodeApproved(false);
