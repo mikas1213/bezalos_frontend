@@ -1,4 +1,4 @@
-import styles from "./OfferSent.module.css";
+import styles from './OfferSent.module.css';
 
 const OfferSent = () => {
     return (

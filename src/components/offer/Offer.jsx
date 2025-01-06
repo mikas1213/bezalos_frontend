@@ -1,6 +1,6 @@
 import styles from './Offer.module.css';
 // import avatar from '../../assets/images/offer/offer.webp';
-import christmas_avatar from '../../assets/images/offer/christmas.webp';
+import christmas_avatar from '../../assets/images/offer/nieko-nevalgau.webp';
 import Overlay from './Overlay';
 import OfferSent from './OfferSent';
 import axios from '../../api/axios/';
@@ -60,9 +60,9 @@ const Offer = ({ setIsShowOffer, setIsOfferSent, isOfferSent, setCookie }) => {
                     <div className={styles.bottom}>
 
                         <div className={styles.offerContainer}>
-                            <h1>KALĖDINĖ DOVANA 🎄</h1>
+                            <h1>DOVANA 🎁</h1>
                             <p>
-                                Įrašyk savo el. paštą ir NEMOKAMAI gauk įrašą &quot;Išgyventi Kalėdas&quot;
+                                Įrašyk savo el. paštą ir NEMOKAMAI gauk įrašo ištrauką &quot;Nieko nevalgau, o svoris auga&quot;
                             </p>
                         </div>
 
