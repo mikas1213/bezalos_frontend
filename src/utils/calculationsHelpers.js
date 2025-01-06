@@ -29,11 +29,9 @@ export const set_grams_keitykle = (old_prod, new_prod) => {
     return new_kcal > 0 ? new_grams : 0;
 };
 
+export const isBarInRange = (recipeNum, mealNum, range) => Math.round(recipeNum) >= Math.round(mealNum) - range && Math.round(recipeNum) <= Math.round(mealNum) + range;
+
 export const mealProdBarSum = (products, key) => products.map(prod => bar(prod[key], prod.grams)).reduce((acc, val) => acc + val, 0);
 export const productsBarSum = (products, newProd, newGrams, key) => {
     return products.map(product => product.id === newProd.id ? bar(newProd[key], newGrams) : bar(product[key], product.grams)).reduce((acc, val)  => acc + val, 0)
 };
-
-export const isBarInRange = (recipeNum, mealNum, range) => Math.round(recipeNum) >= Math.round(mealNum) - range && Math.round(recipeNum) <= Math.round(mealNum) + range;
-
-

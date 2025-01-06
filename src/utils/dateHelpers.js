@@ -7,6 +7,19 @@ export const date_to_yyyy_mm_dd = (my_date) => {
     return setDate;
 };
 
+export const date_with_time = (my_date) => {
+    let setDate = '';
+    
+    if(my_date) {
+        setDate = new Date(Date.parse(my_date)).toLocaleString('lt-LT', {
+            dateStyle: 'short', 
+            timeStyle: 'short'
+        })   
+    }
+    return setDate;
+};
+
+
 // For subscription date
 export const isTodayOrFiveDaysBefore = (date) => {
     const date_before = new Date(date);

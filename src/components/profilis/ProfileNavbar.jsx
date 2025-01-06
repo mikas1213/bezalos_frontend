@@ -57,7 +57,7 @@ const ProfileNavbar = () => {
 
     return (
         <div className={styles.profileNavContainer}>
-             <div className={`${styles.leftArrow} ${scrollInfo.isScrollStart ? '' : styles.showArrow}`}>
+            <div className={`${styles.leftArrow} ${scrollInfo.isScrollStart ? '' : styles.showArrow}`}>
                 <div className={styles.arrowBtn} onClick={() => scrollBy(-200)}>
                     <ChevronLeft className={styles.chevronIcon} /> 
                 </div>

@@ -3,7 +3,7 @@ import { useState } from 'react';
 import useAxiosPrivate from '../../../../hooks/useAxiosPrivate';
 import { default as MealSelect } from 'react-select/async';
 import { default as ProdSelect } from 'react-select/async';
-import { bar, kcal, mealProdBarSum } from '../../../../utils/calculationsHelpers';
+// import { bar, kcal, mealProdBarSum } from '../../../../utils/calculationsHelpers';
 import { LuWheatOff, LuMilkOff } from 'react-icons/lu';
 import { DeleteBin_icon } from '../../../../svg/icons';
 
@@ -124,7 +124,7 @@ const productStyles = {
     })
 }
 
-const EditUserPlan = ({ plan: currentPlan, setPlan: setCurrentPlan, onPlanUpdate }) => {
+const EditUserPlan = ({ currentUserPlan, onPlanChange, onPlanUpdate }) => {
 
     const axiosPrivate = useAxiosPrivate();
     const [mealTitle, setMealTitle] = useState('');
@@ -133,101 +133,13 @@ const EditUserPlan = ({ plan: currentPlan, setPlan: setCurrentPlan, onPlanUpdate
     const [selectProdIndex, setSelectProdIndex] = useState({m_index: null, p_index: null});
 
     const handleMealChange = (e, m_id) => {
-        onPlanUpdate('update-meal', {meal: e, meal_id: m_id});
-
-        setCurrentPlan(prevState => ({
-            ...prevState,
-            b: prevState.meals.filter(meal => !meal.is_sport).map(meal => meal.id === m_id 
-                ? mealProdBarSum(e.products, 'b_100')
-                : mealProdBarSum(meal.products, 'b_100')
-            ).reduce((acc, val) => acc + val, 0),
-
-            a: prevState.meals.filter(meal => !meal.is_sport).map(meal => meal.id === m_id 
-                ? mealProdBarSum(e.products, 'a_100')
-                : mealProdBarSum(meal.products, 'a_100')
-            ).reduce((acc, val) => acc + val, 0),
-
-            r: prevState.meals.filter(meal => !meal.is_sport).map(meal => meal.id === m_id 
-                ? mealProdBarSum(e.products, 'r_100')
-                : mealProdBarSum(meal.products, 'r_100')
-            ).reduce((acc, val) => acc + val, 0),
-
-            meals: prevState.meals.map(meal => meal.id === m_id ? {
-                ...meal,
-                title: e.label,
-                logic: e.logic,
-                intolerance: e.intolerance,
-                b: mealProdBarSum(e.products, 'b_100'),
-                a: mealProdBarSum(e.products, 'a_100'),
-                r: mealProdBarSum(e.products, 'r_100'),
-                kcal: 100,
-                products: e.products
-            } : meal)
-        }));
+        onPlanChange('update-meal-title', {...e, m_id});
+        onPlanUpdate('update-meal-title', {meal: e, meal_id: m_id});
     };
 
     const handleProdChange = (e, m_id, p_id) => {
-        onPlanUpdate('update-product', { prod: e, meal_id: m_id, prod_id: p_id });
-
-        setCurrentPlan(prevState => ({
-            ...prevState,
-            b: prevState.meals.filter(meal => !meal.is_sport).map(meal => meal.products.map(prod => prod.id === p_id ? bar(e.b_100, prod.grams) : bar(prod.b_100, prod.grams)).reduce((acc, val) => acc + val, 0)).reduce((acc, val) => acc + val, 0),
-            a: prevState.meals.filter(meal => !meal.is_sport).map(meal => meal.products.map(prod => prod.id === p_id ? bar(e.a_100, prod.grams) : bar(prod.a_100, prod.grams)).reduce((acc, val) => acc + val, 0)).reduce((acc, val) => acc + val, 0),
-            r: prevState.meals.filter(meal => !meal.is_sport).map(meal => meal.products.map(prod => prod.id === p_id ? bar(e.r_100, prod.grams) : bar(prod.r_100, prod.grams)).reduce((acc, val) => acc + val, 0)).reduce((acc, val) => acc + val, 0),
-            meals: prevState.meals.map(meal => meal.id === m_id ? {
-                ...meal,
-                b: meal.products.map(prod => prod.id === p_id 
-                    ? bar(e.b_100, prod.grams)
-                    : bar(prod.b_100, prod.grams)).reduce((acc, val) => acc + val, 0),
-
-                a: meal.products.map(prod => prod.id === p_id 
-                    ? bar(e.a_100, prod.grams)
-                    : bar(prod.a_100, prod.grams)).reduce((acc, val) => acc + val, 0),
-
-                r: meal.products.map(prod => prod.id === p_id 
-                    ? bar(e.r_100, prod.grams)
-                    : bar(prod.r_100, prod.grams)).reduce((acc, val) => acc + val, 0),
-
-                products: meal.products.map(prod => prod.id === p_id ? {
-                    ...prod,
-                    title: e.label,
-                    category: e.category,
-                    sub_category: e.sub_category,
-                    b_100: e.b_100,
-                    a_100: e.a_100,
-                    r_100: e.r_100
-                } : prod)
-            } : meal)
-        }));
-    };
-
-    const handleGramsChange = (e, m_id, p_id) => {
-        setCurrentPlan(prevState => ({
-            ...prevState,
-            b: prevState.meals.filter(meal => !meal.is_sport).map(meal => meal.products.map(prod => (meal.id === m_id && prod.id === p_id) ? bar(prod.b_100, e.target.value) : bar(prod.b_100, prod.grams)).reduce((acc, val) => acc + val, 0)).reduce((acc, val) => acc + val, 0),
-            a: prevState.meals.filter(meal => !meal.is_sport).map(meal => meal.products.map(prod => (meal.id === m_id && prod.id === p_id) ? bar(prod.a_100, e.target.value) : bar(prod.a_100, prod.grams)).reduce((acc, val) => acc + val, 0)).reduce((acc, val) => acc + val, 0),
-            r: prevState.meals.filter(meal => !meal.is_sport).map(meal => meal.products.map(prod => (meal.id === m_id && prod.id === p_id) ? bar(prod.r_100, e.target.value) : bar(prod.r_100, prod.grams)).reduce((acc, val) => acc + val, 0)).reduce((acc, val) => acc + val, 0),
-
-            meals: prevState.meals.map(meal => meal.id === m_id ? {
-                ...meal,
-                b: meal.products.map(prod => prod.id === p_id 
-                    ? bar(prod.b_100, +e.target.value)
-                    : bar(prod.b_100, prod.grams)).reduce((acc, val) => acc + val, 0),
-
-                a: meal.products.map(prod => prod.id === p_id 
-                    ? bar(prod.a_100, +e.target.value)
-                    : bar(prod.a_100, prod.grams)).reduce((acc, val) => acc + val, 0),
-
-                r: meal.products.map(prod => prod.id === p_id 
-                    ? bar(prod.r_100, +e.target.value)
-                    : bar(prod.r_100, prod.grams)).reduce((acc, val) => acc + val, 0),
-
-                products: meal.products.map(prod => prod.id === p_id ? {
-                    ...prod,
-                    grams: +e.target.value.replace(',', '.')
-                } : prod)
-            } : meal)
-        }));
+        onPlanChange('update-product-title', {...e, m_id, p_id})
+        onPlanUpdate('update-product-title', { prod: e, meal_id: m_id, prod_id: p_id });
     };
 
     const handleProdDelete = (e, m_id, p_id) => {
@@ -235,32 +147,7 @@ const EditUserPlan = ({ plan: currentPlan, setPlan: setCurrentPlan, onPlanUpdate
 
         e.target.closest(`.${styles.prod}`).classList.add(styles.deletedProd);
         setTimeout(() => {
-            setCurrentPlan(prevState => ({
-                ...prevState,
-                
-                b: prevState.meals.map(meal => meal.id === m_id
-                    ? mealProdBarSum(meal.products.filter(prod => prod.id !== p_id), 'b_100')
-                    : mealProdBarSum(meal.products, 'b_100')
-                ).reduce((acc, val) => acc + val, 0),
-
-                a: prevState.meals.map(meal => meal.id === m_id
-                    ? mealProdBarSum(meal.products.filter(prod => prod.id !== p_id), 'a_100')
-                    : mealProdBarSum(meal.products, 'a_100')
-                ).reduce((acc, val) => acc + val, 0),
-
-                r: prevState.meals.map(meal => meal.id === m_id
-                    ? mealProdBarSum(meal.products.filter(prod => prod.id !== p_id), 'r_100')
-                    : mealProdBarSum(meal.products, 'r_100')
-                ).reduce((acc, val) => acc + val, 0),
-
-                meals: prevState.meals.map(meal => meal.id === m_id ? {
-                    ...meal,
-                    b: mealProdBarSum(meal.products.filter(prod => prod.id !== p_id), 'b_100'),
-                    a: mealProdBarSum(meal.products.filter(prod => prod.id !== p_id), 'a_100'),
-                    r: mealProdBarSum(meal.products.filter(prod => prod.id !== p_id), 'r_100'),
-                    products: meal.products.filter(prod => prod.id !== p_id)
-                } : meal)
-            }));
+            onPlanChange('delete-product', {m_id, p_id});
         }, 100);
     };
 
@@ -301,39 +188,36 @@ const EditUserPlan = ({ plan: currentPlan, setPlan: setCurrentPlan, onPlanUpdate
             <span className={styles.deleteBtnContainer} onClick={() => {
                 const isDelete = window.confirm('Ištrinti planą?');
                 if(isDelete) {
+                    onPlanChange('delete-plan');
                     onPlanUpdate('delete-plan', {});
                 }
             }}>
                 <DeleteBin_icon icon={styles.planDeleteBtn} />
             </span>
+
             <div className={styles.title}>
                 <input type='text' 
-                    value={currentPlan.title} 
+                    value={currentUserPlan.title}
                     name='title'
-                    onBlur={e => {
-                        onPlanUpdate('update-plan-title', {title: e.target.value});
-                    }}
-                    onChange={e => setCurrentPlan(prevState => ({...prevState, title: e.target.value}))}
+                    onChange={e => onPlanChange('update-plan-title', {title: e.target.value})}
+                    onBlur={e => onPlanUpdate('update-plan-title', {title: e.target.value})}
                 />
                 <div className={styles.planBar}>
-                    <span>B {currentPlan.b?.toFixed(0)}</span>
-                    <span>A {currentPlan.a?.toFixed(0)}</span>
-                    <span>R {currentPlan.r?.toFixed(0)}</span>
-                    <span>Kcal {kcal(currentPlan.b, currentPlan.a, currentPlan.r)?.toFixed(0)}</span>
+                    <span>B {currentUserPlan.b?.toFixed(0)}</span>
+                    <span>A {currentUserPlan.a?.toFixed(0)}</span>
+                    <span>R {currentUserPlan.r?.toFixed(0)}</span>
+                    <span>Kcal {currentUserPlan.kcal.toFixed(0)}</span>
                 </div>
             </div>
 
-            {currentPlan.meals.map(meal => 
+            {currentUserPlan.meals.map(meal => 
                 !meal.is_sport ? <div key={meal.id} className={styles.meal}>
                     <div className={styles.mealLeft}>
                         <input 
                             type='text' 
                             name='meal_time'
                             value={meal.meal_time} 
-                            onChange={(e) => setCurrentPlan(prevState => ({
-                                ...prevState,
-                                meals: [...prevState.meals.map(m => m.id === meal.id ? {...m, meal_time: e.target.value} : m)]}))
-                            }
+                            onChange={e => onPlanChange('update-meal-time', {meal_time: e.target.value, meal_id: meal.id})}
                             onBlur={e => onPlanUpdate('update-meal-time', {meal_time: e.target.value, meal_id: meal.id})} 
                         />
                         <span className={`${styles.mealLogic} ${styles[meal.logic.replace('+', '_')]}`}>{meal.logic}</span>
@@ -367,7 +251,7 @@ const EditUserPlan = ({ plan: currentPlan, setPlan: setCurrentPlan, onPlanUpdate
                                 <span>B {meal.b?.toFixed(0)}</span>
                                 <span>A {meal.a?.toFixed(0)}</span>
                                 <span>R {meal.r?.toFixed(0)}</span>
-                                <span>Kcal {kcal(meal.b, meal.a, meal.r)?.toFixed(0)}</span>
+                                <span>Kcal {meal.kcal?.toFixed(0)}</span>
                             </div>
                         </div>    
                         
@@ -395,7 +279,7 @@ const EditUserPlan = ({ plan: currentPlan, setPlan: setCurrentPlan, onPlanUpdate
                                         type='text' 
                                         name='grams'
                                         value={prod.grams} 
-                                        onChange={e => handleGramsChange(e, meal.id, prod.id)}
+                                        onChange={e => onPlanChange('update-prod-grams', {grams: e.target.value, m_id: meal.id, p_id: prod.id})}
                                         onBlur={e => onPlanUpdate('update-prod-grams', {grams: e.target.value, prod_id: prod.id})}
                                     />
                                     <span>g</span>
@@ -415,10 +299,7 @@ const EditUserPlan = ({ plan: currentPlan, setPlan: setCurrentPlan, onPlanUpdate
                         type='text' 
                         name='meal_time'
                         value={meal.meal_time} 
-                        onChange={(e) => setCurrentPlan(prevState => ({
-                            ...prevState,
-                            meals: [...prevState.meals.map(m => m.id === meal.id ? {...m, meal_time: e.target.value} : m)]}))
-                        }
+                        onChange={e => onPlanChange('update-meal-time', {meal_time: e.target.value, meal_id: meal.id})}
                         onBlur={e => onPlanUpdate('update-meal-time', {meal_time: e.target.value, meal_id: meal.id})} 
                     />
                 </div>

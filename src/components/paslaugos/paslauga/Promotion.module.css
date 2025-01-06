@@ -79,7 +79,6 @@ input.discountCode {
     display: flex;
     align-items: center;
     gap: 1rem;
-    /* height: 2.5rem; */
     border-radius: 50rem;
     padding: 0.5rem 1rem;
     background-color: var(--color-background-secondary);
@@ -111,4 +110,10 @@ input.show {
 input.discountCode::placeholder {
     text-transform: lowercase;
     color: #999;
+}
+
+@media only screen and (max-width: 375px) {
+    .promotionError {
+        top: 2.5rem;
+    }
 }

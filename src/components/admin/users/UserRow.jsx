@@ -3,7 +3,7 @@ import check_box_styles from './CheckBox.module.css';
 import { useState } from 'react';
 import { FaRegCopy } from 'react-icons/fa';
 import { HiTemplate } from 'react-icons/hi';
-import { date_to_yyyy_mm_dd, isTodayOrFiveDaysBefore, isTodayOrLater, isTwoOrFourWeeks, isMaintenance } from '../../../utils/dateHelpers';
+import { date_with_time, date_to_yyyy_mm_dd, isTodayOrFiveDaysBefore, isTodayOrLater, isTwoOrFourWeeks, isMaintenance } from '../../../utils/dateHelpers';
 import stripe_img from '../../../assets/images/admin/stripe_png.png';
 import UserBox, { SideBox} from './UserBox';
 import { useNavigate } from 'react-router-dom';
@@ -57,7 +57,7 @@ const UserRow = ({
                     </div>
                     <div className={styles.lastActivity}>
                         Prisijungė:
-                        {user.last_activity ? <span>&nbsp;&nbsp;{date_to_yyyy_mm_dd(user.last_activity)}</span> : <span>&nbsp;&nbsp;Nežinoma</span>}
+                        {user.last_activity ? <span>&nbsp;&nbsp;{date_with_time(user.last_activity)}</span> : <span>&nbsp;&nbsp;Nežinoma</span>}
                     </div>
                 </SideBox>
             </UserBox>

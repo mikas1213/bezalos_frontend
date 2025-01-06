@@ -109,5 +109,8 @@
     .buyBtn {
         flex-direction: column;
     }
+    .quantity {
+        margin-top: 0.5rem;
+    }
 }
 

@@ -13,32 +13,32 @@ import { PiFacebookLogo, PiInstagramLogo, PiAt } from 'react-icons/pi';
 export const FooterBottom = () => {
     return (
         <>
-        <div className={styles.footerTop}>
-            <div className={styles.footerLogo}>
-                <img src={Logo} alt='logo' className={styles.logoIcon} onClick={() => window.scrollTo(0, 0)}/>
+            <div className={styles.footerTop}>
+                <div className={styles.footerLogo}>
+                    <img src={Logo} alt='logo' className={styles.logoIcon} onClick={() => window.scrollTo(0, 0)}/>
+                </div>
+                <div className={styles.termsOfUse}>
+                    <Link to='/kontaktai'>Kontaktai</Link>
+                    <Link to='/pirkimo-taisykles'>Pirkimo taisyklės</Link>
+                    <Link to='/privatumo-politika'>Privatumo politika</Link>
+                </div>
+                <div className={styles.socialIcons}>
+                    <Link to='https://www.facebook.com/sandra.jatulyte' target='_blank'>
+                        <PiFacebookLogo className={styles.icon}/>    
+                    </Link>
+                    <Link to='https://www.instagram.com/valgau_be_zalos' target='_blank'>
+                        <PiInstagramLogo className={styles.icon} />
+                    </Link>                       
+                    <Link to='mailto:sandra@valgaubezalos.lt'>
+                        <PiAt className={styles.icon} />
+                    </Link>
+                </div>
             </div>
-            <div className={styles.termsOfUse}>
-                <Link to='/kontaktai'>Kontaktai</Link>
-                <Link to='/pirkimo-taisykles'>Pirkimo taisyklės</Link>
-                <Link to='/privatumo-politika'>Privatumo politika</Link>
+            <div className={styles.footerDivider}></div>
+            <div className={styles.footerBottom}>
+                <span className={styles.copy}>&copy;</span>
+                <span>2024 Be žalos</span>
             </div>
-            <div className={styles.socialIcons}>
-                <Link to='https://www.facebook.com/sandra.jatulyte' target='_blank'>
-                    <PiFacebookLogo className={styles.icon}/>    
-                </Link>
-                <Link to='https://www.instagram.com/valgau_be_zalos' target='_blank'>
-                    <PiInstagramLogo className={styles.icon} />
-                </Link>                       
-                <Link to='mailto:sandra@valgaubezalos.lt'>
-                    <PiAt className={styles.icon} />
-                </Link>
-            </div>
-        </div>
-        <div className={styles.footerDivider}></div>
-        <div className={styles.footerBottom}>
-            <span className={styles.copy}>&copy;</span>
-            <span>2024 Be žalos</span>
-        </div>
         </>
     )
 }
@@ -100,34 +100,6 @@ const FooterSection = () => {
                     </div>
                 </form>
 
-{/* 
-                <div className={styles.footerTop}>
-                    <div className={styles.footerLogo}>
-                        <img src={Logo} alt='logo' className={styles.logoIcon} onClick={() => window.scrollTo(0, 0)}/>
-                    </div>
-                    <div className={styles.termsOfUse}>
-                        <Link to='/kontaktai'>Kontaktai</Link>
-                        <Link to='/pirkimo-taisykles'>Pirkimo taisyklės</Link>
-                        <Link to='/privatumo-politika'>Privatumo politika</Link>
-                    </div>
-                    <div className={styles.socialIcons}>
-                        <Link to='https://www.facebook.com/sandra.jatulyte' target='_blank'>
-                            <PiFacebookLogo className={styles.icon}/>    
-                        </Link>
-                        <Link to='https://www.instagram.com/valgau_be_zalos' target='_blank'>
-                            <PiInstagramLogo className={styles.icon} />
-                        </Link>
-                       
-                        <Link to='mailto:sandra@valgaubezalos.lt'>
-                            <PiAt className={styles.icon} />
-                        </Link>
-                    </div>
-                </div>
-                <div className={styles.footerDivider}></div>
-                <div className={styles.footerBottom}>
-                    <span className={styles.copy}>&copy;</span>
-                    <span>2024 Be žalos</span>
-                </div> */}
                 <FooterBottom />
             </MainContainer>
         </footer>
