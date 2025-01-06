@@ -12,8 +12,13 @@ import { Divider } from '../../../components/admin/nutrition_plans/Divider';
 import toast from 'react-hot-toast';
 import { usePlans } from '../../../hooks/nutrition_plans_hooks/usePlans';
 import { bar } from '../../../utils/calculationsHelpers';
+import { useOutletContext } from 'react-router-dom';
 
 const PlanaiPage = () => {
+
+    const axiosPrivate = useAxiosPrivate();
+    const { setStats } = useOutletContext();
+
     const localStoragePlanId = JSON.parse(localStorage.getItem('localPlan'))?.id;
     const mealsFiltersOptions = [
         {value: 4, label: '4 V'},
@@ -32,13 +37,13 @@ const PlanaiPage = () => {
     filters = meal_count ? {...filters, meal_count} : filters;
     filters = is_vegetarian && is_vegetarian.is_vegetarian ? {...filters, ...is_vegetarian} : filters;
     filters = search ? {...filters, search} : filters;
-    
+
     const { plans, setPlans, isLoading } = usePlans(filters);
-    const axiosPrivate = useAxiosPrivate();
 
     const handlePlanAdd = async () => {
         try {
             const { data: {id} } = await axiosPrivate.post('admin/plans');
+            setStats(prevState => ({ ...prevState, plans: prevState.plans + 1 }));
             setPlans(prevState => ([{
                 id, 
                 b: 0,
@@ -63,9 +68,9 @@ const PlanaiPage = () => {
     };
 
     const handlePlanDelete = async (id) => {
-        
         try {
             setPlans(prevState => [...prevState.filter(plan => plan.id !== id)]);
+            setStats(prevState => ({ ...prevState, plans: prevState.plans - 1 }));
             await axiosPrivate.delete('admin/plans', {data: {id}});
         } catch (err) {
             toast.error('Klaida! \n'+err.response.data.message);

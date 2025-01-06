@@ -82,6 +82,7 @@ const customStyles = {
 }
 
 const AddProduct = ({ handleAddProduct }) => {
+    
     const [formData, setFormData] = useState({});
     const handleFormData = (e1, e2) => {
         setFormData(prev => ({...prev, [e1.target?.name || e2.name]: e1.target?.value || e1.value}));

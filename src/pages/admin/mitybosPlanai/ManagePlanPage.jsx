@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useManagePlan } from '../../../hooks/nutrition_plans_hooks/useManagePlan';
 import ManagePlan from '../../../components/admin/nutrition_plans/planai/ManagePlan';
-import UserDetails from '../../../components/admin/nutrition_plans/planai/UserDetails';
+import AssignPlan from '../../../components/admin/nutrition_plans/planai/AssignPlan';
 import Spinner from '../../../components/UI/Spinner';
 import useAxiosPrivate from '../../../hooks/useAxiosPrivate';
 import toast from 'react-hot-toast';
@@ -83,7 +83,7 @@ const ManagePlanPage = () => {
         }}>
             {isLoading && <Spinner />}
             {!isLoading && <ManagePlan plan={plan} setPlan={setPlan} />}
-            <UserDetails setUser={setUser} user={user} assignPlanToUser={assignPlanToUser} isPlanAssigning={isPlanAssigning} />
+            <AssignPlan setUser={setUser} user={user} assignPlanToUser={assignPlanToUser} isPlanAssigning={isPlanAssigning} />
         </div>
     );
 };

@@ -13,9 +13,10 @@ import { bar } from '../../../utils/calculationsHelpers';
 import { LiaPizzaSliceSolid } from 'react-icons/lia';
 import toast from 'react-hot-toast';
 import { useMeals } from '../../../hooks/nutrition_plans_hooks/useMeals';
-
+import { useOutletContext } from 'react-router-dom';
 
 const MealsPage = () => {
+    const { setStats } = useOutletContext();
     const axiosPrivate = useAxiosPrivate();
     const [currentPage, setCurrentPage] = useState(1);
     const [searchString, setSearchString] = useState('');
@@ -44,7 +45,7 @@ const MealsPage = () => {
     const handleMealAdd = async () => {
         try {
             const { data: { new_meal_id } } = await axiosPrivate.post('admin/plans/meals');
-            
+            setStats(prevState => ({ ...prevState, meals: prevState.meals + 1 }));
             setMeals(prevState => [{
                 id: new_meal_id,
                 logic: '-',
@@ -72,8 +73,8 @@ const MealsPage = () => {
     
     const handleMealDelete = async meal_id => {
         try {
-    
             await axiosPrivate.delete('admin/plans/meals', {data: {meal_id}});
+            setStats(prevState => ({ ...prevState, meals: prevState.meals - 1 }));
             setMeals(prevState => ([
                 ...prevState.filter(meal => meal.id !== meal_id)
             ]));

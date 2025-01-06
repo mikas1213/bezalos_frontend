@@ -227,7 +227,7 @@ const EditUserPlanPage = () => {
                     color: '#999'
                 }}>Priskirtų planų nėra</div>}
 
-                <UserDetails user={user} />
+                <UserDetails userDetails={user} />
             </div> 
         </>
     );

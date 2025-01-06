@@ -1,7 +1,8 @@
-import styles from './UserDetails.module.css';
+import styles from './AssignPlan.module.css';
 import useAxiosPrivate from '../../../../hooks/useAxiosPrivate';
 import { default as UsersSelect } from 'react-select/async';
 import { useState } from 'react';
+import UserDetails from '../../user/edit_plan/UserDetails';
 
 const customUsersLoadStyles = {
     container: (provider) => ({
@@ -18,10 +19,7 @@ const customUsersLoadStyles = {
         boxShadow: state.isFocused ? '#245D6B' : '#ddd',
         borderColor: state.isFocused ? '#245D6B' : '#ddd',
         minHeight: 0,
-        width: 350,
-        // height: 65,
-        // paddingRight: 12,
-        // paddingLeft: 12
+        width: 350
     }),
     valueContainer: (provider) => ({
         ...provider,
@@ -65,11 +63,12 @@ const customUsersLoadStyles = {
     })
 }
 
-const UserDetails = ({ user, setUser, assignPlanToUser, isPlanAssigning }) => {
+const AssignPlan = ({ user, setUser, assignPlanToUser, isPlanAssigning }) => {
     const axiosPrivate = useAxiosPrivate();
     const [isMenuOpen, setIsMenuOpen] = useState('');
     const [userDetails, setUserDetails] = useState({});
-
+    const [isLoading, setIsLoading] = useState(true);
+    
     const loadUsersOptions = async (inputValue, callback) => {
         try {
             if(inputValue && inputValue.length > 2) {
@@ -100,14 +99,15 @@ const UserDetails = ({ user, setUser, assignPlanToUser, isPlanAssigning }) => {
         
         try {
             const { data } = await axiosPrivate.get(`/admin/user/${e.value}`);
-            setUserDetails(data)
+            setUserDetails(data);
+            setIsLoading(false);
         } catch (err) {
-            console.log(err.message)
+            setIsLoading(false);
         }
     };
     
     return (
-        <div className={styles.userDetais}>
+        <div className={styles.assignPlan}>
             <UsersSelect
                 components={{ DropdownIndicator: null, IndicatorSeparator: null, LoadingIndicator: null }}
                 cacheOptions
@@ -130,16 +130,9 @@ const UserDetails = ({ user, setUser, assignPlanToUser, isPlanAssigning }) => {
                     // localStorage.removeItem('localPlan');
                     assignPlanToUser();
             }}>Priskirti</button>
-
-            <div className={styles.userDetails}>
-                <span>Vardas: {userDetails.name}</span>
-                <span>Email: {userDetails.email}</span>
-                <span>Stripe name: {userDetails.stripe_username}</span>
-                <span>Subscription type: {userDetails.subscription_type}</span>
-                <span>Pradinis tikslas: {userDetails.initial_target}</span>
-            </div>
+            {!isLoading && <UserDetails userDetails={userDetails} />}
         </div>
     );
 };
 
-export default UserDetails;
+export default AssignPlan;

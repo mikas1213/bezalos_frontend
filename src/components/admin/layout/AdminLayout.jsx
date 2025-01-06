@@ -26,7 +26,7 @@ const AdminLayout = () => {
     return (
         <div className={styles.mainContainer}>
             <AdminNavbar isLoading={isLoading} stats={stats} />
-            <Outlet context={{isLoading, stats}} />
+            <Outlet context={{isLoading, stats, setStats}} />
         </div>
     );
 };

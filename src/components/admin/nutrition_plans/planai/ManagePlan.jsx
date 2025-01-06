@@ -9,8 +9,7 @@ import { bar, kcal, mealProdBarSum } from '../../../../utils/calculationsHelpers
 
 const mealStyles = {
     container: (provider) => ({
-        ...provider,
-        // width: '50%'
+        ...provider
     }),
     control: (provider, state) => ({
         ...provider,
@@ -199,6 +198,7 @@ const ManagePlan = ({ plan: currentPlan, setPlan: setCurrentPlan}) => {
     };
 
     const handleGramsChange = (e, m_id, p_id) => {
+        console.log('grams: ', +e.target.value)
         setCurrentPlan(prevState => ({
             ...prevState,
             b: prevState.meals.filter(meal => !meal.is_sport).map(meal => meal.products.map(prod => (meal.id === m_id && prod.id === p_id) ? bar(prod.b_100, e.target.value) : bar(prod.b_100, prod.grams)).reduce((acc, val) => acc + val, 0)).reduce((acc, val) => acc + val, 0),
@@ -297,7 +297,7 @@ const ManagePlan = ({ plan: currentPlan, setPlan: setCurrentPlan}) => {
             <div className={styles.title}>
                 <input type='text' 
                     value={currentPlan.title} 
-                    onBlur={(e) => e.target.value = e.target.value.length > 0 ? e.target.value : currentPlan.title}
+                    onBlur={e => e.target.value = e.target.value.length > 0 ? e.target.value : currentPlan.title}
                     onChange={e => setCurrentPlan(prevState => ({...prevState, title: e.target.value}))}
                 />
                 <div className={styles.planBar}>
@@ -369,7 +369,7 @@ const ManagePlan = ({ plan: currentPlan, setPlan: setCurrentPlan}) => {
                                     value={{value: prod.product_id ,label: prod.title}}
                                 />
                                 <div className={styles.grams}>
-                                    <input type='text' value={prod.grams} onChange={e => handleGramsChange(e, meal.id, prod.id)}/>
+                                    <input type='text' value={!isNaN(prod.grams) ? +prod.grams : ''} onChange={e => handleGramsChange(e, meal.id, prod.id)}/>
                                     <span>g</span>
                                 </div>
 

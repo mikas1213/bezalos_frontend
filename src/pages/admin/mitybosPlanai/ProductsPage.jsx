@@ -8,6 +8,7 @@ import SearchInput from '../../../components/admin/nutrition_plans/SearchInput';
 import { default as CategorySelect } from 'react-select';
 import { useProducts } from '../../../hooks/nutrition_plans_hooks/useProducts';
 import toast from 'react-hot-toast';
+import { useOutletContext } from 'react-router-dom';
 
 const categoryOptions = [
     { value: 'Riebūs baltymai', label: 'Riebūs baltymai'},
@@ -59,6 +60,7 @@ const categorySelectStyles = {
 }
 
 const ProductsPage = () => {
+    const { setStats } = useOutletContext();
     const axiosPrivate = useAxiosPrivate();
     const [categoryFilter, setCategoryFilter] = useState('');
     const [searchFilter, setSearchFilter] = useState('');
@@ -74,6 +76,7 @@ const ProductsPage = () => {
     const {products, setProducts, isLoading} = useProducts(filters);
     
     const handleAddProduct = newProduct => {
+        setStats(prevState => ({ ...prevState, products: prevState.products + 1 }));
         setProducts(prevState => [newProduct, ...prevState]);
     };
 
@@ -96,6 +99,7 @@ const ProductsPage = () => {
             await axiosPrivate.delete(`/admin/plans/products/${id}`);
             setTimeout(() => {
                 setProducts(products => products.filter(product => product.id !== id));
+                setStats(prevState => ({ ...prevState, products: prevState.products - 1 }));
             }, 500);
         } catch (err) {
             toast.error('Klaida!')

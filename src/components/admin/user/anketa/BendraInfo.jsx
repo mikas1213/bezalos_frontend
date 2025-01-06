@@ -3,12 +3,16 @@ import styles from './BendraInfo.module.css';
 import { User, Ruler, Weight, Activity, PersonStanding, Target, Calendar, Hospital, Baby, Info } from 'lucide-react';
 import { kmi } from '../../../../utils/calculationsHelpers';
 
-const BendraInfo = ({ anketa }) => {
-    
+const BendraInfo = ({ user, anketa }) => {
     return (
         <div className={styles.bendraInfo}>
-            <h1>Bendra Informacija</h1>
 
+            <div>
+                <h1>Bendra Informacija</h1>
+                <span className={styles.userName}>{user.stripe_username || user.user_name} </span>
+                <span className={styles.userEmail}>|&nbsp;{user.user_email}</span>
+            </div>
+            
             <div className={styles.rowsSection_1}>
                 <InfoRow icon={<User />} label='Lytis' value={anketa?.gender} />
                 <InfoRow icon={<Ruler />} label='Ūgis' value={anketa?.height} />

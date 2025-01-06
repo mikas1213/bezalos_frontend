@@ -6,7 +6,7 @@ import { useEffect } from 'react';
 
 const UserAnketaPage = () => {
     const { user } = useOutletContext();
-
+    
     useEffect(() => {
         document.body.style.overflowX = 'auto';
 
@@ -32,11 +32,10 @@ const UserAnketaPage = () => {
             display: 'grid',
             gridTemplateColumns: '0.8fr 1.2fr' ,
             gridTemplateRows: '1fr auto',
-            gap: '1rem',
-            // height: '100vh'
+            gap: '1rem'
         }}>
 
-            <BendraInfo anketa={user.anketa[0]} />
+            <BendraInfo anketa={user.anketa[0]} user={{user_name: user.name, user_email: user.email, stripe_username: user.stripe_username}} />
             <DabartiniaiIprociai anketa={user.anketa[0]} />
             <NaujiIprociai anketa={user.anketa[0]} />
             

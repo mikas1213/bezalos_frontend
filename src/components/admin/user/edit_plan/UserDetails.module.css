@@ -1,21 +1,19 @@
-/* .userDetails {
-    display: g;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: auto;
+.userDetails {
+    display: flex;
+    align-self: start;
     flex-direction: column;
     gap: 0.5rem;
 }
 
-.row {
+.userItem {
     display: flex;
-    gap: 0.5rem;
+    flex-direction: column;
 }
 
-.row span:nth-child(1) {
-    align-self: end;
-    font-size: 0.6rem;
+.label {
+    color: var(--color-text-green-dark);
+    font-weight: 600;
 }
-
-.row span:nth-child(2) {
-    line-height: 100%;
-}  */
+.value {
+    color: var(--color-text-grey);
+}

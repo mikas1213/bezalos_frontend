@@ -234,18 +234,6 @@ const EditUserPlan = ({ plan: currentPlan, setPlan: setCurrentPlan, onPlanUpdate
     };
 
     const handleGramsChange = (e, m_id, p_id) => {
-        // setUser(prevState => ({
-        //     ...prevState,
-        //     plans: prevState.plans.map(plan => plan.id === currentPlan.id ? {
-        //         ...plan,
-        //         b: plan.meals.filter(meal => !meal.is_sport).map(meal => meal.products.map(prod => (meal.id === m_id && prod.id === p_id) ? bar(prod.b_100, e.target.value) : bar(prod.b_100, prod.grams)).reduce((acc, val) => acc + val, 0)).reduce((acc, val) => acc + val, 0),
-        //         a: plan.meals.filter(meal => !meal.is_sport).map(meal => meal.products.map(prod => (meal.id === m_id && prod.id === p_id) ? bar(prod.a_100, e.target.value) : bar(prod.a_100, prod.grams)).reduce((acc, val) => acc + val, 0)).reduce((acc, val) => acc + val, 0),
-        //         r: plan.meals.filter(meal => !meal.is_sport).map(meal => meal.products.map(prod => (meal.id === m_id && prod.id === p_id) ? bar(prod.r_100, e.target.value) : bar(prod.r_100, prod.grams)).reduce((acc, val) => acc + val, 0)).reduce((acc, val) => acc + val, 0),
-
-
-        //     } : plan)
-        // }));
-
         setCurrentPlan(prevState => ({
             ...prevState,
             b: prevState.meals.filter(meal => !meal.is_sport).map(meal => meal.products.map(prod => (meal.id === m_id && prod.id === p_id) ? bar(prod.b_100, e.target.value) : bar(prod.b_100, prod.grams)).reduce((acc, val) => acc + val, 0)).reduce((acc, val) => acc + val, 0),
@@ -397,7 +385,7 @@ const EditUserPlan = ({ plan: currentPlan, setPlan: setCurrentPlan, onPlanUpdate
                     <span>B {currentPlan.b?.toFixed(0)}</span>
                     <span>A {currentPlan.a?.toFixed(0)}</span>
                     <span>R {currentPlan.r?.toFixed(0)}</span>
-                    <span>Kcal {currentPlan.kcal.toFixed(0)}</span>
+                    <span>Kcal {currentPlan.kcal?.toFixed(0)}</span>
                 </div>
             </div>
 

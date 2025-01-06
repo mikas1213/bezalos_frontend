@@ -3,7 +3,6 @@ import { useState } from 'react';
 import useAxiosPrivate from '../../../../hooks/useAxiosPrivate';
 import { default as MealSelect } from 'react-select/async';
 import { default as ProdSelect } from 'react-select/async';
-// import { bar, kcal, mealProdBarSum } from '../../../../utils/calculationsHelpers';
 import { LuWheatOff, LuMilkOff } from 'react-icons/lu';
 import { DeleteBin_icon } from '../../../../svg/icons';
 
@@ -206,7 +205,7 @@ const EditUserPlan = ({ currentUserPlan, onPlanChange, onPlanUpdate }) => {
                     <span>B {currentUserPlan.b?.toFixed(0)}</span>
                     <span>A {currentUserPlan.a?.toFixed(0)}</span>
                     <span>R {currentUserPlan.r?.toFixed(0)}</span>
-                    <span>Kcal {currentUserPlan.kcal.toFixed(0)}</span>
+                    <span>Kcal {currentUserPlan.kcal?.toFixed(0)}</span>
                 </div>
             </div>
 
