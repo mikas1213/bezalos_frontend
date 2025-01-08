@@ -1,6 +1,7 @@
 import styles from './BendraInfo.module.css';
 
 import { User, Ruler, Weight, Activity, PersonStanding, Target, Calendar, Hospital, Baby, Info } from 'lucide-react';
+import { FaRegCopy } from 'react-icons/fa';
 import { kmi } from '../../../../utils/calculationsHelpers';
 
 const BendraInfo = ({ user, anketa }) => {
@@ -10,7 +11,13 @@ const BendraInfo = ({ user, anketa }) => {
             <div>
                 <h1>Bendra Informacija</h1>
                 <span className={styles.userName}>{user.stripe_username || user.user_name} </span>
-                <span className={styles.userEmail}>|&nbsp;{user.user_email}</span>
+                <span className={styles.userEmail}>
+                    |&nbsp;{user.user_email}
+                    <FaRegCopy 
+                        className={styles.copyIcon} 
+                        onClick={() => navigator.clipboard.writeText(user.user_email)}
+                    />
+                </span>
             </div>
             
             <div className={styles.rowsSection_1}>

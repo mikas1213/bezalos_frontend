@@ -5,7 +5,7 @@ import { FaRegCopy } from 'react-icons/fa';
 import { HiTemplate } from 'react-icons/hi';
 import { date_with_time, date_to_yyyy_mm_dd, isTodayOrFiveDaysBefore, isTodayOrLater, isTwoOrFourWeeks, isMaintenance } from '../../../utils/dateHelpers';
 import stripe_img from '../../../assets/images/admin/stripe_png.png';
-import UserBox, { SideBox} from './UserBox';
+import UserBox, { SideBox } from './UserBox';
 import { useNavigate } from 'react-router-dom';
 
 const UserRow = ({ 
@@ -15,7 +15,7 @@ const UserRow = ({
 }) => {
     const navigate = useNavigate();
     const [calories, setCalories] = useState(user.eats_calories || '');
-    
+    console.log('user:', user)
     return (    
         <div className={styles.userRow}>
 

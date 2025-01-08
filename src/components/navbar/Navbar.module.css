@@ -85,7 +85,12 @@
 .listItem {
     position: relative;
 }
-
+.admin.listItem {
+    padding: 0.08rem 0.8rem;
+    border-radius: 0.5rem;
+    border: 1px solid var(--color-btn-primary);
+    color: var(--color-btn-primary);
+}
 .loginBtn {
     border: none;
     height: 2.5rem;

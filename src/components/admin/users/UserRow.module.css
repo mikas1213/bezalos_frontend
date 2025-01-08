@@ -39,17 +39,11 @@
     color: #333;
 }
 .hasPlanIcon {
-    font-size: 0.9rem;
-    /* color: #FF8C00;
-    color: #FFA500;
-    color: #FF7F50;
-    color: #FF9966; */
-    color: #E67E22;
-    /* color: #F4A460; */
-    /* color: #D35400; */
-    /* color: #CC5500; */
-    /* color: #FF5733; */
+    font-size: 1rem;
+    color: #fc4c02;
+    /* color:#0073e6; */
 }
+
 .naryste {
     display: flex;
     gap: 0.5rem;

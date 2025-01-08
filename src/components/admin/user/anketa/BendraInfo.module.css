@@ -9,6 +9,16 @@
 .userEmail {
     color: var(--color-text-grey);
 }
+.copyIcon {
+    cursor: pointer;
+    margin-left: 0.5rem;
+    font-size: var(--font-size-h6);
+    color: var(--color-text-grey);
+    transition: color 0.1s ease-in-out;
+}
+.copyIcon:hover {
+    color: var(--color-btn-secondary);
+}
 .rowsSection_1 {
     display: grid;
     grid-template-columns: 1fr 1fr;

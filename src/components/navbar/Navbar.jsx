@@ -1,20 +1,23 @@
 import { useState } from 'react';
 import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import MainContainer from '../homepage/ui/MainContainer';
-
+import { roles } from '../../utils/roles';
 import styles from './Navbar.module.css';
 import { Logo } from './Logo';
 
 import Modal from '../UI/Modal';
 import Authentication from '../auth/Authentication';
 import useAuth from '../../hooks/useAuth';
+import { jwtDecode } from 'jwt-decode';
 import useLogout from '../../hooks/useLogout';
 
         
 // ICONS
 // https://www.svgrepo.com/collection/solar-broken-line-icons
 
-import { SenasBezalos, VirtuveIcon, ReceptaiIcon, PaslaugosIcon, ProfilisIcon, PrisijungtiIcon, AtsijungtiIcon } from './NavIcons';
+import { 
+    // SenasBezalos, 
+    VirtuveIcon, ReceptaiIcon, PaslaugosIcon, ProfilisIcon, PrisijungtiIcon, AtsijungtiIcon } from './NavIcons';
 
 const Navbar = ({ isHome = false }) => {
     
@@ -28,7 +31,7 @@ const Navbar = ({ isHome = false }) => {
     
     const changeColor = () =>
         window.scrollY > 100 ? setIsScroll(true) : setIsScroll(false);
-    window.addEventListener('scroll', changeColor);
+        window.addEventListener('scroll', changeColor);
 
     let changeStyleClass = '';
     if (isHome && !isScroll) changeStyleClass = styles.navHomeNotScroll;
@@ -37,6 +40,10 @@ const Navbar = ({ isHome = false }) => {
     if (!isHome && isScroll) changeStyleClass = styles.navNotHomeAndScroll;
 
     const { auth, isOpenModal, setIsOpenModal } = useAuth();
+    let loggedUser = {};
+    if (auth.accessToken) loggedUser = jwtDecode(auth?.accessToken);
+    const { user_role } = loggedUser;
+    
     const iconStroke = 1.5;    
     return (
         <>
@@ -77,6 +84,11 @@ const Navbar = ({ isHome = false }) => {
 
                         {auth?.accessToken && <li className={styles.listItem}>
                             <NavLink to='/profilis'>Profilis</NavLink>
+                            <div className={styles.indicator}></div>
+                        </li>}
+
+                        {user_role === roles.admin && <li className={`${styles.admin} ${styles.listItem}`}>
+                            <NavLink to='/admin'>Admin</NavLink>
                             <div className={styles.indicator}></div>
                         </li>}
                         

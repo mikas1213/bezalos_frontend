@@ -17,7 +17,7 @@ const ChangeProductList = ({ top, filteredProducts, setIsShowChageProdList, onUp
                             onUpdateProduct(prod);
                         }}
                     >
-                        {prod.title} 
+                        {prod.title}
                     </span>
                 )}
             </div>
