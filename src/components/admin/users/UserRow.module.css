@@ -38,12 +38,13 @@
 .icon:hover {
     color: #333;
 }
-.hasPlanIcon {
+.plan_icon {
     font-size: 1rem;
     color: #fc4c02;
-    /* color:#0073e6; */
 }
-
+.icon_prieziura {
+    color:#0073e6;
+}
 .naryste {
     display: flex;
     gap: 0.5rem;

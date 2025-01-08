@@ -15,7 +15,7 @@ const UserRow = ({
 }) => {
     const navigate = useNavigate();
     const [calories, setCalories] = useState(user.eats_calories || '');
-    console.log('user:', user)
+    
     return (    
         <div className={styles.userRow}>
 
@@ -27,7 +27,12 @@ const UserRow = ({
                     </div>
                     <div className={styles.userName}>
                         {user.stripe_username || user.name}
-                        {user.has_order && <HiTemplate className={styles.hasPlanIcon} />}
+                        {user.has_order && <HiTemplate 
+                            className={`
+                                ${styles.plan_icon} 
+                                ${user.orders[20]?.title === 'Mitybos planas + 4 savaičių priežiūra' ? styles.icon_prieziura : ''}
+                            `} 
+                        />}
                     </div>
                     
                 </SideBox>
