@@ -40,11 +40,10 @@
 }
 .plan_icon {
     font-size: 1rem;
-    color: #fc4c02;
 }
-.icon_prieziura {
-    color:#0073e6;
-}
+.orange { color: #fc4c02; }
+.blue { color:#0073e6; }
+
 .naryste {
     display: flex;
     gap: 0.5rem;

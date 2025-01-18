@@ -85,11 +85,15 @@
 .listItem {
     position: relative;
 }
-.admin.listItem {
+.adminItem {
     padding: 0.08rem 0.8rem;
     border-radius: 0.5rem;
-    border: 1px solid var(--color-btn-primary);
-    color: var(--color-btn-primary);
+    border: 1px solid var(--color-btn-secondary);
+    color: var(--color-btn-secondary);
+    transition: all 0.1s ease-in-out;
+}
+.adminItem:hover {
+    background-color: #60c04033;
 }
 .loginBtn {
     border: none;

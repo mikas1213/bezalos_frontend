@@ -1,5 +1,6 @@
 .inputGroup {
     position: relative;
+    /* margin-bottom: 1rem; */
 }
 
 .inputGroup span {
@@ -24,15 +25,24 @@
 .inputGroup input::placeholder {
     color: var(--color-text-placeholder);
 }
-.inputGroup input:focus {
+.inputGroup input:focus:not(:invalid) {
     outline: none;
     border-color: var(--color-btn-secondary);
     box-shadow: 0 0 0 0.5px var(--color-btn-secondary);
 }
+
+.inputGroup input:invalid {
+    color: var(--color-admin-red);
+    border-color: var(--color-admin-red);
+    box-shadow: 0 0 0 0.5px var(--color-admin-red);
+}
+
+
 .inputGroup .error {
     position: absolute;
     /* top: 0; */
     /* left: 0; */
+    font-size: 0.7rem;
     font-weight: 400;
     color: var(--color-admin-red);
 }

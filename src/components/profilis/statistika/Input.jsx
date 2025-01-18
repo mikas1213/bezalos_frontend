@@ -1,7 +1,6 @@
 import styles from './Input.module.css';
 
 const Input = ({ placeholder, label = '', name, icon, setFormData, formData, error, setErrors }) => {
-      
     return (
         <div className={styles.inputGroup}>
 
@@ -10,23 +9,17 @@ const Input = ({ placeholder, label = '', name, icon, setFormData, formData, err
                 id={name}
                 name={name}
                 type='text' 
-                pattern='[0-9]+'
+                maxLength='6'
                 autoComplete='off'
-                maxLength='7'
-                value={formData[name] || ''}
-                onChange={e => setFormData(prevState => ({ ...prevState, [e.target.name]: e.target.value}))}
-                
-                // onChange={e => {
-                //    handleForm(e);
-                //    setErrors(prev => {
-                //         const updated = {...prev};
-                //         delete updated[name];
-                //         return updated;
-                //    });
-                // }}
+                pattern='^-?\d*[.,]?\d+$'
                 placeholder={placeholder}
+                value={formData[name] || ''}
+                onChange={e => {
+                    setErrors(prevState => [...prevState.map(err => err.path === e.target.name || err.path === 'all' ? {} : err)])
+                    setFormData(prevState => ({ ...prevState, [e.target.name]: e.target.value}))
+                }}
             />
-            {!error && <span className={styles.error}>{error}</span>}
+            {error && <span className={styles.error}>{error}</span>}
         </div>
     );
 };

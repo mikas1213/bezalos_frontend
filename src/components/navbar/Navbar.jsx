@@ -87,7 +87,7 @@ const Navbar = ({ isHome = false }) => {
                             <div className={styles.indicator}></div>
                         </li>}
 
-                        {user_role === roles.admin && <li className={`${styles.admin} ${styles.listItem}`}>
+                        {user_role === roles.admin && <li className={`${styles.adminItem}`}>
                             <NavLink to='/admin'>Admin</NavLink>
                             <div className={styles.indicator}></div>
                         </li>}
