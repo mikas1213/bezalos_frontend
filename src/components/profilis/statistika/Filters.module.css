@@ -1,4 +1,5 @@
 .filters {
+    display: block;
     position: relative;
     margin-left: auto;
     user-select: none;
@@ -74,6 +75,7 @@
 }
 
 @media only screen and (max-width: 768px) {
+    .filters { display: none; }
     .timeFrame {
         width: 7.5rem;
         height: 2rem;
@@ -91,11 +93,13 @@
     }
 }
 @media only screen and (max-width: 576px) {
+    .filters { display: block; }
     .timeFrame { width: 6rem; }
     .options { width: 6rem; }
     .label_mob { display: block; }
     .label_desktop { display: none; }
 }
+
 @media only screen and (max-width: 440px) {
     .filters { display: none; }
 }

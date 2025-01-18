@@ -5,7 +5,6 @@
 }
 .option {
     color: var(--color-text-grey);
-    font-size: var(--font-size-dynamic-h6-sm);
     transition: color 0.1s ease-in-out;
 }
 .active {
@@ -13,11 +12,16 @@
     border-bottom: 1px solid var(--color-btn-secondary);
 }
 
-
+@media only screen and (max-width: 768px) {
+    .filtersMob { display: flex; }
+    .option { font-size: var(--font-size-dynamic-h6-lg); }
+}
+@media only screen and (max-width: 576px) {
+    .filtersMob { display: none; }
+}
 @media only screen and (max-width: 440px) {
-    .filtersMob {
-        display: flex;
-    }
+    .filtersMob { display: flex; }
+    .option { font-size: var(--font-size-dynamic-h6-sm); }
 }
 
 @media only screen and (max-width: 375px) {

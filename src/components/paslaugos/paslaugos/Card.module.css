@@ -17,7 +17,7 @@
     background-color: var(--color-btn-secondary);
     z-index: 1;
 }
-
+.less_than_three { background-color: tomato !important; }
 .imgContainer {    
 
     /* TEST */

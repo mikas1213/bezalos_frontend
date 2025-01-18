@@ -4,16 +4,17 @@ import { getImageURL } from '../../../utils/images';
 import { useNavigate } from 'react-router-dom';
 
 const Card = ({ paslauga }) => {
-
+    console.log(paslauga)
     const navigate = useNavigate();
     const [imageLoaded, setImageLoaded] = useState(false);
 
     return (
         <div className={`${styles.card}`}>
             <div className={styles.imgContainer}>
-                {paslauga.popular && <div className={styles.mostPopular}>Populiarus</div>}
+                {paslauga.popular && paslauga.quantity > 3 && <div className={styles.mostPopular}>Populiarus</div>}
+                {paslauga.quantity <= 3 && <div className={`${styles.mostPopular} ${styles.less_than_three}`}>{`Liko ${paslauga.quantity}vnt.`}</div>}
+                {paslauga.quantity === 0 && <div className={`${styles.mostPopular} ${styles.less_than_three}`}>Išparduota</div>}
                 {paslauga.discount > 0 && <div className={styles.discount}>-{paslauga.discount}%</div>}
-
                 {!imageLoaded && <div className={styles.skeleton}></div>}
 
                 <img 

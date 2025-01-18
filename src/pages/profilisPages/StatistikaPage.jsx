@@ -1,3 +1,4 @@
+// import InformationSoon from '../../components/information_soon/InformationSoon';
 import { useState, useEffect } from 'react';
 import useAxiosPrivate from '../../hooks/useAxiosPrivate';
 import { useOutletContext } from 'react-router-dom';
@@ -99,7 +100,7 @@ const StatistikaPage = () => {
             </StatistikaLayout>        
             {!isLoadingChartData && bodyData.length > 0 && <StatistikaData bodyData={bodyData} />}
         </Container>
-        
+        // <InformationSoon />
     );
 };
 

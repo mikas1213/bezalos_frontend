@@ -27,8 +27,13 @@ const UserRow = ({
                     </div>
                     <div className={styles.userName}>
                         {user.stripe_username || user.name}
-                        {['orange', 'blue'].includes(user.has_order) && <HiTemplate 
-                            className={`${styles.plan_icon} ${styles[user.has_order]}`} 
+                        {user.has_order && <HiTemplate 
+
+                            className={`
+                                ${styles.plan_icon} 
+                                ${user.orders[0]?.title === 'Mitybos planas + 4 savaičių priežiūra' ? styles.icon_blue : ''}
+
+                            `} 
                         />}
                     </div>
                     

@@ -35,14 +35,14 @@
     color: #aaa;
     transition: color 0.1s ease-in-out;
 }
-.icon:hover {
-    color: #333;
+.icon:hover { color: #333; }
+
+.plan_icon { 
+    color: #fc4c02;
+    font-size: 1rem; 
 }
-.plan_icon {
-    font-size: 1rem;
-}
-.orange { color: #fc4c02; }
-.blue { color:#0073e6; }
+
+.icon_blue { color:#0073e6; }
 
 .naryste {
     display: flex;
