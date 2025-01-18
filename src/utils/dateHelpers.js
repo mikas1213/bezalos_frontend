@@ -1,7 +1,8 @@
 export const date_to_yyyy_mm_dd = (my_date) => {
     let setDate = '';
     if(my_date) setDate = new Date(Date.parse(my_date)).toLocaleString('lt-LT', { 
-        dateStyle: 'short', 
+        dateStyle: 'short'
+        // dateStyle: 'long'
         // day: '2-digit' 
     }); 
     return setDate;

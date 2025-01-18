@@ -1,20 +1,35 @@
-.rowHeader {
-    display: grid;
-    grid-template-columns: repeat(7, auto);
-    justify-content: space-between;
-    padding: 0.5rem 1rem;
+.tableHeader, .tableRow {     
+    display: contents;
+}
+.tableHeader .tableCell {
+    color: var(--color-text-grey);
     border-bottom: 1px solid var(--grey-light);
-    span {
-        font-size: var(--font-size-small-1);
-        color: var(--color-text-grey);
-    }
+    /* padding: 0.5rem 1rem; */
 }
 
-.dataRow {
-    display: grid;
-    grid-template-columns: repeat(7, auto);
-    justify-content: space-between;
+.tableCell, .deleteBtn {
     padding: 0.5rem 1rem;
+}
+.tableCell .label {
+    display: none;
+}
+.tableCell .input {
+    border: none;
+    width: 3rem;
+    padding: 0.1rem 0.5rem;
+    border-radius: 0.35rem;
+    background-color: var(--color-background-secondary);
+}
+.tableDate {
+    color: var(--color-text-grey);
+}
+.deleteBtn {
+    cursor: pointer;
+    text-decoration: underline;
+    color: var(--color-text-grey);
+}
+.deleteBtnMob {
+    display: none;
 }
 
 @media only screen and (max-width: 768px) {
@@ -22,7 +37,35 @@
 }
 
 @media only screen and (max-width: 576px) {
-    .rowHeader {
+    .tableHeader {
         display: none;
+    }
+    .tableRow {
+        display: grid;
+        border-radius: 0.5rem;
+        box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    }
+    .tableCell {
+        display: flex;
+        justify-content: space-between;
+    }
+    .tableCell:nth-child(6) {
+        border-top: 1px solid var(--grey-light);
+    }
+    .tableCell .label {
+        display: block;
+        color: var(--color-text-grey);
+    }
+    .tableDate {
+
+    }
+    .deleteBtn {
+        display: none;
+    }
+    .deleteBtnMob {
+        display: block;
+        align-self: center;
+        text-decoration: underline;
+        color: var(--color-text-grey);
     }
 }
