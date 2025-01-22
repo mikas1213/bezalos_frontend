@@ -107,7 +107,7 @@ const Chart = ({ chartData, bodyStats, timeFrame, setTimeFrame }) => {
                 <ComposedChart 
                     data={chartData}
                     className={styles.test}
-                    margin={{ right: isMobile ? 0 : 10, left: isMobile ? -10 : 0, bottom: 2 }}
+                    margin={{ right: isMobile ? 0 : 10, left: isMobile ? -10 : 0, bottom: 2, top: 5 }}
                 >
                     <CartesianGrid stroke='#e0e0e0' vertical={false} />
                     <XAxis 

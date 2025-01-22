@@ -10,31 +10,35 @@ import BodyTracking from '../../components/profilis/statistika/BodyTracking';
 import Chart from '../../components/profilis/statistika/Chart';
 import StatistikaData from '../../components/profilis/statistika/StatistikaData';
 
+const getApimtys = data => {
+    return ['bicepsas', 'talija', 'sedmenys', 'slaunis']
+        .map(field => data[field]?.trim() || '')
+        .filter(val => val !== '')
+        .reduce((acc, val) => acc + Number(val), 0);
+};
+
 const StatistikaPage = () => {
     const axiosPrivate = useAxiosPrivate();
     const { user_id } = useOutletContext();
 
     const [formData, setFormData] = useState({});
     const [chartData, setChartData] = useState([]);
-    const [bodyStats, setBodyStats] = useState({});
     const [bodyData, setBodyData] = useState([]);
+    const [bodyStats, setBodyStats] = useState({});
     const [errors, setErrors] = useState([]);
     const [isLoadingChartData, setIsLoadingChartData] = useState(true);
     const [isLoadingAdd, setIsLoadingAdd] = useState(false);
     const [timeFrame, setTimeFrame] = useState({frame: '3months', label: '3 mėnesiai', label_mob: '3 mėn'});
-
+    
     const addBodyTracking = async () => {
-        
-        const targetFields = ['bicepsas', 'talija', 'sedmenys', 'slaunis'];
-        const sum = targetFields
-        .map(field => formData[field]?.trim() || '')
-        .filter(val => val !== '')
-        .reduce((acc, val) => acc + Number(val), 0);
+        const sum = getApimtys(formData);
 
         try {
             setIsLoadingAdd(true);
-            await axiosPrivate.post(`/profile/body-tracking/${user_id}`, formData);
+            const {data: { row_id }} = await axiosPrivate.post(`/profile/body-tracking/${user_id}`, formData);
+            
             setChartData(prevState => [...prevState.slice(1), {
+                id: row_id, 
                 svoris: formData.svoris ? +formData.svoris : null, 
                 apimtys: sum > 0 ? sum : null,
                 w_week_start: new Date().toLocaleString('lt-LT'), 
@@ -49,11 +53,21 @@ const StatistikaPage = () => {
             const apimtysData = sum > 0 ? {
                 last_apimtys: bodyStats.last_apimtys || sum,
                 latest_apimtys: sum,
-                trend_apimtys: bodyStats.last_apimtys ?   sum - bodyStats.last_apimtys : 0
+                trend_apimtys: bodyStats.last_apimtys ? sum - bodyStats.last_apimtys : 0
             } : {};
 
-            setBodyStats(prevState => ({ ...prevState, ...svorisData, ...apimtysData }));
+            
+            setBodyData(prevState => [{
+                id: row_id,
+                svoris: formData.svoris || 0,
+                bicepsas: formData.bicepsas || 0,
+                talija: formData.talija || 0,
+                sedmenys: formData.sedmenys || 0,
+                slaunis: formData.slaunis || 0,
+                created_at: new Date().toLocaleString('lt-LT')
+            }, ...prevState]);
 
+            setBodyStats(prevState => ({ ...prevState, ...svorisData, ...apimtysData }));
             setIsLoadingAdd(false);
             setFormData({});
             toast.success('Duomenys pateikti')
@@ -61,6 +75,18 @@ const StatistikaPage = () => {
             
             setErrors(err.response.data.errors); 
             setIsLoadingAdd(false);
+        }
+    }
+
+    const deleteBodyData = async (id) => {
+        try {
+            const {data: { stats }} = await axiosPrivate.delete(`/profile/body-tracking/${id}`);
+            setChartData(prevState => prevState.filter(row => row.id !== id));
+            setBodyData(prevState => prevState.filter(row => row.id !== id));
+            setBodyStats(stats);
+            // console.log(stats)
+        } catch (err) {
+            console.log(err.message)
         }
     }
 
@@ -98,7 +124,10 @@ const StatistikaPage = () => {
                     setTimeFrame={setTimeFrame}
                 />}
             </StatistikaLayout>        
-            {!isLoadingChartData && bodyData.length > 0 && <StatistikaData bodyData={bodyData} />}
+            {!isLoadingChartData && bodyData.length > 0 && <StatistikaData 
+                bodyData={bodyData} 
+                deleteBodyData={deleteBodyData}
+            />}
         </Container>
         // <InformationSoon />
     );

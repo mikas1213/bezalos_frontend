@@ -1,71 +1,107 @@
 .tableHeader, .tableRow {     
     display: contents;
 }
+
 .tableHeader .tableCell {
-    color: var(--color-text-grey);
+    color: var(--color-bgr-bottom);
+    font-weight: 600;
     border-bottom: 1px solid var(--grey-light);
-    /* padding: 0.5rem 1rem; */
 }
 
-.tableCell, .deleteBtn {
+.tableCell {
     padding: 0.5rem 1rem;
+    color: var(--color-text-grey);
+    font-size: var(--font-size-small-p);
 }
+
 .tableCell .label {
     display: none;
 }
-.tableCell .input {
-    border: none;
-    width: 3rem;
-    padding: 0.1rem 0.5rem;
-    border-radius: 0.35rem;
-    background-color: var(--color-background-secondary);
+.value {
+    display: flex;
+    align-items: center;
+    gap: 0.1rem;
 }
-.tableDate {
-    color: var(--color-text-grey);
-}
+
 .deleteBtn {
     cursor: pointer;
     text-decoration: underline;
-    color: var(--color-text-grey);
 }
 .deleteBtnMob {
     display: none;
 }
 
 @media only screen and (max-width: 768px) {
-
+    .tableCell, .deleteBtn {
+        padding: 0.4rem 0.2rem;
+    }
+    .tableCell:first-child {
+        padding-left: 0.5rem;
+    }
+    .deleteBtn {
+        padding-right: .5rem;
+    }
 }
 
 @media only screen and (max-width: 576px) {
     .tableHeader {
         display: none;
+        appearance: none;
     }
     .tableRow {
         display: grid;
         border-radius: 0.5rem;
         box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
     }
+    .tableCell:first-child {
+        padding-top: 0.4rem;
+    } 
+    .tableCell:has(.label):nth-child(5) {
+        padding-bottom: 0.4rem;
+    }
+    .tableCell:has(.tableDate) {
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
+    }
     .tableCell {
         display: flex;
         justify-content: space-between;
+        align-items: center;
+        padding: 0.2rem 0.5rem;
     }
     .tableCell:nth-child(6) {
         border-top: 1px solid var(--grey-light);
     }
     .tableCell .label {
+        flex-grow: 1;
         display: block;
-        color: var(--color-text-grey);
+        color: var(--color-bgr-bottom);
+        font-weight: 600;
+    }
+    .value {
+        font-weight: 500;
     }
     .tableDate {
-
+        color: var(--color-bgr-bottom);
+        font-weight: 600;
     }
     .deleteBtn {
         display: none;
     }
     .deleteBtnMob {
+        padding-right: 0.5rem;
         display: block;
         align-self: center;
         text-decoration: underline;
-        color: var(--color-text-grey);
+        font-weight: 500;
+    }
+}
+
+@media only screen and (max-width: 320px) {
+    .tableCell {
+        font-size: var(--font-size-small-1);
+    }
+    .tableCell {
+        padding: 0.1rem 0.5rem;
     }
 }

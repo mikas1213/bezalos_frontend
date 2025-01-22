@@ -11,6 +11,7 @@ const AdminLayout = () => {
     const [isLoading, setIsLoading] = useState(true);
     
     useEffect(() => {
+        document.title = 'Be žalos | Admin';
         const getData = async () => {
             try {
                 const { data } = await axiosPrivate.get('/admin/stats');
