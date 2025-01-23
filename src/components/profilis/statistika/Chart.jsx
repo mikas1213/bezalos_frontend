@@ -76,6 +76,7 @@ const StatisctiItem = ({ name, value, trend, unit }) => {
 
 const Chart = ({ chartData, bodyStats, timeFrame, setTimeFrame }) => {
     const [isMobile, setIsMobile] = useState(false);
+    
     useEffect(() => {
         const mediaQuery = window.matchMedia('(max-width: 440px)');
         const applyMediaQuery = () => {

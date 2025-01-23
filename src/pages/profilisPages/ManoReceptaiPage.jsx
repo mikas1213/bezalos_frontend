@@ -70,7 +70,7 @@ const ManoReceptaiPage = () => {
                 {open && <RecipeModal setOpen={setOpen} setRecipes={setRecipes} />}
             </Header>
             <RecipeList recipes={paginatedRecipes} handleDeleteRecipe={handleDeleteRecipe} />
-            {totalPages > 0 && <Pagination totalPages={totalPages} currentPage={currentPage } setCurrentPage={setCurrentPage} pagesLimit={5} color='var(--color-btn-secondary)' />}
+            {totalPages > 1 && <Pagination totalPages={totalPages} currentPage={currentPage } setCurrentPage={setCurrentPage} pagesLimit={5} color='var(--color-btn-secondary)' />}
 
         </Container> :
         <Container>

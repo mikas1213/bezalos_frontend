@@ -20,7 +20,7 @@ const getApimtys = data => {
 
 const StatistikaPage = () => {
     const axiosPrivate = useAxiosPrivate();
-    const { user_id } = useOutletContext();
+    const { user_id, is_subscription } = useOutletContext();
 
     const [formData, setFormData] = useState({});
     const [chartData, setChartData] = useState([]);
@@ -135,34 +135,40 @@ const StatistikaPage = () => {
     }
 
     return (
-        // <Container>
-        //     <StatistikaLayout>
-        //         <BodyTracking 
-        //             formData={formData} 
-        //             setFormData={setFormData} 
-        //             errors={errors}
-        //             setErrors={setErrors}
-        //             isLoadingAdd={isLoadingAdd}
-        //             addBodyTracking={addBodyTracking}
-        //         />
-        //         {!isLoadingChartData && <Chart 
-        //             chartData={chartData} 
-        //             bodyStats={bodyStats} 
-        //             timeFrame={timeFrame}
-        //             setTimeFrame={setTimeFrame}
-        //         />}
-        //     </StatistikaLayout>        
-        //     {!isLoadingChartData && paginatedRecords.length > 0 && <StatistikaData 
-        //         deleteBodyData={deleteBodyData}
-        //         currentPage={currentPage}
-        //         totalPages={totalPages}
-        //         paginatedRecords={paginatedRecords}
-        //         setPaginatedRecords={setPaginatedRecords}
-        //         setCurrentPage={setCurrentPage}
-        //     />}
-        //     <Pagination setCurrentPage={setCurrentPage} currentPage={currentPage} totalPages={totalPages} pagesLimit={4} />
-        // </Container>
-        <InformationSoon />
+        <>
+        {is_subscription ? <Container>
+            {is_subscription && !isLoadingChartData && <StatistikaLayout>
+                <BodyTracking 
+                    formData={formData} 
+                    setFormData={setFormData} 
+                    errors={errors}
+                    setErrors={setErrors}
+                    isLoadingAdd={isLoadingAdd}
+                    addBodyTracking={addBodyTracking}
+                />
+                <Chart 
+                    chartData={chartData} 
+                    bodyStats={bodyStats} 
+                    timeFrame={timeFrame}
+                    setTimeFrame={setTimeFrame}
+                />
+                
+            </StatistikaLayout>}        
+            {paginatedRecords.length > 0 && <StatistikaData 
+                deleteBodyData={deleteBodyData}
+                currentPage={currentPage}
+                totalPages={totalPages}
+                paginatedRecords={paginatedRecords}
+                setPaginatedRecords={setPaginatedRecords}
+                setCurrentPage={setCurrentPage}
+            />}
+            {totalPages > 1 && <Pagination setCurrentPage={setCurrentPage} currentPage={currentPage} totalPages={totalPages} pagesLimit={5} />}
+        </Container>
+        : 
+        <Container>
+            <InformationSoon />
+        </Container>}
+        </>
     );
 };
 
