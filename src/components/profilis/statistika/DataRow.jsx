@@ -34,7 +34,7 @@ const DataRow = ({ row, deleteBodyData }) => {
 
             <div className={styles.tableCell}>
                 <span className={styles.tableDate}>{new Date(Date.parse(row.created_at)).toLocaleDateString('lt-LT')}</span>
-                <div className={styles.deleteBtnMob}>Išrinti</div>	
+                <span onClick={() => deleteBodyData(row.id)} className={styles.deleteBtnMob}>Išrinti</span>	
             </div>
              
             <div className={`${styles.tableCell} ${styles.deleteBtn}`}>

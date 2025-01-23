@@ -1,73 +1,97 @@
 import styles from './Pagination.module.css';
-import { useState } from 'react';
-// import { MdKeyboardDoubleArrowLeft, MdKeyboardDoubleArrowRight } from 'react-icons/md';
+// import { useState } from 'react';
+
 import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from 'react-icons/md';
+
 const Pagination = ({ setCurrentPage, currentPage, totalPages, pagesLimit = 5, color = '#d1d6cf' }) => {
-
-    const [pageNumberLimit] = useState(pagesLimit);
-    const [maxPageNumberLimit, setMaxPageNumberLimit] = useState(pagesLimit);
-    const [minPageNumberLimit, setMinPageNumberLimit] = useState(0);
-
-    const handlePrevPage = () => {
-        if (currentPage > 1) {
-            setCurrentPage(currentPage - 1);
-
-            if ((currentPage - 1) % pageNumberLimit === 0) {
-                setMaxPageNumberLimit(maxPageNumberLimit - pageNumberLimit);
-                setMinPageNumberLimit(minPageNumberLimit - pageNumberLimit);
-            }
-        }
-    };
-    
-    const handleNextPage = () => {
-        if (currentPage < totalPages) {
-            setCurrentPage(currentPage + 1);
-
-            if (currentPage + 1 > maxPageNumberLimit) {
-                setMaxPageNumberLimit(maxPageNumberLimit + pageNumberLimit);
-                setMinPageNumberLimit(minPageNumberLimit + pageNumberLimit);
-            }
-        }
-    };
-
-    const handlePageClick = (page) => {
-        setCurrentPage(page);
-    };
-
     const renderPageNumbers = () => {
+        if (totalPages === 1) {
+            return (
+                <button
+                    key={1}
+                    onClick={() => setCurrentPage(1)}
+                    style={{ '--color-bgr-card': color }}
+                    className={styles.activePage}
+                >
+                    1
+                </button>
+            );
+        }
+
         const pageNumbers = [];
-        for(let i = 1; i <= totalPages; i++) {
-            if(i < maxPageNumberLimit + 1 && i > minPageNumberLimit) {
-                pageNumbers.push(
+        const visiblePages = Math.min(pagesLimit, totalPages); // Visible pages count
+
+        // First page
+        pageNumbers.push(
+            <button
+                key={1}
+                onClick={() => setCurrentPage(1)}
+                style={{ '--color-bgr-card': color }}
+                className={currentPage === 1 ? styles.activePage : ''}
+            >
+                1
+            </button>
+        );
+
+        // Left ellipsis if necessary
+        if (currentPage >= visiblePages && currentPage > Math.ceil(pagesLimit / 2) + 1) {
+            pageNumbers.push(<button key='left'>. . .</button>);
+        }
+
+        // Visible page range
+        const start = Math.max(2, currentPage - Math.floor(pagesLimit / 2)); // Start from 2 (not including the first page)
+        const end = Math.min(totalPages - 1, currentPage + Math.floor(pagesLimit / 2)); // Exclude the last page
+
+        for (let i = start; i <= end; i++) {
+            pageNumbers.push(
                 <button
                     key={i}
-                    onClick={() => handlePageClick(i)}
-                    style={{'--color-bgr-card': color}}
-                    className={i === currentPage ? styles.activePage : ''}
-                >{i}</button>);
-            }
+                    onClick={() => setCurrentPage(i)}
+                    style={{ '--color-bgr-card': color }}
+                    className={currentPage === i ? styles.activePage : ''}
+                >
+                    {i}
+                </button>
+            );
         }
+
+        // Right ellipsis if necessary
+        if (currentPage < totalPages - visiblePages && currentPage + Math.ceil(pagesLimit / 2) < totalPages - 1) {
+            pageNumbers.push(<button key='right'>. . .</button>);
+        }
+
+        // Last page
+        pageNumbers.push(
+            <button
+                key={totalPages}
+                onClick={() => setCurrentPage(totalPages)}
+                style={{ '--color-bgr-card': color }}
+                className={currentPage === totalPages ? styles.activePage : ''}
+            >
+                {totalPages}
+            </button>
+        );
+
         return pageNumbers;
     };
 
     return (
         <div className={styles.pagination}>
-            {/* <button onClick={handlePrevPage} disabled={currentPage === 1}>
-                <MdKeyboardDoubleArrowLeft className={styles.icon} />
-            
-            </button> */}
-            <button onClick={handlePrevPage} disabled={currentPage === 1}>
+            <button
+                onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
+                disabled={currentPage === 1}
+            >
                 <MdKeyboardArrowLeft className={styles.icon} />
             </button>
 
             {renderPageNumbers()}
 
-            <button onClick={handleNextPage} disabled={currentPage === totalPages}>
+            <button
+                onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
+                disabled={currentPage === totalPages}
+            >
                 <MdKeyboardArrowRight className={styles.icon} />
             </button>
-            {/* <button onClick={() => setCurrentPage(totalPages)} disabled={currentPage === totalPages}>
-                <MdKeyboardDoubleArrowRight className={styles.icon} />
-            </button> */}
         </div>
     );
 };
