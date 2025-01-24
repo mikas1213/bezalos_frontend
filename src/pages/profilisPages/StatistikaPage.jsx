@@ -114,6 +114,7 @@ const StatistikaPage = () => {
             setBodyStats(prevState => ({ ...prevState, ...svorisData, ...apimtysData }));
             setIsLoadingAdd(false);
             setFormData({});
+            setErrors([]);
             toast.success('Duomenys pateikti')
         } catch (err) {
             
@@ -129,6 +130,7 @@ const StatistikaPage = () => {
             // setBodyData(prevState => prevState.filter(row => row.id !== id));
             setPaginatedRecords(prevState => prevState.filter(row => row.id !== id));
             setBodyStats(stats);
+            setErrors([]);
         } catch (err) {
             console.log(err.message)
         }

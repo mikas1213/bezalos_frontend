@@ -61,7 +61,7 @@
 .naryste .Virtuvė { background: #65cbe9; }
 .naryste .Profilis { background-color: #245D6B; }
 .naryste :is(.Cancel_virtuve, .Cancel_profilis) { background-color: var(--color-admin-yellow) }
-.naryste :is(.Canceled_virtuve, .Canceled_profilis) { background-color: var(--color-admin-red) }
+.naryste :is(.Canceled_virtuve, .Canceled_profilis, .UNPAID) { background-color: var(--color-admin-red) }
 
 .lastActivity {
     color: #999;

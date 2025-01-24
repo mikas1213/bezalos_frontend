@@ -12,6 +12,7 @@ const Input = ({ placeholder, label = '', name, icon, setFormData, formData, err
                 maxLength='6'
                 autoComplete='off'
                 pattern='^-?\d*[.,]?\d+$'
+                inputMode='decimal'
                 placeholder={placeholder}
                 value={formData[name] || ''}
                 onChange={e => {
