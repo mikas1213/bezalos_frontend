@@ -8,14 +8,11 @@ import stripe_img from '../../../assets/images/admin/stripe_png.png';
 import UserBox, { SideBox } from './UserBox';
 import { useNavigate } from 'react-router-dom';
 
-const UserRow = ({ 
-    user, 
-    handleSubscriptionUpdate,
-    handleUserUpdate
-}) => {
+const UserRow = ({ user, handleSubscriptionUpdate, handleUserUpdate }) => {
     const navigate = useNavigate();
     const [calories, setCalories] = useState(user.eats_calories || '');
-    console.log(user.has_order)
+    const handle_VIRTUVE_CANCELED = () => { handleUserUpdate(user.id, 'subscription_type', 'Canceled_virtuve'); }
+    
     return (    
         <div className={styles.userRow}>
 
@@ -28,12 +25,7 @@ const UserRow = ({
                     <div className={styles.userName}>
                         {user.stripe_username || user.name}
                         {user.has_order && <HiTemplate 
-
-                            className={`
-                                ${styles.plan_icon} 
-                                ${user.orders[0]?.title === 'Mitybos planas + 4 savaičių priežiūra' ? styles.icon_blue : ''}
-
-                            `} 
+                            className={`${styles.plan_icon} ${user.orders[0]?.title === 'Mitybos planas + 4 savaičių priežiūra' ? styles.icon_blue : ''}`} 
                         />}
                     </div>
                     
@@ -42,7 +34,10 @@ const UserRow = ({
                 <SideBox>
                     <div className={styles.naryste}>
                         <div className={styles.inputGroup}>
-                            <span className={styles[user.subscription_type]}>{user.subscription_type}</span>
+                            <span 
+                                onClick={user.subscription_type === 'UNPAID' ? handle_VIRTUVE_CANCELED : undefined}
+                                className={styles[user.subscription_type]}
+                            >{user.subscription_type}</span>
                             <input 
                                 placeholder='yyyy-mm-dd'
                                 className={`${styles.inputDate} ${styles[isTodayOrFiveDaysBefore(user.subscription_expires)]}`}

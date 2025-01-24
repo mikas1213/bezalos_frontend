@@ -12,7 +12,10 @@ const Features = () => {
                 <MonthYearTab />
             </div>
             <div className={styles.feature}>
-                <div>Rezultatų sekimas <span style={{color: '#a00'}}>(Kuriama)</span></div>
+                <div>
+                    Rezultatų sekimas
+                    {/* <span style={{color: '#a00'}}>(Kuriama)</span> */}
+                </div>
                 <div><FaCircleCheck /></div>
             </div>
             <div className={styles.feature}>
