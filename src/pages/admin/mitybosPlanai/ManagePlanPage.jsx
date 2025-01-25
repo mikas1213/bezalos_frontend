@@ -44,6 +44,8 @@ const ManagePlanPage = () => {
             setIsPlanAssigning(false);
         } catch (err) {
             throw new Error(err.response?.data.message || err.message);
+        } finally {
+            setIsPlanAssigning(false);
         }
     };
     
@@ -88,7 +90,7 @@ const ManagePlanPage = () => {
     );
 };
 
-const OnAssignPlanToast = ({id, name, email}) => {
+const OnAssignPlanToast = ({ id, name, email }) => {
     return (
         <div style={{display: 'flex', flexDirection: 'row'}}>
             <div style={{
@@ -112,7 +114,7 @@ const OnAssignPlanToast = ({id, name, email}) => {
                         fontSize: '1.2rem', 
                         fontWeight: 600
                     }}
-                    onClick={() => toast.dismiss(id)}
+                    onClick={() => toast.dismiss(id) }
                 >OK!</button>   
             </div>        
         </div>

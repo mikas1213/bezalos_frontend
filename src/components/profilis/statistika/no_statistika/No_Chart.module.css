@@ -1,0 +1,200 @@
+.chart {
+    user-select: none;
+    display: flex;
+    flex-direction: column;
+    order: 2;
+    width: 100%;
+    border-radius: 0.5rem;
+    border: 1px solid #eee;
+}
+.chartHeader {
+    display: flex;
+    padding: 1rem 1rem 2rem 1.5rem;
+}
+.container {
+    display: flex;
+    flex-direction: column;
+}
+.label {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    color: #ccc;
+    font-weight: 500;
+}
+.icon {
+    display: flex;
+    width: 1.2rem;
+    height: 1.2rem;
+}
+
+.value {
+    font-size: var(--font-size-h4);
+    font-weight: 600;
+    line-height: 130%;
+}
+.Svoris, .Apimtys { min-width: 9.5rem; }
+.Svoris .value { color: #1B1B1B55; }
+.Apimtys .value { color: #75757555; }
+
+.unit {
+    margin-left: 0.1rem;
+    font-size: var(--font-size-h6);
+}
+.summary {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    margin-top: auto;
+}
+.chevronIcon {
+    width: 0.8rem;
+    height: 0.8rem;
+    stroke-width: 3px;
+    margin-right: 0.1rem;
+}
+.summary .value {
+    display: flex;
+    align-items: center;
+    font-size: var(--font-size-small-1);
+    font-weight: 500;
+}
+.summary .value small {
+    margin-left: 0.05rem;
+}
+.summary .increased { color: #64646455; }
+.summary .decreased { color: #75757555; } 
+
+
+.change {
+    color: #bbb;
+    font-size: var(--font-size-small-1);
+}
+
+.recomendations {
+    margin-top: auto;
+    margin-bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+    padding: 2rem 0 0 1.5rem;    
+    font-size: var(--font-size-small-1);
+    color: #ccc;
+}
+.svarbu {
+    color: #1B1B1B55; 
+    font-weight: 600;
+    filter: grayscale(100%);
+}
+
+.filters {
+    display: block;
+    position: relative;
+    margin-left: auto;
+    user-select: none;
+}
+.timeFrame {
+    display: flex;
+    align-items: center;
+    width: 10rem;
+    justify-content: space-between;
+    border: none;
+    height: 2.5rem;
+    border-radius: 0.5rem;
+    padding: 0 0.8rem;
+    font-size: var(--font-size-p);
+    color: #ccc;
+    font-weight: 500;
+    background-color: #F0F0F077;
+    transition: all 0.1s ease-in-out;
+}
+.label_mob { display: none; }
+.label_desktop { display: block; }
+
+.filtersMob {
+    display: none;
+    justify-content: space-between;
+    padding: 0 1rem 1.5rem;
+}
+.option {
+    color: #ccc;
+    transition: color 0.1s ease-in-out;
+}
+.active {
+    color: #75757555;
+    border-bottom: 1px solid #75757555;
+}
+    
+
+@media only screen and (max-width: 768px) {
+    .filters { display: none; }
+    .timeFrame {
+        width: 7.5rem;
+        height: 2rem;
+        padding: 0 0.5rem;
+        font-size: var(--font-size-small-1);
+    }
+    .filtersMob { display: flex; }
+    .option { font-size: var(--font-size-dynamic-h6-lg); }
+    .chart {
+        width: 100%;
+    }
+
+    .chartHeader {
+        justify-content: space-between;
+    }
+    .Svoris, .Apimtys {
+        min-width: 8.5rem;
+    }
+}
+
+@media only screen and (max-width: 576px) {
+    .filters { display: block; }
+    .label_mob { display: block; }
+    .label_desktop { display: none; }
+    .filtersMob { display: none; }
+    .chart {
+        order: 1;
+    }
+    .Svoris, .Apimtys {
+        min-width: clamp(0rem, 30.5vw, 11rem);
+    }
+}
+
+@media only screen and (max-width: 440px) {
+    .filters { display: none; }
+    .filtersMob { display: flex; }
+    .option { font-size: var(--font-size-dynamic-h6-sm); }
+    .chartHeader {
+        justify-content: space-between;
+        padding: 1rem 1rem 1.5rem 1rem;
+        gap: 0rem;
+    }
+    .summary .value {
+        font-size: var(--font-size-p);
+    }
+}
+
+@media only screen and (max-width: 375px) {
+    .filtersMob {
+        padding: 0 0.7rem 0.7rem;
+    }
+}
+
+@media only screen and (max-width: 320px) {
+    .value {
+        font-size: var(--font-size-h5);
+    }
+
+    .summary .value {
+        font-size: var(--font-size-small-1);
+    }
+
+    .label {
+        gap: 0.2rem;
+        font-size: var(--font-size-small-1);
+    }
+    .icon {
+        width: 1rem;
+        height: 1rem;
+    }
+}

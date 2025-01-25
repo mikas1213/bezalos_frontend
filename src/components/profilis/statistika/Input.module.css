@@ -1,6 +1,5 @@
 .inputGroup {
     position: relative;
-    /* margin-bottom: 1rem; */
 }
 
 .inputGroup span {
@@ -40,15 +39,10 @@
 
 .inputGroup .error {
     position: absolute;
-    /* top: 0; */
-    /* left: 0; */
     font-size: 0.7rem;
     font-weight: 400;
     color: var(--color-admin-red);
 }
-/* input:invalid {
-    outline: 2px solid red !important;
-} */
 @media only screen and (max-width: 576px) {
     .inputGroup input {
         font-size: 1rem;

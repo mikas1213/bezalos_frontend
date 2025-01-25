@@ -1,4 +1,3 @@
-import InformationSoon from '../../components/information_soon/InformationSoon';
 import { useState, useEffect } from 'react';
 import useAxiosPrivate from '../../hooks/useAxiosPrivate';
 import { useOutletContext } from 'react-router-dom';
@@ -10,6 +9,9 @@ import BodyTracking from '../../components/profilis/statistika/BodyTracking';
 import Chart from '../../components/profilis/statistika/Chart';
 import StatistikaData from '../../components/profilis/statistika/StatistikaData';
 import Pagination from '../../components/UI/Pagination';
+
+import No_BodyTracking from '../../components/profilis/statistika/no_statistika/No_BodyTracking';
+import No_Chart from '../../components/profilis/statistika/no_statistika/No_Chart';
 
 const getApimtys = data => {
     return ['bicepsas', 'talija', 'sedmenys', 'slaunis']
@@ -98,7 +100,7 @@ const StatistikaPage = () => {
             //     slaunis: formData.slaunis || 0,
             //     created_at: new Date().toLocaleString('lt-LT')
             // }, ...prevState]);
-            // if(currentPage === 1) {
+
             
             setPaginatedRecords(prevState => [{
                 id: row_id,
@@ -109,7 +111,7 @@ const StatistikaPage = () => {
                 slaunis: formData.slaunis || 0,
                 created_at: new Date().toLocaleString('lt-LT')
             }, ...prevState]);
-            // }
+            
             setCurrentPage(1);
             setBodyStats(prevState => ({ ...prevState, ...svorisData, ...apimtysData }));
             setIsLoadingAdd(false);
@@ -138,38 +140,46 @@ const StatistikaPage = () => {
 
     return (
         <>
-        {is_subscription ? <Container>
-            {is_subscription && !isLoadingChartData && <StatistikaLayout>
-                <BodyTracking 
-                    formData={formData} 
-                    setFormData={setFormData} 
-                    errors={errors}
-                    setErrors={setErrors}
-                    isLoadingAdd={isLoadingAdd}
-                    addBodyTracking={addBodyTracking}
-                />
-                <Chart 
-                    chartData={chartData} 
-                    bodyStats={bodyStats} 
-                    timeFrame={timeFrame}
-                    setTimeFrame={setTimeFrame}
-                />
-                
-            </StatistikaLayout>}        
-            {paginatedRecords.length > 0 && <StatistikaData 
-                deleteBodyData={deleteBodyData}
-                currentPage={currentPage}
-                totalPages={totalPages}
-                paginatedRecords={paginatedRecords}
-                setPaginatedRecords={setPaginatedRecords}
-                setCurrentPage={setCurrentPage}
-            />}
-            {totalPages > 1 && <Pagination setCurrentPage={setCurrentPage} currentPage={currentPage} totalPages={totalPages} pagesLimit={5} />}
-        </Container>
-        : 
-        <Container>
-            <InformationSoon />
-        </Container>}
+            {is_subscription ? <Container>
+                {!isLoadingChartData && <StatistikaLayout>
+                    <BodyTracking 
+                        formData={formData} 
+                        setFormData={setFormData} 
+                        errors={errors}
+                        setErrors={setErrors}
+                        isLoadingAdd={isLoadingAdd}
+                        addBodyTracking={addBodyTracking}
+                    />
+                    <Chart 
+                        chartData={chartData} 
+                        bodyStats={bodyStats} 
+                        timeFrame={timeFrame}
+                        setTimeFrame={setTimeFrame}
+                    />
+                    
+                </StatistikaLayout>}        
+                {paginatedRecords.length > 0 && <StatistikaData 
+                    deleteBodyData={deleteBodyData}
+                    currentPage={currentPage}
+                    totalPages={totalPages}
+                    paginatedRecords={paginatedRecords}
+                    setPaginatedRecords={setPaginatedRecords}
+                    setCurrentPage={setCurrentPage}
+                />}
+                {totalPages > 1 && <Pagination 
+                    setCurrentPage={setCurrentPage} 
+                    currentPage={currentPage} 
+                    totalPages={totalPages} 
+                    pagesLimit={5} 
+                />}
+            </Container>
+            : 
+            <Container>
+                <StatistikaLayout>
+                    <No_BodyTracking />
+                    <No_Chart />
+                </StatistikaLayout>
+            </Container>}
         </>
     );
 };
