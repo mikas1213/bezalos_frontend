@@ -15,14 +15,13 @@ import useLogout from '../../hooks/useLogout';
 // ICONS
 // https://www.svgrepo.com/collection/solar-broken-line-icons
 
-import { 
-    // SenasBezalos, 
-    VirtuveIcon, ReceptaiIcon, PaslaugosIcon, ProfilisIcon, PrisijungtiIcon, AtsijungtiIcon } from './NavIcons';
+import { VirtuveIcon, ReceptaiIcon, PaslaugosIcon, ProfilisIcon, PrisijungtiIcon, AtsijungtiIcon } from './NavIcons';
 
-const Navbar = ({ isHome = false }) => {
+const Navbar = ({ isHome = '' }) => {
     
     const location = useLocation();
     const [_, page] = location.pathname.split('/');
+    
     const navigate = useNavigate();
     const logout = useLogout();
     
@@ -33,11 +32,14 @@ const Navbar = ({ isHome = false }) => {
         window.scrollY > 100 ? setIsScroll(true) : setIsScroll(false);
         window.addEventListener('scroll', changeColor);
 
-    let changeStyleClass = '';
-    if (isHome && !isScroll) changeStyleClass = styles.navHomeNotScroll;
-    if (isHome && isScroll) changeStyleClass = styles.navHomeAndScroll;
-    if (!isHome && !isScroll) changeStyleClass = styles.navNotHomeNotScroll;
-    if (!isHome && isScroll) changeStyleClass = styles.navNotHomeAndScroll;
+    let navBarStyle = '';
+    if (isHome === 'home' && !isScroll) navBarStyle = styles.navHomeNotScroll;
+    if (isHome === 'home' && isScroll) navBarStyle = styles.navHomeAndScroll;
+    if (isHome === 'recipes' && !isScroll) navBarStyle = styles.navRecipesNotScroll;
+    if (isHome === 'recipes' && isScroll) navBarStyle = styles.navRecipesAndScroll;
+    if (!isHome && !isScroll) navBarStyle = styles.navNotHomeNotScroll;
+    if (!isHome && isScroll) navBarStyle = styles.navNotHomeAndScroll;
+
 
     const { auth, isOpenModal, setIsOpenModal } = useAuth();
     let loggedUser = {};
@@ -51,7 +53,7 @@ const Navbar = ({ isHome = false }) => {
                 <Authentication />
             </Modal>}
             
-            <nav className={`${styles.nav} ${changeStyleClass}`}>
+            <nav className={`${styles.nav} ${navBarStyle}`}>
                 <MainContainer customClass={styles.navContainer}>
                     <div className={styles.logo}>
                         <NavLink to='/'>

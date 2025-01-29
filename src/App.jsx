@@ -86,7 +86,7 @@ function App() {
                             <Route element={<PersistLogin /> }>
                                 <Route path='/' element={<HomePage />} />
                                 <Route path='/virtuve' element={<VirtuvePage />} />
-                                <Route path='/receptai' element={<ReceptaiPage />} />
+                                {/* <Route path='/receptai' element={<ReceptaiPage />} /> */}
                                 <Route element={<PaymentProvider /> }>
                                     <Route path='/paslaugos' element={<PaslaugosPage />} />
                                     <Route path='/paslaugos/:slug' element={<PaslaugaPage />} />

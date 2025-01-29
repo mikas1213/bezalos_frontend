@@ -1,10 +1,7 @@
 import styles from './No_Chart.module.css';
 import { useState, useEffect } from 'react';
 import { Weight, Ruler, ChevronDown, ChevronUp, ChevronLeft, Minus} from 'lucide-react';
-import { ComposedChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
-
-import Filters from '../../../../components/profilis/statistika/Filters';
-import FiltersMob from '../FiltersMob';
+import { ComposedChart, Line, XAxis, YAxis, CartesianGrid, ResponsiveContainer } from 'recharts';
 
 const testData = [
     {

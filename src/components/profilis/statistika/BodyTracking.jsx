@@ -4,10 +4,10 @@ import { Weight, Ruler } from 'lucide-react';
 
 const fields = [
     {name: 'svoris', label: 'Svoris', ph: 'kg', icon: <Weight className={styles.icon} />},
-    {name: 'bicepsas', label: 'Bicepsas', ph: 'kg', icon: <Ruler className={styles.icon} />},
-    {name: 'talija', label: 'Talija', ph: 'kg', icon: <Ruler className={styles.icon} />},
-    {name: 'sedmenys', label: 'Sėdmenys', ph: 'kg', icon: <Ruler className={styles.icon} />},
-    {name: 'slaunis', label: 'Šlaunis', ph: 'kg', icon: <Ruler className={styles.icon} />},
+    {name: 'bicepsas', label: 'Bicepsas', ph: 'cm', icon: <Ruler className={styles.icon} />},
+    {name: 'talija', label: 'Talija', ph: 'cm', icon: <Ruler className={styles.icon} />},
+    {name: 'sedmenys', label: 'Sėdmenys', ph: 'cm', icon: <Ruler className={styles.icon} />},
+    {name: 'slaunis', label: 'Šlaunis', ph: 'cm', icon: <Ruler className={styles.icon} />},
 ]
 
 const BodyTracking = ({ errors, setErrors, formData, setFormData, isLoadingAdd, addBodyTracking }) => {

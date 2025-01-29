@@ -59,8 +59,8 @@ const HomePage = () => {
     
     return (
         <>
-            <Navbar isHome={true} />
-            <Main isHome={true} myRef={ref}>
+            <Navbar isHome='home' />
+            <Main myRef={ref}>
                 {(!cookies.COOKIE_OFFER && isShowOffer || isOfferSent) && <Offer setIsShowOffer={setIsShowOffer} setIsOfferSent={setIsOfferSent} isOfferSent={isOfferSent} setCookie={setCookie} />}
                 <WelcomeSection />
                 <ExperienceSection />

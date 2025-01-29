@@ -1,0 +1,46 @@
+.filters {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+
+.filterGroup {
+    display: flex;
+    /* gap: 1rem; */
+}
+.icon {
+    width: 1rem;
+    height: 1rem;
+}
+.filterLabel {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--color-text-grey);
+    font-size: var(--font-size-p);
+    min-width: 12rem;
+}
+
+.chips {
+    display: flex;
+    gap: 0.6rem;
+}
+.chip {
+    color: var(--color-text-grey);
+    cursor: pointer;
+    border: 1px solid var(--color-text-grey);
+    border-radius: 50rem;
+    padding: 0.1rem 0.6rem;
+    /* transition: background-color 0.1s ease-in-out; */
+}
+/* .chip:hover {
+    background-color: #f5f5f5;
+} */
+.active {
+    color: #fff;
+    background-color: var(--color-text-grey);
+}
+/* .chip.active:hover {
+    background-color: #696969CC;
+} */

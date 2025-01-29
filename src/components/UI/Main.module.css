@@ -3,6 +3,10 @@
     background-color: var(--color-background);
 }
 
+.main.recipes {
+    padding-top: 0;
+}
+
 @media only screen and (max-width: 576px) {
     .main { 
         padding-top: var(--nav-height-70);

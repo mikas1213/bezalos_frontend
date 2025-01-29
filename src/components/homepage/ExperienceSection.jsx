@@ -23,10 +23,10 @@ const ExperienceSection = () => {
     return (
         <Section>
             <MainContainer customClass={styles.experienceContainer}>
-                <ExperienceItem myStyle={style} value='7m+' text='darbo patirtis' />
-                <ExperienceItem myStyle={style} value='1.3k+' text='laimingų klientų' />
-                <ExperienceItem myStyle={style} value='55+' text='mentorystės istorijos' />
-                <ExperienceItem myStyle={style} value='1k+' text='mitybos planų' />
+                <ExperienceItem myStyle={style} value='8m+' text='darbo patirtis' />
+                <ExperienceItem myStyle={style} value='1,7k+' text='laimingų klientų' />
+                <ExperienceItem myStyle={style} value='85+' text='mentorystės istorijos' />
+                <ExperienceItem myStyle={style} value='1,3k+' text='mitybos planų' />
             </MainContainer>
         </Section>
     );
