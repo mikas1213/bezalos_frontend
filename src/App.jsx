@@ -5,6 +5,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { AuthProvider } from './context/AuthProvider';
 import { PaymentProvider } from './context/PaymentProvider';
+import { MediaQueryProvider } from './context/MediaQueryProvider';
 import { Toaster } from 'react-hot-toast';
 import CookieConsent from './components/cookies/CookieConsent';
 
@@ -80,65 +81,67 @@ function App() {
                 </script> 
             </Helmet>
             <BrowserRouter>
-                <AuthProvider>
-                    <Suspense fallback={<Spinner />}>
-                        <Routes>
-                            <Route element={<PersistLogin /> }>
-                                <Route path='/' element={<HomePage />} />
-                                <Route path='/virtuve' element={<VirtuvePage />} />
-                                {/* <Route path='/receptai' element={<ReceptaiPage />} /> */}
-                                <Route element={<PaymentProvider /> }>
-                                    <Route path='/paslaugos' element={<PaslaugosPage />} />
-                                    <Route path='/paslaugos/:slug' element={<PaslaugaPage />} />
-                                </Route>
-                                <Route path='/prisijungti' element={<LoginPage />} />
-                                <Route path='/keisti-slaptazodi/:token' element={<UpdatePasswordPage /> } />
-                                <Route path='/prenumeruoti' element={<NeedSubscription />} />
-                                <Route path='/pirkimo-taisykles' element={<PirkimoTaisyklesPage />} />
-                                <Route path='/privatumo-politika' element={<PrivatumoPolitikaPage />} />
-                                <Route path='*' element={<NotFoundPage />} />
-                                
-                                <Route element={<RequireAuth allowedRoles={[1213, 2324]}/> }>
-                                    <Route path='/virtuve/:video' element={<VirtuveVideoPage />} />
-                                    <Route path='/profilis' element={<ProfilisPageLayout /> }>
-                                        <Route index element={<UserPlansPage />} />
-                                        <Route path='anketa' element={<AnketaPage />} />
-                                        <Route path='produktu-keitimas' element={<ProduktuKeitimasPage />}/>
-                                        <Route path='mano-receptai' element={<ManoReceptaiPage />} />
-                                        <Route path='kalorijos' element={<KalorijosPage />} />
-                                        <Route path='statistika' element={<StatistikaPage />} />
-                                        <Route path='nustatymai' element={<NustatymaiPage /> } />
+                <MediaQueryProvider>
+                    <AuthProvider>
+                        <Suspense fallback={<Spinner />}>
+                            <Routes>
+                                <Route element={<PersistLogin /> }>
+                                    <Route path='/' element={<HomePage />} />
+                                    <Route path='/virtuve' element={<VirtuvePage />} />
+                                    <Route path='/receptai' element={<ReceptaiPage />} />
+                                    <Route element={<PaymentProvider /> }>
+                                        <Route path='/paslaugos' element={<PaslaugosPage />} />
+                                        <Route path='/paslaugos/:slug' element={<PaslaugaPage />} />
                                     </Route>
-                                    <Route path='/paslauga-apmoketa' element={<SuccessBuyService /> } />
-                                    <Route path='/apmoketa-sekmingai' element={<SuccessSubscription /> }/>
-                                    <Route path='/mokejimo-klaida' element={<CancelSubscription /> }/>
-                                </Route>
-
-                                <Route element={<RequireAuth allowedRoles={[1213]}/> }>
-                                    <Route path='/admin' element={<AdminLayout /> }>
-                                        <Route index element={<UsersPage />} />
-                                        <Route path=':id' element={ <UserPageLayout /> } >
-                                            <Route index element={<EditUserPlanPage /> } />
-                                            <Route path='anketa' element={<UserAnketaPage /> } />
-                                            <Route path='statistika' element={<UserStatistikaPage /> } />
+                                    <Route path='/prisijungti' element={<LoginPage />} />
+                                    <Route path='/keisti-slaptazodi/:token' element={<UpdatePasswordPage /> } />
+                                    <Route path='/prenumeruoti' element={<NeedSubscription />} />
+                                    <Route path='/pirkimo-taisykles' element={<PirkimoTaisyklesPage />} />
+                                    <Route path='/privatumo-politika' element={<PrivatumoPolitikaPage />} />
+                                    <Route path='*' element={<NotFoundPage />} />
+                                    
+                                    <Route element={<RequireAuth allowedRoles={[1213, 2324]}/> }>
+                                        <Route path='/virtuve/:video' element={<VirtuveVideoPage />} />
+                                        <Route path='/profilis' element={<ProfilisPageLayout /> }>
+                                            <Route index element={<UserPlansPage />} />
+                                            <Route path='anketa' element={<AnketaPage />} />
+                                            <Route path='produktu-keitimas' element={<ProduktuKeitimasPage />}/>
+                                            <Route path='mano-receptai' element={<ManoReceptaiPage />} />
+                                            <Route path='kalorijos' element={<KalorijosPage />} />
+                                            <Route path='statistika' element={<StatistikaPage />} />
+                                            <Route path='nustatymai' element={<NustatymaiPage /> } />
                                         </Route>
+                                        <Route path='/paslauga-apmoketa' element={<SuccessBuyService /> } />
+                                        <Route path='/apmoketa-sekmingai' element={<SuccessSubscription /> }/>
+                                        <Route path='/mokejimo-klaida' element={<CancelSubscription /> }/>
+                                    </Route>
 
-                                        <Route path='planai' element={<MitybosPlanaiLayout /> }>
-                                            <Route index element={<PlanaiPage />} />
-                                            <Route path=':id' element={<ManagePlanPage />} />
-                                            <Route path='valgiai' element={<MealsPage />} />
-                                            <Route path='produktai' element={<ProductsPage />} />
+                                    <Route element={<RequireAuth allowedRoles={[1213]}/> }>
+                                        <Route path='/admin' element={<AdminLayout /> }>
+                                            <Route index element={<UsersPage />} />
+                                            <Route path=':id' element={ <UserPageLayout /> } >
+                                                <Route index element={<EditUserPlanPage /> } />
+                                                <Route path='anketa' element={<UserAnketaPage /> } />
+                                                <Route path='statistika' element={<UserStatistikaPage /> } />
+                                            </Route>
+
+                                            <Route path='planai' element={<MitybosPlanaiLayout /> }>
+                                                <Route index element={<PlanaiPage />} />
+                                                <Route path=':id' element={<ManagePlanPage />} />
+                                                <Route path='valgiai' element={<MealsPage />} />
+                                                <Route path='produktai' element={<ProductsPage />} />
+                                            </Route>
+                                            <Route path='maistas' element={<MaistasPage />} />
+                                            <Route path='receptai' element={<Receptai />} />
+                                            <Route path='videos' element={<VideosPage />} />
+                                            <Route path='mails' element={<MailsPage />} />
                                         </Route>
-                                        <Route path='maistas' element={<MaistasPage />} />
-                                        <Route path='receptai' element={<Receptai />} />
-                                        <Route path='videos' element={<VideosPage />} />
-                                        <Route path='mails' element={<MailsPage />} />
                                     </Route>
                                 </Route>
-                            </Route>
-                        </Routes>
-                    </Suspense>
-                </AuthProvider>
+                            </Routes>
+                        </Suspense>
+                    </AuthProvider>
+                </MediaQueryProvider>
             </BrowserRouter>
             {!cookies.COOKIE_CONSENT && <CookieConsent setCookie={setCookie} />}
 

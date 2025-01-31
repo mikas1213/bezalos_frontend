@@ -6,27 +6,18 @@
         ),
         url('../../../assets/images/recipes/header.jpg'); */
     height: 230px;
-    /* background-size: 100% auto; */
-    /* background-position: 50% 80%; */
-
     background-size: 115% auto;
     background-position: 20% 60%;
-
-
-
     display: flex;
     flex-direction: column;
-    /* justify-content: center; */
     align-items: center;
     border-bottom: 0.5px solid var(--grey-dark);
 }
 .searchContainer {
     position: relative;
+    display: flex;
     margin-top: 6.5rem;
-    /* background-color: #00ff0055; */
-    /* margin-bottom: auto; */
-    /* margin: 6rem 0 auto 0; */
-    /* height: 50px; */
+    /* box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; */
 }
 .searchInput {   
     width: 22rem;
@@ -38,6 +29,29 @@
     font-size: var(--font-size-p);
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
+.filterBtn {
+    display: none;
+    align-items: center;
+    border: none;
+    background-color: #fff;
+    height: 2.5rem;
+    padding-left: 0.8rem;
+    padding-right: 1rem;
+    border-top-right-radius: 50rem;
+    border-bottom-right-radius: 50rem;
+}
+
+.filterIcon {
+    width: 1.2rem;
+    height: 1.2rem;
+    stroke-width: 2px;
+    color: var(--grey-dark);
+    transition: all 2s ease-in-out;
+}
+.filterOpen .filterIcon {
+    fill: var(--grey-dark);
+}
+
 .searchInput::placeholder {
     color: var(--grey-dark);
 }
@@ -54,4 +68,40 @@
 .signatureImg {
     margin-top: 0.4rem;
     width: 7rem;
+}
+
+@media only screen and (max-width: 768px) {
+    .recipesHeader {
+        background-size: 160% auto;
+        background-position: 50% 60%;
+    }
+}
+@media only screen and (max-width: 576px) {
+    .recipesHeader {
+        height: 180px;
+    }
+    .searchContainer {
+        margin-top: 5rem;
+    }
+}
+@media only screen and (max-width: 440px) {
+    .recipesHeader {
+        background-size: 150% auto;
+        background-position: 50% 72%;
+        /* height: 150px; */
+    }
+
+    .searchContainer {
+        /* margin-top: 4rem; */
+    }
+    
+    .searchInput {   
+        width: clamp(0rem, 80vw, 22rem);
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+    }
+    .filterBtn {
+        display: flex;
+        border-left: 1px solid var(--grey-light);
+    }
 }

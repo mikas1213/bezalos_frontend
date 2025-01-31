@@ -9,12 +9,10 @@ import Paslaugos from '../components/paslaugos/paslaugos/Paslaugos';
 import Footer from '../components/UI/Footer';
 import NotFound from './PaymentPages/NotFound';
 import usePaslaugos from '../hooks/paslaugos/usePaslaugos';
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import { useSearchParams, useNavigate } from 'react-router-dom';
 
 const PaslaugosPage = () => {
-
-    const [side, setSide] = useState('naryste');
     const { paslaugos, isLoading } = usePaslaugos();
 
     useEffect(() => {
@@ -25,6 +23,7 @@ const PaslaugosPage = () => {
     const [searchParams] = useSearchParams();
     const navigate = useNavigate();
     const currentTab = searchParams.get('tab') || 'naryste';
+
     const handleTabChange = (tab) => {
         navigate(`?tab=${tab}`);
     };
@@ -36,8 +35,7 @@ const PaslaugosPage = () => {
                 <Container>
                     <PaslaugosContainer>    
                         <PaslaugosTab 
-                            side={currentTab} 
-                            setSide={setSide} 
+                            currentTab={currentTab} 
                             handleTabChange={handleTabChange} 
                         />    
 

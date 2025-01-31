@@ -1,46 +1,47 @@
 .filters {
-    margin-top: 2rem;
     display: flex;
-    flex-direction: column;
-    gap: 0.6rem;
+    margin-top: 2rem;
+    /* margin-bottom: 10.5rem; */
+    row-gap: 0.5rem;
+    column-gap: 1.5rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    overflow: hidden;
+    /* height: 0; */
+    transition: height 0.1s ease-in-out;
 }
-
 .filterGroup {
     display: flex;
-    /* gap: 1rem; */
 }
-.icon {
-    width: 1rem;
-    height: 1rem;
+.chips {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
 }
-.filterLabel {
+.chip {
+    text-wrap: nowrap;
+    cursor: pointer;
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    color: var(--color-text-grey);
     font-size: var(--font-size-p);
-    min-width: 12rem;
-}
-
-.chips {
-    display: flex;
-    gap: 0.6rem;
-}
-.chip {
-    color: var(--color-text-grey);
-    cursor: pointer;
-    border: 1px solid var(--color-text-grey);
+    font-weight: 500;
+    color: var(--grey-dark);
+    border: 1px solid var(--grey-dark);
     border-radius: 50rem;
-    padding: 0.1rem 0.6rem;
-    /* transition: background-color 0.1s ease-in-out; */
+    /* padding: 0.1rem 0.6rem; */
+    padding: 0 0.6rem;
+    height: 1.8rem;
 }
-/* .chip:hover {
-    background-color: #f5f5f5;
-} */
 .active {
     color: #fff;
-    background-color: var(--color-text-grey);
+    border: 1px solid var(--color-btn-secondary);
+    background-color: var(--color-btn-secondary);
 }
-/* .chip.active:hover {
-    background-color: #696969CC;
-} */
+
+@media only screen and (max-width: 440px) {
+    .filters {
+        margin-top: 1rem;
+    }
+}

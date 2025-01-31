@@ -74,8 +74,8 @@ const Navbar = ({ isHome = '' }) => {
                         </li>
 
                         <li className={styles.listItem}>
-                            {/* <NavLink to='/receptai'>Receptai</NavLink> */}
-                            <NavLink to='https://senas.bezalos.lt/receptai'>Receptai</NavLink>
+                            <NavLink to='/receptai'>Receptai</NavLink>
+                            {/* <NavLink to='https://senas.bezalos.lt/receptai'>Receptai</NavLink> */}
                             <div className={styles.indicator}></div>
                         </li>
 
@@ -139,15 +139,15 @@ const Navbar = ({ isHome = '' }) => {
                         
                         
                         <li className={`${styles.listItemMobile} ${page === 'receptai' ? styles.active : ''}`} 
-                            // onClick={() => navigate('/receptai')}
+                            onClick={() => navigate('/receptai')}
                         >
-                            <a href='https://senas.bezalos.lt/receptai' className={styles.listItemMobile}>
+                            {/* <a href='https://senas.bezalos.lt/receptai' className={styles.listItemMobile}> */}
                                 <ReceptaiIcon 
                                     active={page === 'receptai' ? true : false} 
                                     stroke={iconStroke}
                                 />
                                 <span>Receptai</span>
-                            </a>
+                            {/* </a> */}
                         </li>
                         
                         <li className={`${styles.listItemMobile} ${page === 'paslaugos' ? styles.active : ''}`}

@@ -2,7 +2,9 @@ import styles from './Recipes.module.css';
 
 const Recipes = () => {
     return (
-        <div className={styles.recipes}></div>
+        <div className={styles.recipes}>
+            recypes
+        </div>
     );
 };
 

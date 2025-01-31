@@ -23,7 +23,6 @@ const Naryste = () => {
                 <PlanCard  planVariant='virtuve' plan={plan.virtuve} />
             </div>
             {!user_s_subscription ? <ChooseBtn key={Math.random()} /> : <ManageSubscription />}
-            <ChooseBtn key={Math.random()} />
         </div>
     );
 };
