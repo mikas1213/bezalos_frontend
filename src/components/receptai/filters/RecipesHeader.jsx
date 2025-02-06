@@ -2,11 +2,17 @@ import styles from './RecipesHeader.module.css';
 import { Search, Filter } from 'lucide-react';
 import { getImageURL } from '../../../utils/images';
 
-const RecipesHeader = ({ isOpenFilters, setIsOpenFilters }) => {
+const RecipesHeader = ({ isOpenFilters, setIsOpenFilters, search, setSearch }) => {
     return (
         <div className={styles.recipesHeader}>
             <div className={`${styles.searchContainer} ${isOpenFilters ? styles.filterOpen : ''}`}>
-                <input type='text' className={styles.searchInput} placeholder='Paieška...' />    
+                <input 
+                    type='text' 
+                    value={search}
+                    onChange={e => setSearch(e.target.value)}
+                    className={styles.searchInput} 
+                    placeholder='Paieška...' 
+                />    
                 <button 
                     className={styles.filterBtn}
                     onClick={() => setIsOpenFilters(open => !open)}

@@ -1,0 +1,16 @@
+.infoTab {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+.recipesInfo {
+    color: var(--grey-dark);
+    font-weight: 0.7rem;
+    font-weight: 600;
+}
+.recipesCount {
+    color: var(--color-bgr-bottom);
+    font-size: 1.1rem;
+}

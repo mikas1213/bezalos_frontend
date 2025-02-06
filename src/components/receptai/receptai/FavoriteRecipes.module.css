@@ -1,0 +1,12 @@
+.favoriteRecipes {
+
+}
+
+
+.header {
+    color: var(--grey-dark);
+    font-size: var(--font-size-h6);
+    /* font-weight: 600; */
+    margin-top: 1rem;
+    margin-lefT: 0.6rem;
+}

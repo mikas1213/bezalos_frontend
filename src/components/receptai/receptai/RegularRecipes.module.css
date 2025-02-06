@@ -1,0 +1,37 @@
+.regularRecipes {
+    opacity: 0;
+    animation: fadeIn 0.1s ease-in forwards;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.6rem;
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
+@media only screen and (max-width: 768px) {
+    .regularRecipes {
+        gap: 0.6rem;
+    }
+}
+@media only screen and (max-width: 576px) {
+    .regularRecipes {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.8rem;
+    }
+}
+
+@media only screen and (max-width: 440px) {
+    .regularRecipes {
+        justify-content: center;
+        grid-template-columns: repeat(auto-fill, 20rem);
+    }
+}
+
+@media only screen and (max-width: 375px) {
+    .regularRecipes {
+        grid-template-columns: repeat(auto-fill, clamp(0rem, 85.333vw, 20rem));
+    }
+}

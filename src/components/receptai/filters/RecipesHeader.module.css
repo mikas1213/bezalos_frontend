@@ -1,10 +1,5 @@
 .recipesHeader {
     background-image: url('../../../assets/images/recipes/header.webp');
-    /* background: linear-gradient(
-        rgba(0, 0, 0, 0.1) 10%, 
-        rgba(0, 0, 0, 0.0) 50%
-        ),
-        url('../../../assets/images/recipes/header.jpg'); */
     height: 230px;
     background-size: 115% auto;
     background-position: 20% 60%;
@@ -17,7 +12,6 @@
     position: relative;
     display: flex;
     margin-top: 6.5rem;
-    /* box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; */
 }
 .searchInput {   
     width: 22rem;
@@ -27,7 +21,7 @@
     padding: 0 2rem;
     color: var(--grey-dark);
     font-size: var(--font-size-p);
-    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
 .filterBtn {
     display: none;
@@ -88,13 +82,7 @@
     .recipesHeader {
         background-size: 150% auto;
         background-position: 50% 72%;
-        /* height: 150px; */
     }
-
-    .searchContainer {
-        /* margin-top: 4rem; */
-    }
-    
     .searchInput {   
         width: clamp(0rem, 80vw, 22rem);
         border-top-right-radius: 0;

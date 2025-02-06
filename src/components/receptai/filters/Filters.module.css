@@ -1,23 +1,32 @@
 .filters {
     display: flex;
     margin-top: 2rem;
-    /* margin-bottom: 10.5rem; */
-    row-gap: 0.5rem;
-    column-gap: 1.5rem;
+    padding-bottom: 0.1rem;
+    row-gap: 0.8rem;
     justify-content: center;
     flex-wrap: wrap;
     overflow: hidden;
-    /* height: 0; */
+}
+.filterMobile {
     transition: height 0.1s ease-in-out;
 }
-.filterGroup {
+.selectedFilters {
     display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
 }
-.chips {
+.filterGroup {
     display: flex;
     justify-content: center;
     gap: 0.5rem;
     flex-wrap: wrap;
+}
+.filterGroup:not(.filterVisi) {
+    margin-right: 1.6rem;
+}
+.filterVisi {
+    margin-right: 0.5rem;
 }
 .chip {
     text-wrap: nowrap;
@@ -30,9 +39,21 @@
     color: var(--grey-dark);
     border: 1px solid var(--grey-dark);
     border-radius: 50rem;
-    /* padding: 0.1rem 0.6rem; */
     padding: 0 0.6rem;
     height: 1.8rem;
+}
+.selectedChip {
+    composes: chip;
+    padding-right: 0.3rem;
+    color: #fff;
+    border-color: var(--color-btn-secondary);;
+    background-color: var(--color-btn-secondary);
+}
+.chipIcon {
+    width: 1.3rem;
+    height: 1.3rem;
+    fill: #fff;
+    stroke: var(--color-btn-secondary);
 }
 .active {
     color: #fff;
@@ -40,6 +61,16 @@
     background-color: var(--color-btn-secondary);
 }
 
+@media only screen and (max-width: 576px) {
+    .filters {
+        row-gap: 0.5rem;
+        column-gap: 0.5rem;
+        padding-bottom: 0;
+    }
+    .filterVisi {
+        margin-right: 0;
+    }
+}
 @media only screen and (max-width: 440px) {
     .filters {
         margin-top: 1rem;

@@ -1,87 +1,67 @@
 import styles from './Filters.module.css';
 import { useState, useEffect, useRef} from 'react';
-import { Filter, Utensils, Clock, Donut} from 'lucide-react';
+import { CircleX } from 'lucide-react';
 
 const filterGroups = {
-    main: {
-        label: 'Pagrindiniai',
-        icon: <Filter className={styles.icon} />,
-        filters: ['Visi', 'Be mėsos']
-    },
-
-    meal: {
-        label: 'Valgio tipas',
-        icon: <Utensils className={styles.icon} />,
-        filters: ['Pusryčiai', 'Pietūs', 'Vakarienė', 'Užkandžiai']
-    },
-
-    meal_group: {
-        label: 'Grupė',
-        icon: <Clock className={styles.icon} />,
-        filters: ['A+B', 'B+R', 'A+R']
-    },
-
-    duration: {
-        label: 'Gaminimo trukmė',
-        icon: <Clock className={styles.icon} />,
-        filters: ['Iki 15min.', '15-30min.', '30-60min.', 'Virš 60min.']
-    },
-
-    taste: {
-        label: 'Pagal skonį',
-        icon: <Donut className={styles.icon} />,
-        filters: ['Saldu', 'Sūru', 'Aštru']
-    }
+    is_vegetarian: ['Be mėsos'],
+    recipe_type: ['Pusryčiai', 'Pietūs', 'Vakarienė', 'Užkandžiai'],
+    logic: ['A+B', 'B+R', 'A+R'],
+    duration: ['Iki 15min.', '15-30min.', '30-60min.', 'Virš 60min.'],
+    taste: ['Saldu', 'Sūru', 'Aštru']
 };
 
-const Filters = ({ isOpenFilters }) => {
-    
+const hasProperties = obj => Object.values(obj).some(val => val !== '');
+const Filters = ({ isOpenFilters, mediaQuery, filters, setFilters }) => {
+
     const [filtersHeight, setFilterHeight] = useState(0);
     const filtersRef = useRef(null);
-    
     useEffect(() => {
-        if (filtersRef.current) setFilterHeight(filtersRef.current.scrollHeight);
+        const updateFilterHeight = () => {
+            if (filtersRef.current) setFilterHeight(filtersRef.current.scrollHeight);
+        }
+        updateFilterHeight();
+        window.addEventListener('resize', updateFilterHeight);
+        return () => {
+            window.removeEventListener('resize', updateFilterHeight);
+        };
     }, []);
-        
-    const renderFilterGroup = (key, group) => (
-         <div key={group.label} className={styles.filterGroup}>
-            <div className={styles.chips}>
-                {group.filters.map(filter => <span key={filter}
-                    className={`${styles.chip} ${filters[key] === filter ? styles.active : ''}`}
-                    onClick={() => toggleFilter(key, filter)}
-                >{filter}</span>)}
-            </div>
-        </div>
-    );
 
-    const [filters, setFilters] = useState({ main: 'Visi' });
-    const isAllFalse = (filters) => (filters.main !== 'Be mėsos' && !filters.meal && !filters.duration && !filters.taste && !filters.meal_group)
+    const isAllEmpty = filters => (!filters.is_vegetarian && !filters.recipe_type && !filters.logic && !filters.duration && !filters.taste)
     
-    const toggleFilter = (label, value) => {
-        setFilters(prev => {
-            let newFilters = { 
-                ...prev, 
-                [label]: prev[label] === value ? '' : value
-            }
-
-            if(value === 'Visi') {
-                newFilters = { main: 'Visi' };
-            } else if(label !== 'main' && newFilters.main !== 'Be mėsos') {
-                newFilters.main = ''
-            }
-
-            if(isAllFalse(newFilters)) newFilters = { main: 'Visi' };
-            return newFilters;
-        })
+    const renderFilterGroup = (key, group) => {
+        return <div className={styles.filterGroup} key={key}>
+            {group.map(filter => <span key={filter}
+                className={`${styles.chip} ${filters[key] === filter ? styles.active : ''}`}
+                onClick={() => setFilters(prevState => ({ ...prevState, [key]: prevState[key] !== filter ? filter : ''}))}
+            >{filter}</span>)}
+        </div>;
     };
 
     return (
-        <div ref={filtersRef}
-            style={{height: isOpenFilters ? `${filtersHeight}px` : 0}}
-            className={`${styles.filters} ${isOpenFilters ? styles.filterOpen : ''}`}
-        >        
-            {Object.keys(filterGroups).map(key => renderFilterGroup(key, filterGroups[key]))}
-        </div>
+        <>  
+            <div ref={filtersRef}
+                style={{height: isOpenFilters || mediaQuery > 440 ? `${filtersHeight}px` : 0}}
+                className={`${styles.filters} ${mediaQuery < 441 ? styles.filterMobile : ''}`}
+            >        
+
+                <div className={`${styles.filterGroup} ${styles.filterVisi}`}>
+                    <span className={`${styles.chip} ${isAllEmpty(filters) ? styles.active : ''}`}
+                    onClick={() => setFilters({})}
+                    >Visi</span>
+                </div>
+
+                {Object.keys(filterGroups).map(key => renderFilterGroup(key, filterGroups[key]))}
+            </div>
+
+            {hasProperties(filters) && !isOpenFilters && mediaQuery < 441 && <div className={styles.selectedFilters}>
+                {Object.entries(filters).map(([key, val]) => val !== '' && <span
+                    key={val}
+                    onClick={() => setFilters(prev => ({...prev, [key]: ''}))}
+                    className={styles.selectedChip}>
+                    {val}<CircleX className={styles.chipIcon} />
+                </span>)}
+            </div>}
+        </>
     );
 };
 

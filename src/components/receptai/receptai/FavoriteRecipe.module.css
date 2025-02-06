@@ -1,0 +1,20 @@
+.favoriteRecipe {
+    display: flex;
+    /* gap: 0.5rem; */
+    border-bottom: 0.5px solid var(--grey-light);
+}
+.imageContainer {
+    width: 3.2rem;
+    height: 3.2rem;
+    border-radius: 5rem;
+    overflow: hidden;
+}
+
+.imageContainer img {
+    width: 130%;
+    
+    object-fit: cover;
+    object-position: 20% 50%;
+    aspect-ratio: 1 / 1;
+    
+}

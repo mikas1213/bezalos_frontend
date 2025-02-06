@@ -1,0 +1,15 @@
+.carouselContainer {
+    width: 100%;
+    max-width: var(--content-width);
+    margin: 0 auto;
+    overflow: hidden;
+}
+  
+.carouselTrack {
+    display: flex;
+}
+  
+.carouselItem {
+    flex-shrink: 0;
+    padding: 0.5rem;
+}
