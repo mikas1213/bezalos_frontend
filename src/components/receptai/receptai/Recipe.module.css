@@ -5,6 +5,7 @@
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 .imageContainer {
+    /* cursor: pointer; */
     margin: 0.8rem  0.8rem 0;
 }
 .image {
@@ -20,6 +21,9 @@
     color: var(--color-bgr-bottom);   
     text-align: center;
     padding: clamp(0rem, 1.875vw, 1.2rem);
+}
+.anchor {
+    justify-content: center;
 }
 
 .details {

@@ -1,16 +1,18 @@
-import useAxiosPrivate from "../hooks/useAxiosPrivate";
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import Navbar from '../components/navbar/Navbar';
-import Main from '../components/UI/Main';
-import Container from '../components/virtuve_video_page/Container';
-import Filters from '../components/virtuve_video_page/Filters';
-import Video from '../components/virtuve_video_page/Video';
-import List from '../components/virtuve_video_page/List';
-import NotFoundVideo from '../components/virtuve/NotFoundVideo';
-import { jwtDecode } from "jwt-decode";
-import useAuth  from '../hooks/useAuth';
+import { jwtDecode } from 'jwt-decode';
 import toast from 'react-hot-toast';
+
+import useAxiosPrivate from '../../hooks/useAxiosPrivate';
+import useAuth  from '../../hooks/useAuth';
+
+import Navbar from '../../components/navbar/Navbar';
+import Main from '../../components/UI/Main';
+import Container from '../../components/virtuve_video_page/Container';
+import Filters from '../../components/virtuve_video_page/Filters';
+import Video from '../../components/virtuve_video_page/Video';
+import List from '../../components/virtuve_video_page/List';
+import NotFoundVideo from '../../components/virtuve/NotFoundVideo';
 
 const VirtuveVideoPage = () => {
     const navigate = useNavigate();
@@ -69,7 +71,7 @@ const VirtuveVideoPage = () => {
             }
         }
         getData();
-    }, []);
+    }, [axiosPrivate]);
 
     useEffect(() => {
         if(document.getElementsByTagName('main')[0] !== undefined) {
@@ -80,10 +82,7 @@ const VirtuveVideoPage = () => {
                 const video = await axiosPrivate.get(`/videos/${params.video}`);
                 
                 document.title = `Be Žalos | ${video.data.video.title}`;
-                setVideo({...video.data.video, url: video.data.url, 
-                    // is_liked: video.data.is_liked, 
-                    // likes_count: video.data.likes_count
-                });
+                setVideo({...video.data.video, url: video.data.url});
                 setIsLike(video.data.is_liked);
                 setLikesCount(video.data.likes_count);
                 setComments(() => {
@@ -106,7 +105,7 @@ const VirtuveVideoPage = () => {
             <Navbar />
             <Main>
                 {!isError ? <Container>
-                        {!isError && <Filters handleClick={handleFilter} filter={filter}/>}
+                        {!isError && <Filters handleClick={handleFilter} filter={filter} />}
                         {!isLoadingVideo && !isError && <Video 
                             key={video.url} 
                             video={video} 

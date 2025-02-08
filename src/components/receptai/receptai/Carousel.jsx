@@ -1,7 +1,7 @@
 import styles from './Carousel.module.css';
 import { useState, useEffect, useRef } from 'react';
 import { motion, useAnimation } from 'framer-motion';
-import FavRecipe from './FavRecipe_v5';
+import FavRecipe from './FavRecipe';
 
 const Carousel = ({ favoriteRecipes, visibleItems, rotationInterval = 3000, pauseDuration = 1000 }) => {
 

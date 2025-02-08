@@ -19,11 +19,12 @@ import PersistLogin from './pages/PersistLogin';
 import { Helmet } from 'react-helmet';
 
 const HomePage = lazy(() => import('./pages/HomePage'));
-const VirtuvePage = lazy(() => import('./pages/VirtuvePage'));
-const VirtuveVideoPage = lazy(() => import('./pages/VirtuveVideoPage'));
-const ReceptaiPage = lazy(() => import('./pages/ReceptaiPage'));
-const PaslaugosPage = lazy(() => import('./pages/PaslaugosPage'));
-import PaslaugaPage from './pages/PaslaugaPage';
+const VirtuvePage = lazy(() => import('./pages/virtuvePages/VirtuvePage'));
+import VirtuveVideoPage from './pages/virtuvePages/VirtuveVideoPage';
+const RecipesPage = lazy(() => import('./pages/recipesPages/RecipesPage'));
+import RecipePage from './pages/recipesPages/RecipePage';
+const PaslaugosPage = lazy(() => import('./pages/paslaugosPages/PaslaugosPage'));
+import PaslaugaPage from './pages/paslaugosPages/PaslaugaPage';
 import ProfilisPageLayout from'./pages/profilisPages/ProfilisPageLayout';
 import UserPlansPage from './pages/profilisPages/UserPlansPage';
 import AnketaPage from './pages/profilisPages/AnketaPage';
@@ -33,17 +34,14 @@ import KalorijosPage from './pages/profilisPages/KalorijosPage';
 import StatistikaPage from './pages/profilisPages/StatistikaPage';
 import NustatymaiPage from './pages/profilisPages/NustatymaiPage';
 import UpdatePasswordPage from './pages/UpdatePasswordPage';
-import NotFoundPage from './pages/NotFoundPages/NotFoundPage';
-import NeedSubscription from './pages/PaymentPages/NeedSubscription';
-import SuccessSubscription from'./pages/PaymentPages/SuccessSubscription';
-import SuccessBuyService from './pages/PaymentPages/SuccessBuyService';
-import CancelSubscription from './pages/PaymentPages/CancelSubscription';
+import NotFoundPage from './pages/notFoundPages/NotFoundPage';
+import NeedSubscription from './pages/paymentPages/NeedSubscription';
+import SuccessSubscription from'./pages/paymentPages/SuccessSubscription';
+import SuccessBuyService from './pages/paymentPages/SuccessBuyService';
+import CancelSubscription from './pages/paymentPages/CancelSubscription';
 import PirkimoTaisyklesPage from './pages/PirkimoTaisyklesPage';
 import PrivatumoPolitikaPage from './pages/PrivatumoPolitikaPage';
 import AdminLayout from './components/admin/layout/AdminLayout';
-
-// const AdminLayout = lazy(() => import('./components/admin/layout/AdminLayout'));
-
 import UsersPage from './pages/admin/users/UsersPage';
 import UserPageLayout from './pages/admin/users/UserPageLayout';
 import EditUserPlanPage from './pages/admin/users/EditUserPlanPage';
@@ -76,7 +74,7 @@ function App() {
             
             <ReactQueryDevtools initialIsOpen={false}/>
             <Helmet> 
-                <script type="application/ld+json"> 
+                <script type='application/ld+json'> 
                     {`{ "@context": "https://schema.org", "@type": "Organization", "name": "Be Žalos", "url": "https://www.bezalos.lt", "logo": "https://www.bezalos.lt/src/assets/icons/png/logo/icon_180x180.png", "sameAs": [ "https://www.facebook.com/sandra.jatulyte", "https://www.instagram.com/valgau_be_zalos" ], "contactPoint": { "@type": "ContactPoint", "contactType": "Customer Service", "email": "sandra@bezalos.lt"}}`} 
                 </script> 
             </Helmet>
@@ -88,7 +86,8 @@ function App() {
                                 <Route element={<PersistLogin /> }>
                                     <Route path='/' element={<HomePage />} />
                                     <Route path='/virtuve' element={<VirtuvePage />} />
-                                    <Route path='/receptai' element={<ReceptaiPage />} />
+                                    <Route path='/receptai' element={<RecipesPage />} />
+                                    <Route path='/receptai/:slug' element={<RecipePage />} />
                                     <Route element={<PaymentProvider /> }>
                                         <Route path='/paslaugos' element={<PaslaugosPage />} />
                                         <Route path='/paslaugos/:slug' element={<PaslaugaPage />} />

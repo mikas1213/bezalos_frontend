@@ -1,16 +1,17 @@
-import Main from '../components/UI/Main';
-import Navbar from '../components/navbar/Navbar';
-import Container from '../components/UI/Container';
-import PaslaugosContainer from '../components/paslaugos/PaslaugosContainer';
-import PaslaugosTab from '../components/paslaugos/PaslaugosTab';
-import PaslaugosHeader from '../components/paslaugos/PaslaugosHeader';
-import Naryste from '../components/paslaugos/naryste/Naryste';
-import Paslaugos from '../components/paslaugos/paslaugos/Paslaugos';
-import Footer from '../components/UI/Footer';
-import NotFound from './PaymentPages/NotFound';
-import usePaslaugos from '../hooks/paslaugos/usePaslaugos';
 import { useEffect } from 'react';
 import { useSearchParams, useNavigate } from 'react-router-dom';
+
+import Main from '../../components/UI/Main';
+import Navbar from '../../components/navbar/Navbar';
+import Container from '../../components/UI/Container';
+import PaslaugosContainer from '../../components/paslaugos/PaslaugosContainer';
+import PaslaugosTab from '../../components/paslaugos/PaslaugosTab';
+import PaslaugosHeader from '../../components/paslaugos/PaslaugosHeader';
+import Naryste from '../../components/paslaugos/naryste/Naryste';
+import Paslaugos from '../../components/paslaugos/paslaugos/Paslaugos';
+import Footer from '../../components/UI/Footer';
+import usePaslaugos from '../../hooks/paslaugos/usePaslaugos';
+import NotFound from '../paymentPages/NotFound';
 
 const PaslaugosPage = () => {
     const { paslaugos, isLoading } = usePaslaugos();

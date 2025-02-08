@@ -1,0 +1,19 @@
+.layout {
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+@media only screen and (max-width: 768px) {
+    .layout {
+        grid-template-columns: 0.7fr 1.3fr;
+    }
+}
+
+@media only screen and (max-width: 576px) {
+    .layout {
+        gap: 1rem;
+    }
+}
+

@@ -1,18 +1,19 @@
-// import InformationSoon from '../components/information_soon/InformationSoon';
 import { useState } from 'react';
-import Navbar from '../components/navbar/Navbar';
-import Main from '../components/UI/Main';
-import Container from '../components/UI/Container';
-import RecipesHeader from '../components/receptai/filters/RecipesHeader';
-import Filters from '../components/receptai/filters/Filters';
-import InfoTab from '../components/receptai/InfoTab';
-import RegularRecipes from '../components/receptai/receptai/RegularRecipes';
-import FavoriteRecipes from '../components/receptai/receptai/FavoriteRecipes';
-import Pagination from '../components/UI/Pagination';
-import useMediaQuery from '../hooks/useMediaQuery';
-import { useRecipes } from '../hooks/recipes/useRecipes';
 
-const ReceptaiPage = () => {
+// import InformationSoon from '../../components/information_soon/InformationSoon';
+import Navbar from '../../components/navbar/Navbar';
+import Main from '../../components/UI/Main';
+import Container from '../../components/UI/Container';
+import RecipesHeader from '../../components/receptai/filters/RecipesHeader';
+import Filters from '../../components/receptai/filters/Filters';
+import InfoTab from '../../components/receptai/InfoTab';
+import Recipes from '../../components/receptai/receptai/Recipes';
+import FavoriteRecipes from '../../components/receptai/receptai/FavoriteRecipes';
+import Pagination from '../../components/UI/Pagination';
+import useMediaQuery from '../../hooks/useMediaQuery';
+import { useRecipes } from '../../hooks/recipes/useRecipes';
+
+const RecipesPage = () => {
     const mediaQuery = useMediaQuery();
     const [isOpenFilters, setIsOpenFilters] = useState(false);
 
@@ -48,7 +49,7 @@ const ReceptaiPage = () => {
                     {!isLoading && <>
                         <InfoTab recipesCount={totalRows} />
 
-                        <RegularRecipes recipes={recipes} />
+                        <Recipes recipes={recipes} />
                         
                         {totalPages > 0 && <Pagination 
                             setCurrentPage={setCurrentPage} 
@@ -64,4 +65,4 @@ const ReceptaiPage = () => {
     );
 };
 
-export default ReceptaiPage;
+export default RecipesPage;

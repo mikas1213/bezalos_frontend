@@ -15,7 +15,6 @@
 .numbers div {
     display: flex;
     flex-direction: column;
-    /* font-size: 10rem; */
     color: var(--color-text-dark);
     flex-grow: 0;
 }

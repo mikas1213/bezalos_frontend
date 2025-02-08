@@ -1,0 +1,127 @@
+.favRecipe .anchor {
+    display: flex;
+    background-size: cover;
+    background-position: 50% 20%;
+    border-radius: 1rem;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.imageContainer {
+    padding: 0.6rem clamp(0rem, 0.781vw, 0.5rem) 0.6rem 0.6rem;
+    flex-shrink: 0;
+}
+.image {
+    width: 100%;
+    height: clamp(4rem, 7.031vw, 4.5rem);
+    object-fit: cover;
+    aspect-ratio: 1 / 1;
+    border-radius: 0.5rem;
+}
+.details {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    padding: 0.5rem clamp(0rem, 1.563vw, 1rem) 0.5rem clamp(0rem, 0.781vw, 0.5rem);
+}
+
+.title {
+    font-size: var(--font-size-dynamic-p-lg);
+    color: var(--color-bgr-bottom);
+    font-weight: 600;
+    flex: 1;
+}
+.bottom {
+    display: flex;
+    justify-content: space-between;
+}
+.item {
+    display: flex;
+    align-items: center;
+    gap: clamp(0rem, 0.625vw, 0.4rem);
+    color: var(--grey-dark);
+    font-size: var(--font-size-dynamic-p-lg);
+    font-weight: 600;
+}
+
+.item small {
+    margin-left: 0.1rem;
+}
+.iconClock, .iconHeart {
+    display: inline-flex;
+    align-items: center;
+    width: clamp(0rem, 1.875vw, 1.2rem);
+    height: clamp(0rem, 1.875vw, 1.2rem);
+    stroke-width: 2.5px;
+}
+.iconHeart { fill: var(--grey-dark); }
+
+@media only screen and (max-width: 768px) {
+    .title {
+        font-size: var(--font-size-dynamic-h6-lg);
+        line-height: 140%;
+    }
+    .item {
+        font-size: var(--font-size-dynamic-h6-lg);
+    }
+    .iconClock, .iconHeart {
+        width: clamp(0rem, 2.5vw, 1.0rem);
+        height: clamp(0rem, 2.5vw, 1.0rem);
+    }
+    .image {
+        height: clamp(3.5rem, 8.125vw, 3.9rem);
+    }
+}
+
+@media only screen and (max-width: 576px) {
+    .title {
+        font-size: var(--font-size-dynamic-p-sm);
+        line-height: 140%;
+    }
+
+    .image {
+        height: 4rem
+    }
+}
+
+@media only screen and (max-width: 440px) {
+    .title {
+        font-size: var(--font-size-dynamic-p-sm);
+        line-height: 140%;
+    }
+
+    .imageContainer {
+        padding: 0.5rem;
+        flex-shrink: 0;
+    }
+
+    .image {
+        height: 3.5rem;
+    }
+}
+
+@media only screen and (max-width: 375px) {
+    .details {
+        padding: 0.5rem 1rem 0.5rem 0.1rem;
+    }
+    .title {
+        font-size: var(--font-size-dynamic-h5-sm);
+        line-height: 150%;
+    }
+    .image {
+        height: 4rem;
+    }
+
+    .item {
+        font-size: var(--font-size-dynamic-h6-sm);
+    }
+    .iconClock, .iconHeart {
+        width: clamp(0rem, 4.267vw, 1rem);
+        height: clamp(0rem, 4.267vw, 1rem);
+    }
+}
+
+@media only screen and (max-width: 320px) {
+    .image {
+        height: 3.6rem;
+    }
+}

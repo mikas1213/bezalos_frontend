@@ -1,20 +1,25 @@
-import styles from './RegularRecipe.module.css';
-import { getImageURL } from '../../../utils/images';
+import styles from './Recipe.module.css';
 import { Clock, Heart } from 'lucide-react';
+import { getImageURL } from '../../../utils/images';
+import { Link } from 'react-router-dom';
 
-const RegularRecipe = ({ recipe }) => {
+const Recipe = ({ recipe }) => {
     const rnr = Math.floor(Math.random() * 4) + 1;
     return (
         <div className={styles.recipe}>
             <div className={styles.imageContainer}>
-                <img 
-                    className={styles.image}
-                    src={getImageURL(`recipes/image_${rnr}.png`)} 
-                    alt={`image_${recipe.recipe}`} 
-                />
+                <Link to={`/receptai/${recipe.slug}`}>
+                    <img 
+                        className={styles.image}
+                        src={getImageURL(`recipes/image_${rnr}.png`)} 
+                        alt={`image_${recipe.recipe}`} 
+                    />
+                </Link>
             </div>
             
-            <div className={styles.title}>{recipe.recipe}</div>
+            <div className={styles.title}>
+                <Link to={`/receptai/${recipe.slug}`} className={styles.anchor}>{recipe.recipe}</Link>
+            </div>
 
             <div className={styles.details}>
                 <span className={styles.item}>
@@ -31,4 +36,4 @@ const RegularRecipe = ({ recipe }) => {
     );
 };
 
-export default RegularRecipe;
+export default Recipe;
