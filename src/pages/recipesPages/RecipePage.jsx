@@ -1,4 +1,6 @@
 // import { useState } from 'react';
+import { useParams } from 'react-router-dom';
+import { useRecipe } from '../../hooks/recipes/useRecipe';
 import Navbar from '../../components/navbar/Navbar';
 import Main from '../../components/UI/Main';
 import Container from '../../components/UI/Container';
@@ -6,20 +8,21 @@ import Layout from '../../components/receptai/receptas/Layout';
 import Image from '../../components/receptai/receptas/Image';
 import Details from '../../components/receptai/receptas/Details';
 
+
 const RecipePage = () => {
+    const { slug } = useParams();
+    const {isLoading, recipe} = useRecipe(slug);
+    document.title = `Be žalos | ${!isLoading && recipe?.recipe ? recipe.recipe : '404'}`;
     
-    // console.log(location)
-    // document.body.style.backgroundColor = 'var(--color-bgr-light)';
-        // background-color: var(--color-bgr-light);
     return (
         <>
             <Navbar />
             <Main>
                 <Container>
-                    <Layout>
+                    {!isLoading && <Layout>
                         <Image />
-                        <Details />
-                    </Layout>
+                        <Details recipe={recipe} />
+                    </Layout>}
                 </Container>
             </Main>
         </>

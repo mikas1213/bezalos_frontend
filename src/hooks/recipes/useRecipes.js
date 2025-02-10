@@ -18,29 +18,6 @@ export const useRecipes = (filters) => {
         limit: recipesPerPage
     }).toString();
 
-    // useEffect(() => {
-    //     document.body.style.backgroundColor = '#fff';
-    //     document.title = 'Be žalos | Receptai';
-
-    //     const timeoutId = setTimeout(async () => {
-    //         try {
-    //             const {data: {rows, total_rows, total_pages, current_page}} = await axios.get(`/recipes?${query}`);
-                
-    //             setCurrentPage(current_page);
-    //             setTotalPages(total_pages);
-    //             setTotalRows(total_rows);
-    //             setRecipes(rows);
-    //             setIsLoading(false);
-    //         } catch (err) {
-                
-    //             toast.error(err.response.data.message);
-    //         } finally {
-    //             setIsLoading(false);
-    //         }
-    //     }, 500);
-    //     return () => clearTimeout(timeoutId);
-    // }, [query]);
-
     useEffect(() => {
         document.body.style.backgroundColor = '#fff';
         document.title = 'Be žalos | Receptai';
@@ -63,7 +40,7 @@ export const useRecipes = (filters) => {
 
         if (isFirstRender.current) {
             fetchData();
-            isFirstRender.current = false; // Set flag to false after first render
+            isFirstRender.current = false;
         } else {
             const timeoutId = setTimeout(fetchData, 500);
             return () => clearTimeout(timeoutId);

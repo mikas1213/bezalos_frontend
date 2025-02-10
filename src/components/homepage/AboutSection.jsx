@@ -11,7 +11,7 @@ const AboutSection = () => {
             <MainContainer customClass={styles.aboutContainer}>
                 <div className={styles.aboutLeft}>
                     <div className={styles.aboutTitle}>
-                        Labas, su tavim sveikinuosi aš, Sandra, iš projekto Valgau Be Žalos
+                        Labas, su tavim sveikinuosi aš, Sandra, iš projekto Valgau Be žalos
                     </div>
                     <div className={styles.aboutText}>
                         Čia stiprų apkabinimą ras tos, kurios pavargo nuo nuolatinio savęs alinimo vis nauja dieta, ataugančio su kaupu svorio ar kitų savęs ribojimų. Šioje bendruomenėje išmoksi sveikatai palankios mitybos pagrindų, kurie be ribojimo leis tau atkurti sveiką santykį su maistu.
@@ -20,7 +20,7 @@ const AboutSection = () => {
                     <div className={styles.aboutText}>
                         Taip pat padėsiu tau geriau pažinti save, savo mintis, emocijas ir kūno pojūčius, kurie tave atveda į apsivalgymus ar kitus iššūkius. Kartu galime įveikti visus, su valgymu susijusius sunkumus 💚
                     </div>
-                    <img className={styles.signature} src={SignatureImg} alt="Su Meile Be Žalos" />
+                    <img className={styles.signature} src={SignatureImg} alt="Su Meile Be žalos" />
                 </div>
                 <div className={styles.aboutRight}>
                     <img src={AuthorImg} alt="Author" />

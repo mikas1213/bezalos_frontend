@@ -4,3 +4,9 @@
     aspect-ratio: 2.8 / 4;
     border-radius: 0.5rem;
 }
+
+@media only screen and (max-width: 576px) {
+    .image {
+        display: none;
+    }
+}

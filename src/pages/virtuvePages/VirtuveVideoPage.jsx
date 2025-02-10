@@ -81,7 +81,7 @@ const VirtuveVideoPage = () => {
             try {
                 const video = await axiosPrivate.get(`/videos/${params.video}`);
                 
-                document.title = `Be Žalos | ${video.data.video.title}`;
+                document.title = `Be žalos | ${video.data.video.title}`;
                 setVideo({...video.data.video, url: video.data.url});
                 setIsLike(video.data.is_liked);
                 setLikesCount(video.data.likes_count);
