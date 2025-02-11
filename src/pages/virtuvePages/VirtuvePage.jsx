@@ -1,6 +1,4 @@
 import { useEffect } from 'react';
-import { jwtDecode } from 'jwt-decode';
-
 import useAuth  from '../../hooks/useAuth';
 import Main from '../../components/UI/Main';
 import Navbar from '../../components/navbar/Navbar';
@@ -12,20 +10,16 @@ const VirtuvePage = () => {
         document.title = 'Be žalos | Virtuvė';
     }, []);
     
-    const { auth }  = useAuth();
-    let loggedUser = {};
-    if(auth.accessToken) loggedUser = jwtDecode(auth?.accessToken);
-    const { user_id = '', u_status, s_status} = loggedUser;
-
+    const { loggedUser }  = useAuth();
+    const user_id = loggedUser?.user_id || null;
+    const u_status = loggedUser?.u_status || null;
+    const s_status = loggedUser?.s_status || null;
+    
     return (
         <>
             <Navbar />
             <Main>
-                <Videos 
-                    user_id={user_id} 
-                    u_status={u_status}
-                    s_status={s_status} 
-                />
+                <Videos user_id={user_id} u_status={u_status} s_status={s_status} />
             </Main>
         </>
     );

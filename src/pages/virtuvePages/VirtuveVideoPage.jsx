@@ -46,17 +46,19 @@ const VirtuveVideoPage = () => {
                 setComments(prevPrev => prevPrev.filter(v => v.id !== id));
             }, 400);
         } catch (err) {
-            toast.error('Kažkas negerai');
+            
+            toast.error(err.response.data.message || 'Serverio klaida');
         }
     };
 
-    const onToggleLikes = async (video_id, user_id) => {
+    const onToggleLikes = async (user_id, video_id) => {
+        
         try {
-            const like = await axiosPrivate.post(`/videos/like/${video_id}/${user_id}`); 
+            const like = await axiosPrivate.post(`/videos/like/${user_id}/${video_id}`); 
             setIsLike(like.data.isLiked);
             setLikesCount(like.data.likesCount);
         } catch (err) {
-            toast.error('Kažkas negerai');
+            toast.error(err?.response?.data?.message || 'Serverio klaida');
         }
     };
     

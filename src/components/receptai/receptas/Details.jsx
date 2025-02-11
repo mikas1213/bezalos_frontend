@@ -7,6 +7,7 @@ import { getImageURL } from '../../../utils/images';
 
 const Details = ({ recipe }) => {
     const [bumbulis, setBumbulis] = useState(0);
+    console.log(bumbulis)
     return (
         <div className={styles.details}>
             <div className={styles.title}>{recipe.recipe}</div>
@@ -19,7 +20,6 @@ const Details = ({ recipe }) => {
                         <small>min.</small>
                     </span>
                 </div>
-
 
                 <div className={styles.slider}>
                     <div className={styles.number}><BiBowlRice className={styles.iconMeal}/></div>
@@ -34,7 +34,7 @@ const Details = ({ recipe }) => {
             </div>
 
             <div className={styles.image}>
-                <img src={getImageURL(`recipes/image_4.png`)} alt='Receptas' />
+                <img src={getImageURL(`recipes/${recipe.slug}.png`)} alt='Receptas' />
             </div>
 
             <div className={styles.products}>
@@ -43,8 +43,8 @@ const Details = ({ recipe }) => {
                         <span>{prod.title}</span>
                         <div className={styles.grams}>
                             <span>
-                                {prod.grams}
-                                <small> g</small>
+                                {prod.grams * (bumbulis + 1)}
+                                <small>g</small>
                             </span>
                         </div>
                     </div>
@@ -55,28 +55,28 @@ const Details = ({ recipe }) => {
                 <div className={`${styles.barItem} ${styles.b}`}>
                     <span>B</span>
                     <span>
-                        {recipe.b}
+                        {recipe.b * (bumbulis + 1)}
                         <small>g</small>
                     </span>
                 </div>
                 <div className={`${styles.barItem} ${styles.a}`}>
                     <span>A</span>
                     <span>
-                        {recipe.a}
+                        {recipe.a * (bumbulis + 1)}
                         <small>g</small>
                     </span>
                 </div>
                 <div className={`${styles.barItem} ${styles.r}`}>
                     <span>R</span>
                     <span>
-                        {recipe.r}
+                        {recipe.r * (bumbulis + 1)}
                         <small>g</small>
                     </span>
                 </div>
                 <div className={`${styles.barItem} ${styles.kcal}`}>
                     <span><Flame className={styles.iconFlame} /></span>
                     <span>
-                        {recipe.kcal}
+                        {recipe.kcal * (bumbulis + 1)}
                         <small>kcal</small>
                     </span>
                 </div>

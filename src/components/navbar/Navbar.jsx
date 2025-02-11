@@ -8,7 +8,6 @@ import { Logo } from './Logo';
 import Modal from '../UI/Modal';
 import Authentication from '../auth/Authentication';
 import useAuth from '../../hooks/useAuth';
-import { jwtDecode } from 'jwt-decode';
 import useLogout from '../../hooks/useLogout';
 
         
@@ -39,12 +38,10 @@ const Navbar = ({ isHome = '' }) => {
     if (isHome === 'recipes' && isScroll) navBarStyle = styles.navRecipesAndScroll;
     if (!isHome && !isScroll) navBarStyle = styles.navNotHomeNotScroll;
     if (!isHome && isScroll) navBarStyle = styles.navNotHomeAndScroll;
-
-
-    const { auth, isOpenModal, setIsOpenModal } = useAuth();
-    let loggedUser = {};
-    if (auth.accessToken) loggedUser = jwtDecode(auth?.accessToken);
-    const { user_role } = loggedUser;
+    
+    const { loggedUser, isOpenModal, setIsOpenModal } = useAuth();
+    const user_id = loggedUser?.user_id || null;
+    const user_role = loggedUser?.user_role || null;
     
     const iconStroke = 1.5;    
     return (
@@ -84,7 +81,7 @@ const Navbar = ({ isHome = '' }) => {
                             <div className={styles.indicator}></div>
                         </li>
 
-                        {auth?.accessToken && <li className={styles.listItem}>
+                        {user_id && <li className={styles.listItem}>
                             <NavLink to='/profilis'>Profilis</NavLink>
                             <div className={styles.indicator}></div>
                         </li>}
@@ -95,7 +92,7 @@ const Navbar = ({ isHome = '' }) => {
                         </li>}
                         
                         <li>
-                            {!auth.accessToken ? <button
+                            {!user_id ? <button
                                 onClick={() => setIsOpenModal(true)}
                                 className={styles.loginBtn}>
                                 Prisijungti
@@ -160,7 +157,7 @@ const Navbar = ({ isHome = '' }) => {
                         </li>
                         
 
-                        {auth?.accessToken && <li className={`${styles.listItemMobile} ${page === 'profilis' ? styles.active : ''}`}
+                        {user_id && <li className={`${styles.listItemMobile} ${page === 'profilis' ? styles.active : ''}`}
                             onClick={() => navigate('/profilis')}>
                             <ProfilisIcon 
                                 active={page === 'profilis'? true : false} 
@@ -170,7 +167,7 @@ const Navbar = ({ isHome = '' }) => {
                         </li>}
                         
                             
-                        {!auth.accessToken ? <li 
+                        {!user_id ? <li 
                             className={`${styles.listItemMobile} ${styles.signout}`}
                             onClick={() => setIsOpenModal(true)}>
                             <PrisijungtiIcon stroke={iconStroke} />

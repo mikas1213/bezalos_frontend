@@ -12,7 +12,6 @@ const Carousel = ({ favoriteRecipes, visibleItems, rotationInterval = 3000, paus
     
     
     useEffect(() => {
-        // setItems(Array.from({ length: itemCount * 1 }, (_, i) => i % itemCount));
         setItems([...favoriteRecipes]);
     }, [favoriteRecipes, itemCount]);
 
@@ -34,15 +33,18 @@ const Carousel = ({ favoriteRecipes, visibleItems, rotationInterval = 3000, paus
                     newItems.shift();
                     return newItems;
                 });
-
-                // Reset position
-                controls.set({ x: 0 });
             }
         };
 
         const timer = setInterval(moveItems, rotationInterval);
         return () => clearInterval(timer);
     }, [visibleItems, rotationInterval, pauseDuration, controls]);
+
+    useEffect(() => {
+        if (items.length > 0) {
+            controls.set({ x: 0 });
+        }
+    }, [items, controls]);
 
     return (
         <div className={styles.carouselContainer} ref={containerRef}>

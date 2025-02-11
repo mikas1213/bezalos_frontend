@@ -7,14 +7,13 @@ const RequireAuth = ({ allowedRoles }) => {
     const { auth } = useAuth();
     const location = useLocation();
     
-    let loggedUser = {};
-    if(auth.accessToken) loggedUser = jwtDecode(auth?.accessToken);
-
+    const loggedUser = auth.accessToken ? jwtDecode(auth?.accessToken) : {};
+    
     return (
         allowedRoles?.includes(loggedUser.user_role)
             ? <Outlet />
             : auth?.accessToken 
-                ?  <Navigate to='/puslapis-nerastas' state={{from: location}} replace /> 
+                ? <Navigate to='/puslapis-nerastas' state={{from: location}} replace /> 
                 : <Navigate to='/prisijungti' state={{from: location}} replace />
     );
 };

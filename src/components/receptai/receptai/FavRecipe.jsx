@@ -4,13 +4,12 @@ import { Clock, Heart } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const FavRecipe = ({ recipe }) => {
-    var r_num = Math.floor(Math.random() * (4 - 1 + 1)) + 1;    
     
     return (
         <div className={styles.favRecipe}>
             <Link to={`/receptai/${recipe.slug}`} className={styles.anchor}>
                 <div className={styles.imageContainer}>
-                    <img src={getImageURL(`recipes/image_${r_num}.png`)} alt={recipe.recipe} className={styles.image} />
+                    <img src={getImageURL(`recipes/${recipe.slug}.png`)} alt={recipe.recipe} className={styles.image} />
                 </div>
 
                 <div className={styles.details}>

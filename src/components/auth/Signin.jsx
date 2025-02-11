@@ -29,7 +29,7 @@ const Signin = () => {
 
     const navigate = useNavigate();
     const location = useLocation();
-    const from = location.state?.from?.pathname || "/";
+    const from = location.state?.from?.pathname || '/';
 
     const { register, formState: { errors }, setError, handleSubmit } = useForm({ mode: 'onChange' });
     

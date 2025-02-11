@@ -1,5 +1,5 @@
 import { useState } from 'react';
-
+// import { useNavigate } from 'react-router-dom';
 // import InformationSoon from '../../components/information_soon/InformationSoon';
 import Navbar from '../../components/navbar/Navbar';
 import Main from '../../components/UI/Main';
@@ -12,18 +12,36 @@ import FavoriteRecipes from '../../components/receptai/receptai/FavoriteRecipes'
 import Pagination from '../../components/UI/Pagination';
 import useMediaQuery from '../../hooks/useMediaQuery';
 import { useRecipes } from '../../hooks/recipes/useRecipes';
+import useAuth from '../../hooks/useAuth';
+import useAxiosPrivate from '../../hooks/useAxiosPrivate';
 
 const RecipesPage = () => {
+    const axiosPrivate = useAxiosPrivate();
     const mediaQuery = useMediaQuery();
     const [isOpenFilters, setIsOpenFilters] = useState(false);
 
     const [filters, setFilters] = useState({});
     const [search, setSearch] = useState('');
     
-    const { isLoading, recipes, currentPage, setCurrentPage, totalPages, totalRows } = useRecipes({
+    const { isLoading, recipes, setRecipes, currentPage, setCurrentPage, totalPages, totalRows } = useRecipes({
         ...filters, 
         ...(search !== '' ? {search} : {})
     });
+
+    
+    const user_id = useAuth()?.loggedUser?.user_id || null;
+    const { setIsOpenModal } = useAuth();
+    // const navigate = useNavigate();
+
+    const handleLike = async (video_id) => {
+        if(!user_id) {
+            setIsOpenModal(true);
+            // navigate('/prisijungti');
+        } else {
+            const like = await axiosPrivate.post(`/videos/like/${user_id}/${video_id}`); 
+            console.log(like)
+        }
+    };
     
     return (
         <>
@@ -49,7 +67,10 @@ const RecipesPage = () => {
                     {!isLoading && <>
                         <InfoTab recipesCount={totalRows} />
 
-                        <Recipes recipes={recipes} />
+                        <Recipes 
+                            recipes={recipes} 
+                            handleLike={handleLike}
+                        />
                         
                         {totalPages > 0 && <Pagination 
                             setCurrentPage={setCurrentPage} 

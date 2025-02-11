@@ -13,11 +13,15 @@ export const useRecipe = (slug) => {
         const fetchData = async () => {
             try {
                 const { data } = await axios.get(`/recipes/${slug}`);
-                
                 setRecipe(data);
                 setIsLoading(false);
             } catch (err) {
-                toast.error(err.response?.data?.message || 'Error fetching recipes');
+                if(err.status === 404) {
+                    toast.error(err.response?.data?.message || 'Error fetching recipes');
+                } else {
+                    toast.error('Serverio klaida');
+                }
+                
             } finally {
                 setIsLoading(false);
             }

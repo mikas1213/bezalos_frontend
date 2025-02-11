@@ -50,6 +50,7 @@ export const useRecipes = (filters) => {
     return { 
         isLoading,
         recipes,
+        setRecipes,
         currentPage,
         setCurrentPage,
         totalPages,

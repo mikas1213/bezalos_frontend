@@ -11,7 +11,7 @@ const FavoriteRecipes = ({ favoriteRecipes }) => {
             <Carousel 
                 favoriteRecipes={favoriteRecipes} 
                 visibleItems={mediaQuery < 376 ? 1 : mediaQuery < 769 ? 2 : 3} 
-                rotationInterval={250000} 
+                rotationInterval={4000} 
                 pauseDuration={1000} 
             />
         </div>

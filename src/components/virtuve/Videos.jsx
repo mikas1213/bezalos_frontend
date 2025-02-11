@@ -49,7 +49,14 @@ const Videos = ({user_id, u_status, s_status}) => {
             {isLoading ? <Spinner /> : videos?.length === 0
                 ? <NotFoundVideo />
                 : <div className={styles.videos}>
-                    {videos?.map(video => <Card key={video.id} video={video} user_id={user_id} u_status={u_status} s_status={s_status} />)}
+                    {videos?.map(video => <Card 
+                        key={video.id} 
+                        video={video} 
+                        user_id={user_id} 
+                        u_status={u_status} 
+                        s_status={s_status} 
+                    />)}
+
                 </div>
             }
         </Container>

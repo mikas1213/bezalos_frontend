@@ -7,6 +7,7 @@ import Container from '../../components/UI/Container';
 import Layout from '../../components/receptai/receptas/Layout';
 import Image from '../../components/receptai/receptas/Image';
 import Details from '../../components/receptai/receptas/Details';
+import RecipeNotFound from '../notFoundPages/RecipeNotFound';
 
 
 const RecipePage = () => {
@@ -19,10 +20,11 @@ const RecipePage = () => {
             <Navbar />
             <Main>
                 <Container>
-                    {!isLoading && <Layout>
-                        <Image />
+                    {!isLoading && recipe.recipe ? <Layout>
+                        <Image slug={recipe.slug} />
                         <Details recipe={recipe} />
-                    </Layout>}
+                    </Layout> : <RecipeNotFound />
+                    }
                 </Container>
             </Main>
         </>

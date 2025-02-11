@@ -1,17 +1,17 @@
 import styles from './Recipe.module.css';
-import { Clock, Heart } from 'lucide-react';
 import { getImageURL } from '../../../utils/images';
+import { Clock, Heart } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
-const Recipe = ({ recipe }) => {
-    const rnr = Math.floor(Math.random() * 4) + 1;
+const Recipe = ({ recipe, handleLike }) => {
+    
     return (
         <div className={styles.recipe}>
             <div className={styles.imageContainer}>
                 <Link to={`/receptai/${recipe.slug}`}>
                     <img 
                         className={styles.image}
-                        src={getImageURL(`recipes/image_${rnr}.png`)} 
+                        src={getImageURL(`recipes/${recipe.slug}.png`)} 
                         alt={`image_${recipe.recipe}`} 
                     />
                 </Link>
@@ -30,7 +30,12 @@ const Recipe = ({ recipe }) => {
                     </span>
                 </span>
                 <span className={styles.item}>{recipe.logic}</span>
-                <span className={styles.item}><Heart className={styles.icon}/> 15</span>
+                <span
+                    className={`${styles.item} ${styles.likes}`}
+                    onClick={() => handleLike(recipe.id, 'recipe')}
+                >
+                        <Heart className={styles.icon}/>{recipe.likes}
+                </span>
             </div>
         </div>
     );

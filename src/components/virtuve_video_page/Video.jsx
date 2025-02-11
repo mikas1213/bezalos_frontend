@@ -35,10 +35,7 @@ const Video = ({ user_id, user_name, video, comments, onToggleLikes, onAddVideoC
     const desctList = desc2.trim().split('\n');
 
     const [showComments, setShowComments] = useState(false);
-    const { register, 
-        // formState: { errors }, 
-        // setError, 
-        watch, reset, handleSubmit } = useForm(
+    const { register, watch, reset, handleSubmit } = useForm(
         {defaultValues: {
         video_id: video.id,
         user_id,
@@ -65,7 +62,6 @@ const Video = ({ user_id, user_name, video, comments, onToggleLikes, onAddVideoC
     return (
         <div className={styles.video}>
             <video 
-                // className={styles[video.video_url === 'policistiniu-kiausidziu-sindromas' && 'gydytojaiCover']}
                 style={{backgroundImage: `url("${getImageURL(`virtuve/${video.video_url}.webp`)}")`}}
                 onContextMenu={ event => event.preventDefault() }
                 controls={true}
@@ -108,7 +104,8 @@ const Video = ({ user_id, user_name, video, comments, onToggleLikes, onAddVideoC
                         <span>{comments.length}</span>
                     </div>
 
-                    <div className={styles.like} onClick={() => onToggleLikes(video.id, user_id)}>
+                    <div className={styles.like} onClick={() => onToggleLikes(user_id, video.id)}>
+                    
                         {isLike ? <FaHeart /> : <FaRegHeart />}
                         <span>{
                             +likesCount > 999 ? parseInt(likesCount / 1000)+'k+' : likesCount
