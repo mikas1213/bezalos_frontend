@@ -25,7 +25,7 @@ const Carousel = ({ favoriteRecipes, visibleItems, rotationInterval = 3000, paus
 
                 // Pause
                 await new Promise(resolve => setTimeout(resolve, pauseDuration));
-
+                controls.set({ x: 0 });
                 // Update items array
                 setItems((prevItems) => {
                     const newItems = [...prevItems];
@@ -39,12 +39,6 @@ const Carousel = ({ favoriteRecipes, visibleItems, rotationInterval = 3000, paus
         const timer = setInterval(moveItems, rotationInterval);
         return () => clearInterval(timer);
     }, [visibleItems, rotationInterval, pauseDuration, controls]);
-
-    useEffect(() => {
-        if (items.length > 0) {
-            controls.set({ x: 0 });
-        }
-    }, [items, controls]);
 
     return (
         <div className={styles.carouselContainer} ref={containerRef}>

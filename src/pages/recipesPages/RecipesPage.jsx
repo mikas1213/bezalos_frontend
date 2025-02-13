@@ -22,24 +22,25 @@ const RecipesPage = () => {
 
     const [filters, setFilters] = useState({});
     const [search, setSearch] = useState('');
-    
+    const user_id = useAuth()?.loggedUser?.user_id || null;
+    const { setIsOpenModal } = useAuth();
+ 
     const { isLoading, recipes, setRecipes, currentPage, setCurrentPage, totalPages, totalRows } = useRecipes({
         ...filters, 
         ...(search !== '' ? {search} : {})
-    });
-
+    }, user_id);
     
-    const user_id = useAuth()?.loggedUser?.user_id || null;
-    const { setIsOpenModal } = useAuth();
-    // const navigate = useNavigate();
-
-    const handleLike = async (video_id) => {
+    const onToggleLikes = async (recipe_id) => {
         if(!user_id) {
             setIsOpenModal(true);
-            // navigate('/prisijungti');
         } else {
-            const like = await axiosPrivate.post(`/videos/like/${user_id}/${video_id}`); 
-            console.log(like)
+            const like = await axiosPrivate.post(`/likes/recipe`, {user_id, entity_id: recipe_id, type: 'likes_recipes'}); 
+            
+            setRecipes(prevState => prevState.map(recipe => recipe.id === recipe_id ? {
+                ...recipe,
+                liked: like.data.isLiked,
+                likes: like.data.likesCount
+            } : recipe));
         }
     };
     
@@ -69,7 +70,7 @@ const RecipesPage = () => {
 
                         <Recipes 
                             recipes={recipes} 
-                            handleLike={handleLike}
+                            onToggleLikes={onToggleLikes}
                         />
                         
                         {totalPages > 0 && <Pagination 

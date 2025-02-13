@@ -104,7 +104,7 @@ const Video = ({ user_id, user_name, video, comments, onToggleLikes, onAddVideoC
                         <span>{comments.length}</span>
                     </div>
 
-                    <div className={styles.like} onClick={() => onToggleLikes(user_id, video.id)}>
+                    <div className={styles.like} onClick={() => onToggleLikes(video.id)}>
                     
                         {isLike ? <FaHeart /> : <FaRegHeart />}
                         <span>{

@@ -51,10 +51,10 @@ const VirtuveVideoPage = () => {
         }
     };
 
-    const onToggleLikes = async (user_id, video_id) => {
+    const onToggleLikes = async (video_id) => {
         
         try {
-            const like = await axiosPrivate.post(`/videos/like/${user_id}/${video_id}`); 
+            const like = await axiosPrivate.post(`/likes/video`, {user_id, entity_id: video_id, type: 'likes_videos'}); 
             setIsLike(like.data.isLiked);
             setLikesCount(like.data.likesCount);
         } catch (err) {

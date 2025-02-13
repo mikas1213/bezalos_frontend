@@ -3,7 +3,7 @@ import { getImageURL } from '../../../utils/images';
 import { Clock, Heart } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
-const Recipe = ({ recipe, handleLike }) => {
+const Recipe = ({ recipe, onToggleLikes }) => {
     
     return (
         <div className={styles.recipe}>
@@ -32,9 +32,9 @@ const Recipe = ({ recipe, handleLike }) => {
                 <span className={styles.item}>{recipe.logic}</span>
                 <span
                     className={`${styles.item} ${styles.likes}`}
-                    onClick={() => handleLike(recipe.id, 'recipe')}
+                    onClick={() => onToggleLikes(recipe.id)}
                 >
-                        <Heart className={styles.icon}/>{recipe.likes}
+                    <Heart className={`${styles.icon} ${recipe.liked ? styles.liked : ''}`}/>{recipe.likes}
                 </span>
             </div>
         </div>

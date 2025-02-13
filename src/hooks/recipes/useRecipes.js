@@ -2,8 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import toast from 'react-hot-toast';
 import axios from '../../api/axios';
 
-export const useRecipes = (filters) => {
-    
+export const useRecipes = (filters, user_id) => {
     const recipesPerPage = 16;
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(0);
@@ -19,12 +18,11 @@ export const useRecipes = (filters) => {
     }).toString();
 
     useEffect(() => {
-        document.body.style.backgroundColor = '#fff';
+        document.body.style.backgroundColor = '#fff'; 
         document.title = 'Be žalos | Receptai';
-
         const fetchData = async () => {
             try {
-                const { data: { rows, total_rows, total_pages, current_page } } = await axios.get(`/recipes?${query}`);
+                const { data: { rows, total_rows, total_pages, current_page } } = await axios.post(`/recipes?${query}`, {id: user_id});
                 
                 setCurrentPage(current_page);
                 setTotalPages(total_pages);
@@ -45,7 +43,7 @@ export const useRecipes = (filters) => {
             const timeoutId = setTimeout(fetchData, 500);
             return () => clearTimeout(timeoutId);
         }
-    }, [query]);
+    }, [query, user_id]);
 
     return { 
         isLoading,
