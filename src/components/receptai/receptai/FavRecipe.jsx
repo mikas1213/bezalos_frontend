@@ -24,7 +24,7 @@ const FavRecipe = ({ recipe }) => {
                         </div>
 
                         <div className={styles.item}>
-                            <span>{recipe.logic}</span>
+                            <span>{recipe.food_logic}</span>
                         </div>
 
                         <div className={styles.item}>

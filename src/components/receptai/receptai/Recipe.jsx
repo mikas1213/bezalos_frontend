@@ -4,7 +4,7 @@ import { Clock, Heart } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const Recipe = ({ recipe, onToggleLikes }) => {
-    
+    console.log('Recipe: ', recipe)
     return (
         <div className={styles.recipe}>
             <div className={styles.imageContainer}>
@@ -29,7 +29,7 @@ const Recipe = ({ recipe, onToggleLikes }) => {
                         <small>min.</small>
                     </span>
                 </span>
-                <span className={styles.item}>{recipe.logic}</span>
+                <span className={styles.item}>{recipe.food_logic}</span>
                 <span
                     className={`${styles.item} ${styles.likes}`}
                     onClick={() => onToggleLikes(recipe.id)}

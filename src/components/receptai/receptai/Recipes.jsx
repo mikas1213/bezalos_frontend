@@ -2,6 +2,7 @@ import styles from './Recipes.module.css';
 import Recipe from './Recipe';
 
 const Recipes = ({ recipes, onToggleLikes }) => {
+    
     return (
         <div className={styles.recipes}>
             {recipes.map(recipe => 
