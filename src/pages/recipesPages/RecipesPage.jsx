@@ -54,7 +54,7 @@ const RecipesPage = () => {
             
             <Main page='recipes'>
                 <Container>
-                    <FavoriteRecipes mostLiked={mostLiked} />
+                    {mostLiked?.length > 0 && <FavoriteRecipes mostLiked={mostLiked} />}
                     <Filters 
                         isOpenFilters={isOpenFilters} 
                         mediaQuery={mediaQuery}

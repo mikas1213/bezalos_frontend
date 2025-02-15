@@ -28,9 +28,9 @@ const ReceptaiPage = () => {
 
     const [newRecipe, setNewRecipe] = useState(emptyRecipe);
 
-    const handleDeleteRecipe = () => {
+    // const handleDeleteRecipe = () => {
 
-    };
+    // };
 
     return (
         <>
