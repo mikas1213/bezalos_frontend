@@ -1,6 +1,4 @@
 import { useState } from 'react';
-// import { useNavigate } from 'react-router-dom';
-// import InformationSoon from '../../components/information_soon/InformationSoon';
 import Navbar from '../../components/navbar/Navbar';
 import Main from '../../components/UI/Main';
 import Container from '../../components/UI/Container';
@@ -25,7 +23,7 @@ const RecipesPage = () => {
     const user_id = useAuth()?.loggedUser?.user_id || null;
     const { setIsOpenModal } = useAuth();
  
-    const { isLoading, recipes, setRecipes, currentPage, setCurrentPage, totalPages, totalRows } = useRecipes({
+    const { isLoading, recipes, mostLiked, setRecipes, currentPage, setCurrentPage, totalPages, totalRows } = useRecipes({
         ...filters, 
         ...(search !== '' ? {search} : {})
     }, user_id);
@@ -55,9 +53,8 @@ const RecipesPage = () => {
             />
             
             <Main page='recipes'>
-                {/* <InformationSoon /> */}
                 <Container>
-                    <FavoriteRecipes favoriteRecipes={recipes} />
+                    <FavoriteRecipes mostLiked={mostLiked} />
                     <Filters 
                         isOpenFilters={isOpenFilters} 
                         mediaQuery={mediaQuery}
@@ -80,7 +77,6 @@ const RecipesPage = () => {
                             pagesLimit={mediaQuery < 441 ? 3 : 5}  
                         />}
                     </>}
-                    
                 </Container>
             </Main>
         </>

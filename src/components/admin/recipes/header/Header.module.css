@@ -1,0 +1,16 @@
+.header {
+    margin-bottom: 0.5rem;
+}
+
+.addButton {
+    border: none;
+    color: #fff;
+    background-color: #A5D6A7;
+    border-radius: 0.5rem;
+    padding: 0.5rem 2.5rem;
+    transition: 0.15s ease-in-out;
+}
+
+.addButton:hover {
+    background-color: #81C784;
+}

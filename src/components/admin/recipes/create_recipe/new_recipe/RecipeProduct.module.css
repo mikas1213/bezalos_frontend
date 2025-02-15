@@ -1,0 +1,64 @@
+.recipeProduct {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    font-size: var(--font-size-p);
+    font-weight: 500;
+}
+.prodTitle {
+    font-size: var(--font-size-small-1);
+    font-weight: 500;
+    flex-grow: 1;
+    color: var(--color-text-green-light);
+    /* color: var(--color-bgr-bottom); */
+}
+.prodRight{
+    display: flex;
+    align-self: start;
+    gap: 0.5rem;
+}
+.gramsContainer {
+    display: flex;
+    background-color: var(--color-background-secondary);
+    border: 1.5px solid var(--color-background-secondary);
+    border-radius: 50rem;
+    padding: 0.05rem 0.3rem;
+    transition: border 0.2s ease-in-out;
+
+    input {
+        cursor: pointer;
+        border: none;
+        max-width: 2.2rem;
+        color: var(--color-text-green-light);
+        font-size: var(--font-size-small-1);
+        font-weight: 500;
+        padding: 0.0rem 0.2rem;
+        border-radius: 50rem; 
+        background-color: var(--color-background-secondary);
+        transition: all 0.2s ease-in-out;
+    }
+}
+
+.gramsContainer:has(input:focus) {
+    border: 1.5px solid var(--color-btn-secondary);
+}
+
+.gramsChar {
+    font-size: var(--font-size-small-1);
+    color: var(--color-text-green-light);
+    font-weight: 500;
+}
+.deleteIconContainer {
+    align-self: center;
+}
+.deleteIcon {
+    cursor: pointer;
+    display: block;
+    width: 1.2rem;
+    height: 1.2rem;
+    stroke: var(--grey-dark);
+    transition: stroke 0.2s ease-in-out;
+}
+.deleteIcon:hover {
+    stroke: var(--color-error);
+}

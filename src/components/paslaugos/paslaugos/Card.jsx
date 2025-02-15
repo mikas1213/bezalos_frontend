@@ -4,7 +4,6 @@ import { getImageURL } from '../../../utils/images';
 import { useNavigate } from 'react-router-dom';
 
 const Card = ({ paslauga }) => {
-    console.log(paslauga)
     const navigate = useNavigate();
     const [imageLoaded, setImageLoaded] = useState(false);
 

@@ -53,7 +53,7 @@ import PlanaiPage from './pages/admin/mitybosPlanai/PlanaiPage';
 import MealsPage from './pages/admin/mitybosPlanai/MealsPage';
 import ProductsPage from './pages/admin/mitybosPlanai/ProductsPage';
 import MaistasPage from './pages/admin/MaistasPage';
-import Receptai from './pages/admin/Receptai';
+import ReceptaiPage from './pages/admin/recipesPages/ReceptaiPage';
 import VideosPage from './pages/admin/VideosPage';
 import MailsPage from './pages/admin/MailsPage';
 
@@ -130,8 +130,8 @@ function App() {
                                                 <Route path='valgiai' element={<MealsPage />} />
                                                 <Route path='produktai' element={<ProductsPage />} />
                                             </Route>
+                                            <Route path='receptai' element={<ReceptaiPage />} />
                                             <Route path='maistas' element={<MaistasPage />} />
-                                            <Route path='receptai' element={<Receptai />} />
                                             <Route path='videos' element={<VideosPage />} />
                                             <Route path='mails' element={<MailsPage />} />
                                         </Route>

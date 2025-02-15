@@ -1,0 +1,22 @@
+.adminRecipe {
+    display: flex;
+    border-radius: 0.5rem;
+    gap: 0.5rem;
+    background-color: #fff;
+    overflow: hidden;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.image {
+    width: 5rem;
+}
+.title {
+    color: var(--color-bgr-bottom);
+    font-weight: 400;
+    min-width: 10rem;
+}
+.iconDelete {
+    color: var(--grey-dark);
+    width: 3rem;
+    height: 3rem;
+}

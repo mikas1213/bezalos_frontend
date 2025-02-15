@@ -1,0 +1,52 @@
+.actionBtns {
+    display: flex;
+    gap: 1rem;
+}
+.saveBtn, .cancelBtn {
+    transition: all 0.2s ease-in-out;
+    font-weight: 600;
+    border-radius: 0.5rem;
+    border: none;
+    width: 50%;
+    padding: 0.5rem 0;
+    color: #fff;
+}
+.saveBtn {
+    background-image: linear-gradient(to top, var(--color-btn-secondary), var(--color-btn-primary));
+}
+.cancelBtn {
+    /* border: 1px solid #FF4D4D;
+    background-color: #fff;
+    color: #FF4D4D; */
+    background-image: linear-gradient(to top,  #B91C1C, #FF4D4D);
+}
+
+.actionBtns :is(.saveBtn, .cancelBtn):hover {
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.saveBtn:disabled {
+    cursor: wait;
+    color: var(--grey-dark);
+    background-color: var(--grey-light);
+    background-image: none;
+}
+.saveBtn:disabled:hover {
+    box-shadow: none;
+}
+@media only screen and (max-width: 440px) {
+    .saveBtn, .cancelBtn {
+        font-size: var(--font-size-p);
+    }
+}
+@media only screen and (max-width: 375px) {
+    .actionBtns {
+        margin-top: 0.8rem;
+    }
+}
+
+@media only screen and (max-width: 320px) {
+    .actionBtns {
+        margin-top: 0.5rem;
+    }
+}

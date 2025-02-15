@@ -5,7 +5,7 @@ import { CircleX } from 'lucide-react';
 const filterGroups = {
     is_vegetarian: ['Be mėsos'],
     recipe_type: ['Pusryčiai', 'Pietūs', 'Vakarienė', 'Užkandžiai'],
-    logic: ['A+B', 'B+R', 'A+R'],
+    food_logic: ['A+B', 'B+R', 'A+R'],
     duration: ['Iki 15min.', '15-30min.', '30-60min.', 'Virš 60min.'],
     taste: ['Saldu', 'Sūru', 'Aštru']
 };
@@ -26,7 +26,7 @@ const Filters = ({ isOpenFilters, mediaQuery, filters, setFilters }) => {
         };
     }, []);
 
-    const isAllEmpty = filters => (!filters.is_vegetarian && !filters.recipe_type && !filters.logic && !filters.duration && !filters.taste)
+    const isAllEmpty = filters => (!filters.is_vegetarian && !filters.recipe_type && !filters.food_logic && !filters.duration && !filters.taste)
     
     const renderFilterGroup = (key, group) => {
         return <div className={styles.filterGroup} key={key}>

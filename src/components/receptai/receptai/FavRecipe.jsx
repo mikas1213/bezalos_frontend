@@ -1,19 +1,23 @@
 import styles from './FavRecipe.module.css';
-import { getImageURL } from '../../../utils/images';
+import { getImageFromBlob } from '../../../utils/images';
 import { Clock, Heart } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const FavRecipe = ({ recipe }) => {
-    
+
     return (
         <div className={styles.favRecipe}>
             <Link to={`/receptai/${recipe.slug}`} className={styles.anchor}>
                 <div className={styles.imageContainer}>
-                    <img src={getImageURL(`recipes/${recipe.slug}.png`)} alt={recipe.recipe} className={styles.image} />
+                    <img 
+                        src={getImageFromBlob(recipe.photo_s, recipe.photo_type)}
+                        alt={recipe.title} 
+                        className={styles.image} 
+                    />
                 </div>
 
                 <div className={styles.details}>
-                    <div className={styles.title}>{recipe.recipe}</div>
+                    <div className={styles.title}>{recipe.title}</div>
                     <div className={styles.bottom}>
                         <div className={styles.item}>
                             <Clock className={styles.iconClock} />
@@ -29,7 +33,7 @@ const FavRecipe = ({ recipe }) => {
 
                         <div className={styles.item}>
                             <Heart className={styles.iconHeart} />
-                            <span>15</span>
+                            <span>{recipe.like_count}</span>
                         </div>
                     </div>
                 </div>

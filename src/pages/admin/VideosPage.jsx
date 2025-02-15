@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import useAxiosPrivate from '../../hooks/useAxiosPrivate';
+import toast from 'react-hot-toast';
 
 const VideosPage = () => {
     const axiosPrivate = useAxiosPrivate();
@@ -9,11 +10,11 @@ const VideosPage = () => {
     useEffect(() => {
         const getData = async () => {
             try {
-                const data = await axiosPrivate.get('/admin/videos');
-                setVideos(data.data.videos);
+                const { data } = await axiosPrivate.get('/admin/videos');
+                setVideos(data);
                 setIsLoading(false);
             } catch (err) {
-                console.log(err.message);
+                toast.error(err.response.data.message || err.message);
             }
         };
         getData();

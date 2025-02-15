@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import useAxiosPrivate from '../../hooks/useAxiosPrivate';
+import toast from 'react-hot-toast';
 
 const MailsPage = () => {
 
@@ -10,11 +11,11 @@ const MailsPage = () => {
     useEffect(() => {
         const getData = async () => {
             try {
-                const data = await axiosPrivate.get('/admin/offers');
-                setOffers(data.data.offers);
+                const { data } = await axiosPrivate.get('/admin/offers');
+                setOffers(data);
                 setIsLoading(false);
             } catch (err) {
-                console.log(err.message);
+                toast.error(err.response.data.message || err.message);
             }
         };
         getData();

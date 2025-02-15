@@ -3,11 +3,11 @@ import { Clock, CirclePlay, Flame } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import { BiBowlRice } from 'react-icons/bi';
-import { getImageURL } from '../../../utils/images';
+import { getImageFromBlob } from '../../../utils/images';
 
 const Details = ({ recipe }) => {
     const [bumbulis, setBumbulis] = useState(0);
-    console.log(bumbulis)
+    console.log(recipe)
     return (
         <div className={styles.details}>
             <div className={styles.title}>{recipe.recipe}</div>
@@ -34,7 +34,7 @@ const Details = ({ recipe }) => {
             </div>
 
             <div className={styles.image}>
-                <img src={getImageURL(`recipes/${recipe.slug}.png`)} alt='Receptas' />
+                <img src={getImageFromBlob(recipe.photo_l, recipe.photo_type)} alt='Receptas' />
             </div>
 
             <div className={styles.products}>
@@ -91,12 +91,12 @@ const Details = ({ recipe }) => {
                     {recipe.description}
                 </div>
                
-                <div className={styles.watchVideo}>
-                    <Link to='https://bezalos.lt' className={styles.videoLink}>
+                {recipe.video_link && <div className={styles.watchVideo}>
+                    <Link to={recipe.video_link} className={styles.videoLink}>
                         <CirclePlay className={styles.iconPlay} />
                         <span>Žiūrėti video</span>
                     </Link>
-                </div>
+                </div>}
             </div>
         </div>
     );

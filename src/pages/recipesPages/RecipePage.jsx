@@ -9,22 +9,20 @@ import Image from '../../components/receptai/receptas/Image';
 import Details from '../../components/receptai/receptas/Details';
 import RecipeNotFound from '../notFoundPages/RecipeNotFound';
 
-
 const RecipePage = () => {
     const { slug } = useParams();
     const {isLoading, recipe} = useRecipe(slug);
     document.title = `Be žalos | ${!isLoading && recipe?.recipe ? recipe.recipe : '404'}`;
-    
+
     return (
         <>
             <Navbar />
             <Main>
                 <Container>
-                    {!isLoading && recipe.recipe ? <Layout>
-                        <Image slug={recipe.slug} />
+                    {isLoading ? null : recipe ? <Layout>
+                        <Image recipe={recipe} /> 
                         <Details recipe={recipe} />
-                    </Layout> : <RecipeNotFound />
-                    }
+                    </Layout> : <RecipeNotFound />}
                 </Container>
             </Main>
         </>

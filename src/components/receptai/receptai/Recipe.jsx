@@ -1,17 +1,17 @@
 import styles from './Recipe.module.css';
-import { getImageURL } from '../../../utils/images';
 import { Clock, Heart } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { getImageFromBlob } from '../../../utils/images';
 
 const Recipe = ({ recipe, onToggleLikes }) => {
-    console.log('Recipe: ', recipe)
+    console.log(recipe)
     return (
         <div className={styles.recipe}>
             <div className={styles.imageContainer}>
                 <Link to={`/receptai/${recipe.slug}`}>
                     <img 
                         className={styles.image}
-                        src={getImageURL(`recipes/${recipe.slug}.png`)} 
+                        src={getImageFromBlob(recipe.photo_m, recipe.photo_type)} 
                         alt={`image_${recipe.recipe}`} 
                     />
                 </Link>
@@ -20,7 +20,6 @@ const Recipe = ({ recipe, onToggleLikes }) => {
             <div className={styles.title}>
                 <Link to={`/receptai/${recipe.slug}`} className={styles.anchor}>{recipe.recipe}</Link>
             </div>
-
             <div className={styles.details}>
                 <span className={styles.item}>
                     <Clock className={styles.icon} />
@@ -37,6 +36,7 @@ const Recipe = ({ recipe, onToggleLikes }) => {
                     <Heart className={`${styles.icon} ${recipe.liked ? styles.liked : ''}`}/>{recipe.likes}
                 </span>
             </div>
+
         </div>
     );
 };

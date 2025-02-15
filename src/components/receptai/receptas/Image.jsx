@@ -1,10 +1,10 @@
 import styles from './Image.module.css';
-import { getImageURL } from '../../../utils/images';
+import { getImageFromBlob } from '../../../utils/images';
 
-const Image = ({ slug }) => {
+const Image = ({ recipe }) => {
     return (
         <div className={styles.image}>
-            <img src={getImageURL(`recipes/${slug}.png`)} alt='Receptas' />
+            <img src={getImageFromBlob(recipe.photo_l, recipe.photo_type)} alt={recipe.title} />
         </div>
     );
 };

@@ -2,16 +2,16 @@ import styles from './FavoriteRecipes.module.css';
 import Carousel from './Carousel';
 import useMediaQuery from '../../../hooks/useMediaQuery';
 
-const FavoriteRecipes = ({ favoriteRecipes }) => {
+const FavoriteRecipes = ({ mostLiked }) => {
     const mediaQuery = useMediaQuery();
     
     return (
         <div className={styles.favoriteRecipes}>
             <div className={styles.header}>Mėgstamiausi</div>
             <Carousel 
-                favoriteRecipes={favoriteRecipes} 
+                mostLiked={mostLiked} 
                 visibleItems={mediaQuery < 376 ? 1 : mediaQuery < 769 ? 2 : 3} 
-                rotationInterval={4000} 
+                rotationInterval={3000} 
                 pauseDuration={1000} 
             />
         </div>

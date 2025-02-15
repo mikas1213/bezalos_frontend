@@ -4,7 +4,7 @@ import axios from '../../api/axios';
 
 export const useRecipe = (slug) => {
     
-    const [recipe, setRecipe] = useState({});
+    const [recipe, setRecipe] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
@@ -18,6 +18,7 @@ export const useRecipe = (slug) => {
             } catch (err) {
                 if(err.status === 404) {
                     toast.error(err.response?.data?.message || 'Error fetching recipes');
+                    setRecipe(null);
                 } else {
                     toast.error('Serverio klaida');
                 }
