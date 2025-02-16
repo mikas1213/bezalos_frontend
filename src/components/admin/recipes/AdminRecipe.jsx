@@ -1,18 +1,58 @@
 import styles from './AdminRecipe.module.css';
 import { getImageFromBlob } from '../../../utils/images';
-import { CircleX } from 'lucide-react';
+import { CircleX, CirclePlay, Vegan, Clock } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
-const AdminRecipe = ({ adminRecipe }) => {
+const AdminRecipe = ({ adminRecipe, handleDeleteRecipe }) => {
+    const img_src = adminRecipe.photo ? URL.createObjectURL(adminRecipe.photo) : getImageFromBlob(adminRecipe.photo_s, adminRecipe.photo_type);
+
     return (
         <div className={styles.adminRecipe}>
             <img 
-                src={getImageFromBlob(adminRecipe.photo_s, adminRecipe.photo_type)} 
+                src={img_src}
                 alt={adminRecipe.title} 
                 className={styles.image}
             />
-            <span className={styles.title}>{adminRecipe.title}</span>
-            <span>{adminRecipe.food_logic}</span>
-            <CircleX className={styles.iconDelete} />
+            <div className={`${styles.section} ${styles.title}`}>
+                {adminRecipe.title}
+            </div>
+
+            <div className={`${styles.section} ${styles.foodLogic}`}>
+                <span className={styles[adminRecipe.food_logic.replace('+', '_').toLowerCase()]}>{adminRecipe.food_logic}</span>
+            </div>
+
+            <div className={`${styles.section} ${styles.recipeType}`}>
+                {adminRecipe.recipe_type}
+            </div>
+
+            <div className={`${styles.section} ${styles.taste}`}>
+                {adminRecipe.taste}
+            </div>
+
+            <div className={`${styles.section} ${styles.duration}`}>
+                <Clock className={styles.icon} />
+                {adminRecipe.duration}
+                <small>min.</small>
+            </div>
+
+            <div className={`${styles.section} ${styles.videoLink}`}>
+
+                {adminRecipe.video_link && <><CirclePlay className={styles.icon} />
+                <Link to={adminRecipe.video_link} target='_blank' rel='noopener noreferrer' className={styles.videoLink}>
+                    {adminRecipe.video_link}
+                </Link></>}
+            </div>
+
+            <div className={`${styles.section} ${styles.isVegetarian}`}>
+                {adminRecipe.is_vegetarian ? <Vegan className={styles.icon} /> : ''}
+            </div>
+
+            <div 
+                className={`${styles.section} ${styles.deleteRecipe}`}
+                onClick={() => handleDeleteRecipe(adminRecipe.id)}
+            >
+                <CircleX className={styles.icon} />
+            </div>
         </div>
     );
 };

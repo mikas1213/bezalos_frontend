@@ -231,7 +231,6 @@ const NewRecipe = ({ prodList, newRecipe, setNewRecipe }) => {
                                 className={styles.inputFile} 
                                 onChange={e => {
                                     const selectedFile = e.target.files[0];
-                                    console.log(e.target.files[0])
                                     setNewRecipe(prev => ({ ...prev, photo: selectedFile }));
                                     setPhotoPreview(URL.createObjectURL(selectedFile));
                                 }}

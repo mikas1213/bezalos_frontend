@@ -21,7 +21,7 @@ const useAdminRecipes = () => {
         fetchData();
     }, [axiosPrivate]);
 
-    return { isLoading, adminRecipes }
+    return { isLoading, adminRecipes, setAdminRecipes }
 };
 
 export default useAdminRecipes;

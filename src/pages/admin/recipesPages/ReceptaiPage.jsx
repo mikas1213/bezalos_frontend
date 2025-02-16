@@ -2,14 +2,17 @@ import Header from '../../../components/admin/recipes/header/Header';
 import CreateRecipeModal from '../../../components/admin/recipes/create_recipe/CreateRecipeModal';
 import { usePlanProducts } from '../../../hooks/profile/usePlanProducts';
 import useAdminRecipes from '../../../hooks/useAdminRecipes';
+import useAxiosPrivate from '../../../hooks/useAxiosPrivate';
 import AdminRecipes from '../../../components/admin/recipes/AdminRecipes';
 import { useState } from 'react';
+import toast from 'react-hot-toast';
 
 const ReceptaiPage = () => {
     const [open, setOpen] = useState(false);
     const prodList = usePlanProducts();
-    const { isLoading, adminRecipes } = useAdminRecipes();
-    
+    const { isLoading, adminRecipes, setAdminRecipes } = useAdminRecipes();
+    const axiosPrivate = useAxiosPrivate();
+
     const emptyRecipe = { 
         title: '',
         recipe_type: 'Pusryčiai',
@@ -28,9 +31,18 @@ const ReceptaiPage = () => {
 
     const [newRecipe, setNewRecipe] = useState(emptyRecipe);
 
-    // const handleDeleteRecipe = () => {
-
-    // };
+    const handleDeleteRecipe = async id => {
+        try {
+            const is_confirm_delete = confirm('Trinti receptą?');
+            if(is_confirm_delete) {
+                await axiosPrivate.delete(`/admin/recipes/${id}`);
+                setAdminRecipes(prev => prev.filter(recipe => recipe.id !== id));
+                toast.success('Receptas ištirntas');
+            }
+        } catch(err) {
+            toast.error(err.response.data.message || err.message || 'Serverio klaida');
+        }
+    };
 
     return (
         <>
@@ -41,8 +53,9 @@ const ReceptaiPage = () => {
                 emptyRecipe={emptyRecipe}
                 newRecipe={newRecipe}
                 setNewRecipe={setNewRecipe}
+                setAdminRecipes={setAdminRecipes}
             />}
-            {!isLoading && adminRecipes.length > 0 && <AdminRecipes adminRecipes={adminRecipes} />}
+            {!isLoading && adminRecipes.length > 0 && <AdminRecipes adminRecipes={adminRecipes} handleDeleteRecipe={handleDeleteRecipe} />}
         </>
     );
 };

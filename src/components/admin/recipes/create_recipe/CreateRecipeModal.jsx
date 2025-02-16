@@ -7,7 +7,7 @@ import Spinner from '../../../UI/Spinner';
 import { useState } from 'react';
 import toast from 'react-hot-toast';
 
-const CreateRecipeModal = ({ setOpen, prodList, newRecipe, setNewRecipe, setRecipes, emptyRecipe }) => {
+const CreateRecipeModal = ({ setOpen, prodList, newRecipe, setNewRecipe, setAdminRecipes, emptyRecipe }) => {
     const axiosPrivate = useAxiosPrivate();
     const [isLoading, setIsLoading] = useState(false);
     
@@ -28,18 +28,15 @@ const CreateRecipeModal = ({ setOpen, prodList, newRecipe, setNewRecipe, setReci
             formData.append('photo', newRecipe.photo);
 
             // const { data: { recipe_id } } = 
-            const data = await axiosPrivate.post('/recipes/add', formData, {
+            const {data: id} = await axiosPrivate.post('/recipes/add', formData, {
                 headers: { 'Content-Type': 'multipart/form-data' }
             });
-
+            
             await delay;
             toast.success('Receptas sėkmingai pridėtas!')
             setOpen(false);
+            setAdminRecipes(prev => [{...newRecipe, id}, ...prev]);
 
-            // setRecipes(prev => [
-            //     {...newRecipe,  id: recipe_id},
-            //     ...prev.map(recipe => ({...recipe})) 
-            // ]);
         } catch (err) {
             if(err.status === 400) {
                 toast.error(err.response.data.message);

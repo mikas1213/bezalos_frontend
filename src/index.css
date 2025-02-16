@@ -47,6 +47,7 @@
     --color-star: #F3C127;
     --color-error: #c00;
     --color-admin-red: #DC143C;
+    --color-admin-red-bgr: #DC143C22;
     --color-admin-red-hover: hsl(348, 83%, 42%);
     --color-admin-yellow: #FFA500;
     --color-success: #60c040;
