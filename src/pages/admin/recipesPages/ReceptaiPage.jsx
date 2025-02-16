@@ -58,7 +58,6 @@ const ReceptaiPage = () => {
             />}
             {!isLoading && adminRecipes.length > 0 && <AdminRecipes adminRecipes={adminRecipes} handleDeleteRecipe={handleDeleteRecipe} />}
             <Pagination currentPage={currentPage} setCurrentPage={setCurrentPage} totalPages={totalPages} pagesLimit={8} />
-            {/* setCurrentPage, currentPage, totalPages, pagesLimit */}
         </>
     );
 };

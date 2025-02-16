@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { getImageFromBlob } from '../../../utils/images';
 
 const Recipe = ({ recipe, onToggleLikes }) => {
-    console.log(recipe)
+    
     return (
         <div className={styles.recipe}>
             <div className={styles.imageContainer}>

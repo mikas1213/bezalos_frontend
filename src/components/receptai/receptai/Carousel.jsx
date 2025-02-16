@@ -10,9 +10,9 @@ const Carousel = ({ mostLiked, visibleItems, rotationInterval = 3000, pauseDurat
     const controls = useAnimation();
     const [items, setItems] = useState(mostLiked);
     
-    useEffect(() => {
-        setItems([...mostLiked]);
-    }, [mostLiked, itemCount]);
+    // useEffect(() => {
+    //     setItems([...mostLiked]);
+    // }, [mostLiked, itemCount]);
 
     useEffect(() => {
         const moveItems = async () => {

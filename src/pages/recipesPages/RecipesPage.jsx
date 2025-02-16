@@ -8,6 +8,7 @@ import InfoTab from '../../components/receptai/InfoTab';
 import Recipes from '../../components/receptai/receptai/Recipes';
 import FavoriteRecipes from '../../components/receptai/receptai/FavoriteRecipes';
 import Pagination from '../../components/UI/Pagination';
+import Footer from '../../components/UI/Footer';
 import useMediaQuery from '../../hooks/useMediaQuery';
 import { useRecipes } from '../../hooks/recipes/useRecipes';
 import useAuth from '../../hooks/useAuth';
@@ -77,6 +78,7 @@ const RecipesPage = () => {
                             pagesLimit={mediaQuery < 441 ? 3 : 5}  
                         />}
                     </>}
+                    <Footer />
                 </Container>
             </Main>
         </>
