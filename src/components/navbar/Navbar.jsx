@@ -71,8 +71,9 @@ const Navbar = ({ isHome = '' }) => {
                         </li>
 
                         <li className={styles.listItem}>
-                            <NavLink to='/receptai'>Receptai</NavLink>
-                            {/* <NavLink to='https://senas.bezalos.lt/receptai'>Receptai</NavLink> */}
+
+                            {user_role === 1213 ? <NavLink to='/receptai'>Receptai</NavLink> : 
+                            <NavLink to='https://senas.bezalos.lt/receptai'>Receptai</NavLink>}
                             <div className={styles.indicator}></div>
                         </li>
 

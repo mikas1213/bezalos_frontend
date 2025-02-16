@@ -1,6 +1,7 @@
+/*
 import styles from './Pagination.module.css';
 import { useState } from 'react';
-// import { MdKeyboardDoubleArrowLeft, MdKeyboardDoubleArrowRight } from 'react-icons/md';
+
 import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from 'react-icons/md';
 const Pagination = ({ setCurrentPage, currentPage, totalPages, pagesLimit = 5, color = '#d1d6cf' }) => {
 
@@ -52,10 +53,6 @@ const Pagination = ({ setCurrentPage, currentPage, totalPages, pagesLimit = 5, c
 
     return (
         <div className={styles.pagination}>
-            {/* <button onClick={handlePrevPage} disabled={currentPage === 1}>
-                <MdKeyboardDoubleArrowLeft className={styles.icon} />
-            
-            </button> */}
             <button onClick={handlePrevPage} disabled={currentPage === 1}>
                 <MdKeyboardArrowLeft className={styles.icon} />
             </button>
@@ -65,11 +62,10 @@ const Pagination = ({ setCurrentPage, currentPage, totalPages, pagesLimit = 5, c
             <button onClick={handleNextPage} disabled={currentPage === totalPages}>
                 <MdKeyboardArrowRight className={styles.icon} />
             </button>
-            {/* <button onClick={() => setCurrentPage(totalPages)} disabled={currentPage === totalPages}>
-                <MdKeyboardDoubleArrowRight className={styles.icon} />
-            </button> */}
         </div>
     );
 };
 
 export default Pagination;
+
+*/

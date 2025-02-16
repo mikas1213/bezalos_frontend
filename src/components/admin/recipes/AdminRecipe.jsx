@@ -37,10 +37,12 @@ const AdminRecipe = ({ adminRecipe, handleDeleteRecipe }) => {
 
             <div className={`${styles.section} ${styles.videoLink}`}>
 
-                {adminRecipe.video_link && <><CirclePlay className={styles.icon} />
-                <Link to={adminRecipe.video_link} target='_blank' rel='noopener noreferrer' className={styles.videoLink}>
-                    {adminRecipe.video_link}
-                </Link></>}
+                {adminRecipe.video_link && <>
+                    <CirclePlay className={styles.icon} />
+                    <Link to={adminRecipe.video_link} target='_blank' rel='noopener noreferrer' >
+                        {adminRecipe.video_link}
+                    </Link>
+                </>}
             </div>
 
             <div className={`${styles.section} ${styles.isVegetarian}`}>

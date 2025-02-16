@@ -4,13 +4,14 @@ import { usePlanProducts } from '../../../hooks/profile/usePlanProducts';
 import useAdminRecipes from '../../../hooks/useAdminRecipes';
 import useAxiosPrivate from '../../../hooks/useAxiosPrivate';
 import AdminRecipes from '../../../components/admin/recipes/AdminRecipes';
+import Pagination from '../../../components/UI/Pagination';
 import { useState } from 'react';
 import toast from 'react-hot-toast';
 
 const ReceptaiPage = () => {
     const [open, setOpen] = useState(false);
     const prodList = usePlanProducts();
-    const { isLoading, adminRecipes, setAdminRecipes } = useAdminRecipes();
+    const { isLoading, adminRecipes, setAdminRecipes, currentPage, setCurrentPage, totalPages } = useAdminRecipes();
     const axiosPrivate = useAxiosPrivate();
 
     const emptyRecipe = { 
@@ -56,6 +57,8 @@ const ReceptaiPage = () => {
                 setAdminRecipes={setAdminRecipes}
             />}
             {!isLoading && adminRecipes.length > 0 && <AdminRecipes adminRecipes={adminRecipes} handleDeleteRecipe={handleDeleteRecipe} />}
+            <Pagination currentPage={currentPage} setCurrentPage={setCurrentPage} totalPages={totalPages} pagesLimit={8} />
+            {/* setCurrentPage, currentPage, totalPages, pagesLimit */}
         </>
     );
 };
