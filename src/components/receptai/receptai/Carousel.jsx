@@ -13,11 +13,6 @@ const Carousel = ({ mostLiked, visibleItems, rotationInterval = 3000, pauseDurat
     useEffect(() => {
         setItems([...mostLiked]);
     }, [mostLiked, itemCount]);
-    // useEffect(() => {
-    //     if (JSON.stringify(mostLiked) !== JSON.stringify(items)) {
-    //         setItems(mostLiked);
-    //     }
-    // }, [mostLiked, itemCount]);
 
     useEffect(() => {
         const moveItems = async () => {

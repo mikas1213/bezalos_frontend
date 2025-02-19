@@ -1,7 +1,6 @@
 import styles from './Recipe.module.css';
 import { Clock, Heart } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { getImageFromBlob } from '../../../utils/images';
 
 const Recipe = ({ recipe, onToggleLikes }) => {
 
@@ -12,7 +11,7 @@ const Recipe = ({ recipe, onToggleLikes }) => {
                     <img 
                         className={styles.image}
 
-                        src={getImageFromBlob(recipe.photo_m, recipe.photo_type)} 
+                        src={recipe.image_m} 
                         alt={`image_${recipe.title}`} 
                     />
                 </Link>

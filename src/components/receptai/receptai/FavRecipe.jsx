@@ -1,5 +1,4 @@
 import styles from './FavRecipe.module.css';
-import { getImageFromBlob } from '../../../utils/images';
 import { Clock, Heart } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
@@ -10,7 +9,7 @@ const FavRecipe = ({ recipe }) => {
             <Link to={`/receptai/${recipe.slug}`} className={styles.anchor}>
                 <div className={styles.imageContainer}>
                     <img 
-                        src={!recipe.img_s ? getImageFromBlob(recipe.photo_s, recipe.photo_type) : recipe.img_s}
+                        src={recipe.image_s}
                         alt={recipe.title} 
                         className={styles.image} 
                     />

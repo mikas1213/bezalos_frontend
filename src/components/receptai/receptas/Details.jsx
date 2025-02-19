@@ -3,7 +3,6 @@ import { Clock, CirclePlay, Flame } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import { BiBowlRice } from 'react-icons/bi';
-import { getImageFromBlob } from '../../../utils/images';
 
 const Details = ({ recipe }) => {
     const [bumbulis, setBumbulis] = useState(0);
@@ -34,7 +33,7 @@ const Details = ({ recipe }) => {
             </div>
 
             <div className={styles.image}>
-                <img src={getImageFromBlob(recipe.photo_l, recipe.photo_type)} alt='Receptas' />
+                <img src={recipe.image_l} alt={recipe.title} />
             </div>
 
             <div className={styles.products}>

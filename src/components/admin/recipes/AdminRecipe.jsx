@@ -1,10 +1,9 @@
 import styles from './AdminRecipe.module.css';
-import { getImageFromBlob } from '../../../utils/images';
 import { CircleX, CirclePlay, Vegan, Clock, Heart } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const AdminRecipe = ({ adminRecipe, handleDeleteRecipe, setModalControl, setNewRecipe }) => {
-    const img_src = adminRecipe.photo ? URL.createObjectURL(adminRecipe.photo) : getImageFromBlob(adminRecipe.photo_s, adminRecipe.photo_type);
+    const img_src = adminRecipe.photo ? URL.createObjectURL(adminRecipe.photo) : adminRecipe.image_s;
 
     return (
         <div className={styles.adminRecipe}>
