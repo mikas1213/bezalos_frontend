@@ -51,26 +51,16 @@ const RecipesPage = () => {
                 setIsOpenFilters={setIsOpenFilters} 
                 search={search}
                 setSearch={setSearch}
+                setCurrentPage={setCurrentPage}
             />
             
             <Main page='recipes'>
                 <Container>
-                    {mostLiked?.length > 0 && <FavoriteRecipes mostLiked={mostLiked} />}
-                    <Filters 
-                        isOpenFilters={isOpenFilters} 
-                        mediaQuery={mediaQuery}
-                        filters={filters} 
-                        setFilters={setFilters}
-                    />
-
-                    {!isLoading && <>
-                        <InfoTab recipesCount={totalRows} />
-
-                        <Recipes 
-                            recipes={recipes} 
-                            onToggleLikes={onToggleLikes}
-                        />
-                        
+                    <FavoriteRecipes mostLiked={mostLiked} />
+                    <Filters isOpenFilters={isOpenFilters} mediaQuery={mediaQuery} filters={filters} setFilters={setFilters} setCurrentPage={setCurrentPage} />
+                    <InfoTab recipesCount={totalRows} />
+                    <Recipes isLoading={isLoading} recipes={recipes} onToggleLikes={onToggleLikes} />
+                    {!isLoading && <>    
                         {totalPages > 0 && <Pagination 
                             setCurrentPage={setCurrentPage} 
                             currentPage={currentPage} 

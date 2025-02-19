@@ -7,9 +7,12 @@ import { HiTemplate } from 'react-icons/hi';
 
 const AdminNavbar = ({ isLoading, stats }) => {
     const location = useLocation();
+    const user_count = !isLoading ? stats.users : 0;
+    const virtuve_count = !isLoading ? stats.virtuve_active : 0;
+    const profilis_count = !isLoading ? stats.profilis_active : 0;
 
     const links = [
-        {to: '/admin', label: 'Klientai', icon: <FaUserGroup />, notification: !isLoading && `${stats.users} / ${stats.virtuve_active} / ${stats.profilis_active}`},
+        {to: '/admin', label: 'Klientai', icon: <FaUserGroup />, notification: `${user_count} / ${virtuve_count} / ${profilis_count}`},
         {to: '/admin/planai' , label: 'Mitybos planai', icon: <HiTemplate />},
         {to: '/admin/receptai' , label: 'Receptai', icon: <IoFastFoodSharp />},
         {to: '/admin/maistas' , label: 'Maistas', icon: <FaList />},

@@ -3,7 +3,7 @@ import { Clock, Heart } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const FavRecipe = ({ recipe }) => {
-    console.log(recipe)
+    
     return (
         <div className={styles.favRecipe}>
             <Link to={`/receptai/${recipe.slug}`} className={styles.anchor}>

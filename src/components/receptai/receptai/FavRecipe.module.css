@@ -41,10 +41,20 @@
     font-size: var(--font-size-dynamic-p-lg);
     color: var(--color-bgr-bottom);
     font-weight: 600;
-    flex: 1;
+    flex: 1;    
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    /* line-clamp: 3; */
+    
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: break-word;
 }
 .bottom {
     display: flex;
+    margin-top: auto;
+    padding-top: 0.3rem;
     justify-content: space-between;
 }
 .item {
@@ -100,7 +110,7 @@
 
 @media only screen and (max-width: 440px) {
     .title {
-        font-size: var(--font-size-dynamic-p-sm);
+        font-size: var(--font-size-dynamic-small-1-sm);
         line-height: 140%;
     }
 

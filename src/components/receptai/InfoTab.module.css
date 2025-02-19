@@ -11,6 +11,7 @@
     font-weight: 600;
 }
 .recipesCount {
+    display: inline-block;
     color: var(--color-bgr-bottom);
     font-size: 1.1rem;
 }

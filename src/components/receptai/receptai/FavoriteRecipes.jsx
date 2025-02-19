@@ -6,15 +6,15 @@ const FavoriteRecipes = ({ mostLiked }) => {
     const mediaQuery = useMediaQuery();
     
     return (
-        <div className={styles.favoriteRecipes}>
+        <>
             <div className={styles.header}>Mėgstamiausi</div>
             <Carousel 
                 mostLiked={mostLiked} 
                 visibleItems={mediaQuery < 376 ? 1 : mediaQuery < 769 ? 2 : 3} 
-                rotationInterval={3000} 
+                rotationInterval={2000000} 
                 pauseDuration={1000} 
             />
-        </div>
+        </>
     );
 };
 

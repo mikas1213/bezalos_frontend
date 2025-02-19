@@ -9,9 +9,9 @@ const filterGroups = {
     duration: ['Iki 15min.', '15-30min.', '30-60min.', 'Virš 60min.'],
     taste: ['Saldu', 'Sūru', 'Aštru']
 };
-
 const hasProperties = obj => Object.values(obj).some(val => val !== '');
-const Filters = ({ isOpenFilters, mediaQuery, filters, setFilters }) => {
+
+const Filters = ({ isOpenFilters, mediaQuery, filters, setFilters, setCurrentPage}) => {
 
     const [filtersHeight, setFilterHeight] = useState(0);
     const filtersRef = useRef(null);
@@ -32,7 +32,10 @@ const Filters = ({ isOpenFilters, mediaQuery, filters, setFilters }) => {
         return <div className={styles.filterGroup} key={key}>
             {group.map(filter => <span key={filter}
                 className={`${styles.chip} ${filters[key] === filter ? styles.active : ''}`}
-                onClick={() => setFilters(prevState => ({ ...prevState, [key]: prevState[key] !== filter ? filter : ''}))}
+                onClick={() => {
+                    setFilters(prevState => ({ ...prevState, [key]: prevState[key] !== filter ? filter : ''}));
+                    setCurrentPage(1);
+                }}
             >{filter}</span>)}
         </div>;
     };

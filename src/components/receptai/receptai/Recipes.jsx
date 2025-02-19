@@ -1,13 +1,15 @@
 import styles from './Recipes.module.css';
 import Recipe from './Recipe';
 
-const Recipes = ({ recipes, onToggleLikes }) => {
+const Recipes = ({ isLoading, recipes, onToggleLikes }) => {
     
     return (
-        <div className={styles.recipes}>
-            {recipes.map(recipe => 
-                <Recipe key={recipe.id} recipe={recipe} onToggleLikes={onToggleLikes} />
-            )}
+        <div style={{minHeight: '50vh'}}>
+            <div className={styles.recipes}>
+                {!isLoading && recipes.map(recipe => 
+                    <Recipe key={recipe.id} recipe={recipe} onToggleLikes={onToggleLikes} />
+                )}
+            </div>
         </div>
     );
 };

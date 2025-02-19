@@ -3,7 +3,7 @@ import toast from 'react-hot-toast';
 import axios from '../../api/axios';
 
 export const useRecipes = (filters, user_id) => {
-    const recipesPerPage = 16;
+    const recipesPerPage = 15;
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(0);
     const [totalRows, setTotalRows] = useState(0);
@@ -43,7 +43,7 @@ export const useRecipes = (filters, user_id) => {
             fetchData();
             isFirstRender.current = false;
         } else {
-            const timeoutId = setTimeout(fetchData, 500);
+            const timeoutId = setTimeout(fetchData, 200);
             return () => clearTimeout(timeoutId);
         }
     }, [query, user_id]);

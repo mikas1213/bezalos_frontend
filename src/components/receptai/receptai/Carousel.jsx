@@ -4,7 +4,7 @@ import { motion, useAnimation } from 'framer-motion';
 import FavRecipe from './FavRecipe';
 
 const Carousel = ({ mostLiked, visibleItems, rotationInterval = 3000, pauseDuration = 1000 }) => {
-
+    
     const itemCount = mostLiked.length;
     const containerRef = useRef(null);
     const controls = useAnimation();
