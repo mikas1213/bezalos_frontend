@@ -73,7 +73,7 @@ const Navbar = ({ isHome = '' }) => {
                         <li className={styles.listItem}>
 
                             <NavLink to='/receptai'>Receptai</NavLink>
-                            // <NavLink to='https://senas.bezalos.lt/receptai'>Receptai</NavLink>}
+                            {/* <NavLink to='https://senas.bezalos.lt/receptai'>Receptai</NavLink> */}
                             <div className={styles.indicator}></div>
                         </li>
 

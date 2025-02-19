@@ -9,11 +9,13 @@ import { useState } from 'react';
 import toast from 'react-hot-toast';
 
 const ReceptaiPage = () => {
-    const [open, setOpen] = useState(false);
-    const prodList = usePlanProducts();
-    const { isLoading, adminRecipes, setAdminRecipes, currentPage, setCurrentPage, totalPages } = useAdminRecipes();
     const axiosPrivate = useAxiosPrivate();
-
+    const [modalControl, setModalControl] = useState({isOpen: false, action: ''});
+    const [filters, setFilters] = useState({ search: ''});
+    const [isLoadingOnSaveRecipe, setIsLoadingOnSaveRecipe] = useState(false);
+    const { prodList } = usePlanProducts();
+    const { isLoading, adminRecipes, setAdminRecipes, currentPage, setCurrentPage, totalPages } = useAdminRecipes(filters);
+    
     const emptyRecipe = { 
         title: '',
         recipe_type: 'Pusryčiai',
@@ -31,6 +33,75 @@ const ReceptaiPage = () => {
     };
 
     const [newRecipe, setNewRecipe] = useState(emptyRecipe);
+    
+    const handleNewRecipe = async () => {
+        const delay = new Promise((resolve) => setTimeout(resolve, 200));
+        try {
+            setIsLoadingOnSaveRecipe(true);
+            const formData = new FormData();
+            formData.append('title', newRecipe.title);
+            formData.append('recipe_type', newRecipe.recipe_type);
+            formData.append('food_logic', newRecipe.food_logic);
+            formData.append('taste', newRecipe.taste);
+            formData.append('duration', newRecipe.duration);
+            formData.append('is_vegetarian', newRecipe.is_vegetarian);
+            formData.append('products', JSON.stringify(newRecipe.products));
+            formData.append('description', newRecipe.description);
+            formData.append('video_link', newRecipe.video_link);
+            formData.append('photo', newRecipe.photo);
+
+            const {data: id} = await axiosPrivate.post('/admin/recipes/add', formData, {
+                headers: { 'Content-Type': 'multipart/form-data' }
+            });
+            
+            await delay;
+            toast.success('Receptas sėkmingai pridėtas!')
+            setModalControl({isOpen:false, action: ''});
+            setAdminRecipes(prev => [{...newRecipe, id}, ...prev]);
+            setNewRecipe(emptyRecipe);
+
+        } catch (err) {
+            if(err.status === 400) {
+                toast.error(err.response.data.message);
+            } else {
+                toast.error('Tikriausia serverio klaida.\nBandykite vėliau')
+            }
+        } finally {
+            setIsLoadingOnSaveRecipe(false);
+        }
+    };
+
+    const handleEditRecipe = async id => {
+        try {
+            setIsLoadingOnSaveRecipe(true);
+            const formData = new FormData();
+            formData.append('title', newRecipe.title);
+            formData.append('recipe_type', newRecipe.recipe_type);
+            formData.append('food_logic', newRecipe.food_logic);
+            formData.append('taste', newRecipe.taste);
+            formData.append('duration', newRecipe.duration);
+            formData.append('is_vegetarian', newRecipe.is_vegetarian);
+            formData.append('products', JSON.stringify(newRecipe.products));
+            formData.append('description', newRecipe.description);
+            formData.append('video_link', newRecipe.video_link);
+            newRecipe.photo && formData.append('photo', newRecipe.photo);
+
+            await axiosPrivate.patch(`/admin/recipes/${id}`, formData, {
+                headers: { 'Content-Type': 'multipart/form-data' }
+            });
+
+            setAdminRecipes(prevState => prevState.map(recipe => recipe.id === newRecipe.id ? {
+                ...newRecipe
+            } : recipe));
+            
+            setModalControl({isOpen:false, action: ''});
+            toast.success('Receptas atnaujintas.')
+        } catch(err) {
+            toast.error(err.response.data.message)
+        } finally {
+            setIsLoadingOnSaveRecipe(false);
+        }
+    };
 
     const handleDeleteRecipe = async id => {
         try {
@@ -47,16 +118,31 @@ const ReceptaiPage = () => {
 
     return (
         <>
-            <Header setOpen={setOpen} />
-            {open && <CreateRecipeModal 
-                prodList={prodList.prodList} 
-                setOpen={setOpen} 
+            <Header 
+                setModalControl={setModalControl} 
+                filters={filters} 
+                setFilters={setFilters}
+            />
+            {modalControl.isOpen && <CreateRecipeModal 
+                isLoading={isLoadingOnSaveRecipe}
+                prodList={prodList} 
+                modalControl={modalControl}
+                setModalControl={setModalControl} 
                 emptyRecipe={emptyRecipe}
                 newRecipe={newRecipe}
+                handleNewRecipe={handleNewRecipe}
+                handleEditRecipe={handleEditRecipe}
                 setNewRecipe={setNewRecipe}
                 setAdminRecipes={setAdminRecipes}
             />}
-            {!isLoading && adminRecipes.length > 0 && <AdminRecipes adminRecipes={adminRecipes} handleDeleteRecipe={handleDeleteRecipe} />}
+
+            {!isLoading && adminRecipes.length > 0 && <AdminRecipes 
+                adminRecipes={adminRecipes} 
+                handleDeleteRecipe={handleDeleteRecipe} 
+                setModalControl={setModalControl} 
+                setNewRecipe={setNewRecipe}
+            />}
+
             <Pagination currentPage={currentPage} setCurrentPage={setCurrentPage} totalPages={totalPages} pagesLimit={8} />
         </>
     );

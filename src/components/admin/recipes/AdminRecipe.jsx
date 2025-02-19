@@ -1,9 +1,9 @@
 import styles from './AdminRecipe.module.css';
 import { getImageFromBlob } from '../../../utils/images';
-import { CircleX, CirclePlay, Vegan, Clock } from 'lucide-react';
+import { CircleX, CirclePlay, Vegan, Clock, Heart } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
-const AdminRecipe = ({ adminRecipe, handleDeleteRecipe }) => {
+const AdminRecipe = ({ adminRecipe, handleDeleteRecipe, setModalControl, setNewRecipe }) => {
     const img_src = adminRecipe.photo ? URL.createObjectURL(adminRecipe.photo) : getImageFromBlob(adminRecipe.photo_s, adminRecipe.photo_type);
 
     return (
@@ -13,7 +13,10 @@ const AdminRecipe = ({ adminRecipe, handleDeleteRecipe }) => {
                 alt={adminRecipe.title} 
                 className={styles.image}
             />
-            <div className={`${styles.section} ${styles.title}`}>
+            <div className={`${styles.section} ${styles.title}`} onClick={() => {
+                setNewRecipe(adminRecipe);
+                setModalControl({isOpen: true, action: 'edit'});
+            }}>
                 {adminRecipe.title}
             </div>
 
@@ -33,6 +36,11 @@ const AdminRecipe = ({ adminRecipe, handleDeleteRecipe }) => {
                 <Clock className={styles.icon} />
                 {adminRecipe.duration}
                 <small>min.</small>
+            </div>
+
+            <div className={`${styles.section} ${styles.likes}`}>
+                <Heart className={`${styles.icon} ${adminRecipe.likes ? styles.liked : ''}`} />
+                {adminRecipe.likes}
             </div>
 
             <div className={`${styles.section} ${styles.videoLink}`}>

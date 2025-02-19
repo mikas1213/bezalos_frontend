@@ -21,6 +21,7 @@ export const useRecipes = (filters, user_id) => {
     useEffect(() => {
         document.body.style.backgroundColor = '#fff'; 
         document.title = 'Be žalos | Receptai';
+        
         const fetchData = async () => {
             try {
                 const { data: { rows, most_liked, total_rows, total_pages, current_page }} = await axios.post(`/recipes?${query}`, {id: user_id});

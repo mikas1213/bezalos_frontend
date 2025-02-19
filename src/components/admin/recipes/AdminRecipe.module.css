@@ -19,20 +19,24 @@
     overflow: hidden;
 }
 .title {
+    cursor: pointer;
     flex-wrap: wrap;
-    color: var(--color-bgr-bottom) !important;
+    width: 12rem;
+    color: var(--color-bgr-bottom);
     font-size: var(--font-size-small-1);
     font-weight: 500;
+    transition: all 0.1s ease-in-out;
 }
-.title { width: 12rem; }
+.title:hover { color: var(--color-a);}
 .foodLogic { width: 4rem; }
 .recipeType { width: 5rem; }
 .taste { width: 4rem; }
 .duration { width: 5rem; }
+.likes { width: 3rem; }
 .videoLink { width: 22rem; flex-shrink: 1;}
 .isVegetarian { width: 2rem; flex-grow: 1; }
 .deleteRecipe { width: 3.5rem; }
-.title, .foodLogic, .recipeType, .taste, .duration, .videoLink, .isVegetarian {
+.foodLogic, .recipeType, .taste, .duration, .likes, .videoLink, .isVegetarian {
     font-size: var(--font-size-small-1);
     color: var(--grey-dark);
 }
@@ -75,10 +79,14 @@
 .icon {
     color: var(--grey-dark);
     stroke-width: 1.8px;
-    width: 1.2rem;
-    height: 1.2rem;
+    width: 1.1rem;
+    height: 1.1rem;
     margin-right: 0.2rem;
     transition: all 0.15s ease-in-out;
     flex-shrink: 0;
+}
+
+.icon.liked {
+    fill: var(--grey-dark);
 }
 

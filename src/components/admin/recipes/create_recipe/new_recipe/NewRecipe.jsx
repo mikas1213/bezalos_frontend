@@ -147,7 +147,7 @@ const NewRecipe = ({ prodList, newRecipe, setNewRecipe }) => {
             <div className={styles.section}>
 
                 <div className={styles.inputGroup}>
-                    {newRecipe.products.length > 0 && 
+                    {newRecipe?.products?.length > 0 && 
                         <>
                             <span className={styles.inputLabel}>Produktai</span>
                             <div className={styles.recipeProducts}>
@@ -252,11 +252,11 @@ const NewRecipe = ({ prodList, newRecipe, setNewRecipe }) => {
 
             <div className={styles.recipeSummary}>
                 <div className={styles.bar}>
-                    <span className={styles.b}>B {newRecipe.b.toFixed(0)}</span>
-                    <span className={styles.a}>A {newRecipe.a.toFixed(0)}</span>
-                    <span className={styles.r}>R {newRecipe.r.toFixed(0)}</span>
+                    <span className={styles.b}>B {newRecipe.b?.toFixed(0)}</span>
+                    <span className={styles.a}>A {newRecipe.a?.toFixed(0)}</span>
+                    <span className={styles.r}>R {newRecipe.r?.toFixed(0)}</span>
                 </div>
-                <span className={styles.k}><Flame className={styles.kcalIcon}/>{newRecipe.kcal.toFixed(0)} <small>kcal</small></span>
+                <span className={styles.k}><Flame className={styles.kcalIcon}/>{newRecipe.kcal?.toFixed(0)} <small>kcal</small></span>
             </div>
         </div>
     );

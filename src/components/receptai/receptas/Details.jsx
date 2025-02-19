@@ -7,10 +7,10 @@ import { getImageFromBlob } from '../../../utils/images';
 
 const Details = ({ recipe }) => {
     const [bumbulis, setBumbulis] = useState(0);
-    console.log(recipe)
+
     return (
         <div className={styles.details}>
-            <div className={styles.title}>{recipe.recipe}</div>
+            <div className={styles.title}>{recipe.title}</div>
 
             <div className={styles.properties}>
                 <div className={styles.time}>

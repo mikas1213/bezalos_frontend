@@ -4,13 +4,13 @@ import { Clock, Heart } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const FavRecipe = ({ recipe }) => {
-
+    console.log(recipe)
     return (
         <div className={styles.favRecipe}>
             <Link to={`/receptai/${recipe.slug}`} className={styles.anchor}>
                 <div className={styles.imageContainer}>
                     <img 
-                        src={getImageFromBlob(recipe.photo_s, recipe.photo_type)}
+                        src={!recipe.img_s ? getImageFromBlob(recipe.photo_s, recipe.photo_type) : recipe.img_s}
                         alt={recipe.title} 
                         className={styles.image} 
                     />

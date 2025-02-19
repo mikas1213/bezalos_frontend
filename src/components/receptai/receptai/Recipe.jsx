@@ -4,21 +4,22 @@ import { Link } from 'react-router-dom';
 import { getImageFromBlob } from '../../../utils/images';
 
 const Recipe = ({ recipe, onToggleLikes }) => {
-    
+
     return (
         <div className={styles.recipe}>
             <div className={styles.imageContainer}>
                 <Link to={`/receptai/${recipe.slug}`}>
                     <img 
                         className={styles.image}
+
                         src={getImageFromBlob(recipe.photo_m, recipe.photo_type)} 
-                        alt={`image_${recipe.recipe}`} 
+                        alt={`image_${recipe.title}`} 
                     />
                 </Link>
             </div>
             
             <div className={styles.title}>
-                <Link to={`/receptai/${recipe.slug}`} className={styles.anchor}>{recipe.recipe}</Link>
+                <Link to={`/receptai/${recipe.slug}`} className={styles.anchor}>{recipe.title}</Link>
             </div>
             <div className={styles.details}>
                 <span className={styles.item}>
@@ -36,7 +37,6 @@ const Recipe = ({ recipe, onToggleLikes }) => {
                     <Heart className={`${styles.icon} ${recipe.liked ? styles.liked : ''}`}/>{recipe.likes}
                 </span>
             </div>
-
         </div>
     );
 };
