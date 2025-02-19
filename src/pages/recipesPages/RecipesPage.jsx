@@ -11,8 +11,10 @@ import Pagination from '../../components/UI/Pagination';
 import Footer from '../../components/UI/Footer';
 import useMediaQuery from '../../hooks/useMediaQuery';
 import { useRecipes } from '../../hooks/recipes/useRecipes';
+import { useFavoriteRecipes } from '../../hooks/recipes/useFavoriteRecipes';
 import useAuth from '../../hooks/useAuth';
 import useAxiosPrivate from '../../hooks/useAxiosPrivate';
+
 
 const RecipesPage = () => {
     const axiosPrivate = useAxiosPrivate();
@@ -24,11 +26,13 @@ const RecipesPage = () => {
     const user_id = useAuth()?.loggedUser?.user_id || null;
     const { setIsOpenModal } = useAuth();
  
-    const { isLoading, recipes, mostLiked, setRecipes, currentPage, setCurrentPage, totalPages, totalRows } = useRecipes({
+    const { isLoading, recipes, setRecipes, currentPage, setCurrentPage, totalPages, totalRows } = useRecipes({
         ...filters, 
         ...(search !== '' ? {search} : {})
     }, user_id);
-    
+
+    const { data: mostLiked, isLoading: isLoadingFav } =  useFavoriteRecipes();
+
     const onToggleLikes = async (recipe_id) => {
         if(!user_id) {
             setIsOpenModal(true);
@@ -42,6 +46,7 @@ const RecipesPage = () => {
             } : recipe));
         }
     };
+
     
     return (
         <>
@@ -56,7 +61,7 @@ const RecipesPage = () => {
             
             <Main page='recipes'>
                 <Container>
-                    <FavoriteRecipes mostLiked={mostLiked} />
+                    <FavoriteRecipes mostLiked={mostLiked} isLoading={isLoadingFav} />
                     <Filters isOpenFilters={isOpenFilters} mediaQuery={mediaQuery} filters={filters} setFilters={setFilters} setCurrentPage={setCurrentPage} />
                     <InfoTab recipesCount={totalRows} />
                     <Recipes isLoading={isLoading} recipes={recipes} onToggleLikes={onToggleLikes} />

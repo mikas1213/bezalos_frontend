@@ -1,28 +1,16 @@
 .recipe {
     display: flex;
-    flex-direction: column;
-    
+    flex-direction: column;    
     border-radius: 0.8rem;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
 
-    opacity: 0;
-    animation: fadeIn ease 1.5s forwards;
-}
-@keyframes fadeIn {
-    0% {
-      opacity: 0;
-    }
-    100% {
-      opacity: 1;
-    }
-}
 .imageContainer {
     margin: 0.8rem  0.8rem 0;
 }
 .image {
     width: 100%;
     object-fit: cover;
-    /* aspect-ratio: 4 / 3; */
     border-radius: 0.4rem;
 }
 

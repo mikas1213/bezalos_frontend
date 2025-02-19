@@ -21,9 +21,8 @@ const RecipesHeader = ({ isOpenFilters, setIsOpenFilters, search, setSearch, set
                     onClick={() => setIsOpenFilters(open => !open)}
                 ><Filter className={styles.filterIcon}/></button>
                 <Search className={styles.searchIcon} />
-                {/* <span> */}
-                    <CircleX className={styles.iconClear} onClick={() => setSearch('')} />
-                {/* </span> */}
+
+                <CircleX className={styles.iconClear} onClick={() => setSearch('')} />
                 
             </div>
             <img className={styles.signatureImg} src={getImageURL('homepage/signature.png')} alt='Signature' />
