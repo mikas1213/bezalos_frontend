@@ -20,6 +20,7 @@
     object-fit: cover;
     object-position: 50% 50%;
     aspect-ratio: 4 / 5;
+    /* aspect-ratio: 2 / 3; */
     border-radius: 0.5rem;
 }
 

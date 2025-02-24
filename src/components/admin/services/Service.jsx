@@ -1,10 +1,7 @@
 import styles from './Service.module.css';
 import { Check, CircleX } from 'lucide-react';
-import { useOutletContext } from 'react-router-dom';
     
-const Service = ({ service }) => {
-    const { handleModalOpen, setFormValues } = useOutletContext();
-
+const Service = ({ service, handleModalOpen, setFormValues, handleServiceDelete }) => {
     return (
         <div className={styles.service}>
             <img 
@@ -50,7 +47,12 @@ const Service = ({ service }) => {
 
             <div 
                 className={`${styles.section} ${styles.deleteService}`}
-                // onClick={() => handleDeleteRecipe(adminRecipe.id)}
+                onClick={() => {
+                    const is_delete = confirm('Trinti paslaugą?');
+                    if(is_delete) {
+                        handleServiceDelete.mutate(service.id);
+                    }
+                }}
             >
                 <CircleX className={styles.iconDelete} />
             </div> 

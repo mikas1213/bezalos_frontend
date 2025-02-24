@@ -1,11 +1,26 @@
 import useAdminPaslaugos from '../../../hooks/paslaugos/useAdminPaslaugos';
 import Service, { ServiceHeader } from '../../../components/admin/services/Service';
-// import { useOutletContext } from 'react-router-dom';
+import useAxiosPrivate from '../../../hooks/useAxiosPrivate';
+import { useOutletContext } from 'react-router-dom';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
+import toast from 'react-hot-toast';
 
 const ServicesPage = () => {
-    // const { data:services, isLoading } = usePaslaugos();
+    const axiosPrivate = useAxiosPrivate();
+    const queryClient = useQueryClient();
+    const { handleModalOpen, setFormValues } = useOutletContext();
     const { data: services, isLoading } = useAdminPaslaugos();
-    // const { handleModalOpen } = useOutletContext();
+
+
+    const handleServiceDelete = useMutation({
+        mutationFn: id => axiosPrivate.delete(`/admin/services/${id}`),
+        onSuccess: () => {
+            queryClient.invalidateQueries({ queryKey: ['admin-services'] })
+        },
+        onError: err => {
+            toast.error(err.message || 'Klaida!');
+        }
+    });
 
     return (
         <div style={{
@@ -15,7 +30,13 @@ const ServicesPage = () => {
             gap: '0.5rem'
         }}>
             <ServiceHeader />
-            {!isLoading && services.map(service => <Service key={service.id} service={service} />)}
+            {!isLoading && services.map(service => <Service 
+                key={service.id} 
+                service={service} 
+                handleModalOpen={handleModalOpen}
+                setFormValues={setFormValues}
+                handleServiceDelete={handleServiceDelete}
+            />)}
         </div>
     );
 };

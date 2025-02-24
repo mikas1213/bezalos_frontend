@@ -15,8 +15,7 @@ const useAdminPaslaugos = () => {
                         id: item.id ?? i
                     }))
                 }
-            })
-            console.log(data)
+            });
             return data;
         } catch (err) {
             throw new Error(err.message || err.response.data.status || 'Error');

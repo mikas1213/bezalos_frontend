@@ -1,5 +1,6 @@
 import { Outlet } from 'react-router-dom';
-import { useState, useCallback } from 'react';
+import { useState } from 'react';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
 import ServicesNav from '../../../components/admin/services/ServicesNav';
 import AddNewModal from '../../../components/admin/services/AddNewModal';
 import ServiceFrom from '../../../components/admin/services/service_form/ServiceForm';
@@ -21,10 +22,10 @@ const service_form = {
 
 const ServicesPageLayout = () => {
     const [isModalOpen, setIsModalOpen] = useState({isOpen: false, form: '', action: ''});
-    const [isLoading, setIsLoading] = useState(false);
+    
     const [formValues, setFormValues] = useState({});
-    const axiosPrivate = useAxiosPrivate();
-
+    // const axiosPrivate = useAxiosPrivate();
+    // const queryClient = useQueryClient();
     const handleModalOpen = (isOpen, form = '', action = '') => {
         isOpen && form === 'Paslaugą' && setFormValues(service_form);
         isOpen && form === 'Kodą' && setFormValues({popular: 'Two'});
@@ -44,47 +45,57 @@ const ServicesPageLayout = () => {
         }
     };
 
-    const handleSubmit = useCallback(async () => {
-        
-        try {
-            setIsLoading(true);
-            const formData = new FormData();
-            Object.entries(formValues).forEach(([key, value]) => {
-                
-                if(key === 'details') {
-                    formData.append(key, JSON.stringify(value));
-                } else {
-                    formData.append(key, value);
-                }
-                
-            });
-            
-            if(isModalOpen.action === 'insert') {
-                await axiosPrivate.post('/admin/services/add', formData, {
-                    headers: { 'Content-Type': 'multipart/form-data' }
-                });
-                toast.success('Paslauga sukurta');
+    const getFormData = () => {
+        const formData = new FormData();
+        Object.entries(formValues).forEach(([key, value]) => {
+            if(!key.startsWith('image')) {
+                formData.append(key, key === 'details' ? JSON.stringify(value) : value);
             }
-
-            if(isModalOpen.action === 'update') {
-                await axiosPrivate.patch(`/admin/services/${formValues.id}`, formData, {
-                    headers: { 'Content-Type': 'multipart/form-data' }
-                });
-                toast.success('Paslauga atnaujinta');
-            }
-            
-            setIsLoading(false);
-            handleModalOpen(false, '')
-        } catch(err) {
-            toast.error(err.response.data.message || err.message);
-            setIsLoading(false);
-        }
-    }, [formValues, axiosPrivate, isModalOpen]);
+        });
+        return formData;
+    };
     
+    const useServiceMutation = () => {
+        const axiosPrivate = useAxiosPrivate();
+        const queryClient = useQueryClient();
+    
+        return useMutation({
+            mutationFn: ({ id, formData, action }) => {
+                const config = { headers: { 'Content-Type': 'multipart/form-data' } };
+                return action === 'insert'
+                    ? axiosPrivate.post('/admin/services/add', formData, config)
+                    : axiosPrivate.patch(`/admin/services/${id}`, formData, config);
+            },
+            onSuccess: (_, variables) => {
+                queryClient.invalidateQueries({ queryKey: ['admin-services'] });
+                toast.success(variables.action === 'insert' ? 'Paslauga pridėta' : 'Paslauga atnaujinta');
+                variables.onCloseModal();
+            },
+            onError: (err, variables) => {
+                toast.error(err.response?.data?.message || err.message || `Klaida ${variables.action === 'insert' ? 'pridedant' : 'atnaujinant'} paslaugą`);
+            }
+        });
+    };
+
+
+    const serviceMutation = useServiceMutation();
+
+    const handleSubmit = () => {
+        const formData = getFormData();
+        serviceMutation.mutate({
+            id: formValues.id,
+            formData,
+            action: isModalOpen.action,
+            onCloseModal: () => handleModalOpen(false, ''),
+        });
+    };
+    const isLoading = serviceMutation.isPending;
+
     return (
         <>
             <ServicesNav isModalOpen={isModalOpen} handleModalOpen={handleModalOpen} />
-            <Outlet context={{handleModalOpen, setFormValues}}/>
+            <Outlet context={{ handleModalOpen, setFormValues }}/>
+
             {isModalOpen.isOpen && isModalOpen.form && <AddNewModal>
                 {isModalOpen.form === 'Paslaugą' && <ServiceFrom 
                     isLoading={isLoading}
