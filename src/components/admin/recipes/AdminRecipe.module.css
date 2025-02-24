@@ -79,8 +79,8 @@
 .icon {
     color: var(--grey-dark);
     stroke-width: 1.8px;
-    width: 1.1rem;
-    height: 1.1rem;
+    width: 1.2rem;
+    height: 1.2rem;
     margin-right: 0.2rem;
     transition: all 0.15s ease-in-out;
     flex-shrink: 0;

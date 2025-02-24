@@ -5,7 +5,7 @@
     margin: 0 auto;
     overflow: hidden;
     opacity: 0;
-    animation: fadeIn ease-in 0.2s forwards;
+    animation: fadeIn ease-in 0.1s forwards;
 }
 @keyframes fadeIn {
     0% { opacity: 0; }

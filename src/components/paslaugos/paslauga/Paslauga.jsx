@@ -1,5 +1,4 @@
 import styles from './Paslauga.module.css';
-import { getImageURL } from '../../../utils/images';
 import Accordion from './Accordion';
 import usePayment from '../../../hooks/usePayment';
 import { useState, useEffect } from 'react';
@@ -26,7 +25,7 @@ const Paslauga = ({ paslauga, setPaslauga }) => {
         <div className={styles.paslauga}>
             <div className={styles.left}>
                 <img 
-                    src={getImageURL(`paslaugos/${paslauga.slug}.webp`)} 
+                    src={paslauga.image_l} 
                     alt={paslauga.title}
                     className={`${styles.paslaugaImg} ${paslauga.slug === 'kursas-iveik-emocini-valgyma' ? styles.spcificSizeImg : ''}`} 
                 />

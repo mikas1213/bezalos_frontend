@@ -1,0 +1,65 @@
+.serviceHeader {
+    display: grid;
+    grid-template-columns: 3.5rem 20rem 6rem 6rem 6rem 4rem 5rem 5rem 6rem auto;
+    border-radius: 0.5rem;
+    background-color: #fff;
+    overflow: hidden;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    height: 2rem;
+}
+
+.service {
+    composes: serviceHeader;
+    height: 3.5rem;
+}
+.section {
+    display: flex;
+    align-items: center;
+    margin-left: 1rem;
+    overflow: hidden;
+    font-size: var(--font-size-small-1);
+    font-weight: 500;
+}
+.service .section:last-child {
+    cursor: pointer;
+    justify-content: center;
+    justify-self: end;
+    width: 3.5rem;
+    border-left: 1px solid var(--color-border);
+    transition: 0.15s ease-in-out;
+}
+.service .section:last-child:hover {
+    background-color: var(--color-admin-red-bgr);
+}
+.service .section:last-child:hover .iconDelete {
+    color: var(--color-admin-red);
+}
+
+.title span:hover {
+    cursor: pointer;
+    color: var(--color-btn-secondary);
+}
+.image {
+    width: 3.5rem;
+    height: 3.5rem;
+    object-fit: cover;
+}
+.center {
+    justify-content: center;
+    text-align: center;
+}
+
+.iconPop {
+    width: 1.2rem;
+    height: 1.2rem;
+    color: var(--color-btn-secondary);
+}
+.iconActive {
+    composes: iconPop;
+    color: var(--color-admin-red);
+}
+.iconDelete {
+    composes: iconPop;
+    color: var(--grey-dark);
+    transition: 0.15s ease-in-out;
+}

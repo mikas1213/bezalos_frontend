@@ -45,7 +45,7 @@ const HomePage = () => {
         const sectionObserver = new IntersectionObserver(revealSection, {
             root: null,
             threshold: 0.05,
-            // rootMargin: '-200px',
+            // rootMargin: '200px',
             // threshold: 0.15
         });
 

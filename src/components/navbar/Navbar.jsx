@@ -9,7 +9,6 @@ import Modal from '../UI/Modal';
 import Authentication from '../auth/Authentication';
 import useAuth from '../../hooks/useAuth';
 import useLogout from '../../hooks/useLogout';
-
         
 // ICONS
 // https://www.svgrepo.com/collection/solar-broken-line-icons
@@ -17,6 +16,7 @@ import useLogout from '../../hooks/useLogout';
 import { VirtuveIcon, ReceptaiIcon, PaslaugosIcon, ProfilisIcon, PrisijungtiIcon, AtsijungtiIcon } from './NavIcons';
 
 const Navbar = ({ isHome = '' }) => {
+    const change_color_nav_height = isHome === 'home' ? 500 : isHome === 'recipes' ? 20 : 100;
     
     const location = useLocation();
     const [_, page] = location.pathname.split('/');
@@ -27,9 +27,10 @@ const Navbar = ({ isHome = '' }) => {
     const [isScroll, setIsScroll] = useState(false);
     const [isOpenBurger, setIsOpenBurger] = useState(false);
     
-    const changeColor = () =>
-        window.scrollY > 100 ? setIsScroll(true) : setIsScroll(false);
-        window.addEventListener('scroll', changeColor);
+    const changeColor = () => {
+        window.scrollY > change_color_nav_height ? setIsScroll(true) : setIsScroll(false);
+    }
+    window.addEventListener('scroll', changeColor);
 
     let navBarStyle = '';
     if (isHome === 'home' && !isScroll) navBarStyle = styles.navHomeNotScroll;

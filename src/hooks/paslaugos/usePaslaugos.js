@@ -1,22 +1,22 @@
-import { useState, useEffect } from 'react';
+import { useQuery } from '@tanstack/react-query';
 import axios from '../../api/axios';
 
+const fetchData = async () => {
+    try {
+        const { data } = await axios.get('/services');
+        return data;
+    } catch (err) {
+        throw new Error(err.message || err.response.data.status || 'Error');
+    }
+};
+
 const usePaslaugos = () => {
-    const [paslaugos, setPaslaugos] = useState([]);
-    const [isLoading, setIsloading] = useState(true);
-    
 
-    useEffect(() => {
-        const getData = async () => {
-            const { data } = await axios.get('/services');
-            setPaslaugos(data);
-            setIsloading(false);
-        };
-
-        getData();
-    }, []);
-
-    return { paslaugos, isLoading};
+    return useQuery({
+        queryKey: ['services'],
+        queryFn: fetchData,
+        staletime: 5 * 60 * 1000
+    });
 };
 
 export default usePaslaugos;

@@ -1,0 +1,54 @@
+.flexRow {
+    display: flex;
+    gap: 1rem;
+}
+.flexColumn {
+    composes: flexRow;
+    flex-direction: column;
+}
+.gap_02 {
+    gap: 0.2rem !important;
+}
+
+.section {
+    border: 1px solid var(--color-border);
+    border-radius: 0.5rem;
+    padding: 1rem;
+}
+.inputLabel {
+    margin-left: 0.2rem;
+    font-size: var(--font-size-small-1);
+    font-weight: 500;
+    color: var(--green-bgr-light);
+}
+  
+.fileUpload {
+    position: relative;
+    display: flex;
+    gap: 1rem;
+}
+.inputFile {
+    display: none;
+}
+.uploadFileBtn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    height: 2.5rem;
+    padding: 0 1rem;
+    background-color: var(--color-background-secondary);
+    color: var(--grey-dark);
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 14px;
+    transition: all 0.1s ease-in-out;
+}
+
+.uploadFileBtn:hover {
+    background-color: var(--color-background-hover);
+}
+
+.icon {
+    width: 1.2rem;
+    height: 1.2rem;
+}

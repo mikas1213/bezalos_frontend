@@ -1,4 +1,3 @@
-// import { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useRecipe } from '../../hooks/recipes/useRecipe';
 import Navbar from '../../components/navbar/Navbar';

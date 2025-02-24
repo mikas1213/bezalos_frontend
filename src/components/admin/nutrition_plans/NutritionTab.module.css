@@ -1,8 +1,8 @@
 .wrapper {
-    border-top-left-radius: 5px;
-    border-bottom-left-radius: 5px;
-    border-top-right-radius: 5px;
-    border-bottom-right-radius: 5px;
+    border-top-left-radius: 0.5rem;
+    border-bottom-left-radius: 0.5rem;
+    border-top-right-radius: 0.5rem;
+    border-bottom-right-radius: 0.5rem;
     background-color: #fff;
     width: 100%;
     max-width: 100%;
@@ -30,16 +30,16 @@
   
 .tabSwitch.templates:after {
     left: 0;
-    border-top-left-radius: 5px;
-    border-bottom-left-radius: 5px;
+    border-top-left-radius: 0.5rem;
+    border-bottom-left-radius: 0.5rem;
 }
 .tabSwitch.meals:after {
     left: calc(100% / 3);
 }
 .tabSwitch.products:after {
     left: calc((100% / 3) * 2);
-    border-top-right-radius: 5px;
-    border-bottom-right-radius: 5px;
+    border-top-right-radius: 0.5rem;
+    border-bottom-right-radius: 0.5rem;
 }
   
 .tabSwitch .tab {

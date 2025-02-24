@@ -44,6 +44,7 @@ const AccordionItem = ({ icon, title, desc }) => {
 
 
 const Accordion = ({ paslauga }) => {
+
     return (
         <div className={styles.accordion}>
             {paslauga.details.map((item, i) => <AccordionItem 

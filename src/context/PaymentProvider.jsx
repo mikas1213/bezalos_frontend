@@ -52,15 +52,19 @@ const PaymentProvider = () => {
     };
 
     const handleServiceCheckout = async (paslauga, code = '', isCodeApproved) => {
-
+        
         if(!user_id) {
             navigate('/prisijungti');
             return;
         }
+        const service = {...paslauga};
+        delete service.image_s;
+        delete service.image_m;
+        delete service.image_l;
         try {
             setIsLoading(true);
-
-            const res = await axiosPrivate.post('/payments/service-checkout-session', {user_role, user_id, paslauga, code, isCodeApproved});
+            const res = await axiosPrivate.post('/payments/service-checkout-session', {user_role, user_id, service, code, isCodeApproved});
+            
             window.location = res.data.session.url;
         } catch (err) {
             if(err.response.status === 401) {

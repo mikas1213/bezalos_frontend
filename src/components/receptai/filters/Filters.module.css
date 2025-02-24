@@ -7,7 +7,7 @@
     flex-wrap: wrap;
     overflow: hidden;
     opacity: 0;
-    animation: fadeIn ease-in 0.2s forwards;
+    animation: fadeIn ease-in 0.5s forwards;
 }
 
 @keyframes fadeIn {

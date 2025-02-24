@@ -1,0 +1,112 @@
+.select {
+    position: relative;
+    user-select: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+}
+.popular, .popular .options { width: 5.5rem; }
+.is_active, .is_active .options { width: 5.5rem; }
+
+.inputLabel {
+    margin-left: 0.2rem;
+    font-size: var(--font-size-small-1);
+    font-weight: 500;
+    color: var(--green-bgr-light);
+}
+.selectInput {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    border: none;
+    height: 2.5rem;
+    border-radius: 0.5rem;
+    padding: 0 0.8rem;
+    font-size: var(--font-size-p);
+    color: var(--grey-dark);
+    font-weight: 500;
+    background-color: var(--color-background-secondary);
+    transition: all 0.1s ease-in-out;
+}
+.selectIcon {
+    width: 1.2rem;
+    height: 1.2rem;
+    transition: all 0.15s ease-in-out;
+}
+.open .selectIcon {
+    transform: rotate(-90deg);
+}
+
+.options {
+    position: absolute;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    padding: 0.5rem;
+    margin-top: 0.3rem;
+    border-radius: 0.5rem;
+    color: var(--color-text-grey);
+    border: 0.5px solid var(--color-border);
+    background-color: #fff;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+    
+    visibility: hidden;
+    opacity: 0;
+    transform: translateY(-10px);
+    top: 4rem;
+    transition: opacity 0.1s ease, visibility 0.1s, transform 0.1s ease-in-out;
+}
+.option {
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+}
+.option:hover {
+    background-color: #60c04033;
+    color: var(--color-bgr-bottom);
+}
+
+.showOptions {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+.icon {
+    width: 1.3rem;
+    height: 1.3rem;
+    color: var(--color-btn-secondary);
+}
+
+@media (hover: hover) {
+    .selectInput:hover {
+        background-color: var(--color-background-hover);
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .selectInput {
+        width: 7.5rem;
+        height: 2rem;
+        padding: 0 0.5rem;
+        font-size: var(--font-size-small-1);
+    }
+    .options {
+        padding: 0.3rem;
+        width: 7.5rem;
+        top: 2rem;
+    }
+    .option {
+        font-size: var(--font-size-small-1);
+        padding: 0.3rem;
+    }
+}
+@media only screen and (max-width: 576px) {
+    .selectInput { width: 6rem; }
+    .options { width: 6rem; }
+}
+

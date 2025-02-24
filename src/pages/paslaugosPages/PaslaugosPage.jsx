@@ -14,7 +14,9 @@ import usePaslaugos from '../../hooks/paslaugos/usePaslaugos';
 import NotFound from '../paymentPages/NotFound';
 
 const PaslaugosPage = () => {
-    const { paslaugos, isLoading } = usePaslaugos();
+    
+    const { data:paslaugos, isLoading } = usePaslaugos();
+    // const { paslaugos, isLoading } = usePaslaugos(true);
 
     useEffect(() => {
         document.title = 'Be žalos | Paslaugos';

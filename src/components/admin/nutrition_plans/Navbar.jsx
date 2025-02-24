@@ -5,7 +5,7 @@ const styles = {
     height: '3rem',
     backgroundColor: '#fff',
     boxShadow: 'rgba(0, 0, 0, 0.1) 0px 4px 12px',
-    borderRadius: '5px',
+    borderRadius: '0.5rem',
     margin: '0.5rem 0'
 };
 

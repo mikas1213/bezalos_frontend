@@ -1,0 +1,57 @@
+.servicesNav {
+    display: flex;
+    gap: 0.5rem;
+    background-color: #fff;
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+}
+
+.addBtn {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-width: 10.5rem;
+    padding: 0 1rem;
+    height: calc(2rem + 2px);
+    border: none;
+    color: #fff;
+    font-size: var(--font-size-small-1);
+    background-color: var(--color-b);
+    border-radius: 0.4rem;
+}
+.iconAdd {
+    width: 1.1rem;
+}
+.addBtn:disabled {
+    background-color: var(--grey-light);
+}
+.servicesPages {
+    display: flex;
+    border: 1px solid var(--color-b);
+    border-radius: 0.4rem;
+}
+.servicesPages a {
+    font-size: var(--font-size-small-1);
+    align-items: center;
+    padding: 0 1rem;
+    height: 2rem;
+    color: var(--color-b) !important;
+    transition: all 0.15s ease-in-out;
+}
+.servicesPages a:nth-child(1) {
+    border-top-left-radius: 0.3rem;
+    border-bottom-left-radius: 0.3rem;
+}
+.servicesPages a:nth-child(2) {
+    border-right: 1px solid var(--color-b);
+    border-left: 1px solid var(--color-b);
+}
+.servicesPages a:nth-child(3) {
+    border-top-right-radius: 0.3rem;
+    border-bottom-right-radius: 0.3rem;
+}
+.servicesPages a.active {
+    color: #fff !important;
+    background-color: var(--color-b);
+}

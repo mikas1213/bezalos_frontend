@@ -1,12 +1,11 @@
 import styles from './Card.module.css';
 import { useState } from 'react';
-import { getImageURL } from '../../../utils/images';
 import { useNavigate } from 'react-router-dom';
 
 const Card = ({ paslauga }) => {
     const navigate = useNavigate();
     const [imageLoaded, setImageLoaded] = useState(false);
-
+    
     return (
         <div className={`${styles.card}`}>
             <div className={styles.imgContainer}>
@@ -15,9 +14,9 @@ const Card = ({ paslauga }) => {
                 {paslauga.quantity === 0 && <div className={`${styles.mostPopular} ${styles.less_than_three}`}>Išparduota</div>}
                 {paslauga.discount > 0 && <div className={styles.discount}>-{paslauga.discount}%</div>}
                 {!imageLoaded && <div className={styles.skeleton}></div>}
-
+                
                 <img 
-                    src={getImageURL(`paslaugos/${paslauga.slug+'_small'}.webp`)} 
+                    src={paslauga.image_m} 
                     alt={paslauga.title}
                     onLoad={() => setImageLoaded(true)}
                     style={{ opacity: imageLoaded ? 1 : 0 }}

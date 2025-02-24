@@ -52,7 +52,10 @@ import ManagePlanPage from './pages/admin/mitybosPlanai/ManagePlanPage';
 import PlanaiPage from './pages/admin/mitybosPlanai/PlanaiPage';
 import MealsPage from './pages/admin/mitybosPlanai/MealsPage';
 import ProductsPage from './pages/admin/mitybosPlanai/ProductsPage';
-import MaistasPage from './pages/admin/MaistasPage';
+import ServicesPageLayout from './pages/admin/servicesPages/ServicesPageLayout';
+import ServicesPage from './pages/admin/servicesPages/ServicesPage';
+import PromotionsPage from './pages/admin/servicesPages/PromotionsPage';
+import NarystesPage from './pages/admin/servicesPages/NarystesPage';
 import ReceptaiPage from './pages/admin/recipesPages/ReceptaiPage';
 import VideosPage from './pages/admin/VideosPage';
 import MailsPage from './pages/admin/MailsPage';
@@ -131,7 +134,13 @@ function App() {
                                                 <Route path='produktai' element={<ProductsPage />} />
                                             </Route>
                                             <Route path='receptai' element={<ReceptaiPage />} />
-                                            <Route path='maistas' element={<MaistasPage />} />
+
+                                            <Route path='paslaugos' element={<ServicesPageLayout />} >
+                                                <Route index element={<ServicesPage /> } />
+                                                <Route path='nuolaidos-kodai' element={<PromotionsPage /> } />
+                                                <Route path='narystes' element={<NarystesPage /> } />
+                                            </Route>
+
                                             <Route path='videos' element={<VideosPage />} />
                                             <Route path='mails' element={<MailsPage />} />
                                         </Route>

@@ -16,7 +16,7 @@ const PaslaugaPage = () => {
             <Navbar />
             <Main>
                 <Container>
-                    {!isLoading && <Paslauga paslauga={paslauga} setPaslauga={setPaslauga} />}
+                    {isLoading ? <div style={{height: '100vh'}}></div> : <Paslauga paslauga={paslauga} setPaslauga={setPaslauga} />}
                     <Footer />
                 </Container>
             </Main>

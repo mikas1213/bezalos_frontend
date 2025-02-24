@@ -1,6 +1,7 @@
 import styles from './AdminNavbar.module.css';
 import { NavLink, useLocation } from 'react-router-dom';
-import { FaHouse, FaUserGroup, FaList, FaFilm, FaNoteSticky } from 'react-icons/fa6';
+import { FaHouse, FaUserGroup, FaFilm, FaNoteSticky } from 'react-icons/fa6';
+import { GrServices } from "react-icons/gr";
 import { TbMailFilled } from "react-icons/tb";
 import { IoFastFoodSharp } from 'react-icons/io5';
 import { HiTemplate } from 'react-icons/hi';
@@ -15,7 +16,7 @@ const AdminNavbar = ({ isLoading, stats }) => {
         {to: '/admin', label: 'Klientai', icon: <FaUserGroup />, notification: `${user_count} / ${virtuve_count} / ${profilis_count}`},
         {to: '/admin/planai' , label: 'Mitybos planai', icon: <HiTemplate />},
         {to: '/admin/receptai' , label: 'Receptai', icon: <IoFastFoodSharp />},
-        {to: '/admin/maistas' , label: 'Maistas', icon: <FaList />},
+        {to: '/admin/paslaugos' , label: 'Paslaugos', icon: <GrServices />},
         {to: '/admin/videos' , label: 'Videos', icon: <FaFilm />},
         {to: '/admin/mails' , label: 'Mails', icon: <TbMailFilled />, notification: !isLoading && `${stats.offer_mails} / ${stats.mailer_list_mails}`},
         {to: '/admin/test3' , label: 'Test', icon: <FaNoteSticky />}

@@ -2,7 +2,7 @@ const custom = {
     products: {
         overflow: 'scroll',
         height: 'calc(100dvh - 45px)',
-        borderRadius: '5px',
+        borderRadius: '0.5rem',
         boxShadow: 'rgba(0, 0, 0, 0.1) 0px 4px 12px'
     },
     meals: {
