@@ -5,7 +5,7 @@ import { Divider } from '../nutrition_plans/Divider';
 
 const ServicesNav = ({ isModalOpen, handleModalOpen }) => {
     const location = useLocation();
-    const add_item = location.pathname === '/admin/paslaugos' ? 'Paslaugą' : location.pathname === '/admin/paslaugos/nuolaidos-kodai' ? 'Kodą' : 'Narystę';
+    const add_item = location.pathname === '/admin/paslaugos' ? 'services' : location.pathname === '/admin/paslaugos/nuolaidos-kodai' ? 'promo' : 'subscription';
 
     return (
         <div className={styles.servicesNav}>
@@ -13,7 +13,9 @@ const ServicesNav = ({ isModalOpen, handleModalOpen }) => {
                 className={styles.addBtn}
                 onClick={() => handleModalOpen(true, add_item, 'insert')}
             >
-                Pridėti {add_item}
+                {add_item === 'services' && 'Pridėti paslaugą'}
+                {add_item === 'promo' && 'Pridėti kodą'}
+                {add_item === 'subscription' && 'Pridėti narystę'}
                 <CirclePlus className={styles.iconAdd} />
             </button>
 

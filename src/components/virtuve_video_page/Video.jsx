@@ -69,6 +69,8 @@ const Video = ({ user_id, user_name, video, comments, onToggleLikes, onAddVideoC
                 playsInline
                 controlsList='nodownload' 
                 width='100%'
+                // onPlay={e => console.log(e)}
+                // onTimeUpdate={e => console.log(e)}
             >
                 <source src={video?.url+'#t=0.0'} type='video/mp4' />
             </video>

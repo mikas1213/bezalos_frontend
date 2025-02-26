@@ -97,9 +97,7 @@
         aspect-ratio: 16 / 9;
         object-position: center 35%;
     }
-    .spcificSizeImg {
-        object-position: center 27%;
-    }
+
     .paslaugaTitle {
         font-size: var(--font-size-h3);
     }

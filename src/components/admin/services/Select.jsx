@@ -3,8 +3,7 @@ import { ChevronLeft } from 'lucide-react';
 import { useState, useEffect, useRef } from 'react';
 import { Check } from 'lucide-react';
 
-const Select = ({ options, label, name, value, setNewItem }) => {
-    
+const Select = ({ options, label, name, value, setNewItem, className = '' }) => {
     const [selectOpen, setSelectOpen] = useState(false);
     const refOptions = useRef(null);
 
@@ -19,19 +18,19 @@ const Select = ({ options, label, name, value, setNewItem }) => {
     }, []);
 
     return (
-        <div className={`${styles.select} ${styles[name]}`}>
+        <div className={`${styles.select} ${className}`}>
             <span className={styles.inputLabel}>{label}</span>
             <div 
                 className={`${styles.selectInput} ${selectOpen ? styles.open : ''}`} 
                 onClick={(e) => { setSelectOpen(!selectOpen); e.stopPropagation() }}
             >
-                <span>{value === true ? 'On' : 'Off'}</span>
+                <span>{value}</span>
                 <ChevronLeft className={styles.selectIcon} />
             </div>
 
             <div 
                 ref={refOptions} 
-                className={`${styles.options} ${selectOpen ? styles.showOptions : ''}`}
+                className={`${styles.options} ${className} ${selectOpen ? styles.showOptions : ''}`}
             >
                 {options.map(option => <div
                     key={option} 
@@ -41,8 +40,8 @@ const Select = ({ options, label, name, value, setNewItem }) => {
                         setSelectOpen(false);
                     }}
                 >
-                        <span>{option === true ? 'On' : 'Off'}</span>
-                        {option === value && <Check className={styles.icon} />}
+                    <span>{option}</span>
+                    {option === value && <Check className={styles.icon} />}
                 </div>)}
             </div>
         </div>

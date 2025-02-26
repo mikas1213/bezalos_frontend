@@ -1,0 +1,72 @@
+.chbxContainer {
+    user-select: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    transition: all 0.2s ease-in-out;
+}
+.chbxContainer:last-child {
+    padding-bottom: 1rem;
+}
+.chbxContainer:hover :is(.checkmark, .chbxLabel) {
+    color: var(--color-btn-secondary);
+    border-color: var(--color-btn-secondary);
+}
+.chbxContainer:has(input:checked) .chbxLabel{
+    color: var(--color-btn-secondary);
+}
+.chbx {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    width: 2rem;
+    height: 2rem;
+}
+.chbx input {
+    display: none;
+}
+
+.checkmark {
+    position: relative;
+    width: 20px;
+    height: 20px;
+    border: 1.5px solid var(--color-border);
+    border-radius: 0.4rem;
+    transition: all 0.1s ease;
+}
+
+.checkmark:after {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 6px;
+    width: 4px;
+    height: 8px;
+    transform: rotate(45deg) scale(0);
+    border-right: 2px solid #fff;
+    border-bottom: 2px solid #fff;
+    transition: all 0.1s ease;
+}
+
+.chbx input:checked + .checkmark {
+    border-color: var(--color-btn-secondary);
+}
+   
+.chbx input:checked + .checkmark:after {
+    border-right: 2px solid var(--color-btn-secondary);
+    border-bottom: 2px solid var(--color-btn-secondary);
+    opacity: 1;
+    transform: rotate(45deg) scale(1);
+}
+
+.chbxLabel {
+    font-size: var(--font-size-p);
+    color: var(--color-bgr-bottom);
+    transition: all 0.1s ease;
+}
+
+@media only screen and (max-width: 440px) {
+    span.label {
+        font-size: 0.9rem;
+    }
+}

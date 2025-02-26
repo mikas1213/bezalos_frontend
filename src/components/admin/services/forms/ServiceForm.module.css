@@ -48,7 +48,16 @@
     background-color: var(--color-background-hover);
 }
 
-.icon {
+.iconPhoto {
     width: 1.2rem;
     height: 1.2rem;
 }
+
+.base_price { width: 5.5rem; }
+.quantity { width: 5.5rem; }
+.discount { width: 5rem; }
+.sort { width: 4rem; } 
+.icon { width: 4rem; }
+.details_title { width: 28rem; }
+.popular { width: 5.5rem; }
+.is_active { width: 5.5rem; }

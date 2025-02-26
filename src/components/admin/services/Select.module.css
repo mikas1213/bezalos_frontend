@@ -5,8 +5,6 @@
     flex-direction: column;
     gap: 0.2rem;
 }
-.popular, .popular .options { width: 5.5rem; }
-.is_active, .is_active .options { width: 5.5rem; }
 
 .inputLabel {
     margin-left: 0.2rem;

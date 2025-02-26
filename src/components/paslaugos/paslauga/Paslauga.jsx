@@ -27,7 +27,7 @@ const Paslauga = ({ paslauga, setPaslauga }) => {
                 <img 
                     src={paslauga.image_l} 
                     alt={paslauga.title}
-                    className={`${styles.paslaugaImg} ${paslauga.slug === 'kursas-iveik-emocini-valgyma' ? styles.spcificSizeImg : ''}`} 
+                    className={styles.paslaugaImg} 
                 />
             </div>
 

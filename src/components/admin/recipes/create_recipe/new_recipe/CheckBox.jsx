@@ -8,7 +8,6 @@ const CheckBox = ({newRecipe, setNewRecipe, className = '' }) => {
     
     const onChangeHandlre = () => {
         setCheck(!check);
-        // setNewRecipe({name, value: !check});
         setNewRecipe(prev => ({... prev, is_vegetarian: !check}));
     };
 

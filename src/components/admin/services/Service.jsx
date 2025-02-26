@@ -11,7 +11,7 @@ const Service = ({ service, handleModalOpen, setFormValues, handleServiceDelete 
             />
 
             <div className={`${styles.section} ${styles.title}`} onClick={() => {
-                handleModalOpen(true, 'Paslaugą', 'update');
+                handleModalOpen(true, 'services', 'update');
                 setFormValues(service)
             }}>
                 <span>{service.title}</span>
@@ -38,11 +38,11 @@ const Service = ({ service, handleModalOpen, setFormValues, handleServiceDelete 
             </div>
 
             <div className={`${styles.section} ${styles.center}`}>
-                {service.popular && <Check className={styles.iconPop} />}
+                {service.popular === 'On' && <Check className={styles.iconPop} />}
             </div>
 
             <div className={`${styles.section} ${styles.center}`}>
-                {!service.is_active && <CircleX className={styles.iconActive} />}
+                {service.is_active === 'Off' && <CircleX className={styles.iconActive} />}
             </div>
 
             <div 

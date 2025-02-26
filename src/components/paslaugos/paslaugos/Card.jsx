@@ -20,7 +20,6 @@ const Card = ({ paslauga }) => {
                     alt={paslauga.title}
                     onLoad={() => setImageLoaded(true)}
                     style={{ opacity: imageLoaded ? 1 : 0 }}
-                    className={paslauga.slug === 'kursas-iveik-emocini-valgyma' ? styles.spcificImgSize : ''}
                 />
             </div>
 

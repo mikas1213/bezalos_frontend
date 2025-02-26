@@ -26,12 +26,3 @@
     border: 1px solid #00000000;
     box-shadow: 0 0 0 1.5px var(--color-btn-secondary);
 }
-
-.base_price { width: 5.5rem; }
-.quantity { width: 5.5rem; }
-.discount { width: 5rem; }
-.sort { width: 4rem; } 
-.icon { width: 4.5rem; }
-.title[data-id*='1'], .title[data-id*='2'], .title[data-id*='3'] {
-    width: 22rem;
-}

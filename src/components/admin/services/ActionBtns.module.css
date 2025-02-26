@@ -15,9 +15,6 @@
     background-image: linear-gradient(to top, var(--color-btn-secondary), var(--color-btn-primary));
 }
 .cancelBtn {
-    /* border: 1px solid #FF4D4D;
-    background-color: #fff;
-    color: #FF4D4D; */
     background-image: linear-gradient(to top,  #B91C1C, #FF4D4D);
 }
 

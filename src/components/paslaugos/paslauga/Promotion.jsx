@@ -21,7 +21,7 @@ const Promotion = ({ code, setCode, paslauga, setPaslauga, startPrice, isCodeApp
         }
         try {
             setIsLoading(true);
-            const { data: {new_price, discount_amount} } = await axiosPrivate.post(`/discount/apply/${code}`, {service_id: paslauga.id, service_price: Number(paslauga.current_price)});
+            const { data: {new_price, discount_amount} } = await axiosPrivate.post(`/promo/apply/${code}`, {service_id: paslauga.id, service_price: Number(paslauga.current_price)});
                 
             setPaslauga(prev => ({...prev, current_price: new_price}));
             setDiscountAmount(discount_amount);

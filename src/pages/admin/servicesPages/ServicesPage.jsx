@@ -1,4 +1,3 @@
-import useAdminPaslaugos from '../../../hooks/paslaugos/useAdminPaslaugos';
 import Service, { ServiceHeader } from '../../../components/admin/services/Service';
 import useAxiosPrivate from '../../../hooks/useAxiosPrivate';
 import { useOutletContext } from 'react-router-dom';
@@ -8,10 +7,8 @@ import toast from 'react-hot-toast';
 const ServicesPage = () => {
     const axiosPrivate = useAxiosPrivate();
     const queryClient = useQueryClient();
-    const { handleModalOpen, setFormValues } = useOutletContext();
-    const { data: services, isLoading } = useAdminPaslaugos();
-
-
+    const { handleModalOpen, setFormValues, services, isLoadingServices } = useOutletContext();
+    
     const handleServiceDelete = useMutation({
         mutationFn: id => axiosPrivate.delete(`/admin/services/${id}`),
         onSuccess: () => {
@@ -30,7 +27,7 @@ const ServicesPage = () => {
             gap: '0.5rem'
         }}>
             <ServiceHeader />
-            {!isLoading && services.map(service => <Service 
+            {!isLoadingServices && services.map(service => <Service 
                 key={service.id} 
                 service={service} 
                 handleModalOpen={handleModalOpen}
