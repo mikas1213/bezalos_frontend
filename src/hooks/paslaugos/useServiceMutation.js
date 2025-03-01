@@ -15,9 +15,8 @@ const useServiceMutation = () => {
                 : axiosPrivate.patch(`/admin/${api}/${id}`, formData, config);
         },
         onSuccess: (_, variables) => {
-                // const msg_inserted = variables.api === 'services' ? 'Paslauga pridėta' : 'Kodas pridėtas'
-                // const msg_updated
-            queryClient.invalidateQueries({ queryKey: ['admin-services'] });
+            
+            queryClient.invalidateQueries({ queryKey: [`admin-${variables.api}`] });
             toast.success(variables.action === 'insert' ? `${variables.api === 'services' ? 'Paslauga pridėta' : 'Kodas pridėtas'}` : 'Paslauga atnaujinta');
             variables.onCloseModal();
         },

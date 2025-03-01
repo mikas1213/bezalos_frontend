@@ -48,7 +48,7 @@ const Service = ({ service, handleModalOpen, setFormValues, handleServiceDelete 
             <div 
                 className={`${styles.section} ${styles.deleteService}`}
                 onClick={() => {
-                    const is_delete = confirm('Trinti paslaugą?');
+                    const is_delete = window.confirm('Trinti paslaugą?');
                     if(is_delete) {
                         handleServiceDelete.mutate(service.id);
                     }

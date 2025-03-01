@@ -1,0 +1,65 @@
+.promoHeader, .promo {
+    display: grid;
+    gap: 1rem;
+    align-items: center;
+    background-color: #fff;
+    grid-template-columns: 10rem 8rem 12rem 8rem 16rem auto 3.5rem;
+}
+.promoHeader {
+    color: var(--grey-dark);
+    font-weight: 500;
+    border-bottom: 1px solid var(--color-border);
+}
+
+:is(.promoHeader, .promo) {
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.promo_code {
+    font-size: var(--font-size-p);
+    color: var(--grey-dark);
+}
+
+.promo_value {
+    color: var(--color-b);
+    font-weight: 600;
+    font-size: var(--font-size-p);
+}
+
+.usage_limit, .usage_count {
+    font-size: var(--font-size-p);
+    color: #fff;
+    border-radius: 5rem;
+    padding: 0.1rem 0.7rem;
+}
+.usage_limit {
+    color: var(--color-r);
+}
+.usage_count {
+    color: var(--color-a);
+}
+.valid_until {
+    color: var(--grey-dark);
+}
+.is_validIcon {
+    display: block;
+    color: var(--color-admin-red);
+    width: 1rem;
+    height: 1rem;
+}
+.delete {
+    display: grid;
+    place-items: center;
+}
+.iconDelete {
+    cursor: pointer;
+    color: var(--grey-dark);
+    width: 1.2rem;
+    height: 1.2rem;
+    transition: 0.2s ease-in-out;
+}
+.iconDelete:hover {
+    color: var(--color-admin-red);
+}

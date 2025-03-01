@@ -1,7 +1,8 @@
 import { Outlet } from 'react-router-dom';
 import { useState } from 'react';
 import useServiceMutation from '../../../hooks/paslaugos/useServiceMutation';
-import useAdminPaslaugos from '../../../hooks/paslaugos/useAdminPaslaugos';
+import useAdminPromotions from '../../../hooks/paslaugos/useAdmniPromotions';
+import useAdminServices from '../../../hooks/paslaugos/useAdminServices';
 import ServicesNav from '../../../components/admin/services/ServicesNav';
 import AddNewModal from '../../../components/admin/services/AddNewModal';
 import ServiceFrom from '../../../components/admin/services/forms/ServiceForm';
@@ -28,7 +29,7 @@ const promotion_form = {
 
 const ServicesPageLayout = () => {
     const serviceMutation = useServiceMutation();
-    const { data: services, isLoading: isLoadingServices } = useAdminPaslaugos();
+    const { data: services, isLoading: isLoadingServices } = useAdminServices();
     const [isModalOpen, setIsModalOpen] = useState({isOpen: false, form: '', action: ''});
     const [formValues, setFormValues] = useState({});
     
@@ -89,11 +90,12 @@ const ServicesPageLayout = () => {
     };
 
     const isLoading = serviceMutation.isPending;
+    const { data: promotions, isLoading: isLoadingPromo } = useAdminPromotions();
 
     return (
         <>
             <ServicesNav isModalOpen={isModalOpen} handleModalOpen={handleModalOpen} />
-            <Outlet context={{ handleModalOpen, setFormValues, services, isLoadingServices }}/>
+            <Outlet context={{ handleModalOpen, setFormValues, services, isLoadingServices, promotions, isLoadingPromo }}/>
 
             {isModalOpen.isOpen && isModalOpen.form && <AddNewModal>
                 {isModalOpen.form === 'services' && <ServiceFrom 

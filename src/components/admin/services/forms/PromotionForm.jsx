@@ -21,7 +21,7 @@ const PromotionForm = ({ isLoading, isModalOpen, services, formValues, setFormVa
     return (
         <div className={styles.flexCol}>
             <div className={styles.flexRow}>
-                <Input placeholder='kodas' label='Kodas' name='promo_code' className={styles.promo_code} value={formValues.promo_code.toUpperCase()} handleServiceForm={handleServiceForm} />
+                <Input placeholder='kodas' label='Kodas' name='promo_code' className={styles.promo_code} value={formValues.promo_code} handleServiceForm={handleServiceForm} />
                 <Select options={['Procentai', 'Eurai']} label='Nuolaidos tipas' name='promo_type' className={styles.promo_type} value={formValues.promo_type} setNewItem={setFormValues} handleServiceForm={handleServiceForm} />
                 <Input placeholder={formValues.promo_type === 'Procentai' ? '%' : '€'} label={`Vertė (${formValues.promo_type === 'Procentai' ? '%' : '€'})`} name='promo_value' className={styles.promo_value} value={formValues.promo_value} handleServiceForm={handleServiceForm} />
                 

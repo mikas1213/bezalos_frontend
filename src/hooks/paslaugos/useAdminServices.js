@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import useAxiosPrivate from '../useAxiosPrivate';
 
-const useAdminPaslaugos = () => {
+const useAdminServices = () => {
     const axiosPrivate = useAxiosPrivate();
     const fetchData = async () => {
         
@@ -29,4 +29,4 @@ const useAdminPaslaugos = () => {
     });
 };
 
-export default useAdminPaslaugos;
+export default useAdminServices;
