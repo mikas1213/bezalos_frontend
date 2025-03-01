@@ -1,0 +1,33 @@
+.header {
+    grid-column: 1 / -1;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    background-color: #fff;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.headerItem {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    /* padding: 0.5rem; */
+}
+.userInfo {
+    display: flex;
+    flex-direction: column;
+}
+.iconUser { color: tomato; }
+.iconCalendarStart { color: var(--color-bgr-top); }
+.iconCalendarEnd { color: var(--green-btn-dark); }
+
+.label {
+    color: var(--grey-dark);
+    font-size: var(--font-size-small-1);
+}
+.value {
+    color: var(--color-bgr-bottom);
+    font-size: var(--font-size-p);
+}
