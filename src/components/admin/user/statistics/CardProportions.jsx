@@ -9,10 +9,10 @@ const CardProportions = ({ label, newest, diff }) => {
             <div className={styles.row}>
                 <Circle className={styles.icon} />
                 <span className={styles.label}>{label}:</span>
-                <span className={styles.newest}>{newest}</span>
+                <span className={styles.newest}>{newest || '-'}</span>
                 <span className={styles.unit}>cm</span>
                 <span className={`${styles.diff} ${styles[trend]}`}>
-                    <small>(</small>{diff}<small>)</small>
+                    <small>(</small>{diff || '-'}<small>)</small>
                 </span>
             </div>
         </div>
