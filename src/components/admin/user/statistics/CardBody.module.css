@@ -1,0 +1,33 @@
+.cardBody {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+}
+.diff, .value {
+    font-size: var(--font-size-h1);
+    font-weight: 500;
+}
+.diff .unit {
+    font-size: var(--font-size-h6);
+    color: var(--grey-dark);
+}
+.records .label {
+    display: inline-flex;
+    justify-content: end;
+    margin-right: 0.3rem;
+    color: var(--grey-dark);
+    min-width: 5.2rem;
+}
+.records .value {
+    font-size: var(--font-size-p);
+    font-weight: 500;
+}
+.records .unit {
+    margin-left: 0.1rem;
+    font-size: var(--font-size-small-1);
+}
+
+.down { color: var(--color-btn-secondary); }
+.up { color: var(--color-admin-red); }
+.equal { color: var(--grey-dark); }

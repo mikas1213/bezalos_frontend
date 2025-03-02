@@ -1,0 +1,36 @@
+.row {
+    display: inline-flex;
+    align-items: center;
+    margin-bottom: 0.5rem;
+    padding: 0.2rem 0.5rem;
+    background-color: var(--color-background-secondary);
+    border-radius: 10rem;
+    font-size: var(--font-size-small-1);
+}
+
+.Bicepsas {
+    margin-top: 1rem;
+}
+
+.icon {
+    color: blueviolet;
+    width: 0.6rem;
+    height: 0.6rem;
+    stroke-width: 3px;
+    margin-right: 0.5rem;;
+}
+.label {
+    margin-right: 0.5rem;
+}
+.newest {
+    font-weight: 600;
+}
+.unit {
+    margin-left: 0.1rem;
+    margin-right: 0.5rem;
+    font-weight: 600;
+}
+.diff { font-weight: 500;}
+.down { color: var(--color-btn-secondary); }
+.up { color: var(--color-admin-red); }
+.equal { color: var(--grey-dark); }

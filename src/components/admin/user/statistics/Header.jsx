@@ -24,7 +24,7 @@ const Header = ({ apimtys }) => {
             <Divider />
             { renderHeaderItem(<Calendar className={styles.iconCalendarStart} />, 'Pradžia', olders) }
             <Divider />
-            { renderHeaderItem(<Calendar className={styles.iconCalendarEnd} />, 'Šiandien', newest) }
+            { renderHeaderItem(<Calendar className={styles.iconCalendarEnd} />, 'Pabaiga', newest) }
         </div>
     );
 };

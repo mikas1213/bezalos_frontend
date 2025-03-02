@@ -2,40 +2,53 @@ import { useOutletContext } from "react-router-dom";
 import Header from '../../../components/admin/user/statistics/Header';
 import StatisticLayout from '../../../components/admin/user/statistics/StatisticLayout';
 import Card from '../../../components/admin/user/statistics/Card';
-import { Weight, Ruler } from 'lucide-react';
+import CardBody from '../../../components/admin/user/statistics/CardBody';
+import CardProportions from '../../../components/admin/user/statistics/CardProportions';
 
 const styles = { display: 'flex' };
-
 const UserStatistikaPage = () => {
     const { isLoading, user } = useOutletContext();
     const [apimtys] = user.apimtys;
-
+    const apimtysArr = ['SVORIS', 'APIMČIŲ SUMA', 'APIMTYS'];
+    const isSumFake = apimtys.apimtys_newest_has_nulls || apimtys.apimtys_oldest_has_nulls;
+    console.log(apimtys)
+    
+    const proportions = {
+        bicepsas: 'Bicepsas', 
+        sedmenys: 'Sėdmenys', 
+        slaunis: 'Šlaunis', 
+        talija: 'Talija'
+    }
     return (
         <div style={styles}>
-            {isLoading ? null : apimtys ?  
+            {!isLoading && 
                 <StatisticLayout>
                     <Header apimtys={apimtys} /> 
-                    <Card 
-                        className='weight' 
-                        icon={<Weight />} 
-                        label='SVORIO POKYTIS' 
-                        diff={apimtys.svoris_diff}
-                        newest={apimtys.svoris_newest}
-                        oldest={apimtys.svoris_oldest}
-                        unit='kg'
-                    />
-                    <Card 
-                        className='body' 
-                        icon={<Ruler />} 
-                        label='APIMČIŲ POKYTIS' 
-                        diff={apimtys.apimtys_sum_diff}
-                        newest={apimtys.apimtys_sum_newest}
-                        oldest={apimtys.apimtys_sum_oldest}
-                        unit='cm'
-                        talija={apimtys}
-                    />
-                </StatisticLayout>
-                : <div>Statistikos nėra</div>}
+                    {apimtysArr.map(label => <Card key={label} label={label} isSumFake={isSumFake}>
+                        {label === 'SVORIS' && <CardBody 
+                            diff={apimtys.svoris_diff}
+                            unit='kg'
+                            newest={apimtys.svoris_newest}
+                            oldest={apimtys.svoris_oldest}
+                        />}
+
+                        {label === 'APIMČIŲ SUMA' && <CardBody 
+                            diff={apimtys.apimtys_diff}
+                            unit='cm'
+                            newest={apimtys.apimtys_newest}
+                            oldest={apimtys.apimtys_oldest}
+                        />}
+
+                        {label === 'APIMTYS' &&
+                            Object.entries(proportions).map(([key, label]) => <CardProportions 
+                                key={key}
+                                newest={apimtys[`${key}_newest`]}
+                                diff={apimtys[`${key}_diff`]}
+                                label={label}
+                            />)
+                        }
+                    </Card>)}
+                </StatisticLayout>}
         </div>
     );
 };
