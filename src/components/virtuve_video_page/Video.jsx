@@ -74,9 +74,13 @@ const Video = ({ user_id, user_name, video, comments, onToggleLikes, onAddVideoC
                 playsInline
                 controlsList='nodownload' 
                 width='100%'
+                // src={`http://localhost:3003//api/v1/videos/stream/${video.video_url}`}
+                // src={'http://localhost:3003/api/v1/videos/stream/sveiki-receptai'}
                 // onPlay={e => console.log(e)}
                 // onTimeUpdate={e => console.log(e)}
             >
+                
+                {/* <source src={`http://localhost:3003/api/v1/videos/stream/${video.video_url}`} type='video/mp4' /> */}
                 <source src={video?.url+'#t=0.0'} type='video/mp4' />
             </video>
             
