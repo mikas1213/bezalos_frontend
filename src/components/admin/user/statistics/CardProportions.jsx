@@ -12,7 +12,7 @@ const CardProportions = ({ label, newest, diff }) => {
                 <span className={styles.newest}>{newest || '-'}</span>
                 <span className={styles.unit}>cm</span>
                 <span className={`${styles.diff} ${styles[trend]}`}>
-                    <small>(</small>{diff || '-'}<small>)</small>
+                    <small>(</small>{diff ?? '-'}<small>)</small>
                 </span>
             </div>
         </div>

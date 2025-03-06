@@ -45,17 +45,22 @@ const Video = ({ user_id, user_name, video, comments, onToggleLikes, onAddVideoC
     
     const submit = async ({comment, video_id, user_id, user_name}) => {
         if(!watch('comment')) return;
+        
         const new_comment = {
             id: uuidv4(), video_id, user_id, user_name, comment: comment?.trim()
         };
         onAddVideoComment(new_comment);
         
         try{
-            await axiosPrivate.post('/videos/comment', new_comment);
+            await axiosPrivate.post('/comments/add', new_comment);
             setShowComments(true);
             reset();
         } catch(err) {
-            toast.error('Kažkas negerai');
+            if(err.response.status === 400) {
+                toast.error(err?.response?.data?.message || 'Klaida!');
+            } else {
+                console.log(err?.message || 'Error')
+            }
         }
     };
     

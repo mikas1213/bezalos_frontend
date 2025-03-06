@@ -30,9 +30,10 @@ const Videos = ({user_id, u_status, s_status}) => {
     useEffect(() => {
         async function getData(signal) {
             setIsLoading(true);
-            const data = await axiosPrivate.get(queryString, { signal });
-            
-            setVideos(data.data.videos);
+            const { data } = await axiosPrivate.get(queryString, { signal });
+            console.log(data)
+            // setVideos(data.data.videos);
+            setVideos(data);
             setIsLoading(false);
         }
 

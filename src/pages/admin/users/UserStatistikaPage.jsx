@@ -9,17 +9,16 @@ const styles = { display: 'flex' };
 const UserStatistikaPage = () => {
     const { isLoading, user } = useOutletContext();
     const {name, email} = user;
-    const apimtys = [...user.apimtys];
+    const apimtys = { ...user.apimtys[0] };
     const apimtysArr = ['SVORIS', 'APIMČIŲ SUMA', 'APIMTYS'];
-    
-    const isSumFake = apimtys.apimtys_newest_has_nulls || apimtys.apimtys_oldest_has_nulls;
+    const isSumFake = apimtys?.apimtys_newest_has_nulls || apimtys?.apimtys_oldest_has_nulls;
      
-    
+    console.log(apimtys)
     const proportions = {
-        bicepsas: 'Bicepsas', 
-        sedmenys: 'Sėdmenys', 
-        slaunis: 'Šlaunis', 
-        talija: 'Talija'
+        bicepsas: 'Bicepsas',
+        talija: 'Talija',
+        sedmenys: 'Sėdmenys',
+        slaunis: 'Šlaunis'
     }
     return (
         <div style={styles}>

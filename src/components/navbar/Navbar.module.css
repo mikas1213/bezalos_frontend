@@ -142,7 +142,7 @@
     transition: all 0.2s ease-in-out;
 }
 .navHomeNotScroll .indicator { background-color: var(--color-text-light); }
-:is(.navHomeAndScroll, .navNotHomeNotScroll, .navNotHomeAndScroll)  .indicator {
+:is(.navHomeAndScroll, .navNotHomeNotScroll, .navNotHomeAndScroll, .navRecipesNotScroll, .navRecipesAndScroll)  .indicator {
     background-color: var(--color-text-dark);
 }
 

@@ -39,14 +39,13 @@ const VirtuveVideoPage = () => {
     const onAddVideoComment = (comment) => {
         setComments(com => [comment, ...com]);
     };
-    const onDeleteVideoComment = async (id, user_id) => {
+    const onDeleteVideoComment = async id => {
         try {
-            await axiosPrivate.delete(`/videos/comment/${id}/${user_id}`); 
+            await axiosPrivate.delete(`/comments/${id}`); 
             setTimeout(() => {
                 setComments(prevPrev => prevPrev.filter(v => v.id !== id));
             }, 400);
         } catch (err) {
-            
             toast.error(err.response.data.message || 'Serverio klaida');
         }
     };
@@ -66,8 +65,8 @@ const VirtuveVideoPage = () => {
         document.body.style.backgroundColor = '#fff';
         const getData = async () => {
             try {
-                const data = await axiosPrivate.get('/videos'); 
-                setVideos(data.data.videos);
+                const { data } = await axiosPrivate.get('/videos'); 
+                setVideos(data);
             } catch (err) {
                 console.log(err.message)
             }
@@ -81,15 +80,13 @@ const VirtuveVideoPage = () => {
         }
         const getData = async () => {
             try {
-                const video = await axiosPrivate.get(`/videos/${params.video}`);
+                const { data } = await axiosPrivate.get(`/videos/${params.video}`);
                 
-                document.title = `Be žalos | ${video.data.video.title}`;
-                setVideo({...video.data.video, url: video.data.url});
-                setIsLike(video.data.is_liked);
-                setLikesCount(video.data.likes_count);
-                setComments(() => {
-                    return video.data.video.video_comments[0] !== null ? video.data.video.video_comments : []
-                });
+                document.title = `Be žalos | ${data.title}`;
+                setVideo({...data, url: data.s3_video_url});
+                setIsLike(data.is_liked);
+                setLikesCount(data.likes_count);
+                setComments(data.video_comments);
                 
                 setIsLoadingVideo(false);
             } catch(err) {
@@ -98,7 +95,7 @@ const VirtuveVideoPage = () => {
                 setVideos(err.response.data.videos);
             }
         };
-        
+
         getData();
     }, [params.video, axiosPrivate, navigate]);
     
@@ -107,20 +104,20 @@ const VirtuveVideoPage = () => {
             <Navbar />
             <Main>
                 {!isError ? <Container>
-                        {!isError && <Filters handleClick={handleFilter} filter={filter} />}
-                        {!isLoadingVideo && !isError && <Video 
-                            key={video.url} 
-                            video={video} 
-                            user_id={user_id} 
-                            user_name={user_name}
-                            comments={comments}
-                            isLike={isLike}
-                            likesCount={likesCount}
-                            onToggleLikes={onToggleLikes}
-                            onAddVideoComment={onAddVideoComment}
-                            onDeleteVideoComment={onDeleteVideoComment}
-                        />}
-                        {!isLoadingVideo && !isError && <List videos={videos} filter={filter} />}
+                    {!isError && <Filters handleClick={handleFilter} filter={filter} />}
+                    {!isLoadingVideo && !isError && <Video 
+                        key={video.url} 
+                        video={video} 
+                        user_id={user_id} 
+                        user_name={user_name}
+                        comments={comments}
+                        isLike={isLike}
+                        likesCount={likesCount}
+                        onToggleLikes={onToggleLikes}
+                        onAddVideoComment={onAddVideoComment}
+                        onDeleteVideoComment={onDeleteVideoComment}
+                    />}
+                    {!isLoadingVideo && !isError && <List videos={videos} filter={filter} />}
                 </Container> : <NotFoundVideo />}
             </Main>
         </>
