@@ -51,11 +51,10 @@ const VirtuveVideoPage = () => {
     };
 
     const onToggleLikes = async (video_id) => {
-        
         try {
-            const like = await axiosPrivate.post(`/likes/video`, {user_id, entity_id: video_id, type: 'likes_videos'}); 
-            setIsLike(like.data.isLiked);
-            setLikesCount(like.data.likesCount);
+            const { data } = await axiosPrivate.post(`/likes/video`, {entity_id: video_id, category: 'video'}); 
+            setIsLike(data.isLiked);
+            setLikesCount(data.likesCount);
         } catch (err) {
             toast.error(err?.response?.data?.message || 'Serverio klaida');
         }
@@ -81,13 +80,11 @@ const VirtuveVideoPage = () => {
         const getData = async () => {
             try {
                 const { data } = await axiosPrivate.get(`/videos/${params.video}`);
-                
                 document.title = `Be žalos | ${data.title}`;
                 setVideo({...data, url: data.s3_video_url});
                 setIsLike(data.is_liked);
                 setLikesCount(data.likes_count);
                 setComments(data.video_comments);
-                
                 setIsLoadingVideo(false);
             } catch(err) {
                 if(err.response.status === 402) navigate('/prenumeruoti');

@@ -37,17 +37,15 @@ const RecipesPage = () => {
         if(!user_id) {
             setIsOpenModal(true);
         } else {
-            const like = await axiosPrivate.post(`/likes/recipe`, {user_id, entity_id: recipe_id, type: 'likes_recipes'}); 
-            
+            const { data } = await axiosPrivate.post(`/likes/recipe`, { entity_id: recipe_id, category: 'recipe'}); 
             setRecipes(prevState => prevState.map(recipe => recipe.id === recipe_id ? {
                 ...recipe,
-                liked: like.data.isLiked,
-                likes: like.data.likesCount
+                liked: data.isLiked,
+                likes: data.likesCount
             } : recipe));
         }
     };
 
-    
     return (
         <>
             <Navbar isHome='recipes' />
