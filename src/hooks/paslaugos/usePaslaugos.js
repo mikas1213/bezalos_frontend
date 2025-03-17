@@ -11,7 +11,6 @@ const fetchData = async () => {
 };
 
 const usePaslaugos = () => {
-
     return useQuery({
         queryKey: ['services'],
         queryFn: fetchData,

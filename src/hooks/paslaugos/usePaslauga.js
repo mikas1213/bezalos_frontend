@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import axios from '../../api/axios';
 import { useNavigate } from 'react-router-dom';
 
-const usePaslaugos = (id) => {
+const usePaslauga = (slug) => {
     const [paslauga, setPaslauga] = useState([]);
     const [isLoading, setIsloading] = useState(true);
     const navigate = useNavigate();
@@ -10,12 +10,12 @@ const usePaslaugos = (id) => {
     useEffect(() => {
         const getData = async () => {
             try {
-                const { data } = await axios.get(`/services/${id}`);
-                if(!data.length) {
+                const { data } = await axios.get(`/services/${slug}`);
+                if(Object.keys(data).length === 0) {
                     navigate('/paslaugos');
                     return;
                 }
-                setPaslauga(data[0]);
+                setPaslauga(data);
             } catch (err) {
                 navigate('/paslaugos')
             } finally {
@@ -24,9 +24,9 @@ const usePaslaugos = (id) => {
         };
 
         getData();
-    }, [id, navigate]);
+    }, [slug, navigate]);
 
     return { paslauga, setPaslauga, isLoading};
 };
 
-export default usePaslaugos;
+export default usePaslauga;

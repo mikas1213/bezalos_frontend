@@ -10,7 +10,6 @@ import usePaslauga from '../../hooks/paslaugos/usePaslauga';
 const PaslaugaPage = () => {
     const { slug } = useParams();
     const { paslauga, setPaslauga, isLoading } = usePaslauga(slug);
-
     return (
         <>
             <Navbar />
