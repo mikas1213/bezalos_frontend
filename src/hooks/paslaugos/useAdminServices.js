@@ -6,8 +6,8 @@ const useAdminServices = () => {
     const fetchData = async () => {
         
         try {
-            const { data: test } = await axiosPrivate.get('/admin/services');
-            const data = test.map(service => {
+            const { data: services } = await axiosPrivate.get('/admin/services');
+            const data = services.map(service => {
                 return {
                     ...service,
                     details: service.details.map((item, i) => ({
