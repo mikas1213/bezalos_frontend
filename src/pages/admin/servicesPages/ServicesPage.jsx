@@ -27,7 +27,7 @@ const ServicesPage = () => {
             gap: '0.5rem'
         }}>
             <ServiceHeader />
-            {!isLoadingServices && services.map(service => <Service 
+            {!isLoadingServices && services && services.map(service => <Service 
                 key={service.id} 
                 service={service} 
                 handleModalOpen={handleModalOpen}

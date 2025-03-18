@@ -6,7 +6,7 @@ const fetchData = async () => {
         const { data } = await axios.get('/services');
         return data;
     } catch (err) {
-        throw new Error(err.message || err.response.data.status || 'Error');
+        throw new Error(err.message || err.response.data.status || 'Error');   
     }
 };
 
@@ -14,7 +14,8 @@ const usePaslaugos = () => {
     return useQuery({
         queryKey: ['services'],
         queryFn: fetchData,
-        staletime: 5 * 60 * 1000
+        staletime: 5 * 60 * 1000,
+        retry: false,
     });
 };
 

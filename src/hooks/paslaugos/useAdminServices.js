@@ -1,5 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import useAxiosPrivate from '../useAxiosPrivate';
+import toast from 'react-hot-toast';
 
 const useAdminServices = () => {
     const axiosPrivate = useAxiosPrivate();
@@ -18,6 +19,7 @@ const useAdminServices = () => {
             });
             return data;
         } catch (err) {
+            toast.error('Paslaugų nerasta');
             throw new Error(err.message || err.response.data.status || 'Error');
         }
     };

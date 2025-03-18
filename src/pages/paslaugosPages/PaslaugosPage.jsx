@@ -16,7 +16,6 @@ import NotFound from '../paymentPages/NotFound';
 const PaslaugosPage = () => {
     
     const { data:paslaugos, isLoading } = usePaslaugos();
-    // const { paslaugos, isLoading } = usePaslaugos(true);
 
     useEffect(() => {
         document.title = 'Be žalos | Paslaugos';
@@ -41,11 +40,9 @@ const PaslaugosPage = () => {
                             currentTab={currentTab} 
                             handleTabChange={handleTabChange} 
                         />    
-
                         {['naryste', 'paslaugos'].includes(currentTab) ? <PaslaugosHeader currentTab={currentTab} /> : <NotFound />}
-
                         {currentTab === 'naryste' && <Naryste /> }
-                        {currentTab === 'paslaugos' && !isLoading && <Paslaugos paslaugos={paslaugos} /> }
+                        {currentTab === 'paslaugos' && <Paslaugos paslaugos={paslaugos} isLoading={isLoading} /> }
                         <Footer />
                     </PaslaugosContainer>
                 </Container>

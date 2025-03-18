@@ -9,7 +9,6 @@ export const useRecipe = (slug) => {
 
     useEffect(() => {
         document.body.style.backgroundColor = '#fff';
-
         const fetchData = async () => {
             try {
                 const { data } = await axios.get(`/recipes/${slug}`);
@@ -22,16 +21,12 @@ export const useRecipe = (slug) => {
                 } else {
                     toast.error('Serverio klaida');
                 }
-                
             } finally {
                 setIsLoading(false);
             }
         };
         fetchData();
-        
     }, [slug]);
     
-    
-
     return { isLoading, recipe }
 };
