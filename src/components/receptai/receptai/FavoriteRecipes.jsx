@@ -4,7 +4,6 @@ import useMediaQuery from '../../../hooks/useMediaQuery';
 
 const FavoriteRecipes = ({ mostLiked, isLoading }) => {
     const mediaQuery = useMediaQuery();
-    
     return (
         <>
             <div className={styles.header}>Mėgstamiausi</div>

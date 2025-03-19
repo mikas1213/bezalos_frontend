@@ -97,7 +97,7 @@ const ReceptaiPage = () => {
             setModalControl({isOpen:false, action: ''});
             toast.success('Receptas atnaujintas.')
         } catch(err) {
-            toast.error(err.response.data.message)
+            toast.error(err.response.data.message || err.message)
         } finally {
             setIsLoadingOnSaveRecipe(false);
         }

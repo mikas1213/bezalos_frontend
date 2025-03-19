@@ -19,11 +19,11 @@ const useAdminRecipes = (filters) => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const { data: { rows, current_page, total_pages } } = await axiosPrivate.get(`/admin/recipes?${query}`);
+                const { data: { data, current_page, total_pages } } = await axiosPrivate.get(`/admin/recipes?${query}`);
                 setTotalPages(total_pages);
                 setCurrentPage(current_page);    
                 setTotalPages(total_pages);
-                setAdminRecipes(rows);
+                setAdminRecipes(data);
                 setIsLoading(false);
             } catch (err) {
                 toast.error(err.response.data.message || err.message);

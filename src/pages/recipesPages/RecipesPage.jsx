@@ -15,24 +15,21 @@ import { useFavoriteRecipes } from '../../hooks/recipes/useFavoriteRecipes';
 import useAuth from '../../hooks/useAuth';
 import useAxiosPrivate from '../../hooks/useAxiosPrivate';
 
-
 const RecipesPage = () => {
     const axiosPrivate = useAxiosPrivate();
     const mediaQuery = useMediaQuery();
     const [isOpenFilters, setIsOpenFilters] = useState(false);
-
     const [filters, setFilters] = useState({});
     const [search, setSearch] = useState('');
-    const user_id = useAuth()?.loggedUser?.user_id || null;
-    const { setIsOpenModal } = useAuth();
- 
+    const { loggedUser, setIsOpenModal } = useAuth();
+    const user_id = loggedUser ? loggedUser.user_id : null;
+
     const { isLoading, recipes, setRecipes, currentPage, setCurrentPage, totalPages, totalRows } = useRecipes({
         ...filters, 
         ...(search !== '' ? {search} : {})
     }, user_id);
 
     const { data: mostLiked, isLoading: isLoadingFav } =  useFavoriteRecipes();
-
     const onToggleLikes = async (recipe_id) => {
         if(!user_id) {
             setIsOpenModal(true);

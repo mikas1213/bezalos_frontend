@@ -4,7 +4,7 @@ import { jwtDecode } from 'jwt-decode';
 
 const useAuth = () => {
     
-    const { auth, setAuth, isOpenModal, setIsOpenModal }  = useContext(AuthContext);
+    const { auth, setAuth, isOpenModal, setIsOpenModal } = useContext(AuthContext);
     const loggedUser = useMemo(() => {
         if (!auth?.accessToken) return null;
         try {
@@ -13,7 +13,6 @@ const useAuth = () => {
             return null;
         }
     }, [auth?.accessToken]); 
-    
     return { auth, setAuth, isOpenModal, setIsOpenModal, loggedUser };
 };
 
