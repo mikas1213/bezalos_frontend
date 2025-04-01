@@ -19,7 +19,7 @@ const Filters = ({ searchItem }) => {
         <div className={styles.filters}>
             <div className={`${styles.filterItem} ${searchParams.get('cat') === null ? styles.active : ''}`} onClick={() => handleOnClick('')}>Visi</div>
             <div className={`${styles.filterItem} ${searchParams.get('cat') === 'vebinaras' ? styles.active : ''}`} onClick={() => handleOnClick('vebinaras')}>Vebinarai</div>
-            <div className={`${styles.filterItem} ${searchParams.get('cat') === 'mokymai' ? styles.active : ''}`} onClick={() => handleOnClick('mokymai')}>Mokymai</div>
+            <div className={`${styles.filterItem} ${searchParams.get('cat') === 'trumpai' ? styles.active : ''}`} onClick={() => handleOnClick('trumpai')}>Trumpai</div>
             <div className={`${styles.filterItem} ${searchParams.get('cat') === 'emocinis' ? styles.active : ''}`} onClick={() => handleOnClick('emocinis')}>Emocinis valgymas</div>
             <div className={`${styles.filterItem} ${searchParams.get('cat') === 'mityba' ? styles.active : ''}`} onClick={() => handleOnClick('mityba')}>Mityba</div>
             <div className={`${styles.filterItem} ${searchParams.get('cat') === 'psichologija' ? styles.active : ''}`} onClick={() => handleOnClick('psichologija')}>Valgymo psichologija</div>

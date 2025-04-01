@@ -19,7 +19,7 @@ const Videos = ({user_id, u_status, s_status}) => {
 
     let queryParams = '';
     let queryString = '/videos';
-    const paramsArr = ['vebinaras', 'mokymai', 'emocinis', 'mityba', 'psichologija'];
+    const paramsArr = ['vebinaras', 'trumpai', 'emocinis', 'mityba', 'psichologija'];
 
     if(paramsArr.includes(searchParams.get('cat')) || searchParams.get('search')) {
         for(const [key, val] of searchParams.entries()) queryParams = queryParams + `${key}=${val}&`;

@@ -11,7 +11,6 @@ const useAxiosPrivate = () => {
         
         const requestIntercept = axiosPrivate.interceptors.request.use(
             config => {
-                
                 if(!config.headers['authorization']) {
                     config.headers['authorization'] = `Bearer ${auth?.accessToken}`;
                 }
@@ -20,9 +19,10 @@ const useAxiosPrivate = () => {
         );
 
         const responseIntercept = axiosPrivate.interceptors.response.use(
+            
             response => response,
             async (error) => {
-
+                
                 // aborted in useEffect cleanup
                 if(error.code === "ERR_CANCELED") {
                     return Promise.resolve({status: 499})
@@ -32,6 +32,7 @@ const useAxiosPrivate = () => {
                 if(error?.response?.status === 403 && !prevRequest?.sent) {
                     prevRequest.sent = true;
                     const newAccessToken = await refresh();
+                    
                     prevRequest.headers['authorization'] = `Bearer ${newAccessToken}`;
                     return axiosPrivate(prevRequest);
                 }
