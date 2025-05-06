@@ -1,6 +1,7 @@
 .availablePlans {
     display: none;
     position: absolute;
+    overflow: scroll;
     z-index: 1;
     top: 5.8rem;
     left: 1rem;
