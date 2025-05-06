@@ -1,13 +1,13 @@
 .availablePlans {
     display: none;
     position: absolute;
-    overflow: scroll;
     z-index: 1;
     top: 5.8rem;
     left: 1rem;
     background-color: var(--color-background);
     border: 1px solid #245D6B22;
     overflow: hidden;
+    /* overflow: scroll; */
     width: calc(100% - 2rem);
     border-radius: 0.75rem;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;

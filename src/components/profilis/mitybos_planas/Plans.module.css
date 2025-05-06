@@ -1,5 +1,6 @@
 .plans {
     position: relative;
+    /* overflow: scroll; */
     width: 28rem;
     border-radius: 1.5rem;
     background-color: var(--color-background-secondary);
@@ -8,7 +9,8 @@
 }
 .planHeader {
     position: relative;
-    overflow: hidden;
+    /* overflow: hidden; */
+    overflow: scroll;
     border-top-right-radius: 1.5rem;
     border-top-left-radius: 1.5rem;
     padding: 1rem;
