@@ -64,37 +64,53 @@ const VirtuveVideoPage = () => {
         document.body.style.backgroundColor = '#fff';
         const getData = async () => {
             try {
-                const { data } = await axiosPrivate.get('/videos'); 
+                // video leidžiami tik nusipirkusiems "mini kursas" paslaugą
+                const kursai = ['miegas-ir-svorio-metimas', 'mikrobiota-ir-sveikai-palanki-mityba'];
+                const { data } = await axiosPrivate.get(`/videos${kursai.includes(params.video) ? `?cat=kursai` : ''}`); 
                 setVideos(data);
             } catch (err) {
                 console.log(err.message)
             }
         }
         getData();
-    }, [axiosPrivate]);
+    }, [axiosPrivate, params.video]);
 
     useEffect(() => {
+        let isMounted = true;
         if(document.getElementsByTagName('main')[0] !== undefined) {
             document.getElementsByTagName('main')[0].scrollIntoView({behavior: 'smooth'});
         }
         const getData = async () => {
             try {
-                const { data } = await axiosPrivate.get(`/videos/${params.video}`);
+                const { data } = await axiosPrivate.get(`/videos/${params.type}/${params.video}`);
                 document.title = `Be žalos | ${data.title}`;
-                setVideo({...data, url: data.s3_video_url});
-                setIsLike(data.is_liked);
-                setLikesCount(data.likes_count);
-                setComments(data.video_comments);
-                setIsLoadingVideo(false);
+                if(isMounted) {
+                    setVideo({...data, url: data.s3_video_url});
+                    setIsLike(data.is_liked);
+                    setLikesCount(data.likes_count);
+                    setComments(data.video_comments);
+                    setIsLoadingVideo(false);
+                }
+                
             } catch(err) {
-                if(err.response.status === 402) navigate('/prenumeruoti');
-                setIsError(true);
-                setVideos(err.response.data.videos);
+                if (isMounted) {
+                    if(err.response.status === 402 && err.response.data.type === 'subscription') {
+                        navigate('/prenumeruoti', { replace: true });
+                    } else if(err.response.status === 402 && err.response.data.type === 'course') {
+                        navigate('/isigyti-kursa', { replace: true });
+                    } else {
+                        setIsError(true);
+                        setVideos(err.response.data.videos);
+                    }
+                }
             }
         };
 
         getData();
-    }, [params.video, axiosPrivate, navigate]);
+        return () => {
+            isMounted = false;
+        };
+    }, [params.video, params.type, axiosPrivate, navigate]);
     
     return (
         <>

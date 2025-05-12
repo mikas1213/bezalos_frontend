@@ -14,12 +14,13 @@ const VirtuvePage = () => {
     const user_id = loggedUser?.user_id || null;
     const u_status = loggedUser?.u_status || null;
     const s_status = loggedUser?.s_status || null;
-    
+    const is_course = loggedUser?.is_course || null;
+
     return (
         <>
             <Navbar />
             <Main>
-                <Videos user_id={user_id} u_status={u_status} s_status={s_status} />
+                <Videos user_id={user_id} u_status={u_status} s_status={s_status} is_course={is_course} />
             </Main>
         </>
     );

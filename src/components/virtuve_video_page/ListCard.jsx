@@ -4,18 +4,20 @@ import { FaCirclePlay } from 'react-icons/fa6';
 import { getImageURL } from '../../utils/images';
 
 const ListCard = ({ video }) => {
-    const created_video = new Date(Date.parse(video.created_at)).toLocaleString(
-        "lt-LT",
+    const created_video = new Date(Date.parse(video.created_at)).toLocaleString("lt-LT",
         {
             day: "numeric",
             weekday: "short",
-            month: "long",
-            // year: 'numeric'
+            month: "long"
         }
     );
+    const video_types = { 
+        kursai: 'c', 
+        virtuve: 'v' 
+    };
 
     return (
-        <Link to={`/virtuve/${video.video_url}`}>
+        <Link to={`/virtuve/${video_types[video.video_type] || 'unknown'}/${video.video_url}`}>
             <div className={styles.listCard}>
                 <div className={styles.imageContainer}>
                     <img src={getImageURL(`virtuve/${video.video_url}.webp`)} alt={video.video_url} className={styles.image} />

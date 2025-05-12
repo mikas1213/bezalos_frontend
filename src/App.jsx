@@ -36,6 +36,7 @@ import NustatymaiPage from './pages/profilisPages/NustatymaiPage';
 import UpdatePasswordPage from './pages/UpdatePasswordPage';
 import NotFoundPage from './pages/notFoundPages/NotFoundPage';
 import NeedSubscription from './pages/paymentPages/NeedSubscription';
+import NeedBuyCourse from './pages/paymentPages/NeedBuyCourse';
 import SuccessSubscription from'./pages/paymentPages/SuccessSubscription';
 import SuccessBuyService from './pages/paymentPages/SuccessBuyService';
 import CancelSubscription from './pages/paymentPages/CancelSubscription';
@@ -98,12 +99,13 @@ function App() {
                                     <Route path='/prisijungti' element={<LoginPage />} />
                                     <Route path='/keisti-slaptazodi/:token' element={<UpdatePasswordPage /> } />
                                     <Route path='/prenumeruoti' element={<NeedSubscription />} />
+                                    <Route path='/isigyti-kursa' element={<NeedBuyCourse />} />
                                     <Route path='/pirkimo-taisykles' element={<PirkimoTaisyklesPage />} />
                                     <Route path='/privatumo-politika' element={<PrivatumoPolitikaPage />} />
                                     <Route path='*' element={<NotFoundPage />} />
                                     
                                     <Route element={<RequireAuth allowedRoles={[1213, 2324]}/> }>
-                                        <Route path='/virtuve/:video' element={<VirtuveVideoPage />} />
+                                        <Route path='/virtuve/:type/:video' element={<VirtuveVideoPage />} />
                                         <Route path='/profilis' element={<ProfilisPageLayout /> }>
                                             <Route index element={<UserPlansPage />} />
                                             <Route path='anketa' element={<AnketaPage />} />

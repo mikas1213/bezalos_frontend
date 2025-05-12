@@ -10,7 +10,8 @@ import useAxiosPrivate from "../../hooks/useAxiosPrivate";
 import { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 
-const Videos = ({user_id, u_status, s_status}) => {
+const Videos = ({user_id, u_status, s_status, is_course}) => {
+    
     const [videos, setVideos] = useState();
     const [isLoading, setIsLoading] = useState(false);
     const [searchParams] = useSearchParams();
@@ -19,7 +20,7 @@ const Videos = ({user_id, u_status, s_status}) => {
 
     let queryParams = '';
     let queryString = '/videos';
-    const paramsArr = ['vebinaras', 'trumpai', 'emocinis', 'mityba', 'psichologija'];
+    const paramsArr = ['kursai', 'vebinaras', 'trumpai', 'emocinis', 'mityba', 'psichologija'];
 
     if(paramsArr.includes(searchParams.get('cat')) || searchParams.get('search')) {
         for(const [key, val] of searchParams.entries()) queryParams = queryParams + `${key}=${val}&`;
@@ -54,6 +55,7 @@ const Videos = ({user_id, u_status, s_status}) => {
                         user_id={user_id} 
                         u_status={u_status} 
                         s_status={s_status} 
+                        is_course={is_course}
                     />)}
 
                 </div>

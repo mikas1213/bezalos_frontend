@@ -54,7 +54,7 @@
 .navList {
     display: flex;
     align-items: center;
-    gap: 3.125vw;
+    gap: clamp(0rem, 3.125vw, 3.2rem);
     user-select: none;
 }
 .senasBezalos {

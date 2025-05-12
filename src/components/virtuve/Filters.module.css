@@ -24,9 +24,19 @@
     transition: background-color 0.2s ease;
 }
 
+.filterItemKursai {
+    composes: filterItem;
+    color: var(--green-btn-dark);
+}
+
 .active {
     background-color: var(--color-text-dark);
     color:  var(--color-filter-btn);
+}
+
+.activeService {
+    background-color: var(--green-btn-dark);
+    color:  #fff;
 }
 
 .filterInput {
@@ -83,7 +93,7 @@
         cursor: pointer;
     }
 
-    .filterItem:hover:not(.active) {
+    .filterItem:hover:not(.active, .activeService) {
         background-color: var(--color-filter-btn-hover);
     }
 

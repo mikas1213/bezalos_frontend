@@ -1,0 +1,84 @@
+.needSubscriptionContainer {
+    display: grid;
+    grid-template-rows: 2fr 1fr 1fr 1fr;
+    justify-items: center;
+    width: clamp(10rem, 37.5vw, 24rem);
+    height: clamp(10rem, 37.5vw, 24rem);
+    padding: clamp(0rem, 4.688vw, 3rem);
+    padding-top: 0;
+    border-radius: 1.5rem;
+    animation: auth_anime 0.1s ease-in-out;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+.needSubscriptionContainer img {
+    display: block;
+    width: clamp(0rem, 7.813vw, 5rem);
+    align-self: center;
+}
+
+.needSubscriptionContainer h2 {
+    color: var(--color-text-dark);
+    font-size: var(--font-size-dynamic-h5-lg);
+}
+
+.smallText {
+    text-align: center;
+    font-weight: 500;
+    font-size: var(--font-size-dynamic-small-1-lg);
+}
+
+.needSubscriptionContainer :is(a, button) {
+    align-self: end;
+    align-items: center;
+    justify-content: center;
+    width: 70%;
+    font-size: var(--font-size-dynamic-p-lg);
+    font-weight: 600 !important;
+    border: none;
+    border-radius: 10rem;
+    background-color: var(--color-btn-primary);
+    color: var(--color-text-dark);
+    height: clamp(0rem, 4.688vw, 3rem);
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+    font-weight: 500;
+    transition: background-color 0.1s ease;
+}
+
+.needSubscriptionContainer :is(a, button):hover {
+    background-color: var(--color-btn-secondary);
+    transition: background-color 0.1s ease;
+}
+
+@keyframes auth_anime {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@media only screen and (max-width: 576px) {
+    .needSubscriptionContainer {
+        width: clamp(0rem, 89.302vw, 24rem);
+        height: clamp(0rem, 89.302vw, 24rem);
+        padding: clamp(0rem, 8.186vw, 2.2rem);
+        padding-top: 0;
+    }
+
+    .needSubscriptionContainer img {
+        display: block;
+        width: clamp(0rem, 18.605vw, 5rem);
+        /* width: 5rem; */
+        align-self: center;
+    }
+
+    .needSubscriptionContainer h2 {
+        font-size: clamp(0rem, 5.816vw, 1.563rem);
+    }
+    
+    .smallText {
+        font-size: clamp(0rem, 2.977vw, 0.8rem);
+    }
+
+    .needSubscriptionContainer :is(a, button) {
+        height: clamp(0rem, 11.163vw, 3rem);
+        font-size: clamp(0rem, 3.721vw, 1rem);
+    }
+}

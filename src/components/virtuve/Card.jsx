@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { FaLock } from 'react-icons/fa';
 import { getImageURL } from '../../utils/images';
 
-const Card = ({ video, user_id, u_status, s_status }) => {
+const Card = ({ video, user_id, u_status, s_status, is_course }) => {
     
     const created_video = new Date(Date.parse(video.created_at)).toLocaleString('lt-LT', {
         day: 'numeric', 
@@ -12,9 +12,18 @@ const Card = ({ video, user_id, u_status, s_status }) => {
         month: 'long', 
     });
 
-    return (
-        <Link to={video.video_url}>
-            <div className={`${styles.VideoCard} ${(user_id && (u_status === 'Virtuvė' || s_status === 'virtuve')) ? '' : styles.cardLock}`}>
+    const video_types = { 
+        kursai: 'c', 
+        virtuve: 'v' 
+    };
+
+    const is_subscribed = user_id && (u_status === 'Virtuvė' || s_status === 'virtuve') && video.video_type === 'virtuve';
+    const is_courses = user_id && is_course && video.video_type === 'kursai';
+    
+    return (    
+        <Link to={`${video_types[video.video_type] || 'unknown'}/${video.video_url}`}>
+            {/* <div className={`${styles.VideoCard} ${(user_id && (u_status === 'Virtuvė' || s_status === 'virtuve') && video.video_type === 'virtuve') ? '' : styles.cardLock}`}> */}
+            <div className={`${styles.VideoCard} ${is_subscribed || is_courses ? '' : styles.cardLock}`}>
                 <section>
                     <img src={getImageURL(`virtuve/${video.video_url}.webp`)} alt={video.title} />
                     <div className={styles.iconContainer}>

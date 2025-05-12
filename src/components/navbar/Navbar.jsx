@@ -65,7 +65,6 @@ const Navbar = ({ isHome = '' }) => {
                     </div>
                    
                     <ul className={styles.navList}>
-                        
                         <li className={styles.listItem}>
                             <NavLink to='/virtuve'>Virtuvė</NavLink>
                             <div className={styles.indicator}></div>

@@ -24,9 +24,10 @@ const UserRow = ({ user, handleSubscriptionUpdate, handleUserUpdate }) => {
                     </div>
                     <div className={styles.userName}>
                         {user.stripe_username || user.name}
-                        {user.has_order && <HiTemplate 
+                        {/* {user.has_order && <HiTemplate 
                             className={`${styles.plan_icon} ${user.orders[0]?.title === 'Mitybos planas + 4 savaičių priežiūra' ? styles.icon_blue : ''}`} 
-                        />}
+                        />} */}
+                        {user.has_plan && <HiTemplate className={`${styles.plan_icon}`} />}
                     </div>
                     
                 </SideBox>
