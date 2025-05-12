@@ -64,16 +64,14 @@ const VirtuveVideoPage = () => {
         document.body.style.backgroundColor = '#fff';
         const getData = async () => {
             try {
-                // video leidžiami tik nusipirkusiems "mini kursas" paslaugą
-                const kursai = ['miegas-ir-svorio-metimas', 'mikrobiota-ir-sveikai-palanki-mityba'];
-                const { data } = await axiosPrivate.get(`/videos${kursai.includes(params.video) ? `?cat=kursai` : ''}`); 
+                const { data } = await axiosPrivate.get(`/videos${params.type === 'c' ? `?cat=kursai` : ''}`); 
                 setVideos(data);
             } catch (err) {
                 console.log(err.message)
             }
         }
         getData();
-    }, [axiosPrivate, params.video]);
+    }, [axiosPrivate, params.video, params.type]);
 
     useEffect(() => {
         let isMounted = true;
