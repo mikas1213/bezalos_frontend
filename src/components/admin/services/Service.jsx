@@ -1,7 +1,10 @@
 import styles from './Service.module.css';
-import { Check, CircleX } from 'lucide-react';
-    
+import { CircleX } from 'lucide-react';
+import { HiTemplate } from 'react-icons/hi';
+import { MdOutlineOndemandVideo } from "react-icons/md";
+
 const Service = ({ service, handleModalOpen, setFormValues, handleServiceDelete }) => {
+    
     return (
         <div className={styles.service}>
             <img 
@@ -38,7 +41,11 @@ const Service = ({ service, handleModalOpen, setFormValues, handleServiceDelete 
             </div>
 
             <div className={`${styles.section} ${styles.center}`}>
-                {service.popular === 'On' && <Check className={styles.iconPop} />}
+                <span className={styles[service.status]}>{service.status}</span>
+            </div>
+
+            <div className={`${styles.section} ${styles.center}`}>
+                <span className={styles[service.category]}>{service.category === 'Planas' ? <HiTemplate className={styles.planasIcon}/> : service.category === 'Kursai' ? <MdOutlineOndemandVideo className={styles.courseIcon} /> : ''}</span>
             </div>
 
             <div className={`${styles.section} ${styles.center}`}>
@@ -70,7 +77,8 @@ export const ServiceHeader = () => {
             <div className={`${styles.section} ${styles.center}`}>Nuolaida</div>
             <div className={`${styles.section} ${styles.center}`}>vnt.</div>
             <div className={`${styles.section} ${styles.center}`}>Sort</div>
-            <div className={`${styles.section} ${styles.center}`}>Populiari</div>
+            <div className={`${styles.section} ${styles.center}`}>Statusas</div>
+            <div className={`${styles.section} ${styles.center}`}>Kategorija</div>
             <div className={`${styles.section} ${styles.center}`}>Aktyvi</div>
             <div className={styles.section}></div>
         </div>

@@ -9,11 +9,12 @@ import ServiceFrom from '../../../components/admin/services/forms/ServiceForm';
 import PromotionForm from '../../../components/admin/services/forms/PromotionForm';
 
 const service_form = {
-    quantity: 1,
+    quantity: 10,
     discount: '0',
     sort: 1,
-    is_active: 'On', 
-    popular: 'Off',
+    status: '-',
+    category: 'Pasirinkti',
+    is_active: 'On',
     details: [
         {id: 0, icon: '📗', title: '', desc: ''}, 
         {id: 1, icon: '🧐', title: '', desc: ''}, 

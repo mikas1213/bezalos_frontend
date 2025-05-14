@@ -6,10 +6,14 @@ import { RiMessengerLine } from 'react-icons/ri';
 import { House } from 'lucide-react';
 import { useEffect } from 'react';
 import { useNavigate, NavLink } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
+
 
 const SuccessBuyService = () => {
     const navigate = useNavigate();
-    
+    let [searchParams] = useSearchParams();
+    const service_category = searchParams.get('service');
+
     useEffect(() => {
         document.body.style.backgroundColor = '#fff';
     }, []);
@@ -33,7 +37,7 @@ const SuccessBuyService = () => {
 
                             <div className={styles.text}>
                                 <h1>Paslauga sėkmingai užsakyta</h1>
-                                <h2>Nepamirškite susisiekti!</h2>
+                                {service_category !== 'course' && <h2>Nepamirškite susisiekti!</h2>}
                             </div>
 
                             <div className={styles.info}>
@@ -52,13 +56,15 @@ const SuccessBuyService = () => {
                                 </div> 
                             </div>
                             <div className={styles.buttons}>
-                                <NavLink to='https://www.facebook.com/sandra.jatulyte' target='_blank'>
-                                    <button className={styles.btn_1}>
+
+                                {service_category !== 'course' && <NavLink to='https://www.facebook.com/sandra.jatulyte' target='_blank'>
+                                    <button className={styles.btn_green}>
                                         Susisiekti 
                                         <RiMessengerLine className={styles.icon} />
                                     </button>
-                                </NavLink>
-                                <button className={styles.btn_2} onClick={() => navigate('/')}>
+                                </NavLink>}
+
+                                <button className={`${service_category === 'course' ? styles.btn_green : styles.btn_white}`} onClick={() => navigate('/')}>
                                     Grįžti į pradžią 
                                     <House className={styles.icon}/>
                                 </button>

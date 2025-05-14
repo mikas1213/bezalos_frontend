@@ -1,6 +1,6 @@
 .serviceHeader {
     display: grid;
-    grid-template-columns: 3.5rem 20rem 6rem 6rem 6rem 4rem 5rem 5rem 6rem auto;
+    grid-template-columns: 3.5rem 20rem 6rem 6rem 6rem 4rem 5rem 8rem 6rem 5rem auto;
     border-radius: 0.5rem;
     background-color: #fff;
     overflow: hidden;
@@ -33,6 +33,31 @@
 }
 .service .section:last-child:hover .iconDelete {
     color: var(--color-admin-red);
+}
+.planasIcon {
+    width: 1.2rem;
+    height: 1.2rem;
+    color: #fc4c02;
+}
+.courseIcon {
+    display: flex;
+    width: 1.4rem;
+    height: 1.4rem;
+    color: #50b030;
+}
+.label {
+   padding: 0.3rem 0.5rem;
+   color: #fff;
+   font-size: var(--font-size-small-1);
+   border-radius: 4px;
+}
+.Populiarus {
+    composes: label;
+    background-color: var(--color-btn-secondary);
+}
+.Naujas {
+    composes: label;
+    background-color: #65cbe9;
 }
 
 .title span:hover {
