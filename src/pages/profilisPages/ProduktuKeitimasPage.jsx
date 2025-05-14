@@ -4,9 +4,9 @@ import KeitykleContainer from '../../components/profilis/produktu_keitimas/Keity
 import ProductInput from '../../components/profilis/produktu_keitimas/ProductInput';
 import SearchResults from '../../components/profilis/produktu_keitimas/SearchResults';
 import AvailableProducts from '../../components/profilis/produktu_keitimas/AvailableProducts';
-import Header from '../../components/profilis/produktu_keitimas/Header';
 import No_keytykle from '../../components/profilis/produktu_keitimas/No_keitykle';
 import { useOutletContext } from 'react-router-dom';
+import HowItWorks from '../../components/profilis/HowItWorks';
 
 const ProduktuKeitimasPage = () => {
     const { prodList, is_subscription } = useOutletContext();
@@ -42,9 +42,9 @@ const ProduktuKeitimasPage = () => {
 
     return (
         <Container>
+            <HowItWorks title='Produktų keitimas' tutorial_link='https://youtu.be/lWZj6OZBuoo' />
             {is_subscription ? 
                 <KeitykleContainer>
-                    <Header title='Maistro produktų keitimas' />
                     <ProductInput 
                         handleProductSearch={handleProductSearch}
                         searchQuery={searchQuery}

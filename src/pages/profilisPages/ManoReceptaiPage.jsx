@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useOutletContext } from 'react-router-dom';
 import Container from '../../components/UI/Container';
 import Header from '../../components/profilis/mano_receptai/header/Header';
+import HowItWorks from '../../components/profilis/HowItWorks';
 import NewRecipeBtn from '../../components/profilis/mano_receptai/header/NewRecipeBtn';
 import LogicFilter from '../../components/profilis/mano_receptai/header/LogicFilter';
 import SearchRecipe from '../../components/profilis/mano_receptai/header/SearchRecipe';
@@ -57,7 +58,9 @@ const ManoReceptaiPage = () => {
 
     return (
         <>
+        <HowItWorks title='Receptų sudarymas' tutorial_link='https://youtu.be/sJUk-HCbcZ8' />
         {isLoading ? null : is_subscription ? <Container>
+            {/* <HowItWorks title='Receptų sudarymas' tutorial_link='https://youtu.be/sJUk-HCbcZ8' /> */}
             <Header>
                 <NewRecipeBtn setOpen={setOpen} />
                 <LogicFilter 

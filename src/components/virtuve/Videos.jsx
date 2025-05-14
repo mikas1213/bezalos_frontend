@@ -4,16 +4,17 @@ import Filters from './Filters';
 import Card from './Card';
 import Spinner from '../../components/UI/Spinner';
 import NotFoundVideo from './NotFoundVideo';
+import { useQuery } from '@tanstack/react-query';
 
 import useAxiosPrivate from "../../hooks/useAxiosPrivate";
     
-import { useState, useEffect } from 'react';
+// import { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 
 const Videos = ({user_id, u_status, s_status, is_course}) => {
     
-    const [videos, setVideos] = useState();
-    const [isLoading, setIsLoading] = useState(false);
+    // const [videos, setVideos] = useState();
+    // const [isLoading, setIsLoading] = useState(false);
     const [searchParams] = useSearchParams();
     const axiosPrivate = useAxiosPrivate();
     const searchItem = searchParams.get('search');
@@ -27,21 +28,16 @@ const Videos = ({user_id, u_status, s_status, is_course}) => {
     } 
 
     if(queryParams) queryString = queryString + `?${queryParams.slice(0, -1)}`;
-    
-    useEffect(() => {
-        async function getData(signal) {
-            setIsLoading(true);
-            const { data } = await axiosPrivate.get(queryString, { signal });
-            setVideos(data);
-            setIsLoading(false);
-        }
 
-        const controller = new AbortController();
-        getData(controller.signal);
-        
-        return () => controller.abort();
-        
-    }, [queryString, axiosPrivate]);
+    const { data: videos, isLoading } = useQuery({
+        queryKey: ['videos', queryString],
+        queryFn: async () => {
+            const response = await axiosPrivate.get(queryString);
+            return response.data;
+        },
+        staleTime: 5 * 60 * 1000, // 5 min cache
+        refetchOnWindowFocus: false, // Išjungiame auto-refetch kai langas vėl tampa aktyvus
+    });
     
     return (
         <Container>

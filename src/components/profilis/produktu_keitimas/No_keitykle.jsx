@@ -15,7 +15,6 @@ const fake_products = [
 const No_keytykle = () => {
     return (
         <div>
-            <div className={styles.header}>Maistro produktų keitimas</div>
             <div className={styles.productInput}>
                 <CiSearch className={styles.icon} />
                 <input disabled={true} type='text' className={styles.prodTitle} placeholder='Aviena' />

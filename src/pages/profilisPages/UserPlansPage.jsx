@@ -2,6 +2,7 @@ import { useState } from 'react';
 import  { useOutletContext } from 'react-router-dom';
 import Plans from '../../components/profilis/mitybos_planas/Plans';
 import No_Plans from '../../components/profilis/mitybos_planas/no_subscription/No_Plans';
+import HowItWorks from '../../components/profilis/HowItWorks';
 import toast from 'react-hot-toast';
 import { bar, kcal, set_grams } from '../../utils/calculationsHelpers';
 
@@ -38,7 +39,6 @@ const UserPlansPage = () => {
     const onUpdateProduct = async (updatedProd) => {
         
         try {  
-            // await axioxPrivate.patch(`/profile/products/${selectedPlan.id}/${clickedProd.p_id}`, {...updatedProd, grams: set_grams(clickedProd, updatedProd)});
             setSelectedPlan(prevState => ({
                 ...prevState, 
                 b: Math.round(prevState.meals.filter(meal => !meal.is_sport).map(meal => meal.products.map(prod => prod.id === clickedProd.p_id ? bar(updatedProd.proteins, set_grams(prod, updatedProd)) : bar(prod.b_100, prod.grams)).reduce((acc, val) => acc + val, 0)).reduce((acc, val) => acc + val, 0)),
@@ -83,9 +83,10 @@ const UserPlansPage = () => {
             <div style={{
                 marginBottom: '3rem',
                 display: 'flex',
-                justifyContent: 'center'
+                flexDirection: 'column',
+                alignItems: 'center'
             }}>
-
+                <HowItWorks title='Mitybos planas' tutorial_link='https://youtu.be/FaMiA17ZTWw' />
                 {isLoading ? null : (
                     plans.length > 0 ? <Plans 
                         plans={plans} 
