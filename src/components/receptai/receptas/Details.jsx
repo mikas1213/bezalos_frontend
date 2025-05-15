@@ -9,7 +9,7 @@ const Details = ({ recipe }) => {
 
     return (
         <div className={styles.details}>
-            <div className={styles.title}>{recipe.title}</div>
+            <h1 className={styles.title}>{recipe.title}</h1>
 
             <div className={styles.properties}>
                 <div className={styles.time}>

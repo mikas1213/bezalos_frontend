@@ -1,7 +1,8 @@
 import useAxiosPrivate from '../../hooks/useAxiosPrivate';
 import { 
     FaHeart, 
-    FaRegHeart 
+    FaRegHeart,
+    FaFilePdf
 } from 'react-icons/fa6';
 
 import styles from './Video.module.css';
@@ -93,6 +94,10 @@ const Video = ({ user_id, user_name, video, comments, onToggleLikes, onAddVideoC
                     <div className={`${styles.description} ${showMore ? styles.show : ''}`}>
                         <div className={styles.descriptionInner}>
                             {desctList.map((listItem, i) => <li key={i}>{listItem}</li>)}
+
+                            <a className={styles.download_pdf} href="../../../test_pdf.pdf" download>
+                                <FaFilePdf className={styles.pdf_icon}/>&nbsp;<span>Atsisiųsti failą</span>
+                            </a>
                         </div>
                     </div>
                     
@@ -115,13 +120,11 @@ const Video = ({ user_id, user_name, video, comments, onToggleLikes, onAddVideoC
                     </div>
 
                     <div className={styles.like} onClick={() => onToggleLikes(video.id)}>
-                    
                         {isLike ? <FaHeart /> : <FaRegHeart />}
                         <span>{
                             +likesCount > 999 ? parseInt(likesCount / 1000)+'k+' : likesCount
                         }</span>
                     </div>
-   
                 </div>
 
                 <div className={styles.writeComment}>

@@ -16,7 +16,22 @@
     border-top-left-radius: 1rem;
     border-top-right-radius: 1rem;
 }
-
+.download_pdf {
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    span {
+        font-size: var(--font-size-small-1);
+        font-weight: 600;
+        text-decoration: underline;
+    }
+    .pdf_icon {
+        display: flex;
+        width: 1.0rem;
+        height: 1.0rem;
+    }
+}
 .cardBottom {
     display: flex;
     flex-direction: column;
