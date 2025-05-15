@@ -6,6 +6,7 @@ import Container from '../../components/UI/Container';
 import Layout from '../../components/receptai/receptas/Layout';
 import Image from '../../components/receptai/receptas/Image';
 import Details from '../../components/receptai/receptas/Details';
+import RecipeSEO from './RecipeSEO';
 import RecipeNotFound from '../notFoundPages/RecipeNotFound';
 
 const RecipePage = () => {
@@ -15,6 +16,7 @@ const RecipePage = () => {
     
     return (
         <>
+            {!isLoading && recipe ? <RecipeSEO recipe={recipe} /> : null}
             <Navbar />
             <Main>
                 <Container>

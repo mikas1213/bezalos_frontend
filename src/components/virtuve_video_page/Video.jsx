@@ -95,9 +95,9 @@ const Video = ({ user_id, user_name, video, comments, onToggleLikes, onAddVideoC
                         <div className={styles.descriptionInner}>
                             {desctList.map((listItem, i) => <li key={i}>{listItem}</li>)}
 
-                            <a className={styles.download_pdf} href="../../../test_pdf.pdf" download>
+                            {video.video_type === 'kursai' && <a className={styles.download_pdf} href="../../../test_pdf.pdf" download>
                                 <FaFilePdf className={styles.pdf_icon}/>&nbsp;<span>Atsisiųsti failą</span>
-                            </a>
+                            </a>}
                         </div>
                     </div>
                     
