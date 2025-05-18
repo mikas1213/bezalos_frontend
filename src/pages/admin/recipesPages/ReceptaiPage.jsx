@@ -50,14 +50,14 @@ const ReceptaiPage = () => {
             formData.append('video_link', newRecipe.video_link);
             formData.append('photo', newRecipe.photo);
 
-            const {data: id} = await axiosPrivate.post('/admin/recipes/add', formData, {
+            const { data: {recipe_id: id, recipe_slug: slug}} = await axiosPrivate.post('/admin/recipes/add', formData, {
                 headers: { 'Content-Type': 'multipart/form-data' }
             });
-            
+
             await delay;
             toast.success('Receptas sėkmingai pridėtas!')
             setModalControl({isOpen:false, action: ''});
-            setAdminRecipes(prev => [{...newRecipe, id}, ...prev]);
+            setAdminRecipes(prev => [{...newRecipe, id, slug}, ...prev]);
             setNewRecipe(emptyRecipe);
 
         } catch (err) {
@@ -72,6 +72,7 @@ const ReceptaiPage = () => {
     };
 
     const handleEditRecipe = async id => {
+        
         try {
             setIsLoadingOnSaveRecipe(true);
             const formData = new FormData();
@@ -86,16 +87,19 @@ const ReceptaiPage = () => {
             formData.append('video_link', newRecipe.video_link);
             newRecipe.photo && formData.append('photo', newRecipe.photo);
 
-            await axiosPrivate.patch(`/admin/recipes/${id}`, formData, {
+            const {data: {isFileExist, slug}} = await axiosPrivate.patch(`/admin/recipes/${id}`, formData, {
                 headers: { 'Content-Type': 'multipart/form-data' }
             });
-
+            
             setAdminRecipes(prevState => prevState.map(recipe => recipe.id === newRecipe.id ? {
-                ...newRecipe
+                ...newRecipe, slug
             } : recipe));
             
             setModalControl({isOpen:false, action: ''});
-            toast.success('Receptas atnaujintas.')
+            toast.success('Receptas atnaujintas.');
+            if(!isFileExist) toast.success('⚠️ Bet S3 failo nebuvo ⚠️');
+            
+            setNewRecipe(emptyRecipe);
         } catch(err) {
             toast.error(err.response.data.message || err.message)
         } finally {
@@ -103,13 +107,15 @@ const ReceptaiPage = () => {
         }
     };
 
-    const handleDeleteRecipe = async id => {
+    const handleDeleteRecipe = async (id, slug) => {
         try {
             const is_confirm_delete = confirm('Trinti receptą?');
             if(is_confirm_delete) {
-                await axiosPrivate.delete(`/admin/recipes/${id}`);
+                const {data: isExistFile} = await axiosPrivate.delete(`/admin/recipes/${id}`, {data: {slug}});
                 setAdminRecipes(prev => prev.filter(recipe => recipe.id !== id));
+                
                 toast.success('Receptas ištirntas');
+                if(!isExistFile) toast.success('⚠️ Bet S3 failo nebuvo ⚠️');
             }
         } catch(err) {
             toast.error(err.response.data.message || err.message || 'Serverio klaida');

@@ -2,7 +2,7 @@ import { Helmet } from 'react-helmet';
 
 const RecipeSEO = ({ recipe }) => {
     if(!recipe) return null;
-
+    console.log(recipe.created_at || new Date().toISOString().split('T')[0]);
     const mainKeyword = recipe?.title_short ? recipe.title_short : recipe.title.split(' ').slice(0, 2).join(' ');
     const ingredients = recipe.products.map(prod => `${prod.title} ${prod.grams}g`);
         const keywords = [
@@ -24,7 +24,7 @@ const RecipeSEO = ({ recipe }) => {
             "@type": "Person",
             "name": "Be žalos"
         },
-        "datePublished": recipe.created_at || new Date().toISOString().split('T')[0],
+        "datePublished": recipe.created_at.split('T')[0] || new Date().toISOString().split('T')[0],
         "description": recipe.description,
         "prepTime": `PT${recipe.duration}M`,
         "cookTime": `PT${recipe.duration}M`,
@@ -63,7 +63,6 @@ const RecipeSEO = ({ recipe }) => {
         <Helmet>
             <title>{mainKeyword} - Be žalos</title>
             <meta name="description" content={recipe.description.slice(0, 160)} />
-            <meta name="keywords" content={keywords} />
             
             {/* Kanoninė nuoroda */}
             <link rel="canonical" href={`https://bezalos.lt/receptai/${recipe.slug}`} />
@@ -73,13 +72,13 @@ const RecipeSEO = ({ recipe }) => {
             <meta property="og:description" content={recipe.description.slice(0, 160)} />
             <meta property="og:type" content="article" />
             <meta property="og:url" content={`https://bezalos.lt/receptai/${recipe.slug}`} />
-            {/* <meta property="og:image" content={recipe.image_l} /> */}
+            <meta property="og:image" content={recipe.image_s3} />
             
             {/* Twitter Card meta žymos */}
             <meta name="twitter:card" content="summary_large_image" />
             <meta name="twitter:title" content={mainKeyword} />
             <meta name="twitter:description" content={recipe.description.slice(0, 160)} />
-            {/* <meta name="twitter:image" content={recipe.image_l} /> */}
+            <meta name="twitter:image" content={recipe.image_s3} />
             
             {/* Schema.org žymėjimas JSON-LD formatu */}
             <script type="application/ld+json">

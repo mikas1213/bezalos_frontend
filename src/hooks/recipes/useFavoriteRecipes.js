@@ -14,6 +14,7 @@ export const useFavoriteRecipes = () => {
     return useQuery({
         queryKey: ['favoriteRecipes'],
         queryFn: fetchData,
+        retry: false,
         staletime: 5 * 60 * 1000
     });
 };

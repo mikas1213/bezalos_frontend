@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 const AdminRecipe = ({ adminRecipe, handleDeleteRecipe, setModalControl, setNewRecipe }) => {
     const img_src = adminRecipe.photo ? URL.createObjectURL(adminRecipe.photo) : adminRecipe.image_s;
-
+    
     return (
         <div className={styles.adminRecipe}>
             <img 
@@ -58,7 +58,7 @@ const AdminRecipe = ({ adminRecipe, handleDeleteRecipe, setModalControl, setNewR
 
             <div 
                 className={`${styles.section} ${styles.deleteRecipe}`}
-                onClick={() => handleDeleteRecipe(adminRecipe.id)}
+                onClick={() => handleDeleteRecipe(adminRecipe.id, adminRecipe.slug)}
             >
                 <CircleX className={styles.icon} />
             </div>
