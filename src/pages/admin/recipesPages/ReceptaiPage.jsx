@@ -18,6 +18,7 @@ const ReceptaiPage = () => {
     
     const emptyRecipe = { 
         title: '',
+        title_short: '',
         recipe_type: 'Pusryčiai',
         food_logic: 'A+B',
         taste: 'Aštru',
@@ -40,6 +41,7 @@ const ReceptaiPage = () => {
             setIsLoadingOnSaveRecipe(true);
             const formData = new FormData();
             formData.append('title', newRecipe.title);
+            formData.append('title_short', newRecipe.title_short);
             formData.append('recipe_type', newRecipe.recipe_type);
             formData.append('food_logic', newRecipe.food_logic);
             formData.append('taste', newRecipe.taste);
@@ -77,6 +79,7 @@ const ReceptaiPage = () => {
             setIsLoadingOnSaveRecipe(true);
             const formData = new FormData();
             formData.append('title', newRecipe.title);
+            formData.append('title_short', newRecipe.title_short);
             formData.append('recipe_type', newRecipe.recipe_type);
             formData.append('food_logic', newRecipe.food_logic);
             formData.append('taste', newRecipe.taste);

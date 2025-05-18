@@ -119,6 +119,17 @@ const NewRecipe = ({ prodList, newRecipe, setNewRecipe }) => {
                 </div>
 
                 <div className={styles.inputGroup}>
+                    <span className={styles.inputLabel}>Trumpas Pavadinimas <small>(SEO)</small></span>
+                    <input 
+                        type='text' 
+                        value={newRecipe.title_short}
+                        onChange={e => setNewRecipe(prev => ({...prev, title_short: e.target.value}))}
+                        className={styles.recipeTitleInput} 
+                        placeholder='Trumpas pavadinimas' 
+                    />
+                </div>
+
+                <div className={styles.inputGroup}>
                     <span className={styles.inputLabel}>Valgio tipas</span>
                     <Select options={recipeTypes} newRecipe={newRecipe} setNewRecipe={setNewRecipe} field='recipe_type' />
                 </div>
