@@ -12,7 +12,7 @@ import RecipeNotFound from '../notFoundPages/RecipeNotFound';
 const RecipePage = () => {
     const { slug } = useParams();
     const {isLoading, recipe} = useRecipe(slug);
-    document.title = `Be žalos | ${isLoading ? '' : recipe?.title ? recipe.title : '404'}`;
+    // document.title = `Be žalos | ${isLoading ? '' : recipe?.title ? recipe.title : '404'}`;
     
     return (
         <>

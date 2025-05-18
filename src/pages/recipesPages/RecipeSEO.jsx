@@ -2,7 +2,7 @@ import { Helmet } from 'react-helmet';
 
 const RecipeSEO = ({ recipe }) => {
     if(!recipe) return null;
-    console.log(recipe.created_at || new Date().toISOString().split('T')[0]);
+    
     const mainKeyword = recipe?.title_short ? recipe.title_short : recipe.title.split(' ').slice(0, 2).join(' ');
     const ingredients = recipe.products.map(prod => `${prod.title} ${prod.grams}g`);
         const keywords = [
@@ -61,13 +61,17 @@ const RecipeSEO = ({ recipe }) => {
 
     return (
         <Helmet>
-            <title>{mainKeyword} - Be žalos</title>
+            <title>{mainKeyword} | Be žalos</title>
             <meta name="description" content={recipe.description.slice(0, 160)} />
-            
+            <meta name="subject" content="Maisto receptai"></meta>
+            <meta name="topic" content="Sveiki receptai"></meta>
+
             {/* Kanoninė nuoroda */}
             <link rel="canonical" href={`https://bezalos.lt/receptai/${recipe.slug}`} />
             
             {/* Open Graph meta žymos socialinei medijai */}
+            <meta property="og:site_name" content="Be žalos" />
+            <meta property="og:locale" content="lt_LT"></meta>
             <meta property="og:title" content={mainKeyword} />
             <meta property="og:description" content={recipe.description.slice(0, 160)} />
             <meta property="og:type" content="article" />
