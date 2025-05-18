@@ -3,10 +3,10 @@ import { Helmet } from 'react-helmet';
 const RecipeSEO = ({ recipe }) => {
     if(!recipe) return null;
     
-    const mainKeyword = recipe?.title_short ? recipe.title_short : recipe.title.split(' ').slice(0, 2).join(' ');
+    const shortTitle = recipe?.title_short ? recipe.title_short : recipe.title.split(' ').slice(0, 2).join(' ');
     const ingredients = recipe.products.map(prod => `${prod.title} ${prod.grams}g`);
         const keywords = [
-        mainKeyword,
+        shortTitle,
         recipe.title,
         'receptas',
         'maistas',
@@ -18,8 +18,8 @@ const RecipeSEO = ({ recipe }) => {
     const schemaData = {
         "@context": "https://schema.org",
         "@type": "Recipe",
-        "name": mainKeyword,
-        "alternateName": recipe.title,
+        "name": recipe.title,
+        "alternateName": shortTitle,
         "author": {
             "@type": "Person",
             "name": "Be žalos"
@@ -61,7 +61,7 @@ const RecipeSEO = ({ recipe }) => {
 
     return (
         <Helmet>
-            <title>{mainKeyword} | Be žalos</title>
+            <title>{recipe.title} | Be žalos</title>
             <meta name="description" content={recipe.description.slice(0, 160)} />
             <meta name="subject" content="Maisto receptai"></meta>
             <meta name="topic" content="Sveiki receptai"></meta>
@@ -72,7 +72,7 @@ const RecipeSEO = ({ recipe }) => {
             {/* Open Graph meta žymos socialinei medijai */}
             <meta property="og:site_name" content="Be žalos" />
             <meta property="og:locale" content="lt_LT"></meta>
-            <meta property="og:title" content={mainKeyword} />
+            <meta property="og:title" content={recipe.title} />
             <meta property="og:description" content={recipe.description.slice(0, 160)} />
             <meta property="og:type" content="article" />
             <meta property="og:url" content={`https://bezalos.lt/receptai/${recipe.slug}`} />
@@ -80,7 +80,7 @@ const RecipeSEO = ({ recipe }) => {
             
             {/* Twitter Card meta žymos */}
             <meta name="twitter:card" content="summary_large_image" />
-            <meta name="twitter:title" content={mainKeyword} />
+            <meta name="twitter:title" content={recipe.title} />
             <meta name="twitter:description" content={recipe.description.slice(0, 160)} />
             <meta name="twitter:image" content={recipe.image_s3} />
             
