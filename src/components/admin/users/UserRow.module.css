@@ -40,7 +40,7 @@
     color: #999;
 }
 .iconCopyFacebook:hover {
-    color: #333;
+    color: #0d49ff;
     cursor: pointer;
 }
 .icon:hover { color: #333; }
@@ -117,7 +117,9 @@
     transition: all 0.15s ease-in-out;
 }
  .facebook_name {
-     width: 9rem;
+    width: 9rem;
+    font-weight: 600;
+    color: #0d49ff;
  }
 
 
@@ -140,6 +142,7 @@
     color: #999;
     font-size: var(--font-size-dynamic-small-1-lg);
 }
+
 .colorDanger  {
     color: white;
     background-color: var(--color-admin-red);

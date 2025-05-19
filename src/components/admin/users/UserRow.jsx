@@ -74,7 +74,7 @@ const UserRow = ({ user, handleSubscriptionUpdate, handleUserUpdate }) => {
                     />
                     <SideBox>
                         <span className={styles.sideBoxTitle}>Facebook name</span>
-                        <input 
+                        <input                        
                             type='text' 
                             name='facebook_name'
                             className={styles.facebook_name}
