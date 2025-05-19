@@ -35,6 +35,14 @@
     color: #aaa;
     transition: color 0.1s ease-in-out;
 }
+.iconCopyFacebook {
+    font-size: 1.3rem;
+    color: #999;
+}
+.iconCopyFacebook:hover {
+    color: #333;
+    cursor: pointer;
+}
 .icon:hover { color: #333; }
 
 .plan_icon { 
@@ -99,21 +107,25 @@
     font-size: var(--font-size-dynamic-small-2-lg);
 }
 
-.eats_calories {
+.eats_calories, .facebook_name {
     cursor: pointer;
     width: 6rem;
     color: #999;
     border: 1px solid #fff;
     border-radius: 4px;
-    /* padding: 0 0.4rem; */
     font-size: var(--font-size-dynamic-small-1-lg);
     transition: all 0.15s ease-in-out;
 }
-.eats_calories:focus {
+ .facebook_name {
+     width: 9rem;
+ }
+
+
+:is(.eats_calories, .facebook_name):focus {
     color: #999;
     border: 1px solid #999;
 }
-.eats_calories:hover {
+:is(.eats_calories, .facebook_name):hover {
     color: #999;
     border: 1px solid #999;
 }

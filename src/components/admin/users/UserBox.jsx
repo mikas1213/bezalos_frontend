@@ -16,4 +16,12 @@ export const SideBox = ({ children }) => {
     );
 };
 
+export const SideBoxRow = ({ children }) => {
+    return (
+        <div className={styles.sideBoxRow}>
+            { children }
+        </div>
+    );
+};
+
 export default UserBox;

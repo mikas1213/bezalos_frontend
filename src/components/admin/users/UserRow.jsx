@@ -5,12 +5,13 @@ import { FaRegCopy } from 'react-icons/fa';
 import { HiTemplate } from 'react-icons/hi';
 import { date_with_time, date_to_yyyy_mm_dd, isTodayOrFiveDaysBefore, isTodayOrLater, isTwoOrFourWeeks, isMaintenance } from '../../../utils/dateHelpers';
 import stripe_img from '../../../assets/images/admin/stripe_png.png';
-import UserBox, { SideBox } from './UserBox';
+import UserBox, { SideBox, SideBoxRow } from './UserBox';
 import { useNavigate } from 'react-router-dom';
 
 const UserRow = ({ user, handleSubscriptionUpdate, handleUserUpdate }) => {
     const navigate = useNavigate();
     const [calories, setCalories] = useState(user.eats_calories || '');
+    const [facebookName, setFacebookName] = useState(user.facebook_name || '');
     const handle_VIRTUVE_CANCELED = () => { handleUserUpdate(user.id, 'subscription_type', 'Canceled_virtuve'); }
     
     return (    
@@ -64,7 +65,28 @@ const UserRow = ({ user, handleSubscriptionUpdate, handleUserUpdate }) => {
                     </div>
                 </SideBox>
             </UserBox>
-        
+
+            <UserBox>
+                <SideBoxRow>
+                    <FaRegCopy 
+                        className={styles.iconCopyFacebook} 
+                        onClick={() => {navigator.clipboard.writeText(user.facebook_name)}} 
+                    />
+                    <SideBox>
+                        <span className={styles.sideBoxTitle}>Facebook name</span>
+                        <input 
+                            type='text' 
+                            name='facebook_name'
+                            className={styles.facebook_name}
+                            value={facebookName}
+                            onBlur={e => handleUserUpdate(user.id, e.target.name, e.target.value)}  
+                            onChange={e => setFacebookName(e.target.value)}
+                            onKeyDown={e => e.key === 'Enter' && e.target.blur()}
+                        />
+                    </SideBox>
+                </SideBoxRow>
+            </UserBox>
+
             <UserBox>
                 <SideBox>
                     <span className={styles.sideBoxTitle}>Mitybą seka iki</span>
@@ -161,7 +183,7 @@ const UserRow = ({ user, handleSubscriptionUpdate, handleUserUpdate }) => {
                 </SideBox>
             </UserBox>
 
-            <UserBox>
+            {/* <UserBox>
                 <SideBox>
                     <span className={styles.sideBoxTitle}>Priežiūra</span>
                     <input 
@@ -188,7 +210,7 @@ const UserRow = ({ user, handleSubscriptionUpdate, handleUserUpdate }) => {
                         <option disabled={isMaintenance(user.maintenance, user.maintenance_status).sav !== '4_sav'}>4 sav</option>
                     </select>
                 </SideBox>
-            </UserBox>
+            </UserBox> */}
         </div>
     );
 }
