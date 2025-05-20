@@ -43,6 +43,7 @@ import CancelSubscription from './pages/paymentPages/CancelSubscription';
 import PirkimoTaisyklesPage from './pages/PirkimoTaisyklesPage';
 import PrivatumoPolitikaPage from './pages/PrivatumoPolitikaPage';
 import AdminLayout from './components/admin/layout/AdminLayout';
+import AdminLayout_v2 from './components/admin/layout/AdminLayout_v2';
 import UsersPage from './pages/admin/users/UsersPage';
 import UserPageLayout from './pages/admin/users/UserPageLayout';
 import EditUserPlanPage from './pages/admin/users/EditUserPlanPage';
@@ -146,6 +147,15 @@ function App() {
                                             <Route path='videos' element={<VideosPage />} />
                                             <Route path='mails' element={<MailsPage />} />
                                         </Route>
+
+
+                                        {/* DEVELOPING ADMIN V2 */}
+                                        <Route path='/admin_v2' element={<AdminLayout_v2 /> }>
+                                            <Route index element={<div>hello admin version 2</div>}/>
+                                        </Route>
+                                        {/* DEVELOPING ADMIN V2 */}
+
+
                                     </Route>
                                 </Route>
                             </Routes>

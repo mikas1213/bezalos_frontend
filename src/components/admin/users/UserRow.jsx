@@ -82,6 +82,7 @@ const UserRow = ({ user, handleSubscriptionUpdate, handleUserUpdate }) => {
                             onBlur={e => handleUserUpdate(user.id, e.target.name, e.target.value)}  
                             onChange={e => setFacebookName(e.target.value)}
                             onKeyDown={e => e.key === 'Enter' && e.target.blur()}
+                            autoComplete='off'
                         />
                     </SideBox>
                 </SideBoxRow>
@@ -179,6 +180,7 @@ const UserRow = ({ user, handleSubscriptionUpdate, handleUserUpdate }) => {
                         onBlur={e => handleUserUpdate(user.id, e.target.name, e.target.value)}  
                         onChange={e => setCalories(e.target.value)}
                         onKeyDown={e => e.key === 'Enter' && e.target.blur()}
+                        autoComplete='off'
                     />
                 </SideBox>
             </UserBox>
