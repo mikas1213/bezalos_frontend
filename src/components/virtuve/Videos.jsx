@@ -1,4 +1,5 @@
 import styles from './Videos.module.css';
+import { roles } from '../../utils/roles';
 import Container from './Container';
 import Filters from './Filters';
 import Card from './Card';
@@ -7,14 +8,10 @@ import NotFoundVideo from './NotFoundVideo';
 import { useQuery } from '@tanstack/react-query';
 
 import useAxiosPrivate from "../../hooks/useAxiosPrivate";
-    
-// import { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 
-const Videos = ({user_id, u_status, s_status, is_course}) => {
+const Videos = ({user_id, user_role, u_status, s_status, is_course}) => {
     
-    // const [videos, setVideos] = useState();
-    // const [isLoading, setIsLoading] = useState(false);
     const [searchParams] = useSearchParams();
     const axiosPrivate = useAxiosPrivate();
     const searchItem = searchParams.get('search');
@@ -42,10 +39,10 @@ const Videos = ({user_id, u_status, s_status, is_course}) => {
     return (
         <Container>
             <Filters searchItem={searchItem} />
-            {isLoading ? <Spinner /> : videos?.length === 0
+            {isLoading ? <Spinner /> : videos?.filter(video => user_role === roles.admin ? video : video.is_active).length === 0
                 ? <NotFoundVideo />
                 : <div className={styles.videos}>
-                    {videos?.map(video => <Card 
+                    {videos?.filter(video => user_role === roles.admin ? video : video.is_active).map(video => <Card 
                         key={video.id} 
                         video={video} 
                         user_id={user_id} 
