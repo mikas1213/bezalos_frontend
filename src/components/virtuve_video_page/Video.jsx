@@ -1,18 +1,24 @@
-import useAxiosPrivate from '../../hooks/useAxiosPrivate';
-import { 
-    FaHeart, 
-    FaRegHeart,
-    FaFilePdf
-} from 'react-icons/fa6';
-
 import styles from './Video.module.css';
 import { useState} from 'react';
+
+import useAxiosPrivate from '../../hooks/useAxiosPrivate';
+import { FaHeart, FaRegHeart, FaFilePdf } from 'react-icons/fa6';
 
 import CommentCard from './CommentCard';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import { v4 as uuidv4 } from 'uuid';
 import { getImageURL } from '../../utils/images';
+
+import pdf_1 from '../../assets/pdf/kodel-as-persivalgau-1.pdf';
+import pdf_2 from '../../assets/pdf/kodel-as-persivalgau-2.pdf';
+import pdf_3 from '../../assets/pdf/kodel-as-persivalgau-3.pdf';
+
+const pdfs = {
+    'kodel-as-persivalgau-1': pdf_1,
+    'kodel-as-persivalgau-2': pdf_2,
+    'kodel-as-persivalgau-3': pdf_3
+};
 
 const Send = ({active}) => {
     return (
@@ -29,7 +35,6 @@ const Send = ({active}) => {
 };
 
 const Video = ({ user_id, user_name, video, comments, onToggleLikes, onAddVideoComment, onDeleteVideoComment, isLike, likesCount }) => {
-    
     const axiosPrivate = useAxiosPrivate();
     const [showMore, setShowMore] = useState(false);
     const [desc1, desc2 = ''] = video.description.split(':');
@@ -95,7 +100,7 @@ const Video = ({ user_id, user_name, video, comments, onToggleLikes, onAddVideoC
                         <div className={styles.descriptionInner}>
                             {desctList.map((listItem, i) => <li key={i}>{listItem}</li>)}
 
-                            {video.video_type === 'kursai' && <a className={styles.download_pdf} href="../../../test_pdf.pdf" download>
+                            {video.video_type === 'kursai' && <a className={styles.download_pdf} href={pdfs[video.video_url]} download>
                                 <FaFilePdf className={styles.pdf_icon}/>&nbsp;<span>Atsisiųsti failą</span>
                             </a>}
                         </div>

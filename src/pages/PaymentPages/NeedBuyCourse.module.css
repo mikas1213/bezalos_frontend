@@ -1,6 +1,6 @@
 .needSubscriptionContainer {
     display: grid;
-    grid-template-rows: 2fr 1fr 1fr 1fr;
+    grid-template-rows: 2fr 0.5fr 1fr 1fr 1fr;
     justify-items: center;
     width: clamp(10rem, 37.5vw, 24rem);
     height: clamp(10rem, 37.5vw, 24rem);

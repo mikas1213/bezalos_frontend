@@ -43,7 +43,6 @@ const AdminRecipe = ({ adminRecipe, handleDeleteRecipe, setModalControl, setNewR
             </div>
 
             <div className={`${styles.section} ${styles.videoLink}`}>
-
                 {adminRecipe.video_link && <>
                     <CirclePlay className={styles.icon} />
                     <Link to={adminRecipe.video_link} target='_blank' rel='noopener noreferrer' >

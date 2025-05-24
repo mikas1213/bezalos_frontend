@@ -1,0 +1,29 @@
+.VideosNav {
+    display: flex;
+    gap: 0.5rem;
+    background-color: #fff;
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+}
+
+.addBtn {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-width: 10.5rem;
+    padding: 0 1rem;
+    height: calc(2rem + 2px);
+    border: none;
+    color: #fff;
+    font-size: var(--font-size-small-1);
+    background-color: var(--color-b);
+    border-radius: 0.4rem;
+}
+.iconAdd {
+    width: 1.1rem;
+}
+.addBtn:disabled {
+    background-color: var(--grey-light);
+    cursor: not-allowed;
+}

@@ -30,4 +30,4 @@ dist-ssr
 *.sw?
 
 # Files
-structure_v*.txt
+structure_*.txt

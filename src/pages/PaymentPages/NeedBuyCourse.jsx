@@ -15,13 +15,13 @@ const NeedBuyCourse = () => {
                     <div className={styles.needSubscriptionContainer}>
                         <img src={NeedSubscriptionIcon} alt='video-icon' />
                         <h2>Įsigykite kursą</h2>
-
+                        <p>„Kodėl aš vis persivalgau?“</p>
                         <div className={styles.smallText}>
                             <p>Pirmas žingsnis į laisvesnį</p>
                             <p>santykį su maistu 👇</p>
                         </div>
 
-                        <button onClick={() => navigate('/paslaugos?tab=paslaugos') }>
+                        <button onClick={() => navigate('/paslaugos/kursas-kodel-as-vis-persivalgau') }>
                             Įsigyti kursą
                         </button>
                     </div>

@@ -43,7 +43,7 @@ import CancelSubscription from './pages/paymentPages/CancelSubscription';
 import PirkimoTaisyklesPage from './pages/PirkimoTaisyklesPage';
 import PrivatumoPolitikaPage from './pages/PrivatumoPolitikaPage';
 import AdminLayout from './components/admin/layout/AdminLayout';
-import AdminLayout_v2 from './components/admin/layout/AdminLayout_v2';
+import AdminLayout_v2 from './layouts/admin/AdminLayout_v2';
 import UsersPage from './pages/admin/users/UsersPage';
 import UserPageLayout from './pages/admin/users/UserPageLayout';
 import EditUserPlanPage from './pages/admin/users/EditUserPlanPage';
@@ -59,7 +59,7 @@ import ServicesPage from './pages/admin/servicesPages/ServicesPage';
 import PromotionsPage from './pages/admin/servicesPages/PromotionsPage';
 import NarystesPage from './pages/admin/servicesPages/NarystesPage';
 import ReceptaiPage from './pages/admin/recipesPages/ReceptaiPage';
-import VideosPage from './pages/admin/VideosPage';
+import VideosPage from './pages/admin/videosPages/VideosPage';
 import MailsPage from './pages/admin/MailsPage';
 
 
@@ -150,9 +150,9 @@ function App() {
 
 
                                         {/* DEVELOPING ADMIN V2 */}
-                                        <Route path='/admin_v2' element={<AdminLayout_v2 /> }>
+                                        {/* <Route path='/admin_v2' element={<AdminLayout_v2 /> }>
                                             <Route index element={<div>hello admin version 2</div>}/>
-                                        </Route>
+                                        </Route> */}
                                         {/* DEVELOPING ADMIN V2 */}
 
 
