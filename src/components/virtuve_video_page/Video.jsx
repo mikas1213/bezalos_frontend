@@ -1,5 +1,5 @@
 import styles from './Video.module.css';
-import { useState} from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 import useAxiosPrivate from '../../hooks/useAxiosPrivate';
 import { FaHeart, FaRegHeart, FaFilePdf } from 'react-icons/fa6';
@@ -34,6 +34,7 @@ const Send = ({active}) => {
     );
 };
 
+
 const Video = ({ user_id, user_name, video, comments, onToggleLikes, onAddVideoComment, onDeleteVideoComment, isLike, likesCount }) => {
     const axiosPrivate = useAxiosPrivate();
     const [showMore, setShowMore] = useState(false);
@@ -43,11 +44,45 @@ const Video = ({ user_id, user_name, video, comments, onToggleLikes, onAddVideoC
     const [showComments, setShowComments] = useState(false);
     const { register, watch, reset, handleSubmit } = useForm(
         {defaultValues: {
-        video_id: video.id,
-        user_id,
-        user_name
-      }}
+            video_id: video.id,
+            user_id,
+            user_name
+        }}
     );
+
+    const [watchedPercentages, setWatchedPercentages] = useState(new Set());
+    const handleTimeUpdate = async (e) => {
+        const videoElement = e.target;
+        const currentTime = videoElement.currentTime;
+        const duration = videoElement.duration;
+        
+        if (duration > 0) {
+            const percentage = (currentTime / duration) * 100;
+            const milestones = [0.001, 25, 50, 80];
+            
+            for (const milestone of milestones) {
+                if (percentage >= milestone && !watchedPercentages.has(milestone)) {
+                    
+                    setWatchedPercentages(prev => new Set([...prev, milestone]));
+                    try {
+                        console.log('milestone: ', milestone)
+                        await axiosPrivate.post(`videos/${video.id}`, {
+                            data: milestone === 0.001 ? 'play_count' : `play_count_${milestone}`
+                        });
+                    } catch (err) {
+                        console.error(err.message || 'Error');
+                    }
+                    break;
+                }
+            }
+        }
+    }
+
+    useEffect(() => {
+        setWatchedPercentages(new Set());
+    }, [video.id]);
+
+    
     
     const submit = async ({comment, video_id, user_id, user_name}) => {
         if(!watch('comment')) return;
@@ -74,18 +109,15 @@ const Video = ({ user_id, user_name, video, comments, onToggleLikes, onAddVideoC
         <div className={styles.video}>
             <video 
                 style={{backgroundImage: `url("${getImageURL(`virtuve/${video.video_url}.webp`)}")`}}
+                // style={{backgroundImage: `url("https://bezalos-virtuve.s3.us-east-1.amazonaws.com/images/recipes/makaronai-su-vistienos-file.webp")`}}
                 onContextMenu={ event => event.preventDefault() }
                 controls={true}
                 poster="data:image/gif,0000"
                 playsInline
                 controlsList='nodownload' 
                 width='100%'
-                // src={`http://localhost:3003//api/v1/videos/stream/${video.video_url}`}
-                // src={'http://localhost:3003/api/v1/videos/stream/sveiki-receptai'}
-                // onPlay={e => console.log(e)}
-                // onTimeUpdate={e => console.log(e)}
+                onTimeUpdate={handleTimeUpdate}
             >
-                {/* <source src={`http://localhost:3003/api/v1/videos/stream/${video.video_url}`} type='video/mp4' /> */}
                 <source src={video?.url+'#t=0.0'} type='video/mp4' />
             </video>
             
