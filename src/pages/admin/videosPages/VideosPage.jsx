@@ -32,16 +32,14 @@ const VideosPage = () => {
             image_s3_key: video.image_s3_key,
         }}),
         onSuccess: () => {
-            // console.log('cia issitryne ec746867-0e7e-487e-9499-6a20cdf5f908')
             queryClient.invalidateQueries({ queryKey: ['admin-videos'] });
         },
         onError: (err) => {
             toast.error(err.message || 'Klaida!');
         },
-        onSettled: () => {
-            queryClient.invalidateQueries({ queryKey: ['admin-videos'] });
-            console.log('Mutation baigtas');
-        }
+        // onSettled: () => {
+        //     queryClient.invalidateQueries({ queryKey: ['admin-videos'] });
+        // }
     });
 
     const handleFormInput = e => {

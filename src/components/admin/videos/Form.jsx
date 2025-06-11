@@ -42,7 +42,9 @@ const Form = ({ isModalOpen, formValues, setFormValues, handleFormInput }) => {
     const uploadVideoMutation = useUploadVideo(socket, isModalOpen.action, setUploadProgress, setVideoProgress, setMessage, setUploading);
 
     useEffect(() => {
-        const newSocket = io('http://localhost:3003');
+        // console.log('MODE: ', process.env.NODE_ENV)
+        // const newSocket = io('http://localhost:3003');
+        const newSocket = io();
         setSocket(newSocket);
 
         // Upload stadijos pakeitimai
