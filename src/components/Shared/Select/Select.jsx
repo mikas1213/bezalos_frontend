@@ -3,7 +3,8 @@ import { ChevronLeft } from 'lucide-react';
 import { useState, useEffect, useRef } from 'react';
 import { Check } from 'lucide-react';
 
-const Select = ({ options, label, name, value, setNewItem, className = '' }) => {
+const Select = ({ options = [], label, name, value, handleFormInput, className = [] }) => {
+    
     const [selectOpen, setSelectOpen] = useState(false);
     const refOptions = useRef(null);
 
@@ -30,13 +31,15 @@ const Select = ({ options, label, name, value, setNewItem, className = '' }) => 
 
             <div 
                 ref={refOptions} 
-                className={`${styles.options} ${className} ${selectOpen ? styles.showOptions : ''}`}
+                className={`${styles.options} ${selectOpen ? styles.showOptions : ''}`}
             >
                 {options.map(option => <div
                     key={option} 
+                    data-name={name}
+                    data-value={option}
                     className={styles.option} 
-                    onClick={() => {
-                        setNewItem(prev => ({...prev, [name]: option}));
+                    onClick={e => {
+                        handleFormInput(e);
                         setSelectOpen(false);
                     }}
                 >

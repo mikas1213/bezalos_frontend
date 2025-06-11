@@ -1,5 +1,5 @@
 .modal {
-    position: absolute;
+    position: fixed;
     display: flex;
     flex-direction: column;
     gap: 1rem;
@@ -23,13 +23,11 @@
 
 @media only screen and (max-width: 375px) {
     .modal { 
-        width: clamp(100px, 93vw, 22rem);
         padding: 0.8rem; 
     }
 }
 @media only screen and (max-width: 320px) {
     .modal { 
-        width: clamp(100px, 94vw, 22rem);
         padding: 0.5rem; 
     }
 }

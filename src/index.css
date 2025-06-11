@@ -1,6 +1,20 @@
 :root {
     /* Colors CMD + k + g */
 
+/* ---V-E-R-Y---N-E-W---V-A-R-I-A-B-L-E-S---F-O-R---C-O-L-O-R-S---A-D-D-E-D-2025-05-25*/
+    --cool-grey-900: hsl(209, 15%, 28%);
+    --cool-grey-700: hsl(207, 12%, 43%);
+    --cool-grey-500: hsl(208, 12%, 58%);
+    --cool-grey-300: hsl(210, 16%, 76%);
+    --cool-grey-100: hsl(208, 21%, 88%);
+
+    --sky-blue-900: hsl(194, 75%, 25%);
+    --sky-blue-700: hsl(194, 75%, 40%);
+    --sky-blue-500: hsl(194, 75%, 65%);
+    --sky-blue-300: hsl(194, 75%, 80%);
+    --sky-blue-100: hsl(194, 75%, 92%);
+
+
 /* ---N-E-W---V-A-R-I-A-B-L-E-S---F-O-R---C-O-L-O-R-S--- */
     --color-background: #fff;
     --color-background-secondary: #eff1ef;
@@ -184,7 +198,6 @@ span.anketaError {
     font-size: 0.7rem;
     font-weight: 400;
 }
-
 
 /* -----------------t-y-p-e-s-c-a-l-e----------------- */
 /* 

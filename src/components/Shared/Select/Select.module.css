@@ -4,6 +4,7 @@
     display: flex;
     flex-direction: column;
     gap: 0.2rem;
+    width: 100%;
 }
 
 .inputLabel {
@@ -48,7 +49,7 @@
     border: 0.5px solid var(--color-border);
     background-color: #fff;
     box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
-    
+    width: 100%;
     visibility: hidden;
     opacity: 0;
     transform: translateY(-10px);
@@ -59,10 +60,10 @@
     cursor: pointer;
     display: flex;
     justify-content: space-between;
+    font-size: var(--font-size-p);
     align-items: center;
-    
     padding: 0.5rem;
-    border-radius: 0.5rem;
+    border-radius: 0.4rem;
 }
 .option:hover {
     background-color: #60c04033;
@@ -88,15 +89,10 @@
 
 @media only screen and (max-width: 768px) {
     .selectInput {
-        width: 7.5rem;
-        height: 2rem;
         padding: 0 0.5rem;
-        font-size: var(--font-size-small-1);
     }
     .options {
         padding: 0.3rem;
-        width: 7.5rem;
-        top: 2rem;
     }
     .option {
         font-size: var(--font-size-small-1);
@@ -104,7 +100,7 @@
     }
 }
 @media only screen and (max-width: 576px) {
-    .selectInput { width: 6rem; }
-    .options { width: 6rem; }
+    /* .selectInput { width: 6rem; } */
+    /* .options { width: 6rem; } */
 }
 

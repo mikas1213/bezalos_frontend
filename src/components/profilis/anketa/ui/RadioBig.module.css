@@ -14,6 +14,7 @@
     border-color: var(--color-btn-secondary);
     background-color: #f0fdf4;
 }
+
 .radio div {
     display: flex;
     flex-direction: column;

@@ -1,7 +1,6 @@
 import styles from './ListCard.module.css';
 import { Link } from 'react-router-dom';
 import { FaCirclePlay } from 'react-icons/fa6';
-import { getImageURL } from '../../utils/images';
 
 const ListCard = ({ video }) => {
     const created_video = new Date(Date.parse(video.created_at)).toLocaleString("lt-LT",
@@ -17,10 +16,10 @@ const ListCard = ({ video }) => {
     };
 
     return (
-        <Link to={`/virtuve/${video_types[video.video_type] || 'unknown'}/${video.video_url}`}>
+        <Link to={`/virtuve/${video_types[video.video_type] || 'unknown'}/${video.slug}`}>
             <div className={styles.listCard}>
                 <div className={styles.imageContainer}>
-                    <img src={getImageURL(`virtuve/${video.video_url}.webp`)} alt={video.video_url} className={styles.image} />
+                    <img src={`https://bezalos.s3.us-east-1.amazonaws.com/${video.image_s3_key}`} alt={video.slug} className={styles.image} />
                     <FaCirclePlay className={styles.icon} />
                     <span className={styles.duration}>{video.duration}</span>
                 </div>

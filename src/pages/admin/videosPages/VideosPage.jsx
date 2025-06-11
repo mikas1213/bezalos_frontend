@@ -1,41 +1,73 @@
 import toast from 'react-hot-toast';
 import { useState } from 'react';
 import useAxiosPrivate from '../../../hooks/useAxiosPrivate';
-import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
 import useVideosAdmin from '../../../hooks/useVideosAdmin';
 
 import VideosNav from '../../../components/admin/videos/VideosNav';
 import VideoRow, { VideoRowHeader } from '../../../components/admin/videos/VideoRow';
-import AddNewVideoModal from '../../../components/admin/videos/AddNewVideoModal';
 import Modal from '../../../components/Shared/Modal';
-import ActionBtns from '../../../components/admin/videos/ActionBtns';
+import Form from '../../../components/admin/videos/Form';
+
+const emptyForm = {
+    title: '',
+    description: '',
+    video_type: 'virtuve', 
+    category: 'Vebinaras', 
+    duration: '00:00:00',
+    is_active: true,
+    search_tag: 'vebinaras',
+};
 
 const VideosPage = () => {
     const axiosPrivate = useAxiosPrivate();
-    const [isModalOpen, setIsModalOpen] = useState(false);
-    const [formValues, setFormValues] = useState({});
-    const { data: {data, images} = [], isLoading } = useVideosAdmin();
-
+    const [isModalOpen, setIsModalOpen] = useState({isOpen: false, action: ''});
+    const [formValues, setFormValues] = useState(emptyForm);
+    const { data, isLoading } = useVideosAdmin();
     const queryClient = useQueryClient();
-    
+
     const handleDeleteVideo = useMutation({
-        mutationFn: id => axiosPrivate.delete(`/admin/videos/${id}`),
+        mutationFn: video => axiosPrivate.delete(`/admin/videos/${video.id}`, {data: {
+            video_s3_key: video.video_s3_key,
+            image_s3_key: video.image_s3_key,
+        }}),
         onSuccess: () => {
-            queryClient.invalidateQueries({ queryKey: ['admin-videos'] })
+            // console.log('cia issitryne ec746867-0e7e-487e-9499-6a20cdf5f908')
+            queryClient.invalidateQueries({ queryKey: ['admin-videos'] });
         },
         onError: (err) => {
-            toast.error(err.message || 'Klaida!')
+            toast.error(err.message || 'Klaida!');
+        },
+        onSettled: () => {
+            queryClient.invalidateQueries({ queryKey: ['admin-videos'] });
+            console.log('Mutation baigtas');
         }
     });
 
+    const handleFormInput = e => {
+        let value = e.target.value ?? e.target.dataset.value;
+        const name = e.target.name || e.target.dataset.name;
+
+        if(['video', 'photo'].includes(name)) {
+            value = e.target.files[0];
+        } else if(name === 'is_active') {
+            value = value === 'Taip';
+        }
+        setFormValues(prev => ({...prev, [name]: value}));
+    }
+
     return (
         <div>
-            {isModalOpen && <Modal>
-                testafsd adsf ads fad fads fadsfaf 
-                <ActionBtns isLoading={isLoading} setIsModalOpen={setIsModalOpen} />
+            {isModalOpen.isOpen && <Modal>
+                <Form 
+                    isModalOpen={isModalOpen}
+                    formValues={formValues} 
+                    handleFormInput={handleFormInput} 
+                    setFormValues={setFormValues} 
+                />
             </Modal>}
 
-            <VideosNav isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />
+            <VideosNav isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} setFormValues={setFormValues} />
             <VideoRowHeader />
             {!isLoading && data && data.map(video => <VideoRow 
                 key={video.id} 

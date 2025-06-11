@@ -1,16 +1,16 @@
 import styles from './Input.module.css';
 
-const Input = ({ placeholder, label, name, value, dataValue = '', handleServiceForm, className = '' }) => {
+const Input = ({ label, placeholder, name, value, dataValue = '', handleFormInput, className = ''}) => {
     return (
-        <div className={styles.inputGroup}>
+        <div className={`${styles.inputGroup} ${className}`}>
             <span className={styles.inputLabel}>{label}</span>
             <input 
                 type='text' 
                 name={name}
-                value={value ?? ''}
-                onChange={handleServiceForm}
+                value={value}
+                onChange={handleFormInput}
                 data-id={dataValue}
-                className={`${styles.input} ${className}`} 
+                className={styles.input}
                 placeholder={placeholder}
             />
         </div>

@@ -1,8 +1,6 @@
 import styles from './Card.module.css';
 import { Link } from 'react-router-dom';
-
 import { FaLock } from 'react-icons/fa';
-import { getImageURL } from '../../utils/images';
 
 const Card = ({ video, user_id, u_status, s_status, is_course }) => {
     
@@ -21,11 +19,10 @@ const Card = ({ video, user_id, u_status, s_status, is_course }) => {
     const is_courses = user_id && is_course && video.video_type === 'kursai';
     
     return (    
-        <Link to={`${video_types[video.video_type] || 'unknown'}/${video.video_url}`}>
-            {/* <div className={`${styles.VideoCard} ${(user_id && (u_status === 'Virtuvė' || s_status === 'virtuve') && video.video_type === 'virtuve') ? '' : styles.cardLock}`}> */}
+        <Link to={`${video_types[video.video_type] || 'unknown'}/${video.slug}`}>
             <div className={`${styles.VideoCard} ${is_subscribed || is_courses ? '' : styles.cardLock}`}>
                 <section>
-                    <img src={getImageURL(`virtuve/${video.video_url}.webp`)} alt={video.title} />
+                    <img src={`https://bezalos.s3.us-east-1.amazonaws.com/${video.image_s3_key}`} alt={video.title} />
                     <div className={styles.iconContainer}>
                         <FaLock className={styles.icon} />
                     </div>

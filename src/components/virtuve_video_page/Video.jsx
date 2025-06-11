@@ -1,5 +1,5 @@
 import styles from './Video.module.css';
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 
 import useAxiosPrivate from '../../hooks/useAxiosPrivate';
 import { FaHeart, FaRegHeart, FaFilePdf } from 'react-icons/fa6';
@@ -8,7 +8,6 @@ import CommentCard from './CommentCard';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import { v4 as uuidv4 } from 'uuid';
-import { getImageURL } from '../../utils/images';
 
 import pdf_1 from '../../assets/pdf/kodel-as-persivalgau-1.pdf';
 import pdf_2 from '../../assets/pdf/kodel-as-persivalgau-2.pdf';
@@ -108,8 +107,7 @@ const Video = ({ user_id, user_name, video, comments, onToggleLikes, onAddVideoC
     return (
         <div className={styles.video}>
             <video 
-                style={{backgroundImage: `url("${getImageURL(`virtuve/${video.video_url}.webp`)}")`}}
-                // style={{backgroundImage: `url("https://bezalos-virtuve.s3.us-east-1.amazonaws.com/images/recipes/makaronai-su-vistienos-file.webp")`}}
+                style={{backgroundImage: `url("https://bezalos.s3.us-east-1.amazonaws.com/${video.image_s3_key}")`}}
                 onContextMenu={ event => event.preventDefault() }
                 controls={true}
                 poster="data:image/gif,0000"
@@ -118,7 +116,10 @@ const Video = ({ user_id, user_name, video, comments, onToggleLikes, onAddVideoC
                 width='100%'
                 onTimeUpdate={handleTimeUpdate}
             >
-                <source src={video?.url+'#t=0.0'} type='video/mp4' />
+                <source 
+                    src={video?.url+'#t=0.0'} 
+                    // type='video/mp4' 
+                />
             </video>
             
             <div className={styles.cardBottom}>
@@ -132,7 +133,7 @@ const Video = ({ user_id, user_name, video, comments, onToggleLikes, onAddVideoC
                         <div className={styles.descriptionInner}>
                             {desctList.map((listItem, i) => <li key={i}>{listItem}</li>)}
 
-                            {video.video_type === 'kursai' && <a className={styles.download_pdf} href={pdfs[video.video_url]} download>
+                            {video.video_type === 'kursai' && <a className={styles.download_pdf} href={pdfs[video.slug]} download>
                                 <FaFilePdf className={styles.pdf_icon}/>&nbsp;<span>Atsisiųsti failą</span>
                             </a>}
                         </div>
