@@ -5,6 +5,11 @@ import toast from 'react-hot-toast';
 export const useUploadVideo = (socket, action, setUploadProgress, setVideoProgress, setMessage, setUploading) => {
     const axiosPrivate = useAxiosPrivate();
 
+    /* TESTING */
+    console.log('📤 useUploadVideo:', socket); // ← Pridėti šį log'ą
+    /* TESTING */
+
+
     return useMutation({
         mutationFn: async (formValues) => {
             const formData = new FormData();
@@ -21,7 +26,26 @@ export const useUploadVideo = (socket, action, setUploadProgress, setVideoProgre
             formData.append('photo', formValues.photo);
             formData.append('action', formValues.action);
 
-            const config = {
+            // const config = {
+            //     headers: {
+            //         'Content-Type': 'multipart/form-data',
+            //         'X-Socket-ID': socket.id,
+            //     },
+            //     onUploadProgress: (progressEvent) => {
+            //         const progress = Math.round(
+            //             (progressEvent.loaded * 100) / progressEvent.total
+            //         );
+            //         setUploadProgress(progress);
+            //         setMessage(
+            //             progress < 100
+            //                 ? `Siunčiama į serverį: ${progress}%`
+            //                 : 'Failai gauti serveryje, pradedamas video upload į AWS...'
+            //         );
+            //     }
+            // }
+
+            const api = action === 'insert' ? `/admin/videos` : `/admin/videos/${formValues.id}`;
+            const response = await axiosPrivate.post(api, formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                     'X-Socket-ID': socket.id,
@@ -37,10 +61,7 @@ export const useUploadVideo = (socket, action, setUploadProgress, setVideoProgre
                             : 'Failai gauti serveryje, pradedamas video upload į AWS...'
                     );
                 }
-            }
-
-            const api = action === 'insert' ? `/admin/videos` : `/admin/videos/${formValues.id}`;
-            const response = await axiosPrivate.post(api, formData, config);
+            });
             return response.data;
         },
         onMutate: () => {

@@ -42,7 +42,7 @@ const RecipesPage = () => {
             } : recipe));
         }
     };
-    console.log(mostLiked)
+
     return (
         <>
             <Navbar isHome='recipes' />

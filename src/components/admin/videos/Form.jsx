@@ -42,7 +42,7 @@ const Form = ({ isModalOpen, formValues, setFormValues, handleFormInput }) => {
     const uploadVideoMutation = useUploadVideo(socket, isModalOpen.action, setUploadProgress, setVideoProgress, setMessage, setUploading);
 
     useEffect(() => {
-        // console.log('MODE: ', process.env.NODE_ENV)
+
         // const newSocket = io('http://localhost:3003');
         const newSocket = io();
         setSocket(newSocket);
@@ -54,7 +54,8 @@ const Form = ({ isModalOpen, formValues, setFormValues, handleFormInput }) => {
 
         // Video upload progress į S3
         newSocket.on('videoUploadProgress', (data) => {
-        setVideoProgress(data.percentage);
+            console.log('📊 Form videoUploadProgress:', data); // ← Ar ateina?
+            setVideoProgress(data.percentage);
             setMessage(`Įkeliamas video į AWS: ${data.percentage}% (${data.loadedMB}/${data.totalMB} MB)`);
         });
 
