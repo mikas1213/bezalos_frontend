@@ -36,10 +36,7 @@ const VideosPage = () => {
         },
         onError: (err) => {
             toast.error(err.message || 'Klaida!');
-        },
-        // onSettled: () => {
-        //     queryClient.invalidateQueries({ queryKey: ['admin-videos'] });
-        // }
+        }
     });
 
     const handleFormInput = e => {

@@ -42,9 +42,15 @@ const Form = ({ isModalOpen, formValues, setFormValues, handleFormInput }) => {
     const uploadVideoMutation = useUploadVideo(socket, isModalOpen.action, setUploadProgress, setVideoProgress, setMessage, setUploading);
 
     useEffect(() => {
-
-        // const newSocket = io('http://localhost:3003');
-        const newSocket = io();
+        
+        const socket_server = process.env.NODE_ENV === 'development' ? 'http://localhost:3003' : 'https://bezalos.dulevicius.dev';
+        
+        const newSocket = io(socket_server, {
+            transports: ['websocket', 'polling'],
+            upgrade: false,
+            rememberUpgrade: false,
+            timeout: 60000
+        });
         setSocket(newSocket);
 
         // Upload stadijos pakeitimai
@@ -67,12 +73,12 @@ const Form = ({ isModalOpen, formValues, setFormValues, handleFormInput }) => {
         });
 
         newSocket.on('uploadError', (data) => {
-        toast.error(data.message);
+            toast.error(data.message);
             setUploading(false);
         });
 
         return () => newSocket.close();
-    }, []);
+    }, [queryClient]);
     
     const handleCheckboxChange = (value) => {
         setFormValues(prev => {

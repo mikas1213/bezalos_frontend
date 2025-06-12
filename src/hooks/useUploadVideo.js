@@ -6,7 +6,7 @@ export const useUploadVideo = (socket, action, setUploadProgress, setVideoProgre
     const axiosPrivate = useAxiosPrivate();
 
     /* TESTING */
-    console.log('📤 useUploadVideo:', socket); // ← Pridėti šį log'ą
+    // console.log('📤 useUploadVideo:', socket?.id);
     /* TESTING */
 
 
@@ -48,7 +48,7 @@ export const useUploadVideo = (socket, action, setUploadProgress, setVideoProgre
             const response = await axiosPrivate.post(api, formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
-                    'X-Socket-ID': socket.id,
+                    'X-Socket-ID': socket?.id,
                 },
                 onUploadProgress: (progressEvent) => {
                     const progress = Math.round(
