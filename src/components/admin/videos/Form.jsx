@@ -5,7 +5,7 @@ import Textarea from '../../Shared/Textarea';
 import FilterChip from '../../Shared/FilterChip';
 import UploadFile from '../../Shared/UploadFile';
 import useAxiosPrivate from '../../../hooks/useAxiosPrivate';
-
+import axios from '../../../api/axios';
 import toast from 'react-hot-toast';
 import { useState, useEffect } from 'react';
 import io from 'socket.io-client';
@@ -31,7 +31,7 @@ const formatFileSize = (bytes) => {
 };
 
 const Form = ({ isModalOpen, formValues, setFormValues, handleFormInput }) => {
-    // const axiosPrivate = useAxiosPrivate();
+    const axiosPrivate = useAxiosPrivate();
     const queryClient = useQueryClient();
     const [socket, setSocket] = useState(null);
     const [uploadProgress, setUploadProgress] = useState(0);
@@ -42,43 +42,59 @@ const Form = ({ isModalOpen, formValues, setFormValues, handleFormInput }) => {
     const uploadVideoMutation = useUploadVideo(socket, isModalOpen.action, setUploadProgress, setVideoProgress, setMessage, setUploading);
 
     useEffect(() => {
-        
-        const socket_server = process.env.NODE_ENV === 'development' ? 'http://localhost:3003' : 'https://bezalos.dulevicius.dev';
-        
-        const newSocket = io(socket_server, {
-            transports: ['websocket', 'polling'],
-            upgrade: false,
-            rememberUpgrade: false,
-            timeout: 60000
-        });
-        setSocket(newSocket);
+        const initializeSocket = async () => {
+            let socketUrl = '';
+            try {
+                const { data } = await axiosPrivate.get('/config');
+                socketUrl = data;
+                console.log('socketUrl: ', socketUrl);
 
-        // Upload stadijos pakeitimai
-        newSocket.on('uploadStageChange', (data) => {
-            setMessage(data.message);
-        });
+            } catch (err) {
+                console.log('socketUrl: ', socketUrl)
+                // socketUrl = process.env.NODE_ENV === 'development' 
+                    // ? 'http://localhost:3003' 
+                    // : 'https://bezalos.lt';
+            }
 
-        // Video upload progress į S3
-        newSocket.on('videoUploadProgress', (data) => {
-            console.log('📊 Form videoUploadProgress:', data); // ← Ar ateina?
-            setVideoProgress(data.percentage);
-            setMessage(`Įkeliamas video į AWS: ${data.percentage}% (${data.loadedMB}/${data.totalMB} MB)`);
-        });
 
-        newSocket.on('videoUploadComplete', () => {
-            toast.success(`Video sėkmingai įkeltas į AWS S3!`);
-            queryClient.invalidateQueries({ queryKey: ['admin-videos'] });
-            setMessage('Video sėkmingai įkeltas į AWS S3!');
-            setUploading(false);
-        });
+            // const socket_server = process.env.NODE_ENV === 'development' ? 'http://localhost:3003' : 'https://bezalos.dulevicius.dev';
+            
+            const newSocket = io(socketUrl, {
+                transports: ['websocket', 'polling'],
+                upgrade: false,
+                rememberUpgrade: false,
+                timeout: 60000
+            });
+            setSocket(newSocket);
 
-        newSocket.on('uploadError', (data) => {
-            toast.error(data.message);
-            setUploading(false);
-        });
+            newSocket.on('uploadStageChange', (data) => {
+                setMessage(data.message);
+            });
 
-        return () => newSocket.close();
-    }, [queryClient]);
+
+            newSocket.on('videoUploadProgress', (data) => {
+                setVideoProgress(data.percentage);
+                setMessage(`Įkeliamas video į AWS: ${data.percentage}% (${data.loadedMB}/${data.totalMB} MB)`);
+            });
+
+            newSocket.on('videoUploadComplete', () => {
+                toast.success(`Video sėkmingai įkeltas į AWS S3!`);
+                queryClient.invalidateQueries({ queryKey: ['admin-videos'] });
+                setMessage('Video sėkmingai įkeltas į AWS S3!');
+                setUploading(false);
+            });
+
+            newSocket.on('uploadError', (data) => {
+                toast.error(data.message);
+                setUploading(false);
+            });
+        }
+        initializeSocket();
+        // return () => newSocket.close();
+        return () => {
+            if(socket) socket.close();
+        }
+    }, []);
     
     const handleCheckboxChange = (value) => {
         setFormValues(prev => {
