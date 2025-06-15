@@ -1,0 +1,62 @@
+.fileCard {
+    /* height: 100px; */
+    display: flex;
+    min-height: 4rem;
+    gap: 0.5rem;
+    align-items: center;
+    padding: 0.5rem;
+    border: 1px solid var(--cool-grey-300);
+    border-radius: 0.5rem;
+    /* box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px; */
+}
+
+.fileIcon svg {
+    display: flex;
+    width: 2.2rem;
+    height: 2.2rem;
+    stroke: var(--cool-grey-500);
+    stroke-width: 1.5px;
+}
+
+.fileData {
+    flex-grow: 1;
+}
+.fileName {
+    font-size: var(--font-size-small-1);
+    font-weight: 600;
+    color: var(--cool-grey-700);
+}
+.fileInfo {
+    display: inline-flex;
+    margin-right: 0.5rem;
+    font-size: var(--font-size-small-1);
+    font-weight: 400;
+    color: var(--cool-grey-500);
+}
+
+.fileStatusIcon {
+    display: flex;
+    padding: 0.3rem;
+}
+
+.iconRemove svg {
+    cursor: pointer;
+    color: var(--cool-grey-500);
+    transition: all 0.2s ease;
+}
+.pending svg {
+    color: var(--cool-grey-500);
+}
+.iconRemove:hover svg {
+    stroke: var(--color-admin-red);
+}
+
+.uploadSuccess {
+    box-shadow: none;
+    border: 1px solid green;
+    &.fileCard { background: var(--green-100); }
+    .fileIcon svg { stroke: green; }
+    .fileName { color: green; }
+    .fileInfo { color: green; }
+    svg {stroke: green; }
+}

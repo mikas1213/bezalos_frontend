@@ -2,13 +2,8 @@ import { useMutation } from '@tanstack/react-query';
 import useAxiosPrivate from './useAxiosPrivate';
 import toast from 'react-hot-toast';
 
-export const useUploadVideo = (socket, action, setUploadProgress, setVideoProgress, setMessage, setUploading) => {
+export const useUploadVideo = (socket, action, setUploadProgress, setVideoProgress, setMessage, setUploading, setUploadError) => {
     const axiosPrivate = useAxiosPrivate();
-
-    /* TESTING */
-    // console.log('📤 useUploadVideo:', socket?.id);
-    /* TESTING */
-
 
     return useMutation({
         mutationFn: async (formValues) => {
@@ -26,24 +21,6 @@ export const useUploadVideo = (socket, action, setUploadProgress, setVideoProgre
             formData.append('photo', formValues.photo);
             formData.append('action', formValues.action);
 
-            // const config = {
-            //     headers: {
-            //         'Content-Type': 'multipart/form-data',
-            //         'X-Socket-ID': socket.id,
-            //     },
-            //     onUploadProgress: (progressEvent) => {
-            //         const progress = Math.round(
-            //             (progressEvent.loaded * 100) / progressEvent.total
-            //         );
-            //         setUploadProgress(progress);
-            //         setMessage(
-            //             progress < 100
-            //                 ? `Siunčiama į serverį: ${progress}%`
-            //                 : 'Failai gauti serveryje, pradedamas video upload į AWS...'
-            //         );
-            //     }
-            // }
-
             const api = action === 'insert' ? `/admin/videos` : `/admin/videos/${formValues.id}`;
             const response = await axiosPrivate.post(api, formData, {
                 headers: {
@@ -57,13 +34,14 @@ export const useUploadVideo = (socket, action, setUploadProgress, setVideoProgre
                     setUploadProgress(progress);
                     setMessage(
                         progress < 100
-                            ? `Siunčiama į serverį: ${progress}%`
+                            ? `Siunčiama į serverį . . . 📡`
                             : 'Failai gauti serveryje, pradedamas video upload į AWS...'
                     );
                 }
             });
             return response.data;
         },
+
         onMutate: () => {
             setUploading(true);
             setUploadProgress(0);
@@ -72,17 +50,12 @@ export const useUploadVideo = (socket, action, setUploadProgress, setVideoProgre
         },
         onError: (error) => {
             toast.error(error.response?.data?.message || error.message);
-            setMessage('Klaida įkeliant failus');
+            setMessage('Klaida įkeliant failus ❌');
             setUploading(false);
+            setUploadError(true);
         },
-        onSuccess: () => {
-            toast.success(`Video sėkmingai išsiųstas!`);
-            // queryClient.invalidateQueries({ queryKey: ['admin-videos'] });
-            // AWS progresas stebimas per socket.on, todėl čia nieko daugiau nereikia
-        },
-        onSettled: () => {
-            
-            // Galima išvalyti input lauką arba daryti reset
-        }
+        // onSuccess: () => {
+        //     toast.success(`Video sėkmingai išsiųstas! ✅`);
+        // }
     });
 };
