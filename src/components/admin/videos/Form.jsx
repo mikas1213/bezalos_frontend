@@ -6,8 +6,7 @@ import FilterChip from '../../Shared/FilterChip';
 import UploadArea from '../../Shared/UploadArea';
 import File from '../../Shared/File';
 import ProgressBar from './ProgressBar';
-import ActionBtn from './ActionBtn';
-import SpinnerOnBtn from '../../Shared/SpinnerOnBtn';
+import { ButtonSave, ButtonCancel } from '../../Shared/Buttons';
 
 import useAxiosPrivate from '../../../hooks/useAxiosPrivate';
 import toast from 'react-hot-toast';
@@ -17,8 +16,6 @@ import io from 'socket.io-client';
 import { useUploadVideo } from '../../../hooks/useUploadVideo';
 import { useQueryClient } from '@tanstack/react-query';
 
-// import useMediaQuery from '../../../hooks/useMediaQuery';
-
 const filters = [
     {label: 'Vebinaras', value: 'vebinaras'}, 
     {label: 'Trumpai', value: 'trumpai'}, 
@@ -27,7 +24,6 @@ const filters = [
     {label: 'Valgymo psichologija', value: 'valgymo psichologija'}
 ];
 
-// Format file size
 const formatFileSize = (bytes) => {
     if (bytes === 0) return '0 Bytes';
     const k = 1024;
@@ -36,8 +32,7 @@ const formatFileSize = (bytes) => {
     return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
 };
 
-const Form = ({ isModalOpen, formValues, setFormValues, handleFormInput }) => {
-    // const mQuery = useMediaQuery();
+const Form = ({ isModalOpen, setIsModalOpen, formValues, setFormValues, handleFormInput }) => {
     
     const axiosPrivate = useAxiosPrivate();
     const queryClient = useQueryClient();
@@ -49,8 +44,8 @@ const Form = ({ isModalOpen, formValues, setFormValues, handleFormInput }) => {
     const [uploading, setUploading] = useState(false);
     const [message, setMessage] = useState('');
     
-    const uploadVideoMutation = useUploadVideo(socket, isModalOpen.action, setUploadProgress, setVideoProgress, setMessage, setUploading, setUploadError);
-    console.log('uploadVideoMutation: ', '\nisLoading: ', uploadVideoMutation.isLoading, '\nisError: ', uploadVideoMutation.isError, '\nisPending: ', uploadVideoMutation.isPending, '\nisSuccess: ', uploadVideoMutation.isSuccess)
+    const uploadVideoMutation = useUploadVideo(socket, isModalOpen.action, formValues.video, setUploadProgress, setVideoProgress, setMessage, setUploading, setUploadError);
+    
     useEffect(() => {
         const initializeSocket = async () => {
             let socketUrl = '';
@@ -129,10 +124,27 @@ const Form = ({ isModalOpen, formValues, setFormValues, handleFormInput }) => {
     }
 
     const handleUpload = async () => {
-        // if (!formValues.video) {
-        //     toast.error('Nope, reik foto! 🏞');
-        //     return;
-        // }
+        if (!formValues.title) {
+            toast.error('Pavadinimas❗️');
+            return;
+        }
+        if (!formValues.description) {
+            toast.error('Aprašymas❗️');
+            return;
+        }
+        if (formValues.duration === '00:00:00') {
+            toast.error('Video trukmė');
+            return;
+        }
+
+        if (!formValues.video && isModalOpen.action === 'insert') {
+            toast.error('Nope, reik video! 🎥');
+            return;
+        }
+        if (!formValues.photo && isModalOpen.action === 'insert') {
+            toast.error('Nope, reik foto! 🏞');
+            return;
+        }
 
         setUploading(true);
         setUploadProgress(0);
@@ -143,7 +155,19 @@ const Form = ({ isModalOpen, formValues, setFormValues, handleFormInput }) => {
         uploadVideoMutation.mutate(formValues);
     };
 
-    
+    const handleCancelUpload = () => {
+        setFormValues({
+            title: '',
+            description: '',
+            video_type: 'virtuve', 
+            category: 'Vebinaras', 
+            duration: '00:00:00',
+            is_active: true,
+            search_tag: 'vebinaras',
+        });
+        setIsModalOpen({action: '', isOpen: false});
+    };
+
     return (
         <div className={styles.form}>
             <Input 
@@ -257,8 +281,18 @@ const Form = ({ isModalOpen, formValues, setFormValues, handleFormInput }) => {
                 message={message}
             />
 
-            {/* <ActionBtn label={'Atšaukti'} className={styles.span_4} /> */}
-            {/* <ActionBtn label={'Įkelti Video'} className={styles.span_4} /> */}
+            <ButtonCancel 
+                label={uploading ? 'Loading...' : uploadSuccess ? 'Uždaryti' : 'Atšaukti'} 
+                className={styles.span_4} 
+                uploading={uploading}
+                onClick={handleCancelUpload}
+            />
+            <ButtonSave 
+                label={uploading ? 'Loading...' : isModalOpen.action === 'insert' ? 'Išsaugoti' : 'Atnaujinti'}
+                className={styles.span_4} 
+                uploading={uploading}
+                onClick={handleUpload}
+            />
 {/* 
             <button className={styles.span_4}>Atšaukti</button>
             <button className={styles.span_4}>
@@ -267,7 +301,7 @@ const Form = ({ isModalOpen, formValues, setFormValues, handleFormInput }) => {
             </button> */}
 
             {/* <div className={styles.uploadFiles} style={{ maxWidth: '1200px', margin: '0 auto', padding: '20px', fontFamily: 'Arial, sans-serif' }}> */}
-                <button
+                {/* <button
                     onClick={handleUpload}
                     disabled={isModalOpen.action === 'insert' && !formValues.video || uploading}
                     style={{
@@ -285,7 +319,7 @@ const Form = ({ isModalOpen, formValues, setFormValues, handleFormInput }) => {
                     }}
                 >
                     {uploading ? `Įkeliama... ${uploadProgress}%` : 'Įkelti Video'}
-                </button>
+                </button> */}
             {/* </div> */}
         </div>
     );

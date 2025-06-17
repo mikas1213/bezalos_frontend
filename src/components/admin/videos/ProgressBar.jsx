@@ -11,7 +11,16 @@ const ProgressBar = ({ uploadError, uploadSuccess, uploadProgress, videoProgress
 
             <div className={styles.progressData}>
                 <div className={styles.progressText}>{message}</div>
-                <div className={styles.progressText}>{uploadProgress >= 100 && videoProgress > 0 ? videoProgress : uploadProgress}%</div>
+                {/* <div className={styles.progressText}>{uploadProgress >= 100 && videoProgress > 0 ? videoProgress : uploadProgress}%</div> */}
+                <div className={styles.progressText}>
+
+                    {!uploadError ? 
+                        <>
+                            <span>{uploadProgress}%</span>&nbsp;/&nbsp;<span>{videoProgress}%</span>
+                        </> :
+                        <span>err</span>
+                    }
+                </div>
             </div>
         </div>
     );

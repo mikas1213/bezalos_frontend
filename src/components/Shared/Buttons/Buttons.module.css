@@ -1,0 +1,34 @@
+.button {
+    display: flex;    
+    justify-content: center;
+    gap: 1rem;
+    align-items: center;
+    transition: all 0.2s ease-in-out;
+    font-weight: 600;
+    border-radius: 0.5rem;
+    border: none;
+    padding: 0.5rem 0;
+    color: #fff;
+}
+
+.button:hover {
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.button:disabled {
+    cursor: wait;
+    color: var(--grey-dark);
+    background-color: var(--grey-light);
+    background-image: none;
+}
+.button:disabled:hover {
+    box-shadow: none;
+}
+
+.cancelButton {
+    background-image: linear-gradient(to top,  #B91C1C, #FF4D4D);
+}
+
+.saveButton {
+    background-image: linear-gradient(to top, var(--color-btn-secondary), var(--color-btn-primary));
+}

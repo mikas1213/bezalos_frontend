@@ -56,6 +56,7 @@ const VideosPage = () => {
             {isModalOpen.isOpen && <Modal>
                 <Form 
                     isModalOpen={isModalOpen}
+                    setIsModalOpen={setIsModalOpen}
                     formValues={formValues} 
                     handleFormInput={handleFormInput} 
                     setFormValues={setFormValues} 

@@ -1,13 +1,13 @@
 .loader {
     opacity: 0.6;
-    width: 2.5rem;
-    height: 2.5rem;
+    width: 2rem;
+    height: 2rem;
     border: 0.4rem solid  var(--color-radio-border);
     border-bottom-color: transparent;
     border-radius: 50%;
     display: inline-block;
     box-sizing: border-box;
-    /* animation: rotation 1.2s linear infinite; */
+    animation: rotation 1.2s linear infinite;
 }
 
 @keyframes rotation {

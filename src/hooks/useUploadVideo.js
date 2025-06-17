@@ -1,10 +1,11 @@
-import { useMutation } from '@tanstack/react-query';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
 import useAxiosPrivate from './useAxiosPrivate';
 import toast from 'react-hot-toast';
 
-export const useUploadVideo = (socket, action, setUploadProgress, setVideoProgress, setMessage, setUploading, setUploadError) => {
+export const useUploadVideo = (socket, action, isVideo, setUploadProgress, setVideoProgress, setMessage, setUploading, setUploadError) => {
     const axiosPrivate = useAxiosPrivate();
-
+    const queryClient = useQueryClient();
+    
     return useMutation({
         mutationFn: async (formValues) => {
             const formData = new FormData();
@@ -34,7 +35,7 @@ export const useUploadVideo = (socket, action, setUploadProgress, setVideoProgre
                     setUploadProgress(progress);
                     setMessage(
                         progress < 100
-                            ? `Siunčiama į serverį . . . 📡`
+                            ? `Siunčiama į serverį . . . `
                             : 'Failai gauti serveryje, pradedamas video upload į AWS...'
                     );
                 }
@@ -50,12 +51,16 @@ export const useUploadVideo = (socket, action, setUploadProgress, setVideoProgre
         },
         onError: (error) => {
             toast.error(error.response?.data?.message || error.message);
-            setMessage('Klaida įkeliant failus ❌');
+            setMessage('Klaida įkeliant failus ');
             setUploading(false);
             setUploadError(true);
         },
-        // onSuccess: () => {
-        //     toast.success(`Video sėkmingai išsiųstas! ✅`);
-        // }
+        onSuccess: () => {
+            queryClient.invalidateQueries({ queryKey: ['admin-videos'] });
+            if(action === 'update' && !isVideo) {
+                toast.success(`Video sėkmingai atnaujintas! ✅`);
+                setUploading(false);
+            }
+        }
     });
 };

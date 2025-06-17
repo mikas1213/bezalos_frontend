@@ -1,1 +1,1 @@
-export { default } from './File.jsx';
+export { default } from './File';
