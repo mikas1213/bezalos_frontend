@@ -2,7 +2,7 @@ import { useMutation, useQueryClient } from '@tanstack/react-query';
 import useAxiosPrivate from './useAxiosPrivate';
 import toast from 'react-hot-toast';
 
-export const useUploadVideo = (socket, action, isVideo, setUploadProgress, setVideoProgress, setMessage, setUploading, setUploadError) => {
+export const useUploadVideo = (socket, action, isVideo, setUploadProgress, setVideoProgress, setMessage, setUploading, setUploadSuccess, setUploadError) => {
     const axiosPrivate = useAxiosPrivate();
     const queryClient = useQueryClient();
     
@@ -33,6 +33,7 @@ export const useUploadVideo = (socket, action, isVideo, setUploadProgress, setVi
                         (progressEvent.loaded * 100) / progressEvent.total
                     );
                     setUploadProgress(progress);
+                    
                     setMessage(
                         progress < 100
                             ? `Siunčiama į serverį . . . `
@@ -60,6 +61,7 @@ export const useUploadVideo = (socket, action, isVideo, setUploadProgress, setVi
             if(action === 'update' && !isVideo) {
                 toast.success(`Video sėkmingai atnaujintas! ✅`);
                 setUploading(false);
+                setUploadSuccess(true);
             }
         }
     });

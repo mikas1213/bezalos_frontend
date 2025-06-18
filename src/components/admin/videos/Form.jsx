@@ -44,7 +44,16 @@ const Form = ({ isModalOpen, setIsModalOpen, formValues, setFormValues, handleFo
     const [uploading, setUploading] = useState(false);
     const [message, setMessage] = useState('');
     
-    const uploadVideoMutation = useUploadVideo(socket, isModalOpen.action, formValues.video, setUploadProgress, setVideoProgress, setMessage, setUploading, setUploadError);
+    const uploadVideoMutation = useUploadVideo(
+        socket, 
+        isModalOpen.action, 
+        formValues.video, 
+        setUploadProgress, 
+        setVideoProgress, 
+        setMessage, 
+        setUploading, 
+        setUploadSuccess,
+        setUploadError);
     
     useEffect(() => {
         const initializeSocket = async () => {
@@ -175,7 +184,7 @@ const Form = ({ isModalOpen, setIsModalOpen, formValues, setFormValues, handleFo
                 name='title' 
                 value={formValues.title || ''} 
                 handleFormInput={handleFormInput} 
-                className={styles.title}
+                className={styles.span_full}
             />
 
             <Textarea
@@ -185,7 +194,7 @@ const Form = ({ isModalOpen, setIsModalOpen, formValues, setFormValues, handleFo
                 value={formValues.description}
                 formValues={formValues}
                 handleFormInput={handleFormInput}
-                className={styles.description}
+                className={styles.span_full}
             />
 
             <Select 
@@ -283,44 +292,18 @@ const Form = ({ isModalOpen, setIsModalOpen, formValues, setFormValues, handleFo
 
             <ButtonCancel 
                 label={uploading ? 'Loading...' : uploadSuccess ? 'Uždaryti' : 'Atšaukti'} 
-                className={styles.span_4} 
+                className={uploadSuccess ? styles.span_full : styles.span_4} 
                 uploading={uploading}
                 onClick={handleCancelUpload}
             />
-            <ButtonSave 
+
+
+            {!uploadSuccess && <ButtonSave 
                 label={uploading ? 'Loading...' : isModalOpen.action === 'insert' ? 'Išsaugoti' : 'Atnaujinti'}
                 className={styles.span_4} 
                 uploading={uploading}
                 onClick={handleUpload}
-            />
-{/* 
-            <button className={styles.span_4}>Atšaukti</button>
-            <button className={styles.span_4}>
-                Įkelti Video
-                <SpinnerOnBtn />
-            </button> */}
-
-            {/* <div className={styles.uploadFiles} style={{ maxWidth: '1200px', margin: '0 auto', padding: '20px', fontFamily: 'Arial, sans-serif' }}> */}
-                {/* <button
-                    onClick={handleUpload}
-                    disabled={isModalOpen.action === 'insert' && !formValues.video || uploading}
-                    style={{
-                        width: '100%',
-                        padding: '15px',
-                        fontSize: '18px',
-                        fontWeight: 'bold',
-                        border: 'none',
-                        borderRadius: '8px',
-                        background: uploading ? '#ffc107' : (formValues.video ? '#007bff' : '#6c757d'),
-                        color: uploading ? '#212529' : 'white',
-                        cursor: (isModalOpen.action === 'insert' && !formValues.video || uploading) ? 'not-allowed' : 'pointer',
-                        marginBottom: '20px',
-                        transition: 'background-color 0.3s'
-                    }}
-                >
-                    {uploading ? `Įkeliama... ${uploadProgress}%` : 'Įkelti Video'}
-                </button> */}
-            {/* </div> */}
+            />}
         </div>
     );
 };

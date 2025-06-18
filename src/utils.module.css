@@ -1,0 +1,3 @@
+.span_full { grid-column: 1 / -1; }
+.span_2 { grid-column: span 2; }
+.span_4 { grid-column: span 4; }

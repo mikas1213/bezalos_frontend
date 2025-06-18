@@ -1,14 +1,17 @@
+@import '../../../utils.module.css';
+
+
 .form {
     display: grid;
     grid-template-columns: repeat(8, 1fr);
     gap: 1rem;
     width: clamp(15rem, 86vw, 55rem);
 }
-.title { grid-column: 1 / -1; }
-.description { grid-column: 1 / -1; }
+/* .title { grid-column: 1 / -1; } */
+/* .description { grid-column: 1 / -1; } */
 
-.span_2 { grid-column: span 2; }
-.span_4 { grid-column: span 4; }
+/* .span_2 { grid-column: span 2; }
+.span_4 { grid-column: span 4; } */
 
 .filterChips {
     display: flex;
