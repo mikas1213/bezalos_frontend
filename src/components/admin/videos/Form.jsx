@@ -190,7 +190,7 @@ const Form = ({ isModalOpen, setIsModalOpen, formValues, setFormValues, handleFo
             <Textarea
                 placeholder='Aprašymas'
                 name='description'
-                maxLength={1200}
+                maxLength={1500}
                 value={formValues.description}
                 formValues={formValues}
                 handleFormInput={handleFormInput}
