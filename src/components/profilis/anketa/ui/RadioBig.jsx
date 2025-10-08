@@ -1,5 +1,5 @@
 import styles from './RadioBig.module.css';
-import { LuCheckCircle2 } from 'react-icons/lu';
+// import { LuCheckCircle2 } from 'react-icons/lu';
 
 const RadioBig = ({ name, value, formData, handleForm, setErrors }) => {
 
@@ -18,7 +18,8 @@ const RadioBig = ({ name, value, formData, handleForm, setErrors }) => {
 
             <div className={styles.iconContainer}>
                 {formData[name] === value && (
-                    <LuCheckCircle2 className={styles.icon} />
+                    <p>tst</p>
+                    // <LuCheckCircle2 className={styles.icon} />
                 )}
             </div>
         </div>
