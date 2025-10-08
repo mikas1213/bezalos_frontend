@@ -30,8 +30,8 @@
 .radio .icon {
     display: flex;
     color: var(--color-btn-secondary);
-    width: 1.3rem;
-    height: 1.3rem;
+    width: 1.2rem;
+    height: 1.2rem;
 }
 
 .radio small {
