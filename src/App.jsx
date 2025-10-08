@@ -13,7 +13,7 @@ import styles from './App.module.css';
 // import LoginPage from './pages/LoginPage';
 import Spinner from './components/UI/Spinner';
 
-// import RequireAuth from './pages/RequireAuth';
+import RequireAuth from './pages/RequireAuth';
 import PersistLogin from './pages/PersistLogin';
 
 import { Helmet } from 'react-helmet';

@@ -1,4 +1,4 @@
-name: Deploy React App
+name: Deploy Be žalos to AWS
 
 on:
   push:
@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-      - name: Checkout kodą
+      - name: Checkout code
         uses: actions/checkout@v3
 
       - name: Setup Node.js
@@ -42,7 +42,7 @@ jobs:
           path: dist
           key: build-${{ github.sha }}
 
-      - name: Build React app
+      - name: Build bezalos
         if: steps.cache-build.outputs.cache-hit != 'true'
         run: npm run build
 
@@ -65,7 +65,7 @@ jobs:
           name: dist-files
           path: dist/
 
-      - name: Deploy į DEV serverį
+      - name: Deploy to DEV server
         uses: appleboy/scp-action@v0.1.4
         with:
           host: ${{ secrets.DEV_SERVER_HOST }}
@@ -74,7 +74,7 @@ jobs:
           source: 'dist/*'
           target: ${{ secrets.DEV_DEPLOY_PATH }}
 
-      - name: Perkrauti nginx (DEV)
+      - name: Restart nginx (DEV)
         uses: appleboy/ssh-action@v0.1.5
         with:
           host: ${{ secrets.DEV_SERVER_HOST }}
@@ -96,7 +96,7 @@ jobs:
           name: dist-files
           path: dist/
 
-      - name: Deploy į PROD serverį
+      - name: Deploy to PROD server
         uses: appleboy/scp-action@v0.1.4
         with:
           host: ${{ secrets.PROD_SERVER_HOST }}
@@ -105,7 +105,7 @@ jobs:
           source: 'dist/*'
           target: ${{ secrets.PROD_DEPLOY_PATH }}
 
-      - name: Perkrauti nginx (PROD)
+      - name: Restart nginx (PROD)
         uses: appleboy/ssh-action@v0.1.5
         with:
           host: ${{ secrets.PROD_SERVER_HOST }}
