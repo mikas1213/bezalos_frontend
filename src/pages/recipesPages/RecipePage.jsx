@@ -7,7 +7,8 @@ import Layout from '../../components/receptai/receptas/Layout';
 import Image from '../../components/receptai/receptas/Image';
 import Details from '../../components/receptai/receptas/Details';
 import RecipeSEO from './RecipeSEO';
-import RecipeNotFound from '../notfoundpages/RecipeNotFound';
+import RecipeNotFound from '../notfound/RecipeNotFound';
+
 
 const RecipePage = () => {
     const { slug } = useParams();
