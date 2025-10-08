@@ -14,7 +14,7 @@ import styles from './App.module.css';
 import Spinner from './components/UI/Spinner';
 
 // import RequireAuth from './pages/RequireAuth';
-// import PersistLogin from './pages/PersistLogin';
+import PersistLogin from './pages/PersistLogin';
 
 import { Helmet } from 'react-helmet';
 
@@ -87,8 +87,8 @@ function App() {
                     <AuthProvider>
                         <Suspense fallback={<Spinner />}>
                             <Routes>
-                                {/* <Route element={<PersistLogin /> }>
-                                    <Route path='/' element={<HomePage />} />
+                                <Route element={<PersistLogin /> }>
+                                    {/* <Route path='/' element={<HomePage />} />
                                     <Route path='/virtuve' element={<VirtuvePage />} />
                                     <Route path='/receptai' element={<RecipesPage />} />
                                     <Route path='/receptai/:slug' element={<RecipePage />} />
@@ -146,8 +146,8 @@ function App() {
                                             <Route path='videos' element={<VideosPage />} />
                                             <Route path='mails' element={<MailsPage />} />
                                         </Route>
-                                    </Route>
-                                </Route> */}
+                                    </Route> */}
+                                </Route>
                             </Routes>
                         </Suspense>
                     </AuthProvider>
