@@ -43,7 +43,6 @@ import CancelSubscription from './pages/paymentPages/CancelSubscription';
 import PirkimoTaisyklesPage from './pages/PirkimoTaisyklesPage';
 import PrivatumoPolitikaPage from './pages/PrivatumoPolitikaPage';
 import AdminLayout from './components/admin/layout/AdminLayout';
-// import AdminLayout_v2 from './layouts/admin/AdminLayout_v2';
 import UsersPage from './pages/admin/users/UsersPage';
 import UserPageLayout from './pages/admin/users/UserPageLayout';
 import EditUserPlanPage from './pages/admin/users/EditUserPlanPage';
