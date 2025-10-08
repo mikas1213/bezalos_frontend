@@ -65,7 +65,7 @@ jobs:
           name: dist-files
           path: dist/
 
-      - name: Deploy to DEV server
+      - name: Deploy to HOSTINGER
         uses: appleboy/scp-action@v0.1.4
         with:
           host: ${{ secrets.DEV_SERVER_HOST }}
@@ -96,7 +96,7 @@ jobs:
           name: dist-files
           path: dist/
 
-      - name: Deploy to PROD server
+      - name: Deploy to AWS
         uses: appleboy/scp-action@v0.1.4
         with:
           host: ${{ secrets.PROD_SERVER_HOST }}
