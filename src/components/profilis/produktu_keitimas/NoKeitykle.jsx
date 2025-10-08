@@ -1,4 +1,4 @@
-import styles from './No_Keitykle.module.css';
+import styles from './NoKeitykle.module.css';
 import { CiSearch } from 'react-icons/ci';
 import { TbSortAscendingLetters, TbSortAscendingNumbers } from 'react-icons/tb';
 
@@ -12,7 +12,7 @@ const fake_products = [
     {id: 7, title: 'Vištienos kulšelės', g: 103}
 ];
 
-const No_keytykle = () => {
+const NoKeitykle = () => {
     return (
         <div>
             <div className={styles.productInput}>
@@ -58,4 +58,4 @@ const No_keytykle = () => {
     );
 };
 
-export default No_keytykle;
+export default NoKeitykle;

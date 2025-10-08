@@ -4,7 +4,7 @@ import KeitykleContainer from '../../components/profilis/produktu_keitimas/Keity
 import ProductInput from '../../components/profilis/produktu_keitimas/ProductInput';
 import SearchResults from '../../components/profilis/produktu_keitimas/SearchResults';
 import AvailableProducts from '../../components/profilis/produktu_keitimas/AvailableProducts';
-import No_keytykle from '../../components/profilis/produktu_keitimas/No_keitykle';
+import NoKeitykle from '../../components/profilis/produktu_keitimas/NoKeitykle';
 import { useOutletContext } from 'react-router-dom';
 import HowItWorks from '../../components/profilis/HowItWorks';
 
@@ -68,7 +68,7 @@ const ProduktuKeitimasPage = () => {
                 </KeitykleContainer> : 
 
                 <KeitykleContainer>
-                    <No_keytykle />
+                    <NoKeitykle />
                 </KeitykleContainer>
             }
         </Container>
