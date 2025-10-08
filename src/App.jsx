@@ -34,7 +34,7 @@ import KalorijosPage from './pages/profilisPages/KalorijosPage';
 import StatistikaPage from './pages/profilisPages/StatistikaPage';
 import NustatymaiPage from './pages/profilisPages/NustatymaiPage';
 import UpdatePasswordPage from './pages/UpdatePasswordPage';
-import NotFoundPage from './pages/notFoundPages/NotFoundPage';
+import NotFoundPage from './pages/notfoundpages/NotFoundPage';
 import NeedSubscription from './pages/paymentPages/NeedSubscription';
 import NeedBuyCourse from './pages/paymentPages/NeedBuyCourse';
 import SuccessSubscription from'./pages/paymentPages/SuccessSubscription';
