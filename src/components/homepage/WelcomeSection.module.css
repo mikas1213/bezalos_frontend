@@ -1,6 +1,7 @@
 .welcomeSection {
     width: 100%;
-    background-image: linear-gradient(180deg, var(--color-bgr-top), var(--color-bgr-bottom));
+    /* background-image: linear-gradient(180deg, var(--color-bgr-top), var(--color-bgr-bottom)); */
+    background-color: red;
     color: var(--color-text-light);
     border-bottom-left-radius: 14.5vw;
     border-bottom-right-radius: 14.5vw;
@@ -25,12 +26,6 @@
     flex: 1;
     justify-content: space-around;
 }
-
-/* .welcomeHeader p span { color: var(--color-btn-primary); }
-.welcomeHeader p { opacity: 0.1; }
-.welcomeHeader p:nth-child(1) { transform: translateX(-5%); transition: transform 0.6s ease-out, opacity 0.5s ease; }
-.welcomeHeader p:nth-child(2) { transform: translateX(-10%); transition: transform 0.6s ease-out, opacity 0.5s ease; }
-.welcomeHeader p:nth-child(3) { transform: translateX(-15%); transition: transform 0.6s ease-out, opacity 0.5s ease; } */
 
 .welcomeHeader h1 span { color: var(--color-btn-primary); }
 .welcomeHeader h1 { opacity: 0.1; }
@@ -57,9 +52,6 @@
     display: flex;
     flex-direction: column;
     gap: 0.1rem;
-    /* color: var(--color-text-light);
-    font-size: var(--font-size-dynamic-p-lg);
-    font-weight: 400; */
     transform: translateX(-2%);
     transition: transform 0.6s ease-out, opacity 0.6s ease-out;
     opacity: 0.1; 
@@ -72,10 +64,6 @@
     /* opacity: 0.1; */
 }
 
-/* .welcomeLeft.onload :is(.welcomeHeader p, .welcomeTitle, .btn) {
-    transform: translateX(0%);
-    opacity: 1;
-} */
 .welcomeLeft.onload :is(.welcomeHeader h1, .welcomeTitle, .btn) {
     transform: translateX(0%);
     opacity: 1;
@@ -155,11 +143,6 @@
         font-size: var(--font-size-dynamic-h2-sm);
         gap: 1.389vw;
     }
-
-    /* .welcomeHeader p {
-        text-align: center;
-    } */
-
     .welcomeHeader h1 {
         font-size: var(--font-size-dynamic-h2-sm);
         gap: 1.389vw;

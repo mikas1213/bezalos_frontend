@@ -30,9 +30,6 @@ const WelcomeSection = () => {
             <MainContainer customClass={styles.welcomeContainer}>
                 <div className={`${styles.welcomeLeft} ${ isAnimate ? styles.onload : '' }`}>
                     <div className={styles.welcomeHeader}>
-                        {/* <p>Tavo <span>ilgalaikių</span></p>
-                        <p>mitybos pokyčių</p>
-                        <p>garantas</p> */}
 
                         <h1>Tavo <span>ilgalaikių</span></h1>
                         <h1>mitybos pokyčių</h1>
