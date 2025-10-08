@@ -1,0 +1,122 @@
+name: Deploy Be žalos to AWS
+
+on:
+  push:
+    branches: [main, demo]
+    paths-ignore:
+        - 'README.md'
+        - '*.md'
+        - 'docs/**'
+
+jobs:
+  # DEV deployment job
+  deploy-dev:
+    if: contains(github.event.head_commit.message, '[dev]')
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout kodą
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+
+      - name: Cache node_modules
+        uses: actions/cache@v4
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node-modules-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-modules-
+
+      - name: Install dependencies
+        if: steps.cache-nodemodules.outputs.cache-hit != 'true'
+        run: npm ci
+
+      - name: Build project
+        run: npm run build
+
+      - name: Cache dist catalot
+        uses: actions/cache@v4
+        with:
+          path: dist
+          key: ${{ runner.os }}-dist-dev-${{ github.sha }}
+
+      - name: Deploy to DEV server
+        uses: easingthemes/ssh-deploy@v5.0.3
+        with:
+          SSH_PRIVATE_KEY: ${{ secrets.DEV_SSH_PRIVATE_KEY }}
+          REMOTE_HOST: ${{ secrets.DEV_SERVER_HOST }}
+          REMOTE_USER: ${{ secrets.DEV_SERVER_USER }}
+          SOURCE: "dist/"
+          TARGET: ${{ secrets.DEV_DEPLOY_PATH }}
+          EXCLUDE: "/node_modules/, /.git/"
+
+      - name: Restart nginx (DEV)
+        uses: appleboy/ssh-action@v1.0.0
+        with:
+          host: ${{ secrets.DEV_SERVER_HOST }}
+          username: ${{ secrets.DEV_SERVER_USER }}
+          key: ${{ secrets.DEV_SSH_PRIVATE_KEY }}
+          script: |
+            sudo nginx -t
+            sudo systemctl reload nginx
+
+  # PROD deployment job
+  deploy-prod:
+    if: contains(github.event.head_commit.message, '[prod]')
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout kodą
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+
+      - name: Cache node_modules
+        uses: actions/cache@v4
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node-modules-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-modules-
+
+      - name: Install dependencies
+        if: steps.cache-nodemodules.outputs.cache-hit != 'true'
+        run: npm ci
+
+      - name: Build project
+        run: npm run build
+
+      - name: Cache dist catalog
+        uses: actions/cache@v4
+        with:
+          path: dist
+          key: ${{ runner.os }}-dist-prod-${{ github.sha }}
+
+      - name: Deploy to PROD server
+        uses: easingthemes/ssh-deploy@v5.0.3
+        with:
+          SSH_PRIVATE_KEY: ${{ secrets.PROD_SSH_PRIVATE_KEY }}
+          REMOTE_HOST: ${{ secrets.PROD_SERVER_HOST }}
+          REMOTE_USER: ${{ secrets.PROD_SERVER_USER }}
+          SOURCE: "dist/"
+          TARGET: ${{ secrets.PROD_DEPLOY_PATH }}
+          EXCLUDE: "/node_modules/, /.git/"
+
+      - name: Restart nginx (PROD)
+        uses: appleboy/ssh-action@v1.0.0
+        with:
+          host: ${{ secrets.PROD_SERVER_HOST }}
+          username: ${{ secrets.PROD_SERVER_USER }}
+          key: ${{ secrets.PROD_SSH_PRIVATE_KEY }}
+          script: |
+            sudo nginx -t
+            sudo systemctl reload nginx
