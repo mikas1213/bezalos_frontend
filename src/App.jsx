@@ -19,47 +19,47 @@ import PersistLogin from './pages/PersistLogin';
 import { Helmet } from 'react-helmet';
 
 const HomePage = lazy(() => import('./pages/HomePage'));
-// const VirtuvePage = lazy(() => import('./pages/virtuvePages/VirtuvePage'));
-// import VirtuveVideoPage from './pages/virtuvePages/VirtuveVideoPage';
-// const RecipesPage = lazy(() => import('./pages/recipesPages/RecipesPage'));
-// import RecipePage from './pages/recipesPages/RecipePage';
-// const PaslaugosPage = lazy(() => import('./pages/paslaugosPages/PaslaugosPage'));
-// import PaslaugaPage from './pages/paslaugosPages/PaslaugaPage';
-// import ProfilisPageLayout from'./pages/profilisPages/ProfilisPageLayout';
-// import UserPlansPage from './pages/profilisPages/UserPlansPage';
-// import AnketaPage from './pages/profilisPages/AnketaPage';
-// import ProduktuKeitimasPage from './pages/profilisPages/ProduktuKeitimasPage';
-// import ManoReceptaiPage from './pages/profilisPages/ManoReceptaiPage';
-// import KalorijosPage from './pages/profilisPages/KalorijosPage';
-// import StatistikaPage from './pages/profilisPages/StatistikaPage';
-// import NustatymaiPage from './pages/profilisPages/NustatymaiPage';
-// import UpdatePasswordPage from './pages/UpdatePasswordPage';
-// import NotFoundPage from './pages/notfound/NotFoundPage';
-// import NeedSubscription from './pages/paymentPages/NeedSubscription';
-// import NeedBuyCourse from './pages/paymentPages/NeedBuyCourse';
-// import SuccessSubscription from'./pages/paymentPages/SuccessSubscription';
-// import SuccessBuyService from './pages/paymentPages/SuccessBuyService';
-// import CancelSubscription from './pages/paymentPages/CancelSubscription';
-// import PirkimoTaisyklesPage from './pages/PirkimoTaisyklesPage';
-// import PrivatumoPolitikaPage from './pages/PrivatumoPolitikaPage';
-// import AdminLayout from './components/admin/layout/AdminLayout';
-// import UsersPage from './pages/admin/users/UsersPage';
-// import UserPageLayout from './pages/admin/users/UserPageLayout';
-// import EditUserPlanPage from './pages/admin/users/EditUserPlanPage';
-// import UserAnketaPage from './pages/admin/users/UserAnketaPage';
-// import UserStatistikaPage from './pages/admin/users/UserStatistikaPage';
-// import MitybosPlanaiLayout from './pages/admin/mitybosPlanai/MitybosPlanaiLayout';
-// import ManagePlanPage from './pages/admin/mitybosPlanai/ManagePlanPage';
-// import PlanaiPage from './pages/admin/mitybosPlanai/PlanaiPage';
-// import MealsPage from './pages/admin/mitybosPlanai/MealsPage';
-// import ProductsPage from './pages/admin/mitybosPlanai/ProductsPage';
-// import ServicesPageLayout from './pages/admin/servicesPages/ServicesPageLayout';
-// import ServicesPage from './pages/admin/servicesPages/ServicesPage';
-// import PromotionsPage from './pages/admin/servicesPages/PromotionsPage';
-// import NarystesPage from './pages/admin/servicesPages/NarystesPage';
-// import ReceptaiPage from './pages/admin/recipesPages/ReceptaiPage';
-// import VideosPage from './pages/admin/videosPages/VideosPage';
-// import MailsPage from './pages/admin/MailsPage';
+const VirtuvePage = lazy(() => import('./pages/virtuvePages/VirtuvePage'));
+import VirtuveVideoPage from './pages/virtuvePages/VirtuveVideoPage';
+const RecipesPage = lazy(() => import('./pages/recipesPages/RecipesPage'));
+import RecipePage from './pages/recipesPages/RecipePage';
+const PaslaugosPage = lazy(() => import('./pages/paslaugosPages/PaslaugosPage'));
+import PaslaugaPage from './pages/paslaugosPages/PaslaugaPage';
+import ProfilisPageLayout from'./pages/profilisPages/ProfilisPageLayout';
+import UserPlansPage from './pages/profilisPages/UserPlansPage';
+import AnketaPage from './pages/profilisPages/AnketaPage';
+import ProduktuKeitimasPage from './pages/profilisPages/ProduktuKeitimasPage';
+import ManoReceptaiPage from './pages/profilisPages/ManoReceptaiPage';
+import KalorijosPage from './pages/profilisPages/KalorijosPage';
+import StatistikaPage from './pages/profilisPages/StatistikaPage';
+import NustatymaiPage from './pages/profilisPages/NustatymaiPage';
+import UpdatePasswordPage from './pages/UpdatePasswordPage';
+import NotFoundPage from './pages/notfound/NotFoundPage';
+import NeedSubscription from './pages/paymentPages/NeedSubscription';
+import NeedBuyCourse from './pages/paymentPages/NeedBuyCourse';
+import SuccessSubscription from'./pages/paymentPages/SuccessSubscription';
+import SuccessBuyService from './pages/paymentPages/SuccessBuyService';
+import CancelSubscription from './pages/paymentPages/CancelSubscription';
+import PirkimoTaisyklesPage from './pages/PirkimoTaisyklesPage';
+import PrivatumoPolitikaPage from './pages/PrivatumoPolitikaPage';
+import AdminLayout from './components/admin/layout/AdminLayout';
+import UsersPage from './pages/admin/users/UsersPage';
+import UserPageLayout from './pages/admin/users/UserPageLayout';
+import EditUserPlanPage from './pages/admin/users/EditUserPlanPage';
+import UserAnketaPage from './pages/admin/users/UserAnketaPage';
+import UserStatistikaPage from './pages/admin/users/UserStatistikaPage';
+import MitybosPlanaiLayout from './pages/admin/mitybosPlanai/MitybosPlanaiLayout';
+import ManagePlanPage from './pages/admin/mitybosPlanai/ManagePlanPage';
+import PlanaiPage from './pages/admin/mitybosPlanai/PlanaiPage';
+import MealsPage from './pages/admin/mitybosPlanai/MealsPage';
+import ProductsPage from './pages/admin/mitybosPlanai/ProductsPage';
+import ServicesPageLayout from './pages/admin/servicesPages/ServicesPageLayout';
+import ServicesPage from './pages/admin/servicesPages/ServicesPage';
+import PromotionsPage from './pages/admin/servicesPages/PromotionsPage';
+import NarystesPage from './pages/admin/servicesPages/NarystesPage';
+import ReceptaiPage from './pages/admin/recipesPages/ReceptaiPage';
+import VideosPage from './pages/admin/videosPages/VideosPage';
+import MailsPage from './pages/admin/MailsPage';
 
 
 const queryClient = new QueryClient({
@@ -88,7 +88,7 @@ function App() {
                         <Suspense fallback={<Spinner />}>
                             <Routes>
                                 <Route element={<PersistLogin /> }>
-                                    {/* <Route path='/' element={<HomePage />} />
+                                    <Route path='/' element={<HomePage />} />
                                     <Route path='/virtuve' element={<VirtuvePage />} />
                                     <Route path='/receptai' element={<RecipesPage />} />
                                     <Route path='/receptai/:slug' element={<RecipePage />} />
@@ -146,7 +146,7 @@ function App() {
                                             <Route path='videos' element={<VideosPage />} />
                                             <Route path='mails' element={<MailsPage />} />
                                         </Route>
-                                    </Route> */}
+                                    </Route>
                                 </Route>
                             </Routes>
                         </Suspense>
