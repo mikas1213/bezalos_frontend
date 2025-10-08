@@ -18,7 +18,7 @@ import PersistLogin from './pages/PersistLogin';
 
 import { Helmet } from 'react-helmet';
 
-// const HomePage = lazy(() => import('./pages/HomePage'));
+const HomePage = lazy(() => import('./pages/HomePage'));
 // const VirtuvePage = lazy(() => import('./pages/virtuvePages/VirtuvePage'));
 // import VirtuveVideoPage from './pages/virtuvePages/VirtuveVideoPage';
 // const RecipesPage = lazy(() => import('./pages/recipesPages/RecipesPage'));
