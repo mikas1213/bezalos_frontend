@@ -5,5 +5,5 @@
 }
 
 .numbers {
-    composes: import numbers from '../notFoundPages/NotFoundPage.module.css';
+    composes: import numbers from '../notfoundpages/NotFoundPage.module.css';
 }
