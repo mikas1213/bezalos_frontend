@@ -66,10 +66,10 @@ const ProduktuKeitimasPage = () => {
                         selectedProd={{...selectedProd, grams: +grams.replace(',', '.')}} 
                     />}
                 </KeitykleContainer> : 
-                <></>
-                // <KeitykleContainer>
-                //     <No_keytykle />
-                // </KeitykleContainer>
+
+                <KeitykleContainer>
+                    <No_keytykle />
+                </KeitykleContainer>
             }
         </Container>
     );
