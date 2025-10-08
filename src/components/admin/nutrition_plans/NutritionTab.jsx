@@ -20,7 +20,7 @@ const NutritionTab = ({ isLoading, stats }) => {
                 return 'meals'
             case '/admin/planai/produktai':
             case '/admin/planai/produktai/':
-                return 'products';
+                return 'products'; 
             default:
                 return 'templates'
         }
