@@ -35,7 +35,7 @@ import StatistikaPage from './pages/profilisPages/StatistikaPage';
 import NustatymaiPage from './pages/profilisPages/NustatymaiPage';
 import UpdatePasswordPage from './pages/UpdatePasswordPage';
 import NotFoundPage from './pages/notfound/NotFoundPage';
-import NeedSubscription from './pages/paymentPages/NeedSubscription';
+// import NeedSubscription from './pages/paymentPages/NeedSubscription';
 import NeedBuyCourse from './pages/paymentPages/NeedBuyCourse';
 import SuccessSubscription from'./pages/paymentPages/SuccessSubscription';
 import SuccessBuyService from './pages/paymentPages/SuccessBuyService';
@@ -98,7 +98,7 @@ function App() {
                                     </Route>
                                     <Route path='/prisijungti' element={<LoginPage />} />
                                     <Route path='/keisti-slaptazodi/:token' element={<UpdatePasswordPage /> } />
-                                    <Route path='/prenumeruoti' element={<NeedSubscription />} />
+                                    {/* <Route path='/prenumeruoti' element={<NeedSubscription />} /> */}
                                     <Route path='/isigyti-kursa' element={<NeedBuyCourse />} />
                                     <Route path='/pirkimo-taisykles' element={<PirkimoTaisyklesPage />} />
                                     <Route path='/privatumo-politika' element={<PrivatumoPolitikaPage />} />
