@@ -8,6 +8,9 @@ export default defineConfig({
         'process.env': {}
     },
     plugins: [react()],
+    resolve: {
+        extensions: ['.mjs', '.js', '.ts', '.jsx', '.tsx', '.json']
+    },
     server: {
         port: 5173,
         proxy: {
@@ -22,6 +25,6 @@ export default defineConfig({
         }
     },
     build: {
-        chunkSizeWarningLimit: 1600
+        chunkSizeWarningLimit: 2600
     }
 })

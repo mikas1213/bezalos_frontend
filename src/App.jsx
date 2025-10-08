@@ -34,7 +34,7 @@ import KalorijosPage from './pages/profilisPages/KalorijosPage';
 import StatistikaPage from './pages/profilisPages/StatistikaPage';
 import NustatymaiPage from './pages/profilisPages/NustatymaiPage';
 import UpdatePasswordPage from './pages/UpdatePasswordPage';
-// import NotFoundPage from './pages/notfoundpages/NotFoundPage';
+import NotFoundPage from './pages/notfoundpages/NotFoundPage';
 import NeedSubscription from './pages/paymentPages/NeedSubscription';
 import NeedBuyCourse from './pages/paymentPages/NeedBuyCourse';
 import SuccessSubscription from'./pages/paymentPages/SuccessSubscription';
@@ -102,7 +102,7 @@ function App() {
                                     <Route path='/isigyti-kursa' element={<NeedBuyCourse />} />
                                     <Route path='/pirkimo-taisykles' element={<PirkimoTaisyklesPage />} />
                                     <Route path='/privatumo-politika' element={<PrivatumoPolitikaPage />} />
-                                    {/* <Route path='*' element={<NotFoundPage />} /> */}
+                                    <Route path='*' element={<NotFoundPage />} />
                                     
                                     <Route element={<RequireAuth allowedRoles={[1213, 2324]}/> }>
                                         <Route path='/virtuve/:type/:video' element={<VirtuveVideoPage />} />
