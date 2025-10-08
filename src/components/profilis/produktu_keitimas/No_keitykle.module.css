@@ -53,26 +53,26 @@ input.grams {
     margin: 1rem 0;
     flex-wrap: wrap;
     user-select: none;
-    
-    button {
-        padding: 0.2rem 0.5rem;
-        font-size: 0.8rem;
-        border-radius: 50rem;
-        border: 1px solid #ddd;
-        background-color: #fff;
-        color: #ccc;
-    }
-    button:hover {
-        cursor: default;
-        background-color: white;
-        color: #ccc;
-    }
-    .active, .active:hover {
-        cursor: default;
-        background-color: #ccc;
-        border-color: #ccc;
-        color: #fff;
-    }
+}
+
+.groupFilters button {
+    padding: 0.2rem 0.5rem;
+    font-size: 0.8rem;
+    border-radius: 50rem;
+    border: 1px solid #ddd;
+    background-color: #fff;
+    color: #ccc;
+}
+.groupFilters button:hover {
+    cursor: default;
+    background-color: white;
+    color: #ccc;
+}
+.groupFilters .active, .groupFilters .active:hover {
+    cursor: default;
+    background-color: #ccc;
+    border-color: #ccc;
+    color: #fff;
 }
 
 .sort {
@@ -84,10 +84,11 @@ input.grams {
     color: #777;
     margin: 1rem 0.5rem 0.5rem 0.5rem;
     user-select: none;
-    span {
-        padding-right: 0.3rem;
-        color: #ccc;
-    }
+}
+
+.sort span {
+    padding-right: 0.3rem;
+    color: #ccc;
 }
 
 .availableProducts {
