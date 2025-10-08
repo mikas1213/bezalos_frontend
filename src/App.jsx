@@ -4,26 +4,26 @@ import { useCookies } from 'react-cookie';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { AuthProvider } from './context/AuthProvider';
-import { PaymentProvider } from './context/PaymentProvider';
+// import { PaymentProvider } from './context/PaymentProvider';
 import { MediaQueryProvider } from './context/MediaQueryProvider';
 import { Toaster } from 'react-hot-toast';
 import CookieConsent from './components/cookies/CookieConsent';
 
 import styles from './App.module.css';
-import LoginPage from './pages/LoginPage';
+// import LoginPage from './pages/LoginPage';
 import Spinner from './components/UI/Spinner';
 
-import RequireAuth from './pages/RequireAuth';
-import PersistLogin from './pages/PersistLogin';
+// import RequireAuth from './pages/RequireAuth';
+// import PersistLogin from './pages/PersistLogin';
 
 import { Helmet } from 'react-helmet';
 
-const HomePage = lazy(() => import('./pages/HomePage'));
-const VirtuvePage = lazy(() => import('./pages/virtuvePages/VirtuvePage'));
-import VirtuveVideoPage from './pages/virtuvePages/VirtuveVideoPage';
-const RecipesPage = lazy(() => import('./pages/recipesPages/RecipesPage'));
-import RecipePage from './pages/recipesPages/RecipePage';
-const PaslaugosPage = lazy(() => import('./pages/paslaugosPages/PaslaugosPage'));
+// const HomePage = lazy(() => import('./pages/HomePage'));
+// const VirtuvePage = lazy(() => import('./pages/virtuvePages/VirtuvePage'));
+// import VirtuveVideoPage from './pages/virtuvePages/VirtuveVideoPage';
+// const RecipesPage = lazy(() => import('./pages/recipesPages/RecipesPage'));
+// import RecipePage from './pages/recipesPages/RecipePage';
+// const PaslaugosPage = lazy(() => import('./pages/paslaugosPages/PaslaugosPage'));
 // import PaslaugaPage from './pages/paslaugosPages/PaslaugaPage';
 // import ProfilisPageLayout from'./pages/profilisPages/ProfilisPageLayout';
 // import UserPlansPage from './pages/profilisPages/UserPlansPage';
