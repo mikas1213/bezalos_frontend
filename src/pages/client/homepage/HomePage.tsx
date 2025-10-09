@@ -1,8 +1,8 @@
-
+import styles from './HomePage.module.css'
 
 const HomePage = () => {
     return (
-        <div>hompage</div>
+        <div className={styles.yra}>hompage</div>
     );
 };
 
