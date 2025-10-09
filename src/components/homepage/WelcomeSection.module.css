@@ -1,7 +1,6 @@
 .welcomeSection {
     width: 100%;
-    /* background-image: linear-gradient(180deg, var(--color-bgr-top), var(--color-bgr-bottom)); */
-    background-color: red;
+    background-image: linear-gradient(180deg, var(--color-bgr-top), var(--color-bgr-bottom));
     color: var(--color-text-light);
     border-bottom-left-radius: 14.5vw;
     border-bottom-right-radius: 14.5vw;

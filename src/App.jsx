@@ -1,22 +1,21 @@
 import { lazy, Suspense } from 'react';
+import { Helmet } from 'react-helmet';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { useCookies } from 'react-cookie';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
+import { Toaster } from 'react-hot-toast';
+
+import styles from './App.module.css';
+import Spinner from './components/UI/Spinner';
+import CookieConsent from './components/cookies/CookieConsent';
 import { AuthProvider } from './context/AuthProvider';
 import { PaymentProvider } from './context/PaymentProvider';
 import { MediaQueryProvider } from './context/MediaQueryProvider';
-import { Toaster } from 'react-hot-toast';
-import CookieConsent from './components/cookies/CookieConsent';
 
-import styles from './App.module.css';
 import LoginPage from './pages/LoginPage';
-import Spinner from './components/UI/Spinner';
-
 import RequireAuth from './pages/RequireAuth';
 import PersistLogin from './pages/PersistLogin';
-
-import { Helmet } from 'react-helmet';
 
 const HomePage = lazy(() => import('./pages/HomePage'));
 const VirtuvePage = lazy(() => import('./pages/virtuvePages/VirtuvePage'));
@@ -70,6 +69,9 @@ const queryClient = new QueryClient({
     }
 });
 
+
+
+
 function App() {
     const [cookies, setCookie] = useCookies(['COOKIE_CONSENT']);
     
@@ -88,7 +90,7 @@ function App() {
                         <Suspense fallback={<Spinner />}>
                             <Routes>
                                 <Route element={<PersistLogin /> }>
-                                    <Route path='/' element={<HomePage />} />
+                                    <Route index element={<HomePage />} />
                                     <Route path='/virtuve' element={<VirtuvePage />} />
                                     <Route path='/receptai' element={<RecipesPage />} />
                                     <Route path='/receptai/:slug' element={<RecipePage />} />
