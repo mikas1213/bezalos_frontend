@@ -18,7 +18,7 @@ const RecipePage = () => {
     return (
         <>
             {!isLoading && recipe ? <RecipeSEO recipe={recipe} /> : null}
-            <Navbar />
+            {/* <Navbar /> */}
             <Main>
                 <Container>
                     {isLoading ? null : recipe ? <Layout>

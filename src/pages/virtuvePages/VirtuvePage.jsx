@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import useAuth  from '../../hooks/useAuth';
 import Main from '../../components/UI/Main';
-import Navbar from '../../components/navbar/Navbar';
+// import Navbar from '../../components/navbar/Navbar';
 import Videos from '../../components/virtuve/Videos';
 
 const VirtuvePage = () => {  
@@ -20,7 +20,7 @@ const VirtuvePage = () => {
 
     return (
         <>
-            <Navbar />
+            {/* <Navbar /> */}
             <Main>
                 <Videos 
                     user_id={user_id} 

@@ -1,0 +1,44 @@
+.hamburger {
+    display: none;
+	position: relative;
+	cursor: pointer;
+	height:40%;
+	flex-direction: column;
+}
+
+.lineTop { transform: translateY(-0.6rem); }
+.lineBottom { transform: translateY(0.6rem); }
+
+.lineTop, .lineMiddle, .lineBottom {
+	position: absolut;
+	width: 2.2rem;
+	border-bottom: 2px solid var(--dark-green-600);
+	transition: all 0.3s;
+}
+.invertColor :is(.lineTop, .lineMiddle, .lineBottom) {
+    border-bottom: 2px solid var(--text-light-100);
+}
+
+.open .lineTop {
+	transform: translateY(0.15rem) rotate(45deg);
+}
+.open .lineMiddle {
+	width: 0;
+}
+.open .lineBottom {
+	transform: translateY(-0.1rem) rotate(-45deg);
+}
+
+@media only screen and (max-width: 576px) {
+    .hamburger {
+        display: flex;
+    }
+}
+
+@media only screen and (max-width: 375px) {
+    .lineTop, .lineMiddle, .lineBottom {
+        width: 2rem;
+    }
+    .lineTop { transform: translateY(-0.5rem); }
+    .lineBottom { transform: translateY(0.5rem); }
+}

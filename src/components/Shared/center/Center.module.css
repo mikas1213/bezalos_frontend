@@ -1,0 +1,16 @@
+.center {
+    box-sizing: content-box;
+	margin-inline: auto;
+	max-inline-size: var(--maxWidth, 65ch);
+    padding-inline-start: var(--padding-lr);
+    padding-inline-end: var(--padding-lr);
+}
+.textCenter {
+    text-align: center;
+}
+.intrinsic {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+

@@ -1,8 +1,7 @@
-import { createContext, useState, useEffect } from 'react';
-
+import { useContext, createContext, useState, useEffect, type ReactNode } from 'react';
 const MediaQueryContext = createContext(0);
 
-export const MediaQueryProvider = ({ children }) => {
+export const MediaQueryProvider = ({ children }: { children: ReactNode }) => {
     const [mediaQuery, setMediaQuery] = useState(1025);
 
     useEffect(() => {
@@ -27,10 +26,15 @@ export const MediaQueryProvider = ({ children }) => {
     }, []);
 
     return (
-        <MediaQueryContext.Provider value={mediaQuery}>
+        <MediaQueryContext value={mediaQuery}>
             {children}
-        </MediaQueryContext.Provider>
+        </MediaQueryContext>
     );
 };
 
-export default MediaQueryContext;
+export const useMediaQuery = () => {
+    const context = useContext(MediaQueryContext);
+    if(context === undefined) throw new Error('MadiaQueryContext was used outside of the MediaQueryProvider');
+    return context;
+};
+

@@ -1,6 +1,6 @@
 import styles from './RecipesHeader.module.css';
 import { Search, CircleX, Filter } from 'lucide-react';
-import { getImageURL } from '../../../utils/images';
+import signatureImg from '../../../assets/images/homepage/signature.png';
 
 const RecipesHeader = ({ isOpenFilters, setIsOpenFilters, search, setSearch, setCurrentPage }) => {
     return (
@@ -25,7 +25,7 @@ const RecipesHeader = ({ isOpenFilters, setIsOpenFilters, search, setSearch, set
                 <CircleX className={styles.iconClear} onClick={() => setSearch('')} />
                 
             </div>
-            <img className={styles.signatureImg} src={getImageURL('homepage/signature.png')} alt='Signature' />
+            <img className={styles.signatureImg} src={signatureImg} alt='Signature' />
         </div>
     );
 };

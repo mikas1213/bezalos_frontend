@@ -6,7 +6,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    border-bottom: 0.5px solid var(--grey-dark);
+    border-bottom: 0.5px solid var(--neutral-grey-500);
 }
 .searchContainer {
     position: relative;
@@ -19,7 +19,7 @@
     border: none;
     border-radius: 50rem;
     padding: 0 2rem;
-    color: var(--grey-dark);
+    color: var(--neutral-grey-500);
     font-size: var(--font-size-p);
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
@@ -27,7 +27,7 @@
     display: none;
     align-items: center;
     border: none;
-    background-color: #fff;
+    background-color: var(--white-100);
     height: 2.5rem;
     padding-left: 0.8rem;
     padding-right: 1rem;
@@ -39,20 +39,20 @@
     width: 1.2rem;
     height: 1.2rem;
     stroke-width: 2px;
-    color: var(--grey-dark);
+    color: var(--neutral-grey-500);
     transition: all 2s ease-in-out;
 }
 .filterOpen .filterIcon {
-    fill: var(--grey-dark);
+    fill: var(--neutral-grey-500);
 }
 
 .searchInput::placeholder {
-    color: var(--grey-dark);
+    color: var(--neutral-grey-500);
 }
 .iconClear {
     cursor: pointer;
     position: absolute;
-    color: var(--grey-dark);
+    color: var(--neutral-grey-500);
     width: 1.2rem;
     height: 1.2rem;
     top: 50%;
@@ -66,7 +66,7 @@
     transform: translateY(-50%);
     width: 1.2rem;
     height: 1.2rem;
-    color: var(--grey-dark);
+    color: var(--neutral-grey-500);
 }
 
 .signatureImg {
@@ -100,7 +100,7 @@
     }
     .filterBtn {
         display: flex;
-        border-left: 1px solid var(--grey-light);
+        border-left: 1px solid var(--neutral-grey-300);
     }
     .iconClear {
         right: 3.8rem;

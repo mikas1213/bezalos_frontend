@@ -1,6 +1,6 @@
 import styles from './Paslauga.module.css';
 import Accordion from './Accordion';
-import usePayment from '../../../hooks/usePayment';
+import { usePayment } from '../../../contexts';
 import { useState, useEffect } from 'react';
 import Promotion from './Promotion';
 import CountUp from 'react-countup';

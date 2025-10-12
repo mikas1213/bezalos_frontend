@@ -31,7 +31,6 @@ const HomePage = () => {
         setTimeout(() => {
             setIsShowOffer(true);
         }, 2000);
- 
     }, []);
     
     useEffect(() => {

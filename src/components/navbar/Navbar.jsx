@@ -8,7 +8,7 @@ import { Logo } from './Logo';
 import Modal from '../UI/Modal';
 import Authentication from '../auth/Authentication';
 import useAuth from '../../hooks/useAuth';
-import useLogout from '../../hooks/useLogout';
+import { useLogout } from '../../hooks';
         
 // ICONS
 // https://www.svgrepo.com/collection/solar-broken-line-icons
@@ -20,7 +20,7 @@ const Navbar = ({ isHome = '' }) => {
     
     const location = useLocation();
     const [_, page] = location.pathname.split('/');
-    
+
     const navigate = useNavigate();
     const logout = useLogout();
     
@@ -71,9 +71,7 @@ const Navbar = ({ isHome = '' }) => {
                         </li>
 
                         <li className={styles.listItem}>
-
                             <NavLink to='/receptai'>Receptai</NavLink>
-                            {/* <NavLink to='https://senas.bezalos.lt/receptai'>Receptai</NavLink> */}
                             <div className={styles.indicator}></div>
                         </li>
 
@@ -102,29 +100,12 @@ const Navbar = ({ isHome = '' }) => {
                             <button className={styles.loginBtn} onClick={async () => await logout()}>Atsijungti</button>
                             }
                         </li>
-                        {/* Temporary for old page version */}
-                        {/* <div className={styles.senasBezalos}>
-                            <a href='https://senas.bezalos.lt'>Sena versija</a>
-                        </div> */}
                     </ul>
    
                 </MainContainer>
                 
                 <div className={`${styles.navContainerMobile} ${isOpenBurger ? styles.show : ''}`}>
                     <ul className={styles.navListMobile}>
-                        
-                        {/* Temporary for old page version */}
-                        {/* <li className={`${styles.listItemMobile} ${page === 'sena-versija' ? styles.active : ''}`}>  
-                            <a  href='https://senas.bezalos.lt'>
-                                <SenasBezalos 
-                                    active={page === 'sena-versija' ? true : false} 
-                                    stroke={iconStroke}
-                                />
-                            </a>
-                            <a href='https://senas.bezalos.lt'>
-                                <span>Sena versija</span>
-                            </a>
-                        </li> */}
 
                         <li className={`${styles.listItemMobile} ${page === 'virtuve' ? styles.active : ''}`} 
                             onClick={() => navigate('/virtuve')}>  
@@ -139,13 +120,11 @@ const Navbar = ({ isHome = '' }) => {
                         <li className={`${styles.listItemMobile} ${page === 'receptai' ? styles.active : ''}`} 
                             onClick={() => navigate('/receptai')}
                         >
-                            {/* <a href='https://senas.bezalos.lt/receptai' className={styles.listItemMobile}> */}
-                                <ReceptaiIcon 
-                                    active={page === 'receptai' ? true : false} 
-                                    stroke={iconStroke}
-                                />
-                                <span>Receptai</span>
-                            {/* </a> */}
+                            <ReceptaiIcon 
+                                active={page === 'receptai' ? true : false} 
+                                stroke={iconStroke}
+                            />
+                            <span>Receptai</span>
                         </li>
                         
                         <li className={`${styles.listItemMobile} ${page === 'paslaugos' ? styles.active : ''}`}

@@ -1,0 +1,9 @@
+.box {
+	padding-top: var(--pad-t);
+    padding-right: var(--pad-r);
+    padding-bottom: var(--pad-b);
+    padding-left: var(--pad-l);
+    
+	border: var(--border-width) solid;
+	border-color: currentColor;
+}

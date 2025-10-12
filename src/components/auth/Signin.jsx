@@ -1,5 +1,4 @@
 import styles from './Signin.module.css';
-// import SignatureImg from '../../assets/images/homepage/signature.png';
 import axios from '../../api/axios';
 
 import { useState } from 'react';

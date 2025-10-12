@@ -9,15 +9,15 @@ import { Toaster } from 'react-hot-toast';
 import styles from './App.module.css';
 import Spinner from './components/UI/Spinner';
 import CookieConsent from './components/cookies/CookieConsent';
-import { AuthProvider } from './context/AuthProvider';
-import { PaymentProvider } from './context/PaymentProvider';
-import { MediaQueryProvider } from './context/MediaQueryProvider';
+import { AuthProvider, PaymentProvider, MediaQueryProvider } from './contexts';
 
+import ClientLayout from './layouts/ClientLayout';
 import LoginPage from './pages/LoginPage';
 import RequireAuth from './pages/RequireAuth';
 import PersistLogin from './pages/PersistLogin';
 
-const HomePage = lazy(() => import('./pages/HomePage'));
+// const HomePage = lazy(() => import('./pages/HomePage'));
+import HomePage from './pages/client/homepage/HomePage';
 const VirtuvePage = lazy(() => import('./pages/virtuvePages/VirtuvePage'));
 import VirtuveVideoPage from './pages/virtuvePages/VirtuveVideoPage';
 const RecipesPage = lazy(() => import('./pages/recipesPages/RecipesPage'));
@@ -60,7 +60,6 @@ import ReceptaiPage from './pages/admin/recipesPages/ReceptaiPage';
 import VideosPage from './pages/admin/videosPages/VideosPage';
 import MailsPage from './pages/admin/MailsPage';
 
-
 const queryClient = new QueryClient({
     defaultOptions: {
         queries: {
@@ -68,9 +67,6 @@ const queryClient = new QueryClient({
         }
     }
 });
-
-
-
 
 function App() {
     const [cookies, setCookie] = useCookies(['COOKIE_CONSENT']);
@@ -84,16 +80,25 @@ function App() {
                     {`{ "@context": "https://schema.org", "@type": "Organization", "name": "Be žalos", "url": "https://www.bezalos.lt", "logo": "https://www.bezalos.lt/src/assets/icons/png/logo/icon_180x180.png", "sameAs": [ "https://www.facebook.com/sandra.jatulyte", "https://www.instagram.com/valgau_be_zalos" ], "contactPoint": { "@type": "ContactPoint", "contactType": "Customer Service", "email": "sandra@bezalos.lt"}}`} 
                 </script> 
             </Helmet>
-            <BrowserRouter>
+            <BrowserRouter future={{
+                v7_startTransition: true,
+                v7_relativeSplatPath: true
+            }}>
                 <MediaQueryProvider>
                     <AuthProvider>
                         <Suspense fallback={<Spinner />}>
                             <Routes>
                                 <Route element={<PersistLogin /> }>
-                                    <Route index element={<HomePage />} />
-                                    <Route path='/virtuve' element={<VirtuvePage />} />
-                                    <Route path='/receptai' element={<RecipesPage />} />
-                                    <Route path='/receptai/:slug' element={<RecipePage />} />
+                                    <Route path='/' element={<ClientLayout />}>
+                                        <Route index element={<HomePage />} />
+                                        <Route path='/virtuve' element={<VirtuvePage />} />
+                                        <Route path='/receptai' element={<RecipesPage />} />
+                                        <Route path='/receptai/:slug' element={<RecipePage />} />
+                                    </Route>
+                                    
+                                    {/* <Route path='/virtuve' element={<VirtuvePage />} />
+                                    <Route path='/receptai' element={<RecipesPage />} /> */}
+                                    {/* <Route path='/receptai/:slug' element={<RecipePage />} /> */}
                                     <Route element={<PaymentProvider /> }>
                                         <Route path='/paslaugos' element={<PaslaugosPage />} />
                                         <Route path='/paslaugos/:slug' element={<PaslaugaPage />} />

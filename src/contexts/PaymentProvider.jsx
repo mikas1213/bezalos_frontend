@@ -1,4 +1,4 @@
-import { createContext, useState } from 'react';
+import { useContext, createContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { jwtDecode } from 'jwt-decode';
 import { Outlet } from 'react-router-dom';
@@ -18,7 +18,7 @@ const plans = {
 
 const PaymentContext = createContext();
 
-const PaymentProvider = () => {
+export const PaymentProvider = () => {
     const { auth } = useAuth();
     let loggedUser = {};
     if(auth.accessToken) loggedUser = jwtDecode(auth?.accessToken);
@@ -81,4 +81,8 @@ const PaymentProvider = () => {
     );
 };
 
-export { PaymentContext, PaymentProvider };
+export const usePayment = () => {
+    const context = useContext(PaymentContext);
+    if(context === undefined) throw new Error('PaymentContext was used outside of the PaymentProvider');
+    return context;
+};

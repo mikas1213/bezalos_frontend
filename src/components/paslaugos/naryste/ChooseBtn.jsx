@@ -1,5 +1,5 @@
 import styles from './ChooseBtn.module.css';
-import usePayment from '../../../hooks/usePayment';
+import { usePayment } from '../../../contexts';
 
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
