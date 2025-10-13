@@ -22,27 +22,14 @@ const ClientLayout = () => {
 
     const currentPage = (locationMap[location.pathname] || 'default') as PageName;
 
+
+
     useEffect(() => {
-        document.title = 'Be Ažalos';
+        document.title = 'Be žalos';
         const htmlElement = document.documentElement;
-        const changeColor = () => {
-            if(window.scrollY > 50) {
-                htmlElement.style.backgroundColor = '#0ff';
-                
-            } else {
-                htmlElement.style.backgroundColor = '#084747';
-            }
-            
-        };
+        currentPage === 'home' ? htmlElement.style.backgroundColor = 'var(--dark-green-500)' : htmlElement.style.backgroundColor = 'var(--white-100)';
 
-         
-
-
-		window.addEventListener('scroll', changeColor);
-		return () => window.removeEventListener('scroll', changeColor);
-           
-    }, []);
-
+    }, [currentPage]);
 
 	return (
 		<>
