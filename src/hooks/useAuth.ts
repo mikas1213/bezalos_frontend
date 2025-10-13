@@ -1,5 +1,6 @@
 import { useContext, useMemo } from 'react';
-import { AuthContext } from '../contexts';
+import { AuthContext } from '../contexts/AuthProvider';
+
 import { jwtDecode, type JwtPayload } from 'jwt-decode';
 
 type CustomJwtPayload = {
