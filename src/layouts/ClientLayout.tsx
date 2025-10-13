@@ -2,7 +2,7 @@ import { Outlet } from 'react-router';
 import { Navbar } from '../components/layout';
 import { useLocation } from 'react-router';
 import { useMediaQuery } from '../contexts/MediaQueryProvider';
-import type { CSSProperties } from 'react';
+import { type CSSProperties, useEffect } from 'react';
 
 const ClientLayout = () => {
     
@@ -21,6 +21,29 @@ const ClientLayout = () => {
     };
 
     const currentPage = (locationMap[location.pathname] || 'default') as PageName;
+
+    useEffect(() => {
+        document.title = 'Be Ažalos';
+        const htmlElement = document.documentElement;
+        const changeColor = () => {
+            if(window.scrollY > 50) {
+                htmlElement.style.backgroundColor = '#0ff';
+                
+            } else {
+                htmlElement.style.backgroundColor = '#084747';
+            }
+            
+        };
+
+         
+
+
+		window.addEventListener('scroll', changeColor);
+		return () => window.removeEventListener('scroll', changeColor);
+           
+    }, []);
+
+
 	return (
 		<>
             <Navbar page={currentPage} />
