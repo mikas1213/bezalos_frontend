@@ -2,7 +2,7 @@ import { useContext, createContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { jwtDecode } from 'jwt-decode';
 import { Outlet } from 'react-router-dom';
-import useAuth from '../hooks/useAuth';
+import { useAuth } from '../hooks';
 import useAxiosPrivate from '../hooks/useAxiosPrivate';
 
 const plans = {

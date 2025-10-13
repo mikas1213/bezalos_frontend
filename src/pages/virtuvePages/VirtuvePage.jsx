@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import useAuth  from '../../hooks/useAuth';
+import { useAuth } from '../../hooks';
 import Main from '../../components/UI/Main';
 // import Navbar from '../../components/navbar/Navbar';
 import Videos from '../../components/virtuve/Videos';

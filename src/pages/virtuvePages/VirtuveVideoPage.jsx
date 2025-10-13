@@ -4,7 +4,7 @@ import { jwtDecode } from 'jwt-decode';
 import toast from 'react-hot-toast';
 
 import useAxiosPrivate from '../../hooks/useAxiosPrivate';
-import useAuth  from '../../hooks/useAuth';
+import { useAuth } from '../../hooks';
 
 import Navbar from '../../components/navbar/Navbar';
 import Main from '../../components/UI/Main';

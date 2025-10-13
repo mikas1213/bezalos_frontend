@@ -4,7 +4,7 @@ import Container from '../../components/UI/Container';
 import ProfileNavbar from '../../components/profilis/ProfileNavbar';
 import { Outlet } from 'react-router-dom';
 import { jwtDecode } from 'jwt-decode';
-import useAuth  from '../../hooks/useAuth';
+import { useAuth } from '../../hooks';
 import { usePlanProducts } from '../../hooks/profile/usePlanProducts';
 import { useUserDetails } from '../../hooks/profile/useUserDetails';
 

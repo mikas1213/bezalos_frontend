@@ -1,6 +1,6 @@
 import styles from './Naryste.module.css';
 import { jwtDecode } from 'jwt-decode';
-import useAuth from '../../../hooks/useAuth';
+import { useAuth } from '../../../hooks';
 import { usePayment } from '../../../contexts';
 import Features from './Features';
 import PlanCard from './PlanCard';

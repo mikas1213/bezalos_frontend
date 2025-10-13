@@ -1,7 +1,7 @@
 import styles from './RestPasswordSent.module.css';
 import { useNavigate } from "react-router-dom";
 import { FaRegPaperPlane } from "react-icons/fa";
-import useAuth from '../../hooks/useAuth';
+import { useAuth } from '../../hooks';
 
 const SignupSuccess = () => {
     const navigate = useNavigate();

@@ -12,7 +12,7 @@ import Footer from '../../components/UI/Footer';
 import { useMediaQuery } from '../../contexts';
 import { useRecipes } from '../../hooks/recipes/useRecipes';
 import { useFavoriteRecipes } from '../../hooks/recipes/useFavoriteRecipes';
-import useAuth from '../../hooks/useAuth';
+import { useAuth } from '../../hooks';
 import useAxiosPrivate from '../../hooks/useAxiosPrivate';
 
 const RecipesPage = () => {

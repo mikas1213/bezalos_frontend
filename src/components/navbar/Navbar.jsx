@@ -7,8 +7,7 @@ import { Logo } from './Logo';
 
 import Modal from '../UI/Modal';
 import Authentication from '../auth/Authentication';
-import useAuth from '../../hooks/useAuth';
-import { useLogout } from '../../hooks';
+import { useAuth, useLogout } from '../../hooks';
         
 // ICONS
 // https://www.svgrepo.com/collection/solar-broken-line-icons

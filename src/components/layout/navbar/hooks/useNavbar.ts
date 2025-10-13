@@ -1,4 +1,4 @@
-import useAuth from '../../../../hooks/useAuth';
+import { useAuth } from '../../../../hooks';
 import { useLocation } from 'react-router-dom';
 import { useMediaQuery } from '../../../../contexts';
 import { useEffect, useState } from 'react';

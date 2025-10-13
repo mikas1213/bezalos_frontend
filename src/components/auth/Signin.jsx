@@ -14,7 +14,7 @@ import { FaEnvelope } from "react-icons/fa";
 
 import Spinner from '../UI/Spinner';
 
-import useAuth from '../../hooks/useAuth';
+import { useAuth } from '../../hooks';
 import { useContext } from "react";
 import { FormStateContext } from "./Authentication";
 
