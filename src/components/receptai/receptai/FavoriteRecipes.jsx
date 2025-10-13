@@ -1,6 +1,6 @@
 import styles from './FavoriteRecipes.module.css';
 import Carousel from './Carousel';
-import { useMediaQuery } from '../../../contexts';
+import { useMediaQuery } from '../../../contexts/MediaQueryProvider';
 
 const FavoriteRecipes = ({ mostLiked, isLoading }) => {
     const mediaQuery = useMediaQuery();

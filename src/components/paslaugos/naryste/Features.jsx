@@ -1,7 +1,7 @@
 import styles from './Features.module.css';
 import MonthYearTab from './MonthYearTab';
 import { FaRegCircleXmark, FaCircleCheck } from 'react-icons/fa6';
-import { usePayment } from '../../../contexts';
+import { usePayment } from '../../../contexts/PaymentProvider';
 
 const Features = () => {
     const { variant } = usePayment();

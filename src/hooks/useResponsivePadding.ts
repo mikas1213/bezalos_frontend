@@ -1,4 +1,4 @@
-import { useMediaQuery } from '../contexts';
+import { useMediaQuery } from '../contexts/MediaQueryProvider';
 
 type Paddings = 'var(--content-padding-xs)' | 'var(--content-padding-sm)' | 'var(--content-padding-lg)';
 

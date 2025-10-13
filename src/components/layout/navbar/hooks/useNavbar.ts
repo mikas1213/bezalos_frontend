@@ -1,6 +1,6 @@
 import { useAuth } from '../../../../hooks';
 import { useLocation } from 'react-router-dom';
-import { useMediaQuery } from '../../../../contexts';
+import { useMediaQuery } from '../../../../contexts/MediaQueryProvider';
 import { useEffect, useState } from 'react';
 import type { Pages, NavHeight, NavbarState } from '../types';
 

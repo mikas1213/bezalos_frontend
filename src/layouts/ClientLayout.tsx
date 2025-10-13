@@ -1,7 +1,7 @@
 import { Outlet } from 'react-router';
 import { Navbar } from '../components/layout';
 import { useLocation } from 'react-router';
-import { useMediaQuery } from '../contexts';
+import { useMediaQuery } from '../contexts/MediaQueryProvider';
 import type { CSSProperties } from 'react';
 
 const ClientLayout = () => {

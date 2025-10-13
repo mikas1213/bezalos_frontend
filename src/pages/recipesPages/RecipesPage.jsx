@@ -9,7 +9,7 @@ import Recipes from '../../components/receptai/receptai/Recipes';
 import FavoriteRecipes from '../../components/receptai/receptai/FavoriteRecipes';
 import Pagination from '../../components/UI/Pagination';
 import Footer from '../../components/UI/Footer';
-import { useMediaQuery } from '../../contexts';
+import { useMediaQuery } from '../../contexts/MediaQueryProvider';
 import { useRecipes } from '../../hooks/recipes/useRecipes';
 import { useFavoriteRecipes } from '../../hooks/recipes/useFavoriteRecipes';
 import { useAuth } from '../../hooks';

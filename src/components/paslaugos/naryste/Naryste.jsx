@@ -1,7 +1,7 @@
 import styles from './Naryste.module.css';
 import { jwtDecode } from 'jwt-decode';
 import { useAuth } from '../../../hooks';
-import { usePayment } from '../../../contexts';
+import { usePayment } from '../../../contexts/PaymentProvider';
 import Features from './Features';
 import PlanCard from './PlanCard';
 import ChooseBtn from './ChooseBtn';

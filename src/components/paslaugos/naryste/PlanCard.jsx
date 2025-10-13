@@ -1,6 +1,6 @@
 import styles from './PlanCard.module.css';
 import { ProfilisIcon, VirtuveIcon } from '../PlanIcons/';
-import { usePayment } from '../../../contexts';
+import { usePayment } from '../../../contexts/PaymentProvider';
 
 const PlanCard = ({ planVariant, plan }) => {
     const { variant, setVariant } = usePayment();

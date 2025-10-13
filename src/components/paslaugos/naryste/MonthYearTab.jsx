@@ -1,5 +1,6 @@
 import styles from './MonthYearTab.module.css';
-import { usePayment } from '../../../contexts';
+import { usePayment } from '../../../contexts/PaymentProvider';
+
 
 const MonthYearTab = () => {
     const { period, setPeriod } = usePayment();
