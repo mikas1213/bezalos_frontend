@@ -2,7 +2,6 @@ import styles from './FooterSection.module.css';
 import MainContainer from './ui/MainContainer';
 import { Link } from 'react-router-dom';
 import Logo from '../../assets/icons/svg/be-zalos-logo.svg';
-
 import axios from '../../api/axios/';
 import { useForm } from 'react-hook-form';
 import { useMutation } from '@tanstack/react-query';
@@ -10,7 +9,7 @@ import toast from 'react-hot-toast';
 
 import { PiFacebookLogo, PiInstagramLogo, PiAt } from 'react-icons/pi';
 
-export const FooterBottom = () => {
+const FooterBottom = () => {
     return (
         <>
             <div className={styles.footerTop}>
