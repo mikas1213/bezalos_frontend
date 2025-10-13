@@ -2,11 +2,8 @@ import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { jwtDecode } from 'jwt-decode';
 import toast from 'react-hot-toast';
-
 import useAxiosPrivate from '../../hooks/useAxiosPrivate';
 import { useAuth } from '../../hooks';
-
-import Navbar from '../../components/navbar/Navbar';
 import Main from '../../components/UI/Main';
 import Container from '../../components/virtuve_video_page/Container';
 import Filters from '../../components/virtuve_video_page/Filters';
@@ -112,7 +109,6 @@ const VirtuveVideoPage = () => {
     
     return (
         <>
-            <Navbar />
             <Main>
                 {!isError ? <Container>
                     {!isError && <Filters handleClick={handleFilter} filter={filter} />}

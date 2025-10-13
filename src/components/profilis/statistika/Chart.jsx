@@ -27,8 +27,9 @@ const StatisctiItem = ({ name, value, trend, unit }) => {
 
     const prevValue = useRef(0);
     const prevTrend = useRef(0);
+
     useEffect(() => {
-        prevValue.current = value;
+        prevValue.current = value || 0;
         prevTrend.current = Math.abs(trend);
     }, [value, trend]);
     
@@ -42,9 +43,9 @@ const StatisctiItem = ({ name, value, trend, unit }) => {
 
             <div className={styles.value}>
                 <CountUp
-                    key={value}  
+                    key={value || 0}  
                     start={prevValue.current}
-                    end={value}
+                    end={value || 0}
                     decimals={2}
                     duration={1}
                     separator=''
@@ -59,9 +60,9 @@ const StatisctiItem = ({ name, value, trend, unit }) => {
                     {trend_class === 'unchanged' && <Minus className={styles.chevronIcon} />}
                     
                     <CountUp
-                        key={Math.abs(trend)}  
+                        key={Math.abs(trend || 0)}  
                         start={prevTrend.current}
-                        end={Math.abs(trend)}
+                        end={Math.abs(trend || 0)}
                         decimals={1}
                         duration={1.5}
                         separator=''

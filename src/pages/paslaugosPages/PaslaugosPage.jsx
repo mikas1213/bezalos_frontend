@@ -1,8 +1,6 @@
 import { useEffect } from 'react';
 import { useSearchParams, useNavigate } from 'react-router-dom';
-
 import Main from '../../components/UI/Main';
-import Navbar from '../../components/navbar/Navbar';
 import Container from '../../components/UI/Container';
 import PaslaugosContainer from '../../components/paslaugos/PaslaugosContainer';
 import PaslaugosTab from '../../components/paslaugos/PaslaugosTab';
@@ -32,7 +30,6 @@ const PaslaugosPage = () => {
 
     return (
         <>
-            <Navbar />
             <Main>
                 <Container>
                     <PaslaugosContainer>    

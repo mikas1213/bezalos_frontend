@@ -1,6 +1,6 @@
 const PrivatumoPolitikaPage = () => {
     return (
-        <div>PrivatumoPolitikaPage</div>
+        <div>Ruošiama</div>
     );
 };
 export default PrivatumoPolitikaPage;

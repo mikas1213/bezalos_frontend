@@ -1,5 +1,4 @@
 import styles from './SuccessBuyService.module.css';
-import Navbar from '../../components/navbar/Navbar';
 import Main from '../../components/UI/Main';
 import Container from '../../components/UI/Container';
 import { RiMessengerLine } from 'react-icons/ri';
@@ -20,7 +19,6 @@ const SuccessBuyService = () => {
     
     return (
         <>
-            <Navbar />
             <Main>
                 <Container>
                     <div className={styles.successBuyService}>

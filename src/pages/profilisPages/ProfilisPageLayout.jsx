@@ -1,4 +1,4 @@
-import Navbar from '../../components/navbar/Navbar';
+// import Navbar from '../../components/navbar/Navbar';
 import Main from '../../components/UI/Main';
 import Container from '../../components/UI/Container';
 import ProfileNavbar from '../../components/profilis/ProfileNavbar';
@@ -42,7 +42,7 @@ const ProfilisPageLayout = () => {
 
     return (
         <>
-            <Navbar />
+            {/* <Navbar /> */}
             <Main>          
                 <Container>
                     <ProfileNavbar />

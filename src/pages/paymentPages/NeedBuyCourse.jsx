@@ -1,5 +1,5 @@
 import styles from './NeedBuyCourse.module.css';
-import Navbar from '../../components/navbar/Navbar';
+// import Navbar from '../../components/navbar/Navbar';
 import Main from '../../components/UI/Main';
 import { useNavigate } from 'react-router-dom';
 import FlexContainer from '../../components/UI/FlexContainer';
@@ -9,7 +9,7 @@ const NeedBuyCourse = () => {
     const navigate = useNavigate();
     return (
         <>
-            <Navbar />
+            {/* <Navbar /> */}
             <Main>
                 <FlexContainer>
                     <div className={styles.needSubscriptionContainer}>

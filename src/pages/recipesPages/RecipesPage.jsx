@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import Navbar from '../../components/navbar/Navbar';
 import Main from '../../components/UI/Main';
 import Container from '../../components/UI/Container';
 import RecipesHeader from '../../components/receptai/filters/RecipesHeader';
@@ -45,7 +44,6 @@ const RecipesPage = () => {
     
     return (
         <>
-            {/* <Navbar isHome='recipes' /> */}
             <RecipesHeader 
                 isOpenFilters={isOpenFilters} 
                 setIsOpenFilters={setIsOpenFilters} 

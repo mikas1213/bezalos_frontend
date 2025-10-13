@@ -27,7 +27,14 @@ const StatistikaPage = () => {
     const [formData, setFormData] = useState({});
     const [chartData, setChartData] = useState([]);
     // const [bodyData, setBodyData] = useState([]);
-    const [bodyStats, setBodyStats] = useState({});
+    const [bodyStats, setBodyStats] = useState({
+        latest_svoris: 0,
+        trend_svoris: 0,
+        latest_apimtys: 0,
+        trend_apimtys: 0,
+        last_svoris: 0,
+        last_apimtys: 0
+    });
     const [errors, setErrors] = useState([]);
     const [isLoadingChartData, setIsLoadingChartData] = useState(true);
     const [isLoadingAdd, setIsLoadingAdd] = useState(false);

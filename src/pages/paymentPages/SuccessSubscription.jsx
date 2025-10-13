@@ -1,5 +1,4 @@
 import styles from './SuccessSubscription.module.css';
-import Navbar from '../../components/navbar/Navbar';
 import Main from '../../components/UI/Main';
 import Container from '../../components/virtuve/Container';
 import { useEffect } from 'react';
@@ -25,7 +24,6 @@ const SuccessSubscription = () => {
 
     return (
         <>
-            <Navbar />
             <Main>
                 <Container>
                     <div className={styles.successSubscription}>
