@@ -12,7 +12,14 @@ export const HeroSection = () => {
     ].join(' ');
 
     const [isOnload, setIsOnload] = useState<boolean>(false);
-    const [imageIndex] = useState<number>(() => randomNumber(0, 4));
+    const [imageIndex] = useState<number>(() => {
+        const saved = localStorage.getItem('heroImageIndex');
+        if (saved) return parseInt(saved, 10);
+        
+        const newIndex = randomNumber(0, 4);
+        localStorage.setItem('heroImageIndex', newIndex.toString());
+        return newIndex;
+    });
 
     useEffect(() => {
         setIsOnload(true);
