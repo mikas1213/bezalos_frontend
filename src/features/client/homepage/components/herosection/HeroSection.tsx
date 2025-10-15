@@ -13,14 +13,6 @@ export const HeroSection = () => {
 
     const [isOnload, setIsOnload] = useState<boolean>(false);
     const [imageIndex] = useState<number>(() => {
-        // const saved = localStorage.getItem('heroImageIndex');
-        // if (saved) return parseInt(saved, 10);
-        
-        // const newIndex = randomNumber(0, 4);
-        // localStorage.setItem('heroImageIndex', newIndex.toString());
-        // return newIndex;
-
-
 
         const saved = localStorage.getItem('heroImageIndex');
         
@@ -31,7 +23,6 @@ export const HeroSection = () => {
             return nextIndex;
         }
         
-
         const initialIndex = randomNumber(0, 4);
         localStorage.setItem('heroImageIndex', initialIndex.toString());
         return initialIndex;
