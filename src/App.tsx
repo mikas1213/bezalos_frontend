@@ -18,7 +18,6 @@ import LoginPage from './pages/LoginPage';
 import RequireAuth from './pages/RequireAuth';
 import PersistLogin from './pages/PersistLogin';
 
-// const HomePage = lazy(() => import('./pages/HomePage'));
 const HomePage = lazy(() => import('./pages/client/homepage/HomePage'));
 const VirtuvePage = lazy(() => import('./pages/virtuvePages/VirtuvePage'));
 import VirtuveVideoPage from './pages/virtuvePages/VirtuveVideoPage';
@@ -127,24 +126,6 @@ function App() {
                                         
                                     </Route>
                                     <Route path='*' element={<NotFoundPage />} />
-
-                                    
-                                    {/* <Route element={<RequireAuth allowedRoles={[1213, 2324]}/> }>
-                                        <Route path='/virtuve/:type/:video' element={<VirtuveVideoPage />} />
-                                        <Route path='/profilis' element={<ProfilisPageLayout /> }>
-                                            <Route index element={<UserPlansPage />} />
-                                            <Route path='anketa' element={<AnketaPage />} />
-                                            <Route path='produktu-keitimas' element={<ProduktuKeitimasPage />}/>
-                                            <Route path='mano-receptai' element={<ManoReceptaiPage />} />
-                                            <Route path='kalorijos' element={<KalorijosPage />} />
-                                            <Route path='statistika' element={<StatistikaPage />} />
-                                            <Route path='nustatymai' element={<NustatymaiPage /> } />
-                                        </Route>
-                                        <Route path='/paslauga-apmoketa' element={<SuccessBuyService /> } />
-                                        <Route path='/apmoketa-sekmingai' element={<SuccessSubscription /> }/>
-                                        <Route path='/mokejimo-klaida' element={<CancelSubscription /> }/>
-                                    </Route> */}
-
                                     <Route element={<RequireAuth allowedRoles={[1213]}/> }>
                                         <Route path='/admin' element={<AdminLayout /> }>
                                             <Route index element={<UsersPage />} />

@@ -1,17 +1,19 @@
 import styles from './HeroSection.module.css';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useIsMounted } from '../../../../../hooks';
 import { Container, Stack, Grid, Box } from '../../../../../components/Shared';
 import { randomNumber } from '../../../../../utils/randomNumber';
 import { homepageImages } from '../../../../../assets/images/homepage';
 
 export const HeroSection = () => {    
     const navigate = useNavigate();
+    const isMounted = useIsMounted();
+    
     const heroSectionClasses = [
         styles.hereSection
     ].join(' ');
 
-    const [isOnload, setIsOnload] = useState<boolean>(false);
     const [imageIndex] = useState<number>(() => {
 
         const saved = localStorage.getItem('heroImageIndex');
@@ -28,16 +30,11 @@ export const HeroSection = () => {
         return initialIndex;
     });
 
-    useEffect(() => {
-        setIsOnload(true);
-        return () => setIsOnload(false);
-    }, []);
-    
     return (
         <Container as='section' maxWidth='100vw' padding='0' className={heroSectionClasses}>
             <Container maxWidth='var(--content-width)'>
                 <Grid space='clamp(2rem, 4vw, 6rem)' className={styles.heroContainer}>
-                    <Stack className={`${styles.left} ${ isOnload ? styles.onload : '' }`}>
+                    <Stack className={`${styles.left} ${ isMounted ? styles.onload : '' }`}>
                         <Box className={styles.title}>
                             <h1>Tavo <span>ilgalaikių</span></h1>
                             <h1>mitybos pokyčių</h1>
@@ -54,7 +51,7 @@ export const HeroSection = () => {
                             <button className={styles.btn} onClick={() => navigate('/virtuve')}>Virtuvė</button>
                         </Box>
                     </Stack>
-                    <Stack className={`${styles.right} ${isOnload ? styles.onload : ''}`}>
+                    <Stack className={`${styles.right} ${isMounted ? styles.onload : ''}`}>
                         <img src={Object.values(homepageImages.meals)[imageIndex]} alt='meal-image' />
                     </Stack>    
                 </Grid>

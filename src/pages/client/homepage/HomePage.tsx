@@ -1,6 +1,6 @@
 import { useCookies } from 'react-cookie';
 import { useState, useEffect } from 'react';
-import { HeroSection } from '../../../features/client/homepage/components';
+import { HeroSection, ExperienceSection } from '../../../features/client/homepage/components';
 import { Offer } from '../../../components/layout';
 type CookieValue = { COOKIE_OFFER: string  };
 
@@ -20,6 +20,7 @@ const HomePage = () => {
         <>
             {(!cookies.COOKIE_OFFER && isShowOffer || isOfferSent) && <Offer setIsShowOffer={setIsShowOffer} setIsOfferSent={setIsOfferSent} isOfferSent={isOfferSent} setCookie={setCookie} />}
             <HeroSection />
+            <ExperienceSection />
             <div>Pirmas</div>
             <div>yra</div>
             <div>yra</div>
