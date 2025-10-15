@@ -5,7 +5,7 @@ import cookieImg from '../../../assets/icons/png/cookies/cookie.png';
 import { type CookieSetOptions } from 'universal-cookie';
 
 type CookieConsentProps = {
-    setCookie: (name: string, value: any, options?: CookieSetOptions) => void;
+    setCookie: (name: 'COOKIE_CONSENT', value: any, options?: CookieSetOptions) => void;
 }
 
 export const CookieConsent = ({ setCookie }: CookieConsentProps) => {

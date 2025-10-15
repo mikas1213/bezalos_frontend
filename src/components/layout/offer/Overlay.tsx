@@ -1,7 +1,8 @@
 import styles from './Overlay.module.css';
 import { IoIosCloseCircleOutline } from 'react-icons/io';
+import { type OverlayProps } from './types';
 
-const Overlay = ({ children, handleSentOffer }) => {
+const Overlay = ({ children, handleSentOffer }: OverlayProps) => {
     return (
         <div className={styles.overLay}>      
             <div className={styles.offerModal}>

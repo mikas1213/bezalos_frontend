@@ -17,19 +17,8 @@ export const HeroSection = () => {
     }, []);
 
     const [isOnload, setIsOnload] = useState<boolean>(false);
-    // const [currentImage, setCurrentImage] = useState<string>('');
-    // useEffect(() => {
-    //     const key = 'heroImageIndex';
-    //     const startNumber: number = randomNumber(0, 4);
-    //     const storedIndex = parseInt(localStorage.getItem(key) || startNumber.toString(), 10);
-    //     const nextIndex = (storedIndex + 1) % Object.values(homepageImages.meals).length;
-    //     localStorage.setItem(key, nextIndex.toString());
-    //     setCurrentImage(Object.values(homepageImages.meals)[nextIndex]);
-    //     setIsOnload(true);
-        
-    //     return () => setIsOnload(false);
-    // }, []);
     const startNumber: number = randomNumber(0, 4);
+    
     return (
         <Container as='section' maxWidth='100vw' padding='0' className={heroSectionClasses}>
             <Container maxWidth='var(--content-width)'>
@@ -52,7 +41,6 @@ export const HeroSection = () => {
                         </Box>
                     </Stack>
                     <Stack className={`${styles.right} ${isOnload ? styles.onload : ''}`}>
-                        {/* <img src={currentImage} alt='meal-image' /> */}
                         <img src={Object.values(homepageImages.meals)[startNumber]} alt='meal-image' />
                     </Stack>    
                 </Grid>

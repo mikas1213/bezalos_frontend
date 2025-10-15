@@ -1,29 +1,27 @@
 import styles from './Offer.module.css';
-// import avatar from '../../assets/images/offer/offer.webp';
-import christmas_avatar from '../../assets/images/offer/nieko-nevalgau.webp';
+import image from '../../../assets/images/offer/nieko-nevalgau.webp';
 import Overlay from './Overlay';
 import OfferSent from './OfferSent';
-import axios from '../../api/axios/';
-import Spinner from '../UI/Spinner';
+import axios from '../../../api/axios';
+import { AxiosError } from 'axios';
+import Spinner from '../../UI/Spinner';
 import { useForm } from 'react-hook-form';
 import { useMutation } from '@tanstack/react-query';
+import type { OfferProps, OfferInputData, ServerErrorResponse, OfferFormData } from './types';
 
-const Offer = ({ setIsShowOffer, setIsOfferSent, isOfferSent, setCookie }) => {
+export const Offer = ({ setIsShowOffer, setIsOfferSent, isOfferSent, setCookie }: OfferProps) => {
 
     const handleSentOffer = () => {
         setIsShowOffer(s => !s);
         setIsOfferSent(false);
-        // var today = new Date();
-        // today.setSeconds(today.getSeconds() + 10);
 
         setCookie('COOKIE_OFFER', true, {
-            path: '/', 
-            // expires: today
+            path: '/'
         });
     };
 
-    const { register, formState: { errors }, setError, handleSubmit } = useForm({ mode: 'onChange' });
-    const { mutate, isPending } = useMutation({
+    const { register, formState: { errors }, setError, handleSubmit } = useForm<OfferFormData>({ mode: 'onChange' });
+    const { mutate, isPending } = useMutation<void, AxiosError<ServerErrorResponse>, OfferInputData>({
         mutationFn: async (inputsData) => {
             await axios.post('mailer/send-offer', inputsData, {
                 headers: {'Content-Type': 'application/json'},
@@ -35,13 +33,19 @@ const Offer = ({ setIsShowOffer, setIsOfferSent, isOfferSent, setCookie }) => {
             setIsOfferSent(sent => !sent);
         },
         onError: (err) => {
-            const { response: {data: {errors: serverErrors}} } = err;
-            const { path, msg } = serverErrors[0]
-            setError(path, { type: 'server', message: msg });
+            if (err.response?.data?.errors) {
+                const { response: {data: {errors: serverErrors}} } = err;
+                const { path, msg } = serverErrors[0]
+                if (path === 'email') {
+                    setError(path, { type: 'server', message: msg });
+                } else {
+                    setError('root', { type: 'server', message: msg });
+                }
+            }
         }
     });
 
-    const onSubmit = ({ email }) => {
+    const onSubmit = ({ email }: { email: string }) => {
         mutate({
             email: email.toLowerCase().trim(),
         });
@@ -54,16 +58,14 @@ const Offer = ({ setIsShowOffer, setIsOfferSent, isOfferSent, setCookie }) => {
                 <OfferSent /> : 
                 <>
                     <div className={styles.top}>
-                        <img src={christmas_avatar} alt='avatar' />
+                        <img src={image} alt='avatar' />
                     </div>
 
                     <div className={styles.bottom}>
 
                         <div className={styles.offerContainer}>
                             <h1>DOVANA 🎁</h1>
-                            <p>
-                                Įrašyk savo el. paštą ir NEMOKAMAI gauk įrašo ištrauką &quot;Nieko nevalgau, o svoris auga&quot;
-                            </p>
+                            <p>Įrašyk savo el. paštą ir NEMOKAMAI gauk įrašo ištrauką &quot;Nieko nevalgau, o svoris auga&quot;</p>
                         </div>
 
                         <form className={styles.formContainer} onSubmit={handleSubmit(onSubmit)}>
@@ -73,7 +75,7 @@ const Offer = ({ setIsShowOffer, setIsOfferSent, isOfferSent, setCookie }) => {
                                 {...register('email')} 
                                 autoComplete='off' 
                             />
-                            {errors.email && <span className={styles.inputError}>{errors?.email?.message}</span>}    
+                            {errors.email && <span className={styles.inputError}>{errors?.email?.message as string}</span>}    
                             <button>IŠPAKUOTI DOVANĄ</button>
                         </form>
 
@@ -83,5 +85,3 @@ const Offer = ({ setIsShowOffer, setIsOfferSent, isOfferSent, setCookie }) => {
         </Overlay>
     );
 };
-
-export default Offer;

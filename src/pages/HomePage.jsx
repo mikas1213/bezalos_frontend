@@ -6,7 +6,7 @@ import BenefitsSection from "../components/homepage/BenefitsSection";
 import ClientStorySection from '../components/homepage/ClientStorySection';
 import TestimonialSection from '../components/homepage/TestimonialSection';
 import FooterSection from "../components/homepage/FooterSection";
-import Offer from '../components/offer/Offer';
+// import Offer from '../components/offer/Offer';
 
 import { useCookies } from 'react-cookie';
 import { useState, useRef, useEffect } from 'react';
@@ -30,6 +30,7 @@ const HomePage = () => {
         setTimeout(() => {
             setIsShowOffer(true);
         }, 2000);
+        return () => setIsShowOffer(false);
     }, []);
     
     useEffect(() => {
@@ -59,7 +60,7 @@ const HomePage = () => {
         <>
             {/* <Navbar isHome='home' /> */}
             <Main myRef={ref}>
-                {(!cookies.COOKIE_OFFER && isShowOffer || isOfferSent) && <Offer setIsShowOffer={setIsShowOffer} setIsOfferSent={setIsOfferSent} isOfferSent={isOfferSent} setCookie={setCookie} />}
+                {/* {(!cookies.COOKIE_OFFER && isShowOffer || isOfferSent) && <Offer setIsShowOffer={setIsShowOffer} setIsOfferSent={setIsOfferSent} isOfferSent={isOfferSent} setCookie={setCookie} />} */}
                 <WelcomeSection />
                 <ExperienceSection />
                 <AboutSection />

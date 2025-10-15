@@ -19,7 +19,7 @@ import RequireAuth from './pages/RequireAuth';
 import PersistLogin from './pages/PersistLogin';
 
 // const HomePage = lazy(() => import('./pages/HomePage'));
-import HomePage from './pages/client/homepage/HomePage';
+const HomePage = lazy(() => import('./pages/client/homepage/HomePage'));
 const VirtuvePage = lazy(() => import('./pages/virtuvePages/VirtuvePage'));
 import VirtuveVideoPage from './pages/virtuvePages/VirtuveVideoPage';
 const RecipesPage = lazy(() => import('./pages/recipesPages/RecipesPage'));
@@ -61,7 +61,9 @@ import NarystesPage from './pages/admin/servicesPages/NarystesPage';
 import ReceptaiPage from './pages/admin/recipesPages/ReceptaiPage';
 import VideosPage from './pages/admin/videosPages/VideosPage';
 import MailsPage from './pages/admin/MailsPage';
-
+type CookieValue = {
+    COOKIE_CONSENT: string 
+};
 const queryClient = new QueryClient({
     defaultOptions: {
         queries: {
@@ -71,7 +73,7 @@ const queryClient = new QueryClient({
 });
 
 function App() {
-    const [cookies, setCookie] = useCookies(['COOKIE_CONSENT']);
+    const [cookies, setCookie] = useCookies<'COOKIE_CONSENT', CookieValue>(['COOKIE_CONSENT']);
     
     return (
         <QueryClientProvider client={queryClient}>
@@ -176,6 +178,7 @@ function App() {
                     </AuthProvider>
                 </MediaQueryProvider>
             </BrowserRouter>
+            
             {!cookies.COOKIE_CONSENT && <CookieConsent setCookie={setCookie} />}
 
             <Toaster 
