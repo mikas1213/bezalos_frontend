@@ -10,14 +10,14 @@ export const HeroSection = () => {
     const heroSectionClasses = [
         styles.hereSection
     ].join(' ');
-    
+
+    const [isOnload, setIsOnload] = useState<boolean>(false);
+    const [imageIndex] = useState<number>(() => randomNumber(0, 4));
+
     useEffect(() => {
         setIsOnload(true);
         return () => setIsOnload(false);
     }, []);
-
-    const [isOnload, setIsOnload] = useState<boolean>(false);
-    const startNumber: number = randomNumber(0, 4);
     
     return (
         <Container as='section' maxWidth='100vw' padding='0' className={heroSectionClasses}>
@@ -41,7 +41,7 @@ export const HeroSection = () => {
                         </Box>
                     </Stack>
                     <Stack className={`${styles.right} ${isOnload ? styles.onload : ''}`}>
-                        <img src={Object.values(homepageImages.meals)[startNumber]} alt='meal-image' />
+                        <img src={Object.values(homepageImages.meals)[imageIndex]} alt='meal-image' />
                     </Stack>    
                 </Grid>
                 
