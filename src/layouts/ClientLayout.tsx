@@ -1,8 +1,10 @@
+import styles from './ClientLayout.module.css';
 import { Outlet } from 'react-router';
 import { Navbar } from '../components/layout';
 import { useLocation } from 'react-router';
 import { useMediaQuery } from '../contexts/MediaQueryProvider';
 import { type CSSProperties, useEffect } from 'react';
+import { Stack } from '../components/Shared';
 
 const ClientLayout = () => {
     
@@ -10,6 +12,10 @@ const ClientLayout = () => {
     const mediaQuery = useMediaQuery();
 
     const mainStyles = {
+        display: 'flex',
+        flexDirection: 'column',
+        gap: '4.375rem',
+        transition: 'transform 1s, opacity 1s',
         backgroundColor: 'var(--white-100)',
         paddingTop: location.pathname === '/receptai' ? '0' : mediaQuery < 441 ? 'var(--nav-height-60)' : mediaQuery < 577 ? 'var(--nav-height-70)' : 'var(--nav-height-80)'
     } as CSSProperties
@@ -21,23 +27,21 @@ const ClientLayout = () => {
     };
 
     const currentPage = (locationMap[location.pathname] || 'default') as PageName;
-
-
-
     useEffect(() => {
-        document.title = 'Be žalos';
         const htmlElement = document.documentElement;
         currentPage === 'home' ? htmlElement.style.backgroundColor = 'var(--dark-green-500)' : htmlElement.style.backgroundColor = 'var(--white-100)';
-
     }, [currentPage]);
 
 	return (
-		<>
+
+        <Stack splitAfter={2} className={styles.clientLayout}>
             <Navbar page={currentPage} />
             <main style={mainStyles}>
                 <Outlet />
             </main>
-		</>
+            <footer>FUUUUTER</footer>
+        </Stack>
+
 	);
 }
 

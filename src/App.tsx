@@ -8,7 +8,7 @@ import { Toaster } from 'react-hot-toast';
 
 import styles from './App.module.css';
 import Spinner from './components/UI/Spinner';
-import CookieConsent from './components/cookies/CookieConsent';
+import { CookieConsent } from './components/layout';
 import { AuthProvider } from './contexts/AuthProvider';
 import { MediaQueryProvider } from './contexts/MediaQueryProvider';
 import { PaymentProvider } from './contexts/PaymentProvider';

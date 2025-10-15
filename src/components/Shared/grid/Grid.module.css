@@ -1,7 +1,6 @@
 .grid {
     display: grid;
     gap: var(--space, 1rem);
-    /* grid-column: 1 / span 2; */
 }
 
 

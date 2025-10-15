@@ -26,6 +26,8 @@ export const Stack = ({ children, space = '0', recursive = false, splitAfter = n
 		splitAfter && styles[`splitAfter${splitAfter}`]
 	].filter(Boolean).join(' ');
 
-    const stackStyle = { '--stack-space': space } as CSSProperties;
+    const stackStyle = { 
+        '--stack-space': space 
+    } as CSSProperties;
 	return <div className={stackClasses} style={stackStyle}>{children}</div>;
 };

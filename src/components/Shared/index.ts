@@ -1,5 +1,6 @@
 export { Box } from './box/Box';
 export { Center } from './center/Center';
+export { Cover } from './cover/Cover';
 export { Cluster } from './cluster/Cluster';
 export { Container } from './container/Container';
 export { Grid } from './grid/Grid';

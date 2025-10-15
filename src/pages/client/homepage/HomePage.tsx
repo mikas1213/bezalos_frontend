@@ -1,8 +1,9 @@
-import styles from './HomePage.module.css'
+import { HeroSection } from '../../../features/client/homepage/components';
 
 const HomePage = () => {
     return (
         <>
+            <HeroSection />
             <div>Pirmas</div>
             <div>yra</div>
             <div>yra</div>
@@ -13,83 +14,7 @@ const HomePage = () => {
             <div>yra</div>
             <div>yra</div>
             <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
+
             <div>yra</div>
             <div>yra</div>
             <div>yra</div>

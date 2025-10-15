@@ -3,7 +3,6 @@ import Modal from '../../UI/Modal';
 import Authentication from '../../auth/Authentication';
 import { useLocation, NavLink } from 'react-router-dom';
 import useNavbar from './hooks/useNavbar';
-import { useResponsivePadding } from '../../../hooks';
 import { Box, Container, Cluster } from '../../Shared';
 import { roles } from '../../../utils/roles';
 import Hamburger from './hamburger/Hamburger';
@@ -13,11 +12,10 @@ import { useLogout } from '../../../hooks';
 import { Logo, AtsijungtiIcon, PaslaugosIcon, PrisijungtiIcon, ProfilisIcon, ReceptaiIcon, VirtuveIcon } from './icons';
 import type { NavbarProps } from './types';
 
-const Navbar = ({ page = 'default' }: NavbarProps) => {
+export const Navbar = ({ page = 'default' }: NavbarProps) => {
     const logout = useLogout();
     
     const location = useLocation();
-    const responsivePadding = useResponsivePadding();
     const { isScroll, user_id, user_role, isOpenBurger, setIsOpenBurger, isOpenModal, setIsOpenModal, responsiveNavHeight } = useNavbar(page);
     
     const navBarClasses = [
@@ -32,7 +30,7 @@ const Navbar = ({ page = 'default' }: NavbarProps) => {
             </Modal>}
 
             <Container as='nav' maxWidth='100vw' padding='0' className={navBarClasses}>
-                <Container maxWidth='var(--content-width)' padding={responsivePadding}>
+                <Container maxWidth='var(--content-width)'>
                     <Cluster className={styles.navDesktop} justify='space-between' align='center' height={responsiveNavHeight}>
                         <NavLink to='/'>
 					        <Logo isChangeColor={{ page, isScroll }} />
@@ -141,5 +139,3 @@ const Navbar = ({ page = 'default' }: NavbarProps) => {
         </>
     );
 };
-
-export default Navbar;

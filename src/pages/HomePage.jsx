@@ -1,5 +1,4 @@
 import Main from "../components/UI/Main";
-import Navbar from "../components/navbar/Navbar";
 import WelcomeSection from "../components/homepage/WelcomeSection";
 import AboutSection from "../components/homepage/AboutSection";
 import ExperienceSection from '../components/homepage/ExperienceSection';
@@ -58,7 +57,7 @@ const HomePage = () => {
     
     return (
         <>
-            <Navbar isHome='home' />
+            {/* <Navbar isHome='home' /> */}
             <Main myRef={ref}>
                 {(!cookies.COOKIE_OFFER && isShowOffer || isOfferSent) && <Offer setIsShowOffer={setIsShowOffer} setIsOfferSent={setIsOfferSent} isOfferSent={isOfferSent} setCookie={setCookie} />}
                 <WelcomeSection />

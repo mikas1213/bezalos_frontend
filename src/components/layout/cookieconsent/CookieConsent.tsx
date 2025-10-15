@@ -1,10 +1,16 @@
 import styles from './CookieConsent.module.css';
 import { createPortal } from 'react-dom';
 import { useState } from 'react';
-import cookieImg from '../../assets/icons/png/cookies/cookie.png';
+import cookieImg from '../../../assets/icons/png/cookies/cookie.png';
+import { type CookieSetOptions } from 'universal-cookie';
 
-const CookieConsent = ({ setCookie }) => {
-    const [show, setShow] = useState(false);
+type CookieConsentProps = {
+    setCookie: (name: string, value: any, options?: CookieSetOptions) => void;
+}
+
+export const CookieConsent = ({ setCookie }: CookieConsentProps) => {
+    const [show, setShow] = useState<boolean>(false);
+    
     const giveCookieConsent = () => {
         setShow(s => !s);
         setTimeout(() => {
@@ -29,5 +35,3 @@ const CookieConsent = ({ setCookie }) => {
         </div>, document.body
     );
 };
-
-export default CookieConsent;

@@ -1,7 +1,7 @@
 import styles from './Container.module.css';
 import type { CSSProperties, ElementType, ReactNode } from 'react';
 import { forwardRef } from 'react';
-
+import { useResponsivePadding } from '../../../hooks';
 /**
  * @param {ElementType} [as='div'] – The HTML element or React component to render as the container.
  * @param {ReactNode} children – The content that will be constrained by width.
@@ -20,7 +20,8 @@ type ContainerProps = {
     className?: string
 };
 
-export const Container = forwardRef<HTMLDivElement, ContainerProps>(({ as: Component = 'div',  children, maxWidth = 'var(--content-width)', padding = '1rem', className = '', id = undefined}, ref) => {
+export const Container = forwardRef<HTMLDivElement, ContainerProps>(({ as: Component = 'div',  children, maxWidth = 'var(--content-width)', padding = '', className = '', id = undefined, ...props}, ref) => {
+    const responsivePadding = useResponsivePadding();
     const containerClasses = [
         className,
         styles.container
@@ -28,7 +29,8 @@ export const Container = forwardRef<HTMLDivElement, ContainerProps>(({ as: Compo
 
     const containerStyle = {
         '--max-width': maxWidth,
-        '--padding': padding
+        '--padding': padding === '' ? responsivePadding : padding,
+        ...props
     } as CSSProperties;
 
     return (
@@ -36,4 +38,5 @@ export const Container = forwardRef<HTMLDivElement, ContainerProps>(({ as: Compo
             {children}
         </Component>
     );
+
 });
