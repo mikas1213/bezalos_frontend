@@ -8,7 +8,7 @@ import { homepageImages } from '../../../../../assets/images/homepage';
 
 export const HeroSection = () => {    
     const navigate = useNavigate();
-    const isMounted = useIsMounted();
+    const { isMounted } = useIsMounted();
     
     const heroSectionClasses = [
         styles.hereSection
@@ -33,7 +33,7 @@ export const HeroSection = () => {
     return (
         <Container as='section' maxWidth='100vw' padding='0' className={heroSectionClasses}>
             <Container maxWidth='var(--content-width)'>
-                <Grid space='clamp(2rem, 4vw, 6rem)' className={styles.heroContainer}>
+                <Grid space='clamp(2rem, 4vw, 6rem)' className={styles.heroContainer} min='50px'>
                     <Stack className={`${styles.left} ${ isMounted ? styles.onload : '' }`}>
                         <Box className={styles.title}>
                             <h1>Tavo <span>ilgalaikių</span></h1>

@@ -1,12 +1,17 @@
 import { useState, useEffect } from 'react';
-
+import type { Dispatch, SetStateAction } from 'react';
 type Options = {
     delay?: number,
     initialValue?: boolean
 };
 
-export const useIsMounted = (options: Options = {}): boolean => {
-    const { delay = 0, initialValue = false } = options;
+type UseIsMountedReturn = {
+    isMounted: boolean,
+    setIsMounted: Dispatch<SetStateAction<boolean>>
+};
+
+export const useIsMounted = (options?: Options): UseIsMountedReturn => {
+    const { delay = 0, initialValue = false } = options || {};
     const [isMounted, setIsMounted] = useState<boolean>(initialValue);
 
     useEffect(() => {
@@ -20,5 +25,5 @@ export const useIsMounted = (options: Options = {}): boolean => {
         };
     }, [delay]);
 
-    return isMounted;
+    return { isMounted, setIsMounted };
 };

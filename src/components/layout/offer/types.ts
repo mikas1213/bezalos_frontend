@@ -1,14 +1,15 @@
 import type { ReactNode } from 'react';
-import { type CookieSetOptions } from 'universal-cookie';
+import type { Dispatch, SetStateAction } from 'react';
+import type { CookieSetOptions } from 'universal-cookie';
 
 export type OfferInputData = {
     email: string;
 };
 
 export type OfferProps = {
-    setIsShowOffer: (value: boolean | ((prev: boolean) => boolean)) => void,
-    setIsOfferSent: (value: boolean | ((prev: boolean) => boolean)) => void,
-    isOfferSent: Boolean,
+    setIsMounted: Dispatch<SetStateAction<boolean>>,
+    setIsOfferSent: Dispatch<SetStateAction<boolean>>,
+    isOfferSent: boolean,
     setCookie: (name: 'COOKIE_OFFER', value: any, options?: CookieSetOptions) => void;
 };
 

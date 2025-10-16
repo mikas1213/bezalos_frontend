@@ -38,9 +38,9 @@
     --light-green-500: hsl(100, 60%, 60%);
     --light-green-600: hsl(100, 50%, 50%);
     --light-green-hover: hsla(100, 50%, 50%, 0.2);
-    --dark-green-500: hsl(180, 80%, 15%);
-    --dark-green-600: hsl(110, 95%, 9%);
-
+    --dark-green-500: #084747;
+    --dark-green-600: #082b1d;
+    
     /* C-O-L-O-R-S   N-A-V-B-A-R */
     --nav-bottom: var(--light-yellow-green-30);
     --nav-logo-dark: var(--dark-green-600);

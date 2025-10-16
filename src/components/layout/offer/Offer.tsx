@@ -9,10 +9,10 @@ import { useForm } from 'react-hook-form';
 import { useMutation } from '@tanstack/react-query';
 import type { OfferProps, OfferInputData, ServerErrorResponse, OfferFormData } from './types';
 
-export const Offer = ({ setIsShowOffer, setIsOfferSent, isOfferSent, setCookie }: OfferProps) => {
+export const Offer = ({ setIsMounted, setIsOfferSent, isOfferSent, setCookie }: OfferProps) => {
 
     const handleSentOffer = () => {
-        setIsShowOffer(s => !s);
+        setIsMounted(s => !s);
         setIsOfferSent(false);
 
         setCookie('COOKIE_OFFER', true, {
@@ -35,7 +35,8 @@ export const Offer = ({ setIsShowOffer, setIsOfferSent, isOfferSent, setCookie }
         onError: (err) => {
             if (err.response?.data?.errors) {
                 const { response: {data: {errors: serverErrors}} } = err;
-                const { path, msg } = serverErrors[0]
+                const { path, msg } = serverErrors[0];
+
                 if (path === 'email') {
                     setError(path, { type: 'server', message: msg });
                 } else {
