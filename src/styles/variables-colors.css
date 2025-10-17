@@ -1,0 +1,20 @@
+:root {    
+    /* M-A-I-N C-O-L-O-R-S */
+    --white-100: hsl(0, 0%, 100%);
+    --transparent: hsla(0, 0%, 0%, 0); 
+    --light-green-grey-100: hsla(120, 7%, 94%, 1.0); /* #eff1ef */
+    --light-green-grey-50: hsla(120, 7%, 94%, 0.5);
+    --light-green-grey-70: hsla(120, 7%, 94%, 0.7);
+    --light-green-grey-80: hsla(120, 7%, 94%, 0.8);
+    --light-yellow-green-30: hsla(72, 11%, 65%, 0.3);
+
+    --light-green-500: hsl(100, 60%, 60%);
+    --light-green-600: hsl(100, 50%, 50%);
+    --light-green-hover: hsla(100, 50%, 50%, 0.2);
+    --dark-green-500: #084747;
+    --dark-green-600: #082b1d;
+    
+
+    /* T-E-X-T  C-O-L-O-R-S */
+    --text-light-100: var(--light-green-grey-100);
+}

@@ -3,7 +3,7 @@ import { type LogoProps } from '../types';
 export const Logo = ({ isChangeColor }: LogoProps) => {
     
     const { page, isScroll } = isChangeColor;
-    const color = page === 'home' && !isScroll ? 'var(--light-green-grey-100)' : 'var(--nav-logo-dark)';
+    const color = page === 'home' && !isScroll ? 'var(--light-green-grey-100)' : 'var(--dark-green-600)';
     
     return(
         <svg 

@@ -1,0 +1,42 @@
+:root {
+
+/* -M-A-I-N---S-I-Z-E- */
+    --ratio: 1.25;
+    --font-10: calc(var(--font-12) / var(--ratio)); /* 0.64rem  */
+    --font-12: calc(var(--font-16) / var(--ratio)); /* 0.8rem   */
+    --font-16: 1rem;                                /* 1rem     */
+    --font-20: calc(var(--font-16) * var(--ratio)); /* 1.25rem  */
+    --font-25: calc(var(--font-20) * var(--ratio)); /* 1.563rem */
+    --font-32: calc(var(--font-25) * var(--ratio)); /* 1.953rem */
+    --font-40: calc(var(--font-32) * var(--ratio)); /* 2.441rem */
+    --font-48: calc(var(--font-40) * var(--ratio)); /* 3.052rem */
+    --font-60: calc(var(--font-48) * var(--ratio)); /* 3.815rem */
+    --font-76: calc(var(--font-60) * var(--ratio)); /* 4.768rem */
+    --font-96: calc(var(--font-76) * var(--ratio)); /* 5.96rem  */
+
+    /* D-Y-N-A-M-I-C---F-O-N-T-S */
+
+    /* 1224 Viewport */
+    --font-d-h1-desk: clamp(0rem, 4.987vw, var(--font-60));
+    --font-d-h2-desk: clamp(0rem, 3.99vw, var(--font-48));
+    --font-d-h3-desk: clamp(0rem, 3.191vw, var(--font-40));
+    --font-d-h4-desk: clamp(0rem, 2.553vw, var(--font-32));
+    --font-d-h5-desk: clamp(0rem, 2.043vw, var(--font-25));
+    --font-d-h6-desk: clamp(0rem, 1.634vw, var(--font-20));
+    --font-d-md-desk: clamp(0rem, 1.307vw, var(--font-16));
+    --font-d-sm-desk: clamp(0rem, 1.046vw, var(--font-12));
+    --font-d-xs-desk: clamp(0rem, 0.837vw, var(--font-10));
+
+    /* 576 Viewport */
+    --font-d-xl-mobi: clamp(0rem, 16.556vw, var(--font-96));
+    --font-d-lg-mobi: clamp(0rem, 13.244vw, var(--font-76));
+    --font-d-h1-mobi: clamp(0rem, 10.597vw, var(--font-60));
+    --font-d-h2-mobi: clamp(0rem, 8.478vw, var(--font-48));
+    --font-d-h3-mobi: clamp(0rem, 6.781vw, var(--font-40));
+    --font-d-h4-mobi: clamp(0rem, 5.425vw, var(--font-32));
+    --font-d-h5-mobi: clamp(0rem, 4.342vw, var(--font-25));
+    --font-d-h6-mobi: clamp(0rem, 3.472vw, var(--font-20));
+    --font-d-md-mobi: clamp(0rem, 2.778vw, var(--font-16));
+    --font-d-sm-mobi: clamp(0rem, 2.222vw, var(--font-12));
+    --font-d-xs-mobi: clamp(0rem, 1.778vw, var(--font-10));
+}

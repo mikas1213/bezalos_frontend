@@ -1,0 +1,12 @@
+.educationSection {
+
+}
+
+.educationSection svg {    
+    width: var(--font-d-h2-desk);
+    height: var(--font-d-h2-desk);
+    flex-shrink: 0;
+    color: var(--dark-green-600);
+    
+
+}

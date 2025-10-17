@@ -10,12 +10,12 @@
 .exItem h3 {
     font-weight: 700;
     line-height: 100%;
-    font-size: var(--font-size-dynamic-h3-lg);
+    font-size: var(--font-d-h3-desk);
 }
 
 .exItem h4 {
     line-height: 110%;
-    font-size: var(--font-size-dynamic-p-lg);
+    font-size: var(--font-d-md-desk);
     font-weight: 400;
 }
 
@@ -27,10 +27,9 @@
     }
 
     .exItem h3 {
-        font-size: var(--font-size-dynamic-h3-sm);
+        font-size: var(--font-d-h3-mobi);
     }
     .exItem h4 {
-        font-size: var(--font-size-dynamic-h6-sm);
-
+        font-size: var(--fnot-h6-mobi);
     } 
 }

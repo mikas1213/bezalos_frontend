@@ -1,0 +1,44 @@
+:root {
+    --content-width: 1248px;
+    --content-padding-lg: 2rem;
+    --content-padding-sm: 1rem;
+    --content-padding-xs: 0.7rem;
+
+
+    /* S-P-A-C-I-N-G */
+    --s-0: 0;
+    --s-2: 0.125rem;
+    --s-4: 0.25rem;
+    --s-8: 0.5rem;
+    --s-12: 0.75rem;
+    --s-16: 1rem;
+    --s-20: 1.25rem;
+    --s-24: 1.5rem;
+    --s-32: 2rem;
+    --s-40: 2.5rem;
+    --s-48: 3rem;
+    --s-56: 3.5rem;
+    --s-96: 6rem;
+    --s-128: 8rem;
+
+
+    /* 1224px B-R-E-A-K   P-O-I-N */
+    --s-xs-desk: clamp(0rem, 0.654vw, var(--s-8)); 
+    --s-sm-desk: clamp(0rem, 1.307vw, var(--s-16)); 
+    --s-md-desk: clamp(0rem, 1.961vw, var(--s-24)); 
+    --s-lg-desk: clamp(0rem, 1.961vw, var(--s-32));
+    --s-xl-desk: clamp(0rem, 3.922vw, var(--s-48)); 
+
+    /* 576 B-R-E-A-K   P-O-I-N */
+    --s-xs-mobi: clamp(0rem, 1.389vw, var(--s-8));
+    --s-sm-mobi: clamp(0rem, 2.778vw, var(--s-16)); 
+    --s-md-mobi: clamp(0rem, 4.167vw, var(--s-24)); 
+    --s-lg-mobi: clamp(0rem, 5.556vw, var(--s-32));
+    --s-xl-mobi: clamp(0rem, 8.333vw, var(--s-48)); 
+
+    /* N-A-V-I-G-A-T-I-O-N */
+    --nav-height-80: clamp(60px, 7.813vw, 80px);
+    --nav-height-70: 70px;
+    --nav-height-60: 60px;
+}
+
