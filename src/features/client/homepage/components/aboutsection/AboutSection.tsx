@@ -10,9 +10,9 @@ export const AboutSection = () => {
         <Container as='section' maxWidth='100vw' padding='0'>
             <Container maxWidth='var(--content-width)'>
                  <Grid space='clamp(2rem, 4vw, 6rem)' className={styles.aboutContainer} min='200px'>
-                    <Stack className={styles.left}>
+                    <Box className={styles.left}>
                         <img src={image} alt='author-image' />
-                    </Stack>    
+                    </Box>    
 
                     <Cluster className={styles.right} dir='column' justify='space-between' gap={mediaQuery < 577 ? 'var(--s-md-mobi)' : '0'}>
                         <Stack space='var(--s-xs-mobi)'>

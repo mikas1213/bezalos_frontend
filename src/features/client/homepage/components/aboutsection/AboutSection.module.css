@@ -5,6 +5,10 @@
     overflow: hidden;
     border-radius: var(--s-24);
 }
+.left img {
+    border-radius: var(--s-24);
+    width: 100%;
+}
 
 .right h5 {
     font-size: var(--font-d-h6-desk);

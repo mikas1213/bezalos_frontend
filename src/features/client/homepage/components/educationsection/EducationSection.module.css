@@ -1,12 +1,20 @@
 .educationSection {
 
 }
-
-.educationSection svg {    
+.item {
+    color: var(--dark-green-600);
+}
+.item span {
+    max-width: 110px;
+    font-size: 0.5rem;
+}
+.item svg {    
     width: var(--font-d-h2-desk);
     height: var(--font-d-h2-desk);
-    flex-shrink: 0;
-    color: var(--dark-green-600);
-    
+}
 
+@media only screen and (max-width: 576px) {
+    .item span {
+        min-width: 240px;
+    }
 }
