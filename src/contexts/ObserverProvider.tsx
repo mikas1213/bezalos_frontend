@@ -22,17 +22,28 @@ export const ObserverProvider = ({ children }: ObserverProviderProps) => {
 			const [entry] = entries;
 			if (!entry) return;
 			setIsIntersecting(entry.isIntersecting);
-			if (!isIntersecting) return;
+
+            if (!entry.isIntersecting) return;
 			entry.target.classList.remove('section--hidden');
 		};
 
 		const observer = new IntersectionObserver(revealSection, {
 			root: null,
-			threshold: 0.05,
+			threshold: 0.02,
 		});
 
 		const sections = document.querySelectorAll('section[id]');
-		sections.forEach((section) => observer.observe(section));
+		sections.forEach((section, index) => {
+            const rect = section.getBoundingClientRect();
+            const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
+        
+            if (isVisible) {
+                setTimeout(() => {
+                    section.classList.remove('section--hidden');
+                }, index * 200);
+            }
+            observer.observe(section)
+        });
 
 		return () => observer.disconnect();
 	}, []);

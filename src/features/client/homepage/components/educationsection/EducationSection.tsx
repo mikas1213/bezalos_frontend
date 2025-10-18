@@ -18,7 +18,7 @@ export const EducationSection = () => {
     const mediaQuery = useMediaQuery();
 
     return (
-        <Container as='section' maxWidth='100vw' padding='0'>
+        <Container as='section' id='education' maxWidth='100vw' padding='0' className='section--hidden padding--b'>
             <Container>
                 <Cluster justify='space-between' align='center'>
                     {items.map(item => 

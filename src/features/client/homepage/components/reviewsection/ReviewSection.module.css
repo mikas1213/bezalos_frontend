@@ -1,0 +1,35 @@
+.reviewCard {
+    border-radius: 32px;
+    padding: 1.5rem;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.title {
+    font-size: var(--font-d-h6-desk);
+    font-weight: 600;
+    color: var(--dark-green-600);
+    line-height: 100%;
+}
+.text {
+    color: var(--dark-green-600);
+    font-size: var(--font-d-md-desk);
+    font-weight: 400;
+}
+
+.icon {
+    color: var(--color-btn-secondary);
+    font-size: var(--font-d-h6-desk);
+}
+
+@media only screen and (max-width: 576px) {
+    .title {
+        font-size: var(--font-d-h5-mobi);
+    }
+    .text {
+        font-size: var(--font-d-h6-mobi);
+    }
+
+    .icon {
+        font-size: var(--font-d-h5-mobi);
+    }
+}

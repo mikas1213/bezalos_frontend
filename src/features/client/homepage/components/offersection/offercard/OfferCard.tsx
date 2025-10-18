@@ -3,7 +3,6 @@ import { Kitchen, MealPlan, Mentorship } from '../icons';
 import { Box, Cluster, Stack } from '../../../../../../components/Shared';
 import type { OfferCardProps, IconsMap } from '../types';
 
-
 const iconsMap: IconsMap = {
     kitchen: <Kitchen />,
     mealplan: <MealPlan />,

@@ -11,6 +11,7 @@ export const HeroSection = () => {
     const { isMounted } = useIsMounted();
     
     const heroSectionClasses = [
+        // 'padding--bottom',
         styles.hereSection
     ].join(' ');
 

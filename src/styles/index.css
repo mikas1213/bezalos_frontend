@@ -213,6 +213,13 @@ img {
     opacity: 0;
     transform: translateY(7rem);
 }
+.padding--b {
+    padding-bottom: 4.375rem !important;
+}
+.padding--bt {
+    padding-top: 4.375rem !important;
+    padding-bottom: 4.375rem !important;
+}
 
 .myToast {
     background: var(--color-bgr-light);

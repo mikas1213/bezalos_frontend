@@ -1,12 +1,14 @@
 import { useCookies } from 'react-cookie';
 import { useState } from 'react';
 import { useIsMounted } from '../../../hooks';
+import { ObserverProvider } from '../../../contexts/ObserverProvider';
 import { 
     HeroSection, 
     ExperienceSection, 
     AboutSection,
     EducationSection,
-    OfferSection
+    OfferSection,
+    ReviewSection
 } from '../../../features/client/homepage/components';
 import { Offer } from '../../../components/layout';
 type CookieValue = { COOKIE_OFFER: string };
@@ -18,96 +20,15 @@ const HomePage = () => {
     const { isMounted, setIsMounted } = useIsMounted({ delay: 3000 });
 
     return (
-        <>
+        <ObserverProvider>
             {(!cookies.COOKIE_OFFER && isMounted || isOfferSent) && <Offer setIsMounted={setIsMounted} setIsOfferSent={setIsOfferSent} isOfferSent={isOfferSent} setCookie={setCookie} />}
             <HeroSection />
             <ExperienceSection />
             <AboutSection />
             <EducationSection />
             <OfferSection />
-            <div>Pirmas</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-        </>
+            <ReviewSection />
+        </ObserverProvider>
     );
 };
 

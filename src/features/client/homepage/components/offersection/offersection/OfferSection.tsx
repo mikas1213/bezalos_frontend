@@ -12,18 +12,15 @@ export const OfferSection = () => {
     const responsivePading = useResponsivePadding();
     
     return (
-        <Container as='section' maxWidth='100vw' padding='0'>
+        <Container as='section' id='offer' maxWidth='100vw' padding='0' className='section--hidden padding--b'>
             <Container maxWidth='var(--content-width)'>
-                <Stack space='var(--s-32)'>
+                <Stack space='var(--s-56)'>
                     <Stack className={styles.header} space={mediaQuery < 577 ? 'var(--s-lg-mobi)' : '0'}>
                         <Box className={styles.title}>Nežinai, nuo ko pradėti?</Box>
                         <Box className={styles.subTitle}>Žemiau rasi tris skirtingus būdus pradėti – pasirink tą, kuris šiuo metu tau atdoro artimiausias</Box>
                     </Stack>
 
-                    <Grid className={styles.OfferCards} space={responsivePading} 
-                        // min={mediaQuery > 768 ? '299px' : '272px'}
-                        min='256px'
-                    >
+                    <Grid className={styles.OfferCards} space={responsivePading} min='256px'>
                         {offersData.map(card => <OfferCard key={card.id} card={card} />)}
                     </Grid>
                 </Stack>

@@ -12,10 +12,6 @@ const ClientLayout = () => {
     const mediaQuery = useMediaQuery();
 
     const mainStyles = {
-        display: 'flex',
-        flexDirection: 'column',
-        gap: '4.375rem',
-        transition: 'transform 1s, opacity 1s',
         backgroundColor: 'var(--white-100)',
         paddingTop: location.pathname === '/receptai' ? '0' : mediaQuery < 441 ? 'var(--nav-height-60)' : mediaQuery < 577 ? 'var(--nav-height-70)' : 'var(--nav-height-80)'
     } as CSSProperties

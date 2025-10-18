@@ -7,7 +7,7 @@ import signature from '../../../../../assets/images/homepage/signature.webp';
 export const AboutSection = () => {
     const mediaQuery = useMediaQuery();
     return (
-        <Container as='section' maxWidth='100vw' padding='0'>
+        <Container as='section' id='about' maxWidth='100vw' padding='0' className='section--hidden padding--b'>
             <Container maxWidth='var(--content-width)'>
                  <Grid space='clamp(2rem, 4vw, 6rem)' className={styles.aboutContainer} min='200px'>
                     <Box className={styles.left}>

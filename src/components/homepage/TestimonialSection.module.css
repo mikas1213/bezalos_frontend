@@ -8,7 +8,6 @@
     gap: clamp(0rem, 1.563vw, 1rem);
     border-radius: 2rem;
     padding: 1.2rem;
-    /* width: 33%; */
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 
@@ -25,9 +24,7 @@
 }
 
 .icon {
-    /* color: var(--color-star); */
     color: var(--color-btn-secondary);
-    /* color: var(--color-bgr-top); */
     font-size: var(--font-size-dynamic-h6-lg);
 }
 
