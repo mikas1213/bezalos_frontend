@@ -1,0 +1,70 @@
+.offerCard {
+    border-radius: 32px;
+}
+.offerCard svg {
+    /* fill: red; */
+    
+}
+.offerCard .title {
+    /* font-size: var(--font-d-h4-desk); */
+    font-size: var(--font-32);
+    font-weight: 400;
+    line-height: 40px;
+}
+.offerCard .subTitle {
+    font-size: var(--font-d-h6-desk);
+    font-weight: 500;
+    line-height: 24px;
+    letter-spacing: 0.01em;
+}
+.offerCard .paragraph {
+    flex-wrap: nowrap;
+    font-size: var(--font-d-md-desk);
+    letter-spacing: 0.3px;
+    font-weight: 300;
+}
+
+.offerCard .btn button {
+    outline: none;
+    border: none;
+    cursor: pointer;
+    border-radius: 100px;
+    padding: 12px 56px;
+    font-size: var(--font-d-md-desk);
+    line-height: 24px;
+    letter-spacing: 0.01em;
+    font-weight: 500;
+}
+
+.darkTheme svg { fill: var(--light-green-grey-100); }
+.lightTheme svg { fill: var(--dark-green-500); }
+
+.darkTheme.offerCard, .lightTheme .btn button {
+    background-color: var(--dark-green-500);
+}
+
+.lightTheme.offerCard, .darkTheme .btn button {
+    background-color: var(--light-green-grey-100);
+}
+
+.darkTheme :is(.title, .subTitle, .paragraph) {
+    color:  var(--light-green-grey-100);
+}
+
+.lightTheme :is(.title, .subTitle, .paragraph) {
+    color:  var(--dark-green-500);
+}
+
+.darkTheme button {
+    color: var(--dark-green-500);
+}
+
+.lightTheme button {
+    color: var(--light-green-grey-100);
+}
+
+@media only screen and (max-width: 1024px) {
+    .offerCard .title {
+        font-size: var(--font-d-h3-desk);
+    }
+}

@@ -16,7 +16,7 @@
 	transition: all 0.3s;
 }
 .invertColor :is(.lineTop, .lineMiddle, .lineBottom) {
-    border-bottom: 2px solid var(--text-light-100);
+    border-bottom: 2px solid var(--light-green-grey-100);
 }
 
 .open .lineTop {

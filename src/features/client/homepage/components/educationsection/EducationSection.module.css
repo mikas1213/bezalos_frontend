@@ -1,7 +1,4 @@
-.educationSection {
-
-}
-.item {
+.item :is(.label, svg) {
     color: var(--dark-green-600);
 }
 
@@ -15,18 +12,14 @@
     font-weight: 500;
 }
 
-@media only screen and (max-width: 1024px) {
-    .item span {
-        /* max-width: 140px */
-    }
-}
-
 @media only screen and (max-width: 768px) {
-    .item span {
-        /* max-width: 110px; */
+    .item .label {
+        min-width: 200px;
+    }
+    .item:is(:nth-child(1), :nth-child(2)) {
+        padding-bottom: var(--s-sm-mobi);
     }
 }
-
 
 @media only screen and (max-width: 576px) {
     .item:is(:nth-child(1), :nth-child(2)) {
@@ -42,7 +35,4 @@
         text-align: center;
         font-size: var(--font-d-h6-mobi);
     }
-}
-
-@media only screen and (max-width: 576px) {
 }

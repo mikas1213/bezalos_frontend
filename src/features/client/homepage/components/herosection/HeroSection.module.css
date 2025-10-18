@@ -19,7 +19,7 @@
 }
 .title h1 {
     line-height: 115%;
-    color: var(--text-light-100);
+    color: var(--light-green-grey-100);
     font-size: var(--font-d-h1-desk);
     font-weight: 600;
 }
@@ -40,7 +40,7 @@
 }
 
 .subTitle h2 {
-    color: var(--text-light-100);
+    color: var(--light-green-grey-100);
     font-size: var(--font-d-h6-desk);
     font-weight: 400;
 }

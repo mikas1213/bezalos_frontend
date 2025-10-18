@@ -21,7 +21,7 @@ type BoxProps = {
     className?: string
 };
 
-export const Box = ({ as: Component = 'div', children, padding = ['0'], borderWidth = '0', className = '', }: BoxProps) => {
+export const  Box = ({ as: Component = 'div', children, padding = ['0'], borderWidth = '0', className = '', }: BoxProps) => {
     
     type PaddingArray = string[];
     const normalizePadding = (p: PaddingArray): [string, string, string, string] => {

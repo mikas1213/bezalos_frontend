@@ -15,7 +15,7 @@
 } 
 
 .home_at_top {
-    color: var(--text-light-100);
+    color: var(--light-green-grey-100);
     background-color: var(--dark-green-500);
 }
 .home_scrolled {
@@ -59,7 +59,7 @@
     background-color: var(--color-text-dark);
     transition: all 0.2s ease-in;
 }
-.home_at_top .indicator { background-color: var(--text-light-100); }
+.home_at_top .indicator { background-color: var(--light-green-grey-100); }
 .listItem:hover .indicator {
     width: 100%;
     transition: all 0.2s ease-out;
@@ -122,7 +122,7 @@
 }
 .listItemMobile.active {
     border-radius: 2rem;
-    background: var(--color-background-secondary);
+    background: var(--light-green-grey-100);
 }
 .listItemMobile.active span {
     color: var(--color-btn-secondary);

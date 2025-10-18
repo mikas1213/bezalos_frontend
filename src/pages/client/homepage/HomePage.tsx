@@ -5,7 +5,8 @@ import {
     HeroSection, 
     ExperienceSection, 
     AboutSection,
-    EducationSection
+    EducationSection,
+    OfferSection
 } from '../../../features/client/homepage/components';
 import { Offer } from '../../../components/layout';
 type CookieValue = { COOKIE_OFFER: string };
@@ -23,47 +24,8 @@ const HomePage = () => {
             <ExperienceSection />
             <AboutSection />
             <EducationSection />
+            <OfferSection />
             <div>Pirmas</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
-            <div>yra</div>
             <div>yra</div>
             <div>yra</div>
             <div>yra</div>

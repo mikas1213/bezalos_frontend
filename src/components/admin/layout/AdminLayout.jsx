@@ -9,6 +9,11 @@ const AdminLayout = () => {
     const axiosPrivate = useAxiosPrivate();
     const [stats, setStats] = useState({});
     const [isLoading, setIsLoading] = useState(true);
+
+    useEffect(() => {
+        const htmlElement = document.documentElement;
+        htmlElement.style.backgroundColor = '#eff1ef';
+    }, [])
     
     useEffect(() => {
         document.title = 'Be žalos | Admin';
