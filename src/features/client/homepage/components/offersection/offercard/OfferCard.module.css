@@ -3,7 +3,6 @@
     border-radius: 32px;
 }
 .offerCard .title {
-    /* font-size: var(--font-d-h4-desk); */
     font-weight: 400;
     line-height: 56px;
 }
@@ -80,14 +79,8 @@
     }
 }
 
-@media only screen and (max-width: 768px) {
-
-}
-
-
 @container (min-width: 192px) {
     .offerCard .title {
-        /* color: blue; */
         font-size: var(--font-25);
         line-height: 38px;
     }
@@ -99,14 +92,12 @@
     }
     .offerCard .btn button {
         padding: 8px 48px;
-        font-size: var(--font-16);
+        font-size: var(--font-12);
     }
 }
 
-
 @container (min-width: 262px) {
     .offerCard .title {
-        /* color: red; */
         font-size: var(--font-32);
         line-height: 42px;
     }
@@ -118,14 +109,13 @@
         font-size: var(--font-20);
     }
     .offerCard .btn button {
-        padding: 8px 48px;
+        padding: 12px 48px;
         font-size: var(--font-20);
     }
 }
 
 @container (min-width: 332px) {
     .offerCard .title {
-        /* color: green; */
         font-size: var(--font-40);
         line-height: 52px;
     }
@@ -137,7 +127,6 @@
         font-size: var(--font-20);
     }
     .offerCard .btn button {
-        padding: 12px 48px;
         font-size: var(--font-20);
     }
 }
@@ -155,10 +144,6 @@
         font-size: var(--font-25);
     }
     .offerCard .btn button {
-        padding: 12px 48px;
         font-size: var(--font-20);
     }
 }
-
-
-/* 192 - 543 */
