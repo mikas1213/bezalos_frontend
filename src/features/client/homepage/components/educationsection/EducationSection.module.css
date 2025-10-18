@@ -4,18 +4,14 @@
 .item {
     color: var(--dark-green-600);
 }
-.item span {
-    /* max-width: clamp(100px, 30vw, 11rem); */
-    /* max-width: 180px; */
-    /* font-size: 0.5rem; */
-}
+
 .item svg {    
-    width: var(--font-d-h2-desk);
-    height: var(--font-d-h2-desk);
+    width: var(--font-d-h1-desk);
+    height: var(--font-d-h1-desk);
 }
 
 .item .label {
-    font-size: var(--font-d-md-desk);
+    font-size: var(--font-d-h6-desk);
     font-weight: 500;
 }
 
@@ -43,8 +39,10 @@
 
     .item .label {
         min-width: clamp(0rem, 41.667vw, 15rem);
-        /* min-width: 240px; */
         text-align: center;
         font-size: var(--font-d-h6-mobi);
     }
+}
+
+@media only screen and (max-width: 576px) {
 }

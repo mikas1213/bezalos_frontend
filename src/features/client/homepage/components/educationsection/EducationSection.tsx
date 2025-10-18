@@ -21,7 +21,7 @@ export const EducationSection = () => {
     return (
         <Container maxWidth='100vw' padding='0'>
             <Container>
-                <Cluster justify='space-between'>
+                <Cluster justify='space-between' align='center'>
                     {items.map(item => 
                         <Cluster 
                             className={styles.item} 

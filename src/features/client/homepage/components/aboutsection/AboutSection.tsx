@@ -18,7 +18,8 @@ export const AboutSection = () => {
                         <Stack space='var(--s-xs-mobi)'>
                             <h5>Labas, esu Sandra</h5>
                             <Box>
-                                <h1>Pavargai nuolat mąstyti apie </h1>
+                                <h1>Pavargai nuolat</h1>
+                                <h1>mąstyti apie </h1>
                                 <h1>maistą?</h1>
                             </Box>
                         </Stack>
