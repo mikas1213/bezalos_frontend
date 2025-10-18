@@ -14,6 +14,15 @@
     text-align: center;
 }
 
+/* .OfferCards {
+    grid-template-columns: repeat(
+        auto-fit, 
+        minmax(min(var(5000px), 100%), 1fr)
+    ) !important;
+
+
+} */
+
 @media only screen and (max-width: 576px) {
     .header .title {
         font-size: var(--font-d-h2-mobi);

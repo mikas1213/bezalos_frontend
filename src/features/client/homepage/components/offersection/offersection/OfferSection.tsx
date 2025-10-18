@@ -20,7 +20,10 @@ export const OfferSection = () => {
                         <Box className={styles.subTitle}>Žemiau rasi tris skirtingus būdus pradėti – pasirink tą, kuris šiuo metu tau atdoro artimiausias</Box>
                     </Stack>
 
-                    <Grid space={responsivePading} min='299px'>
+                    <Grid className={styles.OfferCards} space={responsivePading} 
+                        // min={mediaQuery > 768 ? '299px' : '272px'}
+                        min='256px'
+                    >
                         {offersData.map(card => <OfferCard key={card.id} card={card} />)}
                     </Grid>
                 </Stack>

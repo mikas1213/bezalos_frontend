@@ -1,15 +1,11 @@
 .offerCard {
+    container-type: inline-size;
     border-radius: 32px;
 }
-.offerCard svg {
-    /* fill: red; */
-    
-}
 .offerCard .title {
-    font-size: var(--font-d-h4-desk);
-    /* font-size: var(--font-32); */
+    /* font-size: var(--font-d-h4-desk); */
     font-weight: 400;
-    line-height: 40px;
+    line-height: 56px;
 }
 .offerCard .subTitle {
     font-size: var(--font-d-h6-desk);
@@ -65,7 +61,7 @@
 
 @media only screen and (max-width: 1024px) {
     .offerCard .title {
-        font-size: var(--font-d-h2-desk);
+        /* font-size: var(--font-d-h2-desk); */
         line-height: 50px;
     }
 
@@ -78,12 +74,91 @@
     }
 
 
-.offerCard .btn button {
-    padding: 12px 56px;
-    font-size: var(--font-d-h6-desk);
+    .offerCard .btn button {
+        padding: 12px 56px;
+        font-size: var(--font-d-h5-desk);
     }
 }
 
 @media only screen and (max-width: 768px) {
 
 }
+
+
+@container (min-width: 192px) {
+    .offerCard .title {
+        /* color: blue; */
+        font-size: var(--font-25);
+        line-height: 38px;
+    }
+    .offerCard .paragraph {
+        font-size: var(--font-12);
+    }
+    .offerCard .subTitle {
+        font-size: var(--font-20);
+    }
+    .offerCard .btn button {
+        padding: 8px 48px;
+        font-size: var(--font-16);
+    }
+}
+
+
+@container (min-width: 262px) {
+    .offerCard .title {
+        /* color: red; */
+        font-size: var(--font-32);
+        line-height: 42px;
+    }
+    .offerCard .paragraph {
+        font-size: var(--font-16);
+        line-height: 23px;
+    }
+    .offerCard .subTitle {
+        font-size: var(--font-20);
+    }
+    .offerCard .btn button {
+        padding: 8px 48px;
+        font-size: var(--font-20);
+    }
+}
+
+@container (min-width: 332px) {
+    .offerCard .title {
+        /* color: green; */
+        font-size: var(--font-40);
+        line-height: 52px;
+    }
+    .offerCard .paragraph {
+        font-size: var(--font-16);
+        line-height: 23px;
+    }
+    .offerCard .subTitle {
+        font-size: var(--font-20);
+    }
+    .offerCard .btn button {
+        padding: 12px 48px;
+        font-size: var(--font-20);
+    }
+}
+
+@container (min-width: 402px) {
+    .offerCard .title {
+        font-size: var(--font-48);
+        line-height: 60px;
+    }
+    .offerCard .paragraph {
+        font-size: var(--font-20);
+        line-height: 28px;
+    }
+    .offerCard .subTitle {
+        font-size: var(--font-25);
+    }
+    .offerCard .btn button {
+        padding: 12px 48px;
+        font-size: var(--font-20);
+    }
+}
+
+
+/* 192 - 543 */
