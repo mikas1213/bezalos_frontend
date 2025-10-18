@@ -6,8 +6,8 @@
     
 }
 .offerCard .title {
-    /* font-size: var(--font-d-h4-desk); */
-    font-size: var(--font-32);
+    font-size: var(--font-d-h4-desk);
+    /* font-size: var(--font-32); */
     font-weight: 400;
     line-height: 40px;
 }
@@ -65,6 +65,25 @@
 
 @media only screen and (max-width: 1024px) {
     .offerCard .title {
-        font-size: var(--font-d-h3-desk);
+        font-size: var(--font-d-h2-desk);
+        line-height: 50px;
     }
+
+    .offerCard .subTitle {
+        font-size: var(--font-d-h5-desk);
+    }
+
+    .offerCard .paragraph { 
+        font-size: var(--font-d-h6-desk);
+    }
+
+
+.offerCard .btn button {
+    padding: 12px 56px;
+    font-size: var(--font-d-h6-desk);
+    }
+}
+
+@media only screen and (max-width: 768px) {
+
 }
