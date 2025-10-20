@@ -1,11 +1,11 @@
-import Main from "../components/UI/Main";
-import WelcomeSection from "../components/homepage/WelcomeSection";
-import AboutSection from "../components/homepage/AboutSection";
-import ExperienceSection from '../components/homepage/ExperienceSection';
-import BenefitsSection from "../components/homepage/BenefitsSection";
-import ClientStorySection from '../components/homepage/ClientStorySection';
-import TestimonialSection from '../components/homepage/TestimonialSection';
-import FooterSection from "../components/homepage/FooterSection";
+// import Main from "../components/UI/Main";
+// import WelcomeSection from "../components/homepage/WelcomeSection";
+// import AboutSection from "../components/homepage/AboutSection";
+// import ExperienceSection from '../components/homepage/ExperienceSection';
+// import BenefitsSection from "../components/homepage/BenefitsSection";
+// import ClientStorySection from '../components/homepage/ClientStorySection';
+// import TestimonialSection from '../components/homepage/TestimonialSection';
+// import FooterSection from "../components/homepage/FooterSection";
 // import Offer from '../components/offer/Offer';
 
 import { useCookies } from 'react-cookie';
@@ -60,14 +60,14 @@ const HomePage = () => {
         <>
             {/* <Navbar isHome='home' /> */}
             <Main myRef={ref}>
-                {/* {(!cookies.COOKIE_OFFER && isShowOffer || isOfferSent) && <Offer setIsShowOffer={setIsShowOffer} setIsOfferSent={setIsOfferSent} isOfferSent={isOfferSent} setCookie={setCookie} />} */}
-                <WelcomeSection />
+
+                {/* <WelcomeSection />
                 <ExperienceSection />
                 <AboutSection />
                 <BenefitsSection />
                 <ClientStorySection />
                 <TestimonialSection />
-                <FooterSection />
+                <FooterSection /> */}
             </Main>
         </>
     );

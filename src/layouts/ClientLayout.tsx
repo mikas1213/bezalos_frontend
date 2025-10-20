@@ -1,6 +1,6 @@
 import styles from './ClientLayout.module.css';
 import { Outlet } from 'react-router';
-import { Navbar } from '../components/layout';
+import { Navbar, Footer } from '../components/layout';
 import { useLocation } from 'react-router';
 import { useMediaQuery } from '../contexts/MediaQueryProvider';
 import { type CSSProperties, useEffect } from 'react';
@@ -29,13 +29,12 @@ const ClientLayout = () => {
     }, [currentPage]);
 
 	return (
-
         <Stack splitAfter={2} className={styles.clientLayout}>
             <Navbar page={currentPage} />
             <main style={mainStyles}>
                 <Outlet />
             </main>
-            <footer>FUUUUTER</footer>
+            <Footer />
         </Stack>
 
 	);

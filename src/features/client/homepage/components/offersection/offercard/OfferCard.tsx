@@ -2,17 +2,21 @@ import styles from './OfferCard.module.css';
 import { Kitchen, MealPlan, Mentorship } from '../icons';
 import { Box, Cluster, Stack } from '../../../../../../components/Shared';
 import type { OfferCardProps, IconsMap } from '../types';
-
 const iconsMap: IconsMap = {
     kitchen: <Kitchen />,
     mealplan: <MealPlan />,
     mentorship: <Mentorship />
 };
 
-export const OfferCard = ({ card }: { card: OfferCardProps }) => {
+export const OfferCard = ({ card, index }: { card: OfferCardProps, index: number }) => {
+    const offerCardClasses = [
+        styles.offerCard, 
+        card.id === 'kitchen' ? styles.darkTheme : styles.lightTheme
+    ].join(' ');
 
+    
     return (
-        <Box padding={['var(--s-32)']} className={`${styles.offerCard} ${card.id === 'kitchen' ? styles.darkTheme : styles.lightTheme}`}>
+        <Box padding={['var(--s-32)']} className={offerCardClasses}>
             <Stack splitAfter={6} space='var(--s-20)'>
                 <Box>{iconsMap[card.id]}</Box>
                 <Box className={styles.title}>{card.title}</Box>

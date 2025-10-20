@@ -25,11 +25,12 @@ export const ObserverProvider = ({ children }: ObserverProviderProps) => {
 
             if (!entry.isIntersecting) return;
 			entry.target.classList.remove('section--hidden');
+
 		};
 
 		const observer = new IntersectionObserver(revealSection, {
 			root: null,
-			threshold: 0.02,
+			threshold: 0.01,
 		});
 
 		const sections = document.querySelectorAll('section[id]');

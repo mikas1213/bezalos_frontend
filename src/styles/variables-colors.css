@@ -3,17 +3,30 @@
     --white-100: hsl(0, 0%, 100%);
     --transparent: hsla(0, 0%, 0%, 0); 
 
+
+    --red-100: hsl(348, 83%, 92%);
+    --red-300: hsl(348, 83%, 70%);
+    --red-500: hsl(348, 83%, 47%);
+    --red-700: hsl(348, 83%, 35%);
+    --red-900: hsl(348, 83%, 20%);
+
     --light-green-grey-100: hsl(120, 7%, 94%);
     --light-green-grey-300: hsl(120, 7%, 85%);
     --light-green-grey-500: hsl(120, 7%, 70%);
     --light-green-grey-700: hsl(120, 7%, 50%);
     --light-green-grey-900: hsl(120, 7%, 30%);
 
+    /* hsl(96, 10%, 83%); */
+    /* #d1d6cf; */
+
+
     --light-yellow-green-30: hsla(72, 11%, 65%, 0.3);
 
+    --light-green-300: hsl(105, 51%, 60%);
     --light-green-500: hsl(100, 60%, 60%);
     --light-green-600: hsl(100, 50%, 50%);
     --light-green-hover: hsla(100, 50%, 50%, 0.2);
     --dark-green-500: #084747;
     --dark-green-600: #082b1d;
+
 }

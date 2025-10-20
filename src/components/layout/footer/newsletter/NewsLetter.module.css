@@ -1,0 +1,110 @@
+.footerEmail {
+    margin-top: clamp(0.1rem, 1.563vw, 1rem);
+    margin-bottom: clamp(0.1rem, 5.469vw, 3.5rem);
+}
+
+.footerEmail .emailWrapper {
+    position: relative;
+}
+
+/* VISI vw YRA PRPIE 1024px EKRANO PLOCIO */
+.footerEmail input {
+    border: none;
+    outline: none;
+    border-radius: 4rem;
+    height: clamp(0rem, 6.25vw, 4rem); 
+    width: clamp(0rem, 50vw, 32rem);
+    font-size: var(--font-d-h6-desk);
+    padding-right: clamp(0rem, 20.313vw, 13rem);
+    padding-left: clamp(1rem, 3.125vw, 2rem);
+    color: var(var(--dark-green-600));
+    background-color: var(--light-green-grey-100);
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.inputError {
+    position: absolute;
+    top: 105%;
+    left: 5%;
+    color: var(--red-500);
+    font-weight: 500;
+    font-size: var(--font-d-md-desk);
+}
+
+.footerEmail input:focus {
+    outline: 1.5px solid var(--dark-green-600);
+}
+
+.footerEmail input.invalid {
+    outline: 1.5px solid var(--red-500);
+    transition: outline 0.2s ease;
+}
+
+.footerEmail input.valid {
+    outline: 1.5px solid var(--light-green-600);
+    transition: outline 0.2s ease;
+}
+
+.footerEmail button {
+    position: absolute;
+    border: none;
+    border-radius: 10rem;
+    color: var(--dark-green-600);
+    font-size: var(--font-d-md-desk);
+    font-weight: 600;
+    background-color: var(--light-green-600);
+    height: clamp(0rem, 4.688vw, 3rem);
+    width: clamp(0rem, 18.75vw, 12rem);
+    top: 50%;
+    transform: translateY(-50%);
+    right: clamp(0rem, 0.781vw, 0.5rem);
+    transition: background 0.2s;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.footerEmail button:hover {
+    background-color: var(--light-green-600);
+}
+.footerEmail button:active {
+    background-color: var(--light-green-300);
+}
+
+.footerEmail button:disabled {
+    cursor: not-allowed;
+    color: var(--light-green-grey-100);
+    background-color: var(--light-green-grey-300);
+    box-shadow: none;
+}
+
+@media only screen and (max-width: 576px) {
+    .footerEmail {
+        padding-bottom: clamp(0rem, 12.153vw, 4.375rem);
+    }
+
+    .footerEmail input {
+        width: 100%;
+    }
+
+    .footerEmail {
+        margin: 0;
+    }
+
+    .footerEmail input {
+        height: clamp(0rem, 11.111vw, 4rem); 
+        width: clamp(0rem, 77.777vw, 28rem);
+        
+        font-size: var(--font-d-h6-mobi);
+        padding-right: clamp(0rem, 24.444vw, 8.8rem);
+    }
+    
+    .footerEmail button {
+        height: clamp(0rem, 8.333vw, 3rem);
+        width: clamp(0rem, 27.777vw, 10rem);
+        right: clamp(0rem, 1.389vw, 0.5rem);
+        font-size: var(--font-d-md-mobi);
+    }
+
+    .inputError {
+        font-size: var(--font-d-sm-mobi);
+    }
+}

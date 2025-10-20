@@ -16,7 +16,7 @@ const Naryste = () => {
     const { user_s_subscription} = loggedUser;
     
     return (
-        <div className={styles.naryste}>
+        <div className={`${styles.naryste} padding--b`}>
             <Features />
             <div className={styles.plans}>
                 <PlanCard  planVariant='profilis' plan={plan.profilis} />

@@ -20,10 +20,6 @@ export type ServerErrorResponse = {
     }>;
 };
 
-export type OfferFormData = {
-    email: string
-};
-
 export type OverlayProps = {
     children: ReactNode,
     handleSentOffer: () => void

@@ -1,0 +1,33 @@
+.footer {
+    background-color: var(--light-green-grey-300);
+    transition: transform 1s, opacity 1s;
+}
+.footerTitle {
+    text-align: center;
+    color: var(--dark-green-600);
+    font-size: var(--font-d-h4-desk);
+    font-weight: 700;
+}
+
+.footerText {
+    text-align: center;
+    color: var(--dark-green-600);
+    font-size: var(--font-d-h6-desk);
+    margin: 2rem 0;
+}
+
+@media only screen and (max-width: 576px) {
+    .footerTitle {
+        line-height: 50%;
+        gap: clamp(0rem, 6.111vw, 2.2rem);
+        padding-bottom: clamp(0rem, 12.153vw, 4.375rem);
+        font-size: var(--font-d-h3-mobi);
+    }
+    .footerText {
+        margin: 0;
+        font-size: var(--font-d-h5-mobi);
+    }
+    .footerText {
+        padding-bottom: clamp(0rem, 12.153vw, 4.375rem);
+    }
+}

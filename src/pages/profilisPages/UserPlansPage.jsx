@@ -81,7 +81,7 @@ const UserPlansPage = () => {
     return (
         <>
             <div style={{
-                marginBottom: '3rem',
+                marginBottom: '5rem',
                 display: 'flex',
                 flexDirection: 'column',
                 alignItems: 'center'
@@ -105,7 +105,6 @@ const UserPlansPage = () => {
                 }
                                 
             </div>
-            <div style={{color: 'var(--color-bgr-top)', marginBottom: '0.5rem', textAlign: 'center'}}>Be žalos | bezalos.lt</div>
         </>
     );
 };

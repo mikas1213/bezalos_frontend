@@ -11,6 +11,8 @@
 }
 
 .video video {
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
     background-size: cover;
     display: block;
     border-top-left-radius: 1rem;

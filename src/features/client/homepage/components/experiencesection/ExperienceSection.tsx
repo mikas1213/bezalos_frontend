@@ -20,7 +20,7 @@ export const ExperienceSection = () => {
     const mediaQuery = useMediaQuery();
 
     return (
-        <Container as='section' id='experience' maxWidth='var(--content-width)' className='section--hidden padding--bt'>
+        <Container as='section' id='experience' maxWidth='var(--content-width)' className='padding--bt section--hidden'>
             <Cluster justify='space-between' className={`${styles.experienceItems} ${isMounted ? styles.onload : ''}`}>
                 {experiences.map(item => <Cluster key={item.value} className={styles.exItem} gap='0.3rem' dir='column' align={mediaQuery < 577 ? 'center' : 'flex-start'}>
                     <h3>{item.value}</h3>

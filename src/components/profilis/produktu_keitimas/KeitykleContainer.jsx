@@ -24,7 +24,7 @@ const KeitykleContainer = ({ children }) => {
     return (
         <div style={{
             width: containerWidth,
-            margin: '0 auto 2rem auto'
+            margin: '0 auto 5rem auto'
         }}>
             {children}
         </div>

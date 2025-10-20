@@ -41,7 +41,7 @@ const Videos = ({user_id, user_role, u_status, s_status, is_course}) => {
             <Filters searchItem={searchItem} />
             {isLoading ? <Spinner /> : videos?.filter(video => user_role === roles.admin ? video : video.is_active).length === 0
                 ? <NotFoundVideo />
-                : <div className={styles.videos}>
+                : <div className={`${styles.videos} padding--b`}>
                     {videos?.filter(video => user_role === roles.admin ? video : video.is_active).map(video => <Card 
                         key={video.id} 
                         video={video} 

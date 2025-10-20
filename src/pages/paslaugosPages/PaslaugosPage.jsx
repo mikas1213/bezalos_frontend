@@ -7,7 +7,6 @@ import PaslaugosTab from '../../components/paslaugos/PaslaugosTab';
 import PaslaugosHeader from '../../components/paslaugos/PaslaugosHeader';
 import Naryste from '../../components/paslaugos/naryste/Naryste';
 import Paslaugos from '../../components/paslaugos/paslaugos/Paslaugos';
-import Footer from '../../components/UI/Footer';
 import usePaslaugos from '../../hooks/paslaugos/usePaslaugos';
 import NotFound from '../paymentPages/NotFound';
 
@@ -40,7 +39,6 @@ const PaslaugosPage = () => {
                         {['naryste', 'paslaugos'].includes(currentTab) ? <PaslaugosHeader currentTab={currentTab} /> : <NotFound />}
                         {currentTab === 'naryste' && <Naryste /> }
                         {currentTab === 'paslaugos' && <Paslaugos paslaugos={paslaugos} isLoading={isLoading} /> }
-                        <Footer />
                     </PaslaugosContainer>
                 </Container>
             </Main>

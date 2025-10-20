@@ -7,7 +7,7 @@ import { AxiosError } from 'axios';
 import Spinner from '../../UI/Spinner';
 import { useForm } from 'react-hook-form';
 import { useMutation } from '@tanstack/react-query';
-import type { OfferProps, OfferInputData, ServerErrorResponse, OfferFormData } from './types';
+import type { OfferProps, OfferInputData, ServerErrorResponse } from './types';
 
 export const Offer = ({ setIsMounted, setIsOfferSent, isOfferSent, setCookie }: OfferProps) => {
 
@@ -20,7 +20,7 @@ export const Offer = ({ setIsMounted, setIsOfferSent, isOfferSent, setCookie }: 
         });
     };
 
-    const { register, formState: { errors }, setError, handleSubmit } = useForm<OfferFormData>({ mode: 'onChange' });
+    const { register, formState: { errors }, setError, handleSubmit } = useForm<OfferInputData>({ mode: 'onChange' });
     const { mutate, isPending } = useMutation<void, AxiosError<ServerErrorResponse>, OfferInputData>({
         mutationFn: async (inputsData) => {
             await axios.post('mailer/send-offer', inputsData, {
