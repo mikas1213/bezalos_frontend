@@ -6,7 +6,7 @@
         "p1": "Jei nori pradėti keisti santykį su maistu pamažu, savo tempu, kartu su kitomis moterimis.",
         "p2": "Tinka, jei tau trūksta motyvacijos, nori įkvėpimo ir bendrystės.",
         "btnLabel": "Rinktis",
-        "url": ""
+        "url": "/paslaugos?tab=naryste"
     },
        { 
         "id": "mealplan",
@@ -16,7 +16,7 @@
         "p1": "Jei nori konkretaus, aiškaus plano, bet be griežtų taisyklių ar draudimų.",
         "p2": "Tinka, jei nori struktūros, bet kartu mokytis klausytis savo kūno.",
         "btnLabel": "Rinktis",
-        "url": ""
+        "url": "/paslaugos/mitybos-planas"
     },
        { 
         "id": "mentorship",
@@ -26,6 +26,6 @@
         "p1": "Jei jau bandei keistis savarankiškai, bet grįžti prie tų pačių įpročių.",
         "p2": "Tinka, jei nori giliau pažvengti į save ir savo santikį su maistu.",
         "btnLabel": "Rinktis",
-        "url": ""
+        "url": "/individualus-valgymo-terapeutas"
     }
 ]

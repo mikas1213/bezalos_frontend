@@ -4,7 +4,7 @@ import toast from 'react-hot-toast';
 import { useForm } from 'react-hook-form';
 import { useMutation } from '@tanstack/react-query';
 import { Box, Cluster } from '../../../Shared';
-import { type AxiosError } from 'axios';
+import { AxiosError } from 'axios';
 
 type NewsLetterFormData = {
     email: string

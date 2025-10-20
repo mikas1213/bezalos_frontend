@@ -22,7 +22,7 @@
     color: var(--dark-green-600);
 }
 .footerDivider {
-    border-bottom: 1.2px solid #44444455;
+    border-bottom: 1.2px solid var(--light-green-grey-500);
     margin: clamp(0rem, 0.938vw, 0.6rem) -2rem clamp(0rem, 0.938vw, 0.6rem) -2rem;
 }
 .footerBottom {

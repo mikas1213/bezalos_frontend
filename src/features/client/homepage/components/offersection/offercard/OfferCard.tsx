@@ -2,13 +2,17 @@ import styles from './OfferCard.module.css';
 import { Kitchen, MealPlan, Mentorship } from '../icons';
 import { Box, Cluster, Stack } from '../../../../../../components/Shared';
 import type { OfferCardProps, IconsMap } from '../types';
+import { useNavigate } from 'react-router-dom';
+
 const iconsMap: IconsMap = {
     kitchen: <Kitchen />,
     mealplan: <MealPlan />,
     mentorship: <Mentorship />
 };
 
-export const OfferCard = ({ card, index }: { card: OfferCardProps, index: number }) => {
+export const OfferCard = ({ card }: { card: OfferCardProps }) => {
+    const navigate = useNavigate();
+
     const offerCardClasses = [
         styles.offerCard, 
         card.id === 'kitchen' ? styles.darkTheme : styles.lightTheme
@@ -31,7 +35,7 @@ export const OfferCard = ({ card, index }: { card: OfferCardProps, index: number
                     <Box>{card.p2}</Box>
                 </Cluster>
                 <Box className={styles.btn}>
-                    <button>{card.btnLabel}</button>
+                    <button onClick={() =>  navigate(card.url)}>{card.btnLabel}</button>
                 </Box>
             </Stack>          
         </Box>
