@@ -8,6 +8,7 @@ import {
     AboutSection,
     EducationSection,
     OfferSection,
+    InteractivePlanSection,
     ReviewSection
 } from '../../../features/client/homepage/components';
 import { Offer } from '../../../components/layout';
@@ -27,6 +28,7 @@ const HomePage = () => {
             <AboutSection />
             <EducationSection />
             <OfferSection />
+            <InteractivePlanSection />
             <ReviewSection />
         </ObserverProvider>
     );
