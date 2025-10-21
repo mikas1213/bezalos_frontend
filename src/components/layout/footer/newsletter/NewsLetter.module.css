@@ -5,9 +5,8 @@
 
 .footerEmail .emailWrapper {
     position: relative;
-}
+} 
 
-/* VISI vw YRA PRPIE 1024px EKRANO PLOCIO */
 .footerEmail input {
     border: none;
     outline: none;
@@ -17,7 +16,7 @@
     font-size: var(--font-d-h6-desk);
     padding-right: clamp(0rem, 20.313vw, 13rem);
     padding-left: clamp(1rem, 3.125vw, 2rem);
-    color: var(var(--dark-green-600));
+    color: var(--dark-green-600);
     background-color: var(--light-green-grey-100);
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
@@ -60,10 +59,6 @@
     right: clamp(0rem, 0.781vw, 0.5rem);
     transition: background 0.2s;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-}
-
-.footerEmail button:hover {
-    background-color: var(--light-green-600);
 }
 .footerEmail button:active {
     background-color: var(--light-green-300);

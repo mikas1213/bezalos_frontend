@@ -14,13 +14,11 @@
 }
 
 @media only screen and (max-width: 440px) {
-    .offerSent {
-        h1 {
-            font-size: var(--font-size-dynamic-h3-sm);
-        }
-        p {
-            font-size: var(--font-size-dynamic-h5-sm);
-        }
+    .offerSent h1 {
+        font-size: var(--font-size-dynamic-h3-sm);
+    }
+    .offerSent p {
+        font-size: var(--font-size-dynamic-h5-sm);
     }
 }
 

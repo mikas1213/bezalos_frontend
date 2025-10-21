@@ -15,11 +15,9 @@
     --light-green-grey-500: hsl(120, 7%, 70%);
     --light-green-grey-700: hsl(120, 7%, 50%);
     --light-green-grey-900: hsl(120, 7%, 30%);
-
+    
     /* hsl(96, 10%, 83%); */
     /* #d1d6cf; */
-
-
     --light-yellow-green-30: hsla(72, 11%, 65%, 0.3);
 
     --light-green-300: hsl(105, 51%, 60%);
@@ -28,5 +26,5 @@
     --light-green-hover: hsla(100, 50%, 50%, 0.2);
     --dark-green-500: #084747;
     --dark-green-600: #082b1d;
-
+                     /* #0a3324; */
 }

@@ -1,6 +1,6 @@
 [
     {   "id": "kitchen",
-        "title": "Valgau be žalos Virtuvė",
+        "title": ["Valgau be žalos Virtuvė"],
         "body": "Tai bendruomenės erdvė, kurioje išmoksti valgyti be kaltės ir dietų. Čia rasi edukuojantį turinį, praktikas ir nuolatinį palaikymą.",
         "subTitle": "Kada rintis?",
         "p1": "Jei nori pradėti keisti santykį su maistu pamažu, savo tempu, kartu su kitomis moterimis.",
@@ -10,7 +10,7 @@
     },
        { 
         "id": "mealplan",
-        "title": "Mitybos planas „Be žalos“",
+        "title": ["Mitybos planas ", "„Be žalos“"],
         "body": "Asmeniškai tau pritaikytas mitybos planas padedantis suprasti, ką ir kaip valgyti, kad jaustumeisi lengviau, sočiau ir ramiau bei įveiktum mitybos ribojimus",
         "subTitle": "Kada rintis?",
         "p1": "Jei nori konkretaus, aiškaus plano, bet be griežtų taisyklių ar draudimų.",
@@ -20,7 +20,7 @@
     },
        { 
         "id": "mentorship",
-        "title": "Mentorystė su manimi",
+        "title": ["Mentorystė su manimi"],
         "body": "Tai individuali kelionė, kurioje gilinamės į tavo santykį su maistu, emocijomis ir saviverte. Čia daugiau nei mityba – tai terapinė pagalba mokantis suprasti save.",
         "subTitle": "Kada rintis?",
         "p1": "Jei jau bandei keistis savarankiškai, bet grįžti prie tų pačių įpročių.",

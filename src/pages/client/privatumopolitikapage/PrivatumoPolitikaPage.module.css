@@ -1,0 +1,18 @@
+.header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 2rem 0;
+}
+.header h1 {
+    color: var(--dark-green-500);
+    font-size: var(--font-d-h3-desk);
+    font-weight: 500;
+}
+
+@media only screen and (max-width: 576px) {
+    .header h1{
+        font-size: var(--font-d-h4-mobi);
+        font-weight: 600;
+    }
+}

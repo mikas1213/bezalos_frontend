@@ -5,3 +5,4 @@ export { Cluster } from './cluster/Cluster';
 export { Container } from './container/Container';
 export { Grid } from './grid/Grid';
 export { Stack } from './stack/Stack';
+export { Accordion } from './accordion/Accordion';

@@ -2,7 +2,7 @@ import { type ReactNode } from 'react';
 
 export type OfferCardProps = {
     id: 'kitchen' | 'mealplan' | 'mentorship',
-    title: string,
+    title: string[],
     body: string,
     subTitle: string,
     p1: string,

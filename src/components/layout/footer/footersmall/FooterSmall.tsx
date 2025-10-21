@@ -15,7 +15,7 @@ export const FooterSmall = () => {
                     <img src={Logo} alt='logo' onClick={() => window.scrollTo(0, 0)}/>
                 </Cluster>
                 <Cluster justify='space-around' className={styles.termsOfUse}>
-                    <Link to='/kontaktai'>Kontaktai</Link>
+                    <Link to='https://www.facebook.com/sandra.jatulyte'>Kontaktai</Link>
                     <Link to='/pirkimo-taisykles'>Pirkimo taisyklės</Link>
                     <Link to='/privatumo-politika'>Privatumo politika</Link>
                 </Cluster>

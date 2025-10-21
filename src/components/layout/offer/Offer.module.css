@@ -15,15 +15,16 @@
     flex-direction: column;
     text-align: center;
     margin-bottom: 2rem;
-    h1 {
-        color: var(--color-text-green-dark);
-        font-size: var(--font-size-h5);
-    }
-    p {
-        color: var(--color-text-dark);
-        font-size: var(--font-size-p);
-    }
 }
+.offerContainer h1 {
+    color: var(--color-text-green-dark);
+    font-size: var(--font-size-h5);
+}
+.offerContainer p {
+    color: var(--color-text-dark);
+    font-size: var(--font-size-p);
+}
+
 .formContainer {
     display: flex;
     flex-direction: column;

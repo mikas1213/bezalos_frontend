@@ -40,8 +40,6 @@ import NeedBuyCourse from './pages/paymentPages/NeedBuyCourse';
 import SuccessSubscription from'./pages/paymentPages/SuccessSubscription';
 import SuccessBuyService from './pages/paymentPages/SuccessBuyService';
 import CancelSubscription from './pages/paymentPages/CancelSubscription';
-import PirkimoTaisyklesPage from './pages/PirkimoTaisyklesPage';
-import PrivatumoPolitikaPage from './pages/PrivatumoPolitikaPage';
 import AdminLayout from './components/admin/layout/AdminLayout';
 import UsersPage from './pages/admin/users/UsersPage';
 import UserPageLayout from './pages/admin/users/UserPageLayout';
@@ -60,6 +58,9 @@ import NarystesPage from './pages/admin/servicesPages/NarystesPage';
 import ReceptaiPage from './pages/admin/recipesPages/ReceptaiPage';
 import VideosPage from './pages/admin/videosPages/VideosPage';
 import MailsPage from './pages/admin/MailsPage';
+const PirkimoTaisyklesPage = lazy(() => import('./pages/client/pirkimotaisyklespage/PirkimoTaisyklesPage'));
+const PrivatumoPolitikaPage = lazy(() => import('./pages/client/privatumopolitikapage/PrivatumoPolitikaPage'));
+
 type CookieValue = {
     COOKIE_CONSENT: string 
 };

@@ -1,0 +1,7 @@
+.rowBodyItem {
+    font-size: var(--font-16);
+}
+.subItems {
+    margin: 0.5rem 0;
+    padding-left: 2rem;
+}

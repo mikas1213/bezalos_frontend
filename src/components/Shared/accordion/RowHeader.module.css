@@ -1,7 +1,6 @@
-.header {
+.rowHeader {
     display: flex;
     justify-content: space-between;
-    color: #082b1dcc;
     transition: color 0.2s ease-in-out;
     font-size: var(--font-size-h6);
     font-weight: 600;
@@ -9,33 +8,24 @@
     border-left: 3px solid transparent;
     transition: border-left 0.2s ease-in-out, color 0.2s ease-in-out;
 }
-.header span {
+.rowHeader span {
     display: flex;
     align-items: center;
 }
-.header .icon {
+.rowHeader .icon {
     font-size: 2rem;
     transition: transform 0.2s ease-in-out;
 }
 
-.header.open {
-    color: var(--color-btn-secondary);
-}
-
-.header.open .icon {
-    transform: rotate(-90deg);
-    color: var(--color-btn-secondary);
-}
-
 @media only screen and (max-width: 576px) {
-    .header {
+    .rowHeader {
         align-items: center;
         font-size: var(--font-size-p);
     }
 }
 
 @media only screen and (max-width: 375px) {
-    .header .icon {
+    .rowHeader .icon {
         font-size: 1.5rem;
     }
 }

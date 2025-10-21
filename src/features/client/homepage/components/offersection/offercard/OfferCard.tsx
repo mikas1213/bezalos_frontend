@@ -11,19 +11,20 @@ const iconsMap: IconsMap = {
 };
 
 export const OfferCard = ({ card }: { card: OfferCardProps }) => {
+    
     const navigate = useNavigate();
-
     const offerCardClasses = [
         styles.offerCard, 
-        card.id === 'kitchen' ? styles.darkTheme : styles.lightTheme
+        card.id === 'mealplan' ? styles.darkTheme : styles.lightTheme
     ].join(' ');
 
-    
     return (
         <Box padding={['var(--s-32)']} className={offerCardClasses}>
             <Stack splitAfter={6} space='var(--s-20)'>
                 <Box>{iconsMap[card.id]}</Box>
-                <Box className={styles.title}>{card.title}</Box>
+                <Box className={styles.title}>
+                    {card.title.map((row, i) => <div key={`${i}_${card.id}`}>{row}</div>)}
+                </Box>
                 <Box className={styles.paragraph}>{card.body}</Box>
                 <Box className={styles.subTitle}>{card.subTitle}</Box>
                 <Cluster gap='var(--s-16)' className={styles.paragraph}>

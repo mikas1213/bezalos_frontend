@@ -8,13 +8,15 @@ import type { CSSProperties, ElementType, HTMLAttributes, ReactNode } from 'reac
  * @param {string} [justify='flex-start'] – Defines horizontal alignment of items using CSS `justify-content`.
  * @param {string} [align='flex-start'] – Defines vertical alignment of items using CSS `align-items`.
  * @param {string} [gap='var(--s1)'] – Sets the spacing between items via CSS `gap`.
+ * @param {string} [wrap='var(--wrap)'] – Set wrap or nowrap.
  * @param {string} [className] – Additional CSS class names to apply to the container.
  * @param {string} [height] – Sets the hight of item.
  * @param {string} [dir] – Sets flex-direction row or column
  */
 
-type Justify = 'flex-start' |'center' |'flex-end' |'space-between' |'space-around' | 'space-evenly';
-type Align = 'flex-start' | 'center' | 'flex-end' | 'baseline' | 'stretch';
+type Justify = 'flex-start' | 'center' | 'flex-end' | 'space-between' | 'space-around' | 'space-evenly';
+type Align = 'flex-start' | 'center' | 'flex-end' | 'space-between' | 'baseline' | 'stretch';
+type Wrap = 'wrap' | 'nowrap';
 type Dir = 'row' | 'column';
 
 type ClusterProps = {
@@ -23,12 +25,13 @@ type ClusterProps = {
     justify?: Justify,
     align?: Align,
     gap?: string,
+    wrap?: Wrap,
     className?: string,
     height?: string,
     dir?: Dir
 } & HTMLAttributes<HTMLElement>
 
-export const Cluster = forwardRef<HTMLDivElement, ClusterProps>(({ as: Component = 'div', children, justify, align, height = '', dir = 'row', gap, className = '', ...props}, ref) => {
+export const Cluster = forwardRef<HTMLDivElement, ClusterProps>(({ as: Component = 'div', children, justify, align, height = '', dir = 'row', wrap = 'wrap', gap, className = '', ...props}, ref) => {
     const clusterClasses = [
         styles.cluster,
         className
@@ -39,6 +42,7 @@ export const Cluster = forwardRef<HTMLDivElement, ClusterProps>(({ as: Component
         '--justify': justify,
         '--align': align,
         '--dir': dir,
+        '--wrap': wrap,
         height: height
     } as CSSProperties;
 

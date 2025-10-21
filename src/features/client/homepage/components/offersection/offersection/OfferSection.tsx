@@ -21,7 +21,7 @@ export const OfferSection = () => {
                     </Stack>
 
                     <Grid className={styles.OfferCards} space={responsivePading} min='256px'>
-                        {offersData.map((card, i) => <OfferCard key={card.id} card={card} index={i} />)}
+                        {offersData.map(card => <OfferCard key={card.id} card={card} />)}
                     </Grid>
                 </Stack>
             </Container>

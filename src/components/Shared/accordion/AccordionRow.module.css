@@ -1,0 +1,10 @@
+.accordionRow {
+    cursor: pointer;
+    overflow: hidden;
+    transition: all 0.2s ease-in-out;
+}
+@media (hover: hover) and (pointer: fine) {
+    .accordionRow:hover {
+        background-color: var(--light-green-grey-100);
+    }
+}

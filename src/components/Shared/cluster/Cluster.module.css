@@ -1,6 +1,6 @@
 .cluster {
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: var(--wrap, 'wrap');
     flex-direction: var(--dir, 'row');
     gap: var(--gap, 0);
     justify-content: var(--justify, flex-start);
