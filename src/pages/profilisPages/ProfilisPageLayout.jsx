@@ -10,6 +10,9 @@ import { useUserDetails } from '../../hooks/profile/useUserDetails';
 
 const ProfilisPageLayout = () => {
     document.body.style.backgroundColor = '#fff';
+    //   <meta name="theme-color" content="#084747"></meta>
+    document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ff0000');
+    
     document.title = 'Be žalos | Profilis';
     const { auth } = useAuth();
     const { user_id, user_role, user_s_subscription, user_subscription } = jwtDecode(auth.accessToken); 
