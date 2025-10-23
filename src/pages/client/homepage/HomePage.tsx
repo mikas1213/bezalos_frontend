@@ -15,7 +15,7 @@ import { Offer } from '../../../components/layout';
 type CookieValue = { COOKIE_OFFER: string };
 
 const HomePage = () => {
-    document.body.style.backgroundColor = '#084747';
+    // document.body.style.backgroundColor = '#084747';
     const [isOfferSent, setIsOfferSent] = useState<boolean>(false);
     const [cookies, setCookie] = useCookies<'COOKIE_OFFER', CookieValue>(['COOKIE_OFFER']);
     const { isMounted, setIsMounted } = useIsMounted({ delay: 3000 });

@@ -16,7 +16,7 @@ export const OfferSection = () => {
             <Container maxWidth='var(--content-width)'>
                 <Stack space='var(--s-56)'>
                     <Stack className={styles.header} space={mediaQuery < 577 ? 'var(--s-lg-mobi)' : '0'}>
-                        <Box className={styles.title}>Nežinai, nuo ko pradėti?</Box>
+                        <Box className={styles.title}>Nežinai nuo ko pradėti?</Box>
                         <Box className={styles.subTitle}>Žemiau rasi tris skirtingus būdus pradėti – pasirink tą, kuris šiuo metu tau atdoro artimiausias</Box>
                     </Stack>
 

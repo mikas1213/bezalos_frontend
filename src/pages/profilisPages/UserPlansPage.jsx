@@ -86,7 +86,7 @@ const UserPlansPage = () => {
                 flexDirection: 'column',
                 alignItems: 'center'
             }}>
-                {/* <HowItWorks title='Mitybos planas' tutorial_link='https://youtu.be/FaMiA17ZTWw' /> */}
+                <HowItWorks title='Mitybos planas' tutorial_link='https://youtu.be/FaMiA17ZTWw' />
                 {isLoading ? null : (
                     plans.length > 0 ? <Plans 
                         plans={plans} 
