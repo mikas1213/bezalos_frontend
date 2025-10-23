@@ -42,36 +42,33 @@ const ProfilisPageLayout = () => {
 
     return (
         <>
-            {/* <Navbar /> */}
-            <Main>          
-                <Container>
-                    <ProfileNavbar />
-                </Container>      
-                {!isLoading && <Outlet context={{ 
-                    user_role, 
-                    is_subscription, 
-                    prodList, 
-                    plans, 
-                    selectedPlan, 
-                    setSelectedPlan, 
-                    anketa, 
-                    setAnketa, 
-                    recipes,
-                    setRecipes,
-                    user_id, 
-                    logicFilter,
-                    setLogicFilter,
-                    searchRecipe,
-                    setSearchRecipe,
-                    isLoading,
-                    /* PAGINATION RETURN */
-                    currentPage,
-                    totalPages,
-                    paginatedRecipes,
-                    setPaginatedRecipes,
-                    setCurrentPage
-                }} />}
-            </Main>
+            <Container>
+                <ProfileNavbar />
+            </Container>      
+            {!isLoading && <Outlet context={{ 
+                user_role, 
+                is_subscription, 
+                prodList, 
+                plans, 
+                selectedPlan, 
+                setSelectedPlan, 
+                anketa, 
+                setAnketa, 
+                recipes,
+                setRecipes,
+                user_id, 
+                logicFilter,
+                setLogicFilter,
+                searchRecipe,
+                setSearchRecipe,
+                isLoading,
+                /* PAGINATION RETURN */
+                currentPage,
+                totalPages,
+                paginatedRecipes,
+                setPaginatedRecipes,
+                setCurrentPage
+            }} />}
         </>
     );
 };

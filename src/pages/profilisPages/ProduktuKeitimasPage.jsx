@@ -42,7 +42,7 @@ const ProduktuKeitimasPage = () => {
 
     return (
         <Container>
-            <HowItWorks title='Produktų keitimas' tutorial_link='https://youtu.be/lWZj6OZBuoo' />
+            {/* <HowItWorks title='Produktų keitimas' tutorial_link='https://youtu.be/lWZj6OZBuoo' /> */}
             {is_subscription ? 
                 <KeitykleContainer>
                     <ProductInput 
