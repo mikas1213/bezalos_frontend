@@ -50,7 +50,6 @@ const cards: Card[] = [
 ];
 
 export const InteractivePlanSection = () => {
-	const phones = [phone1, phone2, phone3];
 	const mediaQuery = useMediaQuery();
 	const [selected, setSelected] = useState<number>(4);
 
@@ -106,54 +105,9 @@ export const InteractivePlanSection = () => {
 			}
         };
 
-        container.addEventListener('scrollend', handleScroll);
-        return () => container.removeEventListener('scrollend', handleScroll);
+        container.addEventListener('scroll', handleScroll);
+        return () => container.removeEventListener('scroll', handleScroll);
     }, []);
-    
-	// useEffect(() => {
-	// 	const container = scrollContainer.current;
-	// 	if (!container) return;
-
-	// 	const initScroll = setTimeout(() => {
-	// 		const totalWidth = container.scrollWidth;
-	// 		const containerWidth = container.clientWidth;
-	// 		container.scrollLeft = totalWidth / 3;
-
-	// 	}, 100);
-
-	// 	const handleScroll = () => {
-	// 		if (isScrollingRef.current) return;
-
-	// 		const { scrollLeft, scrollWidth, clientWidth } = container;
-	// 		const singleSetWidth = scrollWidth / 3;
-
-	// 		if (scrollLeft <= 10) {
-				
-	// 			isScrollingRef.current = true;
-	// 			container.scrollLeft = singleSetWidth + scrollLeft;
-	// 			setTimeout(() => {
-	// 				isScrollingRef.current = false;
-	// 			}, 500);
-	// 		}
-
-	// 		if (scrollLeft >= singleSetWidth * 2 - 10) {
-				
-	// 			isScrollingRef.current = true;
-	// 			container.scrollLeft =
-	// 				singleSetWidth + (scrollLeft - singleSetWidth * 2);
-	// 			setTimeout(() => {
-	// 				isScrollingRef.current = false;
-	// 			}, 500);
-	// 		}
-	// 	};
-
-	// 	container.addEventListener('scroll', handleScroll, { passive: true });
-
-	// 	return () => {
-	// 		clearTimeout(initScroll);
-	// 		container.removeEventListener('scroll', handleScroll);
-	// 	};
-	// }, []);
 
 	return (
 		<Container
