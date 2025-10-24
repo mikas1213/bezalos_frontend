@@ -39,14 +39,15 @@
 .item {
 	text-align: center;
 	color: var(--light-green-grey-100);
-	padding: var(--s-24) 0;
+	padding: var(--s-md-desk) 0;
 }
 
 .itemTitle {
-	font-size: var(--font-d-h4-desk);
+	font-size: var(--font-d-h3-desk);
 	font-weight: 700;
 }
 .itemLabel {
+    font-size: var(--font-d-h6-desk);
 }
 
 /* C A R O U S EL E */
