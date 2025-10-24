@@ -57,17 +57,57 @@ export const InteractivePlanSection = () => {
 	const scrollContainer = useRef<HTMLDivElement>(null);
 	const isScrollingRef = useRef(false);
 
-
-	const allCards: Card[] = [...cards, ...cards, ...cards].map((card, i) => ({
+	const allCards: Card[] = [...cards, ...cards, ...cards].filter(card => card.id !== 3).map((card, i) => ({
 		...card,
 		id: i,
 	}));
-    
+
     useEffect(() => {
         const container = scrollContainer.current;
-        if(!container) return;
-        // container.scrollLeft = 500;
+        if (!container) return;
+        
+        const singleSetWidth = container.scrollWidth / 3;
+        container.scrollLeft = singleSetWidth; // Pradžioje - vidurinis setas
     }, []);
+    
+    useEffect(() => {
+        const container = scrollContainer.current
+        if(!container) return;
+        const handleScroll = () => {
+            const cardElement = container.querySelector('[class*=interactiveCard]') as HTMLElement;
+            if (!cardElement) return;
+            const cardWidth = cardElement.offsetWidth;
+            const scrollLeft = container.scrollLeft;
+            const index = Math.round(scrollLeft / cardWidth);
+            setSelected(index % allCards.length);
+
+
+
+            const singleSetWidth = container.scrollWidth / 3;
+
+			if (scrollLeft <= 10) {
+				
+				isScrollingRef.current = true;
+				container.scrollLeft = singleSetWidth + scrollLeft;
+				setTimeout(() => {
+					isScrollingRef.current = false;
+				}, 500);
+			}
+
+			if (scrollLeft >= singleSetWidth * 2 - 10) {
+				
+				isScrollingRef.current = true;
+				container.scrollLeft =
+					singleSetWidth + (scrollLeft - singleSetWidth * 2);
+				setTimeout(() => {
+					isScrollingRef.current = false;
+				}, 500);
+			}
+        };
+
+        container.addEventListener('scrollend', handleScroll);
+        return () => container.removeEventListener('scrollend', handleScroll);
+    }, [allCards.length]);
     
 	// useEffect(() => {
 	// 	const container = scrollContainer.current;
@@ -150,7 +190,7 @@ export const InteractivePlanSection = () => {
 									card={card}
 									{...(!card.disabled && {
 										selected: selected === i,
-										setSelected,
+										// setSelected,
 									})}
 								/>
 							))}

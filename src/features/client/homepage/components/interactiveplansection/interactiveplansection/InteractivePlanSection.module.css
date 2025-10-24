@@ -60,24 +60,17 @@
 .scrollContainer {
 	display: flex;
 	gap: var(--s-sm-mobi);
+    
 	overflow-x: scroll;
 	scroll-behavior: auto;
 	scrollbar-width: none;
-	-webkit-overflow-scrolling: touch;
-
-
-    /* Snap nustatymai */
 	scroll-snap-type: x mandatory;
 	/* scroll-padding: 0 calc(50% - 140px); */
 }
 .scrollContainer::-webkit-scrollbar {
 	display: none;
 }
-.scrollContainer > * {
-	/* flex: 0 0 auto; */
-    /* scroll-snap-align: center; */
-	/* scroll-snap-stop: always; */
-}
+
 /* C A R O U S E L E */
 
 @media only screen and (max-width: 576px) {
@@ -91,6 +84,12 @@
 	.body {
 		grid-template-columns: 0.5fr 1fr 0.5fr;
 	}
+    .bottom .itemTitle {
+        font-size: var(--font-d-h5-mobi);
+    }
+    .bottom .itemLabel {
+        font-size: var(--font-d-md-mobi);
+    }
 }
 
 @media only screen and (max-width: 440px) {
