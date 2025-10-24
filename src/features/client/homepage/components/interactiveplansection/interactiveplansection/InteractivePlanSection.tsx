@@ -61,27 +61,27 @@ export const InteractivePlanSection = () => {
 		...card,
 		id: i,
 	}));
-
+    console.log('InteractivePlanSection: ', selected);
     useEffect(() => {
-    const container = scrollContainer.current;
-    if (!container) return;
-    
-    // Laukiam kol DOM pilnai užsikrauna
-    const initScroll = () => {
-        const singleSetWidth = container.scrollWidth / 3;
-        if (singleSetWidth > 0) {
-            container.scrollLeft = singleSetWidth;
-        }
-    };
-    
-    // Bandome iš karto
-    initScroll();
-    
-    // Ir dar kartą po trumpo delay (production safety)
-    const timer = setTimeout(initScroll, 100);
-    
-    return () => clearTimeout(timer);
-}, []);
+        const container = scrollContainer.current;
+        if (!container) return;
+        
+        // Laukiam kol DOM pilnai užsikrauna
+        const initScroll = () => {
+            const singleSetWidth = container.scrollWidth / 3;
+            if (singleSetWidth > 0) {
+                container.scrollLeft = singleSetWidth;
+            }
+        };
+        
+        // Bandome iš karto
+        initScroll();
+        
+        // Ir dar kartą po trumpo delay (production safety)
+        const timer = setTimeout(initScroll, 100);
+        
+        return () => clearTimeout(timer);
+    }, []);
     
     useEffect(() => {
         const container = scrollContainer.current
