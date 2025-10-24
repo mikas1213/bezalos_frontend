@@ -4,5 +4,6 @@ export type Card = {
     icon: ReactNode,
     title: string,
     desc: string,
+    photo: string,
     disabled: boolean
 };

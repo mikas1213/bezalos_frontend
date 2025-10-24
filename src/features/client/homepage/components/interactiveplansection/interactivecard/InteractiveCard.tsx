@@ -15,7 +15,7 @@ export const InteractiveCard = ({ card, selected, setSelected }: CardProps) => {
     ].filter(Boolean).join(' ');
 
     const handleOnClick = () => {
-        if(setSelected && card.id > -1 && card.id < 3) {
+        if(setSelected) {
             setSelected(card.id);
         }
     };

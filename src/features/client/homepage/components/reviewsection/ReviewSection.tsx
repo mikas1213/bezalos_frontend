@@ -1,5 +1,5 @@
 import styles from './ReviewSection.module.css';
-import { Container, Grid, Stack } from '../../../../../components/Shared';
+import { Box, Container, Grid, Stack } from '../../../../../components/Shared';
 import { useMediaQuery } from '../../../../../contexts/MediaQueryProvider';
 import { FaStar } from 'react-icons/fa6';
 type Reviews = {
@@ -29,11 +29,23 @@ const ReviewCard = ({title, text}: Reviews) => {
 };
 
 export const ReviewSection = () => {
-
+    const mediaQuery: number = useMediaQuery();
     return (
         <Container as='section' id='reviews' maxWidth='var(--content-width)' className='section--hidden padding--b'>
+            <Stack
+				className={styles.header}
+				space={mediaQuery < 577 ? 'var(--s-xs-mobi)' : 'var(--s-sm-desk)'}
+			>
+				<Box className={styles.title}>
+					Klientų patirtys
+				</Box>
+				<Box className={styles.subTitle}>
+					Ką apie Valgau be žalos kalba bendruomenės merginos
+				</Box>
+			</Stack>
+
             <Grid min='265px'>
-                {reviews.map((item, i) => <ReviewCard title={item.title} text={item.text} key={i}/> )}
+                {reviews.map((item, i) => <ReviewCard title={item.title} text={item.text} key={i} /> )}
             </Grid>
         </Container>
     );
