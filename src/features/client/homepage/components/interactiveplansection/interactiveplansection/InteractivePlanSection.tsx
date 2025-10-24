@@ -79,6 +79,8 @@ export const InteractivePlanSection = () => {
             const cardWidth = cardElement.offsetWidth;
             const scrollLeft = container.scrollLeft;
             const index = Math.round(scrollLeft / cardWidth);
+
+            console.log(cardWidth, scrollLeft)
             setSelected(index % allCards.length);
 
 
@@ -133,7 +135,7 @@ export const InteractivePlanSection = () => {
 					</Stack>
 				</Container>
 
-				{mediaQuery < 577 && (
+				{/* {mediaQuery < 577 && ( */}
 					<div className={styles.carouselWrapper}>
 						<div
 							ref={scrollContainer}
@@ -151,7 +153,7 @@ export const InteractivePlanSection = () => {
 							))}
 						</div>
 					</div>
-				)}
+				{/* })} */}
 
 				<Container>
 					<div className={styles.body}>
