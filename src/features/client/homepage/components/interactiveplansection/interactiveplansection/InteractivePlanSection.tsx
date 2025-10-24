@@ -80,12 +80,12 @@ export const InteractivePlanSection = () => {
             const scrollLeft = container.scrollLeft;
             const index = Math.round(scrollLeft / cardWidth);
 
-            console.log(cardWidth, scrollLeft)
+            
             setSelected(index % allCards.length);
 
 
             const singleSetWidth = container.scrollWidth / 3;
-
+            console.log(window.innerWidth / 2, scrollLeft, cardWidth)
 			if (scrollLeft <= 10) {
 				
 				isScrollingRef.current = true;
@@ -106,8 +106,8 @@ export const InteractivePlanSection = () => {
 			}
         };
 
-        container.addEventListener('scrollend', handleScroll);
-        return () => container.removeEventListener('scrollend', handleScroll);
+        container.addEventListener('scroll', handleScroll);
+        return () => container.removeEventListener('scroll', handleScroll);
     }, []);
 
 
@@ -135,7 +135,7 @@ export const InteractivePlanSection = () => {
 					</Stack>
 				</Container>
 
-				{/* {mediaQuery < 577 && ( */}
+				{mediaQuery < 577 && (
 					<div className={styles.carouselWrapper}>
 						<div
 							ref={scrollContainer}
@@ -153,7 +153,7 @@ export const InteractivePlanSection = () => {
 							))}
 						</div>
 					</div>
-				{/* })} */}
+				)}
 
 				<Container>
 					<div className={styles.body}>
