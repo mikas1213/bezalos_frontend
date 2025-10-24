@@ -67,13 +67,15 @@
 
     /* Snap nustatymai */
 	scroll-snap-type: x mandatory;
-	scroll-padding: 0 calc(50% - (100vw / 1.8));
+	/* scroll-padding: 0 calc(50% - 140px); */
 }
 .scrollContainer::-webkit-scrollbar {
 	display: none;
 }
 .scrollContainer > * {
-	flex: 0 0 auto;
+	/* flex: 0 0 auto; */
+    /* scroll-snap-align: center; */
+	/* scroll-snap-stop: always; */
 }
 /* C A R O U S E L E */
 

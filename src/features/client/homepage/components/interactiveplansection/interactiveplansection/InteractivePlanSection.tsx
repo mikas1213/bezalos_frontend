@@ -52,7 +52,7 @@ const cards: Card[] = [
 export const InteractivePlanSection = () => {
 	const phones = [phone1, phone2, phone3];
 	const mediaQuery = useMediaQuery();
-	const [selected, setSelected] = useState<number>(0);
+	const [selected, setSelected] = useState<number>(4);
 
 	const scrollContainer = useRef<HTMLDivElement>(null);
 	const isScrollingRef = useRef(false);
@@ -66,9 +66,7 @@ export const InteractivePlanSection = () => {
     useEffect(() => {
         const container = scrollContainer.current;
         if(!container) return;
-        container.scrollLeft = 500;
-
-        
+        // container.scrollLeft = 500;
     }, []);
     
 	// useEffect(() => {

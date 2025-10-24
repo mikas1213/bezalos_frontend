@@ -11,8 +11,9 @@
 
 
     /* Pagrindinė dalis - snap pozicija */
-    scroll-snap-align: start;
+    scroll-snap-align: center;
     scroll-snap-stop: always;
+    
     
     flex-shrink: 0;
 }
