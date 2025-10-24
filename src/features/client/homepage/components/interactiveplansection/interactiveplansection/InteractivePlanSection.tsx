@@ -74,8 +74,6 @@ export const InteractivePlanSection = () => {
         if(!container) return;
         const handleScroll = () => {
             const cardElement = container.querySelector('[class*=interactiveCard]') as HTMLElement;
-
-            console.log('cardElement: ', cardElement)
             if (!cardElement) return;
             const cardWidth = cardElement.offsetWidth;
             const scrollLeft = container.scrollLeft;
@@ -105,8 +103,8 @@ export const InteractivePlanSection = () => {
 			}
         };
 
-        container.addEventListener('scroll', handleScroll);
-        return () => container.removeEventListener('scroll', handleScroll);
+        container.addEventListener('scrollend', handleScroll);
+        return () => container.removeEventListener('scrollend', handleScroll);
     }, []);
 
 	return (
