@@ -63,12 +63,25 @@ export const InteractivePlanSection = () => {
 	}));
 
     useEffect(() => {
-        const container = scrollContainer.current;
-        if (!container) return;
-        
+    const container = scrollContainer.current;
+    if (!container) return;
+    
+    // Laukiam kol DOM pilnai užsikrauna
+    const initScroll = () => {
         const singleSetWidth = container.scrollWidth / 3;
-        container.scrollLeft = singleSetWidth; // Pradžioje - vidurinis setas
-    }, []);
+        if (singleSetWidth > 0) {
+            container.scrollLeft = singleSetWidth;
+        }
+    };
+    
+    // Bandome iš karto
+    initScroll();
+    
+    // Ir dar kartą po trumpo delay (production safety)
+    const timer = setTimeout(initScroll, 100);
+    
+    return () => clearTimeout(timer);
+}, []);
     
     useEffect(() => {
         const container = scrollContainer.current
@@ -91,7 +104,7 @@ export const InteractivePlanSection = () => {
 				container.scrollLeft = singleSetWidth + scrollLeft;
 				setTimeout(() => {
 					isScrollingRef.current = false;
-				}, 500);
+				}, 50);
 			}
 
 			if (scrollLeft >= singleSetWidth * 2 - 10) {
@@ -101,7 +114,7 @@ export const InteractivePlanSection = () => {
 					singleSetWidth + (scrollLeft - singleSetWidth * 2);
 				setTimeout(() => {
 					isScrollingRef.current = false;
-				}, 500);
+				}, 50);
 			}
         };
 
