@@ -61,26 +61,13 @@ export const InteractivePlanSection = () => {
 		...card,
 		id: i,
 	}));
-    console.log('InteractivePlanSection: ', selected);
+
     useEffect(() => {
         const container = scrollContainer.current;
         if (!container) return;
         
-        // Laukiam kol DOM pilnai užsikrauna
-        const initScroll = () => {
-            const singleSetWidth = container.scrollWidth / 3;
-            if (singleSetWidth > 0) {
-                container.scrollLeft = singleSetWidth;
-            }
-        };
-        
-        // Bandome iš karto
-        initScroll();
-        
-        // Ir dar kartą po trumpo delay (production safety)
-        const timer = setTimeout(initScroll, 100);
-        
-        return () => clearTimeout(timer);
+        const singleSetWidth = container.scrollWidth / 3;
+        container.scrollLeft = singleSetWidth;
     }, []);
     
     useEffect(() => {
@@ -88,12 +75,13 @@ export const InteractivePlanSection = () => {
         if(!container) return;
         const handleScroll = () => {
             const cardElement = container.querySelector('[class*=interactiveCard]') as HTMLElement;
+
+            console.log('cardElement: ', cardElement)
             if (!cardElement) return;
             const cardWidth = cardElement.offsetWidth;
             const scrollLeft = container.scrollLeft;
             const index = Math.round(scrollLeft / cardWidth);
             setSelected(index % allCards.length);
-
 
 
             const singleSetWidth = container.scrollWidth / 3;
@@ -120,7 +108,7 @@ export const InteractivePlanSection = () => {
 
         container.addEventListener('scrollend', handleScroll);
         return () => container.removeEventListener('scrollend', handleScroll);
-    }, [allCards.length]);
+    }, []);
     
 	// useEffect(() => {
 	// 	const container = scrollContainer.current;
