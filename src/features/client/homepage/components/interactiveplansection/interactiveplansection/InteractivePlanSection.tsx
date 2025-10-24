@@ -64,9 +64,10 @@ export const InteractivePlanSection = () => {
     useEffect(() => {
         const container = scrollContainer.current;
         if (!container) return;
-        
-        const singleSetWidth = container.scrollWidth / 3;
-        container.scrollLeft = singleSetWidth;
+        setTimeout(() => {
+            const singleSetWidth = container.scrollWidth / 3;
+            container.scrollLeft = singleSetWidth;
+        }, 100);
     }, []);
     
     useEffect(() => {
