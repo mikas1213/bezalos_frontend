@@ -21,7 +21,7 @@ export const InteractiveCard = ({ card, selected, setSelected }: CardProps) => {
     };
 
     return (
-        <div className={catdClasses} onClick={handleOnClick}>
+        <div className={catdClasses} onClick={handleOnClick} data-index={card.id}>
             <div className={styles.icon}>{card.icon}</div>
             <div className={styles.title}>{card.title}</div>
             <div className={styles.desc}>{card.desc}</div>

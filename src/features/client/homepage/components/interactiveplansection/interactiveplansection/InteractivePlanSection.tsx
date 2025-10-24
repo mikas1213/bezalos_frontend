@@ -107,6 +107,7 @@ export const InteractivePlanSection = () => {
         return () => container.removeEventListener('scrollend', handleScroll);
     }, []);
 
+
 	return (
 		<Container
 			as='section'
