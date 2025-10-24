@@ -60,12 +60,11 @@
 .scrollContainer {
 	display: flex;
 	gap: var(--s-sm-mobi);
-    
+
 	overflow-x: scroll;
 	scroll-behavior: auto;
 	scrollbar-width: none;
 	scroll-snap-type: x mandatory;
-	/* scroll-padding: 0 calc(50% - 140px); */
 }
 .scrollContainer::-webkit-scrollbar {
 	display: none;

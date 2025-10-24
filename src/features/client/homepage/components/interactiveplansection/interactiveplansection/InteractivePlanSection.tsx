@@ -85,8 +85,38 @@ export const InteractivePlanSection = () => {
 
 
             const singleSetWidth = container.scrollWidth / 3;
-            console.log(window.innerWidth / 2, scrollLeft, cardWidth)
-			if (scrollLeft <= 10) {
+            console.log("puse ekrano: ", window.innerWidth / 2);
+            console.log('scrollLeft: ', scrollLeft);
+            console.log('cardWidth: ', cardWidth);
+            console.log('- - - - - - - - - - - - -\n');
+			// if (scrollLeft <= 10) {
+				
+			// 	isScrollingRef.current = true;
+			// 	container.scrollLeft = singleSetWidth + scrollLeft;
+			// 	setTimeout(() => {
+			// 		isScrollingRef.current = false;
+			// 	}, 50);
+			// }
+
+			// if (scrollLeft >= singleSetWidth * 2 - 10) {
+				
+			// 	isScrollingRef.current = true;
+			// 	container.scrollLeft =
+			// 		singleSetWidth + (scrollLeft - singleSetWidth * 2);
+			// 	setTimeout(() => {
+			// 		isScrollingRef.current = false;
+			// 	}, 50);
+			// }
+        };
+
+        const handleScroll2 = () => {
+             const cardElement = container.querySelector('[class*=interactiveCard]') as HTMLElement;
+            if (!cardElement) return;
+            const singleSetWidth = container.scrollWidth / 3;
+            const cardWidth = cardElement.offsetWidth;
+            const scrollLeft = container.scrollLeft;
+            
+            			if (scrollLeft <= 10) {
 				
 				isScrollingRef.current = true;
 				container.scrollLeft = singleSetWidth + scrollLeft;
@@ -105,8 +135,8 @@ export const InteractivePlanSection = () => {
 				}, 50);
 			}
         };
-
-        container.addEventListener('scroll', handleScroll);
+        container.addEventListener('scroll', handleScroll2);
+        container.addEventListener('scrollend', handleScroll);
         return () => container.removeEventListener('scroll', handleScroll);
     }, []);
 
