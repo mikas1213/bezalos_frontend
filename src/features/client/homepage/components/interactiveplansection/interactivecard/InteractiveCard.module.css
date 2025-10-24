@@ -8,6 +8,13 @@
     color: var(--dark-green-500);
     background-color: var(--white-100);
     border: 2px solid var(--light-green-grey-100);
+
+
+    /* Pagrindinė dalis - snap pozicija */
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+    
+    flex-shrink: 0;
 }
 .selected.interactiveCard {
     background-color: var(--light-green-grey-100);

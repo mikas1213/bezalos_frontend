@@ -62,57 +62,59 @@ export const InteractivePlanSection = () => {
 		...card,
 		id: i,
 	}));
+    
+    useEffect(() => {
+        const container = scrollContainer.current;
+        if(!container) return;
+        container.scrollLeft = 500;
 
-	useEffect(() => {
-		const container = scrollContainer.current;
-		if (!container) return;
+        
+    }, []);
+    
+	// useEffect(() => {
+	// 	const container = scrollContainer.current;
+	// 	if (!container) return;
 
-		// Palaukiame, kol viskas užsikrauna
-		const initScroll = setTimeout(() => {
-			const totalWidth = container.scrollWidth;
-			const containerWidth = container.clientWidth;
-			console.log('Total width:', totalWidth);
-			console.log('Container width:', containerWidth);
-			console.log('Cards count:', allCards.length);
+	// 	const initScroll = setTimeout(() => {
+	// 		const totalWidth = container.scrollWidth;
+	// 		const containerWidth = container.clientWidth;
+	// 		container.scrollLeft = totalWidth / 3;
 
-			// Nustatome į vidurį
-			container.scrollLeft = totalWidth / 3;
+	// 	}, 100);
 
-		}, 100);
+	// 	const handleScroll = () => {
+	// 		if (isScrollingRef.current) return;
 
-		const handleScroll = () => {
-			if (isScrollingRef.current) return;
+	// 		const { scrollLeft, scrollWidth, clientWidth } = container;
+	// 		const singleSetWidth = scrollWidth / 3;
 
-			const { scrollLeft, scrollWidth, clientWidth } = container;
-			const singleSetWidth = scrollWidth / 3;
-
-			// if (scrollLeft <= 10) {
+	// 		if (scrollLeft <= 10) {
 				
-			// 	isScrollingRef.current = true;
-			// 	container.scrollLeft = singleSetWidth + scrollLeft;
-			// 	setTimeout(() => {
-			// 		isScrollingRef.current = false;
-			// 	}, 500);
-			// }
+	// 			isScrollingRef.current = true;
+	// 			container.scrollLeft = singleSetWidth + scrollLeft;
+	// 			setTimeout(() => {
+	// 				isScrollingRef.current = false;
+	// 			}, 500);
+	// 		}
 
-			// if (scrollLeft >= singleSetWidth * 2 - 10) {
+	// 		if (scrollLeft >= singleSetWidth * 2 - 10) {
 				
-			// 	isScrollingRef.current = true;
-			// 	container.scrollLeft =
-			// 		singleSetWidth + (scrollLeft - singleSetWidth * 2);
-			// 	setTimeout(() => {
-			// 		isScrollingRef.current = false;
-			// 	}, 500);
-			// }
-		};
+	// 			isScrollingRef.current = true;
+	// 			container.scrollLeft =
+	// 				singleSetWidth + (scrollLeft - singleSetWidth * 2);
+	// 			setTimeout(() => {
+	// 				isScrollingRef.current = false;
+	// 			}, 500);
+	// 		}
+	// 	};
 
-		container.addEventListener('scroll', handleScroll, { passive: true });
+	// 	container.addEventListener('scroll', handleScroll, { passive: true });
 
-		return () => {
-			clearTimeout(initScroll);
-			container.removeEventListener('scroll', handleScroll);
-		};
-	}, []);
+	// 	return () => {
+	// 		clearTimeout(initScroll);
+	// 		container.removeEventListener('scroll', handleScroll);
+	// 	};
+	// }, []);
 
 	return (
 		<Container

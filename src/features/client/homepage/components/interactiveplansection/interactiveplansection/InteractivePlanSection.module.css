@@ -63,6 +63,11 @@
 	scroll-behavior: auto;
 	scrollbar-width: none;
 	-webkit-overflow-scrolling: touch;
+
+
+    /* Snap nustatymai */
+	scroll-snap-type: x mandatory;
+	scroll-padding: 0 calc(50% - (100vw / 1.8));
 }
 .scrollContainer::-webkit-scrollbar {
 	display: none;
