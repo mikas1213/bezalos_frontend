@@ -17,7 +17,7 @@
 
 .body {
 	display: grid;
-	grid-template-columns: 1.08fr 0.76fr 1.08fr;
+	grid-template-columns: 1.07fr 0.86fr 1.07fr;
 	grid-template-rows: 1fr 1fr;
 	gap: var(--s-lg-desk);
     padding-bottom: var(--s-lg-mobi);
@@ -71,7 +71,6 @@
 }
 
 /* C A R O U S E L E */
-
 @media only screen and (max-width: 576px) {
 	.header .title {
 		font-size: var(--font-d-h2-mobi);

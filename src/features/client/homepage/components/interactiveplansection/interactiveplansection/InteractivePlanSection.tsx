@@ -1,5 +1,5 @@
 import styles from './InteractivePlanSection.module.css';
-import { useEffect, useState, useRef, type ReactNode } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { useMediaQuery } from '../../../../../../contexts/MediaQueryProvider';
 import { InteractiveCard } from '../interactivecard/InteractiveCard';
 import {
@@ -9,14 +9,11 @@ import {
 	Stack,
 } from '../../../../../../components/Shared';
 import { Icon1, Icon2, Icon3, Icon4 } from '../icons';
-import phone1 from '../../../../../../assets/images/homepage/phone-mitybos-planas.webp';
-import phone2 from '../../../../../../assets/images/homepage/phone-produktu-keitimas.webp';
-import phone3 from '../../../../../../assets/images/homepage/phone-receptu-sudarymas.webp';
-import { type Card } from '../types';
-// import video1 from '../../../../../../assets/videos/homepage/iphone-video1.webm';
 import video1 from '../../../../../../assets/videos/homepage/video1.mp4';
 import video2 from '../../../../../../assets/videos/homepage/video2.mp4';
 import video3 from '../../../../../../assets/videos/homepage/video3.mp4';
+import { type Card } from '../types';
+
 
 const cards: Card[] = [
 	{
@@ -24,7 +21,6 @@ const cards: Card[] = [
 		icon: <Icon1 />,
 		title: 'Produktų keitimas plane',
 		desc: 'Jei neturi reikiamo produkto ši fukncija leis lengvai rasti alternatyvą ir perskaičiuos kiekį',
-		// photo: phone1,
 		photo: video1,
 		disabled: false,
 	},
@@ -33,7 +29,6 @@ const cards: Card[] = [
 		icon: <Icon2 />,
 		title: 'Produktų keitimas',
 		desc: 'Galėsi rinktis iš dešimčių produktų alternatyvų jei atsibodo valgyti vieną ar kitą produktą',
-		// photo: phone2,
 		photo: video2,
 		disabled: false,
 	},
@@ -42,7 +37,6 @@ const cards: Card[] = [
 		icon: <Icon3 />,
 		title: 'Receptų sudarymas',
 		desc: 'Galėsi kurti savo mėgstamus receptus visiškai nenukrypstant nuo mitybos plano',
-		// photo: phone3,
 		photo: video3,
 		disabled: false,
 	},
