@@ -9,9 +9,12 @@ import {
 	Stack,
 } from '../../../../../../components/Shared';
 import { Icon1, Icon2, Icon3, Icon4 } from '../icons';
-import video1 from '../../../../../../assets/videos/homepage/video1.mp4';
-import video2 from '../../../../../../assets/videos/homepage/video2.mp4';
+// import video1 from '../../../../../../assets/videos/homepage/video1.mp4';
+// import video2 from '../../../../../../assets/videos/homepage/video2.mp4';
+import video1 from '../../../../../../assets/videos/homepage/video1-iphone-17-pro-max.mp4';
+import video2 from '../../../../../../assets/videos/homepage/video2-iphone-17-pro-max.mp4';
 import video3 from '../../../../../../assets/videos/homepage/video3.mp4';
+import frame from '../../../../../../assets/videos/homepage/iphone17ProMaxFrame.png';
 import { type Card } from '../types';
 
 
@@ -187,18 +190,27 @@ export const InteractivePlanSection = () => {
 								))}
 							</>
 						)}
-						<div className={styles.phone}>
-							{/* <img src={allCards[selected].photo} alt='' /> */}
-
-                            <video key={selected} width='100%' autoPlay muted loop playsInline className="phone-video">
+						{/* <div className={styles.phone}>
+                            <video key={selected} width='100%' autoPlay muted loop playsInline>
                                 <source 
                                     src={allCards[selected].photo} 
                                     type='video/mp4' 
                                 />
                             </video>
-						</div>
-					</div>
+						</div> */}
 
+                        <div className={styles.videoPlayer}>
+                            <div className={styles.videoWrapper}>
+                                <video key={selected} autoPlay muted loop playsInline className={styles.video}>
+                                    <source src={allCards[selected].photo} type='video/mp4' />
+                                </video>
+                            </div>
+
+                            <img src={frame} alt='iphne-frame' className={styles.frame} />
+
+                        </div>
+					</div>
+                    
                     {/* <div className="phone-frame">
                         <video autoPlay muted loop playsInline className="phone-video">
                             <source src={video} type="video/webm" />
