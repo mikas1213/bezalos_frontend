@@ -13,7 +13,8 @@ import phone1 from '../../../../../../assets/images/homepage/phone-mitybos-plana
 import phone2 from '../../../../../../assets/images/homepage/phone-produktu-keitimas.webp';
 import phone3 from '../../../../../../assets/images/homepage/phone-receptu-sudarymas.webp';
 import { type Card } from '../types';
-import video1 from '../../../../../../assets/videos/homepage/iphone-video1.webm';
+// import video1 from '../../../../../../assets/videos/homepage/iphone-video1.webm';
+import video1 from '../../../../../../assets/videos/homepage/iphone-video1.mp4';
 import video2 from '../../../../../../assets/videos/homepage/iphone-video2.webm';
 import video3 from '../../../../../../assets/videos/homepage/iphone-video3.webm';
 
@@ -202,8 +203,12 @@ export const InteractivePlanSection = () => {
 						<div className={styles.phone}>
 							{/* <img src={allCards[selected].photo} alt='' /> */}
 
-                            <video key={selected} autoPlay muted loop playsInline className="phone-video">
-                                <source src={allCards[selected].photo} type="video/webm" />
+                            <video key={selected} width='100%' autoPlay muted loop playsInline className="phone-video">
+                                <source 
+                                    src={allCards[selected].photo} 
+                                    // type="video/webm" 
+                                    type='video/mp4' 
+                                />
                             </video>
 						</div>
 					</div>
