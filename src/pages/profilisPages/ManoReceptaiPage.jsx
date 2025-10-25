@@ -58,7 +58,7 @@ const ManoReceptaiPage = () => {
 
     return (
         <>
-        <HowItWorks title='Receptų sudarymas' tutorial_link='https://youtu.be/sJUk-HCbcZ8' />
+        {/* <HowItWorks title='Receptų sudarymas' tutorial_link='https://youtu.be/sJUk-HCbcZ8' /> */}
         {isLoading ? null : is_subscription ? <Container>
             <Header>
                 <NewRecipeBtn setOpen={setOpen} />
