@@ -13,9 +13,10 @@ import phone1 from '../../../../../../assets/images/homepage/phone-mitybos-plana
 import phone2 from '../../../../../../assets/images/homepage/phone-produktu-keitimas.webp';
 import phone3 from '../../../../../../assets/images/homepage/phone-receptu-sudarymas.webp';
 import { type Card } from '../types';
-import video1 from '/Users/mikas/Downloads/iphone-video1.webm';
-import video2 from '/Users/mikas/Downloads/iphone-video2.webm';
-import video3 from '/Users/mikas/Downloads/iphone-video3.webm';
+import video1 from '../../../../../../assets/videos/homepage/iphone-video1.webm';
+import video2 from '../../../../../../assets/videos/homepage/iphone-video2.webm';
+import video3 from '../../../../../../assets/videos/homepage/iphone-video3.webm';
+
 const cards: Card[] = [
 	{
 		id: 0,
