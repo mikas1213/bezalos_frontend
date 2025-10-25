@@ -21,8 +21,7 @@ const InfoTab = ({ recipesCount }) => {
                         duration={0.5}
                         separator=''
                     />
-                </span>
-                receptų
+                </span> receptų
             </div>
         </div>
     );
