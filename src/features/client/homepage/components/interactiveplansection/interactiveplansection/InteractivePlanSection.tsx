@@ -51,11 +51,14 @@ const cards: Card[] = [
 
 export const InteractivePlanSection = () => {
 	const mediaQuery = useMediaQuery();
-	const [selected, setSelected] = useState<number>(4);
+	const [selected, setSelected] = useState<number>(() => {
+        return mediaQuery < 577 ? 4 : 0;
+    });
 
 	const scrollContainer = useRef<HTMLDivElement>(null);
 	const isScrollingRef = useRef(false);
-
+    const scrollEndTimerRef = useRef<number | null>(null);
+    
 	const allCards: Card[] = [...cards, ...cards, ...cards].filter(card => card.id !== 3).map((card, i) => ({
 		...card,
 		id: i,
@@ -73,17 +76,37 @@ export const InteractivePlanSection = () => {
     useEffect(() => {
         const container = scrollContainer.current
         if(!container) return;
+
         const handleScroll = () => {
             const cardElement = container.querySelector('[class*=interactiveCard]') as HTMLElement;
             if (!cardElement) return;
             const cardWidth = cardElement.offsetWidth;
             const scrollLeft = container.scrollLeft;
             const index = Math.round(scrollLeft / cardWidth);
-            setSelected(index % allCards.length);
-            const singleSetWidth = container.scrollWidth / 3;
+            // setSelected(index % allCards.length);
 
+
+            // T E S T I N G 
+             if (!isScrollingRef.current) {
+                isScrollingRef.current = true;
+                console.log('Scroll prasidėjo');
+            }
+
+            if (scrollEndTimerRef.current) {
+                cancelAnimationFrame(scrollEndTimerRef.current);
+            }
+
+            scrollEndTimerRef.current = requestAnimationFrame(() => {
+                scrollEndTimerRef.current = requestAnimationFrame(() => {
+                    isScrollingRef.current = false;
+                    console.log('baig4si')
+                    setSelected(index % allCards.length);
+                });
+            });
+            // T E S T I N G 
+
+            const singleSetWidth = container.scrollWidth / 3;
 			if (scrollLeft <= 10) {
-				
 				isScrollingRef.current = true;
 				container.scrollLeft = singleSetWidth + scrollLeft;
 				setTimeout(() => {
@@ -91,8 +114,7 @@ export const InteractivePlanSection = () => {
 				}, 50);
 			}
 
-			if (scrollLeft >= singleSetWidth * 2 - 10) {
-				
+			if (scrollLeft >= singleSetWidth * 2 - 10) {	
 				isScrollingRef.current = true;
 				container.scrollLeft =
 					singleSetWidth + (scrollLeft - singleSetWidth * 2);
@@ -106,6 +128,7 @@ export const InteractivePlanSection = () => {
         return () => container.removeEventListener('scroll', handleScroll);
     }, []);
 
+    
 
 	return (
 		<Container
