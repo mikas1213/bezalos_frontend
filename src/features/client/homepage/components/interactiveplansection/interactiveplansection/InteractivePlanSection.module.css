@@ -17,13 +17,14 @@
 
 .body {
 	display: grid;
-	grid-template-columns: 1.07fr 0.86fr 1.07fr;
+	grid-template-columns: 1.12fr 0.85fr 1.12fr;
 	grid-template-rows: 1fr 1fr;
 	gap: var(--s-lg-desk);
     padding-bottom: var(--s-lg-mobi);
 }
 
 .phone {
+    height: 100%;
 	grid-row: 1 / -1;
 	grid-column: 2 / 3;
 }

@@ -84,10 +84,7 @@ export const InteractivePlanSection = () => {
             const cardWidth = cardElement.offsetWidth;
             const scrollLeft = container.scrollLeft;
             const index = Math.round(scrollLeft / cardWidth);
-            // setSelected(index % allCards.length);
 
-
-            // T E S T I N G 
              if (!isScrollingRef.current) {
                 isScrollingRef.current = true;
             }
@@ -102,7 +99,6 @@ export const InteractivePlanSection = () => {
                     setSelected(index % allCards.length);
                 });
             });
-            // T E S T I N G 
 
             const singleSetWidth = container.scrollWidth / 3;
 			if (scrollLeft <= 10) {
@@ -131,8 +127,6 @@ export const InteractivePlanSection = () => {
             }
         }
     }, []);
-
-    
 
 	return (
 		<Container
@@ -169,8 +163,7 @@ export const InteractivePlanSection = () => {
 									key={i}
 									card={card}
 									{...(!card.disabled && {
-										selected: selected === i,
-										// setSelected,
+										selected: selected === i
 									})}
 								/>
 							))}
@@ -200,7 +193,6 @@ export const InteractivePlanSection = () => {
                             <video key={selected} width='100%' autoPlay muted loop playsInline className="phone-video">
                                 <source 
                                     src={allCards[selected].photo} 
-                                    // type="video/webm" 
                                     type='video/mp4' 
                                 />
                             </video>
