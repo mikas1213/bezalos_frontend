@@ -13,14 +13,17 @@ import phone1 from '../../../../../../assets/images/homepage/phone-mitybos-plana
 import phone2 from '../../../../../../assets/images/homepage/phone-produktu-keitimas.webp';
 import phone3 from '../../../../../../assets/images/homepage/phone-receptu-sudarymas.webp';
 import { type Card } from '../types';
-
+import video1 from '/Users/mikas/Downloads/iphone-video1.webm';
+import video2 from '/Users/mikas/Downloads/iphone-video2.webm';
+import video3 from '/Users/mikas/Downloads/iphone-video3.webm';
 const cards: Card[] = [
 	{
 		id: 0,
 		icon: <Icon1 />,
 		title: 'Produktų keitimas plane',
 		desc: 'Jei neturi reikiamo produkto ši fukncija leis lengvai rasti alternatyvą ir perskaičiuos kiekį',
-		photo: phone1,
+		// photo: phone1,
+		photo: video1,
 		disabled: false,
 	},
 	{
@@ -28,7 +31,8 @@ const cards: Card[] = [
 		icon: <Icon2 />,
 		title: 'Produktų keitimas',
 		desc: 'Galėsi rinktis iš dešimčių produktų alternatyvų jei atsibodo valgyti vieną ar kitą produktą',
-		photo: phone2,
+		// photo: phone2,
+		photo: video2,
 		disabled: false,
 	},
 	{
@@ -36,7 +40,8 @@ const cards: Card[] = [
 		icon: <Icon3 />,
 		title: 'Receptų sudarymas',
 		desc: 'Galėsi kurti savo mėgstamus receptus visiškai nenukrypstant nuo mitybos plano',
-		photo: phone3,
+		// photo: phone3,
+		photo: video3,
 		disabled: false,
 	},
 	{
@@ -89,7 +94,6 @@ export const InteractivePlanSection = () => {
             // T E S T I N G 
              if (!isScrollingRef.current) {
                 isScrollingRef.current = true;
-                console.log('Scroll prasidėjo');
             }
 
             if (scrollEndTimerRef.current) {
@@ -99,7 +103,6 @@ export const InteractivePlanSection = () => {
             scrollEndTimerRef.current = requestAnimationFrame(() => {
                 scrollEndTimerRef.current = requestAnimationFrame(() => {
                     isScrollingRef.current = false;
-                    console.log('baig4si')
                     setSelected(index % allCards.length);
                 });
             });
@@ -125,7 +128,12 @@ export const InteractivePlanSection = () => {
         };
         
         container.addEventListener('scroll', handleScroll);
-        return () => container.removeEventListener('scroll', handleScroll);
+        return () => {
+            container.removeEventListener('scroll', handleScroll);
+            if (scrollEndTimerRef.current) {
+                cancelAnimationFrame(scrollEndTimerRef.current);
+            }
+        }
     }, []);
 
     
@@ -191,9 +199,19 @@ export const InteractivePlanSection = () => {
 							</>
 						)}
 						<div className={styles.phone}>
-							<img src={allCards[selected].photo} alt='' />
+							{/* <img src={allCards[selected].photo} alt='' /> */}
+
+                            <video key={selected} autoPlay muted loop playsInline className="phone-video">
+                                <source src={allCards[selected].photo} type="video/webm" />
+                            </video>
 						</div>
 					</div>
+
+                    {/* <div className="phone-frame">
+                        <video autoPlay muted loop playsInline className="phone-video">
+                            <source src={video} type="video/webm" />
+                        </video>
+                    </div> */}
 
 					<Cluster className={styles.bottom} justify='space-around'>
 						<Stack className={styles.item}>

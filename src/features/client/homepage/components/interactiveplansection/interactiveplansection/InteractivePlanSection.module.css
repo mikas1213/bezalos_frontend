@@ -28,7 +28,7 @@
 	grid-column: 2 / 3;
 }
 
-.phone img {
+.phone :is(img, video) {
 	width: 100%;
 }
 
