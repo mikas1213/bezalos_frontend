@@ -36,11 +36,11 @@ export const Navbar = ({ page = 'default' }: NavbarProps) => {
 					        <Logo isChangeColor={{ page, isScroll }} />
 				        </NavLink>
 
-                        {/* {user_role === roles.admin && (
+                        {user_role === roles.admin && (
                             <NavLink to='/admin' className={styles.adminItemMobile}>
                                 <span>Admin</span>
                             </NavLink>
-                        )} */}
+                        )}
 
                         <Cluster className={styles.navItems} align='center' gap='clamp(0rem, 3.125vw, 3.2rem)'>
                             <NavLink to='/virtuve' className={styles.listItem}>

@@ -10,8 +10,8 @@ import {
 	Stack,
 } from '../../../../../../components/Shared';
 import { Icon1, Icon2, Icon3, Icon4 } from '../icons';
-import video1 from '../../../../../../assets/videos/homepage/video1-iphone-17-pro-max.mp4';
-import video2 from '../../../../../../assets/videos/homepage/video2-iphone-17-pro-max.mp4';
+import video1 from '../../../../../../assets/videos/homepage/video1.mp4';
+import video2 from '../../../../../../assets/videos/homepage/video2.mp4';
 import video3 from '../../../../../../assets/videos/homepage/video3.mp4';
 import type { Card, BottomItem } from '../types';
 
@@ -196,7 +196,7 @@ export const InteractivePlanSection = () => {
 							<Box className={styles.itemLabel}>{item.label}</Box>
 						</Stack>)}
 					</Cluster>
-                    
+
 				</Container>
 			</Stack>
 		</Container>

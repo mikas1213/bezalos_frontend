@@ -13,7 +13,6 @@ const ClientLayout = () => {
 
     const mainStyles = {
         backgroundColor: 'var(--white-100)',
-        minHeight: '100vh',
         paddingTop: location.pathname === '/receptai' ? '0' : mediaQuery < 441 ? 'var(--nav-height-60)' : mediaQuery < 577 ? 'var(--nav-height-70)' : 'var(--nav-height-80)'
     } as CSSProperties
 

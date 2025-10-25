@@ -28,7 +28,7 @@ const HomePage = () => {
             <AboutSection />
             <EducationSection />
             <OfferSection />
-            {/* <InteractivePlanSection /> */}
+            <InteractivePlanSection />
             <ReviewSection />
         </ObserverProvider>
     );
