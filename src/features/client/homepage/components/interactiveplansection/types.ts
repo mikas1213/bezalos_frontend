@@ -7,3 +7,13 @@ export type Card = {
     photo: string,
     disabled: boolean
 };
+
+export type BottomItem = {
+    title: string, 
+    label: string
+};
+
+export type PhoneProps = {
+    allCards: Card[],
+    selected: number
+};

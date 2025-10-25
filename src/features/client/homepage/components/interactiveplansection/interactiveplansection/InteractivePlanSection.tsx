@@ -2,6 +2,7 @@ import styles from './InteractivePlanSection.module.css';
 import { useEffect, useState, useRef } from 'react';
 import { useMediaQuery } from '../../../../../../contexts/MediaQueryProvider';
 import { InteractiveCard } from '../interactivecard/InteractiveCard';
+import { Phone } from '../phone/Phone';
 import {
 	Box,
 	Container,
@@ -9,14 +10,10 @@ import {
 	Stack,
 } from '../../../../../../components/Shared';
 import { Icon1, Icon2, Icon3, Icon4 } from '../icons';
-// import video1 from '../../../../../../assets/videos/homepage/video1.mp4';
-// import video2 from '../../../../../../assets/videos/homepage/video2.mp4';
 import video1 from '../../../../../../assets/videos/homepage/video1-iphone-17-pro-max.mp4';
 import video2 from '../../../../../../assets/videos/homepage/video2-iphone-17-pro-max.mp4';
 import video3 from '../../../../../../assets/videos/homepage/video3.mp4';
-import frame from '../../../../../../assets/videos/homepage/iphone17ProMaxFrame.png';
-import { type Card } from '../types';
-
+import type { Card, BottomItem } from '../types';
 
 const cards: Card[] = [
 	{
@@ -51,6 +48,12 @@ const cards: Card[] = [
 		photo: '',
 		disabled: true,
 	},
+];
+
+const bottomItems: BottomItem[] = [
+    { title: '300+', label: 'Maisto produktų'},
+    { title: '180+', label: 'Skirtingų receptų'},
+    { title: '1000+', label: 'Numestų kilogramų'}
 ];
 
 export const InteractivePlanSection = () => {
@@ -157,14 +160,9 @@ export const InteractivePlanSection = () => {
 
 				{mediaQuery < 577 && (
 					<div className={styles.carouselWrapper}>
-						<div
-							ref={scrollContainer}
-							className={styles.scrollContainer}
-						>
+						<div ref={scrollContainer} className={styles.scrollContainer}>
 							{allCards.map((card, i) => (
-								<InteractiveCard
-									key={i}
-									card={card}
+								<InteractiveCard key={i} card={card}
 									{...(!card.disabled && {
 										selected: selected === i
 									})}
@@ -175,13 +173,11 @@ export const InteractivePlanSection = () => {
 				)}
 
 				<Container>
-					<div className={styles.body}>
+					<div className={styles.sectionBody}>
 						{mediaQuery > 576 && (
 							<>
 								{cards.map((card, i) => (
-									<InteractiveCard
-										key={i}
-										card={card}
+									<InteractiveCard key={i} card={card}
 										{...(!card.disabled && {
 											selected: selected === i,
 											setSelected,
@@ -190,53 +186,17 @@ export const InteractivePlanSection = () => {
 								))}
 							</>
 						)}
-						{/* <div className={styles.phone}>
-                            <video key={selected} width='100%' autoPlay muted loop playsInline>
-                                <source 
-                                    src={allCards[selected].photo} 
-                                    type='video/mp4' 
-                                />
-                            </video>
-						</div> */}
 
-                        <div className={styles.videoPlayer}>
-                            <div className={styles.videoWrapper}>
-                                <video key={selected} autoPlay muted loop playsInline className={styles.video}>
-                                    <source src={allCards[selected].photo} type='video/mp4' />
-                                </video>
-                            </div>
-
-                            <img src={frame} alt='iphne-frame' className={styles.frame} />
-
-                        </div>
+                        <Phone allCards={allCards} selected={selected} />
 					</div>
-                    
-                    {/* <div className="phone-frame">
-                        <video autoPlay muted loop playsInline className="phone-video">
-                            <source src={video} type="video/webm" />
-                        </video>
-                    </div> */}
 
 					<Cluster className={styles.bottom} justify='space-around'>
-						<Stack className={styles.item}>
-							<Box className={styles.itemTitle}>300+</Box>
-							<Box className={styles.itemLabel}>
-								Maisto produktų
-							</Box>
-						</Stack>
-						<Stack className={styles.item}>
-							<Box className={styles.itemTitle}>180+</Box>
-							<Box className={styles.itemLabel}>
-								Skirtingų receptų
-							</Box>
-						</Stack>
-						<Stack className={styles.item}>
-							<Box className={styles.itemTitle}>100+</Box>
-							<Box className={styles.itemLabel}>
-								Numestų kilogramų
-							</Box>
-						</Stack>
+                        {bottomItems.map(item => <Stack className={styles.bottomItem}>
+							<Box className={styles.itemTitle}>{item.title}</Box>
+							<Box className={styles.itemLabel}>{item.label}</Box>
+						</Stack>)}
 					</Cluster>
+                    
 				</Container>
 			</Stack>
 		</Container>

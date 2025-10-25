@@ -1,0 +1,44 @@
+.videoPlayer {
+    position: relative;
+    grid-row: 1 / -1;
+	grid-column: 2 / 3;
+}
+.videoWrapper {
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 92%;
+}
+.video {
+    border-radius: 32px;
+    width: 100%;
+}
+.frame {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 276px; 
+}
+
+@media only screen and (max-width: 768px) {
+    .frame {
+        width: 200px; 
+    }
+}
+
+@media only screen and (max-width: 576px) {
+    .frame {
+        width: 300px; 
+    }
+}
+
+@media only screen and (max-width: 440px) {
+    .videoWrapper {
+        top: 8px;
+    }
+    .frame {
+        width: 280px; 
+    }
+}
