@@ -89,7 +89,21 @@
 
 @media only screen and (max-width: 440px) {
 	.sectionBody {
-		grid-template-columns: 1fr 280px 1fr;
-        grid-template-rows: repeat(2, 284px);
+		grid-template-columns: 1fr 256px 1fr;
+        grid-template-rows: repeat(2, 259px);
+	}
+}
+
+@media only screen and (max-width: 375px) {
+    .sectionBody {
+		grid-template-columns: 1fr 200px 1fr;
+        grid-template-rows: repeat(2, 202px);
+	}
+}
+
+@media only screen and (max-width: 320px) {
+    .sectionBody {
+		grid-template-columns: 1fr 165px 1fr;
+        grid-template-rows: repeat(2, 167px);
 	}
 }

@@ -39,6 +39,24 @@
         top: 8px;
     }
     .frame {
-        width: 280px; 
+        width: 256px; 
+    }
+}
+
+@media only screen and (max-width: 375px) {
+    .videoWrapper {
+        top: 8px;
+    }
+    .frame {
+        width: 200px; 
+    }
+}
+
+@media only screen and (max-width: 320px) {
+    .videoWrapper {
+        top: 3px;
+    }
+    .frame {
+        width: 165px; 
     }
 }
