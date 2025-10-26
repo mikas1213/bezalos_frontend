@@ -79,18 +79,15 @@ const Form = ({ isModalOpen, setIsModalOpen, formValues, setFormValues, handleFo
             setSocket(newSocket);
 
             newSocket.on('uploadStageChange', (data) => {
-                console.log("uploadStageChange");
                 setMessage(data.message);
             });
 
             newSocket.on('videoUploadProgress', (data) => {
-                console.log("videoUploadProgress");
                 setVideoProgress(data.percentage);
                 setMessage(`Įkeliamas video į AWS: ${data.loadedMB} MB iš ${data.totalMB} MB`);
             });
 
             newSocket.on('videoUploadComplete', () => {
-                console.log('videoUploadComplete: ', 'Video sėkmingai įkeltas į AWS S3! ✅');
                 toast.success(`Video sėkmingai įkeltas į AWS S3!`);
                 queryClient.invalidateQueries({ queryKey: ['admin-videos'] });
                 setMessage('Video sėkmingai įkeltas į AWS S3! ✅');
