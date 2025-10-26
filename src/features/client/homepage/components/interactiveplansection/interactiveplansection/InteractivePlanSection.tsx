@@ -191,7 +191,7 @@ export const InteractivePlanSection = () => {
 					</div>
 
 					<Cluster className={styles.bottom} justify='space-around'>
-                        {bottomItems.map(item => <Stack className={styles.bottomItem}>
+                        {bottomItems.map((item, i) => <Stack key={i} className={styles.bottomItem}>
 							<Box className={styles.itemTitle}>{item.title}</Box>
 							<Box className={styles.itemLabel}>{item.label}</Box>
 						</Stack>)}

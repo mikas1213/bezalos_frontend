@@ -33,7 +33,6 @@ const formatFileSize = (bytes) => {
 };
 
 const Form = ({ isModalOpen, setIsModalOpen, formValues, setFormValues, handleFormInput }) => {
-    
     const axiosPrivate = useAxiosPrivate();
     const queryClient = useQueryClient();
     const [socket, setSocket] = useState(null);
@@ -80,10 +79,12 @@ const Form = ({ isModalOpen, setIsModalOpen, formValues, setFormValues, handleFo
             setSocket(newSocket);
 
             newSocket.on('uploadStageChange', (data) => {
+                console.log("uploadStageChange");
                 setMessage(data.message);
             });
 
             newSocket.on('videoUploadProgress', (data) => {
+                console.log("videoUploadProgress");
                 setVideoProgress(data.percentage);
                 setMessage(`Įkeliamas video į AWS: ${data.loadedMB} MB iš ${data.totalMB} MB`);
             });
@@ -100,6 +101,7 @@ const Form = ({ isModalOpen, setIsModalOpen, formValues, setFormValues, handleFo
             });
 
             newSocket.on('uploadError', (data) => {
+                console.log("uploadError", data.message);
                 toast.error(data.message);
                 setUploading(false);
                 setUploadError(true);
