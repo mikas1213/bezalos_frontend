@@ -1,4 +1,4 @@
-name: Deploy Be žalos to AWS
+name: Deploy Be žalos
 
 on:
   push:
