@@ -71,7 +71,11 @@ const Form = ({ isModalOpen, setIsModalOpen, formValues, setFormValues, handleFo
                 transports: ['websocket', 'polling'],
                 upgrade: false,
                 rememberUpgrade: false,
-                timeout: 60000
+                timeout: 60000,
+                reconnection: true,
+                reconnectionDelay: 1000,
+                reconnectionDelayMax: 5000,
+                reconnectionAttempts: Infinity
             });
             setSocket(newSocket);
 
