@@ -94,6 +94,9 @@ const Form = ({ isModalOpen, setIsModalOpen, formValues, setFormValues, handleFo
                 setMessage('Video sėkmingai įkeltas į AWS S3! ✅');
                 setUploading(false);
                 setUploadSuccess(true);
+                setTimeout(() => {
+                    if (newSocket) newSocket.disconnect();
+                }, 1000);
             });
 
             newSocket.on('uploadError', (data) => {
@@ -169,6 +172,10 @@ const Form = ({ isModalOpen, setIsModalOpen, formValues, setFormValues, handleFo
     };
 
     const handleCancelUpload = () => {
+        if (socket && socket.connected) {
+            console.log('🔌 Manually disconnecting socket...');
+            socket.disconnect();
+        }
         setFormValues({
             title: '',
             description: '',
