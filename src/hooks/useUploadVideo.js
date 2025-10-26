@@ -8,6 +8,11 @@ export const useUploadVideo = (socket, action, isVideo, setUploadProgress, setVi
     
     return useMutation({
         mutationFn: async (formValues) => {
+            if (!socket || !socket.connected) {
+                throw new Error('Socket.IO neprisijungęs. Bandykite dar kartą.');
+            }
+
+            console.log('🔌 Socket ID:', socket.id); // Debug log
             const formData = new FormData();
             formData.append('title', formValues.title);
             formData.append('image_s3_key', formValues.image_s3_key);
@@ -23,6 +28,7 @@ export const useUploadVideo = (socket, action, isVideo, setUploadProgress, setVi
             formData.append('action', formValues.action);
 
             const api = action === 'insert' ? `/admin/videos` : `/admin/videos/${formValues.id}`;
+            console.log('📤 Sending to:', api); // Debug log
             const response = await axiosPrivate.post(api, formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
@@ -51,6 +57,7 @@ export const useUploadVideo = (socket, action, isVideo, setUploadProgress, setVi
             setMessage('Pradedamas failų įkėlimas...');
         },
         onError: (error) => {
+            console.error('❌ Upload error:', error); // Debug log
             toast.error(error.response?.data?.message || error.message);
             setMessage('Klaida įkeliant failus ');
             setUploading(false);
