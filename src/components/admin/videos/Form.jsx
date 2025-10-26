@@ -90,6 +90,7 @@ const Form = ({ isModalOpen, setIsModalOpen, formValues, setFormValues, handleFo
             });
 
             newSocket.on('videoUploadComplete', () => {
+                console.log('videoUploadComplete: ', 'Video sėkmingai įkeltas į AWS S3! ✅');
                 toast.success(`Video sėkmingai įkeltas į AWS S3!`);
                 queryClient.invalidateQueries({ queryKey: ['admin-videos'] });
                 setMessage('Video sėkmingai įkeltas į AWS S3! ✅');
