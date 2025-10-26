@@ -14,5 +14,6 @@ export const axiosPrivate = axios.create({
         // 'Pragma': 'no-cache',
         // 'Expires': '0'
     },
+    timeout: 600000,
     withCredentials: true
 });
