@@ -11,9 +11,9 @@ const ServiceForm = ({ isLoading, isModalOpen, formValues, setFormValues, handle
     const [photoPreview, setPhotoPreview] = useState(formValues.image_m);
     const [discountedPrice, setDiscountedPrice] = useState(0);
 
-    const handleCalculateDiscount = (price) => {
-        console.log("Original Price: ", price);
-    };
+    // const handleCalculateDiscount = (price) => {
+    //     console.log("Original Price: ", price);
+    // };
 
     return (
         <div className={styles.flexColumn}>
