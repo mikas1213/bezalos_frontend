@@ -12,7 +12,7 @@ const Card = ({ paslauga }) => {
                 {paslauga.status !== '-' && paslauga.quantity > 3 && <div className={styles[paslauga.status]}>{paslauga.status}</div>}
                 {paslauga.quantity <= 3 && <div className={styles.quantity}>{`Liko ${paslauga.quantity}vnt.`}</div>}
                 {paslauga.quantity === 0 && <div className={styles.quantity}>Išparduota</div>}
-                {paslauga.discount > 0 && <div className={styles.discount}>-{paslauga.discount}%</div>}
+                {paslauga.discount > 0 && <div className={styles.discount}>-{Math.round(paslauga.discount)}%</div>}
                 {!imageLoaded && <div className={styles.skeleton}></div>}
                 
                 <img 

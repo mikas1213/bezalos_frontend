@@ -9,6 +9,11 @@ import { BookImage } from 'lucide-react';
 
 const ServiceForm = ({ isLoading, isModalOpen, formValues, setFormValues, handleServiceForm, handleSubmit, handleModalOpen }) => {
     const [photoPreview, setPhotoPreview] = useState(formValues.image_m);
+    const [discountedPrice, setDiscountedPrice] = useState(0);
+
+    const handleCalculateDiscount = (price) => {
+        console.log("Original Price: ", price);
+    };
 
     return (
         <div className={styles.flexColumn}>
@@ -21,6 +26,9 @@ const ServiceForm = ({ isLoading, isModalOpen, formValues, setFormValues, handle
                         <Input placeholder='vnt.' label='Kiekis' name='quantity' className={styles.quantity} value={formValues.quantity} handleServiceForm={handleServiceForm} />
                         <Input placeholder='%' label='Nuolaida %' name='discount' className={styles.discount} value={formValues.discount} handleServiceForm={handleServiceForm} />
                         <Input placeholder='Eilė' label='Eilė' name='sort' value={formValues.sort} className={styles.sort} handleServiceForm={handleServiceForm} />
+                        {/* <Input placeholder='Su nuolaida' label='Kaina su nuolaida' value={discountedPrice} className={styles.priceWithDiscount} handleServiceForm={handleCalculateDiscount}/> */}
+                        {/* <input className={styles.priceWithDiscount} /> */}
+                        
                     </div>
 
                     <div className={styles.flexRow}>

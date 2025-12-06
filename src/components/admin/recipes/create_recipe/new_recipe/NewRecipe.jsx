@@ -12,7 +12,7 @@ import Textarea from './Textarea';
 const recipeTypes = ['Pusryčiai', 'Pietūs', 'Vakarienė', 'Užkandžiai'];
 const tastes = ['Aštru', 'Saldu', 'Sūru'];
 const foodLogic = ['A+B', 'B+R', 'A+R'];
-const durations = [5, 10, 15, 20, 25, 30, 35, 40, 45, 55, 60, 65, 70, 75, 80, 85, 90];
+const durations = [5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90];
 
 const NewRecipe = ({ prodList, newRecipe, setNewRecipe }) => {
 
