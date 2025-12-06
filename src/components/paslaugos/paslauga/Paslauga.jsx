@@ -6,7 +6,7 @@ import Promotion from './Promotion';
 import CountUp from 'react-countup';
 
 const Paslauga = ({ paslauga, setPaslauga }) => {
-    
+    console.log('paslauga.discount: ', paslauga.discount, paslauga.discount === 0)
     const { handleServiceCheckout, isLoading } = usePayment();
     const [startPrice, setStartPrice] = useState(paslauga.current_price);
     const [code, setCode] = useState('');
@@ -49,7 +49,7 @@ const Paslauga = ({ paslauga, setPaslauga }) => {
                         duration={0.5}
                         separator=''
                     />
-                    {paslauga.discount > 0 && <span className={styles.wasPrice}>€{paslauga.base_price}</span>}
+                    {parseFloat(paslauga.discount) > 0 && <span className={styles.wasPrice}>€{paslauga.base_price}</span>}
                 </div>
                 
                 <div className={styles.buyBtn}>
@@ -59,7 +59,7 @@ const Paslauga = ({ paslauga, setPaslauga }) => {
                         <button disabled={true}>IŠPARDUOTA</button>
                     }
 
-                    {paslauga.is_active && paslauga.discount === 0 && paslauga.quantity > 0 && <Promotion
+                    {paslauga.is_active && parseFloat(paslauga.discount) === 0 && paslauga.quantity > 0 && <Promotion
                         code={code}
                         setCode={setCode}
                         paslauga={paslauga}
