@@ -15,7 +15,7 @@ const Service = ({ service, handleModalOpen, setFormValues, handleServiceDelete 
 
             <div className={`${styles.section} ${styles.title}`} onClick={() => {
                 handleModalOpen(true, 'services', 'update');
-                setFormValues(service)
+                setFormValues(service);
             }}>
                 <span>{service.title}</span>
             </div>

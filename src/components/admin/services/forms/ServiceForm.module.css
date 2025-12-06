@@ -62,33 +62,26 @@
 .category { width: 7.5rem;}
 .details_title { width: 28rem; }
 .is_active { width: 5.5rem; }
-.priceWithDiscount { width: 9rem; }
 
-/* .inputGroup {
+.discoutPriceGroup {
     display: flex;
     flex-direction: column;
-    gap: 0.2rem;
+    justify-content: space-between;
 }
-.inputLabel {
-    margin-left: 0.2rem;
-    font-size: var(--font-size-small-1);
-    font-weight: 500;
-    color: var(--green-bgr-light);
-}
-.input {
-    cursor: pointer;
-    transition: all 0.1s ease-in-out;
-    border-width: 1px;
-    border-style: solid;
+.discoutPriceGroup .value {
+    display: flex;
+    padding-left: 0.8rem;
+    align-items: center;
+    height: var(--s-40);
     font-size: var(--font-size-p);
     border: 1px solid var(--color-border);
     border-radius: 0.5rem;
-    padding: 0 1rem; 
-    height: 2.5rem;
     color: var(--grey-dark);
 }
-.input:focus {
-    outline: none;
-    border: 1px solid #00000000;
-    box-shadow: 0 0 0 1.5px var(--color-btn-secondary);
-} */
+
+.discoutPriceGroup .label {
+    font-size: var(--font-12);
+    font-weight: 500;
+    
+    color: var(--green-bgr-light);
+}

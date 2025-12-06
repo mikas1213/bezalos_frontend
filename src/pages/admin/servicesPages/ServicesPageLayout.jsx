@@ -11,6 +11,8 @@ import PromotionForm from '../../../components/admin/services/forms/PromotionFor
 const service_form = {
     quantity: 10,
     discount: '0',
+    base_price: 0,
+    discounted_price: 0,
     sort: 1,
     status: '-',
     category: 'Pasirinkti',
@@ -43,8 +45,10 @@ const ServicesPageLayout = () => {
     };
 
     const handleServiceForm = (e) => {
+        
         const target = e.target || e.current;
         const { name, value } = target; 
+       
         
         if(target?.dataset.id) {
             setFormValues(prevState => ({...prevState, details: prevState.details.map(detail => detail.id == target.dataset.id ? {
@@ -64,7 +68,11 @@ const ServicesPageLayout = () => {
             });
 
         } else {
-            setFormValues(prevState => ({...prevState, [target.name]: target.value}));
+            setFormValues(prevState => ({
+                ...prevState, 
+                discounted_price: parseFloat(prevState.base_price) - (parseFloat(prevState.base_price) * parseFloat(value) / 100),
+                [target.name]: target.value
+            }));
         }
     };
 
@@ -80,7 +88,7 @@ const ServicesPageLayout = () => {
 
     const handleSubmit = () => {
         const formData = getFormData();
-
+        formData.delete('discounted_price');
         serviceMutation.mutate({
             id: formValues.id,
             api: isModalOpen.form,

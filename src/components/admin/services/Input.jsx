@@ -1,7 +1,9 @@
 import styles from './Input.module.css';
 
 const Input = ({ placeholder, label, name, value, dataValue = '', handleServiceForm, className = '' }) => {
-    
+    if(name === 'base_price' || name === 'discount') {
+        value = String(value).replaceAll(',', '.');
+    }
     return (
         <div className={styles.inputGroup}>
             <span className={styles.inputLabel}>{label}</span>
