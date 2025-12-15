@@ -4,7 +4,7 @@ import FlexContainer from "../components/UI/FlexContainer";
 const Login = () => {
     document.body.style.backgroundColor = '#fff';
     return (
-        <FlexContainer>
+        <FlexContainer> 
             <Authentication />
         </FlexContainer>
     );
