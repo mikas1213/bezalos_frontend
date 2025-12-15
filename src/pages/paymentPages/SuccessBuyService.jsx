@@ -15,7 +15,16 @@ const SuccessBuyService = () => {
 
     useEffect(() => {
         document.body.style.backgroundColor = '#fff';
-    }, []);
+        
+        // Meta Pixel tracking for service purchase
+        if (typeof window.fbq === 'function') {
+            window.fbq('track', 'Purchase', {
+                currency: 'EUR',
+                content_type: 'service',
+                content_category: service_category || 'general'
+            });
+        }
+    }, [service_category]);
     
     return (
         <>

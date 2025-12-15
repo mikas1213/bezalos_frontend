@@ -15,12 +15,21 @@ const SuccessSubscription = () => {
         const getData = async () => {
             try {
                 await axios.post(`/payments/payment-success`);
+                
+                // Meta Pixel tracking for subscription purchase
+                if (typeof window.fbq === 'function') {
+                    window.fbq('track', 'Subscribe', {
+                        currency: 'EUR',
+                        content_type: 'subscription',
+                        content_category: plan || 'general'
+                    });
+                }
             } catch (err) {
                 navigate('/mokejimo-klaida');
             }
         };
         getData();
-    }, [navigate]);
+    }, [navigate, plan]);
 
     return (
         <>

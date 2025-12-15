@@ -40,7 +40,19 @@ const Card = ({ paslauga }) => {
 
             </div>
             <div className={styles.buttons}>
-                <button onClick={() => navigate(`/paslaugos/${paslauga.slug}`) }>Rinktis</button>
+                <button onClick={() => {
+                    // Meta Pixel tracking for service interest
+                    if (typeof window.fbq === 'function') {
+                        window.fbq('track', 'ViewContent', {
+                            content_type: 'service',
+                            content_name: paslauga.title,
+                            content_category: paslauga.category || 'service',
+                            value: paslauga.current_price,
+                            currency: 'EUR'
+                        });
+                    }
+                    navigate(`/paslaugos/${paslauga.slug}`)
+                }}>Rinktis</button>
             </div>
         </div>
     );

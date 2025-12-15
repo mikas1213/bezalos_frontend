@@ -13,6 +13,14 @@ const ChooseBtn = () => {
     const navigate = useNavigate();
 
     const handlePrenumeruoti = () => {
+        // Meta Pixel tracking for subscription initiation
+        if (typeof window.fbq === 'function') {
+            window.fbq('track', 'InitiateCheckout', {
+                content_type: 'subscription',
+                content_category: variant || 'general'
+            });
+        }
+        
         if(variant === 'virtuve') {
             setShowConfirmation(true);
         } else {
