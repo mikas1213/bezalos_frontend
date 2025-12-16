@@ -1,8 +1,8 @@
 import { Container, Grid, Stack } from '../../../../../components/Shared';
 import { SectionTitle, ReviewCard } from '../../../../../components/Shared';
-
 import { useMediaQuery } from '../../../../../contexts/MediaQueryProvider';
 import { REVIEWS } from './constants';
+
 
 export const ReviewSection = () => {
     const mediaQuery: number = useMediaQuery();

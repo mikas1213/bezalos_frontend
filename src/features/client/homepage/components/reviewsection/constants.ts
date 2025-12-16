@@ -1,4 +1,4 @@
-import { type ReviewProps} from '../../../../../components/Shared/ReviewCard/RevievCard';
+import { type ReviewProps } from '../../../../../components/Shared/ReviewCard/RevievCard';
 export const REVIEWS: ReviewProps[] = [
     {title: 'Narystė Virtuvėje', text: 'Kuriamas turinys labai patinka, video visi naudingi, visus perklausiau, ir po truputi stengiuosi įtvirtinti išgirstą informaciją savo rutinoje'},
     {title: 'Produktų keitimo funkcija', text: 'Keityklės dėka vietoj alyvuogių galiu legaliai valgyti šokoladą ir tai puikiai atitinka mano mitybos planą! Ačiū tau, pagaliau esu visiškai rami dėl savo maisto pasirinkimų'},
