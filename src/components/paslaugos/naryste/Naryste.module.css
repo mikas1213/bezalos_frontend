@@ -1,3 +1,11 @@
+.narysteTitle {
+    margin-bottom: 1rem;
+    font-size: var(--font-size-dynamic-h5-lg);
+    color: var(--dark-green-600);
+    animation: fadeIn 0.2s;
+}
+
+
 .naryste {
     display: grid;
     grid-template-columns: 1.2fr 0.8fr;
@@ -5,6 +13,7 @@
     row-gap: 1rem;
     width: clamp(0rem, 91vw, 45rem);
     margin: 0 auto;
+    padding-bottom: 3rem;
     animation: zoomIn 0.3s ease-out forwards;
 }
 

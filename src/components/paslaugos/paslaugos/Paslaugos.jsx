@@ -7,7 +7,7 @@ const Paslaugos = ({ isLoading, paslaugos }) => {
         {isLoading ? 
             <div className={styles.loadingContainer}></div> :
                 paslaugos ? 
-                <div className={`${styles.paslaugos} padding--b`}>
+                <div className={styles.paslaugos}>
                     {paslaugos.map(paslauga => <Card key={paslauga.id} paslauga={paslauga} />)}
                 </div> :
             <div className={styles.notFoundContainer}>Šiuo metu paslaugų nerasta</div>

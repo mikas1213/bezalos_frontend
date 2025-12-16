@@ -6,7 +6,7 @@ import Features from './Features';
 import PlanCard from './PlanCard';
 import ChooseBtn from './ChooseBtn';
 import ManageSubscription from './ManageSubscription';
-
+import { Center } from '../../Shared';
 const Naryste = () => {
     const { plan } = usePayment();
     const { auth } = useAuth();
@@ -16,7 +16,9 @@ const Naryste = () => {
     const { user_s_subscription} = loggedUser;
     
     return (
-        <div className={`${styles.naryste} padding--b`}>
+        <>
+        <Center className={styles.narysteTitle}>Rinktis narystės planą</Center>
+        <div className={styles.naryste}>
             <Features />
             <div className={styles.plans}>
                 <PlanCard  planVariant='profilis' plan={plan.profilis} />
@@ -24,6 +26,7 @@ const Naryste = () => {
             </div>
             {!user_s_subscription ? <ChooseBtn key={Math.random()} /> : <ManageSubscription />}
         </div>
+        </>
     );
 };
 

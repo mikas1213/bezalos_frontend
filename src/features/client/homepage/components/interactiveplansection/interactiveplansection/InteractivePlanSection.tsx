@@ -8,6 +8,7 @@ import {
 	Container,
 	Cluster,
 	Stack,
+    SectionTitle
 } from '../../../../../../components/Shared';
 import { Icon1, Icon2, Icon3, Icon4 } from '../icons';
 import video1 from '../../../../../../assets/videos/homepage/video1.mp4';
@@ -142,20 +143,12 @@ export const InteractivePlanSection = () => {
 			padding='0'
 			className='section--hidden padding--b'
 		>
-			<Stack space='var(--s-lg-desk)'>
+			<Stack space='var(--s-xl-desk)'>
 				<Container>
-					<Stack
-						className={styles.header}
-						space={mediaQuery < 577 ? 'var(--s-lg-mobi)' : '0'}
-					>
-						<Box className={styles.title}>
-							Pavargai nuolat pirkti naują planą?
-						</Box>
-						<Box className={styles.subTitle}>
-							Interaktyvus mitybos planas su neribotom galimybėm
-							keisti produktus, kurti ir skaičiuoti receptus
-						</Box>
-					</Stack>
+                    <SectionTitle 
+                        title='Pavargai nuolat pirkti naują planą?' 
+                        subTitle='Interaktyvus mitybos planas su neribotom galimybėm keisti produktus, kurti ir skaičiuoti receptus'
+                    />
 				</Container>
 
 				{mediaQuery < 577 && (

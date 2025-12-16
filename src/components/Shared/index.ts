@@ -6,3 +6,6 @@ export { Container } from './container/Container';
 export { Grid } from './grid/Grid';
 export { Stack } from './stack/Stack';
 export { Accordion } from './accordion/Accordion';
+
+export { ReviewCard } from './ReviewCard/RevievCard';
+export { SectionTitle } from './SectionTitle/SectionTitle';

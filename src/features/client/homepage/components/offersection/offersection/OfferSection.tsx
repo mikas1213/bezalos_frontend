@@ -1,26 +1,23 @@
-import styles from './OfferSection.module.css';
 import { useResponsivePadding } from '../../../../../../hooks';
-import { Box, Container, Grid, Stack } from '../../../../../../components/Shared';
-import { useMediaQuery } from '../../../../../../contexts/MediaQueryProvider';
+import { Container, Grid, Stack } from '../../../../../../components/Shared';
 import { OfferCard } from '../offercard/OfferCard';
+import { SectionTitle } from '../../../../../../components/Shared';
 import { type OfferCardProps } from '../types';
-import offersDataRaw from '../../offersData.json';
+import offersDataRaw from './offersData.json';
 const offersData = offersDataRaw as OfferCardProps[];
 
 export const OfferSection = () => {
-    const mediaQuery: number = useMediaQuery();
     const responsivePading = useResponsivePadding();
     
     return (
         <Container as='section' id='offer' maxWidth='100vw' padding='0' className='section--hidden padding--b'>
             <Container maxWidth='var(--content-width)'>
                 <Stack space='var(--s-56)'>
-                    <Stack className={styles.header} space={mediaQuery < 577 ? 'var(--s-lg-mobi)' : '0'}>
-                        <Box className={styles.title}>Nežinai nuo ko pradėti?</Box>
-                        <Box className={styles.subTitle}>Žemiau rasi tris skirtingus būdus pradėti – pasirink tą, kuris šiuo metu tau atdoro artimiausias</Box>
-                    </Stack>
-
-                    <Grid className={styles.OfferCards} space={responsivePading} min='256px'>
+                    <SectionTitle 
+                        title='Nežinai nuo ko pradėti?' 
+                        subTitle='Žemiau rasi tris skirtingus būdus pradėti – pasirink tą, kuris šiuo metu tau atdoro artimiausias'
+                    />
+                    <Grid space={responsivePading} min='256px'>
                         {offersData.map(card => <OfferCard key={card.id} card={card} />)}
                     </Grid>
                 </Stack>

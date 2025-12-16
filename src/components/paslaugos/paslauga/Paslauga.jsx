@@ -6,7 +6,7 @@ import Promotion from './Promotion';
 import CountUp from 'react-countup';
 
 const Paslauga = ({ paslauga, setPaslauga }) => {
-    console.log('paslauga.discount: ', paslauga.discount, paslauga.discount === 0)
+    
     const { handleServiceCheckout, isLoading } = usePayment();
     const [startPrice, setStartPrice] = useState(paslauga.current_price);
     const [code, setCode] = useState('');
@@ -74,6 +74,7 @@ const Paslauga = ({ paslauga, setPaslauga }) => {
                 {paslauga.quantity < 4 && <span className={styles.quantity}>Liko: {paslauga.quantity} <small>vnt.</small></span>}
                 <Accordion paslauga={paslauga} />
             </div>
+            
         </div>
     );
 };
