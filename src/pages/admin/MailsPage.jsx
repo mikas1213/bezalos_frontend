@@ -8,8 +8,8 @@ const MailsPage = () => {
     const axiosPrivate = useAxiosPrivate();
     const [emails, setEmails] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
-    const { stats } = useOutletContext();
-    console.log('stats: ', Object.entries(stats.email_stats))
+    const { isLoading: isLoad, stats } = useOutletContext();
+
     useEffect(() => {
         const getData = async () => {
             try {
@@ -26,11 +26,10 @@ const MailsPage = () => {
     return (
         <>
             <div style={{ marginBottom: '1rem', display: 'flex', gap: '1rem'}}>
-                {
-                    Object.entries(stats.email_stats).map(([source, count]) => <div>
+                {!isLoad && Object.entries(stats.email_stats).map(([source, count]) => (<div>
                         <span>{source}</span>:&nbsp;
                         <span style={{ fontWeight: 'bold'}}>{count}</span>
-                    </div>
+                    </div>)
                 )}
             </div>
 
