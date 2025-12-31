@@ -1,6 +1,5 @@
 import styles from './SectionTitle.module.css';
 import { Box, Stack } from '../../Shared';
-import { useMediaQuery } from '../../../contexts/MediaQueryProvider';
 
 interface SectionTitleProps {
     title: string,
@@ -9,7 +8,6 @@ interface SectionTitleProps {
 }
 
 export const SectionTitle = ({ title, subTitle, size = 'lg' }: SectionTitleProps) => {
-    const mediaQuery: number = useMediaQuery();
     const titleClasses = [
         styles.title,
         styles[size]

@@ -1,5 +1,6 @@
 import { useParams } from 'react-router-dom';
-import { Container, Box, Grid, Stack, ReviewCard, SectionTitle } from '../../components/Shared';
+import { Container, Box, Grid, Stack, ReviewCard } from '../../components/Shared';
+import { SectionTitle } from '../../components/Shared/SectionTitle/SectionTitle';
 import Paslauga from '../../components/paslaugos/paslauga/Paslauga';
 import usePaslauga from '../../hooks/paslaugos/usePaslauga';
 import { REVIEWS } from './Reviews';
@@ -8,11 +9,11 @@ import { type ServiceSlug } from './Reviews';
 const PaslaugaPage = () => {
     const { slug } = useParams();
     const { paslauga, setPaslauga, isLoading } = usePaslauga(slug);
-    
+
     return (
         <Container>
-            {isLoading ? 
-                <div style={{height: '100vh'}}></div> : 
+            {isLoading ?
+                <div style={{height: '100vh'}}></div> :
                 <>
                     <Paslauga paslauga={paslauga} setPaslauga={setPaslauga} />
 

@@ -7,9 +7,9 @@ import {
 	Box,
 	Container,
 	Cluster,
-	Stack,
-    SectionTitle
+	Stack
 } from '../../../../../../components/Shared';
+import { SectionTitle } from '../../../../../../components/Shared/SectionTitle/SectionTitle';
 import { Icon1, Icon2, Icon3, Icon4 } from '../icons';
 import video1 from '../../../../../../assets/videos/homepage/video1.mp4';
 import video2 from '../../../../../../assets/videos/homepage/video2.mp4';
@@ -66,7 +66,7 @@ export const InteractivePlanSection = () => {
 	const scrollContainer = useRef<HTMLDivElement>(null);
 	const isScrollingRef = useRef(false);
     const scrollEndTimerRef = useRef<number | null>(null);
-    
+
 	const allCards: Card[] = [...cards, ...cards, ...cards].filter(card => card.id !== 3).map((card, i) => ({
 		...card,
 		id: i,
@@ -80,7 +80,7 @@ export const InteractivePlanSection = () => {
             container.scrollLeft = singleSetWidth;
         }, 100);
     }, []);
-    
+
     useEffect(() => {
         const container = scrollContainer.current
         if(!container) return;
@@ -116,7 +116,7 @@ export const InteractivePlanSection = () => {
 				}, 50);
 			}
 
-			if (scrollLeft >= singleSetWidth * 2 - 10) {	
+			if (scrollLeft >= singleSetWidth * 2 - 10) {
 				isScrollingRef.current = true;
 				container.scrollLeft =
 					singleSetWidth + (scrollLeft - singleSetWidth * 2);
@@ -125,7 +125,7 @@ export const InteractivePlanSection = () => {
 				}, 50);
 			}
         };
-        
+
         container.addEventListener('scroll', handleScroll);
         return () => {
             container.removeEventListener('scroll', handleScroll);
@@ -145,8 +145,8 @@ export const InteractivePlanSection = () => {
 		>
 			<Stack space='var(--s-xl-desk)'>
 				<Container>
-                    <SectionTitle 
-                        title='Pavargai nuolat pirkti naują planą?' 
+                    <SectionTitle
+                        title='Pavargai nuolat pirkti naują planą?'
                         subTitle='Interaktyvus mitybos planas su neribotom galimybėm keisti produktus, kurti ir skaičiuoti receptus'
                     />
 				</Container>

@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { useSearchParams, useNavigate } from 'react-router-dom';
-import { Box, Grid, Stack, SectionTitle, Container } from '../../components/Shared';
+import { Box, Grid, Stack, Container } from '../../components/Shared';
+import { SectionTitle } from '../../components/Shared/SectionTitle/SectionTitle';
 import PaslaugosTab from '../../components/paslaugos/PaslaugosTab';
 import Naryste from '../../components/paslaugos/naryste/Naryste';
 import Paslaugos from '../../components/paslaugos/paslaugos/Paslaugos';
@@ -10,7 +11,7 @@ import { ReviewCard } from '../../components/Shared';
 import { REVIEWS } from './Reviews';
 
 const PaslaugosPage = () => {
-    
+
     const { data:paslaugos, isLoading } = usePaslaugos();
 
     useEffect(() => {
@@ -29,26 +30,26 @@ const PaslaugosPage = () => {
     return (
         <Container>
             <Box padding={['2rem', '0', '4rem']}>
-                <PaslaugosTab 
-                    currentTab={currentTab} 
-                    handleTabChange={handleTabChange} 
-                />    
+                <PaslaugosTab
+                    currentTab={currentTab}
+                    handleTabChange={handleTabChange}
+                />
 
-                {['naryste', 'paslaugos'].includes(currentTab) ? 
+                {['naryste', 'paslaugos'].includes(currentTab) ?
                     <Box padding={['1.5rem', '0']}>
-                        <SectionTitle 
-                            title='Keliaukime į pokyčius kartu!' 
+                        <SectionTitle
+                            title='Keliaukime į pokyčius kartu!'
                             size='md'
                         />
                     </Box> : <NotFound />}
 
-                    {currentTab === 'naryste' && 
+                    {currentTab === 'naryste' &&
                     <Stack space='2rem'>
-                        <Naryste /> 
-                        <SectionTitle 
-                            title='Klientų patirtys' 
-                            subTitle='Išbaldžiusių Valgau be žalos | Virtuvę' 
-                            size='md' 
+                        <Naryste />
+                        <SectionTitle
+                            title='Klientų patirtys'
+                            subTitle='Išbaldžiusių Valgau be žalos | Virtuvę'
+                            size='md'
                         />
                         <Grid>
                             {REVIEWS['naryste'].map(({ title, text }) => <ReviewCard key={title} title={title} text={text} />)}
