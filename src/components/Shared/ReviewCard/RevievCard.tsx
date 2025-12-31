@@ -11,9 +11,9 @@ export const ReviewCard = ({ title, text }: ReviewProps) => {
     const mediaQuery: number = useMediaQuery();
 
     return (
-        <Stack className={styles.reviewCard} 
-            space={mediaQuery < 577 ? 'clamp(0rem, 2.778vw, 1rem)' : 'clamp(0rem, 1.563vw, 1rem)'} 
-            splitAfter={2}    
+        <Stack className={styles.reviewCard}
+            space={mediaQuery < 577 ? 'clamp(0rem, 2.778vw, 1rem)' : 'clamp(0rem, 1.563vw, 1rem)'}
+            splitAfter={2}
         >
             <div className={styles.title}>{title}</div>
             <div className={styles.text}>{text}</div>

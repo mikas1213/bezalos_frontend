@@ -1,5 +1,6 @@
 import { useParams } from 'react-router-dom';
-import { Container, Box, Grid, Stack, ReviewCard } from '../../components/Shared';
+import { Container, Box, Grid, Stack } from '../../components/Shared';
+import { ReviewCard } from '../../components/Shared/ReviewCard/RevievCard';
 import { SectionTitle } from '../../components/Shared/SectionTitle/SectionTitle';
 import Paslauga from '../../components/paslaugos/paslauga/Paslauga';
 import usePaslauga from '../../hooks/paslaugos/usePaslauga';

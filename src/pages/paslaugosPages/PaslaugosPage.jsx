@@ -7,7 +7,7 @@ import Naryste from '../../components/paslaugos/naryste/Naryste';
 import Paslaugos from '../../components/paslaugos/paslaugos/Paslaugos';
 import usePaslaugos from '../../hooks/paslaugos/usePaslaugos';
 import NotFound from '../paymentPages/NotFound';
-import { ReviewCard } from '../../components/Shared';
+import { ReviewCard } from '../../components/Shared/ReviewCard/RevievCard';
 import { REVIEWS } from './Reviews';
 
 const PaslaugosPage = () => {

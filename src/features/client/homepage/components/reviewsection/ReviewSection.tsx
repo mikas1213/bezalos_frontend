@@ -1,5 +1,5 @@
 import { Container, Grid, Stack } from '../../../../../components/Shared';
-import { ReviewCard } from '../../../../../components/Shared';
+import { ReviewCard } from '../../../../../components/Shared/ReviewCard/RevievCard';
 import { SectionTitle } from '../../../../../components/Shared/SectionTitle/SectionTitle';
 import { useMediaQuery } from '../../../../../contexts/MediaQueryProvider';
 import { REVIEWS } from './constants';

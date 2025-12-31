@@ -1,7 +1,6 @@
 import { useResponsivePadding } from '../../../../../../hooks';
 import { Container, Grid, Stack } from '../../../../../../components/Shared';
 import { OfferCard } from '../offercard/OfferCard';
-// import { SectionTitle } from '../../../../../../components/Shared';
 import { SectionTitle } from '../../../../../../components/Shared/SectionTitle/SectionTitle';
 
 import { type OfferCardProps } from '../types';
