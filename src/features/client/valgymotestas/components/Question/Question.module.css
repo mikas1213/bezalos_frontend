@@ -1,0 +1,29 @@
+.question {
+    animation: slideIn 0.4s ease-out;
+    align-self: flex-start;
+}
+.questionTitle {
+    font-size: 28px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    color: var(--dark-green-500);
+    line-height: 1.4;
+    margin-bottom: 8px;
+
+}
+.questionParagraph {
+    font-size: 14px;
+    color: var(--neutral-grey-400);
+    font-weight: 500;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

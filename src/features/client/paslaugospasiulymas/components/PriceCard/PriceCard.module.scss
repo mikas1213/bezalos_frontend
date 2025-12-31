@@ -1,0 +1,125 @@
+.priceCard {
+    position: sticky;
+    animation: fadeInRight 0.8s ease-out;
+}
+.priceCardContent {
+    background: var(--white-100);
+    border-radius: 24px;
+    padding: 40px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.12);
+    border: 3px solid var(--light-green-500);
+}
+.price {
+    text-align: center;
+    margin-bottom: 32px;
+    padding-bottom: 32px;
+    border-bottom: 2px solid #e2e8f0;
+}
+.priceTitle {
+    font-size: 14px;
+    color: #718096;
+    font-weight: 600;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+.priceValue {
+    font-size: 56px;
+    font-weight: 800;
+    color: var(--light-green-700);
+    line-height: 1;
+    margin-bottom: 8px;
+}
+
+.priceSubNote {
+    margin-top: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+.duration {
+    font-size: 14px;
+    color: #4a5568;
+    font-weight: 500;
+}
+.ctaButton {
+    cursor: pointer;
+    width: 100%;
+    padding: 20px;
+    background: linear-gradient(135deg, var(--light-green-500) 0%, var(--light-green-700) 100%);
+    color: var(--white-100);
+    border: none;
+    border-radius: 16px;
+    font-size: 18px;
+    font-weight: 700;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 24px var(--light-green-050);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 20px;
+    transform: translateY(0);
+
+}
+.ctaButton:hover {
+    transform: translateY(-4px);
+    box-shadow:0 12px 32px var(--light-green-050);
+}
+.discount {
+    text-align: center;
+    padding: 16px;
+    background: linear-gradient(135deg, hsl(100, 65%, 95%) 0%, hsl(100, 60%, 98%) 100%);
+    border-radius: 12px;
+    margin-bottom: 24px;
+}
+.discountCodeDesc {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--light-green-700);
+}
+.discountCode {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--light-green-700);
+}
+.trustSignals {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding-top: 24px;
+    border-top: 2px solid #e2e8f0;
+}
+.signal {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 13px;
+    color: #4a5568;
+}
+.ratings {
+    margin-top: 24px;
+    text-align: center;
+}
+.ratingStars {
+    display: flex;
+    justify-content: center;
+    gap: 4px;
+    margin-bottom: 8px;
+}
+.reviewStats {
+    font-size: 13px;
+    color: #718096;
+    margin: 0;
+}
+@keyframes fadeInRight {
+    from {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}

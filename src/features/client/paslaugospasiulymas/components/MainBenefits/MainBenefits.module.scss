@@ -1,0 +1,26 @@
+.mainBenefits {
+    background: #f7fafc;
+    border-radius: 20px;
+    padding: 32px;
+    border: 2px solid #e2e8f0;
+}
+.title {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--dark-green-500);
+    margin-bottom: 24px;
+}
+.bulletPoint {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: var(--light-green-500);
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+.benefitText {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #2d3748;
+    font-weight: 500;
+}

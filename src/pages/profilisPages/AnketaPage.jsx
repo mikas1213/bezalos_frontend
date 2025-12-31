@@ -21,12 +21,11 @@ import toast from 'react-hot-toast';
 
 const AnketaPage = () => {
     const { anketa: formData, setAnketa: setFormData, user_id } = useOutletContext();
-    
     const [errors, setErrors] = useState({});
     const [currentStep, setCurrentStep] = useState(1);
     const [isLoading, setIsLoading] = useState(false);
     const totalSteps = 7;
-    
+
     const steps = [
         { id: 1, title: 'Fiziniai duomenys', icon: '👤' },
         { id: 2, title: 'Tikslas', icon: '🎯' },
@@ -39,7 +38,7 @@ const AnketaPage = () => {
     const handleForm = (e, prop, id) => {
         let name = e.target?.name || e.current?.name || e?.name;
         let value = e.target?.value ?? e.current?.value ?? e?.value ?? '';
-        
+
         setFormData(prev => {
 
             if(['breakfast', 'lunch', 'snack', 'dinner'].includes(name) && !prev[name]) {
@@ -52,12 +51,12 @@ const AnketaPage = () => {
 
             if(['workday', 'day_off'].includes(prop)) {
                 if(name.indexOf('eat') > -1) name = name.split('_').shift();
-                
+
                 const index = prev.routines[prop].findIndex(el => el.day_id === id);
 
                 if(index > -1) {
-                    const updatedRoutines = prev.routines[prop].map((routine, i) => i === index ? { 
-                        ...routine, [name]: value 
+                    const updatedRoutines = prev.routines[prop].map((routine, i) => i === index ? {
+                        ...routine, [name]: value
                     } : routine);
                     return {
                         ...prev,
@@ -65,7 +64,7 @@ const AnketaPage = () => {
                     };
                 }
             }
-            
+
             return ({...prev, [name]: value});
         });
     }
@@ -77,9 +76,9 @@ const AnketaPage = () => {
                 ...prev.routines,
                 [routine]: [...prev.routines[routine], {
                     day_id: uuidv4(),
-                    eat: 'Galiu valgyti betkada', 
-                    get_up: '--:--', 
-                    go_sleep: '--:--', 
+                    eat: 'Galiu valgyti betkada',
+                    get_up: '--:--',
+                    go_sleep: '--:--',
                     sport: '--:--',
                     breakfast_time: '--:--',
                     lunch_time: '--:--',
@@ -154,7 +153,7 @@ const AnketaPage = () => {
             let newErrors = {};
             if(formData.diet && formData.diet_desc === '') {
                 newErrors.diet_desc = 'Laukas yra privalomas'
-            } 
+            }
             if(formData.intolerance && formData.intolerance_desc === '') {
                 newErrors.intolerance_desc = 'Laukas yra privalomas'
             }
@@ -198,7 +197,7 @@ const AnketaPage = () => {
                 'Galiu valgyti betkada': ['get_up', 'go_sleep'],
                 'Negaliu valgyti betkada': ['get_up', 'go_sleep', 'breakfast_time', 'lunch_time', 'snack_time', 'dinner_time']
             };
-            
+
             const days = formData.routines.workday.concat(formData.routines.day_off);
 
             days.forEach(day => {
@@ -228,7 +227,7 @@ const AnketaPage = () => {
             setIsLoading(true);
             await axiosPrivate.post(`/profile/anketa/${user_id}`, formData);
             await delay(1200);
-            setIsLoading(false); 
+            setIsLoading(false);
 
         } catch (err) {
             const { status } = err;
@@ -271,13 +270,13 @@ const AnketaPage = () => {
                 return <Tikslai formData={formData} handleForm={handleForm} errors={errors.goal} setErrors={setErrors} />
             case 3:
                 return <DarboGrafikas formData={formData} handleForm={handleForm} errors={errors} setErrors={setErrors} />
-            case 4: 
+            case 4:
                 return <Sveikata formData={formData} handleForm={handleForm} errors={errors.health_problems_desc} setErrors={setErrors} />
-            case 5: 
+            case 5:
                 return <DabartiniaiIprociai formData={formData} handleForm={handleForm} errors={errors} setErrors={setErrors} />
-            case 6: 
+            case 6:
                 return <Rutinos formData={formData} handleForm={handleForm} addRoutine={addRoutine} deleteRoutine={deleteRoutine} errors={errors} setErrors={setErrors} />
-            case 7: 
+            case 7:
                 return <PapildomaInfo formData={formData} handleForm={handleForm} setErrors={setErrors} />
             default:
                 return <div>Step {currentStep}</div>;
@@ -288,18 +287,18 @@ const AnketaPage = () => {
         <Container>
             <Anketa>
                 <ProgressBar currentStep={currentStep} totalSteps={totalSteps} />
-                <StepIndicator 
-                    steps={steps} 
-                    currentStep={currentStep} 
+                <StepIndicator
+                    steps={steps}
+                    currentStep={currentStep}
                     setCurrentStep={setCurrentStep} i
-                    isValidFormPage={isValidFormPage} 
+                    isValidFormPage={isValidFormPage}
                 />
                 <StepInfo steps={steps} totalSteps={totalSteps} currentStep={currentStep} />
                 { renderSections() }
-                <Pagination 
-                    currentStep={currentStep} 
-                    setCurrentStep={setCurrentStep} 
-                    totalSteps={totalSteps} 
+                <Pagination
+                    currentStep={currentStep}
+                    setCurrentStep={setCurrentStep}
+                    totalSteps={totalSteps}
                     isValidFormPage={isValidFormPage}
                     formData={formData}
                     isLoading={isLoading}

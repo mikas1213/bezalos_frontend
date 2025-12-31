@@ -5,13 +5,13 @@
 
 .footerEmail .emailWrapper {
     position: relative;
-} 
+}
 
 .footerEmail input {
     border: none;
     outline: none;
     border-radius: 4rem;
-    height: clamp(0rem, 6.25vw, 4rem); 
+    height: clamp(0rem, 6.25vw, 4rem);
     width: clamp(0rem, 50vw, 32rem);
     font-size: var(--font-d-h6-desk);
     padding-right: clamp(0rem, 20.313vw, 13rem);
@@ -61,7 +61,7 @@
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 .footerEmail button:active {
-    background-color: var(--light-green-300);
+    background-color: var(--light-green-500);
 }
 
 .footerEmail button:disabled {
@@ -85,13 +85,13 @@
     }
 
     .footerEmail input {
-        height: clamp(0rem, 11.111vw, 4rem); 
+        height: clamp(0rem, 11.111vw, 4rem);
         width: clamp(0rem, 77.777vw, 28rem);
-        
+
         font-size: var(--font-d-h6-mobi);
         padding-right: clamp(0rem, 24.444vw, 8.8rem);
     }
-    
+
     .footerEmail button {
         height: clamp(0rem, 8.333vw, 3rem);
         width: clamp(0rem, 27.777vw, 10rem);

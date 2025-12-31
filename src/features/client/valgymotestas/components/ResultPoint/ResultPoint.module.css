@@ -1,0 +1,30 @@
+.resultPoint {
+    padding: var(--s-24);
+    border-radius: 12px;
+    background-color: var(--white-100);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    width: 100%;
+}
+.title {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--red-500);
+    color: var(--neutral-grey-600);
+    color: var(--light-green-700);
+    margin: 0;
+}
+.score {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--red-500);
+    color: var(--neutral-grey-600);
+    color: var(--light-green-700);
+}
+.description {
+    font-size: 14px;
+    color: var(--neutral-grey-600);
+    margin: 0,
+}
+.actual :is(.title, .score) {
+    color: var(--red-500);
+}

@@ -17,12 +17,13 @@ type BoxProps = {
     as?: ElementType,
     children: ReactNode,
     padding?: string[],
-    borderWidth?: string
+    borderWidth?: string,
+    borderRadius?: string,
     className?: string
 };
 
-export const  Box = ({ as: Component = 'div', children, padding = ['0'], borderWidth = '0', className = '', }: BoxProps) => {
-    
+export const  Box = ({ as: Component = 'div', children, padding = ['0'], borderWidth = '0', borderRadius='0', className = '', }: BoxProps) => {
+
     type PaddingArray = string[];
     const normalizePadding = (p: PaddingArray): [string, string, string, string] => {
         switch(p.length) {
@@ -39,13 +40,14 @@ export const  Box = ({ as: Component = 'div', children, padding = ['0'], borderW
         styles.box,
         className
     ].filter(Boolean).join(' ');
-    
+
     const boxStyle = {
         '--pad-t': t,
         '--pad-r': r,
         '--pad-b': b,
         '--pad-l': l,
         '--border-width': borderWidth,
+        '--border-radius': borderRadius,
     } as CSSProperties;
 
     return (

@@ -55,8 +55,8 @@ export const Offer = ({ setIsMounted, setIsOfferSent, isOfferSent, setCookie }: 
     return (
         <Overlay handleSentOffer={ handleSentOffer }>
             {isPending && <Spinner /> }
-            {isOfferSent ? 
-                <OfferSent /> : 
+            {isOfferSent ?
+                <OfferSent /> :
                 <>
                     <div className={styles.top}>
                         <img src={image} alt='avatar' />
@@ -70,13 +70,13 @@ export const Offer = ({ setIsMounted, setIsOfferSent, isOfferSent, setCookie }: 
                         </div>
 
                         <form className={styles.formContainer} onSubmit={handleSubmit(onSubmit)}>
-                            <input 
-                                type='email' 
+                            <input
+                                type='email'
                                 placeholder='el. paštas'
-                                {...register('email')} 
-                                autoComplete='off' 
+                                {...register('email')}
+                                autoComplete='off'
                             />
-                            {errors.email && <span className={styles.inputError}>{errors?.email?.message as string}</span>}    
+                            {errors.email && <span className={styles.inputError}>{errors?.email?.message as string}</span>}
                             <button>IŠPAKUOTI DOVANĄ</button>
                         </form>
 

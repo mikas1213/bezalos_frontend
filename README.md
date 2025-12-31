@@ -50,7 +50,8 @@ Apačia- #082B1D
 https://getcssscan.com/css-box-shadow-examples
 https://htmlcssfreebies.com/css-box-shadow-examples/
 
-
+# Mobile Navbar Icons
+https://www.svgrepo.com/collection/solar-broken-line-icons/
 
 # Fonts:
 https://typescale.com

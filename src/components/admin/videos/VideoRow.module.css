@@ -26,8 +26,7 @@
     margin-left: 1rem;
     overflow: hidden;
     font-size: var(--font-size-small-1);
-    color: var(--cool-grey-900);        
-    /* background-color: #ddd;   */
+    color: var(--cool-grey-900);
 }
 .headerSection { font-weight: 600; }
 .section { font-weight: 400;}
@@ -39,7 +38,7 @@
 }
 .section.title {
     font-weight: 600;
-    color: var(--cool-grey-900); 
+    color: var(--cool-grey-900);
 }
 .value {
     font-weight: 600;
@@ -57,13 +56,13 @@
     display: flex;
     gap: 0.5rem;
     svg {
-        color: tomato; 
+        color: tomato;
     }
     svg.liked {
         fill: tomato;
     }
     span {
-        color: var(--cool-grey-900); 
+        color: var(--cool-grey-900);
     }
 }
 
@@ -108,7 +107,7 @@
 .deleteVideo {
     cursor: pointer;
     margin-left: auto;
-    width: 3.5rem; 
+    width: 3.5rem;
     justify-content: center;
     border-left: 1px solid #eee;
     transition: all 0.15s ease-in-out;

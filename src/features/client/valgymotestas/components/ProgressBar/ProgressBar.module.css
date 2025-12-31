@@ -1,0 +1,30 @@
+.progressBar {
+    width: 100%;
+    margin-bottom: var(--s-40);
+}
+.progressBarInner {
+    margin-bottom: 8px;
+}
+.questionPages {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--dark-green-500);
+}
+.progressPercents {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--neutral-grey-500);
+}
+.progressLine {
+    width: 100%;
+    height: 8px;
+    background: var(--neutral-grey-100);
+    border-radius: 999px;
+    overflow: hidden;
+}
+.progress {
+    height: 100%;
+    background: linear-gradient(90deg, var(--light-green-700) 0%, var(--light-green-500) 100%);
+    transition: width 0.3s ease;
+    border-radius: 999px;
+}

@@ -2,6 +2,7 @@ import { lazy, Suspense } from 'react';
 import { Helmet } from 'react-helmet';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { useCookies } from 'react-cookie';
+import { ScrollToTop } from './components/Shared';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { Toaster } from 'react-hot-toast';
@@ -18,7 +19,10 @@ import LoginPage from './pages/LoginPage';
 import RequireAuth from './pages/RequireAuth';
 import PersistLogin from './pages/PersistLogin';
 
-const HomePage = lazy(() => import('./pages/client/homepage/HomePage'));
+const HomePage = lazy(() => import('./pages/client/HomePage/HomePage'));
+const AtlikTestaPage = lazy(() => import('./pages/client/AtlikTestaPage/AtlikTestaPage'));
+const ValgymoElgsenosTestasPage = lazy(() => import('./pages/client/ValgymoTestasPage/ValgymoTestasPage'));
+const PaslaugosoPasiulymasPage = lazy(() => import('./pages/client/PaslaugosoPasiulymasPage/PaslaugosoPasiulymasPage'));
 const VirtuvePage = lazy(() => import('./pages/virtuvePages/VirtuvePage'));
 import VirtuveVideoPage from './pages/virtuvePages/VirtuveVideoPage';
 const RecipesPage = lazy(() => import('./pages/recipesPages/RecipesPage'));
@@ -58,11 +62,11 @@ import NarystesPage from './pages/admin/servicesPages/NarystesPage';
 import ReceptaiPage from './pages/admin/recipesPages/ReceptaiPage';
 import VideosPage from './pages/admin/videosPages/VideosPage';
 import MailsPage from './pages/admin/MailsPage';
-const PirkimoTaisyklesPage = lazy(() => import('./pages/client/pirkimotaisyklespage/PirkimoTaisyklesPage'));
-const PrivatumoPolitikaPage = lazy(() => import('./pages/client/privatumopolitikapage/PrivatumoPolitikaPage'));
+const PirkimoTaisyklesPage = lazy(() => import('./pages/client/PirkimoTaisyklesPage/PirkimoTaisyklesPage'));
+const PrivatumoPolitikaPage = lazy(() => import('./pages/client/PrivatumoPolitikaPage/PrivatumoPolitikaPage'));
 
 type CookieValue = {
-    COOKIE_CONSENT: string 
+    COOKIE_CONSENT: string
 };
 const queryClient = new QueryClient({
     defaultOptions: {
@@ -74,20 +78,21 @@ const queryClient = new QueryClient({
 
 function App() {
     const [cookies, setCookie] = useCookies<'COOKIE_CONSENT', CookieValue>(['COOKIE_CONSENT']);
-    
+
     return (
         <QueryClientProvider client={queryClient}>
-            
+
             <ReactQueryDevtools initialIsOpen={false}/>
-            <Helmet> 
-                <script type='application/ld+json'> 
-                    {`{ "@context": "https://schema.org", "@type": "Organization", "name": "Be žalos", "url": "https://www.bezalos.lt", "logo": "https://www.bezalos.lt/src/assets/icons/png/logo/icon_180x180.png", "sameAs": [ "https://www.facebook.com/sandra.jatulyte", "https://www.instagram.com/valgau_be_zalos" ], "contactPoint": { "@type": "ContactPoint", "contactType": "Customer Service", "email": "sandra@bezalos.lt"}}`} 
-                </script> 
+            <Helmet>
+                <script type='application/ld+json'>
+                    {`{ "@context": "https://schema.org", "@type": "Organization", "name": "Be žalos", "url": "https://www.bezalos.lt", "logo": "https://www.bezalos.lt/src/assets/icons/png/logo/icon_180x180.png", "sameAs": [ "https://www.facebook.com/sandra.jatulyte", "https://www.instagram.com/valgau_be_zalos" ], "contactPoint": { "@type": "ContactPoint", "contactType": "Customer Service", "email": "sandra@bezalos.lt"}}`}
+                </script>
             </Helmet>
             <BrowserRouter future={{
                 v7_startTransition: true,
                 v7_relativeSplatPath: true
             }}>
+                <ScrollToTop />
                 <MediaQueryProvider>
                     <AuthProvider>
                         <Suspense fallback={<Spinner />}>
@@ -96,6 +101,9 @@ function App() {
                                     <Route path='/' element={<ClientLayout />}>
                                         <Route index element={<HomePage />} />
                                         <Route path='/virtuve' element={<VirtuvePage />} />
+                                        <Route path='/atlik-testa' element={<AtlikTestaPage />} />
+                                        <Route path='/atlik-testa/valgymo-elgsenos-testas' element={<ValgymoElgsenosTestasPage />} />
+                                        <Route path='/atlik-testa/suzinok-daugiau' element={<PaslaugosoPasiulymasPage />} />
                                         <Route path='/receptai' element={<RecipesPage />} />
                                         <Route path='/receptai/:slug' element={<RecipePage />} />
                                         <Route element={<PaymentProvider /> }>
@@ -124,7 +132,7 @@ function App() {
                                             <Route path='/apmoketa-sekmingai' element={<SuccessSubscription /> }/>
                                             <Route path='/mokejimo-klaida' element={<CancelSubscription /> }/>
                                         </Route>
-                                        
+
                                     </Route>
                                     <Route path='*' element={<NotFoundPage />} />
                                     <Route element={<RequireAuth allowedRoles={[1213]}/> }>
@@ -160,13 +168,13 @@ function App() {
                     </AuthProvider>
                 </MediaQueryProvider>
             </BrowserRouter>
-            
+
             {!cookies.COOKIE_CONSENT && <CookieConsent setCookie={setCookie} />}
 
-            <Toaster 
-                position='top-center' 
-                gutter={12} 
-                containerStyle={{ margin: '6px' }} 
+            <Toaster
+                position='top-center'
+                gutter={12}
+                containerStyle={{ margin: '6px' }}
                 toastOptions={{
                     success: {
                         duration: 1500,
@@ -202,7 +210,7 @@ function App() {
                 }}
             />
         </QueryClientProvider>
-        
+
     );
 }
 

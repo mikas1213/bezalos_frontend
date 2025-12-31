@@ -3,7 +3,7 @@
     padding-right: var(--pad-r);
     padding-bottom: var(--pad-b);
     padding-left: var(--pad-l);
-    
 	border: var(--border-width) solid;
+    border-radius: var(--border-radius);
 	border-color: currentColor;
 }

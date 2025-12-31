@@ -10,7 +10,7 @@ type CookieConsentProps = {
 
 export const CookieConsent = ({ setCookie }: CookieConsentProps) => {
     const [show, setShow] = useState<boolean>(false);
-    
+
     const giveCookieConsent = () => {
         setShow(s => !s);
         setTimeout(() => {

@@ -1,0 +1,45 @@
+.resultHeaderIcon {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(
+        135deg,
+        var(--light-green-400) 0%,
+        var(--light-green-700) 100%
+    );
+    border-radius: 50%;
+    margin: 0 auto 20px;
+    animation: scaleIn 0.5s ease-out;
+}
+.resultTitle {
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--dark-green-500);
+    margin-bottom: 12px;
+}
+.resultSubTitle {
+    font-size: 18px;
+    color: var(--neutral-grey-500);
+    margin-bottom: 0;
+}
+.resultsPoints {
+    background-color: var(--light-green-grey-050);
+    margin-top: 40px;
+}
+.resultsPointsLabel {
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--dark-green-500);
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+@keyframes scaleIn {
+    from {
+        transform: scale(0.5);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}

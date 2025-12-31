@@ -9,15 +9,15 @@ import Hamburger from './hamburger/Hamburger';
 import MobileItems from './mobileitems/MobileItems';
 import { useLogout } from '../../../hooks';
 
-import { Logo, AtsijungtiIcon, PaslaugosIcon, PrisijungtiIcon, ProfilisIcon, ReceptaiIcon, VirtuveIcon } from './icons';
+import { Logo, AtsijungtiIcon, PaslaugosIcon, PrisijungtiIcon, ProfilisIcon, ReceptaiIcon, VirtuveIcon, AtlikTestaIcon } from './icons';
 import type { NavbarProps } from './types';
 
 export const Navbar = ({ page = 'default' }: NavbarProps) => {
     const logout = useLogout();
-    
+
     const location = useLocation();
     const { isScroll, user_id, user_role, isOpenBurger, setIsOpenBurger, isOpenModal, setIsOpenModal, responsiveNavHeight } = useNavbar(page);
-    
+
     const navBarClasses = [
         styles.nav,
         styles[`${page}_${isScroll ? 'scrolled' : 'at_top'}`]
@@ -43,6 +43,12 @@ export const Navbar = ({ page = 'default' }: NavbarProps) => {
                         )}
 
                         <Cluster className={styles.navItems} align='center' gap='clamp(0rem, 3.125vw, 3.2rem)'>
+
+                             <NavLink to='/atlik-testa' className={styles.listItem}>
+                                <span>Atlik testą</span>
+                                <div className={styles.indicator}></div>
+                            </NavLink>
+
                             <NavLink to='/virtuve' className={styles.listItem}>
                                 <span>Virtuvė</span>
                                 <div className={styles.indicator}></div>
@@ -52,12 +58,12 @@ export const Navbar = ({ page = 'default' }: NavbarProps) => {
                                 <span>Receptai</span>
                                 <div className={styles.indicator}></div>
                             </NavLink>
-                            
+
                             <NavLink to='/paslaugos' className={styles.listItem}>
                                 <span>Paslaugos</span>
                                 <div className={styles.indicator}></div>
                             </NavLink>
-                            
+
 
                             {user_id && (
                                 <NavLink to='/profilis' className={styles.listItem}>
@@ -65,7 +71,7 @@ export const Navbar = ({ page = 'default' }: NavbarProps) => {
                                     <div className={styles.indicator}></div>
                                 </NavLink>
                             )}
-                            
+
                             {user_role === roles.admin && (
                                 <NavLink to='/admin' className={styles.adminItem}>
                                     <span>Admin</span>
@@ -88,44 +94,48 @@ export const Navbar = ({ page = 'default' }: NavbarProps) => {
                                         Atsijungti
                                     </button>
                                 )}
-                            </Box> 
+                            </Box>
                         </Cluster>
                         <Hamburger page={page} isScroll={isScroll} isOpenBurger={isOpenBurger} setIsOpenBurger={setIsOpenBurger} />
                     </Cluster>
                 </Container>
-                        
-                <MobileItems isOpenBurger={isOpenBurger}>
 
-                    <NavLink to='/virtuve' className={({isActive}) => isActive ? `${styles.listItemMobile} ${styles.active}` : styles.listItemMobile}>  
+                <MobileItems isOpenBurger={isOpenBurger}>
+                    <NavLink to='/atlik-testa' className={({isActive}) => isActive ? `${styles.listItemMobile} ${styles.active}` : styles.listItemMobile}>
+                        <AtlikTestaIcon active={location.pathname.startsWith('/atlik-testa')} />
+                        <span>Atlik testą</span>
+                    </NavLink>
+
+                    <NavLink to='/virtuve' className={({isActive}) => isActive ? `${styles.listItemMobile} ${styles.active}` : styles.listItemMobile}>
                         <VirtuveIcon active={location.pathname.startsWith('/virtuve')} />
                         <span>Virtuvė</span>
-                    </NavLink>    
-                              
+                    </NavLink>
+
                     <NavLink to='/receptai' className={({isActive}) => isActive ? `${styles.listItemMobile} ${styles.active}` : styles.listItemMobile}>
                         <ReceptaiIcon active={location.pathname.startsWith('/receptai')} />
                         <span>Receptai</span>
                     </NavLink>
-            
+
                     <NavLink to='/paslaugos' className={({isActive}) => isActive ? `${styles.listItemMobile} ${styles.active}` : styles.listItemMobile}>
                         <PaslaugosIcon active={location.pathname.startsWith('/paslaugos')} />
                         <span>Paslaugos</span>
                     </NavLink>
-                                                    
-                    {user_id && 
+
+                    {user_id &&
                         <NavLink to='/profilis' className={({isActive}) => isActive ? `${styles.listItemMobile} ${styles.active}` : styles.listItemMobile}>
                             <ProfilisIcon active={location.pathname.startsWith('/profilis')} />
                             <span>Profilis</span>
                         </NavLink>
                     }
-                                        
-                    {!user_id ? 
-                        <li 
+
+                    {!user_id ?
+                        <li
                             className={`${styles.listItemMobile} ${styles.signout}`}
                             onClick={() => setIsOpenModal(true)}
                         >
                             <PrisijungtiIcon />
                             <span>Prisijungti</span>
-                        </li> 
+                        </li>
                         :
                         <li className={`${styles.listItemMobile} ${styles.signout}`}
                             onClick={async () => await logout() }

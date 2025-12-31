@@ -36,7 +36,7 @@
     gap: 0.1rem;
     transform: translateX(-2%);
     transition: transform 0.6s ease-out, opacity 0.6s ease-out;
-    opacity: 0.1; 
+    opacity: 0.1;
 }
 
 .subTitle h2 {
@@ -51,7 +51,7 @@
 }
 
 .right {
-    align-items: center;   
+    align-items: center;
 }
 
 .right img {
@@ -70,7 +70,7 @@
     width: clamp(0rem, 18.75vw, 12rem);
     height: clamp(2rem, 4.688vw, 3rem);
     border-radius: 10rem;
-    border: 1px solid var(--light-green-500); 
+    border: 1px solid var(--light-green-500);
     font-size: var(--font-d-h6-desk);
     font-weight: 600;
     color: var(--light-green-500);
@@ -95,7 +95,7 @@
         border-bottom-right-radius: 11.5vw;
     }
 
-    .heroContainer { 
+    .heroContainer {
         grid-template-columns: 1fr;
         gap: 6.4vw;
         padding-top: 6.4vw;

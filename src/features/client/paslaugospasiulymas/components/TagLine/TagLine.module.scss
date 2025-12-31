@@ -1,0 +1,19 @@
+.tagLine {
+    display: inline-block;
+    padding: 12px 24px;
+    background: linear-gradient(135deg, hsl(100, 65%, 95%) 0%, hsl(100, 60%, 98%) 100%);
+    border-radius: 12px;
+    margin-bottom: 24px;
+    border: 2px solid var(--light-green-500);
+}
+.tagLineTitle {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--light-green-700);
+}
+.description {
+    font-size: 18px;
+    line-height: 1.8;
+    color: var(--dark-green-500);
+    margin-bottom: 32px;
+}

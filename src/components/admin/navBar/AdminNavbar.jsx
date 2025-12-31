@@ -11,6 +11,7 @@ const AdminNavbar = ({ isLoading, stats }) => {
     const user_count = !isLoading ? stats.users : 0;
     const virtuve_count = !isLoading ? stats.virtuve_active : 0;
     const profilis_count = !isLoading ? stats.profilis_active : 0;
+    const emails = !isLoading ? stats.emails : 0;
 
     const links = [
         {to: '/admin', label: 'Klientai', icon: <FaUserGroup />, notification: `${user_count} / ${virtuve_count} / ${profilis_count}`},
@@ -18,15 +19,15 @@ const AdminNavbar = ({ isLoading, stats }) => {
         {to: '/admin/receptai' , label: 'Receptai', icon: <IoFastFoodSharp />},
         {to: '/admin/paslaugos' , label: 'Paslaugos', icon: <GrServices />},
         {to: '/admin/videos' , label: 'Videos', icon: <FaFilm />},
-        {to: '/admin/mails' , label: 'Mails', icon: <TbMailFilled />, notification: !isLoading && `${stats.offer_mails} / ${stats.mailer_list_mails}`},
+        {to: '/admin/mails' , label: 'Mails', icon: <TbMailFilled />, notification: `${emails}`},
         {to: '/admin/test3' , label: 'Test', icon: <FaNoteSticky />}
     ];
 
     const isLinkActive = (path) => {
-        
+
         if(path === '/admin') {
             return location.pathname === '/admin' || location.pathname === '/admin/';
-        } 
+        }
         return location.pathname.startsWith(path);
     };
 
@@ -35,10 +36,10 @@ const AdminNavbar = ({ isLoading, stats }) => {
             <li className={`${styles.navItem} ${styles.navItemHome}`}>
                 <NavLink to='/'><FaHouse />Pradžia</NavLink>
             </li>
-            
+
             {links.map(link =><li key={link.to} className={styles.navItem}>
                 <NavLink to={link.to} className={({ isActive }) => isActive && isLinkActive(link.to) ? styles.active : ''}>
-                    {link.icon}{link.label} 
+                    {link.icon}{link.label}
                     {link.notification && <span className={styles.notification}>{link.notification}</span>}
                 </NavLink>
             </li>)}

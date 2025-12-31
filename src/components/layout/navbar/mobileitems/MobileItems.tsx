@@ -17,7 +17,7 @@ const MobileItems = ({ children, isOpenBurger }: ItemsProps) => {
                 { children }
             </ul>
         </div>
-    )                
+    )
 };
 
 export default MobileItems;

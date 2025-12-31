@@ -1,0 +1,10 @@
+.questions {
+    width: 100%;
+    margin-bottom: var(--s-48);
+}
+.buttonsContainer {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    gap: var(--s-16);
+}

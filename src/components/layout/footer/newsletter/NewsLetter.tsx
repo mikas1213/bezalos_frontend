@@ -42,7 +42,7 @@ export const NewsLetter = () => {
              }
         }
     });
-    
+
     const submit = ({ email }: NewsLetterFormData) => {
         mutate({
             email: email.toLowerCase().trim(),
@@ -53,9 +53,9 @@ export const NewsLetter = () => {
         <form onSubmit={handleSubmit(submit)}>
             <Cluster justify='center' className={styles.footerEmail}>
                 <Box className={styles.emailWrapper}>
-                    <input type='email' 
+                    <input type='email'
                         placeholder='El. paštas'
-                        className={`${errors.email && styles.invalid || !!watch('email') && !errors.email && styles.valid}`} 
+                        className={`${errors.email && styles.invalid || !!watch('email') && !errors.email && styles.valid}`}
                             {...register('email', {
                                 required: 'Neįvestas el. paštas',
                                 pattern: {
@@ -64,7 +64,7 @@ export const NewsLetter = () => {
                             }
                     })} autoComplete='off' />
                     <button disabled={isPending ? true : false}>Prenumeruoti</button>
-                    {errors.email && <span className={styles.inputError}>{errors?.email?.message}</span>}    
+                    {errors.email && <span className={styles.inputError}>{errors?.email?.message}</span>}
                 </Box>
             </Cluster>
         </form>

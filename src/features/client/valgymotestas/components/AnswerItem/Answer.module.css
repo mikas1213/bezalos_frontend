@@ -1,0 +1,53 @@
+.answer {
+    cursor: pointer;
+    width: 100%;
+    padding: 20px 24px;
+    border-radius: 16px;
+    border: 2px solid var(--neutral-grey-200);
+    background-color: var(--white-100);
+    transition: all 0.3s ease;
+    text-align: left;
+    position: relative;
+    overflow: hidden;
+    animation: slideIn 0.4s ease-out var(--answer-animation) both;
+}
+.answer.active {
+    border: 2px solid var(--light-green-500);
+    background-color: var(--light-green-050);
+}
+.answer:not(.active):hover {
+    border: 2px solid var(--neutral-grey-400);
+    background-color: var(--neutral-grey-050);
+}
+.bulletPoint {
+    width: var(--s-24);
+    height: var(--s-24);
+    border-radius: 50%;
+    flex-shrink: 0;
+    background-color: var(--white-100);
+    border: 2px solid var(--neutral-grey-100);
+}
+.active .bulletPoint {
+    background-color: var(--light-green-500);
+    border: 2px solid var(--light-green-500);
+}
+.answerTitle {
+    font-size: var(--font-16);
+    font-weight: 500;
+    color: var(--neutral-grey-700);
+}
+.active .answerTitle {
+    font-weight: 600;
+    color: var(--dark-green-500);
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
