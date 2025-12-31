@@ -11,7 +11,7 @@ export const COOKIES = {
         values: {
             emocinis: 'EbDyMdvi',
             isorinis: 'IxZZYVxL',
-            ribojantis: 'AMyBLYDb',
+            ribojantis: 'RMyBLYDb',
             main: 'MOUupILr',
             good: 'GkwTmAWl',
         } as const,

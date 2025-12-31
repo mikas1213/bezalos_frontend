@@ -1,7 +1,8 @@
 .answer {
     cursor: pointer;
     width: 100%;
-    padding: 20px 24px;
+    padding-inline: 24px;
+    padding-block: 20px;
     border-radius: 16px;
     border: 2px solid var(--neutral-grey-200);
     background-color: var(--white-100);
@@ -49,5 +50,12 @@
     to {
         opacity: 1;
         transform: translateY(0);
+    }
+}
+
+@media only screen and (max-width: 375px) {
+    .answer {
+        padding-inline: 24px;
+        padding-block: 16px;
     }
 }

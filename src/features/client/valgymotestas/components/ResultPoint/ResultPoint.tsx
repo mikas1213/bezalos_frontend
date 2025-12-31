@@ -13,7 +13,7 @@ export const ResultPoint = ({ title, description, score }: ResultPointProps) => 
     ].filter(Boolean).join(' ');
 
     return (
-        <Cluster dir='column' gap='12px' align='space-between' className={resultPointClasses}>
+        <Cluster dir='column' align='space-between' className={resultPointClasses}>
             <Cluster justify='space-between'>
                 <h3 className={styles.title}>{ title }</h3>
                 <span className={styles.score}>{ score?.toFixed(2) }</span>

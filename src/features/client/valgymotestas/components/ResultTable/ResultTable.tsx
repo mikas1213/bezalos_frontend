@@ -15,7 +15,7 @@ export const ResultTable = ({ children }: ResultPageProps) => {
             <h1 className={styles.resultTitle}>Anketa užpildyta!</h1>
             <p className={styles.resultSubTitle}>Žemiau matai, tai ką atskleidė tavo valgymo įpročiai</p>
 
-            <Box padding={['var(--s-40)']} borderRadius='16px' className={styles.resultsPoints}>
+            <Box borderRadius='16px' className={styles.resultsPoints}>
                 <h2 className={styles.resultsPointsLabel}>Jūsų rezultatai</h2>
                 <Cluster gap='var(--s-24)'>
                     { children }

@@ -7,3 +7,4 @@ export { TestHeader } from './TestHeader/TestHeader';
 export { ResultTable } from './ResultTable/ResultTable';
 export { ResultPoint } from './ResultPoint/ResultPoint';
 export { KnowMore } from './KnowMore/KnowMore';
+export { Explanation } from './Explanation/Explanation';

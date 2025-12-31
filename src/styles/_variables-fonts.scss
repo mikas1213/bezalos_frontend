@@ -17,6 +17,8 @@
     /* D-Y-N-A-M-I-C---F-O-N-T-S */
 
     /* 1224 Viewport */
+
+    --font-d-xl-desk: clamp(0rem, 6.233vw, var(--font-76));
     --font-d-h1-desk: clamp(0rem, 4.987vw, var(--font-60));
     --font-d-h2-desk: clamp(0rem, 3.99vw, var(--font-48));
     --font-d-h3-desk: clamp(0rem, 3.191vw, var(--font-40));

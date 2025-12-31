@@ -1,6 +1,7 @@
 .question {
     animation: slideIn 0.4s ease-out;
     align-self: flex-start;
+    padding-bottom: 50px;
 }
 .questionTitle {
     font-size: 28px;
@@ -25,5 +26,11 @@
     to {
         opacity: 1;
         transform: translateY(0);
+    }
+}
+
+@media only screen and (max-width: 576px) {
+    .question {
+        padding-bottom: 20px;
     }
 }

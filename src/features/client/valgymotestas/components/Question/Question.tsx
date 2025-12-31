@@ -6,7 +6,7 @@ interface CurrentQuestionProps {
 }
 export const Question = ({ currentQuestion }: CurrentQuestionProps) => {
     return(
-        <Box className={styles.question} padding={['0', '0', '50px', '0']}>
+        <Box className={styles.question} >
             <h2 className={styles.questionTitle}>{currentQuestion}</h2>
             <p className={styles.questionParagraph}>Pasirinkite atsakymą</p>
         </Box>

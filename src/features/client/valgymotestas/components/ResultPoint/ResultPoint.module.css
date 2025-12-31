@@ -1,4 +1,5 @@
 .resultPoint {
+    gap: 12px;
     padding: var(--s-24);
     border-radius: 12px;
     background-color: var(--white-100);
@@ -27,4 +28,11 @@
 }
 .actual :is(.title, .score) {
     color: var(--red-500);
+}
+
+
+@media only screen and (max-width: 375px) {
+    .resultPoint {
+        gap: 2px;
+    }
 }

@@ -1,3 +1,7 @@
+.testHeader {
+    padding-block: 2rem;
+}
+
 .title {
     text-align: center;
     color: var(--dark-green-500);
@@ -10,4 +14,30 @@
 .subTitle {
     color: var(--neutral-grey-500);
     letter-spacing: 0.2px;
+}
+
+
+@media only screen and (max-width: 768px) {
+    .title {
+        font-size: var(--font-d-h1-desk);
+    }
+    .subTitle {
+        font-size: var(--font-d-h5-desk);
+    }
+}
+
+@media only screen and (max-width: 576px) {
+    .title {
+        font-size: var(--font-d-h4-mobi);
+    }
+
+    .subTitle {
+        font-size: var(--font-d-md-mobi);
+    }
+}
+
+@media only screen and (max-width: 375px) {
+    .testHeader {
+        padding-block: 1rem;
+    }
 }

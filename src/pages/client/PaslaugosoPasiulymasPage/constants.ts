@@ -36,11 +36,11 @@ export const services: Services = {
             'Susisiekite iškart po apmokėjimo',
             '24/7 asmeninis palaikymas'
         ],
-        url: '/paslaugos/kursas-kodel-as-vis-persivalgau'
+        url: '/paslaugos/mitybos-planas-prieziura'
     },
 
     [COOKIES.TEST_RESULT.values.isorinis]: {
-        title: 'Įpročių valgymui įveikti',
+        title: 'Valgymui iš įpročio įveikti',
         subtitle: 'Pažink savo valgymo įpročius',
         stats: [
             { value: '75%', label: 'Mažiau užkandžiavimo' },
@@ -71,7 +71,7 @@ export const services: Services = {
             'Susisiekite iškart po apmokėjimo',
             '24/7 bendruomenės palaikymas'
         ],
-        url: '/paslaugos/kursas-sveikatai-palanki-mityba-nuo-a-iki-z'
+        url: '/paslaugos/mitybos-planas'
     },
 
     [COOKIES.TEST_RESULT.values.ribojantis]: {
@@ -106,7 +106,7 @@ export const services: Services = {
             'Susisiek iškart po apmokėjimo',
             '24/7 asmeninis palaikymas'
         ],
-        url: '/paslaugos/kursas-iveik-emocini-valgyma'
+        url: '/paslaugos/individualus-valgymo-terapeutas'
     },
 
     [COOKIES.TEST_RESULT.values.main]: {
@@ -141,6 +141,6 @@ export const services: Services = {
             'Susisiek iškart po apmokėjimo',
             '24/7 asmeninis palaikymas'
         ],
-        url: '/paslaugos/mitybos-planas'
+        url: '/paslaugos/mitybos-planas-prieziura'
     }
 };

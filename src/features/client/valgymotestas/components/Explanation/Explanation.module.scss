@@ -1,0 +1,15 @@
+.explanation {
+    display: flex;
+    gap: 0.5rem;
+    align-items: flex-start;
+
+}
+.icon {
+    display: inline-flex;
+    font-size: 14px;
+}
+
+.label {
+    color: var(--neutral-grey-400);
+    font-size: 14px;
+}

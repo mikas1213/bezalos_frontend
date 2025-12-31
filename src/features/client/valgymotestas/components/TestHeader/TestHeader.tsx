@@ -8,7 +8,7 @@ interface TestHeaderProps {
 
 export const TestHeader = ({ title, subTitle }: TestHeaderProps) => {
     return (
-        <Box padding={['2rem', '0']}>
+        <Box className={styles.testHeader}>
             <Center intrinsic={true}>
                 <h3 className={styles.title}>{ title }</h3>
                 <p className={styles.subTitle}>{ subTitle }</p>

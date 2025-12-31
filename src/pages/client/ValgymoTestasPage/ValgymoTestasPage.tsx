@@ -12,12 +12,12 @@ import {
     Button,
     ResultTable,
     ResultPoint,
-    KnowMore
+    KnowMore,
+    Explanation
 } from '../../../features/client/valgymotestas/components';
 import type { QuestionCategory, AnswerMap, AnswerValue, QuestionItem } from './types';
 
 const ValgymoTestasPage = () => {
-    // const navigate = useNavigate();
     const [currentPage, setCurrentPage] = useState(0);
     const [answers, setAnswers] = useState<AnswerMap>({});
     const [showResults, setShowResults] = useState(false);
@@ -63,6 +63,7 @@ const ValgymoTestasPage = () => {
                             description={resultItems[key as QuestionCategory].description}
                             score={val}
                         />)}
+                        <Explanation />
                     </ResultTable>
                     <KnowMore result={result} />
                 </TestLayout>
@@ -84,7 +85,7 @@ const ValgymoTestasPage = () => {
                 />
 
                 <Question currentQuestion={currentQuestion.text} />
-                <Cluster className={styles.questions} dir='column' gap='var(--s-12)'>
+                <Cluster className={styles.answers} dir='column' gap='var(--s-12)'>
                     {answerItems.map((option, index) => (
                         <Answer
                             key={option.value}

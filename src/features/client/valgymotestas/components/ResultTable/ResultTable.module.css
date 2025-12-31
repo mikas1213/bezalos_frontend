@@ -1,3 +1,4 @@
+
 .resultHeaderIcon {
     width: 80px;
     height: 80px;
@@ -24,6 +25,7 @@
 .resultsPoints {
     background-color: var(--light-green-grey-050);
     margin-top: 40px;
+    padding: var(--s-40);
 }
 .resultsPointsLabel {
     font-size: 24px;
@@ -41,5 +43,19 @@
     to {
         transform: scale(1);
         opacity: 1;
+    }
+}
+
+
+
+@media only screen and (max-width: 576px) {
+    .resultsPoints {
+        padding-inline: var(--content-padding-sm);
+    }
+}
+
+@media only screen and (max-width: 375px) {
+    .resultsPoints {
+        padding-inline: var(--content-padding-xs);
     }
 }
