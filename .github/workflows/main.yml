@@ -21,36 +21,20 @@ jobs:
           node-version: '22'
           cache: 'npm'
 
-    #   - name: Cache node modules
-    #     uses: actions/cache@v3
-    #     id: cache-nodemodules
-    #     with:
-    #       path: node_modules
-    #       key: ${{ runner.os }}-node-${{ hashFiles('package-lock.json') }}
-    #       restore-keys: |
-    #         ${{ runner.os }}-node-
-
       - name: Install dependencies
         # if: steps.cache-nodemodules.outputs.cache-hit != 'true'
         run: npm ci
-
-    #   - name: Cache build
-    #     uses: actions/cache@v3
-    #     id: cache-build
-    #     with:
-    #       path: dist
-    #       key: build-${{ github.sha }}
 
       - name: Build bezalos
         # if: steps.cache-build.outputs.cache-hit != 'true'
         run: npm run build
 
-    #   - name: Upload build artifacts
-    #     uses: actions/upload-artifact@v4
-    #     with:
-    #       name: dist-files
-    #       path: dist/
-    #       retention-days: 1
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: dist-files
+          path: dist/
+          retention-days: 1
 
   # DEV deployment
   deploy-dev:
