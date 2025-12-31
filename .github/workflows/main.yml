@@ -50,7 +50,7 @@ jobs:
         with:
           name: dist-files
           path: dist/
-          retention-days: 1
+          retention-days: 0
 
   # DEV deployment
   deploy-dev:
