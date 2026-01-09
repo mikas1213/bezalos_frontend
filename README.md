@@ -2,6 +2,15 @@
 
 Profesionali mitybos konsultavimo platforma, sukurta mitybos konsultantei Sandrai Jatulytei.
 
+![React](https://img.shields.io/badge/React-19.2.3-61DAFB?style=for-the-badge&logo=react&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-5.9.3-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
+![Vite](https://img.shields.io/badge/Vite-7.1.9-646CFF?style=for-the-badge&logo=vite&logoColor=white)
+![React Router](https://img.shields.io/badge/React_Router-6.30.1-CA4245?style=for-the-badge&logo=react-router&logoColor=white)
+![React Query](https://img.shields.io/badge/React_Query-5.28.4-FF4154?style=for-the-badge&logo=react-query&logoColor=white)
+![SASS](https://img.shields.io/badge/SASS-1.97.1-CC6699?style=for-the-badge&logo=sass&logoColor=white)
+![Framer Motion](https://img.shields.io/badge/Framer_Motion-12.3.0-0055FF?style=for-the-badge&logo=framer&logoColor=white)
+![Axios](https://img.shields.io/badge/Axios-1.6.7-5A29E4?style=for-the-badge&logo=axios&logoColor=white)
+
 ## Apie projektą
 
 **Be žalos** yra išsami mitybos ir sveikatos konsultavimo platforma, skirta teikti personalizuotas mitybos paslaugas, receptus, edukacijos turinį ir interaktyvius įrankius valgymo įpročių vertinimui.
