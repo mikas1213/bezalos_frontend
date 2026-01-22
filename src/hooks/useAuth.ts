@@ -20,9 +20,9 @@ export const useAuth = () => {
     if(!context) {
         throw new Error('useAuth must be used within an AuthProvider');
     }
-    
+
     const { auth, setAuth, isOpenModal, setIsOpenModal } = context;
-    
+
     const loggedUser = useMemo(() => {
         if (!auth?.accessToken) return null;
         try {
@@ -30,6 +30,6 @@ export const useAuth = () => {
         } catch (error) {
             return null;
         }
-    }, [auth?.accessToken]); 
+    }, [auth?.accessToken]);
     return { auth, setAuth, isOpenModal, setIsOpenModal, loggedUser };
 };
