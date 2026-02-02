@@ -12,7 +12,7 @@ const experiences: Experience[] = [
     { value: '9m+', desc: 'darbo patirtis' },
     { value: '2,2k+', desc: 'laimingų klientų' },
     { value: '105+', desc: 'mentorystės istorijos' },
-    { value: '1,8k+', desc: 'mitybos planų' }
+    { value: '1,8k+', desc: 'mitybos planų' },
 ];
 
 export const ExperienceSection = () => {
