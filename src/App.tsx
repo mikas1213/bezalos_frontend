@@ -135,6 +135,7 @@ function App() {
 
                                     </Route>
                                     <Route path='*' element={<NotFoundPage />} />
+
                                     <Route element={<RequireAuth allowedRoles={[1213]}/> }>
                                         <Route path='/admin' element={<AdminLayout /> }>
                                             <Route index element={<UsersPage />} />

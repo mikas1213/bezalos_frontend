@@ -19,12 +19,12 @@ const UpdatePasswordPage = () => {
         }
     });
 
-
+    console.log('UpdatePasswordPage', data)
     if(isLoading) return <Spinner />;
     return (
         <>
             {
-                data?.data?.data?.email ? <UpdatePassword /> : <ResetTokenError />
+                data?.data?.email ? <UpdatePassword /> : <ResetTokenError />
             }
         </>
     );

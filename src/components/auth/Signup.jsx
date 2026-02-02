@@ -20,7 +20,7 @@ const Signup = () => {
     const { setFormState } = useContext(FormStateContext);
 
     const { register, formState: { errors }, getValues, setError, watch, handleSubmit } = useForm({ mode: 'onChange' });
-    
+
     const { mutate, isPending } = useMutation({
         mutationFn: async (inputsData) => {
             await axios.post('auth/signup', inputsData, {
@@ -38,17 +38,17 @@ const Signup = () => {
             setError(path, { type: "server", message: msg });
         }
     });
-    
+
     const submit = ({name, email, password, passwordConfirmed}) => {
         mutate({
             name: name.trim(),
             email: email.toLowerCase().trim(),
-            initial_target: radioData,
+            initialTarget: radioData,
             password: password.trim(),
             passwordConfirmed: passwordConfirmed.trim()
         });
     };
-    
+
     return (
         <div className={styles.right}>
             {isPending && <Spinner />}
@@ -63,7 +63,7 @@ const Signup = () => {
                         <div className={styles.inputContainer}>
                             <input type='text'
                                 placeholder='Vardas'
-                                className={`${errors.name && styles.invalid || !!watch('name') && !errors.name && styles.valid}`} 
+                                className={`${errors.name && styles.invalid || !!watch('name') && !errors.name && styles.valid}`}
                                 {...register('name', {
                                 required: 'Neįvestas vardas',
                                 maxLength: {
@@ -73,7 +73,7 @@ const Signup = () => {
                                 validate: value => {
                                     if(/[^a-zA-Ž0-9_ -]+/gi.test(value)) {
                                         return 'Galimi simboliai: (_-)'
-                                    } 
+                                    }
                                 }
                             })} autoComplete='off' />
                             <FaUser className={styles.icon}/>
@@ -83,9 +83,9 @@ const Signup = () => {
 
                     <div className={styles.inputGroup}>
                         <div className={styles.inputContainer}>
-                            <input type='email' 
+                            <input type='email'
                                 placeholder='El. paštas'
-                                className={`${errors.email && styles.invalid || !!watch('email') && !errors.email && styles.valid}`} 
+                                className={`${errors.email && styles.invalid || !!watch('email') && !errors.email && styles.valid}`}
                                 {...register('email', {
                                 required: 'Neįvestas el. paštas',
                                 pattern: {
@@ -117,9 +117,9 @@ const Signup = () => {
                             })} autoComplete='off' />
                             <FaLock className={styles.icon}/>
                             <div className={styles.eyeIconContainer} onClick={() => setEyeOne((on) => !on)}>
-                                {eyeOne ? 
-                                    (<BsEyeFill className={styles.eyeIcon} />) : 
-                                    (<RiEyeCloseLine className={styles.eyeIcon} 
+                                {eyeOne ?
+                                    (<BsEyeFill className={styles.eyeIcon} />) :
+                                    (<RiEyeCloseLine className={styles.eyeIcon}
                                 />)}
                             </div>
                         </div>
@@ -128,7 +128,7 @@ const Signup = () => {
 
                     <div className={styles.inputGroup}>
                         <div className={styles.inputContainer}>
-                            <input type={eyeTwo ? 'text' : 'password'} 
+                            <input type={eyeTwo ? 'text' : 'password'}
                                 placeholder='Pakartokite slaptažodį'
                                 className={`${errors.passwordConfirmed && styles.invalid || !!watch('passwordConfirmed') && !errors.passwordConfirmed && styles.valid}`}
                                 {...register('passwordConfirmed', {
@@ -137,15 +137,15 @@ const Signup = () => {
                             })} autoComplete='off' />
                             <FaLock className={styles.icon}/>
                             <div className={styles.eyeIconContainer} onClick={() => setEyeTwo((on) => !on)}>
-                                {eyeTwo ? 
-                                    (<BsEyeFill className={styles.eyeIcon} />) : 
-                                    (<RiEyeCloseLine className={styles.eyeIcon} 
+                                {eyeTwo ?
+                                    (<BsEyeFill className={styles.eyeIcon} />) :
+                                    (<RiEyeCloseLine className={styles.eyeIcon}
                                 />)}
                             </div>
                         </div>
                         {errors.passwordConfirmed && <span className={styles.inputError}>{errors?.passwordConfirmed?.message}</span>}
                     </div>
-                    
+
                 </div>
 
                 <div className={styles.maneDomina}>
@@ -154,9 +154,9 @@ const Signup = () => {
 
                 <div className={styles.radios}>
                     <div className={styles.radio}>
-                        <input 
-                            {...register('initial_target')}
-                            className={styles.input} 
+                        <input
+                            {...register('initialTarget')}
+                            className={styles.input}
                             type='radio'
                             checked={radioData === 'profilis'}
                             value='profilis'
@@ -166,9 +166,9 @@ const Signup = () => {
                     </div>
 
                     <div className={styles.radio}>
-                        <input 
-                            {...register('initial_target')}
-                            className={styles.input} 
+                        <input
+                            {...register('initialTarget')}
+                            className={styles.input}
                             type='radio'
                             checked={radioData === 'virtuve'}
                             value='virtuve'
@@ -178,9 +178,9 @@ const Signup = () => {
                     </div>
 
                     <div className={styles.radio}>
-                        <input 
-                            {...register('initial_target')}
-                            className={styles.input} 
+                        <input
+                            {...register('initialTarget')}
+                            className={styles.input}
                             type='radio'
                             checked={radioData === 'abu'}
                             value='abu'
@@ -190,9 +190,9 @@ const Signup = () => {
                     </div>
 
                     <div className={styles.radio}>
-                        <input 
-                            {...register('initial_target')}
-                            className={styles.input} 
+                        <input
+                            {...register('initialTarget')}
+                            className={styles.input}
                             type='radio'
                             checked={radioData === 'nezinau'}
                             value='nezinau'
