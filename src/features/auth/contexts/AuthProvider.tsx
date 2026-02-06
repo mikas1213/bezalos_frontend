@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback, type ReactNode } from 'react';
 import { authService, type UserData } from '../services/AuthService';
 import { AuthContext } from './AuthContext';
-import type { AuthContextValue } from './types';
+import type { AuthContextValue, PendingCheckout } from './types';
 
 interface AuthProviderProps {
     children: ReactNode;
@@ -13,6 +13,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
     const [accessToken, setAccessToken] = useState<string | null>(null);
     const [isLoading, setIsLoading] = useState(true);
     const [isOpenModal, setIsOpenModal] = useState(false);
+    const [pendingCheckout, setPendingCheckout] = useState<PendingCheckout | null>(null);
 
     // Try to restore session on mount
     const refreshAuth = useCallback(async () => {
@@ -63,7 +64,9 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
         setAccessToken,
         setUser,
         isOpenModal,
-        setIsOpenModal
+        setIsOpenModal,
+        pendingCheckout,
+        setPendingCheckout
     };
 
     return (

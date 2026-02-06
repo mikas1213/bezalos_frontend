@@ -15,7 +15,7 @@ import toast from "react-hot-toast";
 
 const Signin = () => {
     const [eyeOne, setEyeOne] = useState(false);
-    const { login, setIsOpenModal } = useAuth();
+    const { login, setIsOpenModal, pendingCheckout } = useAuth();
     const { setFormState } = useContext(FormStateContext);
 
     const navigate = useNavigate();
@@ -36,7 +36,10 @@ const Signin = () => {
         onSuccess: () => {
             toast.success("Prisijungimas sėkmingas!");
             setIsOpenModal(false);
-            navigate(from, { replace: true });
+            // Jei yra pendingCheckout, PaymentProvider useEffect tvarkysis
+            if (!pendingCheckout) {
+                navigate(from, { replace: true });
+            }
         },
         onError: (err) => {
             const responseData = err?.response?.data;

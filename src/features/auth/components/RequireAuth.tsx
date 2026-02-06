@@ -1,12 +1,12 @@
 import { useLocation, Navigate, Outlet } from 'react-router-dom';
-import { useAuth } from '../features/auth';
-import Spinner from '../components/UI/Spinner';
+import { useAuth } from '../hooks/useAuth';
+import Spinner from '../../../components/UI/Spinner';
 
 interface RequireAuthProps {
     allowedRoles: number[];
 }
 
-const RequireAuth = ({ allowedRoles }: RequireAuthProps) => {
+export const RequireAuth = ({ allowedRoles }: RequireAuthProps) => {
     const { user, isAuthenticated, isLoading } = useAuth();
     const location = useLocation();
 
@@ -24,5 +24,3 @@ const RequireAuth = ({ allowedRoles }: RequireAuthProps) => {
 
     return <Outlet />;
 };
-
-export default RequireAuth;

@@ -1,6 +1,11 @@
 import type { Dispatch, SetStateAction } from "react";
 import type { UserData } from "../services/AuthService";
 
+export interface PendingCheckout {
+    type: 'subscription' | 'service';
+    data: unknown;
+}
+
 export interface AuthState {
     user: UserData | null;
     accessToken: string | null;
@@ -16,4 +21,6 @@ export interface AuthContextValue extends AuthState {
     setUser: (user: UserData) => void;
     isOpenModal: boolean;
     setIsOpenModal: Dispatch<SetStateAction<boolean>>;
+    pendingCheckout: PendingCheckout | null;
+    setPendingCheckout: Dispatch<SetStateAction<PendingCheckout | null>>;
 }

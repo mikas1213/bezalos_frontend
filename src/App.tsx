@@ -17,7 +17,7 @@ import { PaymentProvider } from './contexts/PaymentProvider';
 import AdminLayout from './components/admin/layout/AdminLayout';
 import ClientLayout from './layouts/ClientLayout';
 import LoginPage from './pages/LoginPage';
-import RequireAuth from './pages/RequireAuth';
+import { RequireAuth } from './features/auth/components';
 import UpdatePasswordPage from './pages/UpdatePasswordPage';
 import MailsPage from './pages/admin/MailsPage';
 import ManagePlanPage from './pages/admin/mitybosPlanai/ManagePlanPage';
