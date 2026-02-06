@@ -1,5 +1,5 @@
 import styles from './AssignPlan.module.css';
-import useAxiosPrivate from '../../../../hooks/useAxiosPrivate';
+import { useAxiosPrivate } from '../../../../features/auth';
 import { default as UsersSelect } from 'react-select/async';
 import { useState } from 'react';
 import UserDetails from '../../user/edit_plan/UserDetails';

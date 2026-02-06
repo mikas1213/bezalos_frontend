@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import useAxiosPrivate from '../useAxiosPrivate';
+import { useAxiosPrivate } from '../../features/auth';
 import { bar } from '../../utils/calculationsHelpers';
 import toast from 'react-hot-toast';
 

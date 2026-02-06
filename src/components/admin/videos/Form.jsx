@@ -8,7 +8,7 @@ import File from '../../Shared/File';
 import ProgressBar from './ProgressBar';
 import { ButtonSave, ButtonCancel } from '../../Shared/Buttons';
 
-import useAxiosPrivate from '../../../hooks/useAxiosPrivate';
+import { useAxiosPrivate } from '../../../features/auth';
 import toast from 'react-hot-toast';
 import { useState, useEffect } from 'react';
 import io from 'socket.io-client';

@@ -1,5 +1,5 @@
 import { useOutletContext } from 'react-router-dom';
-import useAxiosPrivate from '../../../hooks/useAxiosPrivate';
+import { useAxiosPrivate } from '../../../features/auth';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import Promo, { PromoHeader } from '../../../components/admin/services/Promo';
 import toast from 'react-hot-toast';

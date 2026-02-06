@@ -4,7 +4,7 @@ import { useManagePlan } from '../../../hooks/nutrition_plans_hooks/useManagePla
 import ManagePlan from '../../../components/admin/nutrition_plans/planai/ManagePlan';
 import AssignPlan from '../../../components/admin/nutrition_plans/planai/AssignPlan';
 import Spinner from '../../../components/UI/Spinner';
-import useAxiosPrivate from '../../../hooks/useAxiosPrivate';
+import { useAxiosPrivate } from '../../../features/auth';
 import toast from 'react-hot-toast';
 
 const ManagePlanPage = () => {

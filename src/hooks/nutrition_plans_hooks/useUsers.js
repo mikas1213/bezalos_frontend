@@ -1,4 +1,4 @@
-import useAxiosPrivate from '../useAxiosPrivate';
+import { useAxiosPrivate } from '../../features/auth';
 import { useState, useEffect } from 'react';
 
 export const useUsers = (currentPage, search, sort) => {

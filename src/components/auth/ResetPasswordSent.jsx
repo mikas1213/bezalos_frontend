@@ -1,11 +1,12 @@
 import styles from './RestPasswordSent.module.css';
 import { useNavigate } from "react-router-dom";
 import { FaRegPaperPlane } from "react-icons/fa";
-import { useAuth } from '../../hooks';
+import { useAuth } from '../../features/auth';
+
 
 const SignupSuccess = () => {
     const navigate = useNavigate();
-    const {setIsOpenModal} = useAuth();
+    const { setIsOpenModal } = useAuth();
 
     const handleCloseBtn = () => {
         setIsOpenModal(false);

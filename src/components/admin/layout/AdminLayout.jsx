@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { Outlet } from 'react-router-dom';
 import styles from './AdminLayout.module.css';
 import AdminNavbar from '../navBar/AdminNavbar';
-import useAxiosPrivate from '../../../hooks/useAxiosPrivate';
+import { useAxiosPrivate } from '../../../features/auth';
 
 const AdminLayout = () => {
     document.body.style.backgroundColor = '#eff1ef';

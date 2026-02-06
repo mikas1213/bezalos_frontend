@@ -1,6 +1,5 @@
 import styles from "./Signin.module.css";
-import axios from "../../api/axios";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { useMutation } from "@tanstack/react-query";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useForm } from "react-hook-form";
@@ -9,18 +8,14 @@ import { RiEyeCloseLine } from "react-icons/ri";
 import { BsEyeFill } from "react-icons/bs";
 import { FaLock } from "react-icons/fa6";
 import { FaEnvelope } from "react-icons/fa";
-
 import Spinner from "../UI/Spinner";
-
-import { useAuth } from "../../hooks";
-import { useContext } from "react";
+import { useAuth } from "../../features/auth";
 import { FormStateContext } from "./Authentication";
-
 import toast from "react-hot-toast";
 
 const Signin = () => {
     const [eyeOne, setEyeOne] = useState(false);
-    const { setAuth, setIsOpenModal } = useAuth();
+    const { login, setIsOpenModal } = useAuth();
     const { setFormState } = useContext(FormStateContext);
 
     const navigate = useNavigate();
@@ -36,34 +31,22 @@ const Signin = () => {
 
     const { mutate, isPending } = useMutation({
         mutationFn: async ({ email, password }) => {
-            return await axios.post(
-                "/auth/login",
-                { email, password },
-                {
-                    header: { "Content-Type": "application/json" },
-                    withCredentials: true,
-                },
-            );
+            await login(email, password);
         },
-        onSuccess: (data) => {
-            setAuth({
-                accessToken: data.data.accessToken,
-            });
-
+        onSuccess: () => {
             toast.success("Prisijungimas sėkmingas!");
-            // toast.error('Prisijungimas sėkmingas!');
             setIsOpenModal(false);
             navigate(from, { replace: true });
         },
         onError: (err) => {
-            const {
-                response: {
-                    data: { errors: serverErrors },
-                },
-            } = err;
-            const { type, msg } = serverErrors[0];
-
-            setError("email", { type, message: msg });
+            const responseData = err?.response?.data;
+            // Handle both error formats: { errors: [{type, msg}] } and { message: "..." }
+            if (responseData?.errors && responseData.errors[0]) {
+                const { type, msg } = responseData.errors[0];
+                setError("email", { type, message: msg });
+            } else {
+                setError("email", { type: "server", message: responseData?.message || "Prisijungti nepavyko" });
+            }
         },
     });
 

@@ -1,6 +1,6 @@
 import styles from './Plan.module.css';
 import { useState } from 'react';
-import useAxiosPrivate from '../../../../hooks/useAxiosPrivate';
+import { useAxiosPrivate } from '../../../../features/auth';
 import { DeleteX_icon } from '../../../../svg/icons';
 import { LuVegan } from 'react-icons/lu';
 import { SlSettings } from 'react-icons/sl';

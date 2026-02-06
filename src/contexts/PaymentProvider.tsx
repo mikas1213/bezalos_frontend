@@ -1,9 +1,9 @@
-import { useContext, createContext, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { jwtDecode } from 'jwt-decode';
 import { Outlet } from 'react-router-dom';
-import { useAuth } from '../hooks';
-import useAxiosPrivate from '../hooks/useAxiosPrivate';
+import { useContext, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../features/auth';
+import { useAxiosPrivate } from '../features/auth';
+import { PaymentContext } from './PaymentContext';
 
 const plans = {
     month: {
@@ -16,15 +16,12 @@ const plans = {
     }
 };
 
-const PaymentContext = createContext();
-
 export const PaymentProvider = () => {
-    const { auth } = useAuth();
-    let loggedUser = {};
-    if(auth.accessToken) loggedUser = jwtDecode(auth?.accessToken);
+    const { user } = useAuth();
+    const axiosPrivate = useAxiosPrivate();
 
-    const { user_role, user_id = '' } = loggedUser;
-    const axiosPrivate = useAxiosPrivate();    
+    const user_role = user?.user_role;
+    const user_id = user?.user_id ?? '';    
     const navigate = useNavigate();
 
     const [period, setPeriod] = useState('month');

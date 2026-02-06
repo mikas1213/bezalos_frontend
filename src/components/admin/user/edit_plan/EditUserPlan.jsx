@@ -1,6 +1,6 @@
 import styles from './EditUserPlan.module.css';
 import { useState } from 'react';
-import useAxiosPrivate from '../../../../hooks/useAxiosPrivate';
+import { useAxiosPrivate } from '../../../../features/auth';
 import { default as MealSelect } from 'react-select/async';
 import { default as ProdSelect } from 'react-select/async';
 import { LuWheatOff, LuMilkOff } from 'react-icons/lu';

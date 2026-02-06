@@ -1,9 +1,8 @@
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { jwtDecode } from 'jwt-decode';
 import toast from 'react-hot-toast';
-import useAxiosPrivate from '../../hooks/useAxiosPrivate';
-import { useAuth } from '../../hooks';
+import { useAuth } from '../../features/auth';
+import { useAxiosPrivate } from '../../features/auth';
 import Main from '../../components/UI/Main';
 import Container from '../../components/virtuve_video_page/Container';
 import Filters from '../../components/virtuve_video_page/Filters';
@@ -15,11 +14,9 @@ const VirtuveVideoPage = () => {
     const navigate = useNavigate();
     const axiosPrivate = useAxiosPrivate();
 
-    const { auth }  = useAuth();
-    let loggedUser = {};
-    if(auth.accessToken) loggedUser = jwtDecode(auth?.accessToken);
-
-    const { user_id = '', user_name = ''} = loggedUser;
+    const { user } = useAuth();
+    const user_id = user?.user_id ?? '';
+    const user_name = user?.user_name ?? '';
     const params = useParams();
     const [video, setVideo] = useState();
     const [videos, setVideos] = useState();
@@ -63,8 +60,8 @@ const VirtuveVideoPage = () => {
             try {
                 const { data } = await axiosPrivate.get(`/videos${params.type === 'c' ? `?cat=kursai` : ''}`); 
                 setVideos(data);
-            } catch (err) {
-                console.log(err.message)
+            } catch {
+                // Error fetching videos
             }
         }
         getData();

@@ -3,7 +3,7 @@ import ProdItem from './ProdItem';
 import { default as LogicSelect } from 'react-select';
 import { default as AddProductSelect } from 'react-select/async';
 import { useState, useRef } from 'react';
-import useAxiosPrivate from '../../../../hooks/useAxiosPrivate';
+import { useAxiosPrivate } from '../../../../features/auth';
 import CheckboxMeal from './CheckboxMeal';
 import { kcal } from '../../../../utils/calculationsHelpers';
 import { DeleteX_icon } from '../../../../svg/icons';

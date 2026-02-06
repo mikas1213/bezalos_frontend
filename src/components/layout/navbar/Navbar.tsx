@@ -7,13 +7,13 @@ import { Box, Container, Cluster } from '../../Shared';
 import { roles } from '../../../utils/roles';
 import Hamburger from './hamburger/Hamburger';
 import MobileItems from './mobileitems/MobileItems';
-import { useLogout } from '../../../hooks';
+import { useAuth } from '../../../features/auth';
 
 import { Logo, AtsijungtiIcon, PaslaugosIcon, PrisijungtiIcon, ProfilisIcon, ReceptaiIcon, VirtuveIcon, AtlikTestaIcon } from './icons';
 import type { NavbarProps } from './types';
 
 export const Navbar = ({ page = 'default' }: NavbarProps) => {
-    const logout = useLogout();
+    const { logout } = useAuth();
 
     const location = useLocation();
     const { isScroll, user_id, user_role, isOpenBurger, setIsOpenBurger, isOpenModal, setIsOpenModal, responsiveNavHeight } = useNavbar(page);

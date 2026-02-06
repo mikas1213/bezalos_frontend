@@ -1,4 +1,4 @@
-import { useAuth } from '../../../../hooks';
+import { useAuth } from '../../../../features/auth';
 import { useLocation } from 'react-router-dom';
 import { useMediaQuery } from '../../../../contexts/MediaQueryProvider';
 import { useEffect, useState } from 'react';
@@ -12,13 +12,13 @@ const getNavHeight = (mq: number): NavHeight => {
 };
 
 const useNavbar = (page: Pages): NavbarState => {
-    
-	const { loggedUser, isOpenModal, setIsOpenModal } = useAuth();
+
+	const { user, isOpenModal, setIsOpenModal } = useAuth();
     const [isOpenBurger, setIsOpenBurger] = useState<boolean>(false);
     const mediaQuery = useMediaQuery();
 
-	const user_id = loggedUser?.user_id || null;
-	const user_role = loggedUser?.user_role || null;
+	const user_id = user?.user_id || null;
+	const user_role = user?.user_role || null;
 
 	const scrollThreshold: number = page === 'home' ? 500 : page === 'recipes' ? 20 : 100;
 	const [isScroll, setIsScroll] = useState<boolean>(false);
