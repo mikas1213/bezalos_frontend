@@ -1,8 +1,23 @@
 import { Outlet } from 'react-router-dom';
 import { useContext, useState, useRef, useEffect } from 'react';
 import { useAuth, useAxiosPrivate } from '../features/auth';
-import { useModal } from '../features/modal';
 import { PaymentContext } from './PaymentContext';
+import { useAuthModal } from '../features/auth';
+import Spinner from '../components/UI/Spinner';
+
+const CheckoutOverlay = () => (
+    <div style={{
+        position: 'fixed',
+        inset: 0,
+        zIndex: 9999,
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        pointerEvents: 'all',
+    }}>
+        <Spinner />
+    </div>
+);
 
 interface PlanData {
     plan_price: string;
@@ -35,7 +50,7 @@ const plans: Record<string, Record<string, PlanData>> = {
 
 export const PaymentProvider = () => {
     const { user } = useAuth();
-    const { openModal } = useModal();
+    const { openModal } = useAuthModal();
     const axiosPrivate = useAxiosPrivate();
 
     const user_role = user?.user_role;
@@ -118,6 +133,7 @@ export const PaymentProvider = () => {
 
     return (
         <PaymentContext.Provider value={{ isLoading, period, setPeriod, variant, setVariant, plan, handleSubscriptionCheckout, handleServiceCheckout }}>
+            {isLoading && <CheckoutOverlay />}
             <Outlet />
         </PaymentContext.Provider>
     );

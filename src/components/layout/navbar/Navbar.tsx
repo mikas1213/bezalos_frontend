@@ -6,14 +6,14 @@ import { roles } from '../../../utils/roles';
 import Hamburger from './hamburger/Hamburger';
 import MobileItems from './mobileitems/MobileItems';
 import { useAuth } from '../../../features/auth';
-import { useModal } from '../../../features/modal';
+import { useAuthModal } from '../../../features/auth';
 
 import { Logo, AtsijungtiIcon, PaslaugosIcon, PrisijungtiIcon, ProfilisIcon, ReceptaiIcon, VirtuveIcon, AtlikTestaIcon } from './icons';
 import type { NavbarProps } from './types';
 
 export const Navbar = ({ page = 'default' }: NavbarProps) => {
     const { logout } = useAuth();
-    const { openModal } = useModal();
+    const { openModal } = useAuthModal();
 
     const location = useLocation();
     const { isScroll, user_id, user_role, isOpenBurger, setIsOpenBurger, responsiveNavHeight } = useNavbar(page);

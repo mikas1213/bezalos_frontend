@@ -1,7 +1,7 @@
 import { useLocation, Navigate, Outlet, useNavigate } from 'react-router-dom';
 import { useEffect, useRef } from 'react';
 import { useAuth } from '../hooks/useAuth';
-import { useModal } from '../../modal';
+import { useAuthModal } from '../hooks/useAuthModal';
 import Spinner from '../../../components/UI/Spinner';
 
 interface RequireAuthProps {
@@ -10,7 +10,7 @@ interface RequireAuthProps {
 
 export const RequireAuth = ({ allowedRoles }: RequireAuthProps) => {
     const { user, isAuthenticated, isLoading } = useAuth();
-    const { openModal, modalState } = useModal();
+    const { openModal } = useAuthModal();
     const location = useLocation();
     const navigate = useNavigate();
     const hasOpenedModal = useRef(false);

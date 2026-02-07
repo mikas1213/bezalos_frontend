@@ -1,6 +1,6 @@
 import { useState, useCallback, type ReactNode } from 'react';
-import { ModalContext } from './ModalContext';
-import type { ModalState, ModalType, ModalOptions, ModalContextValue } from './types';
+import { AuthModalContext } from './AuthModalContext';
+import type { ModalState, ModalType, ModalOptions, AuthModalContextValue } from './types';
 
 interface ModalProviderProps {
     children: ReactNode;
@@ -12,7 +12,7 @@ const initialState: ModalState = {
     options: {}
 };
 
-export const ModalProvider = ({ children }: ModalProviderProps) => {
+export const AuthModalProvider = ({ children }: ModalProviderProps) => {
     const [modalState, setModalState] = useState<ModalState>(initialState);
 
     const openModal = useCallback((type: ModalType, options: ModalOptions = {}) => {
@@ -27,7 +27,7 @@ export const ModalProvider = ({ children }: ModalProviderProps) => {
         setModalState(initialState);
     }, []);
 
-    const value: ModalContextValue = {
+    const value: AuthModalContextValue = {
         modalState,
         openModal,
         closeModal,
@@ -35,8 +35,8 @@ export const ModalProvider = ({ children }: ModalProviderProps) => {
     };
 
     return (
-        <ModalContext.Provider value={value}>
+        <AuthModalContext.Provider value={value}>
             {children}
-        </ModalContext.Provider>
+        </AuthModalContext.Provider>
     );
 };

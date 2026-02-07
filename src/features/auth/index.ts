@@ -3,3 +3,7 @@ export { authService } from './services/AuthService';
 export { useAuth } from './hooks/useAuth';
 export { useRefreshToken } from './hooks/useRefreshToken'
 export { useAxiosPrivate } from './hooks/useAxiosPrivate';
+export { useAuthModal } from './hooks/useAuthModal';
+export { AuthModalProvider } from './contexts/AuthModalProvider'
+export { AuthModalContext } from './contexts/AuthModalContext';
+export { AuthModal } from './components/AuthModal';
