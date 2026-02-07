@@ -14,11 +14,10 @@ import { MediaQueryProvider } from './contexts/MediaQueryProvider';
 import { AuthProvider } from './features/auth';
 import { AuthModalProvider, AuthModal } from './features/auth';
 import { PaymentProvider } from './contexts/PaymentProvider';
-
+import { RequireAuth } from './features/auth';
 import AdminLayout from './components/admin/layout/AdminLayout';
 import ClientLayout from './layouts/ClientLayout';
 import LoginPage from './pages/LoginPage';
-import { RequireAuth } from './features/auth/components';
 import UpdatePasswordPage from './pages/UpdatePasswordPage';
 import MailsPage from './pages/admin/MailsPage';
 import ManagePlanPage from './pages/admin/mitybosPlanai/ManagePlanPage';

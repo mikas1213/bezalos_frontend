@@ -15,7 +15,6 @@ const Authentication = ({ onSuccess, onCancel }) => {
 
     return (
         <FormStateContext.Provider value={{formState, setFormState, onSuccess, onCancel}}>
-
             <div className={styles.autchentication}>
             
                 {formState === 'success' || formState === 'token-sent' 

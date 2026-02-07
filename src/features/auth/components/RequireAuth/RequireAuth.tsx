@@ -1,8 +1,8 @@
 import { useLocation, Navigate, Outlet, useNavigate } from 'react-router-dom';
 import { useEffect, useRef } from 'react';
-import { useAuth } from '../hooks/useAuth';
-import { useAuthModal } from '../hooks/useAuthModal';
-import Spinner from '../../../components/UI/Spinner';
+import { useAuth } from '../../hooks/useAuth';
+import { useAuthModal } from '../../hooks/useAuthModal';
+import Spinner from '../../../../components/UI/Spinner';
 
 interface RequireAuthProps {
     allowedRoles: number[];

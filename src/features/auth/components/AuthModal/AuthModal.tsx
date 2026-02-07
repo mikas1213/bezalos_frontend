@@ -1,9 +1,9 @@
-import { useEffect, useRef, useCallback } from 'react';
+import styles from './AuthModal.module.css';
 import { createPortal } from 'react-dom';
 import { HiXMark } from 'react-icons/hi2';
-import Authentication from '../../../components/auth/Authentication';
-import { useAuthModal } from '../hooks/useAuthModal';
-import styles from './AuthModal.module.css';
+import { useEffect, useRef, useCallback } from 'react';
+import { useAuthModal } from '../../hooks/useAuthModal';
+import Authentication from '../../../../components/auth/Authentication';
 
 export const AuthModal = () => {
     const { modalState, closeModal } = useAuthModal();

@@ -6,4 +6,5 @@ export { useAxiosPrivate } from './hooks/useAxiosPrivate';
 export { useAuthModal } from './hooks/useAuthModal';
 export { AuthModalProvider } from './contexts/AuthModalProvider'
 export { AuthModalContext } from './contexts/AuthModalContext';
-export { AuthModal } from './components/AuthModal';
+export { AuthModal } from './components/AuthModal/AuthModal';
+export { RequireAuth } from './components/RequireAuth/RequireAuth';
