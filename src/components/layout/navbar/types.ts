@@ -37,7 +37,5 @@ export interface NavbarState {
 	currentPage: string;
 	isOpenBurger: boolean;
 	setIsOpenBurger: (value: boolean | ((prev: boolean) => boolean)) => void;
-	isOpenModal: boolean;
-	setIsOpenModal: (value: boolean | ((prev: boolean) => boolean)) => void;
 	responsiveNavHeight: NavHeight;
 }

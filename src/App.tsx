@@ -11,7 +11,8 @@ import styles from './App.module.css';
 import Spinner from './components/UI/Spinner';
 import { CookieConsent } from './components/layout';
 import { MediaQueryProvider } from './contexts/MediaQueryProvider';
-import { AuthProvider } from './features/auth'
+import { AuthProvider } from './features/auth';
+import { ModalProvider, ModalContainer } from './features/modal';
 import { PaymentProvider } from './contexts/PaymentProvider';
 
 import AdminLayout from './components/admin/layout/AdminLayout';
@@ -93,8 +94,10 @@ function App() {
                 <ScrollToTop />
                 <MediaQueryProvider>
                     <AuthProvider>
-                        <Suspense fallback={<Spinner />}>
-                            <Routes>
+                        <ModalProvider>
+                            <ModalContainer />
+                            <Suspense fallback={<Spinner />}>
+                                <Routes>
                                 <Route path='/' element={<ClientLayout />}>
                                     <Route index element={<HomePage />} />
                                     <Route path='/virtuve' element={<VirtuvePage />} />
@@ -160,8 +163,9 @@ function App() {
                                         <Route path='mails' element={<MailsPage />} />
                                     </Route>
                                 </Route>
-                            </Routes>
-                        </Suspense>
+                                </Routes>
+                            </Suspense>
+                        </ModalProvider>
                     </AuthProvider>
                 </MediaQueryProvider>
             </BrowserRouter>

@@ -1,6 +1,4 @@
 import styles from './Navbar.module.css';
-import Modal from '../../UI/Modal';
-import Authentication from '../../auth/Authentication';
 import { useLocation, NavLink } from 'react-router-dom';
 import useNavbar from './hooks/useNavbar';
 import { Box, Container, Cluster } from '../../Shared';
@@ -8,15 +6,17 @@ import { roles } from '../../../utils/roles';
 import Hamburger from './hamburger/Hamburger';
 import MobileItems from './mobileitems/MobileItems';
 import { useAuth } from '../../../features/auth';
+import { useModal } from '../../../features/modal';
 
 import { Logo, AtsijungtiIcon, PaslaugosIcon, PrisijungtiIcon, ProfilisIcon, ReceptaiIcon, VirtuveIcon, AtlikTestaIcon } from './icons';
 import type { NavbarProps } from './types';
 
 export const Navbar = ({ page = 'default' }: NavbarProps) => {
     const { logout } = useAuth();
+    const { openModal } = useModal();
 
     const location = useLocation();
-    const { isScroll, user_id, user_role, isOpenBurger, setIsOpenBurger, isOpenModal, setIsOpenModal, responsiveNavHeight } = useNavbar(page);
+    const { isScroll, user_id, user_role, isOpenBurger, setIsOpenBurger, responsiveNavHeight } = useNavbar(page);
 
     const navBarClasses = [
         styles.nav,
@@ -24,12 +24,7 @@ export const Navbar = ({ page = 'default' }: NavbarProps) => {
     ].filter(Boolean).join(' ');
 
     return (
-        <>
-            {isOpenModal && <Modal onClose={() => setIsOpenModal(false)}>
-                <Authentication />
-            </Modal>}
-
-            <Container as='nav' maxWidth='100vw' padding='0' className={navBarClasses}>
+        <Container as='nav' maxWidth='100vw' padding='0' className={navBarClasses}>
                 <Container maxWidth='var(--content-width)'>
                     <Cluster className={styles.navDesktop} justify='space-between' align='center' height={responsiveNavHeight}>
                         <NavLink to='/'>
@@ -81,7 +76,7 @@ export const Navbar = ({ page = 'default' }: NavbarProps) => {
                             <Box>
                                 {!user_id ? (
                                     <button
-                                        onClick={() => setIsOpenModal(true)}
+                                        onClick={() => openModal('auth')}
                                         className={styles.loginBtn}
                                     >
                                         Prisijungti
@@ -131,7 +126,7 @@ export const Navbar = ({ page = 'default' }: NavbarProps) => {
                     {!user_id ?
                         <li
                             className={`${styles.listItemMobile} ${styles.signout}`}
-                            onClick={() => setIsOpenModal(true)}
+                            onClick={() => openModal('auth')}
                         >
                             <PrisijungtiIcon />
                             <span>Prisijungti</span>
@@ -146,6 +141,5 @@ export const Navbar = ({ page = 'default' }: NavbarProps) => {
                     }
                 </MobileItems>
             </Container>
-        </>
     );
 };

@@ -1,19 +1,20 @@
-import { useState, useEffect, useCallback, type ReactNode } from 'react';
+import { useState, useEffect, useCallback, useRef, type ReactNode } from 'react';
 import { authService, type UserData } from '../services/AuthService';
 import { AuthContext } from './AuthContext';
-import type { AuthContextValue, PendingCheckout } from './types';
+import type { AuthContextValue } from './types';
 
 interface AuthProviderProps {
     children: ReactNode;
 }
+
+const AUTH_CHANNEL_NAME = 'bezalos_auth';
 
 export const AuthProvider = ({ children }: AuthProviderProps) => {
     
     const [user, setUser] = useState<UserData | null>(null);
     const [accessToken, setAccessToken] = useState<string | null>(null);
     const [isLoading, setIsLoading] = useState(true);
-    const [isOpenModal, setIsOpenModal] = useState(false);
-    const [pendingCheckout, setPendingCheckout] = useState<PendingCheckout | null>(null);
+    const channelRef = useRef<BroadcastChannel | null>(null);
 
     // Try to restore session on mount
     const refreshAuth = useCallback(async () => {
@@ -36,10 +37,33 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
         refreshAuth();
     }, [refreshAuth]);
 
+    // Cross-tab synchronization
+    useEffect(() => {
+        channelRef.current = new BroadcastChannel(AUTH_CHANNEL_NAME);
+
+        channelRef.current.onmessage = (event) => {
+            if (event.data.type === 'logout') {
+                setUser(null);
+                setAccessToken(null);
+            }
+            if (event.data.type === 'login') {
+                // Refresh auth state from server when another tab logs in
+                refreshAuth();
+            }
+        };
+
+        return () => {
+            channelRef.current?.close();
+        };
+    }, [refreshAuth]);
+
     const login = useCallback(async (email: string, password: string) => {
         const response = await authService.login({ email, password });
         setUser(response.user);
         setAccessToken(response.accessToken);
+        
+        // Notify other tabs about login
+        channelRef.current?.postMessage({ type: 'login' });
     }, []);
 
     const logout = useCallback(async () => {
@@ -50,6 +74,9 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
         } finally {
             setUser(null);
             setAccessToken(null);
+            
+            // Notify other tabs about logout
+            channelRef.current?.postMessage({ type: 'logout' });
         }
     }, []);
 
@@ -62,11 +89,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
         logout,
         refreshAuth,
         setAccessToken,
-        setUser,
-        isOpenModal,
-        setIsOpenModal,
-        pendingCheckout,
-        setPendingCheckout
+        setUser
     };
 
     return (

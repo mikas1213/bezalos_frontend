@@ -13,9 +13,9 @@ import { useAuth } from "../../features/auth";
 import { FormStateContext } from "./Authentication";
 import toast from "react-hot-toast";
 
-const Signin = () => {
+const Signin = ({ onSuccess }) => {
     const [eyeOne, setEyeOne] = useState(false);
-    const { login, setIsOpenModal, pendingCheckout } = useAuth();
+    const { login } = useAuth();
     const { setFormState } = useContext(FormStateContext);
 
     const navigate = useNavigate();
@@ -35,9 +35,11 @@ const Signin = () => {
         },
         onSuccess: () => {
             toast.success("Prisijungimas sėkmingas!");
-            setIsOpenModal(false);
-            // Jei yra pendingCheckout, PaymentProvider useEffect tvarkysis
-            if (!pendingCheckout) {
+            // If onSuccess callback exists (from modal), call it
+            // Otherwise navigate to the original destination
+            if (onSuccess) {
+                onSuccess();
+            } else {
                 navigate(from, { replace: true });
             }
         },

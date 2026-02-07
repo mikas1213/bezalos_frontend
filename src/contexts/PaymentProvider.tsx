@@ -1,6 +1,7 @@
 import { Outlet } from 'react-router-dom';
-import { useContext, useState, useEffect } from 'react';
+import { useContext, useState, useRef, useEffect } from 'react';
 import { useAuth, useAxiosPrivate } from '../features/auth';
+import { useModal } from '../features/modal';
 import { PaymentContext } from './PaymentContext';
 
 interface PlanData {
@@ -11,10 +12,14 @@ interface PlanData {
     price: string;
 }
 
-interface ServiceData {
-    service: Record<string, unknown>;
-    code: string;
-    isCodeApproved: boolean;
+interface PendingCheckout {
+    type: 'subscription' | 'service';
+    planData?: PlanData;
+    serviceData?: {
+        service: Record<string, unknown>;
+        code: string;
+        isCodeApproved: boolean;
+    };
 }
 
 const plans: Record<string, Record<string, PlanData>> = {
@@ -29,7 +34,8 @@ const plans: Record<string, Record<string, PlanData>> = {
 };
 
 export const PaymentProvider = () => {
-    const { user, setIsOpenModal, pendingCheckout, setPendingCheckout } = useAuth();
+    const { user } = useAuth();
+    const { openModal } = useModal();
     const axiosPrivate = useAxiosPrivate();
 
     const user_role = user?.user_role;
@@ -41,20 +47,27 @@ export const PaymentProvider = () => {
     const selectedPlan = plans[period][variant];
     const plan = plans[period];
 
-    // Vykdyti checkout kai prisijungia su pending checkout
+    // Ref to store pending checkout - survives re-renders
+    const pendingCheckoutRef = useRef<PendingCheckout | null>(null);
+    const wasWaitingForLogin = useRef(false);
+
+    // Execute pending checkout when user becomes available
     useEffect(() => {
-        if (user_id && pendingCheckout) {
-            if (pendingCheckout.type === 'subscription') {
-                executeSubscriptionCheckout(pendingCheckout.data as PlanData);
-            } else if (pendingCheckout.type === 'service') {
-                const { service, code, isCodeApproved } = pendingCheckout.data as ServiceData;
+        if (user_id && wasWaitingForLogin.current && pendingCheckoutRef.current) {
+            const pending = pendingCheckoutRef.current;
+            pendingCheckoutRef.current = null;
+            wasWaitingForLogin.current = false;
+
+            if (pending.type === 'subscription' && pending.planData) {
+                executeSubscriptionCheckout(pending.planData);
+            } else if (pending.type === 'service' && pending.serviceData) {
+                const { service, code, isCodeApproved } = pending.serviceData;
                 executeServiceCheckout(service, code, isCodeApproved);
             }
-            setPendingCheckout(null);
         }
-    }, [user_id, pendingCheckout]);
+    }, [user_id]);
 
-    // Atskira funkcija subscription checkout vykdymui
+    // Execute subscription checkout
     const executeSubscriptionCheckout = async (planData: PlanData) => {
         try {
             setIsLoading(true);
@@ -65,7 +78,7 @@ export const PaymentProvider = () => {
         }
     };
 
-    // Atskira funkcija service checkout vykdymui
+    // Execute service checkout
     const executeServiceCheckout = async (service: Record<string, unknown>, code: string, isCodeApproved: boolean) => {
         try {
             setIsLoading(true);
@@ -78,8 +91,10 @@ export const PaymentProvider = () => {
     
     const handleSubscriptionCheckout = async () => {
         if (!user_id) {
-            setPendingCheckout({ type: 'subscription', data: selectedPlan });
-            setIsOpenModal(true);
+            // Store pending checkout and open auth modal
+            pendingCheckoutRef.current = { type: 'subscription', planData: selectedPlan };
+            wasWaitingForLogin.current = true;
+            openModal('auth');
             return;
         }
         await executeSubscriptionCheckout(selectedPlan);
@@ -92,8 +107,10 @@ export const PaymentProvider = () => {
         delete service.image_l;
 
         if (!user_id) {
-            setPendingCheckout({ type: 'service', data: { service, code, isCodeApproved } });
-            setIsOpenModal(true);
+            // Store pending checkout and open auth modal
+            pendingCheckoutRef.current = { type: 'service', serviceData: { service, code, isCodeApproved } };
+            wasWaitingForLogin.current = true;
+            openModal('auth');
             return;
         }
         await executeServiceCheckout(service, code, isCodeApproved);

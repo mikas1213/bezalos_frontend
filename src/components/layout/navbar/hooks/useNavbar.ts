@@ -13,7 +13,7 @@ const getNavHeight = (mq: number): NavHeight => {
 
 const useNavbar = (page: Pages): NavbarState => {
 
-	const { user, isOpenModal, setIsOpenModal } = useAuth();
+	const { user } = useAuth();
     const [isOpenBurger, setIsOpenBurger] = useState<boolean>(false);
     const mediaQuery = useMediaQuery();
 
@@ -44,8 +44,6 @@ const useNavbar = (page: Pages): NavbarState => {
         currentPage,
         isOpenBurger,
         setIsOpenBurger,
-        isOpenModal, 
-        setIsOpenModal,
         responsiveNavHeight
     };
 };
