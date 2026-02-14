@@ -1,4 +1,4 @@
-import type { Dispatch, SetStateAction } from 'react';
+import type { Dispatch, SetStateAction, ChangeEvent, FormEvent } from 'react';
 import type { UserData } from "../services/AuthService";
 
 export interface AuthState {
@@ -17,7 +17,7 @@ export interface AuthContextValue extends AuthState {
 }
 
 /* AUTH MODAL TYPES*/
-export type ModalType = 'auth' | 'confirm' | 'info' | null;
+export type AuthModalType = 'auth' | 'confirm' | 'info' | null;
 
 export interface ModalOptions {
     onSuccess?: () => void;
@@ -25,15 +25,44 @@ export interface ModalOptions {
     props?: Record<string, unknown>;
 }
 
-export interface ModalState {
+export interface AuthModalState {
     isOpen: boolean;
-    type: ModalType;
+    type: AuthModalType;
     options: ModalOptions;
 }
 
 export interface AuthModalContextValue {
-    modalState: ModalState;
-    openModal: (type: ModalType, options?: ModalOptions) => void;
+    authModalState: AuthModalState;
+    authOpenModal: (type: AuthModalType, options?: ModalOptions) => void;
     closeModal: () => void;
-    setModalState: Dispatch<SetStateAction<ModalState>>;
+    setAuthModalState: Dispatch<SetStateAction<AuthModalState>>;
+}
+export type AuthMode = "login" | "signup" | "initialTarget" | "forgot" | "forgot";
+export interface AuthActions {
+    title: string;
+    subTitle: string;
+    btnLabel: string;
+    authCta: string;
+    authCtaBtn: string;
+    authAction: AuthMode;
+}
+
+export type InitialTarget = "profilis" | "virtuve" | "abu" | "nezinau";
+export interface FormData {
+    name: string;
+    email: string;
+    password: string;
+    passwordConfirmed: string;
+    initialTarget: InitialTarget;
+    acceptTerms: boolean;
+}
+
+export interface AuthenticationContextValue {
+    authMode: AuthMode;
+    authActions: Record<AuthMode, AuthActions>;
+    formData: FormData;
+    setFormData: Dispatch<SetStateAction<FormData>>;
+    handleChange: (e: ChangeEvent<HTMLInputElement>) => void;
+    setAuthMode: Dispatch<SetStateAction<AuthMode>>;
+    handleTargetSelect: (targetId: InitialTarget) => void;
 }

@@ -1,0 +1,81 @@
+.overlay {
+    position: fixed;
+    z-index: 10;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: #00000055;
+    animation: openOverlay 0.2s;
+}
+
+.authModal {
+    position: fixed;
+    top: 50dvh;
+    left: 50dvw;
+    transform: translate(-50%, -50%);
+    animation: openAuthModal 0.2s;
+    border-radius: 1.5rem;
+    overflow: scroll;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.closeIcon {
+    cursor: pointer;
+    position: absolute;
+    display: flex;
+    right: 1.2rem;
+    top: 1.2rem;
+    font-size: clamp(1.8rem, 4.701vw, 2.6rem);
+    color: var(--color-bgr-dark);
+    opacity: 0.5;
+    z-index: 10;
+}
+
+.closingOverlay {
+    animation: closeOverlay 0.2s forwards;
+}
+.closingModal {
+    animation: closeAuthModal 0.2s forwards;
+}
+
+@keyframes openOverlay {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes openAuthModal {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
+
+@keyframes closeOverlay {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+        backdrop-filter: blur(0px);
+    }
+}
+
+@keyframes closeAuthModal {
+    from {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+    to {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.8);
+    }
+}

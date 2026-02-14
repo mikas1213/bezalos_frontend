@@ -10,7 +10,7 @@ interface AuthProviderProps {
 const AUTH_CHANNEL_NAME = 'bezalos_auth';
 
 export const AuthProvider = ({ children }: AuthProviderProps) => {
-    
+
     const [user, setUser] = useState<UserData | null>(null);
     const [accessToken, setAccessToken] = useState<string | null>(null);
     const [isLoading, setIsLoading] = useState(true);
@@ -61,7 +61,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
         const response = await authService.login({ email, password });
         setUser(response.user);
         setAccessToken(response.accessToken);
-        
+
         // Notify other tabs about login
         channelRef.current?.postMessage({ type: 'login' });
     }, []);
@@ -74,7 +74,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
         } finally {
             setUser(null);
             setAccessToken(null);
-            
+
             // Notify other tabs about logout
             channelRef.current?.postMessage({ type: 'logout' });
         }

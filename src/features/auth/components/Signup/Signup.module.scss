@@ -1,0 +1,23 @@
+.signup {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding-block: 1.5rem;
+}
+
+.forgotPassword {
+    display: flex;
+    justify-content: flex-end;
+
+    button {
+        border: none;
+        background: none;
+        font-size: 0.875rem;
+        font-weight: 500;
+        transition: opacity 0.2s;
+        color: #084747;
+    }
+    button:hover {
+        opacity: 0.7;
+    }
+}

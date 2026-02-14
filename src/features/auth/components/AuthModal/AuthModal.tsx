@@ -1,27 +1,37 @@
-import styles from './AuthModal.module.css';
+import styles from './AuthModal.module.scss';
+import cx from 'classnames';
 import { createPortal } from 'react-dom';
-import { HiXMark } from 'react-icons/hi2';
-import { useEffect, useRef, useCallback } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import { useAuthModal } from '../../hooks/useAuthModal';
-import Authentication from '../../../../components/auth/Authentication';
+import { Authentication } from '../Authentication';
+import { AuthenticationProvider } from '../../contexts/AuthenticationProvider';
 
 export const AuthModal = () => {
-    const { modalState, closeModal } = useAuthModal();
+    const { authModalState, closeModal } = useAuthModal();
     const ref = useRef<HTMLDivElement>(null);
+    const [isClosingModal, setIsClosingModal] = useState<boolean>(false);
+
+    const startClosing = useCallback(() => {
+        setIsClosingModal(true);
+        setTimeout(() => {
+            closeModal();
+            setIsClosingModal(false);
+        }, 200);
+    }, [closeModal]);
 
     const handleClose = useCallback(() => {
-        modalState.options.onCancel?.();
-        closeModal();
-    }, [modalState.options, closeModal]);
+        authModalState.options.onCancel?.();
+        startClosing();
+    }, [authModalState.options, startClosing]);
 
     const handleSuccess = useCallback(() => {
-        modalState.options.onSuccess?.();
-        closeModal();
-    }, [modalState.options, closeModal]);
+        authModalState.options.onSuccess?.();
+        startClosing();
+    }, [authModalState.options, startClosing]);
 
     // Close on click outside
     useEffect(() => {
-        if (!modalState.isOpen) return;
+        if (!authModalState.isOpen) return;
 
         const handleClick = (e: MouseEvent) => {
             if (ref.current && !ref.current.contains(e.target as Node)) {
@@ -31,15 +41,16 @@ export const AuthModal = () => {
 
         document.addEventListener('click', handleClick, true);
         return () => document.removeEventListener('click', handleClick, true);
-    }, [modalState.isOpen, handleClose]);
+    }, [authModalState.isOpen, handleClose]);
 
-    if (!modalState.isOpen) return null;
+    if (!authModalState.isOpen && !isClosingModal) return null;
 
     return createPortal(
-        <div className={styles.overlay}>
-            <div ref={ref} className={styles.modal}>
-                <HiXMark className={styles.closeIcon} onClick={handleClose} />
-                <Authentication onSuccess={handleSuccess} onCancel={handleClose} />
+        <div className={cx(styles.overlay, isClosingModal && styles.closingOverlay)}>
+            <div ref={ref} className={cx(styles.authModal, isClosingModal && styles.closingModal)}>
+                <AuthenticationProvider>
+                    <Authentication onSuccess={handleSuccess} onCancel={handleClose} />
+                </AuthenticationProvider>
             </div>
         </div>,
         document.body

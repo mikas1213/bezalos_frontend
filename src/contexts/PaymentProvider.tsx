@@ -50,11 +50,11 @@ const plans: Record<string, Record<string, PlanData>> = {
 
 export const PaymentProvider = () => {
     const { user } = useAuth();
-    const { openModal } = useAuthModal();
+    const { authOpenModal } = useAuthModal();
     const axiosPrivate = useAxiosPrivate();
 
     const user_role = user?.user_role;
-    const user_id = user?.user_id ?? '';    
+    const user_id = user?.user_id ?? '';
 
     const [period, setPeriod] = useState<string>('month');
     const [variant, setVariant] = useState<string>('virtuve');
@@ -103,13 +103,13 @@ export const PaymentProvider = () => {
             setIsLoading(false);
         }
     };
-    
+
     const handleSubscriptionCheckout = async () => {
         if (!user_id) {
             // Store pending checkout and open auth modal
             pendingCheckoutRef.current = { type: 'subscription', planData: selectedPlan };
             wasWaitingForLogin.current = true;
-            openModal('auth');
+            authOpenModal('auth');
             return;
         }
         await executeSubscriptionCheckout(selectedPlan);
@@ -125,7 +125,7 @@ export const PaymentProvider = () => {
             // Store pending checkout and open auth modal
             pendingCheckoutRef.current = { type: 'service', serviceData: { service, code, isCodeApproved } };
             wasWaitingForLogin.current = true;
-            openModal('auth');
+            authOpenModal('auth');
             return;
         }
         await executeServiceCheckout(service, code, isCodeApproved);

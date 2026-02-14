@@ -1,22 +1,18 @@
 import { useState, useCallback, type ReactNode } from 'react';
 import { AuthModalContext } from './AuthModalContext';
-import type { ModalState, ModalType, ModalOptions, AuthModalContextValue } from './types';
+import type { AuthModalState, AuthModalType, ModalOptions, AuthModalContextValue } from './types';
 
-interface ModalProviderProps {
-    children: ReactNode;
-}
-
-const initialState: ModalState = {
+const initialState: AuthModalState = {
     isOpen: false,
     type: null,
     options: {}
 };
 
-export const AuthModalProvider = ({ children }: ModalProviderProps) => {
-    const [modalState, setModalState] = useState<ModalState>(initialState);
+export const AuthModalProvider = ({ children }: { children: ReactNode }) => {
+    const [authModalState, setAuthModalState] = useState<AuthModalState>(initialState);
 
-    const openModal = useCallback((type: ModalType, options: ModalOptions = {}) => {
-        setModalState({
+    const authOpenModal = useCallback((type: AuthModalType, options: ModalOptions = {}) => {
+        setAuthModalState({
             isOpen: true,
             type,
             options
@@ -24,19 +20,19 @@ export const AuthModalProvider = ({ children }: ModalProviderProps) => {
     }, []);
 
     const closeModal = useCallback(() => {
-        setModalState(initialState);
+        setAuthModalState(initialState);
     }, []);
 
     const value: AuthModalContextValue = {
-        modalState,
-        openModal,
+        authModalState,
+        authOpenModal,
         closeModal,
-        setModalState
+        setAuthModalState
     };
 
     return (
         <AuthModalContext.Provider value={value}>
-            {children}
+            { children }
         </AuthModalContext.Provider>
     );
 };

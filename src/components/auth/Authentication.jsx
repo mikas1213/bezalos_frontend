@@ -11,19 +11,20 @@ import ResetPasswordSent from './ResetPasswordSent';
 export const FormStateContext = createContext(null);
 
 const Authentication = ({ onSuccess, onCancel }) => {
+
     const [formState, setFormState] = useState('signin');
 
     return (
         <FormStateContext.Provider value={{formState, setFormState, onSuccess, onCancel}}>
             <div className={styles.autchentication}>
-            
-                {formState === 'success' || formState === 'token-sent' 
+
+                {formState === 'success' || formState === 'token-sent'
                     ?
                     <>
                         {formState === 'success' && <SignupSuccess /> }
                         {formState === 'token-sent' && <ResetPasswordSent />}
                     </>
-                    : 
+                    :
                     <>
                         <Left />
                         {formState === 'forgot' && <ForgotPassword />}
@@ -31,7 +32,7 @@ const Authentication = ({ onSuccess, onCancel }) => {
                         {formState === 'signup' && <Signup onSuccess={onSuccess} />}
                     </>
                 }
-                
+
             </div>
         </FormStateContext.Provider>
     );

@@ -10,7 +10,7 @@ interface RequireAuthProps {
 
 export const RequireAuth = ({ allowedRoles }: RequireAuthProps) => {
     const { user, isAuthenticated, isLoading } = useAuth();
-    const { openModal } = useAuthModal();
+    const { authOpenModal } = useAuthModal();
     const location = useLocation();
     const navigate = useNavigate();
     const hasOpenedModal = useRef(false);
@@ -23,7 +23,7 @@ export const RequireAuth = ({ allowedRoles }: RequireAuthProps) => {
     useEffect(() => {
         if (!isLoading && !isAuthenticated && !isDirectAccess && !hasOpenedModal.current) {
             hasOpenedModal.current = true;
-            openModal('auth', {
+            authOpenModal('auth', {
                 onCancel: () => {
                     // Go back when user cancels modal
                     navigate(-1);
@@ -31,7 +31,7 @@ export const RequireAuth = ({ allowedRoles }: RequireAuthProps) => {
                 }
             });
         }
-    }, [isLoading, isAuthenticated, isDirectAccess, openModal, navigate]);
+    }, [isLoading, isAuthenticated, isDirectAccess, authOpenModal, navigate]);
 
     // Reset modal flag when user becomes authenticated
     useEffect(() => {
@@ -49,7 +49,7 @@ export const RequireAuth = ({ allowedRoles }: RequireAuthProps) => {
         if (isDirectAccess) {
             return <Navigate to='/prisijungti' state={{ from: location }} replace />;
         }
-        
+
         // Internal navigation - modal is open, show spinner while waiting
         return <Spinner />;
     }

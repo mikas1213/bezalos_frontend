@@ -5,18 +5,18 @@ import { Box, Container, Cluster } from '../../Shared';
 import { roles } from '../../../utils/roles';
 import Hamburger from './hamburger/Hamburger';
 import MobileItems from './mobileitems/MobileItems';
-import { useAuth } from '../../../features/auth';
-import { useAuthModal } from '../../../features/auth';
-
-import { Logo, AtsijungtiIcon, PaslaugosIcon, PrisijungtiIcon, ProfilisIcon, ReceptaiIcon, VirtuveIcon, AtlikTestaIcon } from './icons';
+import { useAuth, useAuthModal } from '../../../features/auth';
+import { AtsijungtiIcon, PaslaugosIcon, PrisijungtiIcon, ProfilisIcon, ReceptaiIcon, VirtuveIcon, AtlikTestaIcon } from './icons';
+import { Logo } from '../../Shared/Logo';
 import type { NavbarProps } from './types';
 
 export const Navbar = ({ page = 'default' }: NavbarProps) => {
     const { logout } = useAuth();
-    const { openModal } = useAuthModal();
+    const { authOpenModal } = useAuthModal();
 
     const location = useLocation();
     const { isScroll, user_id, user_role, isOpenBurger, setIsOpenBurger, responsiveNavHeight } = useNavbar(page);
+    const color = page === 'home' && !isScroll ? 'var(--light-green-grey-100)' : 'var(--dark-green-600)';
 
     const navBarClasses = [
         styles.nav,
@@ -25,10 +25,10 @@ export const Navbar = ({ page = 'default' }: NavbarProps) => {
 
     return (
         <Container as='nav' maxWidth='100vw' padding='0' className={navBarClasses}>
-                <Container maxWidth='var(--content-width)'>
+            <Container maxWidth='var(--content-width)'>
                     <Cluster className={styles.navDesktop} justify='space-between' align='center' height={responsiveNavHeight}>
                         <NavLink to='/'>
-					        <Logo isChangeColor={{ page, isScroll }} />
+                            <Logo color={color} />
 				        </NavLink>
 
                         {user_role === roles.admin && (
@@ -76,13 +76,15 @@ export const Navbar = ({ page = 'default' }: NavbarProps) => {
                             <Box>
                                 {!user_id ? (
                                     <button
-                                        onClick={() => openModal('auth')}
+                                        type="button"
+                                        onClick={() => authOpenModal('auth')}
                                         className={styles.loginBtn}
                                     >
                                         Prisijungti
                                     </button>
                                 ) : (
                                     <button
+                                        type="button"
                                         className={styles.loginBtn}
                                         onClick={async () => await logout()}
                                     >
@@ -93,9 +95,9 @@ export const Navbar = ({ page = 'default' }: NavbarProps) => {
                         </Cluster>
                         <Hamburger page={page} isScroll={isScroll} isOpenBurger={isOpenBurger} setIsOpenBurger={setIsOpenBurger} />
                     </Cluster>
-                </Container>
+            </Container>
 
-                <MobileItems isOpenBurger={isOpenBurger}>
+            <MobileItems isOpenBurger={isOpenBurger}>
                     <NavLink to='/atlik-testa' className={({isActive}) => isActive ? `${styles.listItemMobile} ${styles.active}` : styles.listItemMobile}>
                         <AtlikTestaIcon active={location.pathname.startsWith('/atlik-testa')} />
                         <span>Atlik testą</span>
@@ -126,7 +128,7 @@ export const Navbar = ({ page = 'default' }: NavbarProps) => {
                     {!user_id ?
                         <li
                             className={`${styles.listItemMobile} ${styles.signout}`}
-                            onClick={() => openModal('auth')}
+                            onClick={() => authOpenModal('auth')}
                         >
                             <PrisijungtiIcon />
                             <span>Prisijungti</span>
@@ -139,7 +141,7 @@ export const Navbar = ({ page = 'default' }: NavbarProps) => {
                             <span>Atsijungti</span>
                         </li>
                     }
-                </MobileItems>
-            </Container>
+            </MobileItems>
+        </Container>
     );
 };
