@@ -1,0 +1,30 @@
+.submit {
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border: none;
+	width: 100%;
+	padding-top: 1rem;
+	padding-bottom: 1rem;
+	border-radius: 0.75rem;
+	font-weight: 600;
+	font-size: 1rem;
+	background: linear-gradient(135deg, var(--dark-green-500) 0%, #1c6a57 100%);
+	box-shadow: 0 4px 16px rgba(8, 71, 71, 0.35);
+	color: var(--white-100);
+	transition: all 0.3s;
+
+	& .hidden {
+		visibility: hidden;
+	}
+
+	&:disabled {
+		opacity: 0.4;
+		cursor: not-allowed;
+	}
+}
+
+.submit:not(:disabled):hover {
+	opacity: 0.9;
+}

@@ -1,10 +1,6 @@
-export { AuthProvider } from './contexts/AuthProvider';
-export { authService } from './services/AuthService';
-export { useAuth } from './hooks/useAuth';
-export { useRefreshToken } from './hooks/useRefreshToken'
-export { useAxiosPrivate } from './hooks/useAxiosPrivate';
-export { useAuthModal } from './hooks/useAuthModal';
-export { AuthModalProvider } from './contexts/AuthModalProvider'
-export { AuthModalContext } from './contexts/AuthModalContext';
-export { AuthModal } from './components/AuthModal/AuthModal';
-export { RequireAuth } from './components/RequireAuth/RequireAuth';
+export { AuthProvider } from './core/contexts/AuthProvider';
+export { useAuth } from './core/hooks/useAuth';
+export { useAxiosPrivate } from './core/hooks/useAxiosPrivate';
+export { AuthModal } from './modal/components/AuthModal/AuthModal';
+export { AuthModalProvider } from './modal/contexts/AuthModalProvider';
+export { useAuthModal } from './modal/hooks/useAuthModal';
