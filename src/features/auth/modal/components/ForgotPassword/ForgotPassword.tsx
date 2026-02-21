@@ -6,23 +6,25 @@ import type { AxiosError } from 'axios';
 
 import { useAuth } from '../../../core';
 import { useAuthentication } from '../../hooks/useAuthentication';
+import { Footer } from '../Footer';
 import { FormInput } from '../FormInput';
+import { Header } from '../Header';
 import { SubmitButton } from '../SubmitButton';
 import type { ApiErrorResponse } from '../types';
 
-import type { ForgotPasswordProps, FormData, FormErrors } from './types';
+import type { FormData, FormErrors } from './types';
 
 import styles from './ForgotPassword.module.scss';
 
-export const ForgotPassword = ({ setUserEmail }: ForgotPasswordProps) => {
+export const ForgotPassword = () => {
 	const { forgotPassword } = useAuth();
 	const [formData, setFormData] = useState<FormData>({ email: '' });
 	const [errors, setErrors] = useState<FormErrors>({});
-	const { setAuthMode } = useAuthentication();
+	const { setAuthMode, setUserEmail } = useAuthentication();
 
 	const validateForm = (data: FormData) => {
 		const newErrors: FormErrors = {};
-		if (!data.email.trim()) newErrors.email = 'Neįvestas el. paštas';
+		if (!data.email.trim()) newErrors.email = ['Neįvestas el. paštas'];
 		return newErrors;
 	};
 
@@ -60,7 +62,7 @@ export const ForgotPassword = ({ setUserEmail }: ForgotPasswordProps) => {
 				setErrors(data?.error?.errors as FormErrors);
 			} else {
 				setErrors({
-					email: data?.message,
+					email: [data?.message || 'Kažkas negerai'],
 				});
 			}
 		},
@@ -78,24 +80,33 @@ export const ForgotPassword = ({ setUserEmail }: ForgotPasswordProps) => {
 	};
 
 	return (
-		<form id="auth-form" onSubmit={handleSubmit} className={styles.forgotPassword}>
-			<FormInput
-				type="email"
-				name="email"
-				label="El. paštas"
-				placeholder="vardas@pavyzdys.lt"
-				inputValue={formData.email}
-				autoComplete="email"
-				autoFocus={true}
-				errors={errors.email}
-				handleChange={handleChange}
+		<>
+			<Header
+				title="Pamiršote slaptažodį?"
+				subTitle="Įveskite savo el. pašto adresą ir mes atsiųsime nuorodą slaptažodžiui atkurti"
 			/>
-			<SubmitButton
-				type="submit"
-				label="Siųsti nuorodą"
-				disabled={isPending}
-				isPending={isPending}
-			/>
-		</form>
+			<form id="auth-form" onSubmit={handleSubmit} className={styles.forgotPassword}>
+				<FormInput
+					type="email"
+					name="email"
+					label="El. paštas"
+					placeholder="vardas@email.lt"
+					inputValue={formData.email}
+					autoComplete="email"
+					autoFocus={true}
+					errors={errors.email}
+					handleChange={handleChange}
+				/>
+				<SubmitButton
+					type="submit"
+					label="Siųsti nuorodą"
+					disabled={isPending}
+					isPending={isPending}
+				/>
+			</form>
+			<Footer>
+				<Footer.BackToLogin actionLabel="Grįžti į prisijungimą" mode="login" />
+			</Footer>
+		</>
 	);
 };

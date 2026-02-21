@@ -1,11 +1,13 @@
-import { useState } from 'react';
+import cx from 'classnames';
+import { X } from 'lucide-react';
 
 import { Box } from '../../../../../components/Shared';
+import { useMediaQuery } from '../../../../../contexts/MediaQueryProvider';
+import type { AuthMode } from '../../contexts/authentication.types';
 import { useAuthentication } from '../../hooks/useAuthentication';
-import { Footer } from '../Footer';
+import { AccessDenied } from '../AccessDenied';
+import { AuthStatusView } from '../AuthStatusView';
 import { ForgotPassword } from '../ForgotPassword';
-import { ForgotPasswordSuccess } from '../ForgotPasswordSuccess';
-import { Header } from '../Header';
 import { Login } from '../Login';
 import { Signup } from '../Signup';
 
@@ -17,37 +19,42 @@ interface AuthenticationProps {
 }
 
 export const Authentication = ({ onSuccess, onCancel }: AuthenticationProps) => {
-	const { authMode } = useAuthentication();
-	const [userEmail, setUserEmail] = useState<string>();
+	const mediaQuery = useMediaQuery();
 
+	const { authMode } = useAuthentication();
+	const authModes: AuthMode[] = ['signup', 'initialTarget'];
+	const deniedModes: AuthMode[] = ['loginDenied', 'signupDenied'];
+	const successModes: AuthMode[] = [
+		'forgotSuccess',
+		'signupSuccess',
+		'loginAgain',
+		'signupAgain',
+	];
+
+	const paddings = mediaQuery < 376 ? ['1.5rem', '1rem'] : ['1.5rem', '2rem'];
+	console.log(mediaQuery);
 	return (
 		<div className={styles.modalContainer}>
-			<div className={styles.modalTopDecoration} />
-			<Box padding={['1.5rem', '2rem', '1.5rem', '2rem']}>
-				<Header onCancel={onCancel} />
+			<div
+				className={cx(
+					styles.modalTopDecoration,
+					deniedModes.includes(authMode) && styles.denied,
+				)}
+			/>
+			<button
+				type="button"
+				onClick={onCancel}
+				className={cx(styles.closeButton, deniedModes.includes(authMode) && styles.denied)}
+			>
+				<X size={18} />
+			</button>
 
+			<Box padding={paddings}>
 				{authMode === 'login' && <Login onSuccess={onSuccess} />}
-				{authMode === 'forgot' && <ForgotPassword setUserEmail={setUserEmail} />}
-				{authMode === 'forgotSuccess' && <ForgotPasswordSuccess userEmail={userEmail} />}
-
-				{authMode === 'signup' && <Signup />}
-				{/* {authMode === 'initialTarget' && <InitialTarget />} */}
-
-				{/* <Box padding={['1rem', '0rem', '1rem', '0rem']}>
-					<button
-						type="submit"
-						form="auth-form"
-						disabled={
-							authMode === 'initialTarget' &&
-							(!formData.initialTarget || !formData.acceptTerms)
-						}
-						className={styles.submit}
-					>
-						{authActions[authMode].btnLabel}
-					</button>
-				</Box> */}
-
-				{authMode !== 'forgotSuccess' && <Footer />}
+				{authMode === 'forgot' && <ForgotPassword />}
+				{authModes.includes(authMode) && <Signup />}
+				{deniedModes.includes(authMode) && <AccessDenied />}
+				{successModes.includes(authMode) && <AuthStatusView />}
 			</Box>
 		</div>
 	);

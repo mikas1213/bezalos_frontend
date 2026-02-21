@@ -8,7 +8,9 @@ import type { AxiosError } from 'axios';
 
 import { useAuth } from '../../../core';
 import { useAuthentication } from '../../hooks/useAuthentication';
+import { Footer } from '../Footer';
 import { FormInput } from '../FormInput';
+import { Header } from '../Header';
 import { SubmitButton } from '../SubmitButton';
 import type { ApiErrorResponse } from '../types';
 
@@ -18,7 +20,7 @@ import styles from './Login.module.scss';
 
 export const Login = ({ onSuccess }: LoginProps) => {
 	const { login } = useAuth();
-	const { setAuthMode } = useAuthentication();
+	const { setAuthMode, setLockoutExpiresAt } = useAuthentication();
 	const location = useLocation();
 	const navigate = useNavigate();
 	const from = location.state?.from?.pathname || '/';
@@ -65,8 +67,17 @@ export const Login = ({ onSuccess }: LoginProps) => {
 				return;
 			}
 
-			if (err.code === 'ECONNABORTED') {
+			if (err?.code === 'ECONNABORTED') {
 				toast.error('Užklausa užtruko per ilgai. Bandykite dar kartą.');
+				return;
+			}
+
+			if (err.status === 429) {
+				const message = err?.response?.data?.message ?? '';
+				const match = message.match(/Please try again in (\d+) seconds/);
+				const seconds = match ? parseInt(match[1], 10) : 0;
+				setLockoutExpiresAt(seconds > 0 ? Date.now() + seconds * 1000 : null);
+				setAuthMode('loginDenied');
 				return;
 			}
 
@@ -93,47 +104,55 @@ export const Login = ({ onSuccess }: LoginProps) => {
 	};
 
 	return (
-		<form className={styles.login} onSubmit={handleSubmit}>
-			<FormInput
-				type="email"
-				name="email"
-				label="El. paštas"
-				placeholder="vardas@pavyzdys.lt"
-				inputValue={formData.email}
-				autoComplete="email"
-				autoFocus={true}
-				disabled={isPending}
-				errors={errors.email}
-				handleChange={handleChange}
-			/>
-			<FormInput
-				type="password"
-				name="password"
-				label="Slaptažodis"
-				placeholder="••••••••"
-				inputValue={formData.password}
-				autoComplete="current-password"
-				disabled={isPending}
-				errors={errors.password}
-				handleChange={handleChange}
-			/>
-
-			<div className={styles.forgotPassword}>
-				<button
-					onClick={() => setAuthMode('forgot')}
-					type="button"
-					className={styles.forgotPasswordButton}
-				>
-					Pamiršote slaptažodį?
-				</button>
-			</div>
-
-			<SubmitButton
-				type="submit"
-				label="Prisijungti"
-				disabled={isPending}
-				isPending={isPending}
-			/>
-		</form>
+		<>
+			<Header title="Sveiki sugrįžę" subTitle="Prisijunkite prie savo paskyros" />
+			<form className={styles.login} onSubmit={handleSubmit}>
+				<FormInput
+					type="email"
+					name="email"
+					label="El. paštas"
+					placeholder="vardas@email.lt"
+					inputValue={formData.email}
+					autoComplete="email"
+					autoFocus={true}
+					disabled={isPending}
+					errors={errors.email}
+					handleChange={handleChange}
+				/>
+				<FormInput
+					type="password"
+					name="password"
+					label="Slaptažodis"
+					placeholder="••••••••"
+					inputValue={formData.password}
+					autoComplete="current-password"
+					disabled={isPending}
+					errors={errors.password}
+					handleChange={handleChange}
+				/>
+				<div className={styles.forgotPassword}>
+					<button
+						onClick={() => setAuthMode('forgot')}
+						type="button"
+						className={styles.forgotPasswordButton}
+					>
+						Pamiršote slaptažodį?
+					</button>
+				</div>
+				<SubmitButton
+					type="submit"
+					label="Prisijungti"
+					disabled={isPending}
+					isPending={isPending}
+				/>
+			</form>
+			<Footer>
+				<Footer.SwitchAuth
+					footerLabel="Neturite paskyros?"
+					actionLabel="Registruotis"
+					mode="signup"
+				/>
+			</Footer>
+		</>
 	);
 };

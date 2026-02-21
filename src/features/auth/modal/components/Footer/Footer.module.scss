@@ -1,18 +1,50 @@
+@use '@/styles/index' as *;
+@include fadeInUp;
+.footer {
+	animation: fadeInUp 0.5s ease-out 0.8s both;
+}
 .switchAuth {
-	text-align: center;
-	font-size: 0.875rem;
-	padding-top: 0.5rem;
-	color: #6b7280;
+	margin-top: 0.5rem;
+	span {
+		font-size: 0.875rem;
+		color: var(--grey-500);
+	}
 }
 
 .switchAuthButton {
 	border: none;
 	background: none;
 	font-weight: 600;
-	color: #084747;
+	color: var(--dark-green-500);
 	transition: opacity 0.2s;
+	font-size: 0.875rem;
+	&.denied {
+		color: var(--red-400);
+	}
+	&:hover {
+		opacity: 0.7;
+	}
 }
 
-.switchAuthButton:hover {
-	opacity: 0.7;
+.backToLogin {
+	border: none;
+	background: none;
+	width: 100%;
+	padding-top: 0.75rem;
+	padding-bottom: 0.75rem;
+	border-radius: 0.75rem;
+	font-weight: 400;
+	font-size: 0.875rem;
+	transition: all 200ms;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 0.5rem;
+	color: var(--grey-500);
+	background-color: transparent;
+	&:hover {
+		background-color: rgba(8, 71, 71, 0.04);
+	}
+}
+@media only screen and (max-width: 440px) {
 }

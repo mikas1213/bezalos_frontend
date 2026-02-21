@@ -3,7 +3,8 @@ import type { Dispatch, SetStateAction } from 'react';
 import cx from 'classnames';
 import { ArrowLeft, Check } from 'lucide-react';
 
-import type { FormData } from '../../contexts/authentication.types';
+import { useAuthentication } from '../../hooks/useAuthentication';
+import type { SignupFormData } from '../Signup/types';
 import { Target } from '../Target';
 
 import { targets } from './constants';
@@ -11,19 +12,19 @@ import { targets } from './constants';
 import styles from './InitialTarget.module.scss';
 
 interface InitialTargetProps {
-	setFormData: Dispatch<SetStateAction<FormData>>;
-	setStep: Dispatch<SetStateAction<1 | 2>>;
-	formData: FormData;
+	setFormData: Dispatch<SetStateAction<SignupFormData>>;
+	formData: SignupFormData;
 }
 
-export const InitialTarget = ({ setFormData, setStep, formData }: InitialTargetProps) => {
+export const InitialTarget = ({ setFormData, formData }: InitialTargetProps) => {
+	const { setAuthMode } = useAuthentication();
 	return (
 		<>
 			<button
 				type="button"
 				onClick={() => {
-					setStep(1);
-					setFormData((prev: FormData) => ({ ...prev, acceptTerms: false }));
+					setAuthMode('signup');
+					setFormData((prev: SignupFormData) => ({ ...prev, acceptTerms: false }));
 				}}
 				className={styles.back}
 			>
@@ -64,11 +65,21 @@ export const InitialTarget = ({ setFormData, setStep, formData }: InitialTargetP
 
 				<div className={styles.termsLabel}>
 					Sutinku su{' '}
-					<a href="#" className={styles.termsLink}>
-						naudojimo sąlygomis
+					<a
+						href="/pirkimo-taisykles"
+						target="_blank"
+						rel="noopener noreferrer"
+						className={styles.termsLink}
+					>
+						pirkimo taisyklės
 					</a>{' '}
 					ir{' '}
-					<a href="#" className={styles.termsLink}>
+					<a
+						href="/privatumo-politika"
+						target="_blank"
+						rel="noopener noreferrer"
+						className={styles.termsLink}
+					>
 						privatumo politika
 					</a>
 				</div>

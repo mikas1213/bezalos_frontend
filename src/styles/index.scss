@@ -1,236 +1,228 @@
-@use './variables-spaces.scss';
-@use './variables-colors.scss';
-@use './variables-fonts.scss';
+@forward './mixins';
+@forward './variables-spaces';
+@forward './variables-colors';
+@forward './variables-fonts';
 
 :root {
-    /* Colors CMD + k + g */
+	/* Colors CMD + k + g */
 
-/* ---V-E-R-Y---N-E-W---V-A-R-I-A-B-L-E-S---F-O-R---C-O-L-O-R-S---A-D-D-E-D-2025-05-25*/
+	/* ---V-E-R-Y---N-E-W---V-A-R-I-A-B-L-E-S---F-O-R---C-O-L-O-R-S---A-D-D-E-D-2025-05-25*/
 	/* --neutral-grey-900: hsl(0, 0%, 28%);
 	--neutral-grey-700: hsl(0, 0%, 43%);
 	--neutral-grey-500: hsl(0, 0%, 58%);
 	--neutral-grey-300: hsl(0, 0%, 76%);
 	--neutral-grey-100: hsl(0, 0%, 88%); */
 
-
-    /* --cool-grey-900: hsl(209, 15%, 28%);
+	/* --cool-grey-900: hsl(209, 15%, 28%);
     --cool-grey-700: hsl(207, 12%, 43%);
     --cool-grey-500: hsl(208, 12%, 58%);
     --cool-grey-300: hsl(210, 16%, 76%);
     --cool-grey-100: hsl(208, 21%, 88%); */
 
-    /* --cool-green-900: hsl(180, 15%, 18%);
+	/* --cool-green-900: hsl(180, 15%, 18%);
     --cool-green-700: hsl(180, 12%, 33%);
     --cool-green-500: hsl(180, 12%, 50%);
     --cool-green-300: hsl(180, 16%, 76%);
     --cool-green-100: hsl(180, 21%, 88%); */
 
+	--sky-blue-900: hsl(194, 75%, 25%);
+	--sky-blue-700: hsl(194, 75%, 40%);
+	--sky-blue-500: hsl(194, 75%, 65%);
+	--sky-blue-300: hsl(194, 75%, 80%);
+	--sky-blue-100: hsl(194, 75%, 92%);
 
-    --sky-blue-900: hsl(194, 75%, 25%);
-    --sky-blue-700: hsl(194, 75%, 40%);
-    --sky-blue-500: hsl(194, 75%, 65%);
-    --sky-blue-300: hsl(194, 75%, 80%);
-    --sky-blue-100: hsl(194, 75%, 92%);
+	--green-100: hsl(140, 30%, 95%);
+	--green-300: hsl(140, 30%, 87%);
+	--green-500: hsl(140, 30%, 60%);
+	--green-700: hsl(140, 30%, 28%);
+	--green-900: hsl(140, 30%, 25%);
 
-    /* --red-100: hsl(348, 83%, 90%);
-    --red-300: hsl(348, 83%, 70%);
-    --red-500: hsl(348, 83%, 47%);
-    --red-700: hsl(348, 83%, 35%);
-    --red-900: hsl(348, 83%, 20%); */
+	/* ---N-E-W---V-A-R-I-A-B-L-E-S---F-O-R---C-O-L-O-R-S--- */
+	--color-background: #fff;
+	--color-background-secondary: #eff1ef;
+	--color-background-hover: #e8eae8;
+	--color-text-placeholder: #cdd1cb;
+	--color-text-grey: #696969;
+	--color-text-green-light: #084747;
+	--color-text-green-dark: #082b1d;
+	--color-border: #cdd1cb99;
 
-    --green-100: hsl(140, 30%, 95%);
-    --green-300: hsl(140, 30%, 87%);
-    --green-500: hsl(140, 30%, 60%);
-    --green-700: hsl(140, 30%, 28%);
-    --green-900: hsl(140, 30%, 25%);
+	--green-bgr-light: #084747;
+	--green-bgr-dark: #082b1d;
+	--green-btn-light: #7ed957;
+	--green-btn-dark: #60c040;
+	--grey-light: #cdd1cb;
+	--grey-dark: #878b86;
 
+	--color-b: #245d6b;
+	--color-a: #30c040;
+	--color-r: #ec9f11;
+	--color-kcal: #878b86;
+	--color-bgr-b: #245d6b22;
+	--color-bgr-a: #30c04022;
+	--color-bgr-r: #ec9f1122;
+	--color-bgr-kcal: #a7aba622;
 
-/* ---N-E-W---V-A-R-I-A-B-L-E-S---F-O-R---C-O-L-O-R-S--- */
-    --color-background: #fff;
-    --color-background-secondary: #eff1ef;
-    --color-background-hover: #E8EAE8;
-    --color-text-placeholder: #cdd1cb;
-    --color-text-grey: #696969;
-    --color-text-green-light: #084747;
-    --color-text-green-dark: #082b1d;
-    --color-border: #cdd1cb99;
+	/* - - - - - - - - - - - - - - - - - - - - - - - - - - - -*/
 
-    --green-bgr-light: #084747;
-    --green-bgr-dark: #082b1d;
-    --green-btn-light: #7ed957;
-    --green-btn-dark: #60c040;
-    --grey-light: #cdd1cb;
-    --grey-dark: #878b86;
+	--color-bgr-light: #eff1ef;
+	--color-bgr-tab: #f1f5fa;
+	--color-bgr-card: #d1d6cf;
+	--color-bgr-top: #084747;
+	--color-text-dark: #082b1d;
+	--color-bgr-bottom: #082b1d;
 
-    --color-b: #245D6B;
-    --color-a: #30c040;
-    --color-r: #ec9f11;
-    --color-kcal: #878b86;
-    --color-bgr-b: #245D6B22;
-    --color-bgr-a: #30c04022;
-    --color-bgr-r: #ec9f1122;
-    --color-bgr-kcal: #a7aba622;
+	--color-text-light: #eff1ef;
+	--color-text-light-88: #eff1ef88;
+	--color-text-light-aa: #eff1efaa;
+	--color-text-light-cc: #eff1efcc;
 
-/* - - - - - - - - - - - - - - - - - - - - - - - - - - - -*/
+	--color-radio-border: #a7aba6;
+	--color-radio: #878b86;
+	--color-btn-primary: #7ed957;
+	--color-btn-secondary: #60c040;
+	--color-star: #f3c127;
+	--color-error: #c00;
+	--color-admin-red: #dc143c;
+	--color-admin-red-bgr: #dc143c22;
+	--color-admin-red-hover: hsl(348, 83%, 42%);
+	--color-admin-yellow: #ffa500;
+	--color-success: #60c040;
 
-    --color-bgr-light: #eff1ef;
-    --color-bgr-tab: #f1f5fa;
-    --color-bgr-card: #d1d6cf;
-    --color-bgr-top: #084747;
-    --color-text-dark: #082b1d;
-    --color-bgr-bottom: #082b1d;
+	--color-filter-btn: #d9ddd7;
+	--color-filter-btn-hover: #cdd1cb;
+	/* Main Sizes */
+	/* Units converter */
+	/* https://cssunitconverter.vercel.app/rem-to-vw */
 
-    --color-text-light: #eff1ef;
-    --color-text-light-88: #eff1ef88;
-    --color-text-light-aa: #eff1efaa;
-    --color-text-light-cc: #eff1efcc;
+	--section-padding-bottom: clamp(1.875rem, 3.906vw, 2.5rem);
 
-    --color-radio-border: #a7aba6;
-    --color-radio: #878b86;
-    --color-btn-primary: #7ed957;
-    --color-btn-secondary: #60c040;
-    --color-star: #F3C127;
-    --color-error: #c00;
-    --color-admin-red: #DC143C;
-    --color-admin-red-bgr: #DC143C22;
-    --color-admin-red-hover: hsl(348, 83%, 42%);
-    --color-admin-yellow: #FFA500;
-    --color-success: #60c040;
-
-    --color-filter-btn: #d9ddd7;
-    --color-filter-btn-hover: #cdd1cb;
-    /* Main Sizes */
-    /* Units converter */
-    /* https://cssunitconverter.vercel.app/rem-to-vw */
-
-
-    --section-padding-bottom: clamp(1.875rem, 3.906vw, 2.5rem);
-
-    /* --content-width: 1024px; */
-    --content-width-responsive: 100vw;
-    /* --content-padding-lg: 2rem;
+	/* --content-width: 1024px; */
+	--content-width-responsive: 100vw;
+	/* --content-padding-lg: 2rem;
     --content-padding-sm: 1rem;
     --content-padding-xs: 0.7rem; */
 
-    --signature-size-lg: clamp(0rem, 17.188vw, 11rem);
-    --signature-size-sm: clamp(0rem, 33.333vw, 12rem);
+	--signature-size-lg: clamp(0rem, 17.188vw, 11rem);
+	--signature-size-sm: clamp(0rem, 33.333vw, 12rem);
 
-    /* Font sizes: */
-    --font-size-big-1: 5.96rem;
-    --font-size-big-2: 4.768rem;
-    --font-size-h1: 3.815rem;
-    --font-size-h2: 3.052rem;
-    --font-size-h3: 2.441rem;
-    --font-size-h4: 1.953rem;
-    --font-size-h5: 1.563rem;
-    --font-size-h6: 1.25rem;
-    --font-size-p: 1rem;
-    --font-size-small-1: 0.8rem;
-    --font-size-small-2: 0.64rem;
+	/* Font sizes: */
+	--font-size-big-1: 5.96rem;
+	--font-size-big-2: 4.768rem;
+	--font-size-h1: 3.815rem;
+	--font-size-h2: 3.052rem;
+	--font-size-h3: 2.441rem;
+	--font-size-h4: 1.953rem;
+	--font-size-h5: 1.563rem;
+	--font-size-h6: 1.25rem;
+	--font-size-p: 1rem;
+	--font-size-small-1: 0.8rem;
+	--font-size-small-2: 0.64rem;
 
-    /* D-Y-N-A-M-I-C---F-O-N-T-S */
-    /* 1024 Viewport Width */
-    --font-size-dynamic-h1-lg: clamp(0rem, 5.961vw, var(--font-size-h1));
-    --font-size-dynamic-h2-lg: clamp(0rem, 4.769vw, var(--font-size-h2));
-    --font-size-dynamic-h3-lg: clamp(0rem, 3.814vw, var(--font-size-h3));
-    --font-size-dynamic-h4-lg: clamp(1.21rem, 3.052vw, var(--font-size-h4));
-    --font-size-dynamic-h5-lg: clamp(0rem, 2.442vw, var(--font-size-h5));
-    --font-size-dynamic-h6-lg: clamp(0rem, 1.953vw, var(--font-size-h6));
-    --font-size-dynamic-p-lg: clamp(0rem, 1.563vw, var(--font-size-p));
-    --font-size-dynamic-small-1-lg: clamp(0rem, 1.25vw, var(--font-size-small-1));
-    --font-size-dynamic-small-2-lg: clamp(0rem, 1vw, var(--font-size-small-2));
+	/* D-Y-N-A-M-I-C---F-O-N-T-S */
+	/* 1024 Viewport Width */
+	--font-size-dynamic-h1-lg: clamp(0rem, 5.961vw, var(--font-size-h1));
+	--font-size-dynamic-h2-lg: clamp(0rem, 4.769vw, var(--font-size-h2));
+	--font-size-dynamic-h3-lg: clamp(0rem, 3.814vw, var(--font-size-h3));
+	--font-size-dynamic-h4-lg: clamp(1.21rem, 3.052vw, var(--font-size-h4));
+	--font-size-dynamic-h5-lg: clamp(0rem, 2.442vw, var(--font-size-h5));
+	--font-size-dynamic-h6-lg: clamp(0rem, 1.953vw, var(--font-size-h6));
+	--font-size-dynamic-p-lg: clamp(0rem, 1.563vw, var(--font-size-p));
+	--font-size-dynamic-small-1-lg: clamp(0rem, 1.25vw, var(--font-size-small-1));
+	--font-size-dynamic-small-2-lg: clamp(0rem, 1vw, var(--font-size-small-2));
 
-    --form-side-width-lg: clamp(10rem, 39.063vw, 25rem);
-    --from-size-padding-lg: clamp(0rem, 4.688vw, 3rem);
-    --form-btn-height-lg: clamp(0rem, 3.906vw, 2.5rem);
-    --form-header-icon-size-lg: clamp(0rem, 6.25vw, 4rem);
+	--form-side-width-lg: clamp(10rem, 39.063vw, 25rem);
+	--from-size-padding-lg: clamp(0rem, 4.688vw, 3rem);
+	--form-btn-height-lg: clamp(0rem, 3.906vw, 2.5rem);
+	--form-header-icon-size-lg: clamp(0rem, 6.25vw, 4rem);
 
-    /* 576 Viewport Width */
-    --font-size-dynamic-big-1-sm: clamp(0rem, 16.556vw, 5.96rem);
-    --font-size-dynamic-big-2-sm: clamp(0rem, 13.244vw, 4.768rem);
-    --font-size-dynamic-h1-sm: clamp(0rem, 10.597vw, 3.815rem);
-    --font-size-dynamic-h2-sm: clamp(0rem, 8.478vw, 3.052rem);
-    --font-size-dynamic-h3-sm: clamp(0rem, 6.781vw, 2.441rem);
-    --font-size-dynamic-h4-sm: clamp(0rem, 5.425vw, 1.953rem);
-    --font-size-dynamic-h5-sm: clamp(0rem, 4.342vw, 1.563rem);
-    --font-size-dynamic-h6-sm: clamp(0rem, 3.472vw, 1.25rem);
-    --font-size-dynamic-p-sm: clamp(0rem, 2.778vw, 1rem);
-    --font-size-dynamic-small-1-sm: clamp(0rem, 2.222vw, 0.8rem);
-    --font-size-dynamic-small-2-sm: clamp(0rem, 1.778vw, 0.64rem);
+	/* 576 Viewport Width */
+	--font-size-dynamic-big-1-sm: clamp(0rem, 16.556vw, 5.96rem);
+	--font-size-dynamic-big-2-sm: clamp(0rem, 13.244vw, 4.768rem);
+	--font-size-dynamic-h1-sm: clamp(0rem, 10.597vw, 3.815rem);
+	--font-size-dynamic-h2-sm: clamp(0rem, 8.478vw, 3.052rem);
+	--font-size-dynamic-h3-sm: clamp(0rem, 6.781vw, 2.441rem);
+	--font-size-dynamic-h4-sm: clamp(0rem, 5.425vw, 1.953rem);
+	--font-size-dynamic-h5-sm: clamp(0rem, 4.342vw, 1.563rem);
+	--font-size-dynamic-h6-sm: clamp(0rem, 3.472vw, 1.25rem);
+	--font-size-dynamic-p-sm: clamp(0rem, 2.778vw, 1rem);
+	--font-size-dynamic-small-1-sm: clamp(0rem, 2.222vw, 0.8rem);
+	--font-size-dynamic-small-2-sm: clamp(0rem, 1.778vw, 0.64rem);
 
-    --form-side-width-sm: clamp(1rem, 91.667vw, 33rem);
+	--form-side-width-sm: clamp(1rem, 91.667vw, 33rem);
 }
 
 * {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
-    -webkit-tap-highlight-color: transparent;
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+	font-family: 'Poppins', sans-serif;
+	-webkit-tap-highlight-color: transparent;
 }
 
 html {
-    scroll-behavior: smooth;
-    overflow-x: hidden;
+	scroll-behavior: smooth;
+	overflow-x: hidden;
 }
 
 body {
-    background-color: var(--white-100);
+	background-color: var(--white-100);
 }
 
 nav {
-    height: var(--nav-height);
+	height: var(--nav-height);
 }
 
 button {
-    cursor: pointer;
+	cursor: pointer;
 }
 a {
-    display: flex;
+	display: flex;
 }
 a:link,
 a:visited {
-    text-decoration: none;
-    color: var(--color-text);
+	text-decoration: none;
+	color: var(--color-text);
 }
 
 li {
-    list-style: none;
+	list-style: none;
 }
 img {
-    display: block;
+	display: block;
 }
 
 .btn {
-    border: none;
-    outline: none;
-    cursor: pointer;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px var(--color-input);
-    padding: 0.8rem 1rem;
+	border: none;
+	outline: none;
+	cursor: pointer;
+	border-radius: 8px;
+	box-shadow: 0 2px 4px var(--color-input);
+	padding: 0.8rem 1rem;
 }
 
 .section--hidden {
-    opacity: 0;
-    transform: translateY(7rem);
+	opacity: 0;
+	transform: translateY(7rem);
 }
-.padding--bt, .padding--t {
-    padding-top: 4.375rem !important;
+.padding--bt,
+.padding--t {
+	padding-top: 4.375rem !important;
 }
-.padding--bt, .padding--b {
-    padding-bottom: 4.375rem !important;
+.padding--bt,
+.padding--b {
+	padding-bottom: 4.375rem !important;
 }
-
 
 .myToast {
-    background: var(--color-bgr-light);
-    width: 100vw;
+	background: var(--color-bgr-light);
+	width: 100vw;
 }
 
 span.anketaError {
-    color: var(--color-admin-red);
-    font-size: 0.7rem;
-    font-weight: 400;
+	color: var(--color-admin-red);
+	font-size: 0.7rem;
+	font-weight: 400;
 }
 
 /* -----------------t-y-p-e-s-c-a-l-e----------------- */

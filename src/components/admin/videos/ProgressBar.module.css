@@ -1,42 +1,41 @@
 .progressBarContainer {
-    grid-column: 1 / -1;
+	grid-column: 1 / -1;
 }
 .progressBar {
-    width: 100%;
-    background-color: var(--color-background-hover);
-    border-radius: 10px;
-    overflow: hidden;
-    margin: 5px 0;
-    
+	width: 100%;
+	background-color: var(--color-background-hover);
+	border-radius: 10px;
+	overflow: hidden;
+	margin: 5px 0;
 }
 .progressServer {
-    display: flex;
-    align-items: center;
-    height: 1rem;
-    background: linear-gradient(90deg, #10b981, #059669);
+	display: flex;
+	align-items: center;
+	height: 1rem;
+	background: linear-gradient(90deg, #10b981, #059669);
 }
 .progressAws {
-    border-radius: 10px;
-    height: 0.4rem;
-    margin: 0 0.35rem;
-    background: linear-gradient(90deg, #f59e0b, #d97706);
+	border-radius: 10px;
+	height: 0.4rem;
+	margin: 0 0.35rem;
+	background: linear-gradient(90deg, #f59e0b, #d97706);
 }
 
 .progressData {
-    display: flex;
-    justify-content: space-between;
+	display: flex;
+	justify-content: space-between;
 }
 .progressText {
-    font-size: var(--font-size-p);
-    color: var(--cool-grey-500);
+	font-size: var(--font-size-p);
+	color: var(--cool-grey-500);
 }
 
 .error .progressServer {
-    background: var(--red-100);
+	background: var(--red-300);
 }
 .error .progressText {
-    color: var(--red-500);
+	color: var(--red-500);
 }
 .uploaded .progressText {
-    color: green;
+	color: green;
 }

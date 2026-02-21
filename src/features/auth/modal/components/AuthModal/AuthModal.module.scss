@@ -1,81 +1,90 @@
 .overlay {
-    position: fixed;
-    z-index: 10;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background: #00000055;
-    animation: openOverlay 0.2s;
+	position: fixed;
+	display: flex;
+	justify-content: center;
+	align-items: flex-start;
+	z-index: 10;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	overflow-y: auto;
+	background: #00000055;
+	animation: openOverlay 0.2s;
+	padding: 2rem 1rem;
+	box-sizing: border-box;
 }
 
 .authModal {
-    position: fixed;
-    top: 50dvh;
-    left: 50dvw;
-    transform: translate(-50%, -50%);
-    animation: openAuthModal 0.2s;
-    border-radius: 1.5rem;
-    overflow: scroll;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+	position: relative;
+	margin: auto;
+	animation: openAuthModal 0.2s;
+	border-radius: 1.5rem;
+	box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
 .closeIcon {
-    cursor: pointer;
-    position: absolute;
-    display: flex;
-    right: 1.2rem;
-    top: 1.2rem;
-    font-size: clamp(1.8rem, 4.701vw, 2.6rem);
-    color: var(--color-bgr-dark);
-    opacity: 0.5;
-    z-index: 10;
+	cursor: pointer;
+	position: absolute;
+	display: flex;
+	right: 1.2rem;
+	top: 1.2rem;
+	font-size: clamp(1.8rem, 4.701vw, 2.6rem);
+	color: var(--color-bgr-dark);
+	opacity: 0.5;
+	z-index: 10;
 }
 
 .closingOverlay {
-    animation: closeOverlay 0.2s forwards;
+	animation: closeOverlay 0.2s forwards;
 }
 .closingModal {
-    animation: closeAuthModal 0.2s forwards;
+	animation: closeAuthModal 0.2s forwards;
 }
 
 @keyframes openOverlay {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
 }
 
 @keyframes openAuthModal {
-    from {
-        opacity: 0;
-        transform: translate(-50%, -50%) scale(0.8);
-    }
-    to {
-        opacity: 1;
-        transform: translate(-50%, -50%) scale(1);
-    }
+	from {
+		opacity: 0;
+		transform: scale(0.8);
+	}
+	to {
+		opacity: 1;
+		transform: scale(1);
+	}
 }
 
 @keyframes closeOverlay {
-    from {
-        opacity: 1;
-    }
-    to {
-        opacity: 0;
-        backdrop-filter: blur(0px);
-    }
+	from {
+		opacity: 1;
+	}
+	to {
+		opacity: 0;
+		backdrop-filter: blur(0px);
+	}
 }
 
 @keyframes closeAuthModal {
-    from {
-        opacity: 1;
-        transform: translate(-50%, -50%) scale(1);
-    }
-    to {
-        opacity: 0;
-        transform: translate(-50%, -50%) scale(0.8);
-    }
+	from {
+		opacity: 1;
+		transform: scale(1);
+	}
+	to {
+		opacity: 0;
+		transform: scale(0.8);
+	}
+}
+
+@media only screen and (max-width: 576px) {
+	.authModal {
+		width: 100%;
+	}
 }

@@ -47,10 +47,14 @@ export const FormInput = ({
 					autoComplete={autoComplete}
 					autoFocus={autoFocus}
 					disabled={disabled}
-					style={hasError ? { borderColor: '#ef4444', backgroundColor: '#fef2f2' } : undefined}
+					style={
+						hasError
+							? { borderColor: 'var(--red-400)', backgroundColor: 'var(--red-050)' }
+							: undefined
+					}
 					onFocus={(e) => {
 						if (hasError) {
-							e.target.style.borderColor = '#ef4444';
+							e.target.style.borderColor = 'var(--red-400)';
 							e.target.style.backgroundColor = '#fef2f2';
 						} else {
 							e.target.style.borderColor = '#084747';
@@ -59,7 +63,7 @@ export const FormInput = ({
 					}}
 					onBlur={(e) => {
 						if (hasError) {
-							e.target.style.borderColor = '#ef4444';
+							e.target.style.borderColor = 'var(--red-400)';
 							e.target.style.backgroundColor = '#fef2f2';
 						} else {
 							e.target.style.borderColor = '#e5e7eb';

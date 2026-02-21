@@ -4,10 +4,16 @@ import { Box } from '../../../../../components/Shared';
 import SpinnerOnBtn from '../../../../../components/Shared/SpinnerOnBtn';
 
 import styles from './submitButton.module.scss';
-
+export type SubmitLabels =
+	| 'Prisijungti'
+	| 'Registruotis'
+	| 'Tęsti'
+	| 'Siųsti nuorodą'
+	| 'Pradėti naudotis'
+	| 'Atidaryti el. paštą';
 interface SubmitButton {
 	type?: 'button' | 'submit';
-	label: 'Prisijungti' | 'Registruotis' | 'Tęsti' | 'Siųsti nuorodą';
+	label: SubmitLabels;
 	isPending?: boolean;
 	disabled?: boolean;
 	onClick?: () => void;

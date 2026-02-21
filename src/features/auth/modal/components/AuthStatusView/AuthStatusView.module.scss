@@ -1,0 +1,45 @@
+@keyframes fadeInUp {
+	from {
+		transform: translateY(10px);
+		opacity: 0;
+	}
+	to {
+		transform: translateY(0);
+		opacity: 1;
+	}
+}
+.maskedEmail {
+	font-size: 1rem;
+	font-weight: 600;
+	margin-top: 0.25rem;
+	text-align: center;
+	color: var(--dark-green-500);
+	animation: fadeInUp 0.5s ease-out 0.4s both;
+}
+
+.openEmailWrapper {
+	animation: fadeInUp 0.5s ease-out 0.8s both;
+}
+
+.openEmailBtn {
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding-top: 1rem;
+	padding-bottom: 1rem;
+	margin-bottom: 1rem;
+	border-radius: 0.75rem;
+	font-weight: 500;
+	font-size: 0.875rem;
+	transition: opacity 0.3s ease;
+	gap: 0.5rem;
+	color: var(--white-100) !important;
+	background: linear-gradient(135deg, var(--dark-green-500) 0%, #1c6a57 100%);
+	box-shadow: 0 4px 16px rgba(8, 71, 71, 0.35);
+	text-decoration: none;
+
+	&:hover {
+		opacity: 0.9;
+	}
+}
