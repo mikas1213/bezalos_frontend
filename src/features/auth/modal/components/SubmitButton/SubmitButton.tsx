@@ -3,7 +3,7 @@ import cx from 'classnames';
 import { Box } from '../../../../../components/Shared';
 import SpinnerOnBtn from '../../../../../components/Shared/SpinnerOnBtn';
 
-import styles from './submitButton.module.scss';
+import styles from './SubmitButton.module.scss';
 export type SubmitLabels =
 	| 'Prisijungti'
 	| 'Registruotis'
