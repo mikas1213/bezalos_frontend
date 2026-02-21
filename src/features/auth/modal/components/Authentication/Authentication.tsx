@@ -32,7 +32,7 @@ export const Authentication = ({ onSuccess, onCancel }: AuthenticationProps) => 
 	];
 
 	const paddings = mediaQuery < 376 ? ['1.5rem', '1rem'] : ['1.5rem', '2rem'];
-	console.log(mediaQuery);
+
 	return (
 		<div className={styles.modalContainer}>
 			<div
