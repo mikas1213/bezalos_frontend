@@ -124,12 +124,12 @@ export const Signup = () => {
 				return;
 			}
 
-			if (data?.error.errors) {
-				setErrors(data?.error?.errors as SignupFormErrors);
-			} else if (data?.error.statusCode === 409) {
+			if (err.status === 409) {
 				setErrors({
 					email: [data?.message || 'Kažkas negerai'],
 				});
+			} else if (data?.error?.errors as SignupFormErrors) {
+				setErrors(data?.error?.errors as SignupFormErrors);
 			}
 
 			setFormData((prev) => ({ ...prev, acceptTerms: false }));

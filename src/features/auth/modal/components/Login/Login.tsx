@@ -81,12 +81,12 @@ export const Login = ({ onSuccess }: LoginProps) => {
 				return;
 			}
 
-			if (data?.error.errors) {
-				setErrors(data?.error?.errors as LoginFormErrors);
-			} else {
+			if (err.status === 401) {
 				setErrors({
 					email: [data?.message || 'Kažkas negerai'],
 				});
+			} else {
+				setErrors(data?.error?.errors as LoginFormErrors);
 			}
 		},
 	});
