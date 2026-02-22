@@ -46,6 +46,7 @@ export const Signup = () => {
 	const validatePassword = (password: string) => {
 		if (!password) return 'Slaptažodis yra privalomas';
 		if (password.length < 8) return 'Slaptažodis turi būti bent 8 simbolių';
+		if (!/[0-9]/.test(password)) return 'Slaptažodį turi sudaryti bent vienas skaičius';
 		return '';
 	};
 	const validateConfirmPassword = (confirmPassword: string, password: string) => {
@@ -116,7 +117,7 @@ export const Signup = () => {
 			}
 
 			if (err.status === 429) {
-				const message = err?.response?.data?.message ?? '';
+				const message = data?.message ?? '';
 				const match = message.match(/Please try again in (\d+) seconds/);
 				const seconds = match ? parseInt(match[1], 10) : 0;
 				setLockoutExpiresAt(seconds > 0 ? Date.now() + seconds * 1000 : null);
@@ -128,8 +129,8 @@ export const Signup = () => {
 				setErrors({
 					email: [data?.message || 'Kažkas negerai'],
 				});
-			} else if (data?.error?.errors as SignupFormErrors) {
-				setErrors(data?.error?.errors as SignupFormErrors);
+			} else if (data?.errors as SignupFormErrors) {
+				setErrors(data?.errors as SignupFormErrors);
 			}
 
 			setFormData((prev) => ({ ...prev, acceptTerms: false }));

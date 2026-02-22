@@ -58,8 +58,8 @@ export const ForgotPassword = () => {
 				return;
 			}
 
-			if (data?.error.errors) {
-				setErrors(data?.error?.errors as FormErrors);
+			if (data?.errors) {
+				setErrors(data?.errors as FormErrors);
 			} else {
 				setErrors({
 					email: [data?.message || 'Kažkas negerai'],

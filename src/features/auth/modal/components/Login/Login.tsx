@@ -73,7 +73,7 @@ export const Login = ({ onSuccess }: LoginProps) => {
 			}
 
 			if (err.status === 429) {
-				const message = err?.response?.data?.message ?? '';
+				const message = data?.message ?? '';
 				const match = message.match(/Please try again in (\d+) seconds/);
 				const seconds = match ? parseInt(match[1], 10) : 0;
 				setLockoutExpiresAt(seconds > 0 ? Date.now() + seconds * 1000 : null);
@@ -85,8 +85,8 @@ export const Login = ({ onSuccess }: LoginProps) => {
 				setErrors({
 					email: [data?.message || 'Kažkas negerai'],
 				});
-			} else {
-				setErrors(data?.error?.errors as LoginFormErrors);
+			} else if (data?.errors) {
+				setErrors(data?.errors as LoginFormErrors);
 			}
 		},
 	});
