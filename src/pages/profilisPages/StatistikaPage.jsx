@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import useAxiosPrivate from '../../hooks/useAxiosPrivate';
+import { useAxiosPrivate } from '../../features/auth';
 import { useOutletContext } from 'react-router-dom';
 import toast from 'react-hot-toast';
 

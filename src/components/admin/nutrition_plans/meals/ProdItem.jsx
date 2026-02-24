@@ -1,6 +1,6 @@
 import styles from './ProdItem.module.css';
 import AsyncSelect from 'react-select/async';
-import useAxiosPrivate from '../../../../hooks/useAxiosPrivate';
+import { useAxiosPrivate } from '../../../../features/auth';
 import { useState, useRef } from 'react';
 import { kcal } from '../../../../utils/calculationsHelpers';
 import { DeleteBin_icon } from '../../../../svg/icons';

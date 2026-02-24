@@ -1,6 +1,5 @@
 import type { ReactNode } from 'react';
 export type Pages = 'home' | 'recipes' | 'default';
-type IsChangeColor = { isScroll: boolean; page: Pages };
 
 export type NavbarProps = {
 	page: Pages;
@@ -8,10 +7,6 @@ export type NavbarProps = {
 export type ItemsProps = {
 	children: ReactNode;
 	isOpenBurger: boolean;
-};
-
-export type LogoProps = {
-	isChangeColor: IsChangeColor;
 };
 
 export type IconProps = {
@@ -37,7 +32,5 @@ export interface NavbarState {
 	currentPage: string;
 	isOpenBurger: boolean;
 	setIsOpenBurger: (value: boolean | ((prev: boolean) => boolean)) => void;
-	isOpenModal: boolean;
-	setIsOpenModal: (value: boolean | ((prev: boolean) => boolean)) => void;
 	responsiveNavHeight: NavHeight;
 }

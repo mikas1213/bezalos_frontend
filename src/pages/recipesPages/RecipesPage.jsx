@@ -10,17 +10,17 @@ import Pagination from '../../components/UI/Pagination';
 import { useMediaQuery } from '../../contexts/MediaQueryProvider';
 import { useRecipes } from '../../hooks/recipes/useRecipes';
 import { useFavoriteRecipes } from '../../hooks/recipes/useFavoriteRecipes';
-import { useAuth } from '../../hooks';
-import useAxiosPrivate from '../../hooks/useAxiosPrivate';
+import { useAuth } from '../../features/auth';
+import { useAxiosPrivate } from '../../features/auth';
 
 const RecipesPage = () => {
-    const axiosPrivate = useAxiosPrivate();
     const mediaQuery = useMediaQuery();
+    const axiosPrivate = useAxiosPrivate();
     const [isOpenFilters, setIsOpenFilters] = useState(false);
     const [filters, setFilters] = useState({});
     const [search, setSearch] = useState('');
-    const { loggedUser, setIsOpenModal } = useAuth();
-    const user_id = loggedUser ? loggedUser.user_id : null;
+    const { user, setIsOpenModal } = useAuth();
+    const user_id = user?.user_id ?? null;
 
     const { isLoading, recipes, setRecipes, currentPage, setCurrentPage, totalPages, totalRows } = useRecipes({
         ...filters, 

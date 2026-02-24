@@ -1,7 +1,7 @@
 import styles from './AddProduct.module.css';
 import Select from 'react-select';
 import { useState } from 'react';
-import useAxiosPrivate from '../../../../hooks/useAxiosPrivate';7
+import { useAxiosPrivate } from '../../../../features/auth';
 import toast from 'react-hot-toast';
 
 const categoryOptions = [

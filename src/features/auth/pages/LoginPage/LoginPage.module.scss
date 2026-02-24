@@ -1,0 +1,240 @@
+@use "@/styles/index" as *;
+@include fadeInUp;
+
+.page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 2rem 1rem;
+    box-sizing: border-box;
+    background: rgba(0, 0, 0, 0.3);
+}
+
+.card {
+    width: 30rem;
+    overflow: hidden;
+    background-color: #ffffff;
+    border-radius: 24px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+}
+
+.topDecoration {
+    background: linear-gradient(90deg, var(--dark-green-500) 0%, #2f8a75 50%, var(--dark-green-500) 100%);
+    height: 0.375rem;
+    width: 100%;
+}
+
+.headerIcon {
+    width: 5rem;
+    height: 5rem;
+    border-radius: 9999px;
+    background: linear-gradient(135deg, var(--dark-green-500) 0%, #1c6a57 100%);
+    box-shadow: 0 8px 24px rgba(8, 71, 71, 0.3);
+    animation: fadeInUp 0.5s ease-out 0.1s both;
+
+    svg {
+        color: var(--white-100);
+        width: 2rem;
+        height: 2rem;
+    }
+}
+
+.title {
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    color: var(--dark-green-500);
+    letter-spacing: -0.02em;
+    animation: fadeInUp 0.5s ease-out 0.2s both;
+}
+
+.subtitle {
+    font-size: 1rem;
+    line-height: 1.5rem;
+    color: var(--grey-500);
+    text-align: center;
+    animation: fadeInUp 0.5s ease-out 0.3s both;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 1.5rem;
+    animation: fadeInUp 0.5s ease-out 0.4s both;
+    a {
+        color: var(--white-100) !important;
+    }
+}
+
+.forgotPassword {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.forgotPasswordButton {
+    display: inline-flex;
+    border: none;
+    background: none;
+    font-size: 0.875rem;
+    font-weight: 500;
+    transition: opacity 0.2s;
+    color: var(--dark-green-500);
+    cursor: pointer;
+
+    &:hover {
+        opacity: 0.7;
+    }
+}
+
+.backToLogin {
+    animation: fadeInUp 0.5s ease-out 0.8s both;
+}
+
+.backToLoginButton {
+    border: none;
+    background: none;
+    width: 100%;
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+    border-radius: 0.75rem;
+    font-weight: 400;
+    font-size: 0.875rem;
+    transition: all 200ms;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    color: var(--grey-500);
+    cursor: pointer;
+
+    &:hover {
+        background-color: rgba(8, 71, 71, 0.04);
+    }
+}
+
+.openEmailButton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    border: none;
+    width: 100%;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    border-radius: 0.75rem;
+    font-weight: 600;
+    font-size: 1rem;
+    background: linear-gradient(135deg, var(--dark-green-500) 0%, #1c6a57 100%);
+    box-shadow: 0 4px 16px rgba(8, 71, 71, 0.35);
+    color: var(--white-100);
+    transition: opacity 0.3s ease;
+    animation: fadeInUp 0.5s ease-out 0.5s both;
+
+    &:hover {
+        opacity: 0.9;
+    }
+}
+
+.topDecorationDenied {
+	background: linear-gradient(90deg, var(--red-300) 0%, var(--red-500) 50%, var(--red-300) 100%);
+}
+
+.deniedTitleWrapper {
+	text-align: center;
+	margin-top: 1.5rem;
+	margin-bottom: 0.25rem;
+	animation: fadeInUp 0.4s ease-out both;
+}
+
+.deniedTitle {
+	font-size: 1.25rem;
+	line-height: 1.75rem;
+	font-weight: 700;
+	color: var(--red-400);
+	letter-spacing: -0.01em;
+}
+
+.deniedSubtitle {
+	text-align: center;
+	font-size: 0.875rem;
+	line-height: 1.25rem;
+	margin-bottom: 1.5rem;
+	color: var(--grey-500);
+	animation: fadeInUp 0.4s ease-out 0.1s both;
+}
+
+.lockIconWrapper {
+	display: flex;
+	justify-content: center;
+	margin-bottom: 1.25rem;
+	animation: fadeInUp 0.4s ease-out 0.2s both;
+}
+
+.lockIconCircle {
+	width: 5rem;
+	height: 5rem;
+	border-radius: 9999px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: rgba(239, 68, 68, 0.08);
+	box-shadow: 0 0 32px rgba(239, 68, 68, 0.1);
+
+	svg {
+		width: 2rem;
+		height: 2rem;
+		color: var(--red-500);
+	}
+}
+
+.countdownWrapper {
+	text-align: center;
+	margin-bottom: 0.5rem;
+	animation: fadeInUp 0.4s ease-out 0.3s both;
+}
+
+.countdown {
+	font-size: 3rem;
+	line-height: 1;
+	font-weight: 500;
+	color: var(--red-400);
+	font-variant-numeric: tabular-nums;
+	letter-spacing: -0.02em;
+}
+
+.countdownLabel {
+	text-align: center;
+	font-size: 0.875rem;
+	line-height: 1.25rem;
+	margin-bottom: 1.5rem;
+	color: var(--grey-500);
+	animation: fadeInUp 0.4s ease-out 0.4s both;
+}
+
+.deniedForgotButton {
+	width: 100%;
+	border: none;
+	margin-bottom: 0.875rem;
+	padding-top: 0.875rem;
+	padding-bottom: 0.875rem;
+	border-radius: 0.75rem;
+	font-weight: 600;
+	font-size: 0.875rem;
+	background-color: var(--grey-100);
+	color: var(--grey-500);
+	cursor: pointer;
+	transition: all 200ms cubic-bezier(0.4, 0, 0.2, 1);
+	animation: fadeInUp 0.4s ease-out 0.6s both;
+
+	&:hover {
+		background-color: var(--grey-200);
+	}
+}
+
+@media only screen and (max-width: 576px) {
+    .card {
+        width: 100%;
+    }
+}

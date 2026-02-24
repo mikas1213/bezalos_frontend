@@ -1,3 +1,4 @@
+import { v4 as uuidv4 } from 'uuid';
 import { useState } from 'react';
 import { useOutletContext } from 'react-router-dom';
 import Container from '../../components/UI/Container';
@@ -6,7 +7,6 @@ import ProgressBar from '../../components/profilis/anketa/ProgressBar';
 import StepIndicator from '../../components/profilis/anketa/StepIndicator';
 import StepInfo from '../../components/profilis/anketa/StepInfo';
 import Pagination from '../../components/profilis/anketa/Pagination';
-
 import FiziniaiDuomenys from '../../components/profilis/anketa/sections/FiziniaiDuomenys';
 import Tikslai from '../../components/profilis/anketa/sections/Tikslai';
 import DarboGrafikas from '../../components/profilis/anketa/sections/DarboGrafikas';
@@ -14,9 +14,7 @@ import Sveikata from '../../components/profilis/anketa/sections/Sveikata';
 import DabartiniaiIprociai from '../../components/profilis/anketa/sections/DabartiniaiIprociai';
 import Rutinos from '../../components/profilis/anketa/sections/Rutinos';
 import PapildomaInfo from '../../components/profilis/anketa/sections/PapildomaInfo';
-
-import { v4 as uuidv4 } from 'uuid';
-import useAxiosPrivate from '../../hooks/useAxiosPrivate';
+import { useAxiosPrivate } from '../../features/auth';
 import toast from 'react-hot-toast';
 
 const AnketaPage = () => {

@@ -1,5 +1,5 @@
 import { useOutletContext } from 'react-router-dom';
-import useAxiosPrivate from '../../../hooks/useAxiosPrivate';
+import { useAxiosPrivate } from '../../../features/auth';
 import EditUserPlan from '../../../components/admin/user/edit_plan/EditUserPlan';
 import UserPlans from '../../../components/admin/user/edit_plan/UserPlans';
 import UserDetails from '../../../components/admin/user/edit_plan/UserDetails';

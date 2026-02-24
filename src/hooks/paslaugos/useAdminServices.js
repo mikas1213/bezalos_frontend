@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
-import useAxiosPrivate from '../useAxiosPrivate';
+import { useAxiosPrivate } from '../../features/auth';
 import toast from 'react-hot-toast';
 
 const useAdminServices = () => {

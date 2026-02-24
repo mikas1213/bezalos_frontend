@@ -1,6 +1,6 @@
 import toast from 'react-hot-toast';
 import { useState } from 'react';
-import useAxiosPrivate from '../../../hooks/useAxiosPrivate';
+import { useAxiosPrivate } from '../../../features/auth';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import useVideosAdmin from '../../../hooks/useVideosAdmin';
 

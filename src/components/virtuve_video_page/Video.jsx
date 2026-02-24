@@ -1,9 +1,7 @@
 import styles from './Video.module.css';
 import { useState, useEffect } from 'react';
-
-import useAxiosPrivate from '../../hooks/useAxiosPrivate';
+import { useAxiosPrivate } from '../../features/auth';
 import { FaHeart, FaRegHeart, FaFilePdf } from 'react-icons/fa6';
-
 import CommentCard from './CommentCard';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';

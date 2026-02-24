@@ -5,18 +5,12 @@ on:
     branches:
       - main
       - master
-
-  workflow_dispatch:
-    inputs:
-      environment:
-        type: choice
-        description: 'Deploy to:'
-        options:
-          - prod
-        default: prod
+      - 'refactor-*'
+      - 'refactor/**'
 
 jobs:
   build:
+    if: contains(github.event.head_commit.message, '[dev]') || contains(github.event.head_commit.message, '[prod]')
     runs-on: ubuntu-latest
 
     steps:
@@ -30,9 +24,11 @@ jobs:
           cache: 'npm'
 
       - name: Install dependencies
+        # if: steps.cache-nodemodules.outputs.cache-hit != 'true'
         run: npm ci
 
       - name: Build bezalos
+        # if: steps.cache-build.outputs.cache-hit != 'true'
         run: npm run build
 
       - name: Upload build artifacts
@@ -42,11 +38,11 @@ jobs:
           path: dist/
           retention-days: 1
 
-  # DEV deployment - automatiškai po kiekvieno push/merge į main
+  # DEV deployment
   deploy-dev:
     runs-on: ubuntu-latest
     needs: build
-    if: github.event_name == 'push'
+    if: contains(github.event.head_commit.message, '[dev]')
 
     steps:
       - name: Download build artifacts
@@ -64,11 +60,11 @@ jobs:
           source: 'dist/*'
           target: ${{ secrets.DEV_DEPLOY_PATH }}
 
-  # PROD deployment - tik per manual dispatch
+  # PROD deployment
   deploy-prod:
     runs-on: ubuntu-latest
     needs: build
-    if: github.event_name == 'workflow_dispatch'
+    if: contains(github.event.head_commit.message, '[prod]')
 
     steps:
       - name: Download build artifacts

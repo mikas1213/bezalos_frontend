@@ -1,14 +1,15 @@
 import styles from './ManageSubscription.module.css';
-import { axiosPrivate } from '../../../api/axios';
+import { useAxiosPrivate } from '../../../features/auth';
 
 const ManageSubscription = () => {
+    const axiosPrivate = useAxiosPrivate();
 
     const handleCustomerPortal = async () => {
         try {
             const res = await axiosPrivate.post('/payments/customer-portal-session');
             window.location = res.data.session.url;
-        } catch (err) {
-            console.log(err.message);
+        } catch {
+            // Error opening customer portal
         }
     };
 

@@ -1,6 +1,5 @@
 import styles from './Naryste.module.css';
-import { jwtDecode } from 'jwt-decode';
-import { useAuth } from '../../../hooks';
+import { useAuth } from '../../../features/auth';
 import { usePayment } from '../../../contexts/PaymentProvider';
 import Features from './Features';
 import PlanCard from './PlanCard';
@@ -9,11 +8,8 @@ import ManageSubscription from './ManageSubscription';
 import { Center } from '../../Shared';
 const Naryste = () => {
     const { plan } = usePayment();
-    const { auth } = useAuth();
-    
-    let loggedUser = {};
-    if (auth.accessToken) loggedUser = jwtDecode(auth?.accessToken);
-    const { user_s_subscription} = loggedUser;
+    const { user } = useAuth();
+    const user_s_subscription = user?.user_s_subscription;
     
     return (
         <>

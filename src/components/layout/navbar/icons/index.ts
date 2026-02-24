@@ -1,4 +1,4 @@
-export { Logo } from './Logo';
+export { Logo } from '../../../Shared/Logo/Logo';
 export { AtsijungtiIcon } from './AtsijungtiIcon';
 export { PaslaugosIcon } from './PaslaugosIcon';
 export { PrisijungtiIcon } from './PrisijungtiIcon';

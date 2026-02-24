@@ -1,0 +1,25 @@
+@use '@/styles/index' as *;
+@include fadeInUp;
+
+.signup {
+	animation: fadeInUp 0.5s ease-out 0.4s both;
+}
+
+.progressBar {
+	display: flex;
+	gap: 0.5rem;
+	margin-top: 1.5rem;
+	animation: fadeInUp 0.5s ease-out 0.45s both;
+}
+
+.step {
+	height: 0.25rem;
+	flex: 1;
+	border-radius: 9999px;
+	background-color: var(--grey-200);
+	transition-property: all;
+	transition-duration: 500ms;
+	&.fill {
+		background-color: var(--dark-green-500);
+	}
+}

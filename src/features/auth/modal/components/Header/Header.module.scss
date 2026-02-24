@@ -1,0 +1,59 @@
+@use '@/styles/index' as *;
+@include fadeInUp;
+
+.header {
+	animation: fadeInUp 0.5s ease-out 0.1s both;
+}
+
+.headerIcon {
+	position: relative;
+	width: 5rem;
+	height: 5rem;
+	border-radius: 9999px;
+	background: linear-gradient(135deg, var(--dark-green-500) 0%, #1c6a57 100%);
+	box-shadow: 0 8px 24px rgba(8, 71, 71, 0.3);
+
+	svg {
+		color: var(--white-100);
+		width: 2rem;
+		height: 2rem;
+	}
+	&.shifted svg {
+		transform: translateX(3.5px);
+	}
+
+	&.forgotSucces svg {
+		animation: envelopeBounce 2s ease-in-out infinite;
+		animation-delay: 0.5s;
+	}
+}
+
+.authTitle {
+	font-size: 1.5rem;
+	font-weight: 500;
+	margin-bottom: 0.5rem;
+	color: var(--dark-green-500);
+	letter-spacing: -0.02em;
+	animation: fadeInUp 0.5s ease-out 0.2s both;
+}
+
+.authSubTitle {
+	font-size: 1rem;
+	line-height: 1.5rem;
+	color: var(--grey-500);
+	text-align: center;
+	animation: fadeInUp 0.5s ease-out 0.3s both;
+}
+
+@keyframes envelopeBounce {
+	0%,
+	100% {
+		transform: translateY(0);
+	}
+	40% {
+		transform: translateY(-8px);
+	}
+	60% {
+		transform: translateY(-4px);
+	}
+}

@@ -1,4 +1,4 @@
-import useAxiosPrivate from '../useAxiosPrivate';
+import { useAxiosPrivate } from '../../features/auth';
 import { useState, useEffect, useCallback } from 'react';
 import toast from 'react-hot-toast';
 

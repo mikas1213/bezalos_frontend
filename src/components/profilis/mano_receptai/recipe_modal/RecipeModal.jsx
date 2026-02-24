@@ -1,7 +1,7 @@
 import styles from './RecipeModal.module.css';
 import { useState } from 'react';
 import { useOutletContext } from 'react-router-dom';
-import useAxiosPrivate from '../../../../hooks/useAxiosPrivate';
+import { useAxiosPrivate } from '../../../../features/auth';
 import UserMeals from './user_meals/UserMeals';
 import NewRecipe from './new_recipe/NewRecipe';
 import ActionBtns from './action_btns/ActionBtns';

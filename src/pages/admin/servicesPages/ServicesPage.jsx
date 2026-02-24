@@ -1,5 +1,5 @@
 import Service, { ServiceHeader } from '../../../components/admin/services/Service';
-import useAxiosPrivate from '../../../hooks/useAxiosPrivate';
+import { useAxiosPrivate } from '../../../features/auth';
 import { useOutletContext } from 'react-router-dom';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import toast from 'react-hot-toast';

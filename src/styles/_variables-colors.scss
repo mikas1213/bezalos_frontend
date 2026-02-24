@@ -1,61 +1,86 @@
 :root {
-    /* M-A-I-N C-O-L-O-R-S */
-    --white-100: hsl(0, 0%, 100%);
-    --transparent: hsla(0, 0%, 0%, 0);
+	/* M-A-I-N C-O-L-O-R-S */
+	--white-100: hsl(0, 0%, 100%);
+	--transparent: hsla(0, 0%, 0%, 0);
 
-    --red-100: hsl(348, 83%, 92%);
-    --red-300: hsl(348, 83%, 70%);
-    --red-500: hsl(348, 83%, 47%);
-    --red-700: hsl(348, 83%, 35%);
-    --red-900: hsl(348, 83%, 20%);
+	--red-050: hsl(0, 85%, 99%);
+	--red-100: hsl(0, 85%, 97%);
+	--red-200: hsl(0, 85%, 90%);
+	--red-300: hsl(0, 85%, 80%);
+	--red-400: hsl(0, 85%, 65%);
+	--red-500: hsl(0, 85%, 52%);
+	--red-600: hsl(0, 85%, 44%);
+	--red-700: hsl(0, 85%, 36%);
+	--red-800: hsl(0, 85%, 28%);
+	--red-900: hsl(0, 85%, 20%);
 
+	--light-green-hover: hsla(100, 50%, 50%, 0.2);
+	--light-green-050: hsl(100, 60%, 94%);
+	--light-green-100: hsl(105, 51%, 90%);
+	--light-green-200: hsl(100, 60%, 85%);
+	--light-green-300: hsl(100, 60%, 75%);
+	--light-green-400: hsl(100, 60%, 65%);
+	--light-green-500: hsl(100, 60%, 60%);
+	--light-green-600: hsl(100, 60%, 50%);
+	--light-green-700: hsl(100, 60%, 40%);
+	--light-green-800: hsl(100, 60%, 30%);
+	--light-green-900: hsl(100, 60%, 20%);
 
-    --light-green-hover: hsla(100, 50%, 50%, 0.2);
-    --light-green-050: hsl(100, 60%, 94%);
-    --light-green-100: hsl(105, 51%, 90%);
-    --light-green-200: hsl(100, 60%, 85%);
-    --light-green-300: hsl(100, 60%, 75%);
-    --light-green-400: hsl(100, 60%, 65%);
-    --light-green-500: hsl(100, 60%, 60%);
-    --light-green-600: hsl(100, 60%, 50%);
-    --light-green-700: hsl(100, 60%, 40%);
-    --light-green-800: hsl(100, 60%, 30%);
-    --light-green-900: hsl(100, 60%, 20%);
+	--neutral-grey-050: hsl(0, 0%, 98%);
+	--neutral-grey-100: hsl(0, 0%, 88%);
+	--neutral-grey-200: hsl(0, 0%, 82%);
+	--neutral-grey-300: hsl(0, 0%, 76%);
+	--neutral-grey-400: hsl(0, 0%, 67%);
+	--neutral-grey-500: hsl(0, 0%, 58%);
+	--neutral-grey-600: hsl(0, 0%, 50%);
+	--neutral-grey-700: hsl(0, 0%, 43%);
+	--neutral-grey-800: hsl(0, 0%, 35%);
+	--neutral-grey-900: hsl(0, 0%, 28%);
 
-    --neutral-grey-050: hsl(0, 0%, 98%);
-    --neutral-grey-100: hsl(0, 0%, 88%);
-    --neutral-grey-200: hsl(0, 0%, 82%);
-    --neutral-grey-300: hsl(0, 0%, 76%);
-    --neutral-grey-400: hsl(0, 0%, 67%);
-    --neutral-grey-500: hsl(0, 0%, 58%);
-    --neutral-grey-600: hsl(0, 0%, 50%);
-    --neutral-grey-700: hsl(0, 0%, 43%);
-    --neutral-grey-800: hsl(0, 0%, 35%);
-    --neutral-grey-900: hsl(0, 0%, 28%);
+	--light-green-grey-050: hsl(120, 7%, 98%);
+	--light-green-grey-100: hsl(120, 7%, 94%);
+	--light-green-grey-200: hsl(120, 7%, 90%);
+	--light-green-grey-300: hsl(120, 7%, 85%);
+	--light-green-grey-400: hsl(120, 7%, 78%);
+	--light-green-grey-500: hsl(120, 7%, 70%);
+	--light-green-grey-600: hsl(120, 7%, 60%);
+	--light-green-grey-700: hsl(120, 7%, 50%);
+	--light-green-grey-800: hsl(120, 7%, 40%);
+	--light-green-grey-900: hsl(120, 7%, 30%);
 
-    --light-green-grey-050: hsl(120, 7%, 98%);
-    --light-green-grey-100: hsl(120, 7%, 94%);
-    --light-green-grey-200: hsl(120, 7%, 90%);
-    --light-green-grey-300: hsl(120, 7%, 85%);
-    --light-green-grey-400: hsl(120, 7%, 78%);
-    --light-green-grey-500: hsl(120, 7%, 70%);
-    --light-green-grey-600: hsl(120, 7%, 60%);
-    --light-green-grey-700: hsl(120, 7%, 50%);
-    --light-green-grey-800: hsl(120, 7%, 40%);
-    --light-green-grey-900: hsl(120, 7%, 30%);
+	--cool-grey-040: hsl(210, 44%, 98%);
+	--cool-grey-050: hsl(208, 21%, 98%);
+	--cool-grey-100: hsl(208, 21%, 88%);
+	--cool-grey-200: hsl(209, 19%, 82%);
+	--cool-grey-300: hsl(210, 16%, 76%);
+	--cool-grey-400: hsl(209, 14%, 67%);
+	--cool-grey-500: hsl(208, 12%, 58%);
+	--cool-grey-600: hsl(208, 12%, 50%);
+	--cool-grey-700: hsl(207, 12%, 43%);
+	--cool-grey-800: hsl(208, 14%, 35%);
+	--cool-grey-900: hsl(209, 15%, 28%);
 
-    --cool-grey-040: hsl(210, 44%, 98%);
-    --cool-grey-050: hsl(208, 21%, 98%);
-    --cool-grey-100: hsl(208, 21%, 88%);
-    --cool-grey-200: hsl(209, 19%, 82%);
-    --cool-grey-300: hsl(210, 16%, 76%);
-    --cool-grey-400: hsl(209, 14%, 67%);
-    --cool-grey-500: hsl(208, 12%, 58%);
-    --cool-grey-600: hsl(208, 12%, 50%);
-    --cool-grey-700: hsl(207, 12%, 43%);
-    --cool-grey-800: hsl(208, 14%, 35%);
-    --cool-grey-900: hsl(209, 15%, 28%);
+	--grey-050: hsl(210, 20%, 98%); // #F9FAFB
+	--grey-100: hsl(220, 14%, 96%); // #F3F4F6
+	--grey-200: hsl(220, 13%, 91%); // #E5E7EB
+	--grey-300: hsl(216, 12%, 84%); // #D1D5DB
+	--grey-400: hsl(218, 11%, 65%); // #9CA3AF
+	--grey-500: hsl(220, 9%, 46%); // #6B7280
+	--grey-600: hsl(215, 14%, 34%); // #4B5563
+	--grey-700: hsl(217, 19%, 27%);
+	--grey-800: hsl(215, 28%, 17%);
+	--grey-900: hsl(221, 39%, 11%);
 
-    --dark-green-500: #084747;
-    --dark-green-600: #082b1d;
+	--dark-green-500: #084747;
+	--dark-green-600: #082b1d;
+
+	// --dark-green-100: #d8f0ea;
+	// --dark-green-200: #b1ded0;
+	// --dark-green-300: #89c9b5;
+	// --dark-green-400: #5bb198;
+	// --dark-green-500: #2f8a75;
+	// --dark-green-600: #1c6a57;
+	// --dark-green-700: #0f4d3c;
+	// --dark-green-800: #084747;
+	// --dark-green-900: #082b1d;
 }

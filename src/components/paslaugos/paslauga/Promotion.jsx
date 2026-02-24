@@ -2,7 +2,7 @@ import styles from './Promotion.module.css';
 import { useState } from 'react';
 import { IoIosCloseCircleOutline } from 'react-icons/io';
 import SpinnerBtn from './SpinnerBtn';
-import useAxiosPrivate from '../../../hooks/useAxiosPrivate';
+import { useAxiosPrivate } from '../../../features/auth';
 
 import { useNavigate } from 'react-router-dom';
 

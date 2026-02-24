@@ -7,12 +7,7 @@ export default axios.create({ baseURL });
 export const axiosPrivate = axios.create({
     baseURL: baseURL,
     headers: { 
-        'Content-Type': 'application/json',
-        // 'Accept': 'application/json', 
-        // 'Accept-Language': 'lt-LT,lt',
-        // 'Cache-Control': 'no-cache',
-        // 'Pragma': 'no-cache',
-        // 'Expires': '0'
+        'Content-Type': 'application/json'
     },
     timeout: 1800000, // 30 minutes
     withCredentials: true

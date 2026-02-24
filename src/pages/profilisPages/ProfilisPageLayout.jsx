@@ -1,20 +1,17 @@
-// import Navbar from '../../components/navbar/Navbar';
-import Main from '../../components/UI/Main';
 import Container from '../../components/UI/Container';
 import ProfileNavbar from '../../components/profilis/ProfileNavbar';
 import { Outlet } from 'react-router-dom';
-import { jwtDecode } from 'jwt-decode';
-import { useAuth } from '../../hooks';
+import { useAuth } from '../../features/auth';
 import { usePlanProducts } from '../../hooks/profile/usePlanProducts';
 import { useUserDetails } from '../../hooks/profile/useUserDetails';
 
 const ProfilisPageLayout = () => {
     document.body.style.backgroundColor = '#fff';
     document.title = 'Be žalos | Profilis';
-    const { auth } = useAuth();
-    const { user_id, user_role, user_s_subscription, user_subscription } = jwtDecode(auth.accessToken); 
-
-    const is_subscription = user_s_subscription || user_subscription;
+    const { user } = useAuth();
+    const user_id = user?.user_id;
+    const user_role = user?.user_role;
+    const is_subscription = user?.user_s_subscription || user?.user_subscription;
     const { prodList } = usePlanProducts();
 
     const { 

@@ -2,7 +2,7 @@ import Header from '../../../components/admin/recipes/header/Header';
 import CreateRecipeModal from '../../../components/admin/recipes/create_recipe/CreateRecipeModal';
 import { usePlanProducts } from '../../../hooks/profile/usePlanProducts';
 import useAdminRecipes from '../../../hooks/useAdminRecipes';
-import useAxiosPrivate from '../../../hooks/useAxiosPrivate';
+import { useAxiosPrivate } from '../../../features/auth';
 import AdminRecipes from '../../../components/admin/recipes/AdminRecipes';
 import Pagination from '../../../components/UI/Pagination';
 import { useState } from 'react';

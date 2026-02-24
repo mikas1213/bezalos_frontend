@@ -1,0 +1,53 @@
+import type { AuthStatusViewProps } from './types';
+export const AUTH_MODE_CONTENT: AuthStatusViewProps = {
+	forgotSuccess: {
+		title: 'Patikrinkite el. paštą',
+		subTitle: 'Slaptažodžio atkūrimo nuoroda išsiųsta adresu',
+		infoTitle: '',
+		infoDescription:
+			'Nuoroda galioja 10 minučių. Jei nerandate laiško, patikrinkite šlamšto (spam) aplanką.',
+		boldWord: '10 minučių',
+		submitLabel: 'Atidaryti el. paštą',
+		submitMode: 'forgotSuccess',
+		footerLabel: '',
+		actionLabel: 'Grįžti į prisijungimą',
+		actionMode: 'login',
+	},
+	signupSuccess: {
+		title: 'Registracija sėkminga!',
+		subTitle: 'Jūsų paskyra jau sukurta',
+		infoTitle: '',
+		infoDescription: 'Informacija pagal jūsų pasirinktą tikslą išsiųsta į jūsų el. paštą.',
+		boldWord: '',
+		submitLabel: 'Pradėti naudotis',
+		submitMode: 'login',
+		footerLabel: '',
+		actionLabel: '',
+		actionMode: 'login',
+	},
+	loginAgain: {
+		title: 'Paskyra atblokuota!',
+		subTitle: 'Galite bandyti prisijungti iš naujo',
+		infoTitle: '',
+		infoDescription:
+			'Įsitikinkite, kad naudojate teisingą slaptažodį. Jei jo neprisimenate, galite jį atkurti.',
+		boldWord: '',
+		submitLabel: 'Prisijungti',
+		submitMode: 'login',
+		footerLabel: '',
+		actionLabel: 'Pamiršau slaptažodį',
+		actionMode: 'forgot',
+	},
+	signupAgain: {
+		title: 'Registracija atblokuota!',
+		subTitle: 'Galite bandyti registruotis iš naujo',
+		infoTitle: '',
+		infoDescription: 'Įsitikinkite ar registracijos duomenys teisingi.',
+		boldWord: '',
+		submitLabel: 'Registruotis',
+		submitMode: 'signup',
+		footerLabel: 'Jau turite paskyrą?',
+		actionLabel: 'Prisijungti',
+		actionMode: 'login',
+	},
+};

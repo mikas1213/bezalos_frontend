@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import useAxiosPrivate from '../useAxiosPrivate';
+import { useAxiosPrivate } from '../../features/auth';
 
 export const useProducts = (filters) => {
     const axiosPrivate = useAxiosPrivate();

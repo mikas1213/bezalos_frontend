@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import useAxiosPrivate from '../../../hooks/useAxiosPrivate';
+import { useAxiosPrivate } from '../../../features/auth';
 import Navbar from '../../../components/admin/nutrition_plans/Navbar';
 import { AddNewBtn } from '../../../components/admin/nutrition_plans/AddNewBtn';
 import Wrapper from './Wrapper';

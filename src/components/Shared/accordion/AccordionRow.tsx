@@ -5,11 +5,12 @@ import RowBody from './RowBody';
 import RowBodyItem from './RowBodyItem';
 import { Cluster } from '../cluster/Cluster';
 import { Box } from '../box/Box';
+
 import type { Row, Properties } from './types';
 type Props = { row: Row, properties: Properties, isFirstChild: boolean };
 
 const AccordionRow = ({ row, properties, isFirstChild }: Props) => {
-    
+
     const { colors } = properties;
     const [isOpen, setIsOpen] = useState(false);
     const accordionRowClasses = [
@@ -18,8 +19,8 @@ const AccordionRow = ({ row, properties, isFirstChild }: Props) => {
     ].filter(Boolean).join(' ');
 
     return (
-        <div 
-            className={accordionRowClasses} 
+        <div
+            className={accordionRowClasses}
             onClick={() => setIsOpen(open => !open)}
             style={{
                 borderLeft: isOpen ? `3px solid ${colors.activeColor}` : '3px solid var(--light-green-grey-300)',

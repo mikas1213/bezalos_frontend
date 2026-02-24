@@ -4,7 +4,7 @@ import UserRow from '../../../components/admin/users/UserRow';
 import UserHeaderRow from '../../../components/admin/users/UserHeaderRow';
 import Pagination from '../../../components/UI/Pagination';
 import toast from 'react-hot-toast';
-import useAxiosPrivate from '../../../hooks/useAxiosPrivate';
+import { useAxiosPrivate } from '../../../features/auth';
 
 const UsersPage = () => {
     const axiosPrivate = useAxiosPrivate();
