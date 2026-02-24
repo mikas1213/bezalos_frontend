@@ -5,15 +5,15 @@ import { useIsMounted } from '../../../../../hooks';
 import styles from './ExperienceSection.module.css';
 
 type Experience = {
-	value: '8m+' | '1,7k+' | '85+' | '1,3k+';
-	desc: 'darbo patirtis' | 'laimingų klientų' | 'mentorystės istorijos' | 'mitybos planų';
+    value: '9m+' | '2,2k+' | '105+' | '1,8k+',
+    desc: 'darbo patirtis' | 'laimingų klientų' | 'mentorystės istorijos' | 'mitybos planų'
 };
 
 const experiences: Experience[] = [
-	{ value: '8m+', desc: 'darbo patirtis' },
-	{ value: '1,7k+', desc: 'laimingų klientų' },
-	{ value: '85+', desc: 'mentorystės istorijos' },
-	{ value: '1,3k+', desc: 'mitybos planų' },
+    { value: '9m+', desc: 'darbo patirtis' },
+    { value: '2,2k+', desc: 'laimingų klientų' },
+    { value: '105+', desc: 'mentorystės istorijos' },
+    { value: '1,8k+', desc: 'mitybos planų' },
 ];
 
 export const ExperienceSection = () => {
