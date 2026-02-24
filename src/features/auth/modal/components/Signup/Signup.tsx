@@ -106,7 +106,7 @@ export const Signup = () => {
 			await signup({ name, email, password, passwordConfirmed, initialTarget });
 		},
 		onSuccess: () => {
-			toast.success('Registracija sėkminga!');
+			setAuthMode('signupSuccess');
 		},
 		onError: (err) => {
 			const data = err?.response?.data;
