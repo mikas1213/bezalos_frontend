@@ -16,6 +16,9 @@ import { PaymentProvider } from "./contexts/PaymentProvider";
 import { AuthProvider } from "./features/auth";
 import { AuthModal, AuthModalProvider } from "./features/auth";
 import { ProtectedRoute } from "./features/auth/components/ProtectedRoute";
+import { LoginPage } from "./features/auth/pages/LoginPage";
+import { UpdatePasswordErrorPage } from "./features/auth/pages/UpdatePasswordErrorPage";
+import { UpdatePasswordPage } from "./features/auth/pages/UpdatePasswordPage";
 import ClientLayout from "./layouts/ClientLayout";
 import MailsPage from "./pages/admin/MailsPage";
 import ManagePlanPage from "./pages/admin/mitybosPlanai/ManagePlanPage";
@@ -34,7 +37,6 @@ import UserPageLayout from "./pages/admin/users/UserPageLayout";
 import UsersPage from "./pages/admin/users/UsersPage";
 import UserStatistikaPage from "./pages/admin/users/UserStatistikaPage";
 import VideosPage from "./pages/admin/videosPages/VideosPage";
-import LoginPage from "./pages/LoginPage";
 import NotFoundPage from "./pages/notfound/NotFoundPage";
 import PaslaugaPage from "./pages/paslaugosPages/PaslaugaPage";
 import CancelSubscription from "./pages/paymentPages/CancelSubscription";
@@ -51,7 +53,6 @@ import ProfilisPageLayout from "./pages/profilisPages/ProfilisPageLayout";
 import StatistikaPage from "./pages/profilisPages/StatistikaPage";
 import UserPlansPage from "./pages/profilisPages/UserPlansPage";
 import RecipePage from "./pages/recipesPages/RecipePage";
-import UpdatePasswordPage from "./pages/UpdatePasswordPage";
 import VirtuveVideoPage from "./pages/virtuvePages/VirtuveVideoPage";
 
 import styles from "./App.module.css";
@@ -119,8 +120,7 @@ function App() {
                                             <Route path="/paslaugos" element={<PaslaugosPage />} />
                                             <Route path="/paslaugos/:slug" element={<PaslaugaPage />} />
                                         </Route>
-                                        <Route path="/prisijungti" element={<LoginPage />} />
-                                        <Route path="/keisti-slaptazodi/:token" element={<UpdatePasswordPage />} />
+
                                         <Route path="/prenumeruoti" element={<NeedSubscription />} />
                                         <Route path="/isigyti-kursa" element={<NeedBuyCourse />} />
                                         <Route path="/pirkimo-taisykles" element={<PirkimoTaisyklesPage />} />
@@ -143,6 +143,9 @@ function App() {
                                         </Route>
                                     </Route>
 
+                                    <Route path="/prisijungti" element={<LoginPage />} />
+                                    <Route path="/keisti-slaptazodi/:token" element={<UpdatePasswordPage />} />
+                                    <Route path="/keisti-slaptazodi-klaida" element={<UpdatePasswordErrorPage />} />
                                     <Route path="*" element={<NotFoundPage />} />
 
                                     <Route element={<ProtectedRoute allowedRoles={[1213]} />}>

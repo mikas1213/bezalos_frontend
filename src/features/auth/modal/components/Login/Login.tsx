@@ -147,12 +147,12 @@ export const Login = ({ onSuccess }: LoginProps) => {
 				/>
 			</form>
 			<Footer>
-				<Footer.SwitchAuth
-					footerLabel="Neturite paskyros?"
-					actionLabel="Registruotis"
-					mode="signup"
-				/>
-			</Footer>
+			<Footer.SwitchAuth
+				footerLabel="Neturite paskyros?"
+				actionLabel="Registruotis"
+				mode="signup"
+			/>
+		</Footer>
 		</>
 	);
 };

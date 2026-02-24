@@ -29,15 +29,18 @@
 	}
 
 	input {
+		-webkit-appearance: none;
+		appearance: none;
 		width: 100%;
 		padding-left: 1rem;
 		padding-right: 1rem;
 		padding-top: 0.875rem;
 		padding-bottom: 0.875rem;
 		border-radius: 0.75rem;
-		transition-property: all;
+		transition-property: border-color, background-color;
 		transition-duration: 200ms;
 		outline: none;
+		font-family: inherit;
 		font-size: 1rem;
 		line-height: 1.5rem;
 		background-color: var(--grey-050);
@@ -46,6 +49,16 @@
 
 		&::placeholder {
 			color: var(--grey-400);
+		}
+		&:-webkit-autofill,
+		&:-webkit-autofill:hover,
+		&:-webkit-autofill:focus {
+			font-family: inherit !important;
+			font-size: 1rem !important;
+			-webkit-text-fill-color: var(--dark-green-600);
+			caret-color: var(--dark-green-600);
+			-webkit-box-shadow: 0 0 0 1000px var(--grey-050) inset;
+			transition: background-color 5000s ease-in-out 0s;
 		}
 		&:disabled {
 			cursor: not-allowed;
