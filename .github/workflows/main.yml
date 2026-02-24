@@ -1,16 +1,19 @@
 name: Deploy Be žalos
 
 on:
-  push:
-    branches:
-      - main
-      - master
-      - 'refactor-*'
-      - 'refactor/**'
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Deploy environment'
+        required: true
+        type: choice
+        default: 'dev'
+        options:
+          - dev
+          - prod
 
 jobs:
   build:
-    if: contains(github.event.head_commit.message, '[dev]') || contains(github.event.head_commit.message, '[prod]')
     runs-on: ubuntu-latest
 
     steps:
@@ -24,11 +27,9 @@ jobs:
           cache: 'npm'
 
       - name: Install dependencies
-        # if: steps.cache-nodemodules.outputs.cache-hit != 'true'
         run: npm ci
 
       - name: Build bezalos
-        # if: steps.cache-build.outputs.cache-hit != 'true'
         run: npm run build
 
       - name: Upload build artifacts
@@ -42,7 +43,7 @@ jobs:
   deploy-dev:
     runs-on: ubuntu-latest
     needs: build
-    if: contains(github.event.head_commit.message, '[dev]')
+    if: github.event.inputs.environment == 'dev'
 
     steps:
       - name: Download build artifacts
@@ -64,7 +65,7 @@ jobs:
   deploy-prod:
     runs-on: ubuntu-latest
     needs: build
-    if: contains(github.event.head_commit.message, '[prod]')
+    if: github.event.inputs.environment == 'prod'
 
     steps:
       - name: Download build artifacts
