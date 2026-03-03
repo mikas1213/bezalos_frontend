@@ -1,6 +1,6 @@
 import styles from './ProdItem.module.css';
 import AsyncSelect from 'react-select/async';
-import { useAxiosPrivate } from '../../../../features/auth';
+import { axiosPrivate } from '../../../../api/axios';
 import { useState, useRef } from 'react';
 import { kcal } from '../../../../utils/calculationsHelpers';
 import { DeleteBin_icon } from '../../../../svg/icons';
@@ -65,7 +65,7 @@ const ProdItem = ({ prod, handleMealProductEdit, handleMealProductDelete}) => {
         r_100: prod.r_100
     });
 
-    const axiosPrivate = useAxiosPrivate();
+
     const loadProductOptions = (inputValue, callback) => {
         if(inputValue && inputValue.length > 2) {
             axiosPrivate.get(`/admin/plans/products?search=${inputValue}`).then(response => {

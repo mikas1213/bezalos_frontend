@@ -1,8 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
-import { useAxiosPrivate } from '../../features/auth';
+import { axiosPrivate } from '../../api/axios';
 
 const useAdminPromotions = () => {
-    const axiosPrivate = useAxiosPrivate();
     const fetchData = async () => {
         try {
             const { data } = await axiosPrivate.get('/admin/promo');

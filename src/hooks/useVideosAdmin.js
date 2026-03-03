@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
-import { useAxiosPrivate } from '../features/auth';
+import { axiosPrivate } from '../api/axios';
 
 const fetchData = async (axiosPrivate) => {
     try {
@@ -11,7 +11,6 @@ const fetchData = async (axiosPrivate) => {
 };
 
 const useVideosAdmin = () => {
-    const axiosPrivate = useAxiosPrivate();
 
     return useQuery({
         queryKey: ['admin-videos'],

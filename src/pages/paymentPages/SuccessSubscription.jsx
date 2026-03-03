@@ -3,7 +3,7 @@ import Main from '../../components/UI/Main';
 import Container from '../../components/virtuve/Container';
 import { useEffect } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
-import axios from '../../api/axios';
+import { axiosPrivate } from '../../api/axios';
 
 const SuccessSubscription = () => {
 
@@ -14,7 +14,7 @@ const SuccessSubscription = () => {
     useEffect(() => {
         const getData = async () => {
             try {
-                await axios.post(`/payments/payment-success`);
+                await axiosPrivate.post(`/payments/payment-success`);
                 
                 // Meta Pixel tracking for subscription purchase
                 if (typeof window.fbq === 'function') {

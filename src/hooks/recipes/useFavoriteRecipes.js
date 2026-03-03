@@ -1,9 +1,9 @@
 import { useQuery } from '@tanstack/react-query';
-import axios from '../../api/axios';
+import { axiosPrivate } from '../../api/axios';
 
 const fetchData = async () => {
     try {
-        const { data } = await axios.get('/recipes/favorite');
+        const { data } = await axiosPrivate.get('/recipes/favorite');
         return data;
     } catch (err) {
         throw new Error('Klaida');

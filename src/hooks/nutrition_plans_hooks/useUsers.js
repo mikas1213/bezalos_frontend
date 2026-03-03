@@ -1,9 +1,8 @@
-import { useAxiosPrivate } from '../../features/auth';
+import { axiosPrivate } from '../../api/axios';
 import { useState, useEffect } from 'react';
 
 export const useUsers = (currentPage, search, sort) => {
     const pageSize = 20;
-    const axiosPrivate = useAxiosPrivate();
     const [users, setUsers] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const [totalPages, setTotalPages] = useState(0);
@@ -30,7 +29,7 @@ export const useUsers = (currentPage, search, sort) => {
         getData(currentPage);
         return () => abortController.abort();
         
-    }, [axiosPrivate, currentPage, sort, search, pageSize]);
+    }, [currentPage, sort, search, pageSize]);
 
     return { users, setUsers, isLoading, totalPages };
 };

@@ -2,13 +2,13 @@ import styles from './Promotion.module.css';
 import { useState } from 'react';
 import { IoIosCloseCircleOutline } from 'react-icons/io';
 import SpinnerBtn from './SpinnerBtn';
-import { useAxiosPrivate } from '../../../features/auth';
+import { axiosPrivate } from '../../../api/axios';
 
 import { useNavigate } from 'react-router-dom';
 
 const Promotion = ({ code, setCode, paslauga, setPaslauga, startPrice, isCodeApproved, setIsCodeApproved }) => {
     const navigate = useNavigate();
-    const axiosPrivate = useAxiosPrivate();
+
     const [discountAmount, setDiscountAmount] = useState(0);
     const [isUserTyped, setIsUserTyped] = useState(false);
     const [error, setError] = useState('');

@@ -1,6 +1,7 @@
 import { Outlet } from 'react-router-dom';
 import { useContext, useState, useRef, useEffect } from 'react';
-import { useAuth, useAxiosPrivate } from '../features/auth';
+import { useAuth } from '../features/auth';
+import { axiosPrivate } from '../api/axios';
 import { PaymentContext } from './PaymentContext';
 import { useAuthModal } from '../features/auth';
 import Spinner from '../components/UI/Spinner';
@@ -51,7 +52,7 @@ const plans: Record<string, Record<string, PlanData>> = {
 export const PaymentProvider = () => {
     const { user } = useAuth();
     const { authOpenModal } = useAuthModal();
-    const axiosPrivate = useAxiosPrivate();
+
 
     const user_role = user?.user_role;
     const user_id = user?.user_id ?? '';

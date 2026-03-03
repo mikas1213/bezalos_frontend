@@ -1,9 +1,8 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { useAxiosPrivate } from '../../features/auth';
+import { axiosPrivate } from '../../api/axios';
 import toast from 'react-hot-toast';
 
 const useServiceMutation = () => {
-    const axiosPrivate = useAxiosPrivate();
     const queryClient = useQueryClient();
 
     return useMutation({

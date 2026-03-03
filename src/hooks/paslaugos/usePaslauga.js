@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import axios from '../../api/axios';
+import { axiosPublic } from '../../api/axios';
 import { useNavigate } from 'react-router-dom';
 
 const usePaslauga = (slug) => {
@@ -10,8 +10,7 @@ const usePaslauga = (slug) => {
     useEffect(() => {
         const getData = async () => {
             try {
-                const { data } = await axios.get(`/services/${slug}`);
-                if(Object.keys(data).length === 0) {
+                const { data } = await axiosPublic.get(`/services/${slug}`);                if(Object.keys(data).length === 0) {
                     navigate('/paslaugos');
                     return;
                 }

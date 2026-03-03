@@ -1,6 +1,6 @@
 import styles from './Plan.module.css';
 import { useState } from 'react';
-import { useAxiosPrivate } from '../../../../features/auth';
+import { axiosPrivate } from '../../../../api/axios';
 import { DeleteX_icon } from '../../../../svg/icons';
 import { LuVegan } from 'react-icons/lu';
 import { SlSettings } from 'react-icons/sl';
@@ -65,7 +65,7 @@ const customAddProdStyles = {
 const Plan = ({ plan, handlePlanEdit, handlePlanDelete, handleAddPlanMeal }) => {
 
     const navigate = useNavigate();
-    const axiosPrivate = useAxiosPrivate();
+
     const [title, setTitle] = useState(plan.title);
     const [addMeal, setAddMeal] = useState({
         label: 'ieškoti...', value: 'ieškoti'

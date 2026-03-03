@@ -1,7 +1,7 @@
 
 import { useState, useEffect, useRef } from 'react';
 import toast from 'react-hot-toast';
-import axios from '../../api/axios';
+import { axiosPublic } from '../../api/axios';
 
 export const useRecipes = (filters, user_id) => {
     const recipesPerPage = 15;
@@ -24,7 +24,7 @@ export const useRecipes = (filters, user_id) => {
         
         const fetchData = async () => {
             try {
-                const { data: { data, total_rows, total_pages, current_page }} = await axios.post(`/recipes?${query}`, {id: user_id});
+                const { data: { data, total_rows, total_pages, current_page }} = await axiosPublic.post(`/recipes?${query}`, {id: user_id});
                 setCurrentPage(current_page);
                 setTotalPages(total_pages);
                 setTotalRows(total_rows);

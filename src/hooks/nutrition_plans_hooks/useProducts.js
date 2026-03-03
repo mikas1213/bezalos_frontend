@@ -1,8 +1,7 @@
 import { useState, useEffect } from 'react';
-import { useAxiosPrivate } from '../../features/auth';
+import { axiosPrivate } from '../../api/axios';
 
 export const useProducts = (filters) => {
-    const axiosPrivate = useAxiosPrivate();
     const [products, setProducts] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     let query = Object.keys(filters).length || (filters.search && filters.search.length > 2) ? '?' + new URLSearchParams(filters).toString() : '';
@@ -22,6 +21,6 @@ export const useProducts = (filters) => {
         getData(controller.signal);
         return () => controller.abort();
 
-    }, [axiosPrivate, query]);
+    }, [query]);
     return {products, setProducts, isLoading};
 }

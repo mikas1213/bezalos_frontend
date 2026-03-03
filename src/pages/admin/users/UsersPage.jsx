@@ -4,10 +4,10 @@ import UserRow from '../../../components/admin/users/UserRow';
 import UserHeaderRow from '../../../components/admin/users/UserHeaderRow';
 import Pagination from '../../../components/UI/Pagination';
 import toast from 'react-hot-toast';
-import { useAxiosPrivate } from '../../../features/auth';
+import { axiosPrivate } from '../../../api/axios';
 
 const UsersPage = () => {
-    const axiosPrivate = useAxiosPrivate();
+
     const [currentPage, setCurrentPage] = useState(1);
     const [search, setSearch] = useState('');
     const [sort, setSort] = useState({

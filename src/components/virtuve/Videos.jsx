@@ -6,13 +6,13 @@ import Card from './Card';
 import Spinner from '../../components/UI/Spinner';
 import NotFoundVideo from './NotFoundVideo';
 import { useQuery } from '@tanstack/react-query';
-import { useAxiosPrivate } from '../../features/auth';
+import { axiosPrivate } from '../../api/axios';
 import { useSearchParams } from 'react-router-dom';
 
 const Videos = ({user_id, user_role, u_status, s_status, is_course}) => {
     
     const [searchParams] = useSearchParams();
-    const axiosPrivate = useAxiosPrivate();
+
     const searchItem = searchParams.get('search');
 
     let queryParams = '';

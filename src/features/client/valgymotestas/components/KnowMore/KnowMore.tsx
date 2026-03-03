@@ -2,7 +2,7 @@ import styles from './KnowMore.module.css';
 import { Box, Cluster } from '../../../../../components/Shared';
 import { useForm } from 'react-hook-form';
 import { useMutation } from '@tanstack/react-query';
-import axios from '../../../../../api/axios';
+import { axiosPublic } from '../../../../../api/axios';
 import { AxiosError } from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { useCookies } from 'react-cookie';
@@ -21,7 +21,7 @@ export const KnowMore = ({ result }: { result: AnswerVariant }) => {
 
     const { mutate } = useMutation<void, AxiosError<ServerErrorResponse>, EmailInputData>({
         mutationFn: async (inputsData) => {
-            await axios.post('mailer/test-results', inputsData);
+            await axiosPublic.post('mailer/test-results', inputsData);
         },
         onSuccess: () => {
             setCookie(COOKIES.TEST_RESULT.name, result, COOKIES.TEST_RESULT.options);

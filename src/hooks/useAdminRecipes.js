@@ -1,9 +1,8 @@
-import { useAxiosPrivate } from '../features/auth';
+import { axiosPrivate } from '../api/axios';
 import toast from 'react-hot-toast';
 import { useState, useEffect } from 'react';
 
 const useAdminRecipes = (filters) => {
-    const axiosPrivate = useAxiosPrivate();
     const [isLoading, setIsLoading] = useState(true);
     const [adminRecipes, setAdminRecipes] = useState([]);
     
@@ -31,7 +30,7 @@ const useAdminRecipes = (filters) => {
             }
         };
         fetchData();
-    }, [axiosPrivate, currentPage, query]);
+    }, [currentPage, query]);
 
     return { isLoading, adminRecipes, setAdminRecipes, currentPage, setCurrentPage, totalPages }
 };

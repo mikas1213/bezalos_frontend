@@ -1,7 +1,9 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 
+import { axiosPrivate } from "../../../../api/axios";
 import type { MessageResponse, SignupRequest, UserData, ValidateResetTokenResponse } from "../services";
 import { authService } from "../services";
+import { createRefreshFn } from "../services/refreshToken";
 
 import { AuthContext } from "./AuthContext";
 import type { AuthContextValue, AuthProviderProps } from "./types";
@@ -13,6 +15,11 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
     const [accessToken, setAccessToken] = useState<string | null>(null);
     const [isLoading, setIsLoading] = useState(true);
     const channelRef = useRef<BroadcastChannel | null>(null);
+
+    // Keep a ref always in sync with the latest accessToken.
+    // The interceptor reads this ref at call time, so it never captures a stale closure.
+    const accessTokenRef = useRef<string | null>(null);
+    accessTokenRef.current = accessToken;
 
     // Try to restore session on mount
     const refreshAuth = useCallback(async () => {
@@ -34,6 +41,76 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
     useEffect(() => {
         refreshAuth();
     }, [refreshAuth]);
+
+    // Attach axios interceptors once on mount.
+    // accessTokenRef is defined at component level and updated synchronously on every render,
+    // so the request interceptor always reads the current token — no stale closure.
+    useEffect(() => {
+        const refreshFn = createRefreshFn(setAccessToken, setUser);
+
+        const logout = async () => {
+            try {
+                await authService.logout();
+            } catch {
+                // ignore
+            } finally {
+                setAccessToken(null);
+                setUser(null);
+            }
+        };
+
+        const requestIntercept = axiosPrivate.interceptors.request.use(
+            (config) => {
+                // accessTokenRef.current is always up-to-date (set on every render)
+                const token = accessTokenRef.current;
+                if (token && !config.headers["Authorization"]) {
+                    config.headers["Authorization"] = `Bearer ${token}`;
+                }
+                return config;
+            },
+            (error) => Promise.reject(error),
+        );
+
+        const responseIntercept = axiosPrivate.interceptors.response.use(
+            (response) => response,
+            async (error) => {
+                // Aborted in useEffect cleanup
+                if (error.code === "ERR_CANCELED") {
+                    return Promise.resolve({ status: 499 });
+                }
+
+                const prevRequest = error?.config;
+
+                // Don't retry refresh endpoint to avoid infinite loop
+                const isRefreshRequest = prevRequest?.url?.includes("/auth/refresh");
+
+                if (
+                    (error?.response?.status === 401 || error?.response?.status === 403) &&
+                    !prevRequest?.sent &&
+                    !isRefreshRequest
+                ) {
+                    prevRequest.sent = true;
+
+                    try {
+                        const newAccessToken = await refreshFn();
+                        prevRequest.headers["Authorization"] = `Bearer ${newAccessToken}`;
+                        return axiosPrivate(prevRequest);
+                    } catch (refreshError) {
+                        // Refresh failed — user needs to log in again
+                        await logout();
+                        return Promise.reject(refreshError);
+                    }
+                }
+
+                return Promise.reject(error);
+            },
+        );
+
+        return () => {
+            axiosPrivate.interceptors.request.eject(requestIntercept);
+            axiosPrivate.interceptors.response.eject(responseIntercept);
+        };
+    }, []); // Empty deps — interceptors registered once; accessTokenRef always current
 
     // Cross-tab synchronization
     useEffect(() => {

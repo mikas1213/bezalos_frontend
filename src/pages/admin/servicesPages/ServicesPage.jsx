@@ -1,11 +1,11 @@
 import Service, { ServiceHeader } from '../../../components/admin/services/Service';
-import { useAxiosPrivate } from '../../../features/auth';
+import { axiosPrivate } from '../../../api/axios';
 import { useOutletContext } from 'react-router-dom';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import toast from 'react-hot-toast';
 
 const ServicesPage = () => {
-    const axiosPrivate = useAxiosPrivate();
+
     const queryClient = useQueryClient();
     const { handleModalOpen, setFormValues, services, isLoadingServices } = useOutletContext();
     

@@ -19,7 +19,7 @@ export const AUTH_MODE_CONTENT: AuthStatusViewProps = {
 		infoTitle: '',
 		infoDescription: 'Informacija pagal jūsų pasirinktą tikslą išsiųsta į jūsų el. paštą.',
 		boldWord: '',
-		submitLabel: 'Pradėti naudotis',
+		submitLabel: 'Prisijungti',
 		submitMode: 'login',
 		footerLabel: '',
 		actionLabel: '',

@@ -2,7 +2,7 @@ import styles from './Offer.module.css';
 import image from '../../../assets/images/offer/nieko-nevalgau.webp';
 import Overlay from './Overlay';
 import OfferSent from './OfferSent';
-import axios from '../../../api/axios';
+import { axiosPublic } from '../../../api/axios';
 import { AxiosError } from 'axios';
 import Spinner from '../../UI/Spinner';
 import { useForm } from 'react-hook-form';
@@ -23,7 +23,7 @@ export const Offer = ({ setIsMounted, setIsOfferSent, isOfferSent, setCookie }: 
     const { register, formState: { errors }, setError, handleSubmit } = useForm<OfferInputData>({ mode: 'onChange' });
     const { mutate, isPending } = useMutation<void, AxiosError<ServerErrorResponse>, OfferInputData>({
         mutationFn: async (inputsData) => {
-            await axios.post('mailer/send-offer', inputsData, {
+            await axiosPublic.post('mailer/send-offer', inputsData, {
                 headers: {'Content-Type': 'application/json'},
                 withCredentials: true
             });

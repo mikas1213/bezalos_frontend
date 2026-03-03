@@ -1,9 +1,9 @@
 import { useQuery } from '@tanstack/react-query';
-import axios from '../../api/axios';
+import { axiosPublic } from '../../api/axios';
 
 const fetchData = async () => {
     try {
-        const { data } = await axios.get('/services');
+        const { data } = await axiosPublic.get('/services');
         return data;
     } catch (err) {
         throw new Error(err.message || err.response.data.status || 'Error');   

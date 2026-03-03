@@ -1,10 +1,9 @@
-import { useAxiosPrivate } from '../../features/auth';
+import { axiosPrivate } from '../../api/axios';
 import { useState, useEffect, useCallback } from 'react';
 import toast from 'react-hot-toast';
 
 export const useManagePlan = (plan_id) => {
     
-    const axiosPrivate = useAxiosPrivate();
     const [plan, setPlan] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     
@@ -24,7 +23,7 @@ export const useManagePlan = (plan_id) => {
         } finally {
             setIsLoading(false);
         }
-    }, [axiosPrivate, plan_id]);
+    }, [plan_id]);
 
     useEffect(() => {
         // const localPlan = JSON.parse(localStorage.getItem('localPlan'));
@@ -36,7 +35,7 @@ export const useManagePlan = (plan_id) => {
         // }
 
         getData();
-    }, [axiosPrivate, plan_id, getData]);
+    }, [plan_id, getData]);
 
     // useEffect(() => {
     //     if (typeof window !== 'undefined') {

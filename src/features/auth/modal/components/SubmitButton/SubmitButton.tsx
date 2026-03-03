@@ -9,7 +9,6 @@ export type SubmitLabels =
 	| 'Registruotis'
 	| 'Tęsti'
 	| 'Siųsti nuorodą'
-	| 'Pradėti naudotis'
 	| 'Atidaryti el. paštą';
 interface SubmitButton {
 	type?: 'button' | 'submit';

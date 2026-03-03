@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useAxiosPrivate } from '../../features/auth';
+import { axiosPrivate } from '../../api/axios';
 import { bar } from '../../utils/calculationsHelpers';
 import toast from 'react-hot-toast';
 
@@ -8,7 +8,6 @@ export const useMeals = (filters, currentPage) => {
     const [totalPages, setTotalPages] = useState(0);
     const [meals, setMeals] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
-    const axiosPrivate = useAxiosPrivate();
     let query = Object.keys(filters).length ? `?page=${currentPage}&pageSize=${pageSize}&` + new URLSearchParams(filters).toString() : `?page=${currentPage}&pageSize=${pageSize}`;
     
     useEffect(() => {
@@ -37,7 +36,7 @@ export const useMeals = (filters, currentPage) => {
         getData(controller.signal);
         return () => controller.abort();
 
-    }, [axiosPrivate, query, currentPage]);
+    }, [query, currentPage]);
 
     return {meals, setMeals, totalPages, isLoading};
 };

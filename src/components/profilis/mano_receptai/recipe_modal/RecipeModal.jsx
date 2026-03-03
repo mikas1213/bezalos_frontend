@@ -1,7 +1,7 @@
 import styles from './RecipeModal.module.css';
 import { useState } from 'react';
 import { useOutletContext } from 'react-router-dom';
-import { useAxiosPrivate } from '../../../../features/auth';
+import { axiosPrivate } from '../../../../api/axios';
 import UserMeals from './user_meals/UserMeals';
 import NewRecipe from './new_recipe/NewRecipe';
 import ActionBtns from './action_btns/ActionBtns';
@@ -25,7 +25,7 @@ const RecipeModal = ({ setOpen, setRecipes }) => {
     });
     const is_bar_error = key => (Object.keys(selectedMeal).length === 0 || newRecipe.products.length === 0) || isBarInRange(newRecipe[key], selectedMeal[key], 5) ? false : true;
 
-    const axiosPrivate = useAxiosPrivate();
+
     const saveNewRecipe = async () => {
         const delay = new Promise((resolve) => setTimeout(resolve, 1000));
         const is_bar_good = !is_bar_error('b') && !is_bar_error('a') && !is_bar_error('r');

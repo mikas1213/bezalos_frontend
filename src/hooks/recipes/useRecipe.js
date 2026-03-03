@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import toast from 'react-hot-toast';
-import axios from '../../api/axios';
+import { axiosPublic } from '../../api/axios';
 
 export const useRecipe = (slug) => {
     
@@ -11,7 +11,7 @@ export const useRecipe = (slug) => {
         document.body.style.backgroundColor = '#fff';
         const fetchData = async () => {
             try {
-                const { data } = await axios.get(`/recipes/${slug}`);
+                const { data } = await axiosPublic.get(`/recipes/${slug}`);
                 setRecipe(data);
                 setIsLoading(false);
             } catch (err) {
