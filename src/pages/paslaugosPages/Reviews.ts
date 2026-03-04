@@ -19,7 +19,7 @@ export const REVIEWS:  Record<ServiceSlug, ReviewProps[]> = {
     ],
     'naryste': [
         {title: 'Keityklė', text: 'As šiandien užsimaniau obuolinių blynų iš receptų, pagal planą -saldus sumuštinis, tai tiesiog keityklės pagalba, bananą keičiu į obuolį, sumuštinių duoną į miltus ir viskas ok iš sumustinių gaunasi blynai'},
-        {title: 'Benruomenė', text: 'Esu išbandžius labai daug panašių projektų, bet ten labai dažnai tave tarkuoja už kąsnį į šoną. Buvo tik atėjus baimės ir čia Bet tai ką tu ir 🤭 merginos čia sukūrėt yra kažkas nuostabaus! Ačiū 💚'},
+        {title: 'Bendruomenė', text: 'Esu išbandžius labai daug panašių projektų, bet ten labai dažnai tave tarkuoja už kąsnį į šoną. Buvo tik atėjus baimės ir čia Bet tai ką tu ir 🤭 merginos čia sukūrėt yra kažkas nuostabaus! Ačiū 💚'},
         {title: 'Valgymo psichologija', text: 'Ši bendruomenė man labai patinka dėl to, kad joje kalbama ne tik apie maistą, bet ir apie tai KODĖL aš persivalgau. Įrašų dėka pavyko suprasti emocinį valgymą, nors pradžioj maniau, kad jo net neturiu.'},
     ]
 }

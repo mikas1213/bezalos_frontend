@@ -1,6 +1,6 @@
 import styles from './Video.module.css';
 import { useState, useEffect } from 'react';
-import { useAxiosPrivate } from '../../features/auth';
+import { axiosPrivate } from '../../api/axios';
 import { FaHeart, FaRegHeart, FaFilePdf } from 'react-icons/fa6';
 import CommentCard from './CommentCard';
 import { useForm } from 'react-hook-form';
@@ -33,7 +33,7 @@ const Send = ({active}) => {
 
 
 const Video = ({ user_id, user_name, video, comments, onToggleLikes, onAddVideoComment, onDeleteVideoComment, isLike, likesCount }) => {
-    const axiosPrivate = useAxiosPrivate();
+
     const [showMore, setShowMore] = useState(false);
     const [desc1, desc2 = ''] = video.description.split(':');
     const desctList = desc2.trim().split('\n');

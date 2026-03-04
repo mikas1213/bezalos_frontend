@@ -1,6 +1,6 @@
 import styles from './ManagePlan.module.css';
 import { useState } from 'react';
-import { useAxiosPrivate } from '../../../../features/auth';
+import { axiosPrivate } from '../../../../api/axios';
 import { default as MealSelect } from 'react-select/async';
 import { default as ProdSelect } from 'react-select/async';
 import { LuWheatOff, LuMilkOff } from 'react-icons/lu';
@@ -126,7 +126,7 @@ const productStyles = {
 
 const ManagePlan = ({ plan: currentPlan, setPlan: setCurrentPlan}) => {
 
-    const axiosPrivate = useAxiosPrivate();
+
     const [mealTitle, setMealTitle] = useState('');
     const [prodTitle, setProdTitle] = useState('');
     const [selectMealIndex, setSelectMealIndex] = useState(null);

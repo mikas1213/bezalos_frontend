@@ -9,11 +9,11 @@ import Filters from '../../components/virtuve_video_page/Filters';
 import List from '../../components/virtuve_video_page/List';
 import Video from '../../components/virtuve_video_page/Video';
 import { useAuth } from '../../features/auth';
-import { useAxiosPrivate } from '../../features/auth';
+import { axiosPrivate } from '../../api/axios';
 
 const VirtuveVideoPage = () => {
 	const navigate = useNavigate();
-	const axiosPrivate = useAxiosPrivate();
+
 
 	const { user } = useAuth();
 

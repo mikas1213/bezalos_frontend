@@ -1,8 +1,8 @@
 import styles from './ManageSubscription.module.css';
-import { useAxiosPrivate } from '../../../features/auth';
+import { axiosPrivate } from '../../../api/axios';
 
 const ManageSubscription = () => {
-    const axiosPrivate = useAxiosPrivate();
+
 
     const handleCustomerPortal = async () => {
         try {

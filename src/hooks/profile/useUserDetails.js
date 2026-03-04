@@ -1,4 +1,4 @@
-import { useAxiosPrivate } from '../../features/auth';
+import { axiosPrivate } from '../../api/axios';
 import { useState, useEffect } from 'react';
 import toast from 'react-hot-toast';
 import { v4 as uuidv4 } from 'uuid';
@@ -59,7 +59,6 @@ const defaultAnketa = {
 };
 
 export const useUserDetails = (user_id) => {
-    const axiosPrivate = useAxiosPrivate();
     const [plans, setPlans] = useState([]);
     const [selectedPlan, setSelectedPlan] = useState(plans[0]);
     const [anketa, setAnketa] = useState([]);
@@ -96,7 +95,7 @@ export const useUserDetails = (user_id) => {
         };
 
         getData();
-    }, [axiosPrivate, user_id, logicFilter]);
+    }, [user_id, logicFilter]);
 
 
      /* P A G I N A T I O N */

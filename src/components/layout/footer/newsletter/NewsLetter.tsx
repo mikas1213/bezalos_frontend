@@ -1,5 +1,5 @@
 import styles from './NewsLetter.module.css';
-import axios from '../../../../api/axios';
+import { axiosPublic } from '../../../../api/axios';
 import toast from 'react-hot-toast';
 import { useForm } from 'react-hook-form';
 import { useMutation } from '@tanstack/react-query';
@@ -21,7 +21,7 @@ export const NewsLetter = () => {
     const { register, formState: { errors }, setError, watch, reset, handleSubmit } = useForm<NewsLetterFormData>({ mode: 'onChange' });
     const { mutate, isPending } = useMutation<void, AxiosError<ServerErrorResponse>, NewsLetterFormData>({
         mutationFn: async (inputsData) => {
-            await axios.post('mailer/add', inputsData, {
+            await axiosPublic.post('mailer/add', inputsData, {
                 headers: {'Content-Type': 'application/json'},
                 withCredentials: true
             });

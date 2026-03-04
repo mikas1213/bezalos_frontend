@@ -8,7 +8,7 @@ import File from '../../Shared/File';
 import ProgressBar from './ProgressBar';
 import { ButtonSave, ButtonCancel } from '../../Shared/Buttons';
 
-import { useAxiosPrivate } from '../../../features/auth';
+import { axiosPrivate } from '../../../api/axios';
 import toast from 'react-hot-toast';
 import { useState, useEffect } from 'react';
 import io from 'socket.io-client';
@@ -33,7 +33,7 @@ const formatFileSize = (bytes) => {
 };
 
 const Form = ({ isModalOpen, setIsModalOpen, formValues, setFormValues, handleFormInput }) => {
-    const axiosPrivate = useAxiosPrivate();
+
     const queryClient = useQueryClient();
     const [socket, setSocket] = useState(null);
     const [uploadProgress, setUploadProgress] = useState(0);

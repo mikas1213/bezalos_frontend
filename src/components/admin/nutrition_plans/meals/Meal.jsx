@@ -2,7 +2,7 @@ import { useRef, useState } from 'react';
 import { default as LogicSelect } from 'react-select';
 import { default as AddProductSelect } from 'react-select/async';
 
-import { useAxiosPrivate } from '../../../../features/auth';
+import { axiosPrivate } from '../../../../api/axios';
 import { DeleteX_icon } from '../../../../svg/icons';
 import { kcal } from '../../../../utils/calculationsHelpers';
 
@@ -36,7 +36,7 @@ const Meal = ({
 
 	const form = useRef(null);
 	const deletedMealRef = useRef(null);
-	const axiosPrivate = useAxiosPrivate();
+
 	const options = [
 		{ value: 'A+B', label: 'A+B', name: 'logic' },
 		{ value: 'B+R', label: 'B+R', name: 'logic' },

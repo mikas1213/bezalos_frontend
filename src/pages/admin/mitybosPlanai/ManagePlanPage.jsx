@@ -4,12 +4,12 @@ import { useManagePlan } from '../../../hooks/nutrition_plans_hooks/useManagePla
 import ManagePlan from '../../../components/admin/nutrition_plans/planai/ManagePlan';
 import AssignPlan from '../../../components/admin/nutrition_plans/planai/AssignPlan';
 import Spinner from '../../../components/UI/Spinner';
-import { useAxiosPrivate } from '../../../features/auth';
+import { axiosPrivate } from '../../../api/axios';
 import toast from 'react-hot-toast';
 
 const ManagePlanPage = () => {
     const params = useParams();
-    const axiosPrivate = useAxiosPrivate();
+
     const [user, setUser] = useState({label: 'Paieška...', value: ''});
     const { plan, setPlan, isLoading } = useManagePlan(params.id);
     const [flexDirection, setFlexDirection] = useState('row');

@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useAxiosPrivate } from '../../features/auth';
+import { axiosPrivate } from '../../api/axios';
 import { useOutletContext } from 'react-router-dom';
 import toast from 'react-hot-toast';
 
@@ -21,7 +21,7 @@ const getApimtys = data => {
 };
 
 const StatistikaPage = () => {
-    const axiosPrivate = useAxiosPrivate();
+
     const { user_id, is_subscription } = useOutletContext();
 
     const [formData, setFormData] = useState({});

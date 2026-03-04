@@ -1,9 +1,8 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { useAxiosPrivate } from '../features/auth';
+import { axiosPrivate } from '../api/axios';
 import toast from 'react-hot-toast';
 
 export const useUploadVideo = (socket, action, isVideo, setUploadProgress, setVideoProgress, setMessage, setUploading, setUploadSuccess, setUploadError) => {
-    const axiosPrivate = useAxiosPrivate();
     const queryClient = useQueryClient();
     
     return useMutation({

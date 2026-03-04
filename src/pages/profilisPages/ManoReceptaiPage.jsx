@@ -10,7 +10,7 @@ import RecipeModal from '../../components/profilis/mano_receptai/recipe_modal/Re
 import RecipeList from '../../components/profilis/mano_receptai/user_recipes/RecipeList';
 import Pagination from '../../components/UI/Pagination';
 import No_recipes from '../../components/profilis/mano_receptai/No_recipes';
-import { useAxiosPrivate } from '../../features/auth';
+import { axiosPrivate } from '../../api/axios';
 import toast from 'react-hot-toast';
 
 const filterOptions = [
@@ -36,7 +36,7 @@ const ManoReceptaiPage = () => {
         setCurrentPage
     } = useOutletContext();
     
-    const axiosPrivate = useAxiosPrivate();
+
     const [open, setOpen] = useState(false);
 
     useEffect(() => {

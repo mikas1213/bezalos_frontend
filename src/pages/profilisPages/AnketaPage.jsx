@@ -14,7 +14,7 @@ import Sveikata from '../../components/profilis/anketa/sections/Sveikata';
 import DabartiniaiIprociai from '../../components/profilis/anketa/sections/DabartiniaiIprociai';
 import Rutinos from '../../components/profilis/anketa/sections/Rutinos';
 import PapildomaInfo from '../../components/profilis/anketa/sections/PapildomaInfo';
-import { useAxiosPrivate } from '../../features/auth';
+import { axiosPrivate } from '../../api/axios';
 import toast from 'react-hot-toast';
 
 const AnketaPage = () => {
@@ -218,7 +218,7 @@ const AnketaPage = () => {
         }
     };
 
-    const axiosPrivate = useAxiosPrivate();
+
     const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
     const submitAnketa_api = async () => {
         try {

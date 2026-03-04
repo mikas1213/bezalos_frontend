@@ -1,9 +1,8 @@
 import { useQuery } from '@tanstack/react-query';
-import { useAxiosPrivate } from '../../features/auth';
+import { axiosPrivate } from '../../api/axios';
 import toast from 'react-hot-toast';
 
 const useAdminServices = () => {
-    const axiosPrivate = useAxiosPrivate();
     const fetchData = async () => {
         
         try {

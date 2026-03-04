@@ -1,5 +1,5 @@
 import ProductRow, { ProductRowH } from '../../../components/admin/nutrition_plans/products/ProductRow';
-import { useAxiosPrivate } from '../../../features/auth';
+import { axiosPrivate } from '../../../api/axios';
 import { useState } from 'react';
 import Wrapper from './Wrapper';
 import Navbar from '../../../components/admin/nutrition_plans/Navbar';
@@ -61,7 +61,7 @@ const categorySelectStyles = {
 
 const ProductsPage = () => {
     const { setStats } = useOutletContext();
-    const axiosPrivate = useAxiosPrivate();
+
     const [categoryFilter, setCategoryFilter] = useState('');
     const [searchFilter, setSearchFilter] = useState('');
 

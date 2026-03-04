@@ -11,11 +11,11 @@ import { useMediaQuery } from '../../contexts/MediaQueryProvider';
 import { useRecipes } from '../../hooks/recipes/useRecipes';
 import { useFavoriteRecipes } from '../../hooks/recipes/useFavoriteRecipes';
 import { useAuth } from '../../features/auth';
-import { useAxiosPrivate } from '../../features/auth';
+import { axiosPrivate } from '../../api/axios';
 
 const RecipesPage = () => {
     const mediaQuery = useMediaQuery();
-    const axiosPrivate = useAxiosPrivate();
+
     const [isOpenFilters, setIsOpenFilters] = useState(false);
     const [filters, setFilters] = useState({});
     const [search, setSearch] = useState('');

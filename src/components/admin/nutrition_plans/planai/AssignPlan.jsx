@@ -1,5 +1,5 @@
 import styles from './AssignPlan.module.css';
-import { useAxiosPrivate } from '../../../../features/auth';
+import { axiosPrivate } from '../../../../api/axios';
 import { default as UsersSelect } from 'react-select/async';
 import { useState } from 'react';
 import UserDetails from '../../user/edit_plan/UserDetails';
@@ -64,7 +64,7 @@ const customUsersLoadStyles = {
 }
 
 const AssignPlan = ({ user, setUser, assignPlanToUser, isPlanAssigning }) => {
-    const axiosPrivate = useAxiosPrivate();
+
     const [isMenuOpen, setIsMenuOpen] = useState('');
     const [userDetails, setUserDetails] = useState({});
     const [isLoading, setIsLoading] = useState(true);

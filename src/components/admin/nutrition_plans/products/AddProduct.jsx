@@ -1,7 +1,7 @@
 import styles from './AddProduct.module.css';
 import Select from 'react-select';
 import { useState } from 'react';
-import { useAxiosPrivate } from '../../../../features/auth';
+import { axiosPrivate } from '../../../../api/axios';
 import toast from 'react-hot-toast';
 
 const categoryOptions = [
@@ -89,7 +89,7 @@ const AddProduct = ({ handleAddProduct }) => {
     };
     
     const reqexp = '([0-9]+)|([0-9]+[,.][0-9]+)';
-    const axiosPrivate = useAxiosPrivate();
+
 
     const handleSubmit = async (e) => {
         e.preventDefault();

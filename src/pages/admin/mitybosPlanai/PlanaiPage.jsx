@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useAxiosPrivate } from '../../../features/auth';
+import { axiosPrivate } from '../../../api/axios';
 import Navbar from '../../../components/admin/nutrition_plans/Navbar';
 import Wrapper from './Wrapper';
 import Plan from '../../../components/admin/nutrition_plans/planai/Plan';
@@ -16,7 +16,7 @@ import { useOutletContext } from 'react-router-dom';
 
 const PlanaiPage = () => {
 
-    const axiosPrivate = useAxiosPrivate();
+
     const { setStats } = useOutletContext();
 
     const localStoragePlanId = JSON.parse(localStorage.getItem('localPlan'))?.id;

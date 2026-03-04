@@ -1,9 +1,8 @@
 import { useState, useEffect } from 'react';
-import { useAxiosPrivate } from '../../features/auth';
+import { axiosPrivate } from '../../api/axios';
 import toast from 'react-hot-toast';
 
 export const useUserInfo = (user_id) => {
-    const axiosPrivate = useAxiosPrivate();
     const [user, setUser] = useState(null);
     const [selectedPlan, setSelectedPlan] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
@@ -23,7 +22,7 @@ export const useUserInfo = (user_id) => {
             }
         };
         getData();
-    }, [axiosPrivate, user_id]);
+    }, [user_id]);
 
     return { user, setUser, selectedPlan, setSelectedPlan, isLoading };
 };

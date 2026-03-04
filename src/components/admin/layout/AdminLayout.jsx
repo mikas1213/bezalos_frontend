@@ -1,14 +1,14 @@
 import { useEffect, useState } from 'react';
 import { Outlet } from 'react-router-dom';
 
-import { useAxiosPrivate } from '../../../features/auth';
+import { axiosPrivate } from '../../../api/axios';
 import AdminNavbar from '../navBar/AdminNavbar';
 
 import styles from './AdminLayout.module.css';
 
 const AdminLayout = () => {
 	document.body.style.backgroundColor = '#eff1ef';
-	const axiosPrivate = useAxiosPrivate();
+
 	const [stats, setStats] = useState([]);
 	const [isLoading, setIsLoading] = useState(true);
 

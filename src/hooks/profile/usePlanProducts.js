@@ -1,10 +1,9 @@
-import { useAxiosPrivate } from '../../features/auth';
+import { axiosPrivate } from '../../api/axios';
 import { useState, useEffect } from 'react';
 import toast from 'react-hot-toast';
 
 export const usePlanProducts = () => {
     
-    const axiosPrivate = useAxiosPrivate();
     const [prodList, setProdList] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     
@@ -26,7 +25,7 @@ export const usePlanProducts = () => {
 
         getData();
         return () => { isMounted = false; };
-    }, [axiosPrivate]);
+    }, []);
 
     return { prodList, setProdList, isLoading}
 };

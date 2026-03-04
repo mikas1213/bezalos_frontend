@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react';
-import { useAxiosPrivate } from '../../features/auth';
+import { axiosPrivate } from '../../api/axios';
 import toast from 'react-hot-toast';
 import { useOutletContext } from 'react-router-dom';
 
 const MailsPage = () => {
 
-    const axiosPrivate = useAxiosPrivate();
+
     const [emails, setEmails] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const { isLoading: isLoad, stats } = useOutletContext();

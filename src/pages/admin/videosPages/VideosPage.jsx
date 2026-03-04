@@ -1,6 +1,6 @@
 import toast from 'react-hot-toast';
 import { useState } from 'react';
-import { useAxiosPrivate } from '../../../features/auth';
+import { axiosPrivate } from '../../../api/axios';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import useVideosAdmin from '../../../hooks/useVideosAdmin';
 
@@ -20,7 +20,7 @@ const emptyForm = {
 };
 
 const VideosPage = () => {
-    const axiosPrivate = useAxiosPrivate();
+
     const [isModalOpen, setIsModalOpen] = useState({isOpen: false, action: ''});
     const [formValues, setFormValues] = useState(emptyForm);
     const { data, isLoading } = useVideosAdmin();

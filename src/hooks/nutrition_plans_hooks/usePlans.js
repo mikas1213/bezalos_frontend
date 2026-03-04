@@ -1,11 +1,10 @@
 import { useState, useEffect } from 'react';
-import { useAxiosPrivate } from '../../features/auth';
+import { axiosPrivate } from '../../api/axios';
 import toast from 'react-hot-toast';
 
 export const usePlans = (filters) => {
     const [plans, setPlans] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
-    const axiosPrivate = useAxiosPrivate();
     const query = Object.keys(filters).length ? '?' + new URLSearchParams(filters).toString() : '';
     
     useEffect(() => {
@@ -29,6 +28,6 @@ export const usePlans = (filters) => {
         getData(controller.signal);
         return () => controller.abort();
 
-    }, [axiosPrivate, query]);
+    }, [query]);
     return { plans, setPlans, isLoading };
 };

@@ -1,5 +1,5 @@
 import { useOutletContext } from 'react-router-dom';
-import { useAxiosPrivate } from '../../../features/auth';
+import { axiosPrivate } from '../../../api/axios';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import Promo, { PromoHeader } from '../../../components/admin/services/Promo';
 import toast from 'react-hot-toast';
@@ -12,7 +12,7 @@ const layoutStyles = {
 };
 
 const PromotionsPage = () => {
-    const axiosPrivate = useAxiosPrivate();
+
     const queryClient = useQueryClient();
 
 

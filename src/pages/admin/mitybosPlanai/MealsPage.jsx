@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useAxiosPrivate } from '../../../features/auth';
+import { axiosPrivate } from '../../../api/axios';
 import Navbar from '../../../components/admin/nutrition_plans/Navbar';
 import { AddNewBtn } from '../../../components/admin/nutrition_plans/AddNewBtn';
 import Wrapper from './Wrapper';
@@ -17,7 +17,7 @@ import { useOutletContext } from 'react-router-dom';
 
 const MealsPage = () => {
     const { setStats } = useOutletContext();
-    const axiosPrivate = useAxiosPrivate();
+
     const [currentPage, setCurrentPage] = useState(1);
     const [searchString, setSearchString] = useState('');
     const [logicFilter, setLogicFilter] = useState('');
