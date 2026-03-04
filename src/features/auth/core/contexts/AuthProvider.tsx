@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
 
 import { axiosPrivate } from "../../../../api/axios";
 import type { MessageResponse, SignupRequest, UserData, ValidateResetTokenResponse } from "../services";
@@ -42,10 +42,9 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
         refreshAuth();
     }, [refreshAuth]);
 
-    // Attach axios interceptors once on mount.
-    // accessTokenRef is defined at component level and updated synchronously on every render,
-    // so the request interceptor always reads the current token — no stale closure.
-    useEffect(() => {
+    // Attach axios interceptors synchronously before paint, so they are guaranteed
+    // to be registered before any child component's useEffect fires API requests.
+    useLayoutEffect(() => {
         const refreshFn = createRefreshFn(setAccessToken, setUser);
 
         const logout = async () => {
