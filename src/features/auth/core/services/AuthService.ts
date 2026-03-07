@@ -1,4 +1,4 @@
-import { axiosPublic, axiosPrivate } from '../../../../api/axios';
+import { axiosPrivate, axiosPublic } from '../../../../api/axios';
 
 import type {
 	AuthResponse,
