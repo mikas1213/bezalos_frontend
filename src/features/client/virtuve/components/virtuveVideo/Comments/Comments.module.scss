@@ -1,0 +1,83 @@
+.root {
+	--green: hsl(154, 41%, 30%);
+	--green-pale: hsl(100, 60%, 94%);
+	--green-mid: hsl(154, 41%, 92%);
+	--border: #e8ede9;
+	--text: #1a1a1a;
+	--text-muted: #7a8c82;
+	--text-light: #b0bdb5;
+	--transition: 0.18s cubic-bezier(0.4, 0, 0.2, 1);
+
+	font-family: 'Inter', sans-serif;
+	color: var(--text);
+	padding: 24px 0;
+
+	/* ── HEADER ── */
+	.header {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		margin-bottom: 24px;
+	}
+
+	.headerTitle {
+		font-size: 0.78rem;
+		font-weight: 600;
+		letter-spacing: 0.08em;
+		color: var(--text-muted);
+	}
+
+	.headerCount {
+		font-size: 0.78rem;
+		font-weight: 600;
+		color: var(--text-muted);
+	}
+
+	/* ── COMPOSE GATE ── */
+	.compose-gate {
+		display: flex;
+		align-items: center;
+		gap: 16px;
+		padding: 12px 14px;
+		margin-bottom: 28px;
+		border-radius: 12px;
+		background: hsl(145, 12%, 97%);
+
+		p {
+			flex: 1;
+			margin: 0;
+			font-size: 0.88rem;
+			color: var(--text-muted);
+		}
+	}
+
+	.composeNotice {
+		display: flex;
+		align-items: center;
+		gap: 4px;
+		padding: 12px 14px;
+		margin-bottom: 28px;
+		border-radius: 12px;
+		background: hsl(145, 12%, 97%);
+		font-size: 0.88rem;
+		color: var(--text-muted);
+	}
+
+	.composeNoticeLink {
+		background: none;
+		border: none;
+		padding: 0;
+		font-family: inherit;
+		font-size: inherit;
+		font-weight: 600;
+		color: var(--green);
+		cursor: pointer;
+		text-decoration: underline;
+		text-underline-offset: 2px;
+
+		&:hover {
+			opacity: 0.8;
+		}
+	}
+
+}

@@ -2,6 +2,7 @@
 @forward './variables-spaces';
 @forward './variables-colors';
 @forward './variables-fonts';
+@forward './effects';
 
 :root {
 	/* Colors CMD + k + g */
@@ -157,6 +158,7 @@
 	margin: 0;
 	box-sizing: border-box;
 	font-family: 'Poppins', sans-serif;
+	// -webkit-font-smoothing: antialiased;
 	-webkit-tap-highlight-color: transparent;
 }
 

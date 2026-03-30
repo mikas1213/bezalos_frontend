@@ -1,0 +1,1 @@
+export { CommentCompose } from './CommentCompose';

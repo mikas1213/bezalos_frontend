@@ -34,12 +34,7 @@ export const InitialTarget = ({ setFormData, formData }: InitialTargetProps) => 
 
 			<div className={styles.targets}>
 				{targets.map((target) => (
-					<Target
-						key={target.id}
-						target={target}
-						formData={formData}
-						setFormData={setFormData}
-					/>
+					<Target key={target.id} target={target} formData={formData} setFormData={setFormData} />
 				))}
 			</div>
 			<div className={styles.termsContainer}>
@@ -48,38 +43,21 @@ export const InitialTarget = ({ setFormData, formData }: InitialTargetProps) => 
 						type="checkbox"
 						name="acceptTerms"
 						checked={formData.acceptTerms}
-						onChange={() =>
-							setFormData((prev) => ({ ...prev, acceptTerms: !prev.acceptTerms }))
-						}
+						onChange={() => setFormData((prev) => ({ ...prev, acceptTerms: !prev.acceptTerms }))}
 						className={cx(styles.checkBox, formData.acceptTerms && styles.selected)}
 					/>
 					{formData.acceptTerms && (
-						<Check
-							className={styles.ckeckIcon}
-							size={16}
-							color="var(--white-100)"
-							strokeWidth="3"
-						/>
+						<Check className={styles.checkIcon} size={16} color="var(--white-100)" strokeWidth="3" />
 					)}
 				</div>
 
 				<div className={styles.termsLabel}>
 					Sutinku su{' '}
-					<a
-						href="/pirkimo-taisykles"
-						target="_blank"
-						rel="noopener noreferrer"
-						className={styles.termsLink}
-					>
+					<a href="/pirkimo-taisykles" target="_blank" rel="noopener noreferrer" className={styles.termsLink}>
 						pirkimo taisyklės
 					</a>{' '}
 					ir{' '}
-					<a
-						href="/privatumo-politika"
-						target="_blank"
-						rel="noopener noreferrer"
-						className={styles.termsLink}
-					>
+					<a href="/privatumo-politika" target="_blank" rel="noopener noreferrer" className={styles.termsLink}>
 						privatumo politika
 					</a>
 				</div>

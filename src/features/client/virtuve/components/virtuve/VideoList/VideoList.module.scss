@@ -1,0 +1,50 @@
+.wrapper {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: var(--s-40);
+	padding-bottom: var(--s-48);
+}
+
+.grid {
+	width: 100%;
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+	gap: var(--s-24);
+}
+
+.state {
+	text-align: center;
+	padding: var(--s-96) 0;
+	color: var(--color-text-grey);
+	font-size: var(--font-16);
+}
+
+.loadMore {
+	display: flex;
+	justify-content: center;
+}
+
+.loadMoreBtn {
+	padding: 0.6rem 2rem;
+	font-size: var(--font-16);
+	font-weight: 600;
+	color: var(--cool-grey-green-400);
+	background-color: var(--white-100);
+	border: 1.5px solid var(--cool-grey-green-400);
+	border-radius: 10rem;
+	cursor: pointer;
+	transition:
+		background-color 0.2s ease,
+		color 0.2s ease;
+
+	&:hover:not(:disabled) {
+		background-color: var(--cool-grey-green-400);
+		color: var(--color-background);
+	}
+
+	&:disabled {
+		opacity: 0.5;
+		cursor: not-allowed;
+	}
+}

@@ -6,4 +6,5 @@ export { Container } from './container/Container';
 export { Cover } from './cover/Cover';
 export { Grid } from './grid/Grid';
 export { ScrollToTop } from './ScrollToTop/ScrollToTop';
+export { Spinner } from './Spinner/Spinner';
 export { Stack } from './stack/Stack';

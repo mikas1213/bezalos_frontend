@@ -19,6 +19,7 @@ import { ProtectedRoute } from './features/auth/components/ProtectedRoute';
 import { LoginPage } from './features/auth/pages/LoginPage';
 import { UpdatePasswordErrorPage } from './features/auth/pages/UpdatePasswordErrorPage';
 import { UpdatePasswordPage } from './features/auth/pages/UpdatePasswordPage';
+import { VirtuveVideoPage } from './features/client/virtuve/pages/VirtuveVideoPage/VirtuveVideoPage';
 import ClientLayout from './layouts/ClientLayout';
 import MailsPage from './pages/admin/MailsPage';
 import ManagePlanPage from './pages/admin/mitybosPlanai/ManagePlanPage';
@@ -53,29 +54,20 @@ import ProfilisPageLayout from './pages/profilisPages/ProfilisPageLayout';
 import StatistikaPage from './pages/profilisPages/StatistikaPage';
 import UserPlansPage from './pages/profilisPages/UserPlansPage';
 import RecipePage from './pages/recipesPages/RecipePage';
-import VirtuveVideoPage from './pages/virtuvePages/VirtuveVideoPage';
 
 import styles from './App.module.css';
 
 const HomePage = lazy(() => import('./pages/client/HomePage/HomePage'));
 const AtlikTestaPage = lazy(() => import('./pages/client/AtlikTestaPage/AtlikTestaPage'));
-const ValgymoElgsenosTestasPage = lazy(
-	() => import('./pages/client/ValgymoTestasPage/ValgymoTestasPage'),
-);
-const PaslaugosoPasiulymasPage = lazy(
-	() => import('./pages/client/PaslaugosoPasiulymasPage/PaslaugosoPasiulymasPage'),
-);
-// const VirtuvePage = lazy(() => import("./pages/virtuvePages/VirtuvePage"));
-const VirtuvePage = lazy(() => import('./features/client/virtuve/pages/VirtuvePage'));
+const ValgymoElgsenosTestasPage = lazy(() => import('./pages/client/ValgymoTestasPage/ValgymoTestasPage'));
+const PaslaugosoPasiulymasPage = lazy(() => import('./pages/client/PaslaugosoPasiulymasPage/PaslaugosoPasiulymasPage'));
+
+const VirtuvePage = lazy(() => import('./features/client/virtuve/pages/VirtuvePage/VirtuvePage'));
 
 const RecipesPage = lazy(() => import('./pages/recipesPages/RecipesPage'));
 const PaslaugosPage = lazy(() => import('./pages/paslaugosPages/PaslaugosPage'));
-const PirkimoTaisyklesPage = lazy(
-	() => import('./pages/client/PirkimoTaisyklesPage/PirkimoTaisyklesPage'),
-);
-const PrivatumoPolitikaPage = lazy(
-	() => import('./pages/client/PrivatumoPolitikaPage/PrivatumoPolitikaPage'),
-);
+const PirkimoTaisyklesPage = lazy(() => import('./pages/client/PirkimoTaisyklesPage/PirkimoTaisyklesPage'));
+const PrivatumoPolitikaPage = lazy(() => import('./pages/client/PrivatumoPolitikaPage/PrivatumoPolitikaPage'));
 
 type CookieValue = {
 	COOKIE_CONSENT: string;
@@ -115,97 +107,48 @@ function App() {
 									<Route path="/" element={<ClientLayout />}>
 										<Route index element={<HomePage />} />
 										<Route path="/virtuve" element={<VirtuvePage />} />
+										<Route path="/virtuve/:slug" element={<VirtuveVideoPage />} />
 										<Route path="/atlik-testa" element={<AtlikTestaPage />} />
 										<Route
 											path="/atlik-testa/valgymo-elgsenos-testas"
 											element={<ValgymoElgsenosTestasPage />}
 										/>
-										<Route
-											path="/atlik-testa/suzinok-daugiau"
-											element={<PaslaugosoPasiulymasPage />}
-										/>
+										<Route path="/atlik-testa/suzinok-daugiau" element={<PaslaugosoPasiulymasPage />} />
 										<Route path="/receptai" element={<RecipesPage />} />
 										<Route path="/receptai/:slug" element={<RecipePage />} />
 										<Route element={<PaymentProvider />}>
 											<Route path="/paslaugos" element={<PaslaugosPage />} />
-											<Route
-												path="/paslaugos/:slug"
-												element={<PaslaugaPage />}
-											/>
+											<Route path="/paslaugos/:slug" element={<PaslaugaPage />} />
 										</Route>
 
-										<Route
-											path="/prenumeruoti"
-											element={<NeedSubscription />}
-										/>
+										<Route path="/prenumeruoti" element={<NeedSubscription />} />
 										<Route path="/isigyti-kursa" element={<NeedBuyCourse />} />
-										<Route
-											path="/pirkimo-taisykles"
-											element={<PirkimoTaisyklesPage />}
-										/>
-										<Route
-											path="/privatumo-politika"
-											element={<PrivatumoPolitikaPage />}
-										/>
+										<Route path="/pirkimo-taisykles" element={<PirkimoTaisyklesPage />} />
+										<Route path="/privatumo-politika" element={<PrivatumoPolitikaPage />} />
 
-										<Route
-											element={<ProtectedRoute allowedRoles={[1213, 2324]} />}
-										>
-											<Route
+										<Route element={<ProtectedRoute allowedRoles={[1213, 2324]} />}>
+											{/* <Route
 												path="/virtuve/:type/:video"
 												element={<VirtuveVideoPage />}
-											/>
-											<Route
-												path="/profilis"
-												element={<ProfilisPageLayout />}
-											>
+											/> */}
+											<Route path="/profilis" element={<ProfilisPageLayout />}>
 												<Route index element={<UserPlansPage />} />
 												<Route path="anketa" element={<AnketaPage />} />
-												<Route
-													path="produktu-keitimas"
-													element={<ProduktuKeitimasPage />}
-												/>
-												<Route
-													path="mano-receptai"
-													element={<ManoReceptaiPage />}
-												/>
-												<Route
-													path="kalorijos"
-													element={<KalorijosPage />}
-												/>
-												<Route
-													path="statistika"
-													element={<StatistikaPage />}
-												/>
-												<Route
-													path="nustatymai"
-													element={<NustatymaiPage />}
-												/>
+												<Route path="produktu-keitimas" element={<ProduktuKeitimasPage />} />
+												<Route path="mano-receptai" element={<ManoReceptaiPage />} />
+												<Route path="kalorijos" element={<KalorijosPage />} />
+												<Route path="statistika" element={<StatistikaPage />} />
+												<Route path="nustatymai" element={<NustatymaiPage />} />
 											</Route>
-											<Route
-												path="/paslauga-apmoketa"
-												element={<SuccessBuyService />}
-											/>
-											<Route
-												path="/apmoketa-sekmingai"
-												element={<SuccessSubscription />}
-											/>
-											<Route
-												path="/mokejimo-klaida"
-												element={<CancelSubscription />}
-											/>
+											<Route path="/paslauga-apmoketa" element={<SuccessBuyService />} />
+											<Route path="/apmoketa-sekmingai" element={<SuccessSubscription />} />
+											<Route path="/mokejimo-klaida" element={<CancelSubscription />} />
 										</Route>
 									</Route>
 
 									<Route path="/prisijungti" element={<LoginPage />} />
-									<Route
-										path="/keisti-slaptazodi/:token"
-										element={<UpdatePasswordPage />}
-									/>
-									<Route
-										path="/keisti-slaptazodi-klaida"
-										element={<UpdatePasswordErrorPage />}
-									/>
+									<Route path="/keisti-slaptazodi/:token" element={<UpdatePasswordPage />} />
+									<Route path="/keisti-slaptazodi-klaida" element={<UpdatePasswordErrorPage />} />
 									<Route path="*" element={<NotFoundPage />} />
 
 									<Route element={<ProtectedRoute allowedRoles={[1213]} />}>
@@ -214,32 +157,20 @@ function App() {
 											<Route path=":id" element={<UserPageLayout />}>
 												<Route index element={<EditUserPlanPage />} />
 												<Route path="anketa" element={<UserAnketaPage />} />
-												<Route
-													path="statistika"
-													element={<UserStatistikaPage />}
-												/>
+												<Route path="statistika" element={<UserStatistikaPage />} />
 											</Route>
 
 											<Route path="planai" element={<MitybosPlanaiLayout />}>
 												<Route index element={<PlanaiPage />} />
 												<Route path=":id" element={<ManagePlanPage />} />
 												<Route path="valgiai" element={<MealsPage />} />
-												<Route
-													path="produktai"
-													element={<ProductsPage />}
-												/>
+												<Route path="produktai" element={<ProductsPage />} />
 											</Route>
 											<Route path="receptai" element={<ReceptaiPage />} />
 
-											<Route
-												path="paslaugos"
-												element={<ServicesPageLayout />}
-											>
+											<Route path="paslaugos" element={<ServicesPageLayout />}>
 												<Route index element={<ServicesPage />} />
-												<Route
-													path="nuolaidos-kodai"
-													element={<PromotionsPage />}
-												/>
+												<Route path="nuolaidos-kodai" element={<PromotionsPage />} />
 												<Route path="narystes" element={<NarystesPage />} />
 											</Route>
 
