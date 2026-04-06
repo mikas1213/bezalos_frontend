@@ -1,3 +1,14 @@
+@keyframes cardFadeIn {
+	from {
+		opacity: 0;
+		transform: translateY(8px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
 .card {
 	cursor: pointer;
 	display: flex;
@@ -11,6 +22,7 @@
 	overflow: hidden;
 	box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 	text-decoration: none;
+	animation: cardFadeIn 0.35s ease both;
 }
 .cardImage {
 	position: absolute;
@@ -20,7 +32,11 @@
 	object-fit: cover;
 	object-position: center;
 	z-index: 1;
-	transition: transform 0.3s ease;
+	opacity: 0;
+	transition: opacity 0.4s ease, transform 0.3s ease;
+}
+.cardImageLoaded {
+	opacity: 1;
 }
 .cardOverlay {
 	position: absolute;

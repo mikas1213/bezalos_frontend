@@ -1,3 +1,5 @@
+import { useState } from 'react';
+
 import { Link } from 'react-router-dom';
 
 import cx from 'classnames';
@@ -6,13 +8,16 @@ import type { VideoCardProps } from './types';
 
 import styles from './VideoCard.module.scss';
 
-export const VideoCard = ({ video }: VideoCardProps) => {
+export const VideoCard = ({ video, index = 0 }: VideoCardProps) => {
+	const [imageLoaded, setImageLoaded] = useState(false);
+
 	return (
-		<Link to={video.slug} className={styles.card}>
+		<Link to={video.slug} className={styles.card} style={{ animationDelay: `${index * 60}ms` }}>
 			<img
-				className={styles.cardImage}
+				className={cx(styles.cardImage, { [styles.cardImageLoaded]: imageLoaded })}
 				src={`https://bezalos.s3.us-east-1.amazonaws.com/${video.image_s3_key}`}
 				alt={video.title}
+				onLoad={() => setImageLoaded(true)}
 			/>
 			<div className={styles.cardOverlay}></div>
 
