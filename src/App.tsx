@@ -13,6 +13,7 @@ import { ScrollToTop } from './components/Shared';
 import Spinner from './components/UI/Spinner';
 import { MediaQueryProvider } from './contexts/MediaQueryProvider';
 import { PaymentProvider } from './contexts/PaymentProvider';
+import { AdminVirtuvePage } from './features/admin/virtuve/pages/AdminVirtuvePage';
 import { AuthProvider } from './features/auth';
 import { AuthModal, AuthModalProvider } from './features/auth';
 import { ProtectedRoute } from './features/auth/components/ProtectedRoute';
@@ -37,7 +38,6 @@ import UserAnketaPage from './pages/admin/users/UserAnketaPage';
 import UserPageLayout from './pages/admin/users/UserPageLayout';
 import UsersPage from './pages/admin/users/UsersPage';
 import UserStatistikaPage from './pages/admin/users/UserStatistikaPage';
-import VideosPage from './pages/admin/videosPages/VideosPage';
 import NotFoundPage from './pages/notfound/NotFoundPage';
 import PaslaugaPage from './pages/paslaugosPages/PaslaugaPage';
 import CancelSubscription from './pages/paymentPages/CancelSubscription';
@@ -127,10 +127,6 @@ function App() {
 										<Route path="/privatumo-politika" element={<PrivatumoPolitikaPage />} />
 
 										<Route element={<ProtectedRoute allowedRoles={[1213, 2324]} />}>
-											{/* <Route
-												path="/virtuve/:type/:video"
-												element={<VirtuveVideoPage />}
-											/> */}
 											<Route path="/profilis" element={<ProfilisPageLayout />}>
 												<Route index element={<UserPlansPage />} />
 												<Route path="anketa" element={<AnketaPage />} />
@@ -159,7 +155,6 @@ function App() {
 												<Route path="anketa" element={<UserAnketaPage />} />
 												<Route path="statistika" element={<UserStatistikaPage />} />
 											</Route>
-
 											<Route path="planai" element={<MitybosPlanaiLayout />}>
 												<Route index element={<PlanaiPage />} />
 												<Route path=":id" element={<ManagePlanPage />} />
@@ -167,14 +162,12 @@ function App() {
 												<Route path="produktai" element={<ProductsPage />} />
 											</Route>
 											<Route path="receptai" element={<ReceptaiPage />} />
-
 											<Route path="paslaugos" element={<ServicesPageLayout />}>
 												<Route index element={<ServicesPage />} />
 												<Route path="nuolaidos-kodai" element={<PromotionsPage />} />
 												<Route path="narystes" element={<NarystesPage />} />
 											</Route>
-
-											<Route path="videos" element={<VideosPage />} />
+											<Route path="virtuve" element={<AdminVirtuvePage />} />
 											<Route path="mails" element={<MailsPage />} />
 										</Route>
 									</Route>
