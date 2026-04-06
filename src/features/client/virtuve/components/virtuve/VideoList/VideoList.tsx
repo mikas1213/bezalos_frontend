@@ -30,8 +30,8 @@ export const VideoList = ({
 	return (
 		<div className={styles.wrapper}>
 			<div className={styles.grid}>
-				{videos.map((video) => (
-					<VideoCard key={video.slug} video={video} />
+				{videos.map((video, index) => (
+					<VideoCard key={video.slug} video={video} index={index} />
 				))}
 			</div>
 
