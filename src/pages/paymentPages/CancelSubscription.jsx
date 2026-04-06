@@ -1,23 +1,20 @@
-import styles from './CancelSubscription.module.css';
 import Main from '../../components/UI/Main';
-import Container from '../../components/virtuve/Container';
+
+import styles from './CancelSubscription.module.css';
 
 const CancelSubscription = () => {
-    return (
-        <>
-            <Main>
-                <Container>
-                    <div className={styles.cancelSubscription}>
-                        <div>
-                            <h3>Kažkas negerai</h3>
-                            <a href='http://localhost:5173/paslaugos'>Į paslaugas</a>
-                        </div>
-                    </div>
-                </Container>
-            </Main>
-        </>
-        
-    );
+	return (
+		<>
+			<Main>
+				<div className={styles.cancelSubscription}>
+					<div>
+						<h3>Kažkas negerai</h3>
+						<a href="http://localhost:5173/paslaugos">Į paslaugas</a>
+					</div>
+				</div>
+			</Main>
+		</>
+	);
 };
 
 export default CancelSubscription;

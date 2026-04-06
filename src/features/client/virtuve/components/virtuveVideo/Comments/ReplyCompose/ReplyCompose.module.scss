@@ -1,0 +1,104 @@
+.replyCompose {
+	display: grid;
+	grid-template-rows: 0fr;
+	transition: grid-template-rows 0.28s ease, margin-top 0.28s ease;
+	margin-top: 0;
+
+	&.open {
+		grid-template-rows: 1fr;
+		margin-top: 10px;
+	}
+}
+
+.replyComposeInner {
+	overflow: hidden;
+}
+
+.replyComposeRow {
+	display: flex;
+	gap: 8px;
+	align-items: flex-end;
+}
+
+.avatar {
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-weight: 600;
+	flex-shrink: 0;
+	letter-spacing: 0.02em;
+	margin-bottom: 6px;
+}
+
+.avatarSm {
+	width: 26px;
+	height: 26px;
+	font-size: 0.65rem;
+}
+
+.replyForm {
+	flex: 1;
+	position: relative;
+	display: flex;
+	align-items: flex-end;
+	border-radius: 20px;
+	border: 1px solid #a7aba677;
+	transition: var(--transition);
+
+	&:focus-within {
+		border: 1px solid #a7aba6;
+	}
+
+	&:focus-within .icon {
+		fill: #a7aba6;
+	}
+
+	&:focus-within .icon.active {
+		fill: #60c040;
+	}
+}
+
+.replyInput {
+	flex: 1;
+	padding: 8px 38px 8px 13px;
+	background: none;
+	border: none;
+	outline: none;
+	font-family: inherit;
+	font-size: 0.83rem;
+	color: var(--neutral-500);
+	resize: none;
+	overflow: hidden;
+	line-height: 1.5;
+	min-height: 36px;
+
+	&::placeholder {
+		color: #a7aba6;
+	}
+}
+
+.sendBtn {
+	position: absolute;
+	right: 8px;
+	bottom: 4px;
+	background: none;
+	border: none;
+	padding: 4px 2px;
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.icon {
+	width: 20px;
+	height: 20px;
+	fill: #a7aba677;
+	transition: fill 0.25s ease;
+
+	&.active,
+	.replyForm:focus-within &.active {
+		fill: #60c040;
+	}
+}

@@ -1,0 +1,170 @@
+@keyframes fadeUp {
+	from {
+		opacity: 0;
+		transform: translateY(5px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+.comment {
+	display: flex;
+	gap: 12px;
+	margin-bottom: 20px;
+	animation: fadeUp 0.22s ease;
+
+	&.removing {
+		opacity: 0;
+		transform: translateX(6px);
+		transition:
+			opacity 0.18s ease,
+			transform 0.18s ease;
+	}
+}
+
+.avatar {
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-weight: 600;
+	flex-shrink: 0;
+	letter-spacing: 0.02em;
+}
+
+.avatarLg {
+	width: 36px;
+	height: 36px;
+	font-size: 0.75rem;
+}
+
+.commentThread {
+	flex: 1;
+	min-width: 0;
+}
+
+.commentBubble {
+	background: hsl(145, 12%, 97%);
+	border-radius: 4px 16px 16px 16px;
+	padding: 12px 14px;
+	display: inline-block;
+	width: 100%;
+}
+
+.commentMeta {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	margin-bottom: 4px;
+}
+
+.commentAuthor {
+	font-size: 0.83rem;
+	font-weight: 600;
+	color: var(--text);
+}
+
+.commentTime {
+	font-size: 0.75rem;
+	color: var(--text-light);
+}
+
+.commentText {
+	overflow-wrap: anywhere;
+	font-size: 0.88rem;
+	color: var(--text-muted);
+	line-height: 1.65;
+}
+
+.commentActions {
+	display: flex;
+	align-items: center;
+	gap: 0;
+	margin-top: 6px;
+	padding-left: 2px;
+}
+
+.actBtn {
+	display: inline-flex;
+	align-items: center;
+	gap: 4px;
+	padding: 4px 8px;
+	background: none;
+	border: none;
+	border-radius: 6px;
+	font-family: inherit;
+	font-size: 0.75rem;
+	font-weight: 500;
+	color: var(--text-light);
+	cursor: pointer;
+	transition:
+		background var(--transition),
+		color var(--transition);
+
+	svg {
+		flex-shrink: 0;
+	}
+
+	&:hover {
+		color: var(--text-muted);
+	}
+
+	&.liked {
+		color: var(--green);
+	}
+
+	&.actDelete:hover {
+		color: #dc2626;
+	}
+}
+
+.repliesWrap {
+	margin-top: 10px;
+}
+
+.toggleReplies {
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+	padding: 4px 8px 4px 0;
+	background: none;
+	border: none;
+	font-family: inherit;
+	font-size: 0.75rem;
+	font-weight: 600;
+	color: var(--green);
+	cursor: pointer;
+	transition: opacity var(--transition);
+
+	svg {
+		transition: transform var(--transition);
+	}
+
+	&:hover {
+		opacity: 0.7;
+	}
+
+	&.open svg {
+		transform: rotate(180deg);
+	}
+}
+
+.replies {
+	display: grid;
+	grid-template-rows: 0fr;
+	transition: grid-template-rows 0.35s ease;
+	margin-top: 8px;
+
+	&.open {
+		grid-template-rows: 1fr;
+	}
+}
+
+.repliesInner {
+	overflow: hidden;
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}

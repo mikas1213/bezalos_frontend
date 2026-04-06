@@ -80,13 +80,14 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
 
                 const prevRequest = error?.config;
 
-                // Don't retry refresh endpoint to avoid infinite loop
-                const isRefreshRequest = prevRequest?.url?.includes("/auth/refresh");
+                // Don't retry auth endpoints to avoid infinite loops or swallowing login errors
+                const isAuthEndpoint = prevRequest?.url?.includes("/auth/refresh") ||
+                    prevRequest?.url?.includes("/auth/login");
 
                 if (
                     (error?.response?.status === 401 || error?.response?.status === 403) &&
                     !prevRequest?.sent &&
-                    !isRefreshRequest
+                    !isAuthEndpoint
                 ) {
                     prevRequest.sent = true;
 

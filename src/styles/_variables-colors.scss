@@ -2,6 +2,7 @@
 	/* M-A-I-N C-O-L-O-R-S */
 	--white-100: hsl(0, 0%, 100%);
 	--transparent: hsla(0, 0%, 0%, 0);
+	--my-hue: 145;
 
 	--red-050: hsl(0, 85%, 99%);
 	--red-100: hsl(0, 85%, 97%);
@@ -26,6 +27,21 @@
 	--light-green-800: hsl(100, 60%, 30%);
 	--light-green-900: hsl(100, 60%, 20%);
 
+	--dark-green-400: hsl(154, 41%, 30%);
+	--dark-green-500: #084747;
+	--dark-green-600: #082b1d;
+
+	--neutral-050: hsl(145, 12%, 97%); // Pagrindinis puslapio fonas (beveik balta) .
+	--neutral-100: hsl(145, 10%, 94%); // Antraeiliai fonai, kortelių fonas.
+	--neutral-200: hsl(145, 10%, 88%); // Lengvi rėmeliai, skiriamosios linijos.
+	--neutral-300: hsl(145, 8%, 78%); // Neaktyvūs mygtukai (disabled), rėmeliai.
+	--neutral-400: hsl(145, 8%, 65%); // Pagalbinis tekstas, piktogramos.
+	--neutral-500: hsl(145, 6%, 52%); //Vidutinio ryškumo tekstas, metaduomenys.
+	--neutral-600: hsl(145, 8%, 40%); // Ryškesnis tekstas ant šviesaus fono.
+	--neutral-700: hsl(145, 10%, 28%); // Pagrindinis skaitomas tekstas (Body text) .
+	--neutral-800: hsl(145, 12%, 18%); // Antraštės, pėda (footer).
+	--neutral-900: hsl(145, 15%, 10%); // Tamsiausi elementai, tamsus režimas.
+
 	--neutral-grey-050: hsl(0, 0%, 98%);
 	--neutral-grey-100: hsl(0, 0%, 88%);
 	--neutral-grey-200: hsl(0, 0%, 82%);
@@ -47,6 +63,18 @@
 	--light-green-grey-700: hsl(120, 7%, 50%);
 	--light-green-grey-800: hsl(120, 7%, 40%);
 	--light-green-grey-900: hsl(120, 7%, 30%);
+
+	--cool-grey-green-040: hsl(160, 15%, 98%); /* Beveik balta su užuomina į žalumą */
+	--cool-grey-green-050: hsl(160, 10%, 98%);
+	--cool-grey-green-100: hsl(160, 8%, 88%);
+	--cool-grey-green-200: hsl(160, 7%, 82%);
+	--cool-grey-green-300: hsl(160, 6%, 76%);
+	--cool-grey-green-400: hsl(160, 5%, 67%);
+	--cool-grey-green-500: hsl(160, 5%, 58%);
+	--cool-grey-green-600: hsl(160, 5%, 50%);
+	--cool-grey-green-700: hsl(160, 6%, 43%);
+	--cool-grey-green-800: hsl(160, 7%, 35%);
+	--cool-grey-green-900: hsl(160, 8%, 28%); /* Tamsi pilka su miško atspalviu */
 
 	--cool-grey-040: hsl(210, 44%, 98%);
 	--cool-grey-050: hsl(208, 21%, 98%);
@@ -71,8 +99,12 @@
 	--grey-800: hsl(215, 28%, 17%);
 	--grey-900: hsl(221, 39%, 11%);
 
-	--dark-green-500: #084747;
-	--dark-green-600: #082b1d;
+	//--neutral-50: #f2f5f3; //Labai šviesus fonas
+	//--neutral-100: #e2e8e4; // Rėmeliai, linijos
+	//--neutral-300: #a9b7b0; // Neaktyvūs elementai
+	//--neutral-500: #7a8c85; // Papildomas tekstas
+	//--neutral-700: #3a4541; // Pagrindinis skaitomas tekstas
+	//--neutral-900: #1f2623; // Antraštės, pėda (footer)
 
 	// --dark-green-100: #d8f0ea;
 	// --dark-green-200: #b1ded0;
