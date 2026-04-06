@@ -1,84 +1,84 @@
 name: Deploy Be žalos
 
 on:
-  workflow_dispatch:
-    inputs:
-      environment:
-        description: 'Deploy environment'
-        required: true
-        type: choice
-        default: 'dev'
-        options:
-          - dev
-          - prod
+    workflow_dispatch:
+        inputs:
+            environment:
+                description: 'Deploy environment'
+                required: true
+                type: choice
+                default: 'dev'
+                options:
+                    - dev
+                    - prod
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
+    build:
+        runs-on: ubuntu-latest
 
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v4
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '22'
-          cache: 'npm'
+            - name: Setup Node.js
+              uses: actions/setup-node@v4
+              with:
+                  node-version: '22'
+                  cache: 'npm'
 
-      - name: Install dependencies
-        run: npm ci
+            - name: Install dependencies
+              run: npm ci
 
-      - name: Build bezalos
-        run: npm run build
+            - name: Build bezalos
+              run: npm run build
 
-      - name: Upload build artifacts
-        uses: actions/upload-artifact@v4
-        with:
-          name: dist-files
-          path: dist/
-          retention-days: 1
+            - name: Upload build artifacts
+              uses: actions/upload-artifact@v4
+              with:
+                  name: dist-files
+                  path: dist/
+                  retention-days: 1
 
-  # DEV deployment
-  deploy-dev:
-    runs-on: ubuntu-latest
-    needs: build
-    if: github.event.inputs.environment == 'dev'
+    # DEV deployment
+    deploy-dev:
+        runs-on: ubuntu-latest
+        needs: build
+        if: github.event.inputs.environment == 'dev'
 
-    steps:
-      - name: Download build artifacts
-        uses: actions/download-artifact@v4
-        with:
-          name: dist-files
-          path: dist/
+        steps:
+            - name: Download build artifacts
+              uses: actions/download-artifact@v4
+              with:
+                  name: dist-files
+                  path: dist/
 
-      - name: Deploy to HOSTINGER
-        uses: appleboy/scp-action@v0.1.4
-        with:
-          host: ${{ secrets.DEV_SERVER_HOST }}
-          username: ${{ secrets.DEV_SERVER_USER }}
-          key: ${{ secrets.DEV_SSH_PRIVATE_KEY }}
-          source: 'dist/*'
-          target: ${{ secrets.DEV_DEPLOY_PATH }}
+            - name: Deploy to HOSTINGER
+              uses: appleboy/scp-action@v0.1.4
+              with:
+                  host: ${{ secrets.DEV_SERVER_HOST }}
+                  username: ${{ secrets.DEV_SERVER_USER }}
+                  key: ${{ secrets.DEV_SSH_PRIVATE_KEY }}
+                  source: 'dist/*'
+                  target: ${{ secrets.DEV_DEPLOY_PATH }}
 
-  # PROD deployment
-  deploy-prod:
-    runs-on: ubuntu-latest
-    needs: build
-    if: github.event.inputs.environment == 'prod'
+    # PROD deployment
+    deploy-prod:
+        runs-on: ubuntu-latest
+        needs: build
+        if: github.event.inputs.environment == 'prod'
 
-    steps:
-      - name: Download build artifacts
-        uses: actions/download-artifact@v4
-        with:
-          name: dist-files
-          path: dist/
+        steps:
+            - name: Download build artifacts
+              uses: actions/download-artifact@v4
+              with:
+                  name: dist-files
+                  path: dist/
 
-      - name: Deploy to AWS
-        uses: appleboy/scp-action@v0.1.4
-        with:
-          host: ${{ secrets.PROD_SERVER_HOST }}
-          username: ${{ secrets.PROD_SERVER_USER }}
-          key: ${{ secrets.PROD_SSH_PRIVATE_KEY }}
-          source: 'dist/*'
-          target: ${{ secrets.PROD_DEPLOY_PATH }}
+            - name: Deploy to AWS
+              uses: appleboy/scp-action@v0.1.4
+              with:
+                  host: ${{ secrets.PROD_SERVER_HOST }}
+                  username: ${{ secrets.PROD_SERVER_USER }}
+                  key: ${{ secrets.PROD_SSH_PRIVATE_KEY }}
+                  source: 'dist/*'
+                  target: ${{ secrets.PROD_DEPLOY_PATH }}
