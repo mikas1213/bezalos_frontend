@@ -63,7 +63,7 @@ export const VideoPlayer = ({ video }: VideoPlayerProps) => {
 					}
 				}}
 			>
-				<source src={video.embedUrl + '#t=0.1'} />
+				<source src={video.embedUrl + '#t=1.0'} />
 			</video>
 			{video?.isSnippet && <span className={styles.snippet}>Ištrauka</span>}
 
@@ -85,18 +85,10 @@ export const VideoPlayer = ({ video }: VideoPlayerProps) => {
 								<path d="M7 11V7a5 5 0 0 1 10 0v4" />
 							</svg>
 						</div>
-						<h3 className={styles.paywallTitle}>
-							Prisijunk prie narystės ir tęsk toliau
-						</h3>
-						<p className={styles.paywallDesc}>
-							Nuo €16,90/mėn. – prieiga prie viso turinio
-						</p>
+						<h3 className={styles.paywallTitle}>Prisijunk prie narystės ir tęsk toliau</h3>
+						<p className={styles.paywallDesc}>Nuo €16,90/mėn. – prieiga prie viso turinio</p>
 						<div className={styles.paywallActions}>
-							<button
-								type="button"
-								className={styles.paywallBtnPrimary}
-								onClick={() => navigate('/paslaugos')}
-							>
+							<button type="button" className={styles.paywallBtnPrimary} onClick={() => navigate('/paslaugos')}>
 								Pradėti dabar
 							</button>
 							<button
