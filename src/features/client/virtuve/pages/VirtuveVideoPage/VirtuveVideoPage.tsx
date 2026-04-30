@@ -7,6 +7,7 @@ import { useAuthModal } from '../../../../auth/modal/hooks/useAuthModal';
 import { Comments, VideoInfo, VideoLoading, VideoNotFound, VideoPlayer } from '../../components/virtuveVideo';
 import type { VideoCategory } from '../../components/virtuveVideo/VideoInfo/types';
 import { useVirtuveVideoPage } from '../../hooks/useVirtuveVideoPage';
+import VirtuveVideoSEO from './VirtuveVideoSEO';
 
 import styles from './VirtuveVideoPage.module.scss';
 
@@ -39,6 +40,7 @@ export const VirtuveVideoPage = () => {
 
 	return (
 		<div className={styles.root}>
+			{video && <VirtuveVideoSEO video={video} />}
 			{/* ── MAIN LAYOUT ── */}
 			<div className={styles.layout}>
 				{/* ── LEFT COLUMN ── */}

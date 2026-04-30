@@ -34,6 +34,7 @@ export interface VideoPageDto {
 	description: string;
 	duration: string;
 	embedUrl: string;
+	contentUrl: string | null;
 	imageS3Key: string;
 	likesCount: number;
 	participants: string;
