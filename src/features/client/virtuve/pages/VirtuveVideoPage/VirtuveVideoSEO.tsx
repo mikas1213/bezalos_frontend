@@ -8,10 +8,15 @@ interface Props {
 	video: VideoPageDto;
 }
 
+const toIsoDuration = (hms: string): string => {
+	const [h, m, s] = hms.split(':').map(Number);
+	return `PT${h ? h + 'H' : ''}${m ? m + 'M' : ''}${s ? s + 'S' : ''}`;
+};
+
 const VirtuveVideoSEO = ({ video }: Props) => {
 	const thumbnailUrl = `${S3_BASE}${video.imageS3Key}`;
 	const videoUrl = `https://www.bezalos.lt/virtuve/${video.slug}`;
-	const createdAt = new Date(video.createdAt).toISOString().split('T')[0];
+	const createdAt = new Date(video.createdAt).toISOString();
 
 	const keywords = [video.title, 'virtuvė', 'receptas', 'be žalos', 'sveikas maistas', ...video.videoTags].join(', ');
 
@@ -23,7 +28,7 @@ const VirtuveVideoSEO = ({ video }: Props) => {
 		thumbnailUrl,
 		uploadDate: createdAt,
 		...(video.contentUrl && { contentUrl: video.contentUrl }),
-		duration: video.duration,
+		duration: toIsoDuration(video.duration),
 		keywords,
 		author: {
 			'@type': 'Person',
