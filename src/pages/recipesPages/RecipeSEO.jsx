@@ -14,12 +14,15 @@ const RecipeSEO = ({ recipe }) => {
         'sveikas maistas'
     ].join(', ');
 
+    const recipeUrl = `https://www.bezalos.lt/receptai/${recipe.slug}`;
+
     // Schema.org žymėjimas
     const schemaData = {
         "@context": "https://schema.org",
         "@type": "Recipe",
         "name": recipe.title,
         "alternateName": shortTitle,
+        "image": recipe.image_s3,
         "author": {
             "@type": "Person",
             "name": "Be žalos"
@@ -29,17 +32,22 @@ const RecipeSEO = ({ recipe }) => {
         "prepTime": `PT${recipe.duration}M`,
         "cookTime": `PT${recipe.duration}M`,
         "totalTime": `PT${recipe.duration}M`,
+        "recipeCuisine": "Lietuviška",
         "recipeYield": "1-4 porcijos",
-        "recipeIngredient" : ingredients,
+        "recipeIngredient": ingredients,
         "recipeInstructions": recipe.steps && recipe.steps.length > 0
             ? recipe.steps.map((step, index) => ({
                 "@type": "HowToStep",
+                "name": `Žingsnis ${index + 1}`,
                 "text": step,
+                "url": `${recipeUrl}#zingsnis-${index + 1}`,
                 "position": index + 1
             }))
             : [{
                 "@type": "HowToStep",
-                "text": "Instrukcijos pateiktos recepto puslapyje."
+                "name": "Instrukcijos",
+                "text": "Instrukcijos pateiktos recepto puslapyje.",
+                "url": recipeUrl
             }],
         "nutrition": {
             "@type": "NutritionInformation",
@@ -51,10 +59,12 @@ const RecipeSEO = ({ recipe }) => {
         "keywords": keywords,
         ...(recipe.video_link && {
             "video": {
-            "@type": "VideoObject",
-            "name": `Kaip paruošti ${recipe.title}`,
-            "description": recipe.description,
-            "contentUrl": recipe.video_link
+                "@type": "VideoObject",
+                "name": `Kaip paruošti ${recipe.title}`,
+                "description": recipe.description,
+                "thumbnailUrl": recipe.image_s3,
+                "uploadDate": recipe.created_at.split('T')[0],
+                "contentUrl": recipe.video_link
             }
         })
     };
@@ -67,15 +77,15 @@ const RecipeSEO = ({ recipe }) => {
             <meta name="topic" content="Sveiki receptai"></meta>
 
             {/* Kanoninė nuoroda */}
-            <link rel="canonical" href={`https://bezalos.lt/receptai/${recipe.slug}`} />
-            
+            <link rel="canonical" href={recipeUrl} />
+
             {/* Open Graph meta žymos socialinei medijai */}
             <meta property="og:site_name" content="Be žalos" />
             <meta property="og:locale" content="lt_LT"></meta>
             <meta property="og:title" content={recipe.title} />
             <meta property="og:description" content={recipe.description.slice(0, 160)} />
             <meta property="og:type" content="article" />
-            <meta property="og:url" content={`https://bezalos.lt/receptai/${recipe.slug}`} />
+            <meta property="og:url" content={recipeUrl} />
             <meta property="og:image" content={recipe.image_s3} />
             
             {/* Twitter Card meta žymos */}
