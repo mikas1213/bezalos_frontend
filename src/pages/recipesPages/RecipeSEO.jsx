@@ -22,7 +22,7 @@ const RecipeSEO = ({ recipe }) => {
         "@type": "Recipe",
         "name": recipe.title,
         "alternateName": shortTitle,
-        "image": recipe.image_s3,
+        ...(recipe.image_s3 && { "image": recipe.image_s3 }),
         "author": {
             "@type": "Person",
             "name": "Be žalos"
@@ -86,13 +86,13 @@ const RecipeSEO = ({ recipe }) => {
             <meta property="og:description" content={recipe.description.slice(0, 160)} />
             <meta property="og:type" content="article" />
             <meta property="og:url" content={recipeUrl} />
-            <meta property="og:image" content={recipe.image_s3} />
-            
+            {recipe.image_s3 && <meta property="og:image" content={recipe.image_s3} />}
+
             {/* Twitter Card meta žymos */}
             <meta name="twitter:card" content="summary_large_image" />
             <meta name="twitter:title" content={recipe.title} />
             <meta name="twitter:description" content={recipe.description.slice(0, 160)} />
-            <meta name="twitter:image" content={recipe.image_s3} />
+            {recipe.image_s3 && <meta name="twitter:image" content={recipe.image_s3} />}
             
             {/* Schema.org žymėjimas JSON-LD formatu */}
             <script type="application/ld+json">
