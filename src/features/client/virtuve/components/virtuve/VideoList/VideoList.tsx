@@ -27,15 +27,19 @@ export const VideoList = ({
 		);
 	}
 
-	const newestSlug = videos.reduce((newest, video) =>
-		new Date(video.created_at) > new Date(newest.created_at) ? video : newest
-	).slug;
+	const thirtyDaysAgo = new Date();
+	thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
 
 	return (
 		<div className={styles.wrapper}>
 			<div className={styles.grid}>
 				{videos.map((video, index) => (
-					<VideoCard key={video.slug} video={video} index={index} isNew={video.slug === newestSlug} />
+					<VideoCard
+						key={video.slug}
+						video={video}
+						index={index}
+						isNew={new Date(video.created_at) >= thirtyDaysAgo}
+					/>
 				))}
 			</div>
 
