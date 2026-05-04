@@ -1,5 +1,4 @@
 import { useState } from 'react';
-
 import { Link } from 'react-router-dom';
 
 import cx from 'classnames';
@@ -8,7 +7,7 @@ import type { VideoCardProps } from './types';
 
 import styles from './VideoCard.module.scss';
 
-export const VideoCard = ({ video, index = 0 }: VideoCardProps) => {
+export const VideoCard = ({ video, index = 0, isNew = false }: VideoCardProps) => {
 	const [imageLoaded, setImageLoaded] = useState(false);
 
 	return (
@@ -20,6 +19,7 @@ export const VideoCard = ({ video, index = 0 }: VideoCardProps) => {
 				onLoad={() => setImageLoaded(true)}
 			/>
 			<div className={styles.cardOverlay}></div>
+			{isNew && <span className={styles.newBadge}>naujas</span>}
 
 			<div className={styles.cardContent}>
 				<div className={styles.cardBody}>

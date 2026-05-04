@@ -15,4 +15,5 @@ export interface VideoCard {
 export interface VideoCardProps {
 	video: VideoCard;
 	index?: number;
+	isNew?: boolean;
 }
