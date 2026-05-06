@@ -1,16 +1,12 @@
 import type { ChangeEvent } from 'react';
 import { useState } from 'react';
-import toast from 'react-hot-toast';
 
-import { useMutation, useQueryClient } from '@tanstack/react-query';
-
-import { axiosPrivate } from '../../../../api/axios';
 import Modal from '../../../../components/Shared/Modal';
 import { UploadVideoModal } from '../components/UploadVideoModal';
 import { VideoRow, VideoRowHeader } from '../components/VideoRow';
 import { VideosNav } from '../components/VideosNav';
+import { useDeleteVideo } from '../hooks/useDeleteVideo';
 import useVideosAdmin from '../hooks/useVideosAdmin';
-import type { AdmninVirtuveDto } from '../types';
 
 import type { ModalState, UploadVideoFormValues } from './types';
 const emptyForm: UploadVideoFormValues = {
@@ -35,23 +31,7 @@ export const AdminVirtuvePage = () => {
 	const [isModalOpen, setIsModalOpen] = useState<ModalState>({ isOpen: false, action: null });
 	const [formValues, setFormValues] = useState(emptyForm);
 	const { data: videos, isLoading } = useVideosAdmin();
-	const queryClient = useQueryClient();
-
-	const handleDeleteVideo = useMutation<void, Error, AdmninVirtuveDto>({
-		mutationFn: (video) =>
-			axiosPrivate.delete(`/admin/videos/${video.id}`, {
-				data: {
-					videoS3Key: video.videoS3Key,
-					imageS3Key: video.imageS3Key,
-				},
-			}),
-		onSuccess: () => {
-			queryClient.invalidateQueries({ queryKey: ['admin-videos'] });
-		},
-		onError: (err) => {
-			toast.error(err.message || 'Klaida!');
-		},
-	});
+	const handleDeleteVideo = useDeleteVideo();
 
 	const handleFormInput = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
 		let value: unknown = e.target.value ?? e.target.dataset.value;
