@@ -1,5 +1,6 @@
 import { axiosPrivate } from '../../../../api/axios';
 import type { AdmninVirtuveDto } from '../types';
+import type { DeletePayload } from '../types';
 
 class AdminVirtuveService {
 	async getAllVideos(): Promise<AdmninVirtuveDto[]> {
@@ -9,11 +10,12 @@ class AdminVirtuveService {
 
 	async uploadVideo() {}
 
-	async deleteVideo(video: AdmninVirtuveDto): Promise<void> {
-		await axiosPrivate.delete(`/admin/virtuve/${video.id}`, {
+	async deleteVideo({ videoId, imageS3Key, videoS3Key, videoS3SnippetKey }: DeletePayload): Promise<void> {
+		await axiosPrivate.delete<void, void, Omit<DeletePayload, 'videoId'>>(`/admin/virtuve/${videoId}`, {
 			data: {
-				videoS3Key: video.videoS3Key,
-				imageS3Key: video.imageS3Key,
+				imageS3Key,
+				videoS3Key,
+				videoS3SnippetKey,
 			},
 		});
 	}
