@@ -72,7 +72,8 @@ export const VideoRow = ({ video, setIsModalOpen, setFormValues, handleDeleteVid
 				onClick={() => {
 					const is_delete = window.confirm('Trinti paslaugą?');
 					if (is_delete) {
-						handleDeleteVideo.mutate(video);
+						const { id, imageS3Key, videoS3Key, videoS3SnippetKey } = video;
+						handleDeleteVideo.mutate({ videoId: id, imageS3Key, videoS3Key, videoS3SnippetKey });
 					}
 				}}
 			>
