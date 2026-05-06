@@ -1,6 +1,6 @@
 import cx from 'classnames';
 
-import { useVirtuveFilters } from '../../../hooks/useVirtuveFilters';
+import { useTags } from '../../../../../../hooks/tagsHooks/useTags';
 
 import type { HeaderProps } from './types';
 
@@ -15,7 +15,8 @@ export const Header = ({
 	onTagChange,
 	onSearchChange,
 }: HeaderProps) => {
-	const { data, isPending } = useVirtuveFilters();
+	const { data, isPending } = useTags('virtuve');
+
 	const { categories, tags } = data ?? { categories: [], tags: [] };
 	const categoryClasses = cx(styles.filter, styles.categoryBtn);
 	const tagClasses = cx(styles.filter, styles.tagBtn);
@@ -57,10 +58,7 @@ export const Header = ({
 						<button
 							type="button"
 							key={category}
-							className={cx(
-								categoryClasses,
-								selectedCategory === category && styles.active,
-							)}
+							className={cx(categoryClasses, selectedCategory === category && styles.active)}
 							onClick={() => onCategoryChange(category)}
 						>
 							{category}
@@ -80,15 +78,6 @@ export const Header = ({
 							{tag}
 						</button>
 					))}
-
-				{/* <div className={styles.search}>
-					<input
-						type="text"
-						placeholder="Ieškoti..."
-						value={searchQuery}
-						onChange={(e) => onSearchChange(e.target.value)}
-					/>
-				</div> */}
 			</div>
 		</div>
 	);

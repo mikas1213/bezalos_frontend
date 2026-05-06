@@ -12,7 +12,8 @@ import FilterChip from '../../../../../components/Shared/FilterChip';
 import Select from '../../../../../components/Shared/Select';
 import Textarea from '../../../../../components/Shared/Textarea';
 import UploadArea from '../../../../../components/Shared/UploadArea';
-import { useUploadVideo } from '../../../../../hooks/useUploadVideo';
+// import { useUploadVideo } from '../../../../../hooks/useUploadVideo';
+import { useUploadVideo } from '../../hooks/useUploadVideo';
 import { ProgressBar } from '../ProgressBar/ProgressBar';
 
 import type { UploadVideoModalProps } from './types';
