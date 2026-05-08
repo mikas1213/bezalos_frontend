@@ -63,7 +63,6 @@ export const useUploadVideo = ({
 					'X-Socket-ID': socket?.id,
 				},
 				onUploadProgress: (progressEvent) => {
-					// const progress = Math.round((progressEvent.loaded * 100) / progressEvent.total); OLD VERSION
 					const progress = Math.round((progressEvent.loaded * 100) / (progressEvent.total ?? progressEvent.loaded));
 					setUploadProgress(progress);
 
