@@ -32,10 +32,9 @@ export const AdminVirtuvePage = () => {
 	const handleDeleteVideo = useDeleteVideo();
 
 	const handleFormInput = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement> | MouseEvent<HTMLDivElement>) => {
-		const target = e.target as HTMLInputElement & HTMLElement;
+		const target = (e.currentTarget ?? e.target) as HTMLInputElement & HTMLElement;
 		let value: unknown = target.value ?? target.dataset.value;
 		const name = target.name || target.dataset.name;
-
 		if (['video', 'photo'].includes(name as 'video' | 'photo')) {
 			value = target.files?.[0] ?? null;
 		} else if (name === 'isActive') {
