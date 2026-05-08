@@ -1,4 +1,4 @@
-import type { ChangeEvent } from 'react';
+import type { ChangeEvent, MouseEvent } from 'react';
 import { useState } from 'react';
 
 import Modal from '../../../../components/Shared/Modal';
@@ -12,33 +12,32 @@ import type { ModalState, UploadVideoFormValues } from './types';
 const emptyForm: UploadVideoFormValues = {
 	title: '',
 	description: '',
-	// video_type: 'virtuve',
 	category: 'Vebinaras',
 	duration: '00:00:00',
 	isActive: true,
-	videoS3Key: '',
 	imageS3Key: '',
+	videoS3Key: '',
+	videoS3SnippetKey: '',
 	action: 'insert',
 	video: null,
 	photo: null,
 	participants: '',
 	videoTags: [],
-	// is_active: true,
-	// search_tag: 'vebinaras',
 };
 
 export const AdminVirtuvePage = () => {
 	const [isModalOpen, setIsModalOpen] = useState<ModalState>({ isOpen: false, action: null });
-	const [formValues, setFormValues] = useState(emptyForm);
+	const [formValues, setFormValues] = useState<UploadVideoFormValues>(emptyForm);
 	const { data: videos, isLoading } = useVideosAdmin();
 	const handleDeleteVideo = useDeleteVideo();
 
-	const handleFormInput = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
-		let value: unknown = e.target.value ?? e.target.dataset.value;
-		const name = e.target.name || e.target.dataset.name;
+	const handleFormInput = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement> | MouseEvent<HTMLDivElement>) => {
+		const target = e.target as HTMLInputElement & HTMLElement;
+		let value: unknown = target.value ?? target.dataset.value;
+		const name = target.name || target.dataset.name;
 
 		if (['video', 'photo'].includes(name as 'video' | 'photo')) {
-			value = (e.target as HTMLInputElement).files?.[0] ?? null;
+			value = target.files?.[0] ?? null;
 		} else if (name === 'isActive') {
 			value = value === 'Taip';
 		}

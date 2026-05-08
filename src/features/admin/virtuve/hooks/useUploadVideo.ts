@@ -1,10 +1,26 @@
 import toast from 'react-hot-toast';
 
 import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { isAxiosError } from 'axios';
+import type { Socket } from 'socket.io-client';
 
 import { axiosPrivate } from '../../../../api/axios';
+import type { UploadVideoFormValues } from '../pages/types';
+type SetState<T> = React.Dispatch<React.SetStateAction<T>>;
 
-export const useUploadVideo = (
+interface UseUploadVideoParams {
+	socket: Socket | null;
+	action: 'insert' | 'update';
+	isVideo: boolean;
+	setUploadProgress: SetState<number>;
+	setVideoProgress: SetState<number>;
+	setMessage: SetState<string>;
+	setUploading: SetState<boolean>;
+	setUploadSuccess: SetState<boolean>;
+	setUploadError: SetState<boolean>;
+}
+
+export const useUploadVideo = ({
 	socket,
 	action,
 	isVideo,
@@ -14,11 +30,11 @@ export const useUploadVideo = (
 	setUploading,
 	setUploadSuccess,
 	setUploadError,
-) => {
+}: UseUploadVideoParams) => {
 	const queryClient = useQueryClient();
 
 	return useMutation({
-		mutationFn: async (formValues) => {
+		mutationFn: async (formValues: UploadVideoFormValues) => {
 			if (!socket || !socket.connected) {
 				throw new Error('Socket.IO neprisijungęs. Bandykite dar kartą.');
 			}
@@ -26,19 +42,20 @@ export const useUploadVideo = (
 			console.log('🔌 Socket ID:', socket.id); // Debug log
 			const formData = new FormData();
 			formData.append('title', formValues.title);
-			formData.append('image_s3_key', formValues.image_s3_key);
-			formData.append('video_s3_key', formValues.video_s3_key);
+			formData.append('imageS3Key', formValues.imageS3Key);
+			formData.append('videoS3Key', formValues.videoS3Key);
+			formData.append('videoS3SnippetKey', formValues.videoS3SnippetKey);
 			formData.append('description', formValues.description);
-			formData.append('video_type', formValues.video_type);
+			formData.append('participants', formValues.participants);
 			formData.append('category', formValues.category);
 			formData.append('duration', formValues.duration);
-			formData.append('is_active', formValues.is_active);
-			formData.append('search_tag', formValues.search_tag);
-			formData.append('video', formValues.video);
-			formData.append('photo', formValues.photo);
-			formData.append('action', formValues.action);
+			formData.append('isActive', String(formValues.isActive));
+			if (formValues.videoTags?.length) formData.append('videoTags', JSON.stringify(formValues.videoTags));
+			if (formValues.video) formData.append('video', formValues.video);
+			if (formValues.photo) formData.append('photo', formValues.photo);
+			if (formValues.action) formData.append('action', formValues.action);
 
-			const api = action === 'insert' ? `/admin/videos` : `/admin/videos/${formValues.id}`;
+			const api = action === 'insert' ? `/admin/virtuve` : `/admin/virtuve/${formValues.id}`;
 			console.log('📤 Sending to:', api); // Debug log
 			const response = await axiosPrivate.post(api, formData, {
 				headers: {
@@ -46,7 +63,8 @@ export const useUploadVideo = (
 					'X-Socket-ID': socket?.id,
 				},
 				onUploadProgress: (progressEvent) => {
-					const progress = Math.round((progressEvent.loaded * 100) / progressEvent.total);
+					// const progress = Math.round((progressEvent.loaded * 100) / progressEvent.total); OLD VERSION
+					const progress = Math.round((progressEvent.loaded * 100) / (progressEvent.total ?? progressEvent.loaded));
 					setUploadProgress(progress);
 
 					setMessage(
@@ -65,7 +83,8 @@ export const useUploadVideo = (
 		},
 		onError: (error) => {
 			console.error('❌ Upload error:', error); // Debug log
-			toast.error(error.response?.data?.message || error.message);
+			const message = isAxiosError(error) ? error.response?.data?.message : error.message;
+			toast.error(message || 'Klaida');
 			setMessage('Klaida įkeliant failus ');
 			setUploading(false);
 			setUploadError(true);

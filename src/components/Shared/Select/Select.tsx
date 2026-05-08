@@ -3,15 +3,17 @@ import { useEffect, useRef, useState } from 'react';
 import { ChevronLeft } from 'lucide-react';
 import { Check } from 'lucide-react';
 
+import type { SelectProps } from './types';
+
 import styles from './Select.module.css';
 
-const Select = ({ options = [], label, name, value, handleFormInput, className = [] }) => {
+const Select = ({ options = [], label, name, value, handleFormInput, className = '' }: SelectProps) => {
 	const [selectOpen, setSelectOpen] = useState(false);
-	const refOptions = useRef(null);
+	const refOptions = useRef<HTMLDivElement>(null);
 
 	useEffect(() => {
-		const handleOutsideClick = (e) => {
-			if (refOptions.current && !refOptions.current.contains(e.target)) {
+		const handleOutsideClick = (e: MouseEvent) => {
+			if (refOptions.current && !refOptions.current.contains(e.target as Node)) {
 				setSelectOpen(false);
 			}
 		};

@@ -1,4 +1,4 @@
-export type Feature = 'virtuve' | 'receptai';
+export type Feature = 'all' | 'virtuve' | 'receptai';
 export interface TagsRequestDto {
 	feature: Feature;
 }
