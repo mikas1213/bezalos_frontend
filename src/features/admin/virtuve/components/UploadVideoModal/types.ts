@@ -1,5 +1,4 @@
-import type { Dispatch, SetStateAction } from 'react';
-import type { ChangeEvent } from 'react';
+import type { ChangeEvent, Dispatch, MouseEvent, SetStateAction } from 'react';
 
 import type { ModalState, UploadVideoFormValues } from '../../pages/types';
 export interface UploadVideoModalProps {
@@ -7,5 +6,5 @@ export interface UploadVideoModalProps {
 	setIsModalOpen: Dispatch<SetStateAction<ModalState>>;
 	formValues: UploadVideoFormValues;
 	setFormValues: Dispatch<SetStateAction<UploadVideoFormValues>>;
-	handleFormInput: (e: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => void;
+	handleFormInput: (e: ChangeEvent<HTMLInputElement | HTMLSelectElement> | MouseEvent<HTMLDivElement>) => void;
 }

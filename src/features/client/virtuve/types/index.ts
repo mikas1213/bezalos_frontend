@@ -6,11 +6,6 @@ export interface VirtuveFilterParams {
 	s?: string;
 }
 
-export interface FiltersDto {
-	categories: string[];
-	tags: string[];
-}
-
 export interface VideosPageDto {
 	data: VideoCard[];
 	total: number;

@@ -12,13 +12,21 @@ import FilterChip from '../../../../../components/Shared/FilterChip';
 import Select from '../../../../../components/Shared/Select';
 import Textarea from '../../../../../components/Shared/Textarea';
 import UploadArea from '../../../../../components/Shared/UploadArea';
-import { useTags } from '../../../../../hooks/tagsHooks/useTags';
+// import { useUploadVideo } from '../../../../../hooks/useUploadVideo';
 import { useUploadVideo } from '../../hooks/useUploadVideo';
 import { ProgressBar } from '../ProgressBar/ProgressBar';
 
 import type { UploadVideoModalProps } from './types';
 
 import styles from './UploadVideoModal.module.scss';
+
+const filters = [
+	{ label: 'Vebinaras', value: 'vebinaras' },
+	{ label: 'Trumpai', value: 'trumpai' },
+	{ label: 'Emocinis valgymas', value: 'emocinis valgymas' },
+	{ label: 'Mityba', value: 'mityba' },
+	{ label: 'Valgymo psichologija', value: 'valgymo psichologija' },
+];
 
 const formatFileSize = (bytes: number) => {
 	if (bytes === 0) return '0 Bytes';
@@ -44,17 +52,17 @@ export const UploadVideoModal = ({
 	const [uploading, setUploading] = useState(false);
 	const [message, setMessage] = useState('');
 
-	const uploadVideoMutation = useUploadVideo({
+	const uploadVideoMutation = useUploadVideo(
 		socket,
-		action: isModalOpen.action!,
-		isVideo: !!formValues.video,
+		isModalOpen.action,
+		formValues.video,
 		setUploadProgress,
 		setVideoProgress,
 		setMessage,
 		setUploading,
 		setUploadSuccess,
 		setUploadError,
-	});
+	);
 
 	useEffect(() => {
 		const initializeSocket = async () => {
@@ -113,33 +121,32 @@ export const UploadVideoModal = ({
 		};
 	}, []);
 
-	const { data } = useTags('virtuve');
-	const categories = data?.categories ?? [];
-	const tags = data?.tags ?? [];
-
-	const handleCheckboxChange = (value: string) => {
+	const handleCheckboxChange = (value) => {
 		setFormValues((prev) => {
-			const selectedFilter = prev.videoTags ? prev.videoTags : [];
+			const selectedFilter = prev.search_tag && prev.search_tag.split(', ') ? prev.search_tag.split(', ') : [];
 			const newSelectedFilter = selectedFilter.includes(value)
 				? selectedFilter.filter((item) => item !== value)
 				: [...selectedFilter, value];
 
 			return {
 				...prev,
-				videoTags: newSelectedFilter,
+				search_tag: newSelectedFilter.join(', '),
 			};
 		});
 	};
 
-	const isChecked = (value: string) => {
-		if (!formValues.videoTags) return false;
-		return formValues.videoTags.includes(value);
+	const isChecked = (value) => {
+		if (!formValues.search_tag) return false;
+		return formValues.search_tag.split(', ').includes(value);
 	};
 
-	const removeFile = (file: 'video' | 'photo') => {
-		setFormValues((prevState) => ({ ...prevState, [file]: null }));
-		const el = document.getElementById(file) as HTMLInputElement | null;
-		if (el) el.value = '';
+	const removeFile = (file) => {
+		setFormValues((prevState) => {
+			const newState = { ...prevState };
+			delete newState[file];
+			return newState;
+		});
+		document.getElementById(file).value = '';
 	};
 
 	const handleUpload = async () => {
@@ -180,19 +187,13 @@ export const UploadVideoModal = ({
 			socket.disconnect();
 		}
 		setFormValues({
-			action: null,
 			title: '',
 			description: '',
+			video_type: 'virtuve',
 			category: 'Vebinaras',
-			participants: '',
 			duration: '00:00:00',
 			isActive: true,
-			videoTags: [],
-			imageS3Key: '',
-			videoS3Key: '',
-			videoS3SnippetKey: '',
-			photo: null,
-			video: null,
+			search_tag: 'vebinaras',
 		});
 		setIsModalOpen({ action: null, isOpen: false });
 	};
@@ -204,15 +205,7 @@ export const UploadVideoModal = ({
 				name="title"
 				value={formValues.title || ''}
 				handleFormInput={handleFormInput}
-				className={styles.span_4}
-			/>
-
-			<Input
-				label="Dalyviai"
-				name="participants"
-				value={formValues.participants || ''}
-				handleFormInput={handleFormInput}
-				className={styles.span_4}
+				className={styles.span_full}
 			/>
 
 			<Textarea
@@ -226,10 +219,21 @@ export const UploadVideoModal = ({
 			/>
 
 			<Select
+				label="Video type"
+				name="video_type"
+				value={formValues.video_type}
+				options={['virtuve', 'kursai']}
+				formValues={formValues}
+				handleFormInput={handleFormInput}
+				className={styles.span_2}
+			/>
+
+			<Select
 				label="Kategorija"
 				name="category"
 				value={formValues.category}
-				options={categories}
+				options={['Vebinaras', 'Kursai', 'Trumpai']}
+				formValues={formValues}
 				handleFormInput={handleFormInput}
 				className={styles.span_2}
 			/>
@@ -247,13 +251,20 @@ export const UploadVideoModal = ({
 				name="isActive"
 				value={formValues.isActive ? 'Taip' : 'Ne'}
 				options={['Taip', 'Ne']}
+				formValues={formValues}
 				handleFormInput={handleFormInput}
 				className={styles.span_2}
 			/>
 
 			<div className={styles.filterChips}>
-				{tags.map((tag) => (
-					<FilterChip key={tag} label={tag} value={tag} isChecked={isChecked(tag)} onChange={handleCheckboxChange} />
+				{filters.map((filter) => (
+					<FilterChip
+						key={filter.label}
+						label={filter.label}
+						value={filter.value}
+						isChecked={isChecked(filter.value)}
+						onChange={handleCheckboxChange}
+					/>
 				))}
 			</div>
 
