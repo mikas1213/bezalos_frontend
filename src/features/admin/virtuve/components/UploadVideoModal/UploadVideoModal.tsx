@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import toast from 'react-hot-toast';
 
 import { useQueryClient } from '@tanstack/react-query';
@@ -12,6 +12,8 @@ import FilterChip from '../../../../../components/Shared/FilterChip';
 import Select from '../../../../../components/Shared/Select';
 import Textarea from '../../../../../components/Shared/Textarea';
 import UploadArea from '../../../../../components/Shared/UploadArea';
+import { useAddTag } from '../../../../../hooks/tagsHooks/useAddTag';
+import { useDeleteTag } from '../../../../../hooks/tagsHooks/useDeleteTag';
 import { useTags } from '../../../../../hooks/tagsHooks/useTags';
 import { useUploadVideo } from '../../hooks/useUploadVideo';
 import { ProgressBar } from '../ProgressBar/ProgressBar';
@@ -116,6 +118,57 @@ export const UploadVideoModal = ({
 	const { data } = useTags('virtuve');
 	const categories = data?.categories ?? [];
 	const tags = data?.tags ?? [];
+
+	const addTagMutation = useAddTag();
+	const deleteTagMutation = useDeleteTag();
+
+	const [isEditMode, setIsEditMode] = useState(false);
+	const [addedTags, setAddedTags] = useState<string[]>([]);
+	const [deletedTags, setDeletedTags] = useState<Set<string>>(new Set());
+	const [newTagInput, setNewTagInput] = useState('');
+
+	const localTags = useMemo(() => [...tags.filter((t) => !deletedTags.has(t)), ...addedTags], [tags, deletedTags, addedTags]);
+
+	const handleDeleteTag = (tag: string) => {
+		if (addedTags.includes(tag)) {
+			setAddedTags((prev) => prev.filter((t) => t !== tag));
+		} else {
+			setDeletedTags((prev) => new Set([...prev, tag]));
+		}
+		setFormValues((prev) => ({
+			...prev,
+			videoTags: prev.videoTags?.filter((t) => t !== tag) ?? [],
+		}));
+	};
+
+	const handleAddTag = () => {
+		const trimmed = newTagInput.trim();
+		if (!trimmed || localTags.includes(trimmed)) return;
+		setAddedTags((prev) => [...prev, trimmed]);
+		setNewTagInput('');
+	};
+
+	const handleSaveEdit = async () => {
+		try {
+			await Promise.all([
+				...Array.from(deletedTags).map((tag) => deleteTagMutation.mutateAsync({ feature: 'virtuve', tag })),
+				...addedTags.map((tag) => addTagMutation.mutateAsync({ feature: 'virtuve', tag })),
+			]);
+			setAddedTags([]);
+			setDeletedTags(new Set());
+			setIsEditMode(false);
+		} catch {
+			// klaidos tvarkomos hook'uose per toast
+		}
+	};
+
+	const handleCancelEdit = () => {
+		setAddedTags([]);
+		setDeletedTags(new Set());
+		setIsEditMode(false);
+	};
+
+	const isSaving = addTagMutation.isPending || deleteTagMutation.isPending;
 
 	const handleCheckboxChange = (value: string) => {
 		setFormValues((prev) => {
@@ -252,9 +305,64 @@ export const UploadVideoModal = ({
 			/>
 
 			<div className={styles.filterChips}>
-				{tags.map((tag) => (
-					<FilterChip key={tag} label={tag} value={tag} isChecked={isChecked(tag)} onChange={handleCheckboxChange} />
-				))}
+				<div className={styles.tagsRow}>
+					{localTags.map((tag) => (
+						<FilterChip
+							key={tag}
+							label={tag}
+							value={tag}
+							isChecked={isChecked(tag)}
+							onChange={handleCheckboxChange}
+							onRemove={isEditMode ? () => handleDeleteTag(tag) : undefined}
+						/>
+					))}
+					<button
+						type="button"
+						className={styles.editBtn}
+						onClick={isEditMode ? handleSaveEdit : () => setIsEditMode(true)}
+						disabled={isSaving}
+					>
+						{isEditMode ? (
+							<>
+								<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+									<polyline points="20 6 9 17 4 12" />
+								</svg>
+								{isSaving ? 'Saugoma...' : 'Atlikta'}
+							</>
+						) : (
+							<>
+								<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+									<path d="M12 20h9" />
+									<path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" />
+								</svg>
+								Redaguoti
+							</>
+						)}
+					</button>
+				</div>
+				{isEditMode && (
+					<div className={styles.editPanel}>
+						<input
+							className={styles.addTagInput}
+							value={newTagInput}
+							onChange={(e) => setNewTagInput(e.target.value)}
+							placeholder="Naujo filtro pavadinimas..."
+							onKeyDown={(e) => {
+								if (e.key === 'Enter') handleAddTag();
+								if (e.key === 'Escape') setIsEditMode(false);
+							}}
+							autoFocus
+						/>
+						<button type="button" className={styles.addTagBtn} onClick={handleAddTag} disabled={!newTagInput.trim()}>
+							Pridėti
+						</button>
+						{(addedTags.length > 0 || deletedTags.size > 0) && (
+							<button type="button" className={styles.cancelEditBtn} onClick={handleCancelEdit}>
+								Atšaukti pakeitimus
+							</button>
+						)}
+					</div>
+				)}
 			</div>
 
 			{formValues.video ? (
