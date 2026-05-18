@@ -1,0 +1,378 @@
+/* ── Palette tokens ─────────────────────────────────────────── */
+.palette-cream {
+	--bg: #fff;
+	--accent: var(--light-green-700);
+	--accent-ink: #ffffff;
+	--ink: var(--dark-green-500);
+	--mute: rgba(14, 61, 46, 0.7);
+}
+
+/* ── Keyframes ──────────────────────────────────────────────── */
+@keyframes bannerAppear {
+	from {
+		background-color: #00000000;
+		backdrop-filter: blur(0px);
+	}
+	to {
+		background-color: rgba(8, 20, 14, 0.55);
+		backdrop-filter: blur(6px);
+	}
+}
+
+@keyframes bannerSlideUp {
+	from {
+		opacity: 0;
+		transform: translateY(1rem);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+/* ── Backdrop ───────────────────────────────────────────────── */
+.backdrop {
+	position: fixed;
+	inset: 0;
+	z-index: 50;
+	display: grid;
+	place-items: center;
+	padding: 24px;
+	background-color: rgba(8, 20, 14, 0.55);
+	backdrop-filter: blur(6px);
+	-webkit-backdrop-filter: blur(6px);
+	animation: bannerAppear 0.4s ease forwards;
+}
+
+/* ── Modal shell ────────────────────────────────────────────── */
+.modal {
+	position: relative;
+	max-width: 100%;
+	background: var(--bg);
+	color: var(--ink);
+	border-radius: 28px;
+	overflow: hidden;
+	box-shadow:
+		0 30px 80px -20px rgba(0, 0, 0, 0.55),
+		0 0 0 1px rgba(255, 255, 255, 0.04);
+	display: flex;
+	animation: bannerSlideUp 1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+.layoutTop {
+	flex-direction: column;
+	width: 440px;
+}
+.layoutSide {
+	flex-direction: row;
+	width: 760px;
+}
+
+/* ── Close button ───────────────────────────────────────────── */
+.closeBtn {
+	position: absolute;
+	top: 14px;
+	right: 14px;
+	z-index: 10;
+	width: 34px;
+	height: 34px;
+	border-radius: 999px;
+	background: rgba(255, 255, 255, 0.92);
+	border: none;
+	cursor: pointer;
+	color: var(--dark-green-600);
+	display: grid;
+	place-items: center;
+	box-shadow: 0 4px 14px rgba(0, 0, 0, 0.18);
+	transition: transform 0.15s ease;
+}
+.closeBtn:hover {
+	transform: scale(1.08);
+}
+
+/* ── Photo ──────────────────────────────────────────────────── */
+.photo {
+	position: relative;
+	overflow: hidden;
+	flex-shrink: 0;
+	background: #0a1d14;
+}
+.photoTop {
+	width: 100%;
+	height: 280px;
+}
+.photoSide {
+	width: 46%;
+	min-height: 360px;
+}
+.photoImg {
+	position: absolute;
+	inset: 0;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+.photoFade {
+	position: absolute;
+	inset: 0;
+	pointer-events: none;
+}
+.photoFadeTop {
+	background: linear-gradient(180deg, rgba(0, 0, 0, 0) 70%, rgba(14, 40, 28, 0.22) 100%);
+}
+.photoFadeSide {
+	background: linear-gradient(90deg, rgba(0, 0, 0, 0) 65%, rgba(14, 40, 28, 0.18) 100%);
+}
+
+/* ── Content ────────────────────────────────────────────────── */
+.content {
+	padding: 44px 44px 40px;
+	display: flex;
+	flex-direction: column;
+	flex: 1;
+	min-width: 0;
+	gap: 16px;
+	align-items: flex-start;
+	text-align: left;
+}
+.contentCentered {
+	align-items: center;
+	text-align: center;
+}
+.layoutTop .content {
+	padding: 30px 34px 32px;
+}
+
+/* ── Eyebrow ────────────────────────────────────────────────── */
+.eyebrow {
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+	gap: 8px;
+	font-size: 11px;
+	font-weight: 700;
+	letter-spacing: 1.4px;
+	text-transform: uppercase;
+	color: var(--accent);
+}
+.eyebrowCentered {
+	justify-content: center;
+}
+
+/* ── Title ──────────────────────────────────────────────────── */
+.title {
+	margin: 0;
+	font-family: 'Poppins', system-ui, sans-serif;
+	font-weight: 700;
+	font-size: 36px;
+	line-height: 1.25;
+	letter-spacing: -0.6px;
+	color: var(--ink);
+	white-space: pre-line;
+	text-wrap: pretty;
+}
+.titleAccent {
+	color: var(--accent);
+	font-style: italic;
+	font-weight: 600;
+}
+
+/* ── Body ───────────────────────────────────────────────────── */
+.body {
+	margin: 0;
+	font-size: 15px;
+	line-height: 1.55;
+	color: var(--mute);
+	text-wrap: pretty;
+}
+
+/* ── CTA ────────────────────────────────────────────────────── */
+.ctaArea {
+	margin-top: 10px;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: 12px;
+}
+.ctaAreaCentered {
+	align-items: center;
+}
+.ctaBtn {
+	width: 100%;
+	background: var(--accent);
+	color: var(--accent-ink);
+	border: none;
+	padding: 14px 28px;
+	border-radius: 999px;
+	font-size: 13px;
+	font-weight: 700;
+	letter-spacing: 1.2px;
+	text-transform: uppercase;
+	cursor: pointer;
+	font-family: inherit;
+	transition:
+		transform 0.15s ease,
+		filter 0.15s ease,
+		box-shadow 0.2s ease;
+	box-shadow: 0 10px 24px -10px var(--accent);
+}
+.ctaBtn:hover {
+	filter: brightness(1.06);
+	transform: translateY(-1px);
+}
+.ctaBtn:not(:hover) {
+	filter: brightness(1);
+	transform: translateY(0);
+}
+.trustNote {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	font-size: 12.5px;
+	color: var(--mute);
+	padding-left: 2px;
+}
+
+/* ── Responsive ─────────────────────────────────────────────── */
+@media (max-width: 1024px) {
+	.layoutSide {
+		width: 700px;
+	}
+
+	.content {
+		padding: 36px 36px 32px;
+	}
+
+	.title {
+		font-size: 32px;
+	}
+}
+
+@media (max-width: 768px) {
+	.layoutSide {
+		width: clamp(440px, 92vw, 640px);
+	}
+
+	.content {
+		padding: 28px 32px 28px;
+		gap: 12px;
+	}
+
+	.title {
+		font-size: 28px;
+	}
+
+	.body {
+		font-size: 14px;
+	}
+}
+
+@media (max-width: 576px) {
+	.layoutSide {
+		flex-direction: column;
+		width: 80vw;
+		border-radius: 24px 24px 16px 16px;
+	}
+
+	.photoSide {
+		width: 100%;
+		height: 320px;
+		min-height: unset;
+	}
+
+	.photoFadeSide {
+		background: linear-gradient(180deg, rgba(0, 0, 0, 0) 60%, rgba(14, 40, 28, 0.22) 100%);
+	}
+
+	.content {
+		padding: 24px 24px 24px;
+	}
+
+	.title {
+		font-size: 26px;
+		letter-spacing: -0.4px;
+	}
+
+	.ctaBtn {
+		padding: 13px 20px;
+		font-size: 12px;
+	}
+}
+
+@media (max-width: 440px) {
+	.photoSide {
+		height: 260px;
+	}
+
+	.content {
+		padding: 20px 20px 22px;
+		gap: 10px;
+	}
+
+	.title {
+		font-size: 23px;
+	}
+
+	.body {
+		font-size: 13.5px;
+	}
+
+	.ctaArea {
+		margin-top: 4px;
+	}
+}
+
+@media (max-width: 375px) {
+	.layoutSide {
+		width: 86vw;
+	}
+
+	.photoSide {
+		height: 240px;
+	}
+
+	.content {
+		padding: 18px 18px 20px;
+	}
+
+	.title {
+		font-size: 21px;
+	}
+
+	.ctaBtn {
+		padding: 12px 16px;
+	}
+}
+
+@media (max-width: 320px) {
+	.photoSide {
+		height: 150px;
+	}
+
+	.content {
+		padding: 16px 16px 18px;
+		gap: 8px;
+	}
+
+	.title {
+		font-size: 19px;
+		letter-spacing: -0.3px;
+	}
+
+	.body {
+		font-size: 13px;
+	}
+
+	.eyebrow {
+		font-size: 10px;
+	}
+
+	.ctaBtn {
+		font-size: 11px;
+		padding: 11px 14px;
+	}
+
+	.trustNote {
+		font-size: 11.5px;
+	}
+}

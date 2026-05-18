@@ -1,7 +1,8 @@
-import { useState } from 'react';
+// import { useState } from 'react';
 import { useCookies } from 'react-cookie';
 
-import { Offer } from '../../../components/layout';
+// import { Offer } from '../../../components/layout';
+import { Banner } from '../../../components/layout';
 import { ObserverProvider } from '../../../contexts/ObserverProvider';
 import {
 	AboutSection,
@@ -16,18 +17,26 @@ import { useIsMounted } from '../../../hooks';
 type CookieValue = { COOKIE_OFFER: string };
 
 const HomePage = () => {
-	const [isOfferSent, setIsOfferSent] = useState<boolean>(false);
+	// const [isOfferSent, setIsOfferSent] = useState<boolean>(false);
 	const [cookies, setCookie] = useCookies<'COOKIE_OFFER', CookieValue>(['COOKIE_OFFER']);
-	const { isMounted, setIsMounted } = useIsMounted({ delay: 3000 });
+	const { isMounted, setIsMounted } = useIsMounted({ delay: 4000 });
 
 	return (
 		<ObserverProvider>
-			{((!cookies.COOKIE_OFFER && isMounted) || isOfferSent) && (
-				<Offer
-					setIsMounted={setIsMounted}
-					setIsOfferSent={setIsOfferSent}
-					isOfferSent={isOfferSent}
-					setCookie={setCookie}
+			{!cookies.COOKIE_OFFER && isMounted && (
+				//  || isOfferSent
+				// <Offer
+				// 	setIsMounted={setIsMounted}
+				// 	setIsOfferSent={setIsOfferSent}
+				// 	isOfferSent={isOfferSent}
+				// 	setCookie={setCookie}
+				// />
+				<Banner
+					visible={true}
+					onClose={() => {
+						setIsMounted(false);
+						setCookie('COOKIE_OFFER', true, { path: '/' });
+					}}
 				/>
 			)}
 			<HeroSection />
