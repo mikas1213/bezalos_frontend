@@ -1,7 +1,8 @@
-import { Lock, X } from 'lucide-react';
-import { createPortal } from 'react-dom';
 import { useCookies } from 'react-cookie';
 import { useNavigate } from 'react-router-dom';
+import { createPortal } from 'react-dom';
+
+import { Lock, X } from 'lucide-react';
 
 import bannerImg from '../../../assets/images/offer/banner.webp';
 
@@ -56,7 +57,7 @@ export function Banner({ visible, onClose }: BannerProps) {
 				<div className={styles.content}>
 					<div className={styles.eyebrow}>— IŠBANDYK NEMOKAMAI</div>
 
-					<h2 className={styles.title}>{renderTitle('Virtuvės video įrašų ištraukos ||nemokamai||')}</h2>
+					<h2 className={styles.title}>{renderTitle('Žiūrėk video įrašų ištraukas ||nemokamai||')}</h2>
 
 					<p className={styles.body}>Pokalbiai apie emocinį valgymą, santykį su maistu ir vidinį nuovargį.</p>
 
