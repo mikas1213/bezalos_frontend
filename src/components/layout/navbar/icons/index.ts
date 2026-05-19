@@ -1,8 +1,9 @@
 export { Logo } from '../../../Shared/Logo/Logo';
+export { AtlikTestaIcon } from './AtlikTestaIcon';
 export { AtsijungtiIcon } from './AtsijungtiIcon';
+export { NarysteIcon } from './NarysteIcon';
 export { PaslaugosIcon } from './PaslaugosIcon';
 export { PrisijungtiIcon } from './PrisijungtiIcon';
 export { ProfilisIcon } from './ProfilisIcon';
 export { ReceptaiIcon } from './ReceptaiIcon';
 export { VirtuveIcon } from './VirtuveIcon';
-export { AtlikTestaIcon } from './AtlikTestaIcon';

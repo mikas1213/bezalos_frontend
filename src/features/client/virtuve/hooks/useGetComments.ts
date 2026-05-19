@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 
 import { useAuth } from '../../../auth';
-import { type CommentDto, commentsService } from '../service/commentsService';
+import { type CommentDto, commentsService } from '../services/commentsService';
 export const useGetComments = (video_id: string | undefined) => {
 	const { user, isLoading } = useAuth();
 	return useQuery<CommentDto[]>({

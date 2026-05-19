@@ -1,0 +1,1 @@
+export { Paslauga } from './Paslauga';

@@ -1,6 +1,6 @@
 import { useInfiniteQuery } from '@tanstack/react-query';
 
-import { virtuveService } from '../service/virtuveService';
+import { virtuveService } from '../services/virtuveService';
 import type { VirtuveFilterParams } from '../types';
 
 export const useVirtuvePage = (params: VirtuveFilterParams) => {

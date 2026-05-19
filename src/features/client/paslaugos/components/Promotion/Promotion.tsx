@@ -2,13 +2,24 @@ import { useState } from 'react';
 import { IoIosCloseCircleOutline } from 'react-icons/io';
 import { useNavigate } from 'react-router-dom';
 
-import { axiosPrivate } from '../../../api/axios';
+import axios from 'axios';
 
-import SpinnerBtn from './SpinnerBtn';
+import { axiosPrivate } from '../../../../../api/axios';
+import { PromotionSpinner } from '../PromotionSpinner/PromotionSpinner';
 
-import styles from './Promotion.module.css';
+import type { PromotionProps } from './types';
 
-const Promotion = ({ code, setCode, paslauga, setPaslauga, startPrice, isCodeApproved, setIsCodeApproved }) => {
+import styles from './Promotion.module.scss';
+
+export const Promotion = ({
+	code,
+	setCode,
+	paslauga,
+	setPaslauga,
+	startPrice,
+	isCodeApproved,
+	setIsCodeApproved,
+}: PromotionProps) => {
 	const navigate = useNavigate();
 
 	const [discountAmount, setDiscountAmount] = useState(0);
@@ -16,7 +27,7 @@ const Promotion = ({ code, setCode, paslauga, setPaslauga, startPrice, isCodeApp
 	const [error, setError] = useState('');
 	const [isLoading, setIsLoading] = useState(false);
 
-	const validatePromotionCode = async (code) => {
+	const validatePromotionCode = async (code: string) => {
 		if (isCodeApproved) {
 			console.log('Norėtum 🤣');
 			return;
@@ -30,16 +41,18 @@ const Promotion = ({ code, setCode, paslauga, setPaslauga, startPrice, isCodeApp
 				service_price: Number(paslauga.current_price),
 			});
 
-			setPaslauga((prev) => ({ ...prev, current_price: new_price }));
+			setPaslauga((prev) => (prev ? { ...prev, current_price: new_price } : prev));
 			setDiscountAmount(discount_amount);
 			setIsLoading(false);
 			setIsUserTyped(false);
 			setIsCodeApproved(true);
 		} catch (err) {
-			if (err.status === 401 || err.status === 403) {
-				navigate('/prisijungti');
+			if (axios.isAxiosError(err)) {
+				if (err.response?.status === 401 || err.response?.status === 403) {
+					navigate('/prisijungti');
+				}
+				setError(err.response?.data?.message ?? 'Įvyko klaida');
 			}
-			setError(err.response.data.message);
 			setIsLoading(false);
 			setIsCodeApproved(false);
 		}
@@ -66,8 +79,8 @@ const Promotion = ({ code, setCode, paslauga, setPaslauga, startPrice, isCodeApp
 						<span
 							onClick={() => {
 								setIsCodeApproved(false);
-								setPaslauga((prev) => ({ ...prev, current_price: startPrice }));
-								document.querySelector(`.${styles.applyCode}`).classList.add(styles.showApplyCode);
+								setPaslauga((prev) => (prev ? { ...prev, current_price: startPrice ?? prev.current_price } : prev));
+								document.querySelector(`.${styles.applyCode}`)?.classList.add(styles.showApplyCode);
 							}}
 						>
 							<IoIosCloseCircleOutline className={styles.closeIcon} />
@@ -81,7 +94,7 @@ const Promotion = ({ code, setCode, paslauga, setPaslauga, startPrice, isCodeApp
 				<span
 					onClick={() => validatePromotionCode(code)}
 					className={`
-                    ${styles.applyCode} 
+                    ${styles.applyCode}
                     ${
 						code.length > 0 && isUserTyped && error.length === 0
 							? styles.showApplyCode
@@ -93,11 +106,9 @@ const Promotion = ({ code, setCode, paslauga, setPaslauga, startPrice, isCodeApp
 					Taikyti
 				</span>
 			) : (
-				<SpinnerBtn />
+				<PromotionSpinner />
 			)}
 			{error && <span className={styles.promotionError}>{error}</span>}
 		</div>
 	);
 };
-
-export default Promotion;

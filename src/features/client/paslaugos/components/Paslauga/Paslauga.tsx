@@ -1,26 +1,26 @@
-import { useEffect, useState } from 'react';
+import { type Dispatch, type SetStateAction, useEffect, useRef, useState } from 'react';
 import CountUp from 'react-countup';
 
-import { usePayment } from '../../../contexts/PaymentProvider';
+import { usePayment } from '../../../../../contexts/PaymentProvider';
+import type { PaslaugaDto } from '../../services/paslaugosService';
+import { Accordion } from '../Accordion';
+import { Promotion } from '../Promotion';
 
-import Accordion from './Accordion';
-import Promotion from './Promotion';
-
-import styles from './Paslauga.module.css';
-
-const Paslauga = ({ paslauga, setPaslauga }) => {
+import styles from './Paslauga.module.scss';
+interface PaslaugaProps {
+	paslauga: PaslaugaDto;
+	setPaslauga: Dispatch<SetStateAction<PaslaugaDto | undefined>>;
+}
+export const Paslauga = ({ paslauga, setPaslauga }: PaslaugaProps) => {
 	const { handleServiceCheckout, isLoading } = usePayment();
 	const [startPrice, setStartPrice] = useState(paslauga.current_price);
 	const [code, setCode] = useState('');
 	const [isCodeApproved, setIsCodeApproved] = useState(false);
+	const prevPriceRef = useRef(paslauga.current_price);
 
 	useEffect(() => {
-		setStartPrice((prevPrice) => {
-			if (prevPrice !== paslauga.current_price) {
-				return prevPrice;
-			}
-			return paslauga.current_price;
-		});
+		setStartPrice(prevPriceRef.current);
+		prevPriceRef.current = paslauga.current_price;
 	}, [paslauga.current_price]);
 
 	return (
@@ -44,7 +44,7 @@ const Paslauga = ({ paslauga, setPaslauga }) => {
 						duration={0.5}
 						separator=""
 					/>
-					{parseFloat(paslauga.discount) > 0 && <span className={styles.wasPrice}>€{paslauga.base_price}</span>}
+					{paslauga.discount > 0 && <span className={styles.wasPrice}>€{paslauga.base_price}</span>}
 				</div>
 
 				<div className={styles.buyBtn}>
@@ -62,7 +62,7 @@ const Paslauga = ({ paslauga, setPaslauga }) => {
 						</button>
 					)}
 
-					{paslauga.is_active && parseFloat(paslauga.discount) === 0 && paslauga.quantity > 0 && (
+					{paslauga.is_active && paslauga.discount === 0 && paslauga.quantity > 0 && (
 						<Promotion
 							code={code}
 							setCode={setCode}
@@ -80,10 +80,8 @@ const Paslauga = ({ paslauga, setPaslauga }) => {
 						Liko: {paslauga.quantity} <small>vnt.</small>
 					</span>
 				)}
-				<Accordion paslauga={paslauga} />
+				<Accordion paslaugaDetails={paslauga.details} />
 			</div>
 		</div>
 	);
 };
-
-export default Paslauga;
