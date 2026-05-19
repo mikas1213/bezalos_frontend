@@ -1,0 +1,1 @@
+export { PaslaugaCard } from './PaslaugaCard';

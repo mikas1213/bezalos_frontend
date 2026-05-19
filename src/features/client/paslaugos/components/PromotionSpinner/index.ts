@@ -1,0 +1,1 @@
+export { PromotionSpinner } from './PromotionSpinner';

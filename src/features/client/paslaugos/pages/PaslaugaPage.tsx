@@ -1,14 +1,13 @@
 import { useParams } from 'react-router-dom';
 
-import Paslauga from '../../components/paslaugos/paslauga/Paslauga';
-import { Box, Container, Grid, Stack } from '../../components/Shared';
-import { ReviewCard } from '../../components/Shared/ReviewCard/RevievCard';
-import { SectionTitle } from '../../components/Shared/SectionTitle/SectionTitle';
-import usePaslauga from '../../hooks/paslaugos/usePaslauga';
+import { Box, Container, Grid, Stack } from '../../../../components/Shared';
+import { ReviewCard } from '../../../../components/Shared/ReviewCard/RevievCard';
+import { SectionTitle } from '../../../../components/Shared/SectionTitle/SectionTitle';
+import usePaslauga from '../../../client/paslaugos/hooks/usePaslauga';
+import { Paslauga } from '../components/Paslauga';
 
 import { REVIEWS } from './Reviews';
 import { type ServiceSlug } from './Reviews';
-
 const PaslaugaPage = () => {
 	const { slug } = useParams();
 	const { paslauga, setPaslauga, isLoading } = usePaslauga(slug);
@@ -19,7 +18,7 @@ const PaslaugaPage = () => {
 				<div style={{ height: '100vh' }}></div>
 			) : (
 				<>
-					<Paslauga paslauga={paslauga} setPaslauga={setPaslauga} />
+					{paslauga && <Paslauga paslauga={paslauga} setPaslauga={setPaslauga} />}
 
 					{REVIEWS[slug as ServiceSlug] && (
 						<Stack space="3rem">

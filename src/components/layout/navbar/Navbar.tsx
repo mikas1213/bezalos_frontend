@@ -11,6 +11,7 @@ import MobileItems from './mobileitems/MobileItems';
 import {
 	AtlikTestaIcon,
 	AtsijungtiIcon,
+	NarysteIcon,
 	PaslaugosIcon,
 	PrisijungtiIcon,
 	ProfilisIcon,
@@ -26,24 +27,15 @@ export const Navbar = ({ page = 'default' }: NavbarProps) => {
 	const { authOpenModal } = useAuthModal();
 
 	const location = useLocation();
-	const { isScroll, user_id, user_role, isOpenBurger, setIsOpenBurger, responsiveNavHeight } =
-		useNavbar(page);
-	const color =
-		page === 'home' && !isScroll ? 'var(--light-green-grey-100)' : 'var(--dark-green-600)';
+	const { isScroll, user_id, user_role, isOpenBurger, setIsOpenBurger, responsiveNavHeight } = useNavbar(page);
+	const color = page === 'home' && !isScroll ? 'var(--light-green-grey-100)' : 'var(--dark-green-600)';
 
-	const navBarClasses = [styles.nav, styles[`${page}_${isScroll ? 'scrolled' : 'at_top'}`]]
-		.filter(Boolean)
-		.join(' ');
+	const navBarClasses = [styles.nav, styles[`${page}_${isScroll ? 'scrolled' : 'at_top'}`]].filter(Boolean).join(' ');
 
 	return (
 		<Container as="nav" maxWidth="100vw" padding="0" className={navBarClasses}>
 			<Container maxWidth="var(--content-width)">
-				<Cluster
-					className={styles.navDesktop}
-					justify="space-between"
-					align="center"
-					height={responsiveNavHeight}
-				>
+				<Cluster className={styles.navDesktop} justify="space-between" align="center" height={responsiveNavHeight}>
 					<NavLink to="/">
 						<Logo color={color} />
 					</NavLink>
@@ -54,11 +46,7 @@ export const Navbar = ({ page = 'default' }: NavbarProps) => {
 						</NavLink>
 					)}
 
-					<Cluster
-						className={styles.navItems}
-						align="center"
-						gap="clamp(0rem, 3.125vw, 3.2rem)"
-					>
+					<Cluster className={styles.navItems} align="center" gap="clamp(0rem, 3.125vw, 3.2rem)">
 						<NavLink to="/atlik-testa" className={styles.listItem}>
 							<span>Atlik testą</span>
 							<div className={styles.indicator}></div>
@@ -79,6 +67,11 @@ export const Navbar = ({ page = 'default' }: NavbarProps) => {
 							<div className={styles.indicator}></div>
 						</NavLink>
 
+						<NavLink to="/naryste" className={styles.listItem}>
+							<span>Narystė</span>
+							<div className={styles.indicator}></div>
+						</NavLink>
+
 						{user_id && (
 							<NavLink to="/profilis" className={styles.listItem}>
 								<span>Profilis</span>
@@ -94,41 +87,24 @@ export const Navbar = ({ page = 'default' }: NavbarProps) => {
 
 						<Box>
 							{!user_id ? (
-								<button
-									type="button"
-									onClick={() => authOpenModal('auth')}
-									className={styles.loginBtn}
-								>
+								<button type="button" onClick={() => authOpenModal('auth')} className={styles.loginBtn}>
 									Prisijungti
 								</button>
 							) : (
-								<button
-									type="button"
-									className={styles.loginBtn}
-									onClick={async () => await logout()}
-								>
+								<button type="button" className={styles.loginBtn} onClick={async () => await logout()}>
 									Atsijungti
 								</button>
 							)}
 						</Box>
 					</Cluster>
-					<Hamburger
-						page={page}
-						isScroll={isScroll}
-						isOpenBurger={isOpenBurger}
-						setIsOpenBurger={setIsOpenBurger}
-					/>
+					<Hamburger page={page} isScroll={isScroll} isOpenBurger={isOpenBurger} setIsOpenBurger={setIsOpenBurger} />
 				</Cluster>
 			</Container>
 
 			<MobileItems isOpenBurger={isOpenBurger}>
 				<NavLink
 					to="/atlik-testa"
-					className={({ isActive }) =>
-						isActive
-							? `${styles.listItemMobile} ${styles.active}`
-							: styles.listItemMobile
-					}
+					className={({ isActive }) => (isActive ? `${styles.listItemMobile} ${styles.active}` : styles.listItemMobile)}
 				>
 					<AtlikTestaIcon active={location.pathname.startsWith('/atlik-testa')} />
 					<span>Atlik testą</span>
@@ -136,11 +112,7 @@ export const Navbar = ({ page = 'default' }: NavbarProps) => {
 
 				<NavLink
 					to="/virtuve"
-					className={({ isActive }) =>
-						isActive
-							? `${styles.listItemMobile} ${styles.active}`
-							: styles.listItemMobile
-					}
+					className={({ isActive }) => (isActive ? `${styles.listItemMobile} ${styles.active}` : styles.listItemMobile)}
 				>
 					<VirtuveIcon active={location.pathname.startsWith('/virtuve')} />
 					<span>Virtuvė</span>
@@ -148,11 +120,7 @@ export const Navbar = ({ page = 'default' }: NavbarProps) => {
 
 				<NavLink
 					to="/receptai"
-					className={({ isActive }) =>
-						isActive
-							? `${styles.listItemMobile} ${styles.active}`
-							: styles.listItemMobile
-					}
+					className={({ isActive }) => (isActive ? `${styles.listItemMobile} ${styles.active}` : styles.listItemMobile)}
 				>
 					<ReceptaiIcon active={location.pathname.startsWith('/receptai')} />
 					<span>Receptai</span>
@@ -160,23 +128,25 @@ export const Navbar = ({ page = 'default' }: NavbarProps) => {
 
 				<NavLink
 					to="/paslaugos"
-					className={({ isActive }) =>
-						isActive
-							? `${styles.listItemMobile} ${styles.active}`
-							: styles.listItemMobile
-					}
+					className={({ isActive }) => (isActive ? `${styles.listItemMobile} ${styles.active}` : styles.listItemMobile)}
 				>
 					<PaslaugosIcon active={location.pathname.startsWith('/paslaugos')} />
 					<span>Paslaugos</span>
+				</NavLink>
+
+				<NavLink
+					to="/naryste"
+					className={({ isActive }) => (isActive ? `${styles.listItemMobile} ${styles.active}` : styles.listItemMobile)}
+				>
+					<NarysteIcon active={location.pathname.startsWith('/naryste')} />
+					<span>Narystė</span>
 				</NavLink>
 
 				{user_id && (
 					<NavLink
 						to="/profilis"
 						className={({ isActive }) =>
-							isActive
-								? `${styles.listItemMobile} ${styles.active}`
-								: styles.listItemMobile
+							isActive ? `${styles.listItemMobile} ${styles.active}` : styles.listItemMobile
 						}
 					>
 						<ProfilisIcon active={location.pathname.startsWith('/profilis')} />
@@ -185,18 +155,12 @@ export const Navbar = ({ page = 'default' }: NavbarProps) => {
 				)}
 
 				{!user_id ? (
-					<li
-						className={`${styles.listItemMobile} ${styles.signout}`}
-						onClick={() => authOpenModal('auth')}
-					>
+					<li className={`${styles.listItemMobile} ${styles.signout}`} onClick={() => authOpenModal('auth')}>
 						<PrisijungtiIcon />
 						<span>Prisijungti</span>
 					</li>
 				) : (
-					<li
-						className={`${styles.listItemMobile} ${styles.signout}`}
-						onClick={async () => await logout()}
-					>
+					<li className={`${styles.listItemMobile} ${styles.signout}`} onClick={async () => await logout()}>
 						<AtsijungtiIcon />
 						<span>Atsijungti</span>
 					</li>

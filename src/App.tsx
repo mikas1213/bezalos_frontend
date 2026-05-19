@@ -20,6 +20,8 @@ import { ProtectedRoute } from './features/auth/components/ProtectedRoute';
 import { LoginPage } from './features/auth/pages/LoginPage';
 import { UpdatePasswordErrorPage } from './features/auth/pages/UpdatePasswordErrorPage';
 import { UpdatePasswordPage } from './features/auth/pages/UpdatePasswordPage';
+// import PaslaugaPage from './pages/paslaugosPages/PaslaugaPage';
+import PaslaugaPage from './features/client/paslaugos/pages/PaslaugaPage';
 import { VirtuveVideoPage } from './features/client/virtuve/pages/VirtuveVideoPage/VirtuveVideoPage';
 import ClientLayout from './layouts/ClientLayout';
 import MailsPage from './pages/admin/MailsPage';
@@ -39,7 +41,6 @@ import UserPageLayout from './pages/admin/users/UserPageLayout';
 import UsersPage from './pages/admin/users/UsersPage';
 import UserStatistikaPage from './pages/admin/users/UserStatistikaPage';
 import NotFoundPage from './pages/notfound/NotFoundPage';
-import PaslaugaPage from './pages/paslaugosPages/PaslaugaPage';
 import CancelSubscription from './pages/paymentPages/CancelSubscription';
 import NeedBuyCourse from './pages/paymentPages/NeedBuyCourse';
 import NeedSubscription from './pages/paymentPages/NeedSubscription';
@@ -61,11 +62,10 @@ const HomePage = lazy(() => import('./pages/client/HomePage/HomePage'));
 const AtlikTestaPage = lazy(() => import('./pages/client/AtlikTestaPage/AtlikTestaPage'));
 const ValgymoElgsenosTestasPage = lazy(() => import('./pages/client/ValgymoTestasPage/ValgymoTestasPage'));
 const PaslaugosoPasiulymasPage = lazy(() => import('./pages/client/PaslaugosoPasiulymasPage/PaslaugosoPasiulymasPage'));
-
 const VirtuvePage = lazy(() => import('./features/client/virtuve/pages/VirtuvePage/VirtuvePage'));
-
 const RecipesPage = lazy(() => import('./pages/recipesPages/RecipesPage'));
-const PaslaugosPage = lazy(() => import('./pages/paslaugosPages/PaslaugosPage'));
+// const PaslaugosPage = lazy(() => import('./pages/paslaugosPages/PaslaugosPage'));
+const PaslaugosPage = lazy(() => import('./features/client/paslaugos/pages/PaslaugosPage'));
 const PirkimoTaisyklesPage = lazy(() => import('./pages/client/PirkimoTaisyklesPage/PirkimoTaisyklesPage'));
 const PrivatumoPolitikaPage = lazy(() => import('./pages/client/PrivatumoPolitikaPage/PrivatumoPolitikaPage'));
 
@@ -119,6 +119,7 @@ function App() {
 										<Route element={<PaymentProvider />}>
 											<Route path="/paslaugos" element={<PaslaugosPage />} />
 											<Route path="/paslaugos/:slug" element={<PaslaugaPage />} />
+											<Route path="/naryste" element={<div>yra yr </div>} />
 										</Route>
 
 										<Route path="/prenumeruoti" element={<NeedSubscription />} />

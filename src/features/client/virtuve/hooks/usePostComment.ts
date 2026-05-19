@@ -1,6 +1,6 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 
-import { commentsService, type PostCommentPayload } from '../service/commentsService';
+import { commentsService, type PostCommentPayload } from '../services/commentsService';
 
 export function usePostComment(queryKey: unknown[]) {
 	const queryClient = useQueryClient();

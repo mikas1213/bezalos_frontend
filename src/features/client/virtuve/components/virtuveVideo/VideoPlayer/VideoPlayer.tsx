@@ -2,7 +2,7 @@ import type { SyntheticEvent } from 'react';
 import { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import { virtuveService } from '../../../service/virtuveService';
+import { virtuveService } from '../../../services/virtuveService';
 
 import type { VideoPlayerProps } from './types';
 

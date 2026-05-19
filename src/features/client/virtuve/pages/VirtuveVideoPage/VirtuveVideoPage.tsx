@@ -7,6 +7,7 @@ import { useAuthModal } from '../../../../auth/modal/hooks/useAuthModal';
 import { Comments, VideoInfo, VideoLoading, VideoNotFound, VideoPlayer } from '../../components/virtuveVideo';
 import type { VideoCategory } from '../../components/virtuveVideo/VideoInfo/types';
 import { useVirtuveVideoPage } from '../../hooks/useVirtuveVideoPage';
+
 import VirtuveVideoSEO from './VirtuveVideoSEO';
 
 import styles from './VirtuveVideoPage.module.scss';
@@ -66,32 +67,6 @@ export const VirtuveVideoPage = () => {
 						</>
 					)}
 				</main>
-
-				{/* ── SIDEBAR ── */}
-				{/* <aside className={styles.sidebar}>
-					<div className={styles.sidebarHeader}>
-						<h3>Toliau žiūrėti</h3>
-						<button type="button" className={`${styles.sidebarFilter} ${styles.active}`}>
-							Visi
-						</button>
-						<button type="button" className={styles.sidebarFilter}>
-							Receptai
-						</button>
-					</div>
-
-					{[1, 2, 3].map((v) => (
-						<div key={v} className={styles.sideVideo}>
-							<div className={styles.thumb} style={{ background: '#f09970' }}>
-								<Play className={styles.thumbPlay} color="white" />
-								<span className={styles.thumbDuration}>{'20:00'}</span>
-							</div>
-							<div className={styles.sideInfo}>
-								<h4>{'test'}</h4>
-								<span className={styles.sideViews}>{'500'}</span>
-							</div>
-						</div>
-					))}
-				</aside> */}
 			</div>
 		</div>
 	);
