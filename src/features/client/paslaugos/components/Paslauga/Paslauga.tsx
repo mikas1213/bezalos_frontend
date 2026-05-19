@@ -44,7 +44,7 @@ export const Paslauga = ({ paslauga, setPaslauga }: PaslaugaProps) => {
 						duration={0.5}
 						separator=""
 					/>
-					{paslauga.discount > 0 && <span className={styles.wasPrice}>€{paslauga.base_price}</span>}
+					{parseFloat(paslauga.discount) > 0 && <span className={styles.wasPrice}>€{paslauga.base_price}</span>}
 				</div>
 
 				<div className={styles.buyBtn}>
@@ -62,7 +62,7 @@ export const Paslauga = ({ paslauga, setPaslauga }: PaslaugaProps) => {
 						</button>
 					)}
 
-					{paslauga.is_active && paslauga.discount === 0 && paslauga.quantity > 0 && (
+					{paslauga.is_active && parseFloat(paslauga.discount) === 0 && paslauga.quantity > 0 && (
 						<Promotion
 							code={code}
 							setCode={setCode}

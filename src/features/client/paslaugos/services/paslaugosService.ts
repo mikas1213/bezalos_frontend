@@ -18,7 +18,7 @@ export interface PaslaugaDto {
 	sort: number;
 	is_active: boolean;
 	base_price: string;
-	discount: number;
+	discount: string;
 	created_at: Date;
 	updated_at: Date;
 	image_s: DataUrl;
