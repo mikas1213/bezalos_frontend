@@ -65,6 +65,7 @@ const PaslaugosoPasiulymasPage = lazy(() => import('./pages/client/PaslaugosoPas
 const VirtuvePage = lazy(() => import('./features/client/virtuve/pages/VirtuvePage/VirtuvePage'));
 const RecipesPage = lazy(() => import('./pages/recipesPages/RecipesPage'));
 // const PaslaugosPage = lazy(() => import('./pages/paslaugosPages/PaslaugosPage'));
+import Naryste from './components/paslaugos/naryste/Naryste';
 const PaslaugosPage = lazy(() => import('./features/client/paslaugos/pages/PaslaugosPage'));
 const PirkimoTaisyklesPage = lazy(() => import('./pages/client/PirkimoTaisyklesPage/PirkimoTaisyklesPage'));
 const PrivatumoPolitikaPage = lazy(() => import('./pages/client/PrivatumoPolitikaPage/PrivatumoPolitikaPage'));
@@ -116,11 +117,11 @@ function App() {
 										<Route path="/atlik-testa/suzinok-daugiau" element={<PaslaugosoPasiulymasPage />} />
 										<Route path="/receptai" element={<RecipesPage />} />
 										<Route path="/receptai/:slug" element={<RecipePage />} />
-										<Route element={<PaymentProvider />}>
-											<Route path="/paslaugos" element={<PaslaugosPage />} />
-											<Route path="/paslaugos/:slug" element={<PaslaugaPage />} />
-											<Route path="/naryste" element={<div>yra yr </div>} />
-										</Route>
+										{/* <Route element={<PaymentProvider />}> */}
+										<Route path="/paslaugos" element={<PaslaugosPage />} />
+										<Route path="/paslaugos/:slug" element={<PaslaugaPage />} />
+										<Route path="/naryste" element={<Naryste />} />
+										{/* </Route> */}
 
 										<Route path="/prenumeruoti" element={<NeedSubscription />} />
 										<Route path="/isigyti-kursa" element={<NeedBuyCourse />} />

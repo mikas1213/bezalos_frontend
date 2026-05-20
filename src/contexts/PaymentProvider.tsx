@@ -101,7 +101,7 @@ export const PaymentProvider = () => {
 			setIsLoading(true);
 			const res = await axiosPrivate.post('/payments/checkout-session', { ...planData, user_id });
 			window.location.href = res.data.session.url;
-		} catch (err) {
+		} catch {
 			setIsLoading(false);
 		}
 	};
@@ -118,7 +118,7 @@ export const PaymentProvider = () => {
 				isCodeApproved,
 			});
 			window.location.href = res.data.session.url;
-		} catch (err) {
+		} catch {
 			setIsLoading(false);
 		}
 	};
@@ -175,9 +175,10 @@ export const PaymentProvider = () => {
 		</PaymentContext.Provider>
 	);
 };
-
+/* eslint-disable react-refresh/only-export-components */
 export const usePayment = () => {
 	const context = useContext(PaymentContext);
+	console.log('paymentcontex: ', context);
 	if (context === undefined) throw new Error('PaymentContext was used outside of the PaymentProvider');
 	return context;
 };
