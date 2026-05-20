@@ -1,7 +1,8 @@
 import { type Dispatch, type SetStateAction, useEffect, useRef, useState } from 'react';
 import CountUp from 'react-countup';
 
-import { usePayment } from '../../../../../contexts/PaymentProvider';
+import Spinner from '../../../../../components/UI/Spinner';
+import { usePaslaugaCheckout } from '../../hooks/usePaslaugaCheckout';
 import type { PaslaugaDto } from '../../services/paslaugosService';
 import { Accordion } from '../Accordion';
 import { Promotion } from '../Promotion';
@@ -12,7 +13,7 @@ interface PaslaugaProps {
 	setPaslauga: Dispatch<SetStateAction<PaslaugaDto | undefined>>;
 }
 export const Paslauga = ({ paslauga, setPaslauga }: PaslaugaProps) => {
-	const { handleServiceCheckout, isLoading } = usePayment();
+	const { handleServiceCheckout, isLoading } = usePaslaugaCheckout();
 	const [startPrice, setStartPrice] = useState(paslauga.current_price);
 	const [code, setCode] = useState('');
 	const [isCodeApproved, setIsCodeApproved] = useState(false);
@@ -25,6 +26,21 @@ export const Paslauga = ({ paslauga, setPaslauga }: PaslaugaProps) => {
 
 	return (
 		<div className={styles.paslauga}>
+			{isLoading && (
+				<div
+					style={{
+						position: 'fixed',
+						inset: 0,
+						zIndex: 9999,
+						display: 'flex',
+						alignItems: 'center',
+						justifyContent: 'center',
+						pointerEvents: 'all',
+					}}
+				>
+					<Spinner />
+				</div>
+			)}
 			<div className={styles.left}>
 				<img src={paslauga.image_l} alt={paslauga.title} className={styles.paslaugaImg} />
 			</div>
