@@ -106,7 +106,9 @@ export const Navbar = ({ page = 'default' }: NavbarProps) => {
 					to="/atlik-testa"
 					className={({ isActive }) => (isActive ? `${styles.listItemMobile} ${styles.active}` : styles.listItemMobile)}
 				>
-					<AtlikTestaIcon active={location.pathname.startsWith('/atlik-testa')} />
+					<AtlikTestaIcon
+						color={location.pathname.startsWith('/atlik-testa') ? 'var(--light-green-600)' : 'var(--dark-green-600)'}
+					/>
 					<span>Atlik testą</span>
 				</NavLink>
 
@@ -114,7 +116,9 @@ export const Navbar = ({ page = 'default' }: NavbarProps) => {
 					to="/virtuve"
 					className={({ isActive }) => (isActive ? `${styles.listItemMobile} ${styles.active}` : styles.listItemMobile)}
 				>
-					<VirtuveIcon active={location.pathname.startsWith('/virtuve')} />
+					<VirtuveIcon
+						color={location.pathname.startsWith('/virtuve') ? 'var(--light-green-600)' : 'var(--dark-green-600)'}
+					/>
 					<span>Virtuvė</span>
 				</NavLink>
 
@@ -122,7 +126,9 @@ export const Navbar = ({ page = 'default' }: NavbarProps) => {
 					to="/receptai"
 					className={({ isActive }) => (isActive ? `${styles.listItemMobile} ${styles.active}` : styles.listItemMobile)}
 				>
-					<ReceptaiIcon active={location.pathname.startsWith('/receptai')} />
+					<ReceptaiIcon
+						color={location.pathname.startsWith('/receptai') ? 'var(--light-green-600)' : 'var(--dark-green-600)'}
+					/>
 					<span>Receptai</span>
 				</NavLink>
 
@@ -130,7 +136,9 @@ export const Navbar = ({ page = 'default' }: NavbarProps) => {
 					to="/paslaugos"
 					className={({ isActive }) => (isActive ? `${styles.listItemMobile} ${styles.active}` : styles.listItemMobile)}
 				>
-					<PaslaugosIcon active={location.pathname.startsWith('/paslaugos')} />
+					<PaslaugosIcon
+						color={location.pathname.startsWith('/paslaugos') ? 'var(--light-green-600)' : 'var(--dark-green-600)'}
+					/>
 					<span>Paslaugos</span>
 				</NavLink>
 
@@ -138,7 +146,9 @@ export const Navbar = ({ page = 'default' }: NavbarProps) => {
 					to="/naryste"
 					className={({ isActive }) => (isActive ? `${styles.listItemMobile} ${styles.active}` : styles.listItemMobile)}
 				>
-					<NarysteIcon active={location.pathname.startsWith('/naryste')} />
+					<NarysteIcon
+						color={location.pathname.startsWith('/naryste') ? 'var(--light-green-600)' : 'var(--dark-green-600)'}
+					/>
 					<span>Narystė</span>
 				</NavLink>
 
@@ -149,7 +159,9 @@ export const Navbar = ({ page = 'default' }: NavbarProps) => {
 							isActive ? `${styles.listItemMobile} ${styles.active}` : styles.listItemMobile
 						}
 					>
-						<ProfilisIcon active={location.pathname.startsWith('/profilis')} />
+						<ProfilisIcon
+							color={location.pathname.startsWith('/profilis') ? 'var(--light-green-600)' : 'var(--dark-green-600)'}
+						/>
 						<span>Profilis</span>
 					</NavLink>
 				)}

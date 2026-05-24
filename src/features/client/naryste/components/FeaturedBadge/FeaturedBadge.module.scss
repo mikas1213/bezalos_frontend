@@ -1,0 +1,16 @@
+.badge {
+	position: absolute;
+	top: -14px;
+	left: 50%;
+	transform: translateX(-50%);
+	background: #5cd45c;
+	color: #0a2f22;
+	padding: 6px 14px;
+	border-radius: 999px;
+	font-size: 11px;
+	font-weight: 700;
+	letter-spacing: 1.4px;
+	text-transform: uppercase;
+	white-space: nowrap;
+	box-shadow: 0 8px 20px -8px rgba(92, 212, 92, 0.7);
+}

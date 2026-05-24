@@ -1,0 +1,14 @@
+.chip {
+	display: inline-flex;
+	align-self: flex-start;
+	align-items: center;
+	gap: 5px;
+	background: #5cd45c;
+	color: #ffffff;
+	padding: 4px 8px;
+	border-radius: 6px;
+	font-size: 12px;
+	font-weight: 700;
+	letter-spacing: 0.3px;
+	box-shadow: 0 6px 16px -10px rgba(92, 212, 92, 0.8);
+}

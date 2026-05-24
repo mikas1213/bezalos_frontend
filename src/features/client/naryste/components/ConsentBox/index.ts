@@ -1,0 +1,1 @@
+export { ConsentBox } from './ConsentBox';

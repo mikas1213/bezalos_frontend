@@ -1,0 +1,81 @@
+.toggle {
+	margin-top: 10px;
+	display: inline-flex;
+	background: #ffffff;
+	border: 1px solid rgba(14, 61, 46, 0.1);
+	border-radius: 999px;
+	padding: 5px;
+	position: relative;
+	box-shadow: 0 6px 22px -14px rgba(8, 20, 14, 0.25);
+	gap: 0;
+}
+
+.togglePill {
+	position: absolute;
+	top: 5px;
+	bottom: 5px;
+	left: 5px;
+	width: calc(50% - 5px);
+	background: #0e3d2e;
+	border-radius: 999px;
+	transition: left 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.togglePillRight {
+	left: calc(50%);
+}
+
+.btn {
+	position: relative;
+	z-index: 2;
+	flex: 1;
+	padding: 11px 26px;
+	min-width: 150px;
+	border-radius: 999px;
+	border: none;
+	background: transparent;
+	color: #0e3d2e;
+	font-family: inherit;
+	font-size: 14px;
+	font-weight: 600;
+	line-height: 1;
+	letter-spacing: 0.2px;
+	cursor: pointer;
+	transition: color 0.25s;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 8px;
+	white-space: nowrap;
+
+	&[aria-selected='true'] {
+		color: #f4f1ea;
+
+		.saveChip {
+			background: #5cd45c;
+			color: #0a2f22;
+		}
+	}
+}
+
+.saveChip {
+	font-size: 11px;
+	font-weight: 700;
+	padding: 3px 7px;
+	border-radius: 999px;
+	background: rgba(14, 61, 46, 0.08);
+	color: #0e3d2e;
+	letter-spacing: 0.4px;
+	transition: background 0.25s, color 0.25s;
+}
+
+@media only screen and (max-width: 576px) {
+	.toggle {
+		width: 100%;
+		max-width: 340px;
+	}
+
+	.btn {
+		min-width: 0;
+	}
+}

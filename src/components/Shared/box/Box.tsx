@@ -1,4 +1,5 @@
-import type { CSSProperties, ReactNode, ElementType } from 'react';
+import type { CSSProperties, ElementType, ReactNode } from 'react';
+
 import styles from './Box.module.css';
 
 /**
@@ -14,43 +15,53 @@ import styles from './Box.module.css';
  */
 
 type BoxProps = {
-    as?: ElementType,
-    children: ReactNode,
-    padding?: string[],
-    borderWidth?: string,
-    borderRadius?: string,
-    className?: string
+	as?: ElementType;
+	children: ReactNode;
+	padding?: string[];
+	borderWidth?: string;
+	borderRadius?: string;
+	className?: string;
 };
 
-export const  Box = ({ as: Component = 'div', children, padding = ['0'], borderWidth = '0', borderRadius='0', className = '', }: BoxProps) => {
+export const Box = ({
+	as: Component = 'div',
+	children,
+	padding = ['0'],
+	borderWidth = '0',
+	borderRadius = '0',
+	className = '',
+}: BoxProps) => {
+	type PaddingArray = string[];
+	const normalizePadding = (p: PaddingArray): [string, string, string, string] => {
+		switch (p.length) {
+			case 1:
+				return [p[0], p[0], p[0], p[0]];
+			case 2:
+				return [p[0], p[1], p[0], p[1]];
+			case 3:
+				return [p[0], p[1], p[2], p[1]];
+			case 4:
+				return [p[0], p[1], p[2], p[3]];
+			default:
+				return ['0', '0', '0', '0'];
+		}
+	};
 
-    type PaddingArray = string[];
-    const normalizePadding = (p: PaddingArray): [string, string, string, string] => {
-        switch(p.length) {
-            case 1: return [p[0], p[0], p[0], p[0]];
-            case 2: return [p[0], p[1], p[0], p[1]];
-            case 3: return [p[0], p[1], p[2], p[1]];
-            case 4: return [p[0], p[1], p[2], p[3]];
-            default: return ['0', '0', '0', '0'];
-        }
-    };
+	const [t, r, b, l] = normalizePadding(padding);
+	const boxClasses = [styles.box, className].filter(Boolean).join(' ');
 
-    const [t, r, b, l] = normalizePadding(padding);
-    const boxClasses = [
-        styles.box,
-        className
-    ].filter(Boolean).join(' ');
+	const boxStyle = {
+		'--pad-t': t,
+		'--pad-r': r,
+		'--pad-b': b,
+		'--pad-l': l,
+		'--border-width': borderWidth,
+		'--border-radius': borderRadius,
+	} as CSSProperties;
 
-    const boxStyle = {
-        '--pad-t': t,
-        '--pad-r': r,
-        '--pad-b': b,
-        '--pad-l': l,
-        '--border-width': borderWidth,
-        '--border-radius': borderRadius,
-    } as CSSProperties;
-
-    return (
-        <Component className={boxClasses} style={boxStyle}>{children}</Component>
-    );
+	return (
+		<Component className={boxClasses} style={boxStyle}>
+			{children}
+		</Component>
+	);
 };

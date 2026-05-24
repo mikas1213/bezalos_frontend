@@ -94,7 +94,7 @@ const SuccessBuyService = () => {
 							<div className={styles.buttons}>
 								{service_category !== 'course' && (
 									<NavLink to="https://www.facebook.com/sandra.jatulyte" target="_blank">
-										<button className={styles.btn_green}>
+										<button type="button" className={styles.btn_green}>
 											Susisiekti
 											<RiMessengerLine className={styles.icon} />
 										</button>
@@ -102,6 +102,7 @@ const SuccessBuyService = () => {
 								)}
 
 								<button
+									type="button"
 									className={`${service_category === 'course' ? styles.btn_green : styles.btn_white}`}
 									onClick={() => navigate('/')}
 								>

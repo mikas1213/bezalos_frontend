@@ -1,0 +1,37 @@
+.button {
+	margin-top: 6px;
+	border: none;
+	padding: 15px 22px;
+	border-radius: 999px;
+	text-transform: uppercase;
+	font-size: 13px;
+	font-weight: 700;
+	letter-spacing: 1.3px;
+	cursor: pointer;
+	font-family: inherit;
+	transition:
+		transform 0.15s,
+		filter 0.15s,
+		opacity 0.2s;
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: relative;
+}
+
+.loader {
+	position: absolute;
+	width: 26px;
+	height: 26px;
+	border-radius: 50%;
+	border: 3px solid rgba(255, 255, 255, 0.35);
+	border-top-color: #ffffff;
+	animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin {
+	to {
+		transform: rotate(360deg);
+	}
+}

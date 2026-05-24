@@ -1,0 +1,28 @@
+.list {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	display: flex;
+	flex-direction: column;
+	flex: 1;
+	gap: 12px;
+}
+
+.item {
+	display: flex;
+	align-items: flex-start;
+	gap: 11px;
+	font-size: 14.5px;
+	line-height: 1.45;
+}
+
+.icon {
+	flex-shrink: 0;
+	margin-top: 2px;
+}
+
+.label {
+	padding-top: 1px;
+	flex: 1;
+	min-width: 0;
+}

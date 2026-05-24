@@ -1,15 +1,15 @@
 .notFound {
-    display: grid;
-    place-items: center;
-    height: 48dvh;
+	display: grid;
+	place-items: center;
+	height: 48dvh;
 }
 
 .numbers {
-    composes: import numbers from '../notfound/NotFoundPage.module.css';
+	composes: import numbers from '../notfound/NotFoundPage.module.css';
 }
 
 @media only screen and (max-width: 576px) {
-    .notFound {
-        height: 52dvh;
-    }
+	.notFound {
+		height: 52dvh;
+	}
 }

@@ -1,0 +1,1 @@
+export { PriceChip } from './PriceChip';
