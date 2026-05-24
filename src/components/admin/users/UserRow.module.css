@@ -1,225 +1,256 @@
 .userRow {
-    display: grid;
-    grid-template-columns: 1.7fr repeat(4, 0.8fr);
-    background-color: var(--color-bgr-light);
-    background-color: white;
-    align-items: center;
-    padding: 0.5rem;
-    border-radius: 5px;
-    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+	display: grid;
+	grid-template-columns: 1.7fr repeat(4, 0.8fr);
+	background-color: var(--color-bgr-light);
+	background-color: white;
+	align-items: center;
+	padding: 0.5rem;
+	border-radius: 5px;
+	box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
 }
 
 .userEmail {
-    line-height: 100%;
-    color: #333;
-    font-weight: 600;
-    font-size: var(--font-size-dynamic-p-lg);
+	line-height: 100%;
+	color: #333;
+	font-weight: 600;
+	font-size: var(--font-size-dynamic-p-lg);
 }
 .userEmail span {
-    transition: color 0.15s ease-in-out;
+	transition: color 0.15s ease-in-out;
 }
 .userEmail span:hover {
-    cursor: pointer;
-    color: var(--color-btn-secondary);
+	cursor: pointer;
+	color: var(--color-btn-secondary);
 }
 .userName {
-    display: flex;
-    align-items: center;
-    gap: 0.1rem;
-    line-height: 100%;
-    color: #999;
-    font-size: var(--font-size-dynamic-small-1-lg);
+	display: flex;
+	align-items: center;
+	gap: 0.1rem;
+	line-height: 100%;
+	color: #999;
+	font-size: var(--font-size-dynamic-small-1-lg);
 }
 .icon {
-    cursor: pointer;
-    color: #aaa;
-    transition: color 0.1s ease-in-out;
+	cursor: pointer;
+	color: #aaa;
+	transition: color 0.1s ease-in-out;
 }
 .iconCopyFacebook {
-    font-size: 1.3rem;
-    color: #999;
+	font-size: 1.3rem;
+	color: #999;
 }
 .iconCopyFacebook:hover {
-    color: #245D6B;
-    cursor: pointer;
+	color: #245d6b;
+	cursor: pointer;
 }
-.icon:hover { color: #333; }
-
-.plan_icon { 
-    color: #fc4c02;
-    font-size: 1rem; 
+.icon:hover {
+	color: #333;
 }
 
-.icon_blue { color:#0073e6; }
+.plan_icon {
+	color: #fc4c02;
+	font-size: 1rem;
+}
+
+.icon_blue {
+	color: #0073e6;
+}
 
 .naryste {
-    display: flex;
-    gap: 0.5rem;
+	display: flex;
+	gap: 0.5rem;
 }
 
 .naryste span {
-    display: flex;
-    align-items: center;
-    border-radius: 4px;
-    padding: 0 0.4rem;
-    color: #fff;
-    font-size: var(--font-size-dynamic-small-2-lg);
+	display: flex;
+	align-items: center;
+	border-radius: 4px;
+	padding: 0 0.4rem;
+	color: #fff;
+	font-size: var(--font-size-dynamic-small-2-lg);
 }
-.naryste .free { background-color: #bbb; }
-.naryste .Virtuvė { background: #65cbe9; }
-.naryste .Profilis { background-color: #245D6B; }
-.naryste :is(.Cancel_virtuve, .Cancel_profilis) { background-color: var(--color-admin-yellow) }
-.naryste :is(.Canceled_virtuve, .Canceled_profilis, .UNPAID) { background-color: var(--color-admin-red) }
+.naryste .free {
+	background-color: #bbb;
+}
+.naryste .Virtuvė {
+	background: #65cbe9;
+}
+.naryste .Profilis {
+	background-color: #245d6b;
+}
+.naryste .VirtuvėPlus {
+	background-color: #0073e6;
+}
+.naryste :is(.Cancel_virtuve, .Cancel_profilis, .Cancel_virtuve_plus) {
+	background-color: var(--color-admin-yellow);
+}
+.naryste :is(.Canceled_virtuve, .Canceled_profilis, .Canceled_virtuve_plus, .UNPAID) {
+	background-color: var(--color-admin-red);
+}
 .UNPAID {
-    cursor: pointer;
-    transition: background-color 0.1s ease-in-out;
+	cursor: pointer;
+	transition: background-color 0.1s ease-in-out;
 }
-.UNPAID:hover { background-color: var(--color-admin-red-hover); }
+.UNPAID:hover {
+	background-color: var(--color-admin-red-hover);
+}
 
 .lastActivity {
-    color: #999;
-    font-size: var(--font-size-dynamic-small-1-lg);
+	color: #999;
+	font-size: var(--font-size-dynamic-small-1-lg);
 }
 .lastActivity span {
-    color: #444;
-    font-weight: 600;
-    font-size: var(--font-size-dynamic-small-1-lg);
+	color: #444;
+	font-weight: 600;
+	font-size: var(--font-size-dynamic-small-1-lg);
 }
 
 .inputGroup {
-    display: flex;
-    gap: 0.5rem;
+	display: flex;
+	gap: 0.5rem;
 }
 
 .stripeImg {
-    height: 1.3rem;
-    border-radius: 4px;
+	height: 1.3rem;
+	border-radius: 4px;
 }
 
-.inputDate, 
+.inputDate,
 .statusSelect {
-    cursor: pointer;
-    border: none;
-    outline: none;
-    max-width: 8rem;
-    border-radius: 4px;
-    padding: 0.1rem 0.4rem;
-    font-size: var(--font-size-dynamic-small-2-lg);
+	cursor: pointer;
+	border: none;
+	outline: none;
+	max-width: 8rem;
+	border-radius: 4px;
+	padding: 0.1rem 0.4rem;
+	font-size: var(--font-size-dynamic-small-2-lg);
 }
 
-.eats_calories, .facebook_name {
-    cursor: pointer;
-    width: 6rem;
-    color: #999;
-    border: 1px solid #fff;
-    border-radius: 4px;
-    font-size: var(--font-size-dynamic-small-1-lg);
-    transition: all 0.15s ease-in-out;
+.eats_calories,
+.facebook_name {
+	cursor: pointer;
+	width: 6rem;
+	color: #999;
+	border: 1px solid #fff;
+	border-radius: 4px;
+	font-size: var(--font-size-dynamic-small-1-lg);
+	transition: all 0.15s ease-in-out;
 }
- .facebook_name {
-    width: 9rem;
-    font-weight: 600;
-    color: #245D6B;
- }
-
+.facebook_name {
+	width: 9rem;
+	font-weight: 600;
+	color: #245d6b;
+}
 
 :is(.eats_calories, .facebook_name):focus {
-    color: #999;
-    border: 1px solid #999;
+	color: #999;
+	border: 1px solid #999;
 }
 :is(.eats_calories, .facebook_name):hover {
-    color: #999;
-    border: 1px solid #999;
+	color: #999;
+	border: 1px solid #999;
 }
 
 .inputDate::-webkit-calendar-picker-indicator {
-    cursor: pointer;
-    background-color: white; 
-    padding: 0.15rem;
-    border-radius: 4px;
+	cursor: pointer;
+	background-color: white;
+	padding: 0.15rem;
+	border-radius: 4px;
 }
 .sideBoxTitle {
-    color: #999;
-    font-size: var(--font-size-dynamic-small-1-lg);
+	color: #999;
+	font-size: var(--font-size-dynamic-small-1-lg);
 }
 
-.colorDanger  {
-    color: white;
-    background-color: var(--color-admin-red);
+.colorDanger {
+	color: white;
+	background-color: var(--color-admin-red);
 }
 .colorWarning {
-    color: white;
-    background-color: var(--color-admin-yellow);
+	color: white;
+	background-color: var(--color-admin-yellow);
 }
 .colorSuccess {
-    color: white;
-    background-color: var(--color-btn-secondary);
+	color: white;
+	background-color: var(--color-btn-secondary);
 }
 .colorLight {
-    color: #999 !important;
-    background-color: white;
-    outline: 1px solid #bbb !important;
+	color: #999 !important;
+	background-color: white;
+	outline: 1px solid #bbb !important;
 }
 .checkBoxes {
-    display: flex;
-    gap: 1rem;
+	display: flex;
+	gap: 1rem;
 }
 
 @media only screen and (max-width: 1024px) {
-    .userRow {
-        grid-template-columns: 2fr repeat(4, 1fr);
-        column-gap: 0.5rem;
-    }
+	.userRow {
+		grid-template-columns: 2fr repeat(4, 1fr);
+		column-gap: 0.5rem;
+	}
 }
 @media only screen and (max-width: 768px) {
-    .userRow {
-        row-gap: 0.5rem;
-    }
+	.userRow {
+		row-gap: 0.5rem;
+	}
 
-    .userEmail { 
-        order: 1; 
-        font-size: var(--font-size-dynamic-p-sm);
-    }
-    .userName { 
-        order: 2; 
-        font-size: var(--font-size-dynamic-small-1-sm);
-    }
+	.userEmail {
+		order: 1;
+		font-size: var(--font-size-dynamic-p-sm);
+	}
+	.userName {
+		order: 2;
+		font-size: var(--font-size-dynamic-small-1-sm);
+	}
 
-    .naryste { 
-        order: 4; 
-    }
-    .naryste {
-        flex-direction: column;
-    }
-    .inputDate {
-        font-size: var(--font-size-dynamic-small-1-sm);
-    }
-    .lastActivity { 
-        order: 3; 
-        font-size: var(--font-size-dynamic-small-1-sm);
-    }
-    .lastActivity span {
-        font-size: var(--font-size-dynamic-p-sm);
-    }
-    .statusSelect {
-        min-width: 3rem;
-        font-size: var(--font-size-dynamic-small-1-sm);
-    }
+	.naryste {
+		order: 4;
+	}
+	.naryste {
+		flex-direction: column;
+	}
+	.inputDate {
+		font-size: var(--font-size-dynamic-small-1-sm);
+	}
+	.lastActivity {
+		order: 3;
+		font-size: var(--font-size-dynamic-small-1-sm);
+	}
+	.lastActivity span {
+		font-size: var(--font-size-dynamic-p-sm);
+	}
+	.statusSelect {
+		min-width: 3rem;
+		font-size: var(--font-size-dynamic-small-1-sm);
+	}
 }
 @media only screen and (max-width: 440px) {
-    .userRow { grid-template-columns: 0.8fr 1.2fr; }
+	.userRow {
+		grid-template-columns: 0.8fr 1.2fr;
+	}
 }
 @media only screen and (max-width: 375px) {
-    .userRow { grid-template-columns: 0.8fr 1.2fr; }
-    .userEmail { font-size: var(--font-size-dynamic-h6-sm); }
-    .userName{ font-size: var(--font-size-dynamic-p-sm); }
-    .lastActivity { font-size: var(--font-size-dynamic-p-sm); }
-    .lastActivity span { font-size: var(--font-size-dynamic-h6-sm); }
+	.userRow {
+		grid-template-columns: 0.8fr 1.2fr;
+	}
+	.userEmail {
+		font-size: var(--font-size-dynamic-h6-sm);
+	}
+	.userName {
+		font-size: var(--font-size-dynamic-p-sm);
+	}
+	.lastActivity {
+		font-size: var(--font-size-dynamic-p-sm);
+	}
+	.lastActivity span {
+		font-size: var(--font-size-dynamic-h6-sm);
+	}
 }
 
 @media only screen and (max-width: 320px) {
-    .userRow {
-        grid-template-columns: 1.1fr 0.9fr;
-        column-gap: 0.5rem;
-    }
+	.userRow {
+		grid-template-columns: 1.1fr 0.9fr;
+		column-gap: 0.5rem;
+	}
 }
