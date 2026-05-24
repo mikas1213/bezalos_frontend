@@ -7,6 +7,7 @@ export interface UserData {
 	is_course: boolean;
 	user_subscription: boolean;
 	user_s_subscription: boolean;
+	current_period_end: string;
 	u_status: 'Profilis' | 'Virtuvė' | 'free';
 	s_status:
 		| 'free'

@@ -1,0 +1,140 @@
+.card {
+	border-radius: 28px;
+	padding: 34px 30px 30px;
+	display: flex;
+	flex-direction: column;
+	gap: 18px;
+	position: relative;
+	min-width: 0;
+	background: #ffffff;
+	color: #0e3d2e;
+	border: 1px solid rgba(14, 61, 46, 0.1);
+	box-shadow:
+		0 1px 0 rgba(14, 61, 46, 0.04),
+		0 18px 40px -28px rgba(14, 61, 46, 0.18);
+}
+
+.cardFeatured {
+	transform: translateY(-12px);
+	transition:
+		transform 0.35s ease,
+		box-shadow 0.35s ease;
+	z-index: 1;
+	background: #0e3d2e;
+	color: #f4f1ea;
+	border: none;
+	box-shadow:
+		0 30px 70px -22px rgba(8, 30, 20, 0.55),
+		0 0 0 1px rgba(255, 255, 255, 0.04);
+}
+
+.cardHeader {
+	display: flex;
+	flex-direction: column;
+	gap: 14px;
+}
+
+.cardIconWrap {
+	width: 46px;
+	height: 46px;
+	padding: 6px;
+	border-radius: 14px;
+	display: grid;
+	place-items: center;
+}
+
+.cardTitle {
+	margin: 0;
+	font-size: 28px;
+	font-weight: 700;
+	letter-spacing: -0.5px;
+	line-height: 1.1;
+}
+
+.cardDesc {
+	margin: 0;
+	font-size: 14.5px;
+	line-height: 1.55;
+}
+
+.cardPriceBlock {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	padding-top: 4px;
+}
+
+.cardPriceRow {
+	display: flex;
+	align-items: baseline;
+	gap: 8px;
+	flex-wrap: wrap;
+}
+
+.cardPriceAmount {
+	font-size: 52px;
+	font-weight: 700;
+	letter-spacing: -1.6px;
+	line-height: 1;
+}
+
+.cardPriceUnit {
+	font-size: 14px;
+	font-weight: 500;
+}
+
+.cardPriceNote {
+	font-size: 12.5px;
+	line-height: 1.45;
+}
+
+.offerNoteBadge {
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+	padding: 8px 12px;
+	border-radius: 8px;
+	background: rgba(255, 255, 255, 0.07);
+	border: 1px solid rgba(255, 255, 255, 0.12);
+	font-size: 12.5px;
+	line-height: 1;
+	color: rgba(255, 255, 255, 0.72);
+}
+
+@media only screen and (max-width: 768px) {
+	.cardFeatured {
+		transform: none;
+		order: -1;
+	}
+}
+
+@media only screen and (max-width: 576px) {
+	.card {
+		padding: 26px 22px 24px;
+	}
+
+	.cardPriceAmount {
+		font-size: 44px;
+	}
+}
+
+@media only screen and (max-width: 375px) {
+	.card {
+		padding: 22px 18px 20px;
+		border-radius: 20px;
+	}
+
+	.cardTitle {
+		font-size: 24px;
+	}
+
+	.cardPriceAmount {
+		font-size: 40px;
+	}
+}
+
+@media only screen and (max-width: 320px) {
+	.card {
+		padding: 18px 14px 16px;
+	}
+}

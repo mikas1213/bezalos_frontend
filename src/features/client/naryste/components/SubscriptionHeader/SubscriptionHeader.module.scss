@@ -1,0 +1,29 @@
+.heading {
+	margin: 0;
+	font-size: clamp(2rem, 4.375vw, 56px);
+	font-weight: 700;
+	letter-spacing: -1.4px;
+	line-height: 1.05;
+	max-width: 760px;
+	color: #0e3d2e;
+}
+
+.headingAccent {
+	color: #2d8b3f;
+	font-style: italic;
+}
+
+.subtitle {
+	margin: 0;
+	font-size: 16px;
+	line-height: 1.55;
+	max-width: 580px;
+	color: rgba(14, 61, 46, 0.62);
+}
+
+@media only screen and (max-width: 576px) {
+	.heading {
+		font-size: clamp(1.75rem, 8vw, 2.5rem);
+		letter-spacing: -0.5px;
+	}
+}

@@ -1,7 +1,0 @@
-.icon {
-    width: 2rem;
-}
-
-.icon g path, .icon circle, .icon path {
-    transition: all 0.2s ease;
-}

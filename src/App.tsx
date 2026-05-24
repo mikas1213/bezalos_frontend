@@ -12,7 +12,6 @@ import { CookieConsent } from './components/layout';
 import { ScrollToTop } from './components/Shared';
 import Spinner from './components/UI/Spinner';
 import { MediaQueryProvider } from './contexts/MediaQueryProvider';
-import { PaymentProvider } from './contexts/PaymentProvider';
 import { AdminVirtuvePage } from './features/admin/virtuve/pages/AdminVirtuvePage';
 import { AuthProvider } from './features/auth';
 import { AuthModal, AuthModalProvider } from './features/auth';
@@ -20,7 +19,7 @@ import { ProtectedRoute } from './features/auth/components/ProtectedRoute';
 import { LoginPage } from './features/auth/pages/LoginPage';
 import { UpdatePasswordErrorPage } from './features/auth/pages/UpdatePasswordErrorPage';
 import { UpdatePasswordPage } from './features/auth/pages/UpdatePasswordPage';
-// import PaslaugaPage from './pages/paslaugosPages/PaslaugaPage';
+import { SubscriptionSuccess } from './features/client/naryste/pages/SubscriptionOrderSuccess';
 import PaslaugaPage from './features/client/paslaugos/pages/PaslaugaPage';
 import { VirtuveVideoPage } from './features/client/virtuve/pages/VirtuveVideoPage/VirtuveVideoPage';
 import ClientLayout from './layouts/ClientLayout';
@@ -45,7 +44,6 @@ import CancelSubscription from './pages/paymentPages/CancelSubscription';
 import NeedBuyCourse from './pages/paymentPages/NeedBuyCourse';
 import NeedSubscription from './pages/paymentPages/NeedSubscription';
 import SuccessBuyService from './pages/paymentPages/SuccessBuyService';
-import SuccessSubscription from './pages/paymentPages/SuccessSubscription';
 import AnketaPage from './pages/profilisPages/AnketaPage';
 import KalorijosPage from './pages/profilisPages/KalorijosPage';
 import ManoReceptaiPage from './pages/profilisPages/ManoReceptaiPage';
@@ -64,8 +62,7 @@ const ValgymoElgsenosTestasPage = lazy(() => import('./pages/client/ValgymoTesta
 const PaslaugosoPasiulymasPage = lazy(() => import('./pages/client/PaslaugosoPasiulymasPage/PaslaugosoPasiulymasPage'));
 const VirtuvePage = lazy(() => import('./features/client/virtuve/pages/VirtuvePage/VirtuvePage'));
 const RecipesPage = lazy(() => import('./pages/recipesPages/RecipesPage'));
-// const PaslaugosPage = lazy(() => import('./pages/paslaugosPages/PaslaugosPage'));
-import Naryste from './components/paslaugos/naryste/Naryste';
+const SubscriptionPage = lazy(() => import('./features/client/naryste/pages/SubscriptionPage/SubscriptionPage'));
 const PaslaugosPage = lazy(() => import('./features/client/paslaugos/pages/PaslaugosPage'));
 const PirkimoTaisyklesPage = lazy(() => import('./pages/client/PirkimoTaisyklesPage/PirkimoTaisyklesPage'));
 const PrivatumoPolitikaPage = lazy(() => import('./pages/client/PrivatumoPolitikaPage/PrivatumoPolitikaPage'));
@@ -117,11 +114,10 @@ function App() {
 										<Route path="/atlik-testa/suzinok-daugiau" element={<PaslaugosoPasiulymasPage />} />
 										<Route path="/receptai" element={<RecipesPage />} />
 										<Route path="/receptai/:slug" element={<RecipePage />} />
-										{/* <Route element={<PaymentProvider />}> */}
+
 										<Route path="/paslaugos" element={<PaslaugosPage />} />
 										<Route path="/paslaugos/:slug" element={<PaslaugaPage />} />
-										<Route path="/naryste" element={<Naryste />} />
-										{/* </Route> */}
+										<Route path="/naryste" element={<SubscriptionPage />} />
 
 										<Route path="/prenumeruoti" element={<NeedSubscription />} />
 										<Route path="/isigyti-kursa" element={<NeedBuyCourse />} />
@@ -139,7 +135,7 @@ function App() {
 												<Route path="nustatymai" element={<NustatymaiPage />} />
 											</Route>
 											<Route path="/paslauga-apmoketa" element={<SuccessBuyService />} />
-											<Route path="/apmoketa-sekmingai" element={<SuccessSubscription />} />
+											<Route path="/apmoketa-sekmingai" element={<SubscriptionSuccess />} />
 											<Route path="/mokejimo-klaida" element={<CancelSubscription />} />
 										</Route>
 									</Route>

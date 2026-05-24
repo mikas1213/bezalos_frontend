@@ -9,20 +9,12 @@ export type ItemsProps = {
 	isOpenBurger: boolean;
 };
 
-export type IconProps = {
-    active?: boolean,
-    stroke?: number
-};
-
-export type NavHeight =
-	| 'var(--nav-height-80)'
-	| 'var(--nav-height-70)'
-	| 'var(--nav-height-60)';
+export type NavHeight = 'var(--nav-height-80)' | 'var(--nav-height-70)' | 'var(--nav-height-60)';
 
 export type HamburgerProps = NavbarProps & {
-    isScroll: boolean,
-    isOpenBurger: boolean;
-    setIsOpenBurger: (value: boolean | ((prev: boolean) => boolean)) => void,
+	isScroll: boolean;
+	isOpenBurger: boolean;
+	setIsOpenBurger: (value: boolean | ((prev: boolean) => boolean)) => void;
 };
 
 export interface NavbarState {

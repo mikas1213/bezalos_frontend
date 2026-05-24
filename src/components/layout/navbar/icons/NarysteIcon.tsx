@@ -1,7 +1,5 @@
-import { type IconProps } from '../types';
-export const NarysteIcon = ({ active = false, stroke = 1.5 }: IconProps) => {
-	const color = active ? 'var(--light-green-600)' : 'var(--dark-green-600)';
-
+import type { IconProps } from './types';
+export const NarysteIcon = ({ color = 'var(--dark-green-600)', stroke = 1.5 }: IconProps) => {
 	return (
 		<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 			<circle cx="12" cy="12" r="2" transform="rotate(180 12 12)" stroke={color} strokeWidth={stroke} />

@@ -19,7 +19,9 @@ export const PaslaugaCard = ({ paslauga }: Paslauga) => {
 				)}
 				{paslauga.quantity <= 3 && <div className={styles.quantity}>{`Liko ${paslauga.quantity}vnt.`}</div>}
 				{paslauga.quantity === 0 && <div className={styles.quantity}>Išparduota</div>}
-				{paslauga.discount > 0 && <div className={styles.discount}>-{Math.round(paslauga.discount)}%</div>}
+				{parseFloat(paslauga.discount) > 0 && (
+					<div className={styles.discount}>-{Math.round(parseFloat(paslauga.discount))}%</div>
+				)}
 				{!imageLoaded && <div className={styles.skeleton}></div>}
 
 				<img
@@ -33,7 +35,7 @@ export const PaslaugaCard = ({ paslauga }: Paslauga) => {
 			<div className={styles.cardBody}>
 				<div className={styles.priceContainer}>
 					<div className={styles.price}>€{paslauga.current_price}</div>
-					{paslauga.discount > 0 && <div className={styles.wasPrice}>€{paslauga.base_price}</div>}
+					{parseFloat(paslauga.discount) > 0 && <div className={styles.wasPrice}>€{paslauga.base_price}</div>}
 				</div>
 
 				<div className={styles.title}>{paslauga.title}</div>
