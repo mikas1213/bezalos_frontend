@@ -19,23 +19,6 @@ React + TypeScript frontend for [bezalos.lt](https://www.bezalos.lt) — a Lithu
 | Styling      | CSS Modules + SASS                     |
 | Icons        | FontAwesome, Lucide React, React Icons |
 
-## Getting Started
-
-```bash
-# Install dependencies
-npm install
-
-# Start dev server (http://localhost:5173)
-npm run dev
-
-# Production build
-npm run build
-
-# Lint
-npm run lint
-npm run lint:fix
-```
-
 ## Project Structure
 
 ```
