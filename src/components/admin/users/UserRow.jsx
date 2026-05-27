@@ -19,7 +19,6 @@ import check_box_styles from './CheckBox.module.css';
 import styles from './UserRow.module.css';
 
 const UserRow = ({ user, handleSubscriptionUpdate, handleUserUpdate }) => {
-	console.log('user.subscription_type: ', user.subscription_type.replace(' ', ''));
 	const navigate = useNavigate();
 	const [calories, setCalories] = useState(user.eats_calories || '');
 	const [facebookName, setFacebookName] = useState(user.facebook_name || '');
@@ -42,9 +41,6 @@ const UserRow = ({ user, handleSubscriptionUpdate, handleUserUpdate }) => {
 					</div>
 					<div className={styles.userName}>
 						{user.stripe_username || user.name}
-						{/* {user.has_order && <HiTemplate 
-                            className={`${styles.plan_icon} ${user.orders[0]?.title === 'Mitybos planas + 4 savaičių priežiūra' ? styles.icon_blue : ''}`} 
-                        />} */}
 						{user.has_plan && <HiTemplate className={`${styles.plan_icon}`} />}
 					</div>
 				</SideBox>
@@ -54,7 +50,7 @@ const UserRow = ({ user, handleSubscriptionUpdate, handleUserUpdate }) => {
 						<div className={styles.inputGroup}>
 							<span
 								onClick={user.subscription_type === 'UNPAID' ? handle_VIRTUVE_CANCELED : undefined}
-								className={styles[user.subscription_type.replace(' ', '')]}
+								className={styles[user.subscription_type?.replace(' ', '')]}
 							>
 								{user.subscription_type}
 							</span>
