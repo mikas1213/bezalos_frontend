@@ -1,5 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
-import toast from 'react-hot-toast';
+import { useInfiniteQuery, useQueryClient } from '@tanstack/react-query';
 
 import { axiosPublic } from '../../../../../api/axios';
 
@@ -21,67 +20,60 @@ export interface RecipeFilters {
 	[key: string]: string | undefined;
 }
 
-export const useRecipes = (filters: RecipeFilters, user_id: string | null) => {
-	const recipesPerPage = 15;
-	const [currentPage, setCurrentPage] = useState(1);
-	const [totalPages, setTotalPages] = useState(0);
-	const [totalRows, setTotalRows] = useState(0);
-	const [isLoading, setIsLoading] = useState(true);
-	const [recipes, setRecipes] = useState<Recipe[]>([]);
-	const isFirstRender = useRef(true);
+interface RecipesPageDto {
+	data: Recipe[];
+	total_rows: number;
+	total_pages: number;
+	current_page: number;
+}
 
+const RECIPES_PER_PAGE = 15;
+
+const fetchRecipes = async (filters: RecipeFilters, user_id: string | null, page: number): Promise<RecipesPageDto> => {
 	const query = new URLSearchParams({
 		...filters,
-		page: String(currentPage),
-		limit: String(recipesPerPage),
+		page: String(page),
+		limit: String(RECIPES_PER_PAGE),
 	}).toString();
+	const response = await axiosPublic.post<RecipesPageDto>(`/recipes?${query}`, { id: user_id });
+	return response.data;
+};
 
-	useEffect(() => {
-		document.body.style.backgroundColor = '#fff';
-		document.title = 'Be žalos | Receptai';
+export const useRecipes = (filters: RecipeFilters, user_id: string | null) => {
+	const queryClient = useQueryClient();
+	const queryKey = ['recipes', filters, user_id];
 
-		const fetchData = async () => {
-			try {
-				const {
-					data: { data, total_rows, total_pages, current_page },
-				} = await axiosPublic.post<{
-					data: Recipe[];
-					total_rows: number;
-					total_pages: number;
-					current_page: number;
-				}>(`/recipes?${query}`, { id: user_id });
-				setCurrentPage(current_page);
-				setTotalPages(total_pages);
-				setTotalRows(total_rows);
-				setRecipes(data);
-				setIsLoading(false);
-			} catch (err: unknown) {
-				const message =
-					err instanceof Error
-						? err.message
-						: (err as { response?: { data?: { message?: string } } })?.response?.data?.message;
-				toast.error(message || 'Error fetching recipes');
-			} finally {
-				setIsLoading(false);
-			}
-		};
+	const query = useInfiniteQuery({
+		queryKey,
+		queryFn: ({ pageParam }) => fetchRecipes(filters, user_id, pageParam),
+		placeholderData: (previousData) => previousData,
+		initialPageParam: 1,
+		getNextPageParam: (lastPage) =>
+			lastPage.current_page < lastPage.total_pages ? lastPage.current_page + 1 : undefined,
+	});
 
-		if (isFirstRender.current) {
-			fetchData();
-			isFirstRender.current = false;
-		} else {
-			const timeoutId = setTimeout(fetchData, 200);
-			return () => clearTimeout(timeoutId);
-		}
-	}, [query, user_id]);
+	const recipes = query.data?.pages.flatMap((page) => page.data) ?? [];
+	const totalRows = query.data?.pages[0]?.total_rows ?? 0;
+
+	const updateRecipeLike = (recipe_id: number, isLiked: boolean, likesCount: number) => {
+		queryClient.setQueryData(queryKey, (oldData: typeof query.data) => {
+			if (!oldData) return oldData;
+			return {
+				...oldData,
+				pages: oldData.pages.map((page) => ({
+					...page,
+					data: page.data.map((recipe) =>
+						recipe.id === recipe_id ? { ...recipe, liked: isLiked, likes: likesCount } : recipe,
+					),
+				})),
+			};
+		});
+	};
 
 	return {
-		isLoading,
+		...query,
 		recipes,
-		setRecipes,
-		currentPage,
-		setCurrentPage,
-		totalPages,
 		totalRows,
+		updateRecipeLike,
 	};
 };

@@ -13,6 +13,7 @@ export const VideoList = ({
 	hasNextPage,
 	isFetchingNextPage,
 	onLoadMore,
+	pageSize,
 }: VideoListProps) => {
 	if (isFetching && isPending) {
 		return <div className={styles.state}>Kraunama...</div>;
@@ -37,22 +38,21 @@ export const VideoList = ({
 					<VideoCard
 						key={video.slug}
 						video={video}
-						index={index}
+						index={index % pageSize}
 						isNew={new Date(video.created_at) >= thirtyDaysAgo}
 					/>
 				))}
 			</div>
 
-			{hasNextPage && (
+			{(hasNextPage || isFetchingNextPage) && (
 				<div className={styles.loadMore}>
-					<button
-						type="button"
-						className={styles.loadMoreBtn}
-						onClick={onLoadMore}
-						disabled={isFetchingNextPage}
-					>
-						{isFetchingNextPage ? 'Kraunama...' : 'Rodyti daugiau'}
-					</button>
+					{isFetchingNextPage ? (
+						<span style={{ color: 'var(--color-text-grey)', fontSize: 'var(--font-16)' }}>Kraunama...</span>
+					) : (
+						<button type="button" className={styles.loadMoreBtn} onClick={onLoadMore}>
+							Rodyti daugiau
+						</button>
+					)}
 				</div>
 			)}
 		</div>

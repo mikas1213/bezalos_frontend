@@ -13,9 +13,7 @@ import styles from './RecipePage.module.scss';
 const RecipePage = () => {
 	const { slug } = useParams();
 	const { isLoading, recipe } = useRecipe(slug);
-	if (!isLoading) {
-		console.log(recipe);
-	}
+
 	return (
 		<>
 			{!isLoading && recipe ? <RecipeSEO recipe={recipe} /> : null}

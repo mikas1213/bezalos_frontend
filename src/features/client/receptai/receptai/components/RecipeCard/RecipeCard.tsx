@@ -17,12 +17,13 @@ export interface Recipe {
 
 interface RecipeCardProps {
 	recipe: Recipe;
+	index?: number;
 	onToggleLikes: (id: number) => void;
 }
 
-export const RecipeCard = ({ recipe, onToggleLikes }: RecipeCardProps) => {
+export const RecipeCard = ({ recipe, index = 0, onToggleLikes }: RecipeCardProps) => {
 	return (
-		<div className={styles.recipe}>
+		<div className={styles.recipe} style={{ animationDelay: `${index * 60}ms` }}>
 			<div className={styles.imageContainer}>
 				<Link to={`/receptai/${recipe.slug}`}>
 					<img className={styles.image} src={recipe.image_m} alt={`image_${recipe.title}`} />

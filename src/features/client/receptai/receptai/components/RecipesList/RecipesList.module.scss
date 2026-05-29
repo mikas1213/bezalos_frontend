@@ -33,3 +33,31 @@
         grid-template-columns: repeat(auto-fill, clamp(0rem, 85.333vw, 20rem));
     }
 }
+
+.loadMore {
+    display: flex;
+    justify-content: center;
+    padding: 2.4rem 0;
+}
+
+.loadMoreBtn {
+    padding: 0.6rem 2rem;
+    font-size: var(--font-16);
+    font-weight: 600;
+    color: var(--cool-grey-green-400);
+    background-color: var(--white-100);
+    border: 1.5px solid var(--cool-grey-green-400);
+    border-radius: 10rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease;
+
+    &:hover:not(:disabled) {
+        background-color: var(--cool-grey-green-400);
+        color: var(--color-background);
+    }
+
+    &:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+    }
+}

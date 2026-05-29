@@ -9,10 +9,9 @@ interface RecipesHeaderProps {
 	setIsOpenFilters: React.Dispatch<React.SetStateAction<boolean>>;
 	search: string;
 	setSearch: React.Dispatch<React.SetStateAction<string>>;
-	setCurrentPage: React.Dispatch<React.SetStateAction<number>>;
 }
 
-export const RecipesHeader = ({ isOpenFilters, setIsOpenFilters, search, setSearch, setCurrentPage }: RecipesHeaderProps) => {
+export const RecipesHeader = ({ isOpenFilters, setIsOpenFilters, search, setSearch }: RecipesHeaderProps) => {
 	return (
 		<div className={styles.recipesHeader}>
 			<div className={`${styles.searchContainer} ${isOpenFilters ? styles.filterOpen : ''}`}>
@@ -21,7 +20,6 @@ export const RecipesHeader = ({ isOpenFilters, setIsOpenFilters, search, setSear
 					value={search}
 					onChange={(e) => {
 						setSearch(e.target.value);
-						setCurrentPage(1);
 					}}
 					className={styles.searchInput}
 					placeholder="Paieška..."

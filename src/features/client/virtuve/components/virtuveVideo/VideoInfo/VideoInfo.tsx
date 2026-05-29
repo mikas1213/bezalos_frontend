@@ -36,7 +36,7 @@ export const VideoInfo = ({ user, video, actionAccess }: VideoInfoProps) => {
 	const [desc1, desc2 = ''] = video.description.split(':');
 	const desctList = desc2.trim().split('\n');
 
-	const redirectUrl = video.isCourseMaterial ? '/paslaugos?tab=paslaugos' : '/paslaugos';
+	const redirectUrl = video.isCourseMaterial ? '/paslaugos' : '/naryste';
 	const forbiddenTitle = ACCESS_MESSAGES.like[actionAccess.forbidden].title;
 	const forbiddenDescription = ACCESS_MESSAGES.like[actionAccess.forbidden].desc;
 

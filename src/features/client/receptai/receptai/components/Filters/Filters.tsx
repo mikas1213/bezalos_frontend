@@ -37,12 +37,11 @@ interface FiltersProps {
 	mediaQuery: number;
 	filters: RecipeFilters;
 	setFilters: Dispatch<SetStateAction<RecipeFilters>>;
-	setCurrentPage: Dispatch<SetStateAction<number>>;
 }
 
 const hasProperties = (obj: RecipeFilters) => Object.values(obj).some((val) => val !== '');
 
-export const Filters = ({ isOpenFilters, mediaQuery, filters, setFilters, setCurrentPage }: FiltersProps) => {
+export const Filters = ({ isOpenFilters, mediaQuery, filters, setFilters }: FiltersProps) => {
 	const [filtersHeight, setFilterHeight] = useState(0);
 	const filtersRef = useRef<HTMLDivElement>(null);
 	useEffect(() => {
@@ -71,7 +70,6 @@ export const Filters = ({ isOpenFilters, mediaQuery, filters, setFilters, setCur
 								...prevState,
 								[key]: prevState[key] !== filter.value ? filter.value : '',
 							}));
-							setCurrentPage(1);
 						}}
 					>
 						{filter.label}

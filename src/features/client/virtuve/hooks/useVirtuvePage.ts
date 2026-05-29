@@ -19,11 +19,13 @@ export const useVirtuvePage = (params: VirtuveFilterParams) => {
 	const videos = query.data?.pages.flatMap((page) => page.data) ?? [];
 	const videosTotal = query.data?.pages[0]?.total ?? 0;
 	const videosDisplayed = videos.length;
+	const pageSize = query.data?.pages[0]?.limit ?? 12;
 
 	return {
 		...query,
 		videos,
 		videosTotal,
 		videosDisplayed,
+		pageSize,
 	};
 };
