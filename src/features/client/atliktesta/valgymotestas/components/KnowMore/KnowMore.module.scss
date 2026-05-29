@@ -1,0 +1,73 @@
+.knowMore {
+	background-color: var(--light-green-grey-050);
+	border-radius: 16px;
+	margin-top: 40px;
+	width: 100%;
+}
+.title {
+	font-size: 24px;
+	font-weight: 600;
+	color: var(--dark-green-500);
+	margin-bottom: 30px;
+	text-align: center;
+}
+.emailInput {
+	width: 100%;
+	padding: 16px 20px;
+	border: 2px solid var(--neutral-grey-200);
+	border-radius: 12px;
+	font-size: var(--font-16);
+	transition: all 0.3s ease;
+	box-shadow: none;
+	outline: none;
+}
+.emailInput:focus {
+	border-color: var(--light-green-500);
+	box-shadow: 0 0 0 3px var(--light-green-050);
+}
+
+.error {
+	padding: 0.4rem 0;
+	color: var(--red-500);
+	font-weight: 500;
+	font-size: var(--font-12);
+}
+.emailSubmit:not(:has(.emailInputError)) label {
+	margin-top: 16px;
+}
+.emailSubmit:not(:has(.checkInputError)) label {
+	margin-bottom: 16px;
+}
+
+.knowMore label {
+	cursor: pointer;
+	display: inline-flex;
+	align-items: center;
+	gap: 12px;
+	font-size: 14px;
+	color: var(--neutral-grey-500);
+}
+
+.knowMore label input {
+	cursor: pointer;
+	width: 20px;
+	height: 20px;
+	accent-color: var(--light-green-500);
+	border: 1px solid var(--red-500);
+}
+.knowMore button {
+	cursor: pointer;
+	width: 100%;
+	padding: 16px 32px;
+	background: linear-gradient(135deg, var(--light-green-400) 0%, var(--light-green-700) 100%);
+	color: var(--white-100);
+	border: none;
+	border-radius: 12px;
+	font-size: var(--font-16);
+	font-weight: 600;
+	transition: all 0.3s ease;
+	box-shadow: 0 4px 15px hsla(100, 60%, 60%, 0.4);
+}
+.knowMore button:hover {
+	box-shadow: 0 6px 20px hsla(100, 60%, 60%, 0.6);
+}

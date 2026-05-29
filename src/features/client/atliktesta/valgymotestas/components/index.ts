@@ -1,0 +1,10 @@
+export { Answer } from './AnswerItem/Answer';
+export { Button } from './Button/Button';
+export { Explanation } from './Explanation/Explanation';
+export { KnowMore } from './KnowMore/KnowMore';
+export { ProgressBar } from './ProgressBar/ProgressBar';
+export { Question } from './Question/Question';
+export { ResultPoint } from './ResultPoint/ResultPoint';
+export { ResultTable } from './ResultTable/ResultTable';
+export { TestHeader } from './TestHeader/TestHeader';
+export { TestLayout } from './TestLayout/TestLayout';

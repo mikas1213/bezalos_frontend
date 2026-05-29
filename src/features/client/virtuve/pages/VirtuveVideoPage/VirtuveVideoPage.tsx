@@ -17,7 +17,6 @@ export interface ActionAccess {
 	forbidden: 'course' | 'subscription' | 'login' | 'noOne';
 }
 const getActionAccess = (user: UserData | null, category: VideoCategory): ActionAccess => {
-	console.log('getActionAccess: ', user);
 	const subscriptionCategories: VideoCategory[] = ['Pokalbis', 'Trumpai', 'Vebinaras'];
 	if (!user) return { allowed: false, forbidden: 'login' };
 

@@ -56,10 +56,13 @@ import RecipePage from './pages/recipesPages/RecipePage';
 
 import styles from './App.module.css';
 
-const HomePage = lazy(() => import('./pages/client/HomePage/HomePage'));
-const AtlikTestaPage = lazy(() => import('./pages/client/AtlikTestaPage/AtlikTestaPage'));
-const ValgymoElgsenosTestasPage = lazy(() => import('./pages/client/ValgymoTestasPage/ValgymoTestasPage'));
-const PaslaugosoPasiulymasPage = lazy(() => import('./pages/client/PaslaugosoPasiulymasPage/PaslaugosoPasiulymasPage'));
+const HomePage = lazy(() => import('./features/client/homepage/pages/HomePage'));
+const AtlikTestaPage = lazy(() => import('./features/client/atliktesta/pages/AtlikTestaPage'));
+const ValgymoTestasPage = lazy(() => import('./features/client/atliktesta/valgymotestas/pages/ValgymoTestasPage'));
+const PaslaugosoPasiulymasPage = lazy(
+	() => import('./features/client/atliktesta/paslaugospasiulymas/pages/PaslaugosoPasiulymasPage'),
+);
+const PaslaugosNereikiaPage = lazy(() => import('./features/client/atliktesta/paslaugosnereikia/pages/PaslaugosNereikiaPage'));
 const VirtuvePage = lazy(() => import('./features/client/virtuve/pages/VirtuvePage/VirtuvePage'));
 const RecipesPage = lazy(() => import('./pages/recipesPages/RecipesPage'));
 const SubscriptionPage = lazy(() => import('./features/client/naryste/pages/SubscriptionPage/SubscriptionPage'));
@@ -107,11 +110,9 @@ function App() {
 										<Route path="/virtuve" element={<VirtuvePage />} />
 										<Route path="/virtuve/:slug" element={<VirtuveVideoPage />} />
 										<Route path="/atlik-testa" element={<AtlikTestaPage />} />
-										<Route
-											path="/atlik-testa/valgymo-elgsenos-testas"
-											element={<ValgymoElgsenosTestasPage />}
-										/>
-										<Route path="/atlik-testa/suzinok-daugiau" element={<PaslaugosoPasiulymasPage />} />
+										<Route path="/valgymo-elgsenos-testas" element={<ValgymoTestasPage />} />
+										<Route path="/suzinok-daugiau" element={<PaslaugosoPasiulymasPage />} />
+										<Route path="/paslaugos-nereikia" element={<PaslaugosNereikiaPage />} />
 										<Route path="/receptai" element={<RecipesPage />} />
 										<Route path="/receptai/:slug" element={<RecipePage />} />
 
