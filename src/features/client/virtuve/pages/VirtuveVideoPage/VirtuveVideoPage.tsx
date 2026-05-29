@@ -17,13 +17,19 @@ export interface ActionAccess {
 	forbidden: 'course' | 'subscription' | 'login' | 'noOne';
 }
 const getActionAccess = (user: UserData | null, category: VideoCategory): ActionAccess => {
+	console.log('getActionAccess: ', user);
 	const subscriptionCategories: VideoCategory[] = ['Pokalbis', 'Trumpai', 'Vebinaras'];
 	if (!user) return { allowed: false, forbidden: 'login' };
 
 	if (category === 'Kursai' && !user.is_course) return { allowed: false, forbidden: 'course' };
 
 	const hasSubscription =
-		(user.s_status === 'virtuve' || user.u_status === 'Virtuvė' || user.s_status === 'Cancel_virtuve') &&
+		(user.u_status === 'Virtuvė' ||
+			user.u_status === 'Cancel_virtuve' ||
+			user.u_status === 'Virtuvė Plus' ||
+			user.u_status === 'Cancel_virtuve_plus' ||
+			user.s_status === 'virtuve' ||
+			user.s_status === 'virtuve_plus') &&
 		(user.user_s_subscription || user.user_subscription);
 
 	if (subscriptionCategories.includes(category) && !hasSubscription) return { allowed: false, forbidden: 'subscription' };

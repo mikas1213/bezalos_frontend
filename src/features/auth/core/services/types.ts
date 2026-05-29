@@ -8,16 +8,8 @@ export interface UserData {
 	user_subscription: boolean;
 	user_s_subscription: boolean;
 	current_period_end: string;
-	u_status: 'Profilis' | 'Virtuvė' | 'free';
-	s_status:
-		| 'free'
-		| 'profilis'
-		| 'virtuve'
-		| 'Cancel_profilis'
-		| 'Canceled_profilis'
-		| 'Cancel_virtuve'
-		| 'Canceled_virtuve'
-		| 'UNPAID';
+	u_status: 'Profilis' | 'Virtuvė' | 'Cancel_virtuve' | 'Virtuvė Plus' | 'Cancel_virtuve_plus' | 'free';
+	s_status: 'free' | 'profilis' | 'virtuve' | 'virtuve_plus';
 }
 
 export interface SignupRequest {
