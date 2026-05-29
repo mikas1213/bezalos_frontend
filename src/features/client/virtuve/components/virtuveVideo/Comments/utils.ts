@@ -1,4 +1,4 @@
-import type { CommentDto } from '../../../service/commentsService';
+import type { CommentDto } from '../../../services/commentsService';
 export type ColorPair = {
 	bg: string;
 	cl: string;

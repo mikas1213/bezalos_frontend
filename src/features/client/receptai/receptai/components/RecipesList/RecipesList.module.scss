@@ -1,0 +1,63 @@
+.recipes {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.6rem;
+    opacity: 0;
+    animation: fadeIn 0.5s ease-in forwards;
+}
+
+@keyframes fadeIn {
+    to { opacity: 1; }
+}
+@media only screen and (max-width: 768px) {
+    .recipes {
+        gap: 0.6rem;
+    }
+}
+@media only screen and (max-width: 576px) {
+    .recipes {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.8rem;
+    }
+}
+
+@media only screen and (max-width: 440px) {
+    .recipes {
+        justify-content: center;
+        grid-template-columns: repeat(auto-fill, 20rem);
+    }
+}
+
+@media only screen and (max-width: 375px) {
+    .recipes {
+        grid-template-columns: repeat(auto-fill, clamp(0rem, 85.333vw, 20rem));
+    }
+}
+
+.loadMore {
+    display: flex;
+    justify-content: center;
+    padding: 2.4rem 0;
+}
+
+.loadMoreBtn {
+    padding: 0.6rem 2rem;
+    font-size: var(--font-16);
+    font-weight: 600;
+    color: var(--cool-grey-green-400);
+    background-color: var(--white-100);
+    border: 1.5px solid var(--cool-grey-green-400);
+    border-radius: 10rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease;
+
+    &:hover:not(:disabled) {
+        background-color: var(--cool-grey-green-400);
+        color: var(--color-background);
+    }
+
+    &:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+    }
+}

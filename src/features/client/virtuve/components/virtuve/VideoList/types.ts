@@ -7,4 +7,5 @@ export interface VideoListProps {
 	hasNextPage: boolean;
 	isFetchingNextPage: boolean;
 	onLoadMore: () => void;
+	pageSize: number;
 }

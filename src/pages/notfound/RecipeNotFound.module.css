@@ -1,9 +1,0 @@
-.notFound {
-    display: grid;
-    place-items: center;
-    height: calc(100vh - (var(--nav-height-80)*2));
-}
-
-.numbers {
-    composes: import numbers from '../notfound/NotFoundPage.module.css';
-}

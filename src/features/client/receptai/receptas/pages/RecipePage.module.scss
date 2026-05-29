@@ -1,0 +1,40 @@
+.layout {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 3rem;
+	margin-top: 2rem;
+	margin-bottom: 5rem;
+}
+.image {
+	opacity: 0;
+	animation: fadeIn 0.2s ease-in forwards;
+}
+.image img {
+	width: 100%;
+	object-fit: cover;
+	aspect-ratio: 2.8 / 4;
+	border-radius: 0.5rem;
+}
+@media only screen and (max-width: 768px) {
+	.layout {
+		gap: 2rem;
+	}
+}
+
+@media only screen and (max-width: 576px) {
+	.layout {
+		grid-template-columns: 1fr;
+	}
+	.image {
+		display: none;
+	}
+}
+
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}

@@ -1,0 +1,137 @@
+@keyframes cardFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.recipe {
+    display: flex;
+    flex-direction: column;
+    border-radius: 0.8rem;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    animation: cardFadeIn 0.35s ease both;
+}
+
+.imageContainer {
+    margin: 0.8rem  0.8rem 0;
+}
+.image {
+    width: 100%;
+    object-fit: cover;
+    border-radius: 0.4rem;
+}
+
+.title {
+    font-size: var(--font-size-dynamic-h6-lg);
+    font-weight: 500;
+    color: var(--color-bgr-bottom);   
+    text-align: center;
+    padding: clamp(0rem, 1.875vw, 1.2rem);
+}
+.anchor {
+    justify-content: center;
+}
+
+.details {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    color: var(--grey-dark);
+    font-size: var(--font-size-dynamic-p-lg);
+    font-weight: 500;
+    padding: clamp(0rem, 1.563vw, 1rem) 0;
+    margin: 0 0.8rem;
+    margin-top: auto;
+    border-top: 0.5px solid var(--grey-light);
+}
+.item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: clamp(0rem, 0.469vw, 0.3rem);
+}
+.item:not(:last-child) {
+    border-right: 0.5px solid var(--grey-light);
+}
+.min span {
+    margin-right: 0.1rem;
+}
+.icon {
+    width: clamp(0rem, 1.875vw, 1.2rem); 
+    height: clamp(0rem, 1.875vw, 1.2rem); 
+}
+.likes {
+    cursor: pointer;
+}
+.icon.liked {
+    fill: var(--grey-dark);
+}
+
+@media only screen and (max-width: 768px) {
+    .imageContainer {
+        margin: 0.6rem  0.6rem 0;
+    }
+    .description {
+        line-height: 110%;
+    }
+}
+
+@media only screen and (max-width: 576px) {
+    .imageContainer {
+        margin: 0.8rem  0.8rem 0;
+    }
+    .description {
+        line-height: 150%;
+        padding: clamp(0rem, 2.778vw, 1rem);
+    }
+
+    .title {
+        font-size: var(--font-size-dynamic-p-sm);
+    }
+
+    .details {
+        padding: clamp(0rem, 2.778vw, 1rem) 0;
+        font-size: var(--font-size-dynamic-small-1-sm);
+    }
+
+    .item {
+        gap: clamp(0rem, 0.833vw, 0.3rem);
+    }
+    .icon {
+        width: clamp(0rem, 2.778vw, 1rem); 
+        height: clamp(0rem, 2.778vw, 1rem); 
+    }
+}
+
+@media only screen and (max-width: 440px) {
+    .description {
+        padding: clamp(0rem, 2.778vw, 1rem);
+    }
+    .title {
+        font-size: var(--font-size-dynamic-h5-sm);
+    }
+
+    .details {
+        padding: clamp(0rem, 2.9vw, 0.8rem) 0;
+        font-size: var(--font-size-dynamic-h6-sm);
+    }
+
+    .icon {
+        width: clamp(0rem, 4.364vw, 1.2rem);
+        height: clamp(0rem, 4.364vw, 1.2rem);
+    }
+}
+
+@media only screen and (max-width: 375px) {
+    .details {
+        font-size: var(--font-size-dynamic-h5-sm);
+    }
+    .icon {
+        width: clamp(0rem, 5.12vw, 1.2rem);
+        height: clamp(0rem, 5.12vw, 1.2rem);
+    }
+}

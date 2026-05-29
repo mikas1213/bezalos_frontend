@@ -24,6 +24,7 @@ export const VirtuvePage = () => {
 		fetchNextPage,
 		hasNextPage,
 		isFetchingNextPage,
+		pageSize,
 	} = useVirtuvePage(params);
 
 	const handleTagChange = (tag: string | null) => {
@@ -50,6 +51,7 @@ export const VirtuvePage = () => {
 				hasNextPage={!!hasNextPage}
 				isFetchingNextPage={isFetchingNextPage}
 				onLoadMore={fetchNextPage}
+				pageSize={pageSize}
 			/>
 		</Container>
 	);

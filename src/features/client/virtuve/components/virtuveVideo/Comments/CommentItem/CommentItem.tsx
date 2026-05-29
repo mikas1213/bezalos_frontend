@@ -5,7 +5,7 @@ import cx from 'classnames';
 import { useToggleLike } from '../../../../../../../hooks/useToggleLike';
 import type { UserData } from '../../../../../../auth/core/services';
 import type { ActionAccess } from '../../../../pages/VirtuveVideoPage/VirtuveVideoPage';
-import type { CommentDto } from '../../../../service/commentsService';
+import type { CommentDto } from '../../../../services/commentsService';
 import { ReplyCompose } from '../ReplyCompose';
 import { formatTime, getInitials, getUserColor } from '../utils';
 
