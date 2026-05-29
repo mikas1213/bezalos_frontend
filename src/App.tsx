@@ -21,6 +21,7 @@ import { UpdatePasswordErrorPage } from './features/auth/pages/UpdatePasswordErr
 import { UpdatePasswordPage } from './features/auth/pages/UpdatePasswordPage';
 import { SubscriptionSuccess } from './features/client/naryste/pages/SubscriptionOrderSuccess';
 import PaslaugaPage from './features/client/paslaugos/pages/PaslaugaPage';
+import RecipePage from './features/client/receptai/receptas/pages/RecipePage';
 import { VirtuveVideoPage } from './features/client/virtuve/pages/VirtuveVideoPage/VirtuveVideoPage';
 import ClientLayout from './layouts/ClientLayout';
 import MailsPage from './pages/admin/MailsPage';
@@ -52,7 +53,6 @@ import ProduktuKeitimasPage from './pages/profilisPages/ProduktuKeitimasPage';
 import ProfilisPageLayout from './pages/profilisPages/ProfilisPageLayout';
 import StatistikaPage from './pages/profilisPages/StatistikaPage';
 import UserPlansPage from './pages/profilisPages/UserPlansPage';
-import RecipePage from './pages/recipesPages/RecipePage';
 
 import styles from './App.module.css';
 
@@ -64,7 +64,8 @@ const PaslaugosoPasiulymasPage = lazy(
 );
 const PaslaugosNereikiaPage = lazy(() => import('./features/client/atliktesta/paslaugosnereikia/pages/PaslaugosNereikiaPage'));
 const VirtuvePage = lazy(() => import('./features/client/virtuve/pages/VirtuvePage/VirtuvePage'));
-const RecipesPage = lazy(() => import('./pages/recipesPages/RecipesPage'));
+const RecipesPage = lazy(() => import('./features/client/receptai/receptai/pages/RecipesPage'));
+
 const SubscriptionPage = lazy(() => import('./features/client/naryste/pages/SubscriptionPage/SubscriptionPage'));
 const PaslaugosPage = lazy(() => import('./features/client/paslaugos/pages/PaslaugosPage'));
 const PirkimoTaisyklesPage = lazy(() => import('./pages/client/PirkimoTaisyklesPage/PirkimoTaisyklesPage'));
