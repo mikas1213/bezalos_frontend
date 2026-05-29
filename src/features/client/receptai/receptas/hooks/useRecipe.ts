@@ -29,7 +29,7 @@ export interface Recipe {
 	products: Product[];
 }
 
-export const useRecipe = (slug: string) => {
+export const useRecipe = (slug: string | undefined) => {
 	const [recipe, setRecipe] = useState<Recipe | null>(null);
 	const [isLoading, setIsLoading] = useState(true);
 

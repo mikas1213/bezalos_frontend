@@ -40,7 +40,7 @@ import UserAnketaPage from './pages/admin/users/UserAnketaPage';
 import UserPageLayout from './pages/admin/users/UserPageLayout';
 import UsersPage from './pages/admin/users/UsersPage';
 import UserStatistikaPage from './pages/admin/users/UserStatistikaPage';
-import NotFoundPage from './pages/notfound/NotFoundPage';
+import { NotFoundPage } from './pages/notfound/NotFoundPage';
 import CancelSubscription from './pages/paymentPages/CancelSubscription';
 import NeedBuyCourse from './pages/paymentPages/NeedBuyCourse';
 import NeedSubscription from './pages/paymentPages/NeedSubscription';
