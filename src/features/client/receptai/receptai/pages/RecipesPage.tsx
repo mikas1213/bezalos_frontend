@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 
-import { axiosPrivate } from '../../../../../api/axios';
 import Container from '../../../../../components/UI/Container';
 import Main from '../../../../../components/UI/Main';
 import { useMediaQuery } from '../../../../../contexts/MediaQueryProvider';
@@ -15,9 +14,7 @@ const RecipesPage = () => {
 	const [isOpenFilters, setIsOpenFilters] = useState(false);
 	const [filters, setFilters] = useState<RecipeFilters>({});
 	const [search, setSearch] = useState('');
-	const { user, setIsOpenModal } = useAuth() as ReturnType<typeof useAuth> & {
-		setIsOpenModal: (value: boolean) => void;
-	};
+	const { user } = useAuth();
 	const user_id = user?.user_id ?? null;
 
 	useEffect(() => {
@@ -25,7 +22,7 @@ const RecipesPage = () => {
 		document.title = 'Be žalos | Receptai';
 	}, []);
 
-	const { isPending, isFetchingNextPage, hasNextPage, fetchNextPage, recipes, totalRows, updateRecipeLike } = useRecipes(
+	const { isPending, isFetchingNextPage, hasNextPage, fetchNextPage, recipes, totalRows } = useRecipes(
 		{
 			...filters,
 			...(search !== '' ? { search } : {}),
@@ -34,18 +31,6 @@ const RecipesPage = () => {
 	);
 
 	const { data: mostLiked, isLoading: isLoadingFav } = useFavoriteRecipes();
-
-	const onToggleLikes = async (recipe_id: number) => {
-		if (!user_id) {
-			setIsOpenModal(true);
-		} else {
-			const { data } = await axiosPrivate.post<{ isLiked: boolean; likesCount: number }>(`/likes/recipe`, {
-				entity_id: recipe_id,
-				category: 'recipes',
-			});
-			updateRecipeLike(recipe_id, data.isLiked, data.likesCount);
-		}
-	};
 
 	return (
 		<>
@@ -59,19 +44,13 @@ const RecipesPage = () => {
 			<Main page="recipes">
 				<Container>
 					<FavoriteRecipes mostLiked={mostLiked} isLoading={isLoadingFav} />
-					<Filters
-						isOpenFilters={isOpenFilters}
-						mediaQuery={mediaQuery}
-						filters={filters}
-						setFilters={setFilters}
-					/>
+					<Filters isOpenFilters={isOpenFilters} mediaQuery={mediaQuery} filters={filters} setFilters={setFilters} />
 					<InfoTab recipesCount={totalRows} />
 					<RecipesList
 						isPending={isPending}
 						isFetchingNextPage={isFetchingNextPage}
 						hasNextPage={hasNextPage}
 						recipes={recipes}
-						onToggleLikes={onToggleLikes}
 						onLoadMore={fetchNextPage}
 					/>
 				</Container>

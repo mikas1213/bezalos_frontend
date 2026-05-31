@@ -7,18 +7,14 @@ interface RecipesListProps {
 	isFetchingNextPage: boolean;
 	hasNextPage: boolean;
 	recipes: Recipe[];
-	onToggleLikes: (id: number) => void;
 	onLoadMore: () => void;
 }
 
-export const RecipesList = ({ isPending, isFetchingNextPage, hasNextPage, recipes, onToggleLikes, onLoadMore }: RecipesListProps) => {
+export const RecipesList = ({ isPending, isFetchingNextPage, hasNextPage, recipes, onLoadMore }: RecipesListProps) => {
 	return (
 		<div style={{ minHeight: '50vh', paddingBottom: '4.8rem' }}>
 			<div className={styles.recipes}>
-				{!isPending &&
-					recipes.map((recipe, index) => (
-						<RecipeCard key={recipe.id} recipe={recipe} index={index % 15} onToggleLikes={onToggleLikes} />
-					))}
+				{!isPending && recipes.map((recipe, index) => <RecipeCard key={recipe.id} recipe={recipe} index={index % 15} />)}
 			</div>
 
 			{(hasNextPage || isFetchingNextPage) && (

@@ -2,6 +2,10 @@ import { Link } from 'react-router-dom';
 
 import { Clock, Heart } from 'lucide-react';
 
+import { useToggleLike } from '../../../../../../hooks/useToggleLike';
+import { useAuth } from '../../../../../auth';
+import { useAuthModal } from '../../../../../auth/modal/hooks/useAuthModal';
+
 import styles from './RecipeCard.module.scss';
 
 export interface Recipe {
@@ -18,10 +22,22 @@ export interface Recipe {
 interface RecipeCardProps {
 	recipe: Recipe;
 	index?: number;
-	onToggleLikes: (id: number) => void;
 }
 
-export const RecipeCard = ({ recipe, index = 0, onToggleLikes }: RecipeCardProps) => {
+export const RecipeCard = ({ recipe, index = 0 }: RecipeCardProps) => {
+	const { user } = useAuth();
+	const { authOpenModal } = useAuthModal();
+
+	const { mutate: toggleLike } = useToggleLike(String(recipe.id), 'recipes', ['recipe', recipe.id]);
+
+	const handleToggleLike = () => {
+		if (!user?.user_id) {
+			authOpenModal('auth');
+		} else {
+			toggleLike();
+		}
+	};
+
 	return (
 		<div className={styles.recipe} style={{ animationDelay: `${index * 60}ms` }}>
 			<div className={styles.imageContainer}>
@@ -44,7 +60,7 @@ export const RecipeCard = ({ recipe, index = 0, onToggleLikes }: RecipeCardProps
 					</span>
 				</span>
 				<span className={styles.item}>{recipe.food_logic}</span>
-				<span className={`${styles.item} ${styles.likes}`} onClick={() => onToggleLikes(recipe.id)}>
+				<span className={`${styles.item} ${styles.likes}`} onClick={handleToggleLike}>
 					<Heart className={`${styles.icon} ${recipe.liked ? styles.liked : ''}`} />
 					{recipe.likes}
 				</span>

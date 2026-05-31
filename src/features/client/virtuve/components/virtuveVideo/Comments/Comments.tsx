@@ -91,7 +91,7 @@ export const Comments = ({ user, videoId, actionAccess, onOpenAuthModal }: Comme
 	};
 
 	const toastConfig = toastAction ? ACCESS_MESSAGES[toastAction][actionAccess.forbidden] : null;
-	const toastRedirect = actionAccess.forbidden === 'course' ? '/paslaugos?tab=paslaugos' : '/paslaugos';
+	const toastRedirect = actionAccess.forbidden === 'course' ? '/paslaugos' : '/naryste';
 
 	return (
 		<>
