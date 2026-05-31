@@ -1,4 +1,4 @@
-import { useInfiniteQuery, useQueryClient } from '@tanstack/react-query';
+import { useInfiniteQuery } from '@tanstack/react-query';
 
 import { axiosPublic } from '../../../../../api/axios';
 
@@ -40,40 +40,20 @@ const fetchRecipes = async (filters: RecipeFilters, user_id: string | null, page
 };
 
 export const useRecipes = (filters: RecipeFilters, user_id: string | null) => {
-	const queryClient = useQueryClient();
-	const queryKey = ['recipes', filters, user_id];
-
 	const query = useInfiniteQuery({
-		queryKey,
+		queryKey: ['recipes', filters, user_id],
 		queryFn: ({ pageParam }) => fetchRecipes(filters, user_id, pageParam),
 		placeholderData: (previousData) => previousData,
 		initialPageParam: 1,
-		getNextPageParam: (lastPage) =>
-			lastPage.current_page < lastPage.total_pages ? lastPage.current_page + 1 : undefined,
+		getNextPageParam: (lastPage) => (lastPage.current_page < lastPage.total_pages ? lastPage.current_page + 1 : undefined),
 	});
 
 	const recipes = query.data?.pages.flatMap((page) => page.data) ?? [];
 	const totalRows = query.data?.pages[0]?.total_rows ?? 0;
 
-	const updateRecipeLike = (recipe_id: number, isLiked: boolean, likesCount: number) => {
-		queryClient.setQueryData(queryKey, (oldData: typeof query.data) => {
-			if (!oldData) return oldData;
-			return {
-				...oldData,
-				pages: oldData.pages.map((page) => ({
-					...page,
-					data: page.data.map((recipe) =>
-						recipe.id === recipe_id ? { ...recipe, liked: isLiked, likes: likesCount } : recipe,
-					),
-				})),
-			};
-		});
-	};
-
 	return {
 		...query,
 		recipes,
 		totalRows,
-		updateRecipeLike,
 	};
 };
