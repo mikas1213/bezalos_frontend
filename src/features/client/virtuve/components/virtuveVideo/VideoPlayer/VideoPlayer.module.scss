@@ -42,7 +42,7 @@
 	align-items: center;
 	justify-content: center;
 	animation: fadeIn 0.35s ease;
-	z-index: 10;
+	z-index: 1;
 }
 
 .paywallContent {
@@ -141,6 +141,130 @@
 		color: #ffffff;
 	}
 }
+// =============================================
+//  RESPONSIVE — PAYWALL OVERLAY
+// =============================================
+@media only screen and (max-width: 440px) {
+	.paywallContent {
+		padding: 1.25rem 1.5rem;
+	}
+
+	.paywallLock {
+		width: 48px;
+		height: 48px;
+		margin-bottom: 0.85rem;
+
+		svg {
+			width: 26px;
+			height: 26px;
+		}
+	}
+
+	.paywallTitle {
+		font-size: 1.05rem;
+		margin-bottom: 0.5rem;
+	}
+
+	.paywallDesc {
+		font-size: 0.82rem;
+		line-height: 1.45;
+		margin-bottom: 1.1rem;
+	}
+
+	.paywallActions {
+		gap: 0.6rem;
+	}
+
+	.paywallBtnPrimary,
+	.paywallBtnSecondary {
+		padding: 0.55rem 1.2rem;
+		font-size: 0.85rem;
+	}
+}
+
+@media only screen and (max-width: 375px) {
+	.paywallContent {
+		padding: 0.85rem 1.1rem;
+	}
+
+	.paywallLock {
+		width: 40px;
+		height: 40px;
+		margin-bottom: 0.6rem;
+
+		svg {
+			width: 22px;
+			height: 22px;
+		}
+	}
+
+	.paywallTitle {
+		font-size: 0.95rem;
+		margin-bottom: 0.4rem;
+	}
+
+	.paywallDesc {
+		font-size: 0.78rem;
+		line-height: 1.35;
+		margin-bottom: 0.85rem;
+	}
+
+	.paywallActions {
+		gap: 0.5rem;
+	}
+
+	.paywallBtnPrimary,
+	.paywallBtnSecondary {
+		padding: 0.5rem 1rem;
+		font-size: 0.8rem;
+	}
+}
+
+@media only screen and (max-width: 320px) {
+	.paywallContent {
+		padding: 0.6rem 0.85rem;
+	}
+
+	.paywallLock {
+		width: 32px;
+		height: 32px;
+		margin-bottom: 0.45rem;
+
+		svg {
+			width: 18px;
+			height: 18px;
+		}
+	}
+
+	.paywallTitle {
+		font-size: 0.85rem;
+		line-height: 1.2;
+		margin-bottom: 0.3rem;
+	}
+
+	.paywallDesc {
+		font-size: 0.72rem;
+		line-height: 1.3;
+		margin-bottom: 0.65rem;
+	}
+
+	.paywallActions {
+		flex-direction: row;
+		flex-wrap: nowrap;
+		width: 100%;
+		gap: 0.4rem;
+	}
+
+	.paywallBtnPrimary,
+	.paywallBtnSecondary {
+		flex: 1 1 0;
+		justify-content: center;
+		padding: 0.45rem 0.5rem;
+		font-size: 0.72rem;
+		white-space: nowrap;
+	}
+}
+
 @keyframes fadeIn {
 	0% {
 		opacity: 0;
