@@ -1,0 +1,10 @@
+.container {
+	width: 100%;
+	max-width: var(--max-width);
+	margin-inline: auto;
+	padding-inline-start: var(--padding, 1rem);
+	padding-inline-end: var(--padding, 1rem);
+	transition:
+		transform 0.8s,
+		opacity 0.8s;
+}

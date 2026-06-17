@@ -1,0 +1,31 @@
+.chipRow {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px;
+	margin-bottom: 32px;
+}
+.artChipRow {
+	margin-bottom: 32px;
+}
+.chip {
+	border: 1px solid var(--neutral-200);
+	background: var(--white-100);
+	color: var(--dark-green-600);
+	border-radius: 100px;
+	padding: 8px 18px;
+	font-size: 14px;
+	font-family: inherit;
+	cursor: pointer;
+	transition:
+		background 0.15s,
+		color 0.15s,
+		border-color 0.15s;
+}
+.chip:hover {
+	background: var(--neutral-100);
+}
+.chip.active {
+	background: var(--dark-green-500);
+	color: var(--white-100);
+	border-color: var(--dark-green-500);
+}

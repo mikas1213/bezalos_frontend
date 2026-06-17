@@ -1,0 +1,21 @@
+.articleLayout {
+	display: grid;
+	grid-template-columns: minmax(0, 1fr) 208px;
+	column-gap: clamp(28px, 3.5vw, 56px);
+	align-items: stretch;
+}
+.articleInner {
+	max-width: 760px;
+	// max-width: var(--content-width);
+	margin: 0 auto;
+	padding-top: clamp(1.5rem, 3vw, 2.5rem);
+	padding-bottom: clamp(2.5rem, 5vw, 4rem);
+}
+@media (max-width: 768px) {
+	.articleLayout {
+		display: block;
+	}
+	.bz-toc {
+		display: none;
+	}
+}

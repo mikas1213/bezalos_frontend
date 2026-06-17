@@ -1,0 +1,22 @@
+.articleEmpty {
+	padding: 48px 0 80px;
+	text-align: center;
+	font-size: 1.0625rem;
+	color: var(--neutral-500);
+}
+.articleGrid {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: clamp(1.25rem, 2vw, 2rem);
+	padding-bottom: 64px;
+}
+@media (max-width: 900px) {
+	.articleGrid {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
+@media (max-width: 576px) {
+	.articleGrid {
+		grid-template-columns: 1fr;
+	}
+}

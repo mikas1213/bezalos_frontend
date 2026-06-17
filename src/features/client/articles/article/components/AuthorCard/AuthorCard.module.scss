@@ -1,0 +1,46 @@
+.authorCard {
+	display: flex;
+	gap: 20px;
+	align-items: flex-start;
+	background: var(--light-green-grey-100);
+	border-radius: var(--radius-xl);
+	padding: 28px;
+	margin: 40px 0;
+}
+.authorAvatar {
+	width: 60px;
+	height: 60px;
+	border-radius: 50%;
+	flex-shrink: 0;
+	display: grid;
+	place-items: center;
+	font-weight: 600;
+	font-size: 18px;
+	background: var(--dark-green-500);
+	color: var(--light-green-grey-100);
+	letter-spacing: 0.5px;
+}
+.authorBody {
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+}
+.authorEyebrow {
+	font-size: 11px;
+	font-weight: 700;
+	letter-spacing: 1.4px;
+	text-transform: uppercase;
+	color: var(--light-green-700);
+}
+.authorName {
+	margin: 2px 0 4px;
+	font-size: 1.25rem;
+	font-weight: 700;
+	color: var(--dark-green-600);
+}
+.authorText {
+	margin: 0;
+	font-size: 15px;
+	line-height: 1.6;
+	color: var(--neutral-700);
+}

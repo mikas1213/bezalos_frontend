@@ -65,6 +65,8 @@ const PaslaugosoPasiulymasPage = lazy(
 const PaslaugosNereikiaPage = lazy(() => import('./features/client/atliktesta/paslaugosnereikia/pages/PaslaugosNereikiaPage'));
 const VirtuvePage = lazy(() => import('./features/client/virtuve/pages/VirtuvePage/VirtuvePage'));
 const RecipesPage = lazy(() => import('./features/client/receptai/receptai/pages/RecipesPage'));
+const ArticlesPage = lazy(() => import('./features/client/articles/articles/pages/ArticlesPage'));
+const ArticlePage = lazy(() => import('./features/client/articles/article/pages/ArticlePage'));
 
 const SubscriptionPage = lazy(() => import('./features/client/naryste/pages/SubscriptionPage/SubscriptionPage'));
 const PaslaugosPage = lazy(() => import('./features/client/paslaugos/pages/PaslaugosPage'));
@@ -116,6 +118,8 @@ function App() {
 										<Route path="/paslaugos-nereikia" element={<PaslaugosNereikiaPage />} />
 										<Route path="/receptai" element={<RecipesPage />} />
 										<Route path="/receptai/:slug" element={<RecipePage />} />
+										<Route path="/straipsniai" element={<ArticlesPage />} />
+										<Route path="/straipsniai/:slug" element={<ArticlePage />} />
 
 										<Route path="/paslaugos" element={<PaslaugosPage />} />
 										<Route path="/paslaugos/:slug" element={<PaslaugaPage />} />

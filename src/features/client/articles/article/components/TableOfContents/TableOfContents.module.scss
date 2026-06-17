@@ -1,0 +1,61 @@
+.toc {
+	position: relative;
+}
+.tocInner {
+	position: sticky;
+	top: 96px;
+	/* Override the global `nav { height }` rule so the list isn't clipped. */
+	height: auto;
+	max-height: calc(100vh - 124px);
+	overflow-y: auto;
+	padding-top: clamp(1.5rem, 3vw, 2.5rem);
+}
+.tocTitle {
+	display: block;
+	margin-bottom: 16px;
+	padding-left: 17px;
+	font-size: 11px;
+	font-weight: 700;
+	letter-spacing: 1.4px;
+	text-transform: uppercase;
+	color: var(--neutral-400);
+}
+.tocList {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	display: flex;
+	flex-direction: column;
+	gap: 2px;
+}
+.tocLink {
+	display: block;
+	width: 100%;
+	text-align: left;
+	background: none;
+	border: 0;
+	border-left: 2px solid var(--light-green-grey-200);
+	padding: 8px 0 8px 15px;
+	font-family: inherit;
+	font-size: 14px;
+	line-height: 1.4;
+	color: var(--neutral-500);
+	cursor: pointer;
+	transition:
+		color 0.15s,
+		border-color 0.15s;
+}
+.tocLink:hover {
+	color: var(--dark-green-600);
+	border-color: var(--light-green-grey-400);
+}
+.tocLink.active {
+	color: var(--dark-green-600);
+	font-weight: 600;
+	border-color: var(--light-green-600);
+}
+@media (max-width: 768px) {
+	.toc {
+		display: none;
+	}
+}
