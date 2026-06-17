@@ -176,10 +176,7 @@
 
   /* Layout */
   --content-width: 1248px;
-  /* NB: intentionally no --nav-height here. The app's global `nav { height:
-     var(--nav-height) }` rule (styles/index.scss) is inert because the app
-     only defines --nav-height-80/-70/-60. Defining a bare --nav-height would
-     activate it and clamp every <nav> (incl. the TOC) to a fixed height. */
+  --nav-height: 80px;
   --section-padding-block: clamp(1.875rem, 3.906vw, 2.5rem);
 
   /* ── RADII ───────────────────────────────────────────────────── */
