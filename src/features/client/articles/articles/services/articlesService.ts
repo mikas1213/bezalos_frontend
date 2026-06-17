@@ -1,28 +1,16 @@
-// Static article catalogue for the Straipsniai (articles) index.
-//
-// There is no articles backend yet, so the content lives here. Strings are
-// ported verbatim from the design concept in
-// features/client/articles/instructions/ui_kits/marketing-site/data.js —
-// keep the Lithuanian diacritics intact (ą č ę ė į š ų ū ž).
-
-import articleBelieve from '../../instructions/assets/images/article-believe.webp';
-import articleEating from '../../instructions/assets/images/article-eating.webp';
-import articleHands from '../../instructions/assets/images/article-hands.webp';
-import articleKitchen from '../../instructions/assets/images/article-kitchen.webp';
-import articlePlate from '../../instructions/assets/images/article-plate.webp';
-import articleProduce from '../../instructions/assets/images/article-produce.webp';
-import articleStress from '../../instructions/assets/images/article-stress.webp';
-
+import articleBelieve from '../../assets/images/article-believe.webp';
+import articleEating from '../../assets/images/article-eating.webp';
+import articleHands from '../../assets/images/article-hands.webp';
+import articleKitchen from '../../assets/images/article-kitchen.webp';
+import articlePlate from '../../assets/images/article-plate.webp';
+import articleProduce from '../../assets/images/article-produce.webp';
+import articleStress from '../../assets/images/article-stress.webp';
 /** A single block of article prose: paragraph, heading or pull-quote. */
-export type ArticleBodyBlock =
-	| { t: 'p'; x: string }
-	| { t: 'h'; x: string }
-	| { t: 'q'; x: string };
+export type ArticleBodyBlock = { t: 'p'; x: string } | { t: 'h'; x: string } | { t: 'q'; x: string };
 
 export interface Article {
 	id: string;
-	/** The single hero article shown above the grid. */
-	featured?: boolean;
+	featured: boolean;
 	cat: string;
 	title: string;
 	excerpt: string;
@@ -35,14 +23,7 @@ export interface Article {
 }
 
 /** Filter chips. "Visi" is the catch-all and is always first. */
-export const articleCategories = [
-	'Visi',
-	'Mityba',
-	'Emocinis valgymas',
-	'Santykis su maistu',
-	'Įpročiai',
-	'Istorijos',
-] as const;
+export const articleCategories = ['Visi', 'Mityba', 'Emocinis valgymas', 'Santykis su maistu', 'Įpročiai', 'Istorijos'] as const;
 
 export const articles: Article[] = [
 	{
@@ -121,6 +102,7 @@ export const articles: Article[] = [
 	},
 	{
 		id: 'pusryciai-baltymai',
+		featured: false,
 		cat: 'Mityba',
 		title: 'Sotūs pusryčiai: kiek baltymų iš tiesų reikia ryte',
 		excerpt:
@@ -153,6 +135,7 @@ export const articles: Article[] = [
 	},
 	{
 		id: 'santykis-su-maistu',
+		featured: false,
 		cat: 'Santykis su maistu',
 		title: 'Maistas nėra nei „geras", nei „blogas"',
 		excerpt:
@@ -185,6 +168,7 @@ export const articles: Article[] = [
 	},
 	{
 		id: 'iprociai-maziems-zingsniams',
+		featured: false,
 		cat: 'Įpročiai',
 		title: 'Maži žingsniai, kurie iš tikrųjų išlieka',
 		excerpt:
@@ -217,6 +201,7 @@ export const articles: Article[] = [
 	},
 	{
 		id: 'klientes-istorija',
+		featured: false,
 		cat: 'Istorijos',
 		title: '„Pirmą kartą nustojau skaičiuoti kalorijas ir atsikvėpiau"',
 		excerpt:
@@ -249,6 +234,7 @@ export const articles: Article[] = [
 	},
 	{
 		id: 'uzkandziai-be-kaltes',
+		featured: false,
 		cat: 'Mityba',
 		title: 'Užkandžiai be kaltės: ką turėti po ranka',
 		excerpt:
@@ -277,6 +263,7 @@ export const articles: Article[] = [
 	},
 	{
 		id: 'apetito-bangos',
+		featured: false,
 		cat: 'Emocinis valgymas',
 		title: 'Apetito bangos vakare: iš kur jos kyla',
 		excerpt:

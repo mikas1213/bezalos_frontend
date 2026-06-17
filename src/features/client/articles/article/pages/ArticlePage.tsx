@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
+import { Container } from '../../../../../components/Shared';
 import { NotFoundPage } from '../../../../../pages/notfound/NotFoundPage';
 import { type Article, getArticleById, getRelatedArticles } from '../../articles/services/articlesService';
 import {
@@ -14,8 +15,7 @@ import {
 } from '../components';
 import { useTableOfContents } from '../hooks';
 
-import '../../articles/styles.css';
-
+import styles from './ArticlePage.module.scss';
 interface ArticleViewProps {
 	article: Article;
 }
@@ -31,21 +31,18 @@ const ArticleView = ({ article }: ArticleViewProps) => {
 	const related = getRelatedArticles(article.id);
 
 	return (
-		<div className="bz-article" data-screen-label="Straipsnis">
-			<div className="bz-container bz-article-layout">
-				<article className="bz-article-inner">
-					<ArticleHeader article={article} />
-					<ArticleActions article={article} />
-					<ArticleProse lead={article.excerpt} body={article.body} />
-					<AuthorCard author={article.author} />
-					<ArticleComments articleId={article.id} />
-				</article>
+		<Container className={styles.articleLayout}>
+			<article className={styles.articleInner}>
+				<ArticleHeader article={article} />
+				<ArticleActions article={article} />
+				<ArticleProse lead={article.excerpt} body={article.body} />
+				<AuthorCard author={article.author} />
+				<ArticleComments articleId={article.id} />
+			</article>
 
-				<TableOfContents entries={entries} activeId={activeId} onJump={goToSection} />
-			</div>
-
+			<TableOfContents entries={entries} activeId={activeId} onJump={goToSection} />
 			<RelatedArticles articles={related} />
-		</div>
+		</Container>
 	);
 };
 

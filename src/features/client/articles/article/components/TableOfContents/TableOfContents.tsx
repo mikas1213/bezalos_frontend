@@ -1,4 +1,8 @@
+import cx from 'classnames';
+
 import type { TocEntry } from '../../hooks';
+
+import styles from './TableOfContents.module.scss';
 
 interface TableOfContentsProps {
 	entries: TocEntry[];
@@ -10,15 +14,15 @@ export const TableOfContents = ({ entries, activeId, onJump }: TableOfContentsPr
 	if (entries.length === 0) return null;
 
 	return (
-		<aside className="bz-toc">
-			<nav className="bz-toc-inner">
-				<span className="bz-toc-title">Turinys</span>
-				<ul className="bz-toc-list">
+		<aside className={styles.toc}>
+			<nav className={styles.tocInner}>
+				<span className={styles.tocTitle}>Turinys</span>
+				<ul className={styles.tocList}>
 					{entries.map((entry) => (
 						<li key={entry.id}>
 							<button
 								type="button"
-								className={`bz-toc-link${activeId === entry.id ? ' active' : ''}`}
+								className={cx(styles.tocLink, activeId === entry.id && styles.active)}
 								onClick={() => onJump(entry.id)}
 							>
 								{entry.label}

@@ -2,23 +2,25 @@ import { Link } from 'react-router-dom';
 
 import type { Article } from '../../services/articlesService';
 
+import styles from './ArticleCard.module.scss';
+
 interface ArticleCardProps {
 	article: Article;
 }
 
 export const ArticleCard = ({ article }: ArticleCardProps) => {
 	return (
-		<Link className="bz-art-card" to={`/straipsniai/${article.id}`}>
-			<div className="bz-art-card-media">
+		<Link className={styles.articleCard} to={`/straipsniai/${article.id}`}>
+			<div className={styles.articleCardMedia}>
 				<img src={article.img} alt={article.title} loading="lazy" />
-				<span className="bz-art-card-cat">{article.cat}</span>
+				<span className={styles.articleCardCat}>{article.cat}</span>
 			</div>
-			<div className="bz-art-card-body">
-				<h3 className="bz-art-card-title">{article.title}</h3>
-				<p className="bz-art-card-excerpt">{article.excerpt}</p>
-				<div className="bz-art-meta">
+			<div className={styles.articleCardBody}>
+				<h3 className={styles.articleCardTitle}>{article.title}</h3>
+				<p className={styles.articleCardExcerpt}>{article.excerpt}</p>
+				<div className={styles.articleMeta}>
 					<span>{article.date}</span>
-					<span className="bz-art-dot" />
+					<span className={styles.articleDot} />
 					<span>{article.readTime}</span>
 				</div>
 			</div>

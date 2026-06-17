@@ -1,0 +1,35 @@
+.prose {
+	font-size: 1.125rem;
+	line-height: 1.75;
+	color: var(--neutral-800);
+	margin: 32px 0;
+}
+.prose p {
+	margin: 0 0 1.4em;
+}
+.proseLead {
+	font-size: 1.3125rem;
+	line-height: 1.6;
+	color: var(--dark-green-600);
+	font-weight: 500;
+	margin-bottom: 1.5em !important;
+}
+.proseH2 {
+	font-size: clamp(1.4rem, 2.6vw, 1.75rem);
+	font-weight: 700;
+	line-height: 1.25;
+	color: var(--dark-green-600);
+	margin: 1.8em 0 0.6em;
+	letter-spacing: -0.01em;
+	scroll-margin-top: 100px;
+}
+.proseQuote {
+	margin: 1.6em 0;
+	padding: 4px 0 4px 28px;
+	border-left: 4px solid var(--light-green-600);
+	font-size: 1.375rem;
+	line-height: 1.45;
+	font-weight: 600;
+	font-style: italic;
+	color: var(--dark-green-500);
+}

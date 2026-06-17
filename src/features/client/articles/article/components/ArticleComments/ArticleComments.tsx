@@ -1,9 +1,12 @@
-import { type FormEvent, useState } from 'react';
+import { type SubmitEvent, useState } from 'react';
 
+import cx from 'classnames';
 import { Heart } from 'lucide-react';
 
 import { useArticleComments } from '../../hooks';
 import { initials } from '../../utils/initials';
+
+import styles from './ArticleComments.module.scss';
 
 interface ArticleCommentsProps {
 	articleId: string;
@@ -14,7 +17,7 @@ export const ArticleComments = ({ articleId }: ArticleCommentsProps) => {
 	const [name, setName] = useState('');
 	const [text, setText] = useState('');
 
-	const handleSubmit = (e: FormEvent) => {
+	const handleSubmit = (e: SubmitEvent<HTMLFormElement>) => {
 		e.preventDefault();
 		if (!text.trim()) return;
 		addComment(name, text);
@@ -23,47 +26,47 @@ export const ArticleComments = ({ articleId }: ArticleCommentsProps) => {
 	};
 
 	return (
-		<section className="bz-comments">
-			<h3 className="bz-comments-title">
+		<section className={styles.comments}>
+			<h3 className={styles.commentsTitle}>
 				Komentarai <span>({comments.length})</span>
 			</h3>
 
-			<form className="bz-comment-form" onSubmit={handleSubmit}>
+			<form className={styles.commentForm} onSubmit={handleSubmit}>
 				<input
 					type="text"
 					value={name}
 					onChange={(e) => setName(e.target.value)}
-					className="bz-comment-name"
+					className={styles.commentName}
 					placeholder="Tavo vardas (nebūtina)"
 				/>
 				<textarea
 					value={text}
 					onChange={(e) => setText(e.target.value)}
-					className="bz-comment-text"
+					className={styles.commentText}
 					rows={3}
 					placeholder="Pasidalink mintimis švelniai ir su pagarba…"
 				/>
-				<div className="bz-comment-actions">
-					<button type="submit" className="bz-comment-submit" disabled={!text.trim()}>
+				<div className={styles.commentActions}>
+					<button type="submit" className={styles.commentSubmit} disabled={!text.trim()}>
 						Komentuoti
 					</button>
 				</div>
 			</form>
 
-			<ul className="bz-comment-list">
+			<ul className={styles.commentList}>
 				{comments.map((comment) => (
-					<li key={comment.id} className="bz-comment">
-						<div className="bz-avatar bz-comment-avatar">{initials(comment.name)}</div>
-						<div className="bz-comment-main">
-							<div className="bz-comment-head">
-								<span className="bz-comment-author">{comment.name}</span>
-								{comment.mine && <span className="bz-comment-badge">Tu</span>}
-								<span className="bz-comment-date">{comment.date}</span>
+					<li key={comment.id} className={styles.comment}>
+						<div className={cx(styles.avatar, styles.commentAvatar)}>{initials(comment.name)}</div>
+						<div className={styles.commentMain}>
+							<div className={styles.commentHead}>
+								<span className={styles.commentAuthor}>{comment.name}</span>
+								{comment.mine && <span className={styles.commentBadge}>Tu</span>}
+								<span className={styles.commentDate}>{comment.date}</span>
 							</div>
-							<p className="bz-comment-body">{comment.text}</p>
+							<p className={styles.commentBody}>{comment.text}</p>
 							<button
 								type="button"
-								className={`bz-comment-like ${comment.likedByMe ? 'on' : ''}`}
+								className={cx(styles.commentLike, comment.likedByMe && styles.on)}
 								onClick={() => toggleLike(comment.id)}
 							>
 								<Heart size={15} fill={comment.likedByMe ? 'currentColor' : 'none'} />

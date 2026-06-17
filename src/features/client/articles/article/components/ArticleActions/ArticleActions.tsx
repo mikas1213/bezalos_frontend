@@ -1,12 +1,15 @@
 import { useEffect, useRef, useState } from 'react';
 
+import cx from 'classnames';
 import { Heart, Link2, Share2 } from 'lucide-react';
 
 import type { Article } from '../../../articles/services/articlesService';
-import envelopeIcon from '../../../instructions/assets/icons/social/envelope.svg';
-import facebookIcon from '../../../instructions/assets/icons/social/facebook.svg';
-import instagramIcon from '../../../instructions/assets/icons/social/instagram.svg';
+import envelopeIcon from '../../../assets/icons/social/envelope.svg';
+import facebookIcon from '../../../assets/icons/social/facebook.svg';
+import instagramIcon from '../../../assets/icons/social/instagram.svg';
 import { useArticleLike } from '../../hooks';
+
+import styles from './ArticleActions.module.scss';
 
 interface ArticleActionsProps {
 	article: Article;
@@ -34,17 +37,17 @@ export const ArticleActions = ({ article }: ArticleActionsProps) => {
 	};
 
 	return (
-		<div className="bz-article-actions">
-			<button type="button" className={`bz-like ${liked ? 'on' : ''}`} onClick={toggle} aria-pressed={liked}>
+		<div className={styles.articleActions}>
+			<button type="button" className={cx(styles.like, liked && styles.on)} onClick={toggle} aria-pressed={liked}>
 				<Heart size={20} fill={liked ? 'currentColor' : 'none'} />
 				<span>Patinka</span>
-				<span className="bz-like-count">{likeCount}</span>
+				<span className={styles.likeCount}>{likeCount}</span>
 			</button>
 
-			<div className="bz-share-wrap" ref={shareRef}>
+			<div className={styles.shareWrap} ref={shareRef}>
 				<button
 					type="button"
-					className={`bz-share-btn ${shareOpen ? 'on' : ''}`}
+					className={cx(styles.shareBtn, shareOpen && styles.on)}
 					onClick={() => setShareOpen((open) => !open)}
 				>
 					<Share2 size={18} />
@@ -52,27 +55,27 @@ export const ArticleActions = ({ article }: ArticleActionsProps) => {
 				</button>
 
 				{shareOpen && (
-					<div className="bz-share-menu">
-						<button type="button" className="bz-share-item" onClick={copyLink}>
-							<span className="bz-share-ico">
+					<div className={styles.shareMenu}>
+						<button type="button" className={styles.shareItem} onClick={copyLink}>
+							<span className={styles.shareIco}>
 								<Link2 size={18} />
 							</span>
 							<span>{copied ? 'Nuoroda nukopijuota!' : 'Kopijuoti nuorodą'}</span>
 						</button>
-						<a className="bz-share-item" href="#" onClick={(e) => e.preventDefault()}>
-							<span className="bz-share-ico">
+						<a className={styles.shareItem} href="#" onClick={(e) => e.preventDefault()}>
+							<span className={styles.shareIco}>
 								<img src={facebookIcon} alt="" />
 							</span>
 							<span>Facebook</span>
 						</a>
-						<a className="bz-share-item" href="#" onClick={(e) => e.preventDefault()}>
-							<span className="bz-share-ico">
+						<a className={styles.shareItem} href="#" onClick={(e) => e.preventDefault()}>
+							<span className={styles.shareIco}>
 								<img src={instagramIcon} alt="" />
 							</span>
 							<span>Instagram</span>
 						</a>
-						<a className="bz-share-item" href="#" onClick={(e) => e.preventDefault()}>
-							<span className="bz-share-ico">
+						<a className={styles.shareItem} href="#" onClick={(e) => e.preventDefault()}>
+							<span className={styles.shareIco}>
 								<img src={envelopeIcon} alt="" />
 							</span>
 							<span>El. paštu</span>

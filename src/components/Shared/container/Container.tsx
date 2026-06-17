@@ -1,7 +1,9 @@
-import styles from './Container.module.css';
 import type { CSSProperties, ElementType, ReactNode } from 'react';
 import { forwardRef } from 'react';
+
 import { useResponsivePadding } from '../../../hooks';
+
+import styles from './Container.module.scss';
 /**
  * @param {ElementType} [as='div'] – The HTML element or React component to render as the container.
  * @param {ReactNode} children – The content that will be constrained by width.
@@ -12,30 +14,42 @@ import { useResponsivePadding } from '../../../hooks';
  */
 
 type ContainerProps = {
-    as?: ElementType,
-    id?: string,
-    children: ReactNode,
-    maxWidth?: string,
-    padding?: string,
-    className?: string
+	as?: ElementType;
+	id?: string;
+	children: ReactNode;
+	maxWidth?: string;
+	padding?: string;
+	className?: string;
 };
 
-export const Container = forwardRef<HTMLDivElement, ContainerProps>(({ as: Component = 'div',  children, maxWidth = 'var(--content-width)', padding = '', className = '', id = undefined, ...props}, ref) => {
-    const responsivePadding = useResponsivePadding();
-    const containerClasses = [
-        className,
-        styles.container
-    ].join(' ');
+export const Container = forwardRef<HTMLDivElement, ContainerProps>(
+	(
+		{
+			as: Component = 'div',
+			children,
+			maxWidth = 'var(--content-width)',
+			padding = '',
+			className = '',
+			id = undefined,
+			...props
+		},
+		ref,
+	) => {
+		const responsivePadding = useResponsivePadding();
+		const containerClasses = [className, styles.container].join(' ');
 
-    const containerStyle = {
-        '--max-width': maxWidth,
-        '--padding': padding === '' ? responsivePadding : padding,
-        ...props
-    } as CSSProperties;
+		const containerStyle = {
+			'--max-width': maxWidth,
+			'--padding': padding === '' ? responsivePadding : padding,
+			...props,
+		} as CSSProperties;
 
-    return (
-        <Component id={id} ref={ref} className={containerClasses} style={containerStyle}>
-            {children}
-        </Component>
-    );
-});
+		return (
+			<Component id={id} ref={ref} className={containerClasses} style={containerStyle}>
+				{children}
+			</Component>
+		);
+	},
+);
+
+Container.displayName = 'Container';
