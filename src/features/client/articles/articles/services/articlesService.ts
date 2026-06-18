@@ -10,6 +10,7 @@ export type ArticleBodyBlock = { t: 'p'; x: string } | { t: 'h'; x: string } | {
 
 export interface Article {
 	id: string;
+	slug: string;
 	featured: boolean;
 	cat: string;
 	title: string;
@@ -27,7 +28,8 @@ export const articleCategories = ['Visi', 'Mityba', 'Emocinis valgymas', 'Santyk
 
 export const articles: Article[] = [
 	{
-		id: 'emocinis-valgymas',
+		id: '26b89c03-8105-4a97-b9b0-9a8dfe7d29b1',
+		slug: 'emocinis-valgymas',
 		featured: true,
 		cat: 'Emocinis valgymas',
 		title: 'Kodėl valgome tada, kai iš tikrųjų nesame alkani',
@@ -101,7 +103,8 @@ export const articles: Article[] = [
 		],
 	},
 	{
-		id: 'pusryciai-baltymai',
+		id: 'ebc2eb5b-73ac-44fd-baee-fc80a44dc46e',
+		slug: 'pusryciai-baltymai',
 		featured: false,
 		cat: 'Mityba',
 		title: 'Sotūs pusryčiai: kiek baltymų iš tiesų reikia ryte',
@@ -134,7 +137,8 @@ export const articles: Article[] = [
 		],
 	},
 	{
-		id: 'santykis-su-maistu',
+		id: 'd257d3ee-53b6-42d3-acae-17c6d5cb98a2',
+		slug: 'santykis-su-maistu',
 		featured: false,
 		cat: 'Santykis su maistu',
 		title: 'Maistas nėra nei „geras", nei „blogas"',
@@ -167,7 +171,8 @@ export const articles: Article[] = [
 		],
 	},
 	{
-		id: 'iprociai-maziems-zingsniams',
+		id: '367b8a0c-84b4-437e-8ce4-b70ca97a34b3',
+		slug: 'iprociai-maziems-zingsniams',
 		featured: false,
 		cat: 'Įpročiai',
 		title: 'Maži žingsniai, kurie iš tikrųjų išlieka',
@@ -200,7 +205,8 @@ export const articles: Article[] = [
 		],
 	},
 	{
-		id: 'klientes-istorija',
+		id: 'fbb11ff5-8ebe-45c4-8e47-1fe03d4a20ab',
+		slug: 'klientes-istorija',
 		featured: false,
 		cat: 'Istorijos',
 		title: '„Pirmą kartą nustojau skaičiuoti kalorijas ir atsikvėpiau"',
@@ -233,7 +239,8 @@ export const articles: Article[] = [
 		],
 	},
 	{
-		id: 'uzkandziai-be-kaltes',
+		id: '048f4c42-cbfa-4c88-b52e-7f4faaf598ad',
+		slug: 'uzkandziai-be-kaltes',
 		featured: false,
 		cat: 'Mityba',
 		title: 'Užkandžiai be kaltės: ką turėti po ranka',
@@ -262,7 +269,8 @@ export const articles: Article[] = [
 		],
 	},
 	{
-		id: 'apetito-bangos',
+		id: '912d6745-92c8-4694-af2f-794180369c5d',
+		slug: 'apetito-bangos',
 		featured: false,
 		cat: 'Emocinis valgymas',
 		title: 'Apetito bangos vakare: iš kur jos kyla',
@@ -325,9 +333,9 @@ export const seedComments: SeedComment[] = [
 	},
 ];
 
-/** Look up a single article by its id (also used as the URL slug). */
-export const getArticleById = (id: string | undefined): Article | undefined =>
-	id ? articles.find((article) => article.id === id) : undefined;
+/** Look up a single article by its URL slug. */
+export const getArticleBySlug = (slug: string | undefined): Article | undefined =>
+	slug ? articles.find((article) => article.slug === slug) : undefined;
 
 /** Other articles to surface under "Skaityk toliau". */
 export const getRelatedArticles = (id: string, count = 3): Article[] =>

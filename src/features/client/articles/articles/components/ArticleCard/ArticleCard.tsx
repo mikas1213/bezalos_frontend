@@ -10,7 +10,7 @@ interface ArticleCardProps {
 
 export const ArticleCard = ({ article }: ArticleCardProps) => {
 	return (
-		<Link className={styles.articleCard} to={`/straipsniai/${article.id}`}>
+		<Link className={styles.articleCard} to={`/straipsniai/${article.slug}`}>
 			<div className={styles.articleCardMedia}>
 				<img src={article.img} alt={article.title} loading="lazy" />
 				<span className={styles.articleCardCat}>{article.cat}</span>
