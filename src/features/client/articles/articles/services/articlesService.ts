@@ -23,7 +23,6 @@ export interface Article {
 	body: ArticleBodyBlock[];
 }
 
-/** Filter chips. "Visi" is the catch-all and is always first. */
 export const articleCategories = ['Visi', 'Mityba', 'Emocinis valgymas', 'Santykis su maistu', 'Įpročiai', 'Istorijos'] as const;
 
 export const articles: Article[] = [
