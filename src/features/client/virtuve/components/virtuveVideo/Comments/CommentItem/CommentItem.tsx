@@ -79,11 +79,11 @@ export const CommentItem = ({
 	onAccessDenied,
 	children,
 }: CommentItemProps) => {
-	const { mutate: toggleLike, data } = useToggleLike(comment.id, 'comments', ['comment', comment.id], videoId);
+	const { mutate: toggleLike } = useToggleLike(comment.id, 'comments', videoId);
 	const color = getUserColor(comment.userId);
 	const totalReplies = comment.replies.length;
-	const isLiked = data?.isLiked ?? comment.isLiked ?? false;
-	const likesCount = data?.likesCount ?? comment.likesCount ?? 0;
+	const isLiked = comment.isLiked ?? false;
+	const likesCount = comment.likesCount ?? 0;
 
 	const handleLike = (e: React.MouseEvent<HTMLButtonElement>) => {
 		if (!actionAccess.allowed) {

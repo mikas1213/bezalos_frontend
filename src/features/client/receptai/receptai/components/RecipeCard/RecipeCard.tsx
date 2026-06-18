@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 
+import cx from 'classnames';
 import { Clock, Heart } from 'lucide-react';
 
 import { useToggleLike } from '../../../../../../hooks/useToggleLike';
@@ -28,7 +29,7 @@ export const RecipeCard = ({ recipe, index = 0 }: RecipeCardProps) => {
 	const { user } = useAuth();
 	const { authOpenModal } = useAuthModal();
 
-	const { mutate: toggleLike } = useToggleLike(String(recipe.id), 'recipes', ['recipe', recipe.id]);
+	const { mutate: toggleLike } = useToggleLike(String(recipe.id), 'recipes');
 
 	const handleToggleLike = () => {
 		if (!user?.user_id) {
@@ -60,8 +61,8 @@ export const RecipeCard = ({ recipe, index = 0 }: RecipeCardProps) => {
 					</span>
 				</span>
 				<span className={styles.item}>{recipe.food_logic}</span>
-				<span className={`${styles.item} ${styles.likes}`} onClick={handleToggleLike}>
-					<Heart className={`${styles.icon} ${recipe.liked ? styles.liked : ''}`} />
+				<span className={cx(styles.item, styles.likes)} onClick={handleToggleLike}>
+					<Heart className={cx(styles.icon, recipe.liked && styles.liked)} />
 					{recipe.likes}
 				</span>
 			</div>

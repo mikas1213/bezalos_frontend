@@ -26,7 +26,7 @@ const pdfs = {
 };
 
 export const VideoInfo = ({ user, video, actionAccess }: VideoInfoProps) => {
-	const { mutate: toggleLike, isPending, data } = useToggleLike(video.id, 'videos', queryKeys.video(video.slug, user), video.id);
+	const { mutate: toggleLike } = useToggleLike(video.id, 'videos', video.id, queryKeys.video(video.slug, user));
 	const { authOpenModal } = useAuthModal();
 	const [showMore, setShowMore] = useState(false);
 	const navigate = useNavigate();
@@ -70,11 +70,11 @@ export const VideoInfo = ({ user, video, actionAccess }: VideoInfoProps) => {
 
 					<button
 						type="button"
-						className={cx(styles.likeBtn, (data?.isLiked || video.isLiked) && styles.active)}
+						className={cx(styles.likeBtn, video.isLiked && styles.active)}
 						onClick={handleToggleLike}
 					>
 						<ThumbsUp />
-						{(!isPending && data?.likesCount) || video.likesCount}
+						{video.likesCount}
 					</button>
 				</Cluster>
 

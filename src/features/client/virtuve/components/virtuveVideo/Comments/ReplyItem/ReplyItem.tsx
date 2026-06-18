@@ -2,7 +2,8 @@ import cx from 'classnames';
 
 import { useToggleLike } from '../../../../../../../hooks/useToggleLike';
 import type { ActionAccess } from '../../../../pages/VirtuveVideoPage/VirtuveVideoPage';
-import type { ReplyDto } from '../../../../service/commentsService';
+// import type { ReplyDto } from '../../../../service/commentsService';
+import type { ReplyDto } from '../../../../services/commentsService';
 import { formatTime, getInitials, getUserColor } from '../utils';
 
 import styles from './ReplyItem.module.scss';
@@ -39,10 +40,10 @@ export type ReplyItemProps = {
 };
 
 export const ReplyItem = ({ reply, userId, videoId, isRemoving, actionAccess, onDelete, onAccessDenied }: ReplyItemProps) => {
-	const { mutate: toggleLike, data } = useToggleLike(reply.id, 'comments', ['comment', reply.id], videoId);
+	const { mutate: toggleLike } = useToggleLike(reply.id, 'comments', videoId);
 	const rColor = getUserColor(reply.userId);
-	const isLiked = data?.isLiked ?? reply.isLiked ?? false;
-	const likesCount = data?.likesCount ?? reply.likesCount ?? 0;
+	const isLiked = reply.isLiked ?? false;
+	const likesCount = reply.likesCount ?? 0;
 
 	const handleLike = (e: React.MouseEvent<HTMLButtonElement>) => {
 		if (!actionAccess.allowed) {
