@@ -1,12 +1,6 @@
 import { useMemo, useState } from 'react';
 
 import { type Article, articles as allArticles } from '../services/articlesService';
-
-/**
- * Drives the Straipsniai index: the always-on featured article, the active
- * category chip and the filtered grid (everything except the featured one).
- * "Visi" shows all; any other category narrows the grid to that category.
- */
 export const useArticles = () => {
 	const [category, setCategory] = useState('Visi');
 

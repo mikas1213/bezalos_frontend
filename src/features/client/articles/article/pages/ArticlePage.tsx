@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 
 import { Container } from '../../../../../components/Shared';
 import { NotFoundPage } from '../../../../../pages/notfound/NotFoundPage';
-import { type Article, getArticleById, getRelatedArticles } from '../../articles/services/articlesService';
+import { type Article, getArticleBySlug, getRelatedArticles } from '../../articles/services/articlesService';
 import {
 	ArticleActions,
 	ArticleComments,
@@ -48,7 +48,7 @@ const ArticleView = ({ article }: ArticleViewProps) => {
 
 const ArticlePage = () => {
 	const { slug } = useParams();
-	const article = getArticleById(slug);
+	const article = getArticleBySlug(slug);
 
 	if (!article) return <NotFoundPage />;
 

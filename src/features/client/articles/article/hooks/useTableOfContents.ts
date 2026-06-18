@@ -7,11 +7,6 @@ export interface TocEntry {
 	label: string;
 }
 
-/**
- * Builds a table of contents from the heading blocks of an article body and
- * tracks which section is currently in view (scroll-spy). Section ids match
- * the `sec-{index}` ids rendered by ArticleProse.
- */
 export const useTableOfContents = (body: ArticleBodyBlock[]) => {
 	const entries = useMemo<TocEntry[]>(
 		() =>

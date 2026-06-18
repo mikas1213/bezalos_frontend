@@ -10,7 +10,7 @@ interface FeaturedArticleProps {
 
 export const FeaturedArticle = ({ article }: FeaturedArticleProps) => {
 	return (
-		<Link className={styles.featuredArticle} to={`/straipsniai/${article.id}`}>
+		<Link className={styles.featuredArticle} to={`/straipsniai/${article.slug}`}>
 			<div className={styles.featuredArticleMedia}>
 				<img src={article.img} alt={article.title} />
 			</div>

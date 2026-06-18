@@ -1,10 +1,5 @@
 import { useEffect, useState } from 'react';
 
-/**
- * Per-article "Patinka" state, persisted in localStorage so a like survives
- * reloads. The page is remounted per article (keyed by id), so reading the
- * stored value in the initializer is enough — no re-sync effect needed.
- */
 export const useArticleLike = (articleId: string, baseLikes: number) => {
 	const storageKey = `bz_like_${articleId}`;
 	const [liked, setLiked] = useState(() => {
