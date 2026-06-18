@@ -10,10 +10,13 @@ export interface ToggleLikeResponse {
 	isLiked: boolean;
 	likesCount: number;
 }
+const needsEntityType: LikeEntity[] = ['videos', 'comments'];
 
 class LikesService {
 	async toggleLike(entityId: string, entityType: LikeEntity, contextEntityId?: string): Promise<ToggleLikeResponse> {
-		const response = await axiosPrivate.post<ToggleLikeResponse>(`/like/${entityType}`, {
+		const apiEndPoint = needsEntityType.includes(entityType) ? `/like/${entityType}` : '/like';
+		console.log('LikesService: ', entityType, apiEndPoint);
+		const response = await axiosPrivate.post<ToggleLikeResponse>(apiEndPoint, {
 			entityId,
 			entityType,
 			contextEntityId,
