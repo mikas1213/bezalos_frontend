@@ -37,7 +37,7 @@ const ArticleView = ({ article }: ArticleViewProps) => {
 				<ArticleActions article={article} />
 				<ArticleProse lead={article.excerpt} body={article.body} />
 				<AuthorCard author={article.author} />
-				<ArticleComments articleId={article.id} />
+				{/* <ArticleComments articleId={article.id} /> */}
 			</article>
 
 			<TableOfContents entries={entries} activeId={activeId} onJump={goToSection} />
