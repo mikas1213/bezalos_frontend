@@ -10,7 +10,6 @@ import { useAuth, useAuthModal } from '../../../../../auth';
 import type { Article } from '../../../articles/services/articlesService';
 import envelopeIcon from '../../../assets/icons/social/envelope.svg';
 import facebookIcon from '../../../assets/icons/social/facebook.svg';
-import instagramIcon from '../../../assets/icons/social/instagram.svg';
 
 import styles from './ArticleActions.module.scss';
 
@@ -24,10 +23,6 @@ export const ArticleActions = ({ article }: ArticleActionsProps) => {
 	const queryClient = useQueryClient();
 	const { mutate: toggleLike } = useToggleLike(article.id, 'articles');
 	const { data: serverLike } = useLikesCount(article.id, 'articles');
-
-	// The (global) count query is the single source of truth. isLiked is per-user,
-	// so a logged-out visitor is never "liked" — guarding on the user id makes logout
-	// reset the heart instantly instead of leaking a stale toggle result.
 	const liked = user?.user_id ? (serverLike?.isLiked ?? false) : false;
 	const likeCount = serverLike?.likesCount ?? 0;
 
@@ -41,8 +36,6 @@ export const ArticleActions = ({ article }: ArticleActionsProps) => {
 			return;
 		}
 		toggleLike(undefined, {
-			// Write the result straight into the count cache for instant feedback;
-			// useToggleLike's onSettled still refetches to confirm.
 			onSuccess: (res) => queryClient.setQueryData(likesCountKey('articles', article.id), res),
 		});
 	};
@@ -65,6 +58,13 @@ export const ArticleActions = ({ article }: ArticleActionsProps) => {
 	const shareToFacebook = () => {
 		const shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location.href)}`;
 		window.open(shareUrl, 'facebook-share', 'width=600,height=600,noopener,noreferrer');
+		setShareOpen(false);
+	};
+
+	const shareByEmail = () => {
+		const subject = encodeURIComponent(article.title);
+		const body = encodeURIComponent(`${article.excerpt}\n\n${window.location.href}`);
+		window.location.href = `mailto:?subject=${subject}&body=${body}`;
 		setShareOpen(false);
 	};
 
@@ -94,28 +94,18 @@ export const ArticleActions = ({ article }: ArticleActionsProps) => {
 							</span>
 							<span>{copied ? 'Nuoroda nukopijuota!' : 'Kopijuoti nuorodą'}</span>
 						</button>
-						<button
-							type="button"
-							className={styles.shareItem}
-							onClick={shareToFacebook}
-						>
+						<button type="button" className={styles.shareItem} onClick={shareToFacebook}>
 							<span className={styles.shareIco}>
 								<img src={facebookIcon} alt="" />
 							</span>
 							<span>Facebook</span>
 						</button>
-						<a className={styles.shareItem} href="#" onClick={(e) => e.preventDefault()}>
-							<span className={styles.shareIco}>
-								<img src={instagramIcon} alt="" />
-							</span>
-							<span>Instagram</span>
-						</a>
-						<a className={styles.shareItem} href="#" onClick={(e) => e.preventDefault()}>
+						<button type="button" className={styles.shareItem} onClick={shareByEmail}>
 							<span className={styles.shareIco}>
 								<img src={envelopeIcon} alt="" />
 							</span>
 							<span>El. paštu</span>
-						</a>
+						</button>
 					</div>
 				)}
 			</div>

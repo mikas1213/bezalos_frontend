@@ -73,6 +73,12 @@
 }
 .articleCardBody .articleMeta {
 	margin-top: 4px;
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	font-size: 13px;
+	color: var(--neutral-500);
+	flex-wrap: wrap;
 }
 .articleDot {
 	width: 3px;
