@@ -19,7 +19,6 @@ export interface Article {
 	author: string;
 	date: string;
 	readTime: string;
-	likes: number;
 	body: ArticleBodyBlock[];
 }
 
@@ -38,7 +37,6 @@ export const articles: Article[] = [
 		author: 'Sandra Jatulytė',
 		date: '2025 05 12',
 		readTime: '7 min',
-		likes: 184,
 		body: [
 			{
 				t: 'p',
@@ -113,7 +111,6 @@ export const articles: Article[] = [
 		author: 'Sandra Jatulytė',
 		date: '2025 04 28',
 		readTime: '5 min',
-		likes: 96,
 		body: [
 			{
 				t: 'p',
@@ -147,7 +144,6 @@ export const articles: Article[] = [
 		author: 'Sandra Jatulytė',
 		date: '2025 04 15',
 		readTime: '6 min',
-		likes: 142,
 		body: [
 			{
 				t: 'p',
@@ -181,7 +177,6 @@ export const articles: Article[] = [
 		author: 'Sandra Jatulytė',
 		date: '2025 03 30',
 		readTime: '8 min',
-		likes: 118,
 		body: [
 			{
 				t: 'p',
@@ -215,7 +210,6 @@ export const articles: Article[] = [
 		author: 'Be žalos',
 		date: '2025 03 18',
 		readTime: '9 min',
-		likes: 207,
 		body: [
 			{
 				t: 'p',
@@ -249,7 +243,6 @@ export const articles: Article[] = [
 		author: 'Sandra Jatulytė',
 		date: '2025 03 04',
 		readTime: '4 min',
-		likes: 73,
 		body: [
 			{
 				t: 'p',
@@ -279,7 +272,6 @@ export const articles: Article[] = [
 		author: 'Sandra Jatulytė',
 		date: '2025 02 20',
 		readTime: '6 min',
-		likes: 89,
 		body: [
 			{
 				t: 'p',

@@ -1,13 +1,16 @@
 import { useEffect, useRef, useState } from 'react';
 
+import { useQueryClient } from '@tanstack/react-query';
 import cx from 'classnames';
 import { Heart, Link2, Share2 } from 'lucide-react';
 
+import { likesCountKey, useLikesCount } from '../../../../../../hooks/useLikesCount';
+import { useToggleLike } from '../../../../../../hooks/useToggleLike';
+import { useAuth, useAuthModal } from '../../../../../auth';
 import type { Article } from '../../../articles/services/articlesService';
 import envelopeIcon from '../../../assets/icons/social/envelope.svg';
 import facebookIcon from '../../../assets/icons/social/facebook.svg';
 import instagramIcon from '../../../assets/icons/social/instagram.svg';
-import { useArticleLike } from '../../hooks';
 
 import styles from './ArticleActions.module.scss';
 
@@ -16,10 +19,33 @@ interface ArticleActionsProps {
 }
 
 export const ArticleActions = ({ article }: ArticleActionsProps) => {
-	const { liked, likeCount, toggle } = useArticleLike(article.id, article.likes);
+	const { user } = useAuth();
+	const { authOpenModal } = useAuthModal();
+	const queryClient = useQueryClient();
+	const { mutate: toggleLike } = useToggleLike(article.id, 'articles');
+	const { data: serverLike } = useLikesCount(article.id, 'articles');
+
+	// The (global) count query is the single source of truth. isLiked is per-user,
+	// so a logged-out visitor is never "liked" — guarding on the user id makes logout
+	// reset the heart instantly instead of leaking a stale toggle result.
+	const liked = user?.user_id ? (serverLike?.isLiked ?? false) : false;
+	const likeCount = serverLike?.likesCount ?? 0;
+
 	const [shareOpen, setShareOpen] = useState(false);
 	const [copied, setCopied] = useState(false);
 	const shareRef = useRef<HTMLDivElement>(null);
+
+	const handleToggleLike = () => {
+		if (!user?.user_id) {
+			authOpenModal('auth');
+			return;
+		}
+		toggleLike(undefined, {
+			// Write the result straight into the count cache for instant feedback;
+			// useToggleLike's onSettled still refetches to confirm.
+			onSuccess: (res) => queryClient.setQueryData(likesCountKey('articles', article.id), res),
+		});
+	};
 
 	useEffect(() => {
 		if (!shareOpen) return;
@@ -38,7 +64,7 @@ export const ArticleActions = ({ article }: ArticleActionsProps) => {
 
 	return (
 		<div className={styles.articleActions}>
-			<button type="button" className={cx(styles.like, liked && styles.on)} onClick={toggle} aria-pressed={liked}>
+			<button type="button" className={cx(styles.like, liked && styles.on)} onClick={handleToggleLike} aria-pressed={liked}>
 				<Heart size={20} fill={liked ? 'currentColor' : 'none'} />
 				<span>Patinka</span>
 				<span className={styles.likeCount}>{likeCount}</span>
