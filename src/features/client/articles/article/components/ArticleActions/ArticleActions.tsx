@@ -62,6 +62,12 @@ export const ArticleActions = ({ article }: ArticleActionsProps) => {
 		setTimeout(() => setCopied(false), 1800);
 	};
 
+	const shareToFacebook = () => {
+		const shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location.href)}`;
+		window.open(shareUrl, 'facebook-share', 'width=600,height=600,noopener,noreferrer');
+		setShareOpen(false);
+	};
+
 	return (
 		<div className={styles.articleActions}>
 			<button type="button" className={cx(styles.like, liked && styles.on)} onClick={handleToggleLike} aria-pressed={liked}>
@@ -88,12 +94,16 @@ export const ArticleActions = ({ article }: ArticleActionsProps) => {
 							</span>
 							<span>{copied ? 'Nuoroda nukopijuota!' : 'Kopijuoti nuorodą'}</span>
 						</button>
-						<a className={styles.shareItem} href="#" onClick={(e) => e.preventDefault()}>
+						<button
+							type="button"
+							className={styles.shareItem}
+							onClick={shareToFacebook}
+						>
 							<span className={styles.shareIco}>
 								<img src={facebookIcon} alt="" />
 							</span>
 							<span>Facebook</span>
-						</a>
+						</button>
 						<a className={styles.shareItem} href="#" onClick={(e) => e.preventDefault()}>
 							<span className={styles.shareIco}>
 								<img src={instagramIcon} alt="" />
