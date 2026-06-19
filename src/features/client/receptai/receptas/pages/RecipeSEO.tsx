@@ -14,7 +14,6 @@ const RecipeSEO = ({ recipe }: RecipeSEOProps) => {
 
 	const recipeUrl = `https://www.bezalos.lt/receptai/${recipe.slug}`;
 
-	// Schema.org žymėjimas
 	const schemaData = {
 		'@context': 'https://schema.org',
 		'@type': 'Recipe',
@@ -27,8 +26,6 @@ const RecipeSEO = ({ recipe }: RecipeSEOProps) => {
 		},
 		datePublished: recipe.created_at.split('T')[0] || new Date().toISOString().split('T')[0],
 		description: recipe.description,
-		prepTime: `PT${recipe.duration}M`,
-		cookTime: `PT${recipe.duration}M`,
 		totalTime: `PT${recipe.duration}M`,
 		recipeCuisine: 'Lietuviška',
 		...(recipe.recipe_type && { recipeCategory: recipe.recipe_type }),
@@ -42,6 +39,7 @@ const RecipeSEO = ({ recipe }: RecipeSEOProps) => {
 						text: step,
 						url: `${recipeUrl}#zingsnis-${index + 1}`,
 						position: index + 1,
+						...(recipe.image_s3 && { image: recipe.image_s3 }),
 					}))
 				: [
 						{
@@ -49,6 +47,7 @@ const RecipeSEO = ({ recipe }: RecipeSEOProps) => {
 							name: 'Instrukcijos',
 							text: 'Instrukcijos pateiktos recepto puslapyje.',
 							url: recipeUrl,
+							...(recipe.image_s3 && { image: recipe.image_s3 }),
 						},
 					],
 		nutrition: {

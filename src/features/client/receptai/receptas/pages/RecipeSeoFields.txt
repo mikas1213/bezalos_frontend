@@ -1,0 +1,16 @@
+# Recipe SEO laukų žemėlapis
++--------------------------------+-----------------------------+-----------------------------------------------+
+| Schema.org laukas              | Būsena                      | Iš kur                                        |
++--------------------------------+-----------------------------+-----------------------------------------------+
+| name, slug, image, description | ✓                           | title / slug / image_s3 / description         |
+| author, recipeCuisine          | ✓ bet hardcoded             | „Be žalos" / „Lietuviška"                     |
+| datePublished                  | ✓                           | created_at                                    |
+| recipeIngredient, nutrition    | ✓ skaičiuojama              | recipe_products + food_products               |
+| recipeCategory                 | ✓                           | recipe_type                                   |
+| totalTime                      | ✓                           | duration                                      |
+| video                          | ○ dalinis                   | video_link (be tikro thumbnail/trukmės/datos) |
+| recipeInstructions             | x placeholder               | nėra steps stulpelio                          |
+| aggregateRating                | x                           | nėra reitingų duomenų                         |
+| recipeYield                    | ○ hardcoded „1–4 porcijos"  | nėra servings stulpelio                       |
+| prepTime / cookTime            | ○ tik vienas duration       | nėra atskyrimo                                |
++--------------------------------+-----------------------------+-----------------------------------------------+
