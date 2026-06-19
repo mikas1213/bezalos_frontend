@@ -1,5 +1,5 @@
 import { axiosPrivate } from '../api/axios';
-export type LikeEntity = 'videos' | 'recipes' | 'comments';
+export type LikeEntity = 'videos' | 'recipes' | 'comments' | 'articles';
 
 interface ToggleLikePayload {
 	entityId: string;
@@ -21,6 +21,11 @@ class LikesService {
 			contextEntityId,
 		} satisfies ToggleLikePayload);
 
+		return response.data;
+	}
+
+	async getLikesCount(entityId: string): Promise<ToggleLikeResponse> {
+		const response = await axiosPrivate.get<ToggleLikeResponse>(`/like/${entityId}`);
 		return response.data;
 	}
 }

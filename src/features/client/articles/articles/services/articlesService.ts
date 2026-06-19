@@ -1,10 +1,3 @@
-import articleBelieve from '../../assets/images/article-believe.webp';
-import articleEating from '../../assets/images/article-eating.webp';
-import articleHands from '../../assets/images/article-hands.webp';
-import articleKitchen from '../../assets/images/article-kitchen.webp';
-import articlePlate from '../../assets/images/article-plate.webp';
-import articleProduce from '../../assets/images/article-produce.webp';
-import articleStress from '../../assets/images/article-stress.webp';
 /** A single block of article prose: paragraph, heading or pull-quote. */
 export type ArticleBodyBlock = { t: 'p'; x: string } | { t: 'h'; x: string } | { t: 'q'; x: string };
 
@@ -19,7 +12,6 @@ export interface Article {
 	author: string;
 	date: string;
 	readTime: string;
-	likes: number;
 	body: ArticleBodyBlock[];
 }
 
@@ -34,11 +26,10 @@ export const articles: Article[] = [
 		title: 'Kodėl valgome tada, kai iš tikrųjų nesame alkani',
 		excerpt:
 			'Emocinis valgymas dažnai prasideda ne nuo skrandžio, o nuo minčių ir jausmų. Pažvelkim, kaip atpažinti tikrąjį alkį ir švelniai grįžti prie savęs.',
-		img: articleEating,
+		img: '/og-articles/article-eating.webp',
 		author: 'Sandra Jatulytė',
 		date: '2025 05 12',
 		readTime: '7 min',
-		likes: 184,
 		body: [
 			{
 				t: 'p',
@@ -109,11 +100,10 @@ export const articles: Article[] = [
 		title: 'Sotūs pusryčiai: kiek baltymų iš tiesų reikia ryte',
 		excerpt:
 			'Subalansuoti pusryčiai padeda išvengti popietinio alkio bangų. Štai paprasta formulė, kuri tinka beveik kiekvienai dienai.',
-		img: articleProduce,
+		img: '/og-articles/article-produce.webp',
 		author: 'Sandra Jatulytė',
 		date: '2025 04 28',
 		readTime: '5 min',
-		likes: 96,
 		body: [
 			{
 				t: 'p',
@@ -143,11 +133,10 @@ export const articles: Article[] = [
 		title: 'Maistas nėra nei „geras", nei „blogas"',
 		excerpt:
 			'Kai maistą skirstome į leistiną ir draudžiamą, kuriame įtampą. Kalbamės apie tai, kaip atsisakyti kaltės ir valgyti ramiau.',
-		img: articleHands,
+		img: '/og-articles/article-hands.webp',
 		author: 'Sandra Jatulytė',
 		date: '2025 04 15',
 		readTime: '6 min',
-		likes: 142,
 		body: [
 			{
 				t: 'p',
@@ -177,11 +166,10 @@ export const articles: Article[] = [
 		title: 'Maži žingsniai, kurie iš tikrųjų išlieka',
 		excerpt:
 			'Ilgalaikiai pokyčiai gimsta ne iš griežtų taisyklių, o iš mažų, pasikartojančių sprendimų. Kaip kurti įpročius be prievartos sau.',
-		img: articleBelieve,
+		img: '/og-articles/article-believe.webp',
 		author: 'Sandra Jatulytė',
 		date: '2025 03 30',
 		readTime: '8 min',
-		likes: 118,
 		body: [
 			{
 				t: 'p',
@@ -211,11 +199,10 @@ export const articles: Article[] = [
 		title: '„Pirmą kartą nustojau skaičiuoti kalorijas ir atsikvėpiau"',
 		excerpt:
 			'Vienos bendruomenės narės kelionė nuo nuolatinio savęs ribojimo prie ramaus, sąmoningo santykio su maistu ir savimi.',
-		img: articleKitchen,
+		img: '/og-articles/article-kitchen.webp',
 		author: 'Be žalos',
 		date: '2025 03 18',
 		readTime: '9 min',
-		likes: 207,
 		body: [
 			{
 				t: 'p',
@@ -245,11 +232,10 @@ export const articles: Article[] = [
 		title: 'Užkandžiai be kaltės: ką turėti po ranka',
 		excerpt:
 			'Sotus ir paprastas užkandis gali sustabdyti vakarinį apsivalgymą. Keletas idėjų, kurias paruoši per kelias minutes.',
-		img: articlePlate,
+		img: '/og-articles/article-plate.webp',
 		author: 'Sandra Jatulytė',
 		date: '2025 03 04',
 		readTime: '4 min',
-		likes: 73,
 		body: [
 			{
 				t: 'p',
@@ -275,11 +261,10 @@ export const articles: Article[] = [
 		title: 'Apetito bangos vakare: iš kur jos kyla',
 		excerpt:
 			'Vakarinis alkis dažnai turi mažiau bendro su maistu, nei atrodo. Kalbamės apie nuovargį, įtampą ir kaip į juos atsiliepti.',
-		img: articleStress,
+		img: '/og-articles/article-stress.webp',
 		author: 'Sandra Jatulytė',
 		date: '2025 02 20',
 		readTime: '6 min',
-		likes: 89,
 		body: [
 			{
 				t: 'p',

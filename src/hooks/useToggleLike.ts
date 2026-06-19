@@ -11,6 +11,7 @@ const entityListQueryKey: Record<LikeEntity, string> = {
 	videos: 'videos',
 	recipes: 'recipes',
 	comments: 'comments',
+	articles: 'articles',
 };
 
 export function useToggleLike(entityId: string, entityType: LikeEntity, contextEntityId?: string, detailQueryKey?: unknown[]) {
