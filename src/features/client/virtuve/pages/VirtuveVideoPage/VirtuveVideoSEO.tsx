@@ -28,6 +28,7 @@ const VirtuveVideoSEO = ({ video }: Props) => {
 		thumbnailUrl,
 		uploadDate: createdAt,
 		...(video.contentUrl && { contentUrl: video.contentUrl }),
+		embedUrl: videoUrl,
 		duration: toIsoDuration(video.duration),
 		keywords,
 		author: {
