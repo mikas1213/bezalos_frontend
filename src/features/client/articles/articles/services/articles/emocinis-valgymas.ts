@@ -60,7 +60,7 @@ export default {
 		{ t: 'h', x: 'Kaip kalbėtis su savimi švelniau' },
 		{
 			t: 'p',
-			x: 'Vidinis kritikas retai padeda keistis dažniausiai jis tik didina įtampą, o įtampa vėl veda prie maisto. Pabandyk su savimi kalbėti taip, kaip kalbėtum su geriausia drauge: be teismo, su supratimu ir kantrybe.',
+			x: 'Vidinis kritikas retai padeda keistis dažniausiai jis tik didina įtampą, o įtampa vėl veda prie maisto. Pabandyk su savimi kalbėti taip, kaip kalbėtum su geriausia drauge: be teisimo, su supratimu ir kantrybe.',
 		},
 		{
 			t: 'q',
@@ -73,7 +73,7 @@ export default {
 		},
 		{
 			t: 'p',
-			x: 'Sąmoningas santykis su maistu kuriamas ne per griežtumą, o per smalsumą ir švelnumą sau. Kiekvienas toks stabtelėjimas — jau pokytis.',
+			x: 'Sąmoningas santykis su maistu kuriamas ne per griežtumą, o per smalsumą ir švelnumą sau. Kiekvienas toks stabtelėjimas - jau pokytis.',
 		},
 	],
 } satisfies Article;

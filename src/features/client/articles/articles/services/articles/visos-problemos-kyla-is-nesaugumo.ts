@@ -15,7 +15,7 @@ export default {
 	body: [
 		{
 			t: 'q',
-			x: 'Saugumas nėra vien apie stogą virš galvos ar tam tikrą pinigų sumą banko sąskaitoje. Saugumą gali jausti tuomet, kai užuot savo nerimą suvalgius, gali stipriai apkabinti kitą, kai prie bendro šeimos stalo, kur nuolat tau kartoja valgyk tą ar aną, po stalu gali stipriai suspausti draugo ranką ir jausti, kad esi saugi.',
+			x: 'Saugumą gali jausti tuomet, kai užuot savo nerimą suvalgius, gali stipriai apkabinti kitą, kai prie bendro šeimos stalo, kur nuolat tau kartoja valgyk tą ar aną, po stalu gali stipriai suspausti draugo ranką ir jausti, kad esi saugi.',
 		},
 		{
 			t: 'p',
@@ -23,22 +23,22 @@ export default {
 		},
 		{
 			t: 'q',
-			x: 'Nesaugaus prieraišumo stilius gali būti toksiškų santykių, aukos ir budelio ir kt. sutrikusio elgesio priežastimis. Apie tai papasakosiu kituose naujienlaiškiuose.',
+			x: 'Nesaugaus prieraišumo stilius gali būti toksiškų santykių, aukos ir budelio ir kt. sutrikusio elgesio priežastimis. Apie tai papasakosiu kituose tekstuose.',
 		},
 		{ t: 'h', x: 'Vengiantis prieraišumo tipas' },
 		{
 			t: 'p',
-			x: 'Vengiantis — kuomet neparodome, kad mums skauda, kažkas kelia nerimo, nesaugumo jausmą, ypatingai tais momentais kai mums brangus žmogus nuo mūsų atsitraukia. Šis prieraišumo stilius gali reikštis per greita branda vaikystėje. Kartais apie vaikus sakoma: toks mažas, o jau toks suaugęs. Jei tėvai negeba kokybiškai patenkinti mūsų emocinių poreikių, tą išmokstame padaryti patys, automatiškai reaguodami į susiklosčiusią situaciją. Todėl emocijos, empatija, jautrumas ir kt. savybės mums yra svetimos. Nepažįstame, nerodome jų savo gyvenime, taip pat sunkiai suprantame, kai tai rodo kiti, šalia mūsų esantys žmonės.',
+			x: 'Vengiantis - kuomet neparodome, kad mums skauda, kažkas kelia nerimo, nesaugumo jausmą, ypatingai tais momentais kai mums brangus žmogus nuo mūsų atsitraukia. Šis prieraišumo stilius gali reikštis per greita branda vaikystėje. Kartais apie vaikus sakoma: toks mažas, o jau toks suaugęs. Jei tėvai negeba kokybiškai patenkinti mūsų emocinių poreikių, tą išmokstame padaryti patys, automatiškai reaguodami į susiklosčiusią situaciją. Todėl emocijos, empatija, jautrumas ir kt. savybės mums yra svetimos. Nepažįstame, nerodome jų savo gyvenime, taip pat sunkiai suprantame, kai tai rodo kiti, šalia mūsų esantys žmonės.',
 		},
 		{ t: 'h', x: 'Nerimastingas prieraišumo tipas' },
 		{
 			t: 'p',
-			x: 'Nerimastingas — jei augame su nenuosekliai besielgiančiais suaugusiaisiais, susiformuoja baimės jausmas, kad kai mums jų reikės, jų nebus šalia, dėl to laikomės jų aklai įsikibę. Pvz.: mergina nuolatos tikrina vaikino telefoną, nes bijo, kad jis susiras geresnę, neišleidžia su draugais į barą, nes bijo, kad negrįš ir pan. Tokį prieraišumo stilių turintiems žmonėms santykis yra labai svarbus, tačiau jiems reikia daugiau pagalbos, kad nusiramintų ir jaustųsi saugūs. Jei santykių partneris yra kartu, tokie žmonės puikiai funkcionuoja ir jaučia saugiu prieraišumu grįstą ryšį, tačiau vos tik mylimas žmogus atsitraukia — iškart ima tuo ryšiu nepasitikėti. (Kol nežinojau, kad esu šio tipo žmogus, man tikrai buvo labai sunku gyventi, nuolatinė kontrolė ir nerimas labai sekino.) Šio tipo žmonėms svarbiausia nepamesti savęs, išmokti girdėti savo poreikius ir nuolatos juos atliepti. Mes esame linkę dėl kitų padaryti viską, taip pamesdami save.',
+			x: 'Nerimastingas - jei augame su nenuosekliai besielgiančiais suaugusiaisiais, susiformuoja baimės jausmas, kad kai mums jų reikės, jų nebus šalia, dėl to laikomės jų aklai įsikibę. Pvz.: mergina nuolatos tikrina vaikino telefoną, nes bijo, kad jis susiras geresnę, neišleidžia su draugais į barą, nes bijo, kad negrįš ir pan. Tokį prieraišumo stilių turintiems žmonėms santykis yra labai svarbus, tačiau jiems reikia daugiau pagalbos, kad nusiramintų ir jaustųsi saugūs. Jei santykių partneris yra kartu, tokie žmonės puikiai funkcionuoja ir jaučia saugiu prieraišumu grįstą ryšį, tačiau vos tik mylimas žmogus atsitraukia - iškart ima tuo ryšiu nepasitikėti. (Kol nežinojau, kad esu šio tipo žmogus, man tikrai buvo labai sunku gyventi, nuolatinė kontrolė ir nerimas labai sekino.) Šio tipo žmonėms svarbiausia nepamesti savęs, išmokti girdėti savo poreikius ir nuolatos juos atliepti. Mes esame linkę dėl kitų padaryti viską, taip pamesdami save.',
 		},
 		{ t: 'h', x: 'Dezorganizuotas prieraišumo tipas' },
 		{
 			t: 'p',
-			x: 'Dezorganizuotas — susiformuoja dėl per ilgai trukusio tėvų ar globėjų bauginančio elgesio: fizinio, psichologinio smurto, apleistumo. Tai nuolatinį padidintą nerimą jaučiantis žmogus, kuriam dažnai klijuojama „problematiško” etiketė. Vaikystėje tokie vaikai pasižymi prasta savikontrole, dėl to nuolatos įsivelia į įvairiausias problemas. Suaugus tai gali būti priklausomybių ar liguistos psichinės būklės priežastis. Jie negeba derintis prie kitų poreikių, nes praeityje niekada nepatyrė, ką reiškia būti sinchronišku su kitu, atliepti jo ir savo poreikius. Dezorganizuotas prieraišumas gali būti sutrikusio elgesio — tarp manijos, pvz.: persivalgymų, ir depresijos, pvz.: nevalgymų — priežastis.',
+			x: 'Dezorganizuotas - susiformuoja dėl per ilgai trukusio tėvų ar globėjų bauginančio elgesio: fizinio, psichologinio smurto, apleistumo. Tai nuolatinį padidintą nerimą jaučiantis žmogus, kuriam dažnai klijuojama „problematiško” etiketė. Vaikystėje tokie vaikai pasižymi prasta savikontrole, dėl to nuolatos įsivelia į įvairiausias problemas. Suaugus tai gali būti priklausomybių ar liguistos psichinės būklės priežastis. Jie negeba derintis prie kitų poreikių, nes praeityje niekada nepatyrė, ką reiškia būti sinchronišku su kitu, atliepti jo ir savo poreikius. Dezorganizuotas prieraišumas gali būti sutrikusio elgesio - tarp manijos, pvz.: persivalgymų, ir depresijos, pvz.: nevalgymų - priežastis.',
 		},
 		{
 			t: 'p',
@@ -46,7 +46,7 @@ export default {
 		},
 		{
 			t: 'p',
-			x: 'Jei turinys tave palietė, nori pasidalinti savo mintimis ar įžvalgomis, kviečiu tą padaryti komentuojant, dalinantis arba Instagram paskyroje — Valgau be žalos 💚',
+			x: 'Jei turinys tave palietė, nori pasidalinti savo mintimis ar įžvalgomis, kviečiu tą padaryti komentuojant, dalinantis arba Instagram paskyroje - Valgau be žalos 💚',
 		},
 	],
 } satisfies Article;

@@ -16,7 +16,7 @@ export default {
 		{ t: 'h', x: 'Kas yra schema ir kodėl ji kalba?' },
 		{
 			t: 'p',
-			x: 'Schemos — tai vaikystėje susiformavę giluminiai įsitikinimų ir reakcijų rinkiniai, kuriais kūnas išmoksta, ar pasaulis saugus. Jos suveikia greičiau už mintį: dar nespėjai pagalvoti, o ranka jau atidaro šaldytuvą.',
+			x: 'Schemos - tai vaikystėje susiformavę giluminiai įsitikinimų ir reakcijų rinkiniai, kuriais kūnas išmoksta, ar pasaulis saugus. Jos suveikia greičiau už mintį: dar nespėjai pagalvoti, o ranka jau atidaro šaldytuvą.',
 		},
 		{ t: 'h', x: 'Pirmoji schema: „turiu būti gera”' },
 		{
@@ -27,14 +27,14 @@ export default {
 			t: 'p',
 			x: 'Ji nebūtinai valgo daug, bet kiekvienas „taip”, kai vidus garsiai rėkia „ne”, vakare sugrįžta persivalgymu ir tylia kalte.',
 		},
-		{ t: 'h', x: 'Antroji schema: kontrolė ir paleidimas — tas pats dalykas' },
+		{ t: 'h', x: 'Antroji schema: kontrolė ir paleidimas - tas pats dalykas' },
 		{
 			t: 'p',
 			x: 'Žmonėms, ilgai gyvenusiems dietose, abi būsenos atrodo kaip priešingybės: arba labai griežtai, arba „viską sugadinau”. Iš tikrųjų tai dvi to paties scenarijaus pusės — schema, nemokanti rodyti balanso.',
 		},
 		{
 			t: 'q',
-			x: '68 % — tiek moterų dietų rate vidutiniškai praleidžia 11+ metų.\n3× — tiek didesnė tikimybė įsitraukti į emocinį valgymą po dietos.\n6 mėn. — vidutinis laikas, kurio reikia naujam įpročiui įsitvirtinti.',
+			x: '68 % - tiek moterų dietų rate vidutiniškai praleidžia 11+ metų.\n3× - tiek didesnė tikimybė įsitraukti į emocinį valgymą po dietos.\n6 mėn. - vidutinis laikas, kurio reikia naujam įpročiui įsitvirtinti.',
 		},
 		{
 			t: 'p',
@@ -55,7 +55,7 @@ export default {
 		},
 		{
 			t: 'p',
-			x: 'Ar maistas sumažins tą stipriausią jausmą? Jei taip — valgau be kaltės. Jei ne — ieškau būdo, kaip patenkinti tai, ko iš tikrųjų reikia.',
+			x: 'Ar maistas sumažins tą stipriausią jausmą? Jei taip - valgau be kaltės. Jei ne - ieškau būdo, kaip patenkinti tai, ko iš tikrųjų reikia.',
 		},
 		{
 			t: 'p',
@@ -68,15 +68,15 @@ export default {
 		},
 		{
 			t: 'p',
-			x: '1. Praktika pradėta per anksti — kūnui dar reikia padirbėti su pagrindais: saugumu, miegu, reguliariu valgymu.',
+			x: '1. Praktika pradėta per anksti - kūnui dar reikia padirbėti su pagrindais: saugumu, miegu, reguliariu valgymu.',
 		},
 		{
 			t: 'p',
-			x: '2. Praktikai reikia palydos — dirbant su specialistu per tą patį laiką nueinama dvigubai toliau.',
+			x: '2. Praktikai reikia palydos - dirbant su specialistu per tą patį laiką nueinama dvigubai toliau.',
 		},
 		{
 			t: 'p',
-			x: 'Jei jauti, kad vienai tvarkytis sunku — susisiek!',
+			x: 'Jei jauti, kad vienai tvarkytis sunku - susisiek!',
 		},
 	],
 } satisfies Article;
