@@ -27,10 +27,10 @@
 		user-select: none;
 	}
 
-	.items6 .navListMobile {
-		grid-auto-rows: minmax(calc((100dvh - 1rem - var(--nav-height-60)) / 6), auto);
-	}
 	.items7 .navListMobile {
 		grid-auto-rows: minmax(calc((100dvh - 1rem - var(--nav-height-60)) / 7), auto);
+	}
+	.items8 .navListMobile {
+		grid-auto-rows: minmax(calc((100dvh - 1rem - var(--nav-height-60)) / 8), auto);
 	}
 }

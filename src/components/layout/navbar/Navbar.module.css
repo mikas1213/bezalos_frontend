@@ -14,8 +14,8 @@
 	user-select: none;
 }
 .navDesktop svg {
-	width: 6.5rem;
-	height: 2.5rem;
+	width: 5.5rem;
+	height: 2rem;
 }
 
 .home_at_top {
@@ -143,7 +143,7 @@
 
 @media only screen and (max-width: 768px) {
 	.navDesktop svg {
-		width: 5rem;
+		width: 4.5rem;
 		height: 2.5rem;
 	}
 }

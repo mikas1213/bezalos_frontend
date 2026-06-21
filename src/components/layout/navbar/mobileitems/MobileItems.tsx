@@ -5,7 +5,7 @@ import styles from './MobileItems.module.css';
 
 const MobileItems = ({ children, isOpenBurger }: ItemsProps) => {
 	const { user_id } = useNavbar('default');
-	const mobileItemsClasses = [styles.navMobile, user_id ? styles.items7 : styles.items6, isOpenBurger && styles.show]
+	const mobileItemsClasses = [styles.navMobile, user_id ? styles.items8 : styles.items7, isOpenBurger && styles.show]
 		.filter(Boolean)
 		.join(' ');
 

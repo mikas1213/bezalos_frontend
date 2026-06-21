@@ -9,6 +9,7 @@ import Hamburger from './hamburger/Hamburger';
 import useNavbar from './hooks/useNavbar';
 import MobileItems from './mobileitems/MobileItems';
 import {
+	ArticleIcon,
 	AtlikTestaIcon,
 	AtsijungtiIcon,
 	NarysteIcon,
@@ -59,6 +60,11 @@ export const Navbar = ({ page = 'default' }: NavbarProps) => {
 
 						<NavLink to="/receptai" className={styles.listItem}>
 							<span>Receptai</span>
+							<div className={styles.indicator}></div>
+						</NavLink>
+
+						<NavLink to="/straipsniai" className={styles.listItem}>
+							<span>Straipsniai</span>
 							<div className={styles.indicator}></div>
 						</NavLink>
 
@@ -130,6 +136,16 @@ export const Navbar = ({ page = 'default' }: NavbarProps) => {
 						color={location.pathname.startsWith('/receptai') ? 'var(--light-green-600)' : 'var(--dark-green-600)'}
 					/>
 					<span>Receptai</span>
+				</NavLink>
+
+				<NavLink
+					to="/straipsniai"
+					className={({ isActive }) => (isActive ? `${styles.listItemMobile} ${styles.active}` : styles.listItemMobile)}
+				>
+					<ArticleIcon
+						color={location.pathname.startsWith('/straipsniai') ? 'var(--light-green-600)' : 'var(--dark-green-600)'}
+					/>
+					<span>Straipsniai</span>
 				</NavLink>
 
 				<NavLink
