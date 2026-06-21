@@ -25,7 +25,7 @@ export const FeaturedArticle = ({ article }: FeaturedArticleProps) => {
 					<span className={styles.articleDot} />
 					<span>{article.readTime} skaitymo</span>
 				</div>
-				<span className={styles.articleReadmore}>Skaityti straipsnį →</span>
+				<span className={styles.articleReadmore}>Skaityti straipsnį</span>
 			</div>
 		</Link>
 	);
