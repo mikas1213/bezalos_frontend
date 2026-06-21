@@ -1,27 +1,11 @@
-import { apetitoBangos } from './articles/apetito-bangos';
-import { emocinisValgymas } from './articles/emocinis-valgymas';
-import { iprociaiMaziemsZingsniams } from './articles/iprociai-maziems-zingsniams';
-import { klientesIstorija } from './articles/klientes-istorija';
-import { pusryciaiBaltymai } from './articles/pusryciai-baltymai';
-import { santykisSuMaistu } from './articles/santykis-su-maistu';
-import { uzkandziaiBeKaltes } from './articles/uzkandziai-be-kaltes';
+import { articles } from './articles';
 import type { Article, SeedComment } from './articleTypes';
 
+export { articles } from './articles';
 export type { Article, ArticleBodyBlock, SeedComment } from './articleTypes';
-
-export const articles: Article[] = [
-	emocinisValgymas,
-	pusryciaiBaltymai,
-	santykisSuMaistu,
-	iprociaiMaziemsZingsniams,
-	klientesIstorija,
-	uzkandziaiBeKaltes,
-	apetitoBangos,
-];
 
 /** "Visi" plus the unique categories present across all articles, in order of first appearance. */
 export const articleCategories = ['Visi', ...new Set(articles.map((article) => article.cat))];
-
 export const seedComments: SeedComment[] = [
 	{
 		name: 'Greta',

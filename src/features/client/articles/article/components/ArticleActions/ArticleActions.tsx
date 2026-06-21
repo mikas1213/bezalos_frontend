@@ -55,10 +55,26 @@ export const ArticleActions = ({ article }: ArticleActionsProps) => {
 		setTimeout(() => setCopied(false), 1800);
 	};
 
-	const shareToFacebook = () => {
-		const shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location.href)}`;
-		window.open(shareUrl, 'facebook-share', 'width=600,height=600,noopener,noreferrer');
+	const shareToFacebook = async () => {
 		setShareOpen(false);
+		const url = window.location.href;
+
+		// On mobile the OS intercepts facebook.com links and opens the FB app, which
+		// doesn't handle sharer.php — so the popup silently does nothing. Use the native
+		// share sheet there (it includes Facebook and actually works).
+		const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+		if (isMobile && navigator.share) {
+			try {
+				await navigator.share({ title: article.title, text: article.excerpt, url });
+				return;
+			} catch (err) {
+				if ((err as Error)?.name === 'AbortError') return; // user cancelled the share sheet
+				// any other error: fall through to the desktop-style popup
+			}
+		}
+
+		const shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`;
+		window.open(shareUrl, '_blank', 'noopener,noreferrer');
 	};
 
 	const shareByEmail = () => {

@@ -24,7 +24,7 @@ const ArticleView = ({ article }: ArticleViewProps) => {
 	const { entries, activeId, goToSection } = useTableOfContents(article.body);
 
 	useEffect(() => {
-		document.body.style.backgroundColor = '#fff';
+		document.body.style.backgroundColor = '#ffffff';
 		document.title = `Be žalos | ${article.title}`;
 	}, [article.title]);
 
