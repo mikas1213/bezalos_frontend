@@ -1,4 +1,5 @@
 export { Logo } from '../../../Shared/Logo/Logo';
+export { ArticleIcon } from './ArticleIcon';
 export { AtlikTestaIcon } from './AtlikTestaIcon';
 export { AtsijungtiIcon } from './AtsijungtiIcon';
 export { NarysteIcon } from './NarysteIcon';
