@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
 
 import type { Article } from '../../../articles/services/articlesService';
-import { initials } from '../../utils/initials';
+import authorAvatar from '../../../assets/images/author.webp';
 
 import styles from './ArticleHeader.module.scss';
 
@@ -23,7 +23,7 @@ export const ArticleHeader = ({ article }: ArticleHeaderProps) => {
 				<div className={styles.articleCategory}>{article.cat}</div>
 				<h1 className={styles.articleTitle}>{article.title}</h1>
 				<div className={styles.articleByline}>
-					<div className={styles.avatar}>{initials(article.author)}</div>
+					<img className={styles.avatar} src={authorAvatar} alt={article.author} />
 					<div className={styles.bylineMeta}>
 						<span className={styles.bylineName}>{article.author}</span>
 						<span className={styles.bylineSub}>

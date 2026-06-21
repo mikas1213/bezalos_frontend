@@ -6,7 +6,8 @@ export const ArticlesHeader = () => {
 			<span className={styles.bzArtEyebrow}>Be žalos žurnalas</span>
 			<h1>Straipsniai</h1>
 			<p>
-				Mokslu grįstos įžvalgos apie mitybą, emocinį valgymą ir santykį su maistu — kad pokyčiai vyktų su meile ir be žalos.
+				Jei valgai mažai, bet svoris stovi vietoje, o vakarais ateina tas vėl viską sugadinau jausmas, čia rasi atsakymus
+				kodėl taip vyksta ir kaip sau padėti.
 			</p>
 		</section>
 	);
