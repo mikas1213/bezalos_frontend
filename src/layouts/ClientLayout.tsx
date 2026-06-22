@@ -2,7 +2,8 @@ import { type CSSProperties, useEffect } from 'react';
 import { Outlet } from 'react-router';
 import { useLocation } from 'react-router';
 
-import { Footer, Navbar } from '../components/layout';
+import { Footer /*, Navbar */ } from '../components/layout';
+import { Navbar } from '../components/layout/NavBarNew/Navbar';
 import { Stack } from '../components/Shared';
 import { useMediaQuery } from '../contexts/MediaQueryProvider';
 
@@ -33,14 +34,13 @@ const ClientLayout = () => {
 	const currentPage = (locationMap[location.pathname] || 'default') as PageName;
 	useEffect(() => {
 		const htmlElement = document.documentElement;
-		currentPage === 'home'
-			? (htmlElement.style.backgroundColor = 'var(--dark-green-500)')
-			: (htmlElement.style.backgroundColor = 'var(--white-100)');
+		htmlElement.style.backgroundColor = currentPage === 'home' ? 'var(--dark-green-500)' : 'var(--white-100)';
 	}, [currentPage]);
 
 	return (
 		<Stack splitAfter={2} className={styles.clientLayout}>
-			<Navbar page={currentPage} />
+			{/* <Navbar page={currentPage} /> */}
+			<Navbar />
 			<main style={mainStyles}>
 				<Outlet />
 			</main>
