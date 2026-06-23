@@ -7,6 +7,7 @@
 	display: flex;
 	justify-content: center;
 	padding-block-start: var(--s-20);
+	padding-block-end: var(--s-8);
 	pointer-events: none; /* only the pill itself is clickable */
 	transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1); /* reveal speed */
 }
