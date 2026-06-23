@@ -1,7 +1,7 @@
 import { Star } from 'lucide-react';
 
-import { ProfilisIcon, VirtuveIcon } from '../../../../../components/layout/navbar/icons';
 import type { Period, Variant } from '../../hooks/types';
+import { ProfilisIcon, VirtuveIcon } from '../../icons';
 import { type Benefit, BenefitsList } from '../BenefitsList';
 import { FeaturedBadge } from '../FeaturedBadge';
 import { PlanCtaButton } from '../PlanCtaButton';

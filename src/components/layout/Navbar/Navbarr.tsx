@@ -1,9 +1,13 @@
 import { useEffect, useRef, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 
+import cx from 'classnames';
+
 import logoIcon from '../../../assets/icons/png/logo/icon_180x180.png';
 import { useAuth, useAuthModal } from '../../../features/auth';
 import { roles } from '../../../utils/roles';
+
+import { ChevronIcon, LoginIcon, LogoutIcon, ShieldIcon } from './icons';
 
 import styles from './Navbar.module.scss';
 
@@ -18,30 +22,6 @@ const NAV_ITEMS: NavItem[] = [
 	{ to: '/naryste', label: 'Narystė' },
 ];
 
-// Shield glyph flagging the admin-only entry point.
-const ShieldIcon = () => (
-	<svg viewBox="0 0 16 16" aria-hidden="true" className={styles.adminIcon}>
-		<path
-			d="M8 1.5 13 3.2v4.3c0 3.2-2.1 5.6-5 6.9-2.9-1.3-5-3.7-5-6.9V3.2L8 1.5Z"
-			fill="none"
-			stroke="currentColor"
-			strokeWidth="1.4"
-			strokeLinejoin="round"
-		/>
-		<path
-			d="M5.8 7.9 7.3 9.4 10.2 6"
-			fill="none"
-			stroke="currentColor"
-			strokeWidth="1.4"
-			strokeLinecap="round"
-			strokeLinejoin="round"
-		/>
-	</svg>
-);
-
-// Be žalos navbar — floating, centered pill pinned to the top of the page.
-// Scroll behaviour: visible near the top or when scrolling up; slides out of
-// view once you scroll down past half a viewport.
 export const Navbar = () => {
 	const { user, logout } = useAuth();
 	const { authOpenModal } = useAuthModal();
@@ -53,17 +33,11 @@ export const Navbar = () => {
 	const [menuOpen, setMenuOpen] = useState(false);
 	const lastY = useRef(0);
 
-	// Auth-derived visibility, ported from the legacy navbar (useNavbar):
-	// the Profilis link shows for any signed-in user, the Admin entry only
-	// for the admin role.
 	const isLoggedIn = Boolean(user?.user_id);
 	const isAdmin = user?.user_role === roles.admin;
 
-	// Profilis is appended to the public items once the user is signed in.
 	const navItems: NavItem[] = isLoggedIn ? [...NAV_ITEMS, { to: '/profilis', label: 'Profilis' }] : NAV_ITEMS;
 
-	// Mobile menu — lock page scroll while open; close on Escape and on resize
-	// back to desktop widths.
 	useEffect(() => {
 		if (!menuOpen) return;
 		const prevOverflow = document.body.style.overflow;
@@ -128,24 +102,20 @@ export const Navbar = () => {
 	const authLabel = user ? 'Atsijungti' : 'Prisijungti';
 
 	return (
-		<div className={`${styles.nav} ${hidden && !menuOpen ? styles.hidden : ''}`}>
-			<nav className={`${styles.pill} ${scrolled ? styles.scrolled : ''}`}>
+		<div className={cx(styles.nav, { [styles.hidden]: hidden && !menuOpen })}>
+			<nav className={cx(styles.pill, { [styles.scrolled]: scrolled })}>
 				<a className={styles.brand} onClick={() => go('/')}>
 					<span className={styles.badge} aria-hidden="true">
 						<img src={logoIcon} alt="" />
 					</span>
-					{/* <span className={styles.word}>Be žalos</span> */}
+					<span className={styles.word}>Be žalos</span>
 				</a>
 
 				<span className={styles.divider} aria-hidden="true" />
 
 				<div className={styles.items}>
 					{navItems.map((it) => (
-						<a
-							key={it.to}
-							className={`${styles.item} ${isActive(it.to) ? styles.active : ''}`}
-							onClick={() => go(it.to)}
-						>
+						<a key={it.to} className={cx(styles.item, { [styles.active]: isActive(it.to) })} onClick={() => go(it.to)}>
 							<span data-text={it.label}>{it.label}</span>
 							<div className={styles.indicator} />
 						</a>
@@ -154,21 +124,22 @@ export const Navbar = () => {
 
 				{isAdmin && (
 					<a
-						className={`${styles.admin} ${isActive('/admin') ? styles.adminActive : ''}`}
+						className={cx(styles.admin, { [styles.adminActive]: isActive('/admin') })}
 						onClick={() => go('/admin')}
 						aria-label="Administravimas"
 					>
-						<ShieldIcon />
+						<ShieldIcon className={styles.adminIcon} />
 						<span>Admin</span>
 					</a>
 				)}
 
-				<button className={styles.login} type="button" onClick={handleAuth}>
-					{authLabel}
+				<button className={styles.login} type="button" onClick={handleAuth} aria-label={authLabel}>
+					{user ? <LogoutIcon className={styles.loginIcon} /> : <LoginIcon className={styles.loginIcon} />}
+					<span className={styles.loginLabel}>{authLabel}</span>
 				</button>
 
 				<button
-					className={`${styles.burger} ${menuOpen ? styles.open : ''}`}
+					className={cx(styles.burger, { [styles.open]: menuOpen })}
 					type="button"
 					aria-label={menuOpen ? 'Uždaryti meniu' : 'Atidaryti meniu'}
 					aria-expanded={menuOpen}
@@ -187,21 +158,12 @@ export const Navbar = () => {
 						{navItems.map((it, i) => (
 							<a
 								key={it.to}
-								className={`${styles.menuItem} ${isActive(it.to) ? styles.active : ''}`}
+								className={cx(styles.menuItem, { [styles.active]: isActive(it.to) })}
 								style={{ animationDelay: `${0.05 + i * 0.035}s` }}
 								onClick={() => go(it.to)}
 							>
 								<span>{it.label}</span>
-								<svg viewBox="0 0 16 16" aria-hidden="true">
-									<path
-										d="M6 3.5 10.5 8 6 12.5"
-										fill="none"
-										stroke="currentColor"
-										strokeWidth="1.6"
-										strokeLinecap="round"
-										strokeLinejoin="round"
-									/>
-								</svg>
+								<ChevronIcon />
 							</a>
 						))}
 					</div>
@@ -210,23 +172,14 @@ export const Navbar = () => {
 						<>
 							<div className={styles.menuDivider} />
 							<a
-								className={`${styles.menuAdmin} ${isActive('/admin') ? styles.active : ''}`}
+								className={cx(styles.menuAdmin, { [styles.active]: isActive('/admin') })}
 								onClick={() => go('/admin')}
 							>
 								<span className={styles.menuAdminLabel}>
-									<ShieldIcon />
+									<ShieldIcon className={styles.adminIcon} />
 									Admin
 								</span>
-								<svg viewBox="0 0 16 16" aria-hidden="true">
-									<path
-										d="M6 3.5 10.5 8 6 12.5"
-										fill="none"
-										stroke="currentColor"
-										strokeWidth="1.6"
-										strokeLinecap="round"
-										strokeLinejoin="round"
-									/>
-								</svg>
+								<ChevronIcon />
 							</a>
 						</>
 					)}

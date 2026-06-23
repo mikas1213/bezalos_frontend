@@ -4,7 +4,6 @@ import { useNavigate } from 'react-router-dom';
 import type { LucideProps } from 'lucide-react';
 import { ArrowRight, BadgePercent, Check, Star } from 'lucide-react';
 
-import useNavbar from '../../../../../../components/layout/navbar/hooks/useNavbar';
 import { Cluster } from '../../../../../../components/Shared';
 
 import styles from './PriceCard.module.scss';
@@ -21,9 +20,8 @@ interface PriceCardProps {
 
 export const PriceCard = ({ PriceIcon, price, duration, codeDesc, code, trustSignals, url }: PriceCardProps) => {
 	const navigate = useNavigate();
-	const { responsiveNavHeight } = useNavbar('default');
 	return (
-		<div className={styles.priceCard} style={{ top: `calc(${responsiveNavHeight} + 1rem)` }}>
+		<div className={styles.priceCard}>
 			<div className={styles.priceCardContent}>
 				<div className={styles.price}>
 					<div className={styles.priceTitle}>Investicija į save</div>
