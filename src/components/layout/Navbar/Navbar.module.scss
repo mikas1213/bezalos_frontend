@@ -6,7 +6,7 @@
 	z-index: 10;
 	display: flex;
 	justify-content: center;
-	padding: 12px 0px;
+	padding-block-start: var(--s-20);
 	pointer-events: none; /* only the pill itself is clickable */
 	transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1); /* reveal speed */
 }
@@ -164,6 +164,10 @@
 
 .login {
 	flex: none;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 8px;
 	border: 0;
 	cursor: pointer;
 	white-space: nowrap;
@@ -185,6 +189,13 @@
 }
 .login:active {
 	transform: translateY(0);
+}
+/* Icon only surfaces once the button collapses to a circle (≤ 768px). */
+.loginIcon {
+	display: none;
+	flex: none;
+	width: 28px;
+	height: 28px;
 }
 
 /* ── NAV — mobile (burger + dropdown card) ─────────────────── */
@@ -251,9 +262,8 @@
 	pointer-events: auto;
 	position: absolute;
 	top: calc(100% - 2px);
-	left: 24px;
-	right: 24px;
-	max-width: 420px;
+	left: var(--content-padding-lg);
+	right: var(--content-padding-lg);
 	margin: 0 auto;
 	flex-direction: column;
 	background: rgba(255, 255, 255, 0.96);
@@ -388,25 +398,51 @@
 	filter: brightness(1.18);
 }
 
-/* ≤ 1024px — collapse the admin chip to an icon-only button to save room. */
+/* ≤ 1024px — collapse the admin chip to an icon-only button to save room.
+   Square, sized to match the login button's height. */
 @media (max-width: 1024px) {
+	.item {
+		font-size: var(--font-d-md-desk);
+	}
 	.admin {
 		gap: 0;
-		padding: 8px;
+		justify-content: center;
+		width: 42px;
+		height: 42px;
+		padding: 0;
 	}
 	.admin span {
 		display: none;
 	}
+	.adminIcon {
+		width: 20px;
+		height: 20px;
+	}
 }
 
-// @media (max-width: 768px) {
-// 	.word {
-// 		font-size: 0.1rem;
-// 	}
-// }
-
+@media (max-width: 900px) {
+	.item {
+		font-size: var(--font-d-h6-desk);
+	}
+	.login {
+		gap: 0;
+		justify-content: center;
+		width: 42px;
+		height: 42px;
+		padding: 0;
+	}
+	.loginLabel {
+		display: none;
+	}
+	.loginIcon {
+		display: block;
+	}
+}
 /* ── Responsive — collapse to burger + dropdown ≤ 1024px ────────── */
-@media (max-width: 576px) {
+@media (max-width: 768px) {
+	.item {
+		font-size: 1rem;
+	}
 	.items,
 	.divider,
 	.admin,
@@ -415,9 +451,10 @@
 	}
 	.pill {
 		gap: 12px;
-		padding: 6px 6px 6px 14px;
+		margin-inline: var(--content-padding-lg);
+		padding: 8px;
 		width: 100%;
-		max-width: 420px;
+		max-width: 100%;
 	}
 	.pill .brand {
 		margin-right: auto;
@@ -430,5 +467,33 @@
 	}
 	.word {
 		font-size: 1.125rem;
+	}
+}
+
+@media (max-width: 576px) {
+	.nav {
+		padding-block-start: var(--content-padding-sm);
+	}
+	.pill {
+		margin-inline: var(--content-padding-sm);
+	}
+
+	.menu {
+		left: var(--content-padding-sm);
+		right: var(--content-padding-sm);
+	}
+}
+
+@media (max-width: 375px) {
+	.nav {
+		padding-block-start: var(--content-padding-xs);
+	}
+	.pill {
+		padding: 6px;
+		margin-inline: var(--content-padding-xs);
+	}
+	.menu {
+		left: var(--content-padding-xs);
+		right: var(--content-padding-xs);
 	}
 }

@@ -4,11 +4,12 @@ import toast from 'react-hot-toast';
 import { CalendarDays, Leaf, Settings } from 'lucide-react';
 
 import { axiosPrivate } from '../../../../../api/axios';
+import { ProfilisIcon, VirtuveIcon } from '../../icons';
 
 import styles from './ManageSubscription.module.scss';
 interface ManageSubscriptionProps {
 	currentPeriodEnd: string | undefined;
-	subscriptionPlan: string | undefined;
+	subscriptionPlan: 'Virtuvė' | 'Virtuvė Plus' | 'Profilis' | undefined;
 }
 
 export const ManageSubscription = ({ currentPeriodEnd, subscriptionPlan }: ManageSubscriptionProps) => {
@@ -26,12 +27,22 @@ export const ManageSubscription = ({ currentPeriodEnd, subscriptionPlan }: Manag
 		}
 	};
 
+	const renderPlanIcon = (plan: ManageSubscriptionProps['subscriptionPlan']) => {
+		switch (plan) {
+			case 'Virtuvė':
+			case 'Virtuvė Plus':
+				return <VirtuveIcon />;
+			case 'Profilis':
+				return <ProfilisIcon />;
+			default:
+				return <Leaf size={18} strokeWidth={2} />;
+		}
+	};
+
 	return (
 		<div className={styles.wrapper}>
 			<div className={styles.info}>
-				<div className={styles.iconBox}>
-					<Leaf size={18} strokeWidth={2} />
-				</div>
+				<div className={styles.iconBox}>{renderPlanIcon(subscriptionPlan)}</div>
 				<div className={styles.text}>
 					<p className={styles.planName}>
 						Jūsų planas: <span className={styles.planHighlight}>{subscriptionPlan}</span>
