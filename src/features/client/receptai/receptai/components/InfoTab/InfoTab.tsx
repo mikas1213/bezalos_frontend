@@ -7,6 +7,14 @@ interface InfoTabProps {
 	recipesCount: number;
 }
 
+// Macro legend — B (baltymai) · A (angliavandeniai) · R (riebalai),
+// matching the macro colors used across the recipe pages.
+const macroLegend = [
+	{ key: 'B', label: 'Baltymai', color: 'var(--color-b)' },
+	{ key: 'A', label: 'Angliavandeniai', color: 'var(--color-a)' },
+	{ key: 'R', label: 'Riebalai', color: 'var(--color-r)' },
+];
+
 export const InfoTab = ({ recipesCount }: InfoTabProps) => {
 	const prevCount = useRef(0);
 	useEffect(() => {
@@ -31,6 +39,15 @@ export const InfoTab = ({ recipesCount }: InfoTabProps) => {
 					/>
 				</span>{' '}
 				receptų
+			</div>
+
+			<div className={styles.macroKey}>
+				{macroLegend.map((m) => (
+					<span key={m.key} className={styles.macroKeyItem}>
+						<span className={styles.macroKeyDot} style={{ background: m.color }} />
+						<b>{m.key}</b> {m.label.toLowerCase()}
+					</span>
+				))}
 			</div>
 		</div>
 	);

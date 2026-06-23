@@ -1,1 +1,0 @@
-export { FavoriteRecipeCard } from './FavoriteRecipeCard';
