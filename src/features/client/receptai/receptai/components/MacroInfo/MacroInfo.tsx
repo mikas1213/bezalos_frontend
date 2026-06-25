@@ -11,12 +11,12 @@ const macros = [
 export const MacroInfo = () => {
 	return (
 		<span className={styles.wrap}>
-			<button type="button" className={styles.trigger} aria-label="Ką reiškia makro pjūvis">
+			<button type="button" className={styles.trigger} aria-label="Ką reiškia valgio sudėtis">
 				<Info size={14} />
 			</button>
 
 			<span className={styles.card} role="tooltip">
-				<span className={styles.title}>Makro pjūvis</span>
+				<span className={styles.title}>Valgio sudėtis</span>
 				<p className={styles.text}>
 					Kiekvienas receptas pažymėtas <strong>dviem vyraujančiais makro</strong> — todėl filtrai yra poros, pvz.{' '}
 					<strong>A+B</strong>.

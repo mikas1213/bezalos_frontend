@@ -1,125 +1,129 @@
 .filters {
-    position: relative;
-    /* lift above the recipe cards below: their fade-in animation leaves a
+	position: relative;
+	/* lift above the recipe cards below: their fade-in animation leaves a
        lingering transform, making each card its own stacking context that
        would otherwise paint over the overflowing macro tooltip */
-    z-index: 2;
-    margin-top: 2rem;
-    margin-bottom: 26px;
-    padding: 22px 24px;
-    background: var(--light-green-grey-050);
-    border: 1px solid var(--light-green-grey-200);
-    border-radius: var(--radius-xl);
-    opacity: 0;
-    animation: fadeIn ease-in 0.5s forwards;
+	z-index: 2;
+	margin-top: 2rem;
+	margin-bottom: 26px;
+	padding: 22px 24px;
+	background: var(--light-green-grey-050);
+	border: 1px solid var(--light-green-grey-200);
+	border-radius: var(--radius-xl);
+	opacity: 0;
+	animation: fadeIn ease-in 0.5s forwards;
 }
 
 @keyframes fadeIn {
-    0% { opacity: 0; }
-    100% { opacity: 1; }
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
 }
 
 /* Primary category row */
 .primary {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px;
 }
 .cat {
-    border: 1px solid var(--light-green-grey-300);
-    background: #fff;
-    color: var(--dark-green-600);
-    border-radius: var(--radius-pill);
-    padding: 9px 18px;
-    font-family: inherit;
-    font-size: 14px;
-    font-weight: 500;
-    transition:
-        background 0.15s,
-        color 0.15s,
-        border-color 0.15s,
-        box-shadow 0.15s;
+	border: 1px solid var(--light-green-grey-300);
+	background: #fff;
+	color: var(--dark-green-600);
+	border-radius: var(--radius-pill);
+	padding: 9px 18px;
+	font-family: inherit;
+	font-size: 14px;
+	font-weight: 500;
+	transition:
+		background 0.15s,
+		color 0.15s,
+		border-color 0.15s,
+		box-shadow 0.15s;
 }
 .cat:hover {
-    border-color: var(--light-green-500);
+	border-color: var(--light-green-500);
 }
 .cat.active {
-    background: var(--light-green-600);
-    border-color: var(--light-green-600);
-    color: var(--dark-green-600);
-    font-weight: 600;
-    box-shadow: 0 4px 12px -4px rgba(126, 217, 87, 0.6);
+	background: var(--light-green-600);
+	border-color: var(--light-green-600);
+	color: var(--dark-green-600);
+	font-weight: 600;
+	box-shadow: 0 4px 12px -4px rgba(126, 217, 87, 0.6);
 }
 
 /* Divider between categories and grouped filters */
 .divider {
-    height: 1px;
-    margin: 20px 0;
-    background: var(--light-green-grey-200);
+	height: 1px;
+	margin: 20px 0;
+	background: var(--light-green-grey-200);
 }
 
-/* Labeled pill groups (Trukmė · Makro pjūvis · Skonis) */
+/* Labeled pill groups (Trukmė · Valgio sudėtis · Skonis) */
 .groups {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 28px 40px;
-    align-items: flex-start;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 28px 40px;
+	align-items: flex-start;
 }
 .group {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
 }
 .groupLabel {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 1.2px;
-    text-transform: uppercase;
-    color: var(--neutral-400);
+	display: flex;
+	align-items: center;
+	gap: 6px;
+	font-size: 11px;
+	font-weight: 700;
+	letter-spacing: 1.2px;
+	text-transform: uppercase;
+	color: var(--neutral-400);
 }
 .groupPills {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 7px;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 7px;
 }
 .pill {
-    border: 1px solid var(--light-green-grey-300);
-    background: transparent;
-    color: var(--neutral-700);
-    border-radius: var(--radius-pill);
-    padding: 7px 15px;
-    font-family: inherit;
-    font-size: 13px;
-    transition:
-        background 0.15s,
-        color 0.15s,
-        border-color 0.15s;
+	border: 1px solid var(--light-green-grey-300);
+	background: transparent;
+	color: var(--neutral-700);
+	border-radius: var(--radius-pill);
+	padding: 7px 15px;
+	font-family: inherit;
+	font-size: 13px;
+	transition:
+		background 0.15s,
+		color 0.15s,
+		border-color 0.15s;
 }
 .pill:hover {
-    border-color: var(--dark-green-400);
-    color: var(--dark-green-600);
+	border-color: var(--dark-green-400);
+	color: var(--dark-green-600);
 }
 .pill.active {
-    background: var(--dark-green-500);
-    border-color: var(--dark-green-500);
-    color: var(--light-green-grey-050);
+	background: var(--dark-green-500);
+	border-color: var(--dark-green-500);
+	color: var(--light-green-grey-050);
 }
 
 @media only screen and (max-width: 576px) {
-    .filters {
-        margin-top: 1.5rem;
-        padding: 18px 16px;
-    }
-    .groups {
-        gap: 20px 24px;
-    }
+	.filters {
+		margin-top: 1.5rem;
+		padding: 18px 16px;
+	}
+	.groups {
+		gap: 20px 24px;
+	}
 }
 
 @media only screen and (max-width: 440px) {
-    .filters {
-        margin-top: 1rem;
-    }
+	.filters {
+		margin-top: 1rem;
+	}
 }
