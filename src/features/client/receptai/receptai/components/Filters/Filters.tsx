@@ -1,3 +1,4 @@
+import cx from 'classnames';
 import type { Dispatch, SetStateAction } from 'react';
 
 import type { RecipeFilters } from '../../hooks/useRecipes';
@@ -66,7 +67,7 @@ export const Filters = ({ filters, setFilters }: FiltersProps) => {
 			<div className={styles.primary}>
 				<button
 					type="button"
-					className={`${styles.cat} ${isAllEmpty(filters) ? styles.active : ''}`}
+					className={cx(styles.cat, { [styles.active]: isAllEmpty(filters) })}
 					onClick={() => setFilters({})}
 				>
 					Visi
@@ -77,7 +78,7 @@ export const Filters = ({ filters, setFilters }: FiltersProps) => {
 						<button
 							type="button"
 							key={filter.value}
-							className={`${styles.cat} ${filters[key] === filter.value ? styles.active : ''}`}
+							className={cx(styles.cat, { [styles.active]: filters[key] === filter.value })}
 							onClick={() => toggleFilter(key, filter.value)}
 						>
 							{filter.label}
@@ -100,7 +101,7 @@ export const Filters = ({ filters, setFilters }: FiltersProps) => {
 								<button
 									type="button"
 									key={filter.value}
-									className={`${styles.pill} ${filters[key] === filter.value ? styles.active : ''}`}
+									className={cx(styles.pill, { [styles.active]: filters[key] === filter.value })}
 									onClick={() => toggleFilter(key, filter.value)}
 								>
 									{filter.label}
