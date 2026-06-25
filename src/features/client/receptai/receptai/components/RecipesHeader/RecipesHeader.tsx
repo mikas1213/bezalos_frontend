@@ -15,9 +15,9 @@ export const RecipesHeader = ({ search, setSearch }: RecipesHeaderProps) => {
 			<div className={styles.headerInner}>
 				<div className={styles.headerText}>
 					<h1>
-						Receptai, kurie maitina, <span>o ne riboja</span>
+						Receptai, kurie ramina, <span>o ne riboja</span>
 					</h1>
-					<p>Paprasti, sotūs ir subalansuoti patiekalai — su aiškiais makrosais ir laiku.</p>
+					<p>Paprasti, sotūs ir subalansuoti patiekalai ramesniam santykiui su maistu.</p>
 				</div>
 
 				<div className={styles.headerSearch}>
