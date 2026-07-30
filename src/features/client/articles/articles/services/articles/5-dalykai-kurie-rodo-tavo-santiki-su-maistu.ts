@@ -11,7 +11,7 @@ export default {
 	img: '/og-articles/5-dalykai-kurie-rodo-tavo-santiki-su-maistu.webp',
 	author: 'Sandra Jatulytė',
 	date: '2026 07 30',
-	readTime: '5 min',
+	readTime: '7 min',
 	body: [
 		{
 			t: 'p',
