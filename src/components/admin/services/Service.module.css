@@ -57,7 +57,11 @@
 }
 .Naujas {
     composes: label;
-    background-color: #65cbe9;
+    background-color:  var(--sky-blue-500);
+}
+.Išpardavimas {
+    composes: label;
+    background-color: #fc4c02;
 }
 
 .title span:hover {

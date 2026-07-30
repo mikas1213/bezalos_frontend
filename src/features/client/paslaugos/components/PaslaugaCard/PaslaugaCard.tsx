@@ -18,7 +18,7 @@ export const PaslaugaCard = ({ paslauga }: Paslauga) => {
 					<div className={styles[paslauga.status]}>{paslauga.status}</div>
 				)}
 				{paslauga.quantity <= 3 && <div className={styles.quantity}>{`Liko ${paslauga.quantity}vnt.`}</div>}
-				{paslauga.quantity === 0 && <div className={styles.quantity}>Išparduota</div>}
+				{paslauga.quantity === 0 && <div className={styles.soldOut}>Išparduota</div>}
 				{parseFloat(paslauga.discount) > 0 && (
 					<div className={styles.discount}>-{Math.round(parseFloat(paslauga.discount))}%</div>
 				)}

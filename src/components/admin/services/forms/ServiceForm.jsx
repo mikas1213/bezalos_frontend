@@ -29,7 +29,7 @@ const ServiceForm = ({ isLoading, isModalOpen, formValues, setFormValues, handle
                     </div>
 
                     <div className={styles.flexRow}>
-                        <Select options={['-', 'Populiarus', 'Naujas']} label='Statusas' name='status' className={styles.status} value={formValues.status} setNewItem={setFormValues} />
+                        <Select options={['-', 'Populiarus', 'Naujas', 'Išpardavimas']} label='Statusas' name='status' className={styles.status} value={formValues.status} setNewItem={setFormValues} />
                         <Select options={['-', 'Planas', 'Kursai']} label='Kategorija' name='category' className={styles.category} value={formValues.category} setNewItem={setFormValues} />
                         <Select options={['On', 'Off']} label='Aktyvi' name='is_active' className={styles.is_active} value={formValues.is_active} setNewItem={setFormValues} />
 

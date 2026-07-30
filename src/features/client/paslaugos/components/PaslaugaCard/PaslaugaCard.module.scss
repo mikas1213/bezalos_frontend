@@ -19,17 +19,26 @@
 
 .Naujas {
 	composes: label;
-	background-color: #65cbe9;
+	background-color: var(--sky-blue-500);
 }
 .Populiarus {
 	composes: label;
 	background-color: var(--color-btn-secondary);
 }
-
+.Išpardavimas {
+    composes: label;
+    background-color: #fc4c02;
+}
 .quantity {
 	composes: label;
-	background-color: tomato;
+	background-color: #ffcb4b;
 }
+.soldOut {
+    composes: label;
+    background-color: var(--cool-grey-green-400);
+}
+
+
 
 .imgContainer {
 	/* TEST */
@@ -58,7 +67,6 @@
 	width: 100%;
 	height: 100%;
 	background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
-
 	background-size: 200% 100%;
 	animation: loading 1.5s infinite;
 }
@@ -92,7 +100,6 @@
 	color: #fff;
 	background-color: var(--color-btn-secondary);
 	font-weight: 600;
-	/* box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;     */
 }
 .wasPrice {
 	composes: price;
@@ -109,7 +116,7 @@
 	position: absolute;
 	top: 1rem;
 	right: 1rem;
-	background-color: tomato;
+	background-color: #fc4c02;
 	z-index: 1;
 	font-weight: 400;
 }
