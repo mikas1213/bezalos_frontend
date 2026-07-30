@@ -6,7 +6,6 @@ import { NotFoundPage } from '../../../../../pages/notfound/NotFoundPage';
 import { type Article, getArticleBySlug, getRelatedArticles } from '../../articles/services/articlesService';
 import {
 	ArticleActions,
-	ArticleComments,
 	ArticleHeader,
 	ArticleProse,
 	AuthorCard,

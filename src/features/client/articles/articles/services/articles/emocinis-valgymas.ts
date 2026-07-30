@@ -3,7 +3,7 @@ import type { Article } from '../articleTypes';
 export default {
 	id: '26b89c03-8105-4a97-b9b0-9a8dfe7d29b1',
 	slug: 'emocinis-valgymas',
-	featured: true,
+	featured: false,
 	cat: 'Emocinis valgymas',
 	title: 'Kodėl valgome tada, kai iš tikrųjų nesame alkani',
 	excerpt:

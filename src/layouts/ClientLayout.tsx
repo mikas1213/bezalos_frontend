@@ -1,6 +1,5 @@
 import { Outlet } from 'react-router';
 import { useLocation } from 'react-router';
-
 import { Footer, Navbar } from '../components/layout';
 import { Stack } from '../components/Shared';
 
