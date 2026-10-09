@@ -1,0 +1,1017 @@
+@use 'sass:map';
+@use 'sass:list';
+
+// =============================================================================
+//  PROFILIS – DIZAINO SISTEMA
+// -----------------------------------------------------------------------------
+//  Šaltinis: „Be žalos“ Profilio puslapių dizainas (Mitybos planas, Mitybos
+//  sekimas, Produktų keitimas, Mano receptai, Kalorijos, Statistika, Anketa)
+//  ir jų planšetės (768) bei telefono (390) variantai.
+//
+//  Failas savarankiškas – nepriklauso nuo kitų src/styles failų.
+//
+//  Naudojimas komponento .module.scss faile:
+//      @use '@/styles/profile' as *;
+//
+//      .card {
+//          @include pr-card;
+//      }
+//      .title {
+//          @include pr-h1;
+//      }
+//
+//  CSS kintamieji (--pr-*) aprašyti :root bloke – juos galima naudoti ir
+//  tiesiogiai: color: var(--pr-text);
+// =============================================================================
+
+// -----------------------------------------------------------------------------
+//  1. SPALVOS
+// -----------------------------------------------------------------------------
+
+// Tekstas
+$pr-text: #082b1d; // Antraštės, pagrindinis tekstas, skaičiai
+$pr-text-secondary: #4a5b50; // Antraeilis tekstas, vienetai (kcal, g, kg)
+$pr-text-muted: #5e6e65; // Aprašymai, etiketės, pagalbinis tekstas
+$pr-text-subtle: #8a968f; // Neaktyvus tekstas, stulpelių antraštės
+$pr-text-placeholder: #9fada5; // Placeholder, paieškos ikona
+$pr-text-inverse: #ffffff;
+
+// Paviršiai
+$pr-bg-page: #f7f9f8; // Puslapio fonas
+$pr-bg-surface: #ffffff; // Kortelės, laukai, modalai
+$pr-bg-muted: #eef2ef; // Subnav, footer, pilki blokai, chip'ų fonas
+$pr-bg-nav: rgba(255, 255, 255, 0.92); // Navbar „pill“
+
+// Rėmeliai
+$pr-border: #e3e9e5; // Standartinis rėmelis / skirtukas
+$pr-border-subtle: #eef2ef; // Lentelių eilučių skirtukai
+$pr-border-strong: #c9d4cd; // Neaktyvūs taškai, laiko juostos taškai
+
+// Pagrindinė (žalia) spalva
+$pr-green: #3cbf68; // Pagrindinis veiksmas, aktyvi būsena
+$pr-green-hover: #34a95c;
+$pr-green-dark: #1f6b3a; // Žalias tekstas ant šviesaus fono
+$pr-green-light: #e2f5e8; // Žalias fonas (badge, CTA blokas)
+$pr-green-border: #b9e6c8; // Rėmelis ant žalio fono
+$pr-selected-bg: #f1faf4; // Pasirinkta eilutė / kortelė
+
+// Tamsus mygtukas (Prisijungti)
+$pr-dark: #082b1d;
+$pr-dark-top: #0d3a31;
+$pr-dark-gradient: linear-gradient(#0d3a31, #082b1d);
+
+// Makroelementai
+$pr-protein: #1c7f92; // B – baltymai
+$pr-protein-bg: #ddecef;
+$pr-protein-text: #125766;
+
+$pr-carbs: #3cbf68; // A – angliavandeniai
+$pr-carbs-bg: #e2f5e8;
+$pr-carbs-text: #1f6b3a;
+
+$pr-fat: #f2a93b; // R – riebalai
+$pr-fat-bg: #fdf2e2;
+$pr-fat-text: #8a5a12;
+
+// Būsenos
+$pr-danger: #e0524a; // Klaida, pranešimo taškas, neigiamas pokytis
+$pr-danger-bg: #fce8e6;
+$pr-danger-text: #a3322b; // Klaidos tekstas formose
+$pr-disabled-bg: #e6eae8;
+$pr-disabled-text: #8a968f;
+
+// Uždangos
+$pr-overlay: rgba(8, 43, 29, 0.45);
+$pr-overlay-strong: rgba(8, 43, 29, 0.55);
+
+// Makro žemėlapis – patogu ciklams (@each)
+$pr-macros: (
+	b: (
+		color: $pr-protein,
+		bg: $pr-protein-bg,
+		text: $pr-protein-text,
+	),
+	a: (
+		color: $pr-carbs,
+		bg: $pr-carbs-bg,
+		text: $pr-carbs-text,
+	),
+	r: (
+		color: $pr-fat,
+		bg: $pr-fat-bg,
+		text: $pr-fat-text,
+	),
+);
+
+// Patiekalų deriniai: [fonas, tekstas, 1 taškas, 2 taškas]
+$pr-combos: (
+	'a-b': ($pr-green-light, $pr-green-dark, $pr-carbs, $pr-protein),
+	'a-r': ($pr-fat-bg, $pr-fat-text, $pr-carbs, $pr-fat),
+	'b-r': ($pr-protein-bg, $pr-protein-text, $pr-protein, $pr-fat),
+);
+
+// -----------------------------------------------------------------------------
+//  2. ŠRIFTAI
+// -----------------------------------------------------------------------------
+
+$pr-font-family: 'Poppins', system-ui, sans-serif;
+
+$pr-weight-light: 300;
+$pr-weight-regular: 400;
+$pr-weight-medium: 500;
+$pr-weight-semibold: 600; // Dažniausias – mygtukai, etiketės, antraštės
+$pr-weight-bold: 700; // H1, dideli skaičiai, label'iai
+
+// Dydžiai
+$pr-fs-display: 56px; // Didelis skaičius (kcal, svoris) – desktop
+$pr-fs-display-sm: 44px; // Didelis skaičius – telefonas
+$pr-fs-h1: 44px; // Puslapio antraštė – desktop
+$pr-fs-h1-tablet: 40px;
+$pr-fs-h1-phone: 32px;
+$pr-fs-stat: 30px; // Makro kortelės skaičius
+$pr-fs-h2: 24px; // Kortelės / modalo antraštė
+$pr-fs-h2-phone: 20px;
+$pr-fs-h3: 20px; // Sekcijos antraštė, akcentai
+$pr-fs-lg: 17px; // Patiekalo pavadinimas
+$pr-fs-body: 16px; // Aprašymas po H1
+$pr-fs-md: 15px; // Įvesties laukai, sąrašo pavadinimai
+$pr-fs-base: 14px; // Mygtukai, pagrindinis UI tekstas
+$pr-fs-sm: 13px; // Subnav, filtrai, chip'ai
+$pr-fs-xs: 12px; // Lauko etiketė, pagalbinis tekstas
+$pr-fs-label: 11px; // DIDŽIOSIOMIS raidėmis rašomos etiketės
+$pr-fs-micro: 10px;
+
+// Eilutės aukštis
+$pr-lh-none: 1;
+$pr-lh-heading: 1.04;
+$pr-lh-tight: 1.15;
+$pr-lh-snug: 1.25;
+$pr-lh-normal: 1.5;
+$pr-lh-relaxed: 1.55;
+$pr-lh-loose: 1.6;
+
+// Raidžių tarpai
+$pr-ls-h1: -0.045em;
+$pr-ls-display: -0.05em;
+$pr-ls-heading: -0.03em;
+$pr-ls-tight: -0.015em;
+$pr-ls-label: 0.16em; // Kortelės etiketė (TAVO DUOMENYS)
+$pr-ls-label-sm: 0.14em; // Lentelės stulpelių antraštės
+$pr-ls-chip: 0.06em; // A+B, B+R žymelės
+
+// -----------------------------------------------------------------------------
+//  3. TARPAI (spacing)
+// -----------------------------------------------------------------------------
+
+$pr-space-1: 2px;
+$pr-space-2: 4px;
+$pr-space-3: 6px;
+$pr-space-4: 8px;
+$pr-space-5: 10px;
+$pr-space-6: 12px;
+$pr-space-7: 14px;
+$pr-space-8: 16px;
+$pr-space-9: 18px;
+$pr-space-10: 20px;
+$pr-space-12: 24px;
+$pr-space-14: 28px;
+$pr-space-16: 32px;
+$pr-space-20: 40px;
+$pr-space-24: 48px;
+$pr-space-28: 56px;
+$pr-space-32: 64px;
+$pr-space-40: 80px;
+$pr-space-48: 96px;
+
+// Puslapio konteineris
+$pr-content-width: 1216px;
+$pr-content-narrow: 760px; // Vienos kortelės įrankiai (Produktų keitimas, Kalorijos)
+$pr-content-form: 672px; // Anketa
+$pr-gutter-desktop: 32px;
+$pr-gutter-tablet: 24px;
+$pr-gutter-phone: 16px;
+$pr-page-top: 100px; // Atstumas nuo viršaus (po fiksuotu navbar) – desktop
+$pr-page-top-sm: 92px; // planšetė / telefonas
+
+// Kortelių vidiniai tarpai
+$pr-card-padding: 24px 26px 26px;
+$pr-card-padding-phone: 20px 16px;
+
+// -----------------------------------------------------------------------------
+//  4. BORDER-RADIUS
+// -----------------------------------------------------------------------------
+
+$pr-radius-xs: 6px; // Mažos žymelės lentelėse
+$pr-radius-sm: 8px; // Anketos laukai, mažos kortelės
+$pr-radius-md: 12px; // Sąrašo eilutės, ikonų dėžutės
+$pr-radius-lg: 14px; // Ikonų kvadratėliai (44px)
+$pr-radius-xl: 16px; // Iškrentantys sąrašai, anketos kortelė
+$pr-radius-2xl: 18px; // Vidinės kortelės, dropdown
+$pr-radius-3xl: 20px; // Patiekalo kortelė, telefono kortelės
+$pr-radius-card: 24px; // Pagrindinės kortelės, modalai
+$pr-radius-phone: 28px; // „Telefono“ plano kortelė
+$pr-radius-pill: 999px; // Mygtukai, laukai, chip'ai, subnav
+$pr-radius-round: 50%;
+
+// -----------------------------------------------------------------------------
+//  5. RĖMELIAI (borders)
+// -----------------------------------------------------------------------------
+
+$pr-border-width: 1px;
+$pr-border-width-strong: 1.5px;
+
+$pr-border-default: 1px solid $pr-border;
+$pr-border-divider: 1px solid $pr-border-subtle;
+$pr-border-selected: 1.5px solid $pr-green; // Pasirinkta kortelė / eilutė
+$pr-border-green: 1px solid $pr-green-border;
+$pr-border-dashed: 1px dashed $pr-border; // Tuščios būsenos
+$pr-border-error: 1.5px solid $pr-danger;
+$pr-border-transparent: 1px solid transparent;
+
+// -----------------------------------------------------------------------------
+//  6. ŠEŠĖLIAI (shadows)
+// -----------------------------------------------------------------------------
+
+$pr-shadow-xs: 0 2px 0 rgba(8, 43, 29, 0.04); // Dropdown mygtukas
+$pr-shadow-sm: 0 6px 18px rgba(23, 61, 48, 0.05); // „Kaip tai veikia“, ikonų dėžutės
+$pr-shadow-pill: rgba(99, 99, 99, 0.2) 0 2px 8px 0; // Aktyvus subnav punktas, newsletter
+$pr-shadow-card: 0 14px 36px rgba(23, 61, 48, 0.06); // Pagrindinės kortelės
+$pr-shadow-raised: 0 16px 36px -20px rgba(8, 43, 29, 0.35); // Išskleista kortelė
+$pr-shadow-dropdown: 0 18px 40px -16px rgba(8, 43, 29, 0.35); // Iškrentantys sąrašai
+$pr-shadow-modal: 0 30px 80px -20px rgba(8, 43, 29, 0.45); // Modalai
+$pr-shadow-phone: 0 30px 60px -28px rgba(8, 43, 29, 0.35), 0 8px 22px -12px rgba(8, 43, 29, 0.18); // Plano kortelė
+$pr-shadow-green: 0 6px 18px -8px rgba(60, 191, 104, 0.55); // Žalias CTA
+$pr-glow-green: radial-gradient(circle at 50% 50%, rgba(60, 191, 104, 0.1), rgba(60, 191, 104, 0) 70%);
+
+// -----------------------------------------------------------------------------
+//  7. KOMPONENTŲ MATMENYS
+// -----------------------------------------------------------------------------
+
+$pr-control-h-sm: 36px; // Kompaktiški mygtukai, uždarymo mygtukas
+$pr-control-h: 42px; // Įvesties laukai, mygtukai, „Kaip tai veikia“
+$pr-control-h-lg: 44px; // Pagrindinis CTA, ikonų dėžutės
+$pr-control-h-xl: 52px; // Telefono newsletter laukas
+$pr-icon-box: 44px;
+$pr-icon-sm: 16px;
+$pr-icon-md: 20px;
+$pr-dot: 8px; // Makro / derinio taškas
+$pr-progress-h: 8px; // Progreso / makro juostos aukštis
+$pr-progress-h-sm: 6px;
+$pr-nav-logo: 42px;
+
+// -----------------------------------------------------------------------------
+//  8. ANIMACIJOS
+// -----------------------------------------------------------------------------
+
+$pr-ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+$pr-duration-fast: 0.1s;
+$pr-duration: 0.22s;
+$pr-duration-slow: 0.32s;
+$pr-transition: $pr-duration ease;
+$pr-transition-expand: grid-template-rows $pr-duration-slow $pr-ease, opacity 0.25s ease;
+
+// -----------------------------------------------------------------------------
+//  9. Z-INDEX
+// -----------------------------------------------------------------------------
+
+$pr-z-nav: 10;
+$pr-z-dropdown: 20;
+$pr-z-sheet: 30;
+$pr-z-modal: 50;
+$pr-z-modal-top: 80;
+
+// -----------------------------------------------------------------------------
+//  10. BREAKPOINTS
+// -----------------------------------------------------------------------------
+
+$pr-bp-desktop: 1280px;
+$pr-bp-tablet: 900px; // ≤ 900 – planšetės išdėstymas (dizainas: 768)
+$pr-bp-phone: 700px; // ≤ 700 – telefono išdėstymas (dizainas: 390)
+
+// =============================================================================
+//  CSS KINTAMIEJI
+// =============================================================================
+
+:root {
+	/* Tekstas */
+	--pr-text: #{$pr-text};
+	--pr-text-secondary: #{$pr-text-secondary};
+	--pr-text-muted: #{$pr-text-muted};
+	--pr-text-subtle: #{$pr-text-subtle};
+	--pr-text-placeholder: #{$pr-text-placeholder};
+	--pr-text-inverse: #{$pr-text-inverse};
+
+	/* Paviršiai */
+	--pr-bg-page: #{$pr-bg-page};
+	--pr-bg-surface: #{$pr-bg-surface};
+	--pr-bg-muted: #{$pr-bg-muted};
+	--pr-bg-nav: #{$pr-bg-nav};
+
+	/* Rėmeliai */
+	--pr-border: #{$pr-border};
+	--pr-border-subtle: #{$pr-border-subtle};
+	--pr-border-strong: #{$pr-border-strong};
+
+	/* Žalia */
+	--pr-green: #{$pr-green};
+	--pr-green-hover: #{$pr-green-hover};
+	--pr-green-dark: #{$pr-green-dark};
+	--pr-green-light: #{$pr-green-light};
+	--pr-green-border: #{$pr-green-border};
+	--pr-selected-bg: #{$pr-selected-bg};
+	--pr-dark: #{$pr-dark};
+
+	/* Makroelementai */
+	--pr-protein: #{$pr-protein};
+	--pr-protein-bg: #{$pr-protein-bg};
+	--pr-protein-text: #{$pr-protein-text};
+	--pr-carbs: #{$pr-carbs};
+	--pr-carbs-bg: #{$pr-carbs-bg};
+	--pr-carbs-text: #{$pr-carbs-text};
+	--pr-fat: #{$pr-fat};
+	--pr-fat-bg: #{$pr-fat-bg};
+	--pr-fat-text: #{$pr-fat-text};
+
+	/* Būsenos */
+	--pr-danger: #{$pr-danger};
+	--pr-danger-bg: #{$pr-danger-bg};
+	--pr-danger-text: #{$pr-danger-text};
+	--pr-disabled-bg: #{$pr-disabled-bg};
+	--pr-disabled-text: #{$pr-disabled-text};
+	--pr-overlay: #{$pr-overlay};
+
+	/* Šriftas */
+	--pr-font: #{$pr-font-family};
+
+	/* Radius */
+	--pr-radius-sm: #{$pr-radius-sm};
+	--pr-radius-md: #{$pr-radius-md};
+	--pr-radius-xl: #{$pr-radius-xl};
+	--pr-radius-2xl: #{$pr-radius-2xl};
+	--pr-radius-card: #{$pr-radius-card};
+	--pr-radius-pill: #{$pr-radius-pill};
+
+	/* Šešėliai */
+	--pr-shadow-sm: #{$pr-shadow-sm};
+	--pr-shadow-pill: #{$pr-shadow-pill};
+	--pr-shadow-card: #{$pr-shadow-card};
+	--pr-shadow-dropdown: #{$pr-shadow-dropdown};
+	--pr-shadow-modal: #{$pr-shadow-modal};
+}
+
+// =============================================================================
+//  MIXIN'AI
+// =============================================================================
+
+// --- Breakpoints -------------------------------------------------------------
+
+@mixin pr-tablet {
+	@media (max-width: $pr-bp-tablet) {
+		@content;
+	}
+}
+
+@mixin pr-phone {
+	@media (max-width: $pr-bp-phone) {
+		@content;
+	}
+}
+
+// --- Tipografija -------------------------------------------------------------
+
+// Puslapio antraštė (Statistika, Anketa, Kalorijų skaičiuoklė…)
+@mixin pr-h1 {
+	margin: 0;
+	font-family: $pr-font-family;
+	font-size: $pr-fs-h1;
+	font-weight: $pr-weight-bold;
+	line-height: $pr-lh-heading;
+	letter-spacing: $pr-ls-h1;
+	color: $pr-text;
+	text-wrap: balance;
+
+	@include pr-tablet {
+		font-size: $pr-fs-h1-tablet;
+		line-height: 1.06;
+	}
+	@include pr-phone {
+		font-size: $pr-fs-h1-phone;
+		line-height: 1.1;
+	}
+}
+
+// Aprašymas po H1
+@mixin pr-lead {
+	margin: 14px 0 0;
+	max-width: 56ch;
+	font-size: $pr-fs-body;
+	line-height: $pr-lh-relaxed;
+	color: $pr-text-muted;
+
+	@include pr-phone {
+		margin-top: 12px;
+		font-size: $pr-fs-md;
+	}
+}
+
+// Kortelės / modalo antraštė
+@mixin pr-h2 {
+	margin: 0;
+	font-size: $pr-fs-h2;
+	font-weight: $pr-weight-semibold;
+	line-height: 1.1;
+	letter-spacing: $pr-ls-heading;
+	color: $pr-text;
+
+	@include pr-phone {
+		font-size: $pr-fs-h2-phone;
+	}
+}
+
+// Akcento antraštė (šoniniai paaiškinimai, sekcijos)
+@mixin pr-h3 {
+	margin: 0;
+	font-size: $pr-fs-h3;
+	font-weight: $pr-weight-semibold;
+	line-height: $pr-lh-snug;
+	letter-spacing: $pr-ls-tight;
+	color: $pr-text-secondary;
+}
+
+// DIDŽIOSIOMIS raidėmis rašoma kortelės etiketė (TAVO DUOMENYS, SAVAITINĖ ISTORIJA)
+@mixin pr-label {
+	font-size: $pr-fs-label;
+	font-weight: $pr-weight-bold;
+	letter-spacing: $pr-ls-label;
+	text-transform: uppercase;
+	color: $pr-text-muted;
+}
+
+// Lauko etiketė (Amžius, Ūgis, Svoris)
+@mixin pr-field-label {
+	display: block;
+	margin-bottom: 6px;
+	font-size: $pr-fs-xs;
+	font-weight: $pr-weight-semibold;
+	color: $pr-text-muted;
+}
+
+// Didelis skaičius (kcal, svoris)
+@mixin pr-display-number {
+	font-size: $pr-fs-display;
+	font-weight: $pr-weight-bold;
+	line-height: $pr-lh-none;
+	letter-spacing: $pr-ls-display;
+	color: $pr-text;
+	font-variant-numeric: tabular-nums;
+
+	@include pr-phone {
+		font-size: $pr-fs-display-sm;
+	}
+}
+
+@mixin pr-tabular {
+	font-variant-numeric: tabular-nums;
+}
+
+// --- Išdėstymas --------------------------------------------------------------
+
+@mixin pr-page {
+	box-sizing: border-box;
+	width: 100%;
+	max-width: $pr-content-width;
+	margin: 0 auto;
+	padding: $pr-page-top 0 0;
+	font-family: $pr-font-family;
+	color: $pr-text;
+
+	@include pr-tablet {
+		padding: $pr-page-top-sm $pr-gutter-tablet 0;
+	}
+	@include pr-phone {
+		padding: $pr-page-top-sm $pr-gutter-phone 0;
+	}
+}
+
+// Antraštės eilutė: centruota (H1, aprašymas, „Kaip tai veikia“ po jais)
+@mixin pr-page-header {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 24px;
+	padding: 16px 16px 30px;
+	text-align: center;
+
+	@include pr-phone {
+		gap: 20px;
+		padding: 8px 0 24px;
+	}
+}
+
+// --- Kortelės ----------------------------------------------------------------
+
+@mixin pr-card {
+	box-sizing: border-box;
+	background: $pr-bg-surface;
+	border: $pr-border-default;
+	border-radius: $pr-radius-card;
+	box-shadow: $pr-shadow-card;
+	padding: $pr-card-padding;
+
+	@include pr-phone {
+		border-radius: 22px;
+		padding: $pr-card-padding-phone;
+	}
+}
+
+// Vidinė kortelė (makro kortelės, rezultatų blokai)
+@mixin pr-card-inner {
+	background: $pr-bg-surface;
+	border: $pr-border-default;
+	border-radius: $pr-radius-2xl;
+	padding: 14px 16px;
+}
+
+// Pilkas blokas kortelės viduje (rezultatas, „Pakeisti produktą“)
+@mixin pr-card-muted {
+	background: $pr-bg-page;
+	border-top: $pr-border-default;
+}
+
+// Pasirinkta eilutė / kortelė
+@mixin pr-selected {
+	background: $pr-selected-bg;
+	border: $pr-border-selected;
+}
+
+// Tuščia būsena
+@mixin pr-empty {
+	display: flex;
+	align-items: center;
+	gap: 14px;
+	padding: 18px;
+	border: $pr-border-dashed;
+	border-radius: $pr-radius-2xl;
+	background: $pr-bg-surface;
+	color: $pr-text-secondary;
+}
+
+// --- Mygtukai ----------------------------------------------------------------
+
+@mixin pr-btn-base {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 8px;
+	height: $pr-control-h;
+	padding: 0 20px;
+	border: 0;
+	border-radius: $pr-radius-pill;
+	font-family: inherit;
+	font-size: $pr-fs-base;
+	font-weight: $pr-weight-semibold;
+	white-space: nowrap;
+	cursor: pointer;
+	transition: background-color $pr-transition, border-color $pr-transition, color $pr-transition;
+
+	&:disabled {
+		background: $pr-disabled-bg;
+		color: $pr-disabled-text;
+		cursor: not-allowed;
+		box-shadow: none;
+	}
+}
+
+// Žalias pagrindinis (Kurti naują receptą, Pridėti, Išbandyti)
+@mixin pr-btn-primary {
+	@include pr-btn-base;
+	background: $pr-green;
+	color: $pr-text;
+
+	&:hover:not(:disabled) {
+		background: $pr-green-hover;
+	}
+}
+
+// Švelnus žalias (Skaityti ir atsakyti)
+@mixin pr-btn-soft {
+	@include pr-btn-base;
+	background: $pr-green-light;
+	border: $pr-border-green;
+	color: $pr-green-dark;
+}
+
+// Baltas su rėmeliu (Kaip tai veikia, Atšaukti, Keisti)
+@mixin pr-btn-secondary {
+	@include pr-btn-base;
+	background: $pr-bg-surface;
+	border: $pr-border-default;
+	color: $pr-text;
+	box-shadow: $pr-shadow-sm;
+
+	&:hover:not(:disabled) {
+		border-color: $pr-green-border;
+	}
+}
+
+// Tamsus (Prisijungti)
+@mixin pr-btn-dark {
+	@include pr-btn-base;
+	background: $pr-dark-gradient;
+	color: $pr-text-inverse;
+	font-size: $pr-fs-body;
+}
+
+// Apvalus ikonos mygtukas (uždaryti, rodyklės, ⇄)
+@mixin pr-btn-icon($size: $pr-control-h-sm) {
+	display: grid;
+	place-items: center;
+	flex: none;
+	width: $size;
+	height: $size;
+	padding: 0;
+	border: $pr-border-default;
+	border-radius: $pr-radius-round;
+	background: $pr-bg-surface;
+	color: $pr-text;
+	cursor: pointer;
+}
+
+// „Kaip tai veikia“ – žalias apskritimas su ▶ kairėje
+@mixin pr-btn-howto {
+	@include pr-btn-secondary;
+	gap: 9px;
+	padding: 0 18px 0 8px;
+	font-weight: $pr-weight-bold;
+}
+
+// Ikonų dėžutė (44 × 44, balta, šešėlis)
+@mixin pr-icon-box($size: $pr-icon-box) {
+	display: grid;
+	place-items: center;
+	flex: none;
+	width: $size;
+	height: $size;
+	border-radius: $pr-radius-lg;
+	background: $pr-bg-surface;
+	border: $pr-border-default;
+	box-shadow: $pr-shadow-sm;
+	color: $pr-green-dark;
+}
+
+// --- Formos ------------------------------------------------------------------
+
+// Apvalus („pill“) įvesties laukas
+@mixin pr-input {
+	box-sizing: border-box;
+	width: 100%;
+	height: $pr-control-h;
+	padding: 0 18px;
+	border: $pr-border-default;
+	border-radius: $pr-radius-pill;
+	background: $pr-bg-surface;
+	font-family: inherit;
+	font-size: $pr-fs-md;
+	color: $pr-text;
+	outline: none;
+	transition: border-color $pr-transition;
+
+	&::placeholder {
+		color: $pr-text-placeholder;
+	}
+	&:focus {
+		border-color: $pr-green;
+	}
+}
+
+// Skaičiaus laukas su vienetu dešinėje (kg, cm, g)
+@mixin pr-input-unit {
+	@include pr-input;
+	padding-right: 44px;
+	font-weight: $pr-weight-semibold;
+	@include pr-tabular;
+
+	@include pr-phone {
+		padding: 0 30px 0 14px;
+	}
+}
+
+// Paieškos laukas su lupa kairėje
+@mixin pr-input-search {
+	@include pr-input;
+	padding: 0 38px 0 42px;
+}
+
+// Klaidos būsena
+@mixin pr-input-error {
+	border: $pr-border-error;
+}
+
+@mixin pr-error-text {
+	display: block;
+	margin-top: 4px;
+	font-size: 12.5px;
+	font-weight: $pr-weight-semibold;
+	color: $pr-danger-text;
+}
+
+// Segmentinis perjungiklis (Moteris / Vyras)
+@mixin pr-segmented {
+	display: flex;
+	gap: 2px;
+	height: $pr-control-h;
+	padding: 3px;
+	box-sizing: border-box;
+	background: $pr-bg-muted;
+	border: $pr-border-default;
+	border-radius: $pr-radius-pill;
+}
+
+@mixin pr-segmented-item($active: false) {
+	flex: 1;
+	border-radius: $pr-radius-pill;
+	font-size: 13.5px;
+	font-weight: $pr-weight-semibold;
+	cursor: pointer;
+
+	@if $active {
+		background: $pr-bg-surface;
+		border: $pr-border-default;
+		box-shadow: $pr-shadow-pill;
+		color: $pr-text;
+	} @else {
+		background: transparent;
+		border: $pr-border-transparent;
+		color: $pr-text-muted;
+	}
+}
+
+// --- Chip'ai, žymelės --------------------------------------------------------
+
+// Filtro chip'as (Visi, Mėsa, Žuvis…)
+@mixin pr-filter-chip($active: false) {
+	display: inline-flex;
+	align-items: center;
+	gap: 7px;
+	padding: 8px 15px;
+	border-radius: $pr-radius-pill;
+	font-size: $pr-fs-sm;
+	font-weight: $pr-weight-semibold;
+	white-space: nowrap;
+	cursor: pointer;
+
+	@if $active {
+		background: $pr-dark;
+		border: 1px solid $pr-dark;
+		color: $pr-text-inverse;
+	} @else {
+		background: $pr-bg-surface;
+		border: $pr-border-default;
+		color: $pr-text-muted;
+	}
+}
+
+// Makro žymelė: @include pr-macro-chip(b); – B 28g
+@mixin pr-macro-chip($macro) {
+	$m: map.get($pr-macros, $macro);
+	display: inline-flex;
+	align-items: center;
+	gap: 4px;
+	padding: 3px 8px;
+	border-radius: $pr-radius-pill;
+	background: map.get($m, bg);
+	color: map.get($m, text);
+	font-size: 11px;
+	font-weight: $pr-weight-bold;
+	@include pr-tabular;
+}
+
+// Derinio žymelė: @include pr-combo-chip('a-b'); – A+B
+@mixin pr-combo-chip($combo) {
+	$c: map.get($pr-combos, $combo);
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+	padding: 5px 11px;
+	border-radius: $pr-radius-pill;
+	background: list.nth($c, 1);
+	color: list.nth($c, 2);
+	font-size: $pr-fs-xs;
+	font-weight: $pr-weight-bold;
+	letter-spacing: $pr-ls-chip;
+}
+
+// Pokyčio žymelė (↓ −0,6 kg): $tone – good | neutral | bad
+@mixin pr-delta-chip($tone: good) {
+	display: inline-flex;
+	align-items: center;
+	gap: 4px;
+	padding: 4px 10px;
+	border-radius: $pr-radius-pill;
+	font-size: $pr-fs-sm;
+	font-weight: $pr-weight-bold;
+	@include pr-tabular;
+
+	@if $tone == good {
+		background: $pr-green-light;
+		color: $pr-green-dark;
+	} @else if $tone == bad {
+		background: $pr-danger-bg;
+		color: $pr-danger-text;
+	} @else {
+		background: $pr-bg-muted;
+		color: $pr-text-muted;
+	}
+}
+
+// Spalvotas taškas
+@mixin pr-dot($color, $size: $pr-dot) {
+	display: inline-block;
+	flex: none;
+	width: $size;
+	height: $size;
+	border-radius: $pr-radius-round;
+	background: $color;
+}
+
+// --- Juostos ------------------------------------------------------------------
+
+// Makro / progreso juosta
+@mixin pr-bar($height: $pr-progress-h) {
+	display: flex;
+	gap: 2px;
+	height: $height;
+	overflow: hidden;
+	border-radius: $pr-radius-pill;
+	background: $pr-bg-muted;
+}
+
+// --- Navigacija --------------------------------------------------------------
+
+// Profilio subnav (Mitybos planas, Mitybos sekimas…)
+@mixin pr-subnav {
+	display: flex;
+	gap: 2px;
+	width: fit-content;
+	max-width: 100%;
+	margin: 0 auto;
+	padding: 4px;
+	box-sizing: border-box;
+	overflow-x: auto;
+	scrollbar-width: none;
+	background: $pr-bg-muted;
+	border: $pr-border-default;
+	border-radius: $pr-radius-pill;
+
+	&::-webkit-scrollbar {
+		display: none;
+	}
+}
+
+@mixin pr-subnav-item($active: false) {
+	flex: none;
+	padding: 6px 14px;
+	border-radius: $pr-radius-pill;
+	font-size: $pr-fs-sm;
+	font-weight: $pr-weight-semibold;
+	white-space: nowrap;
+
+	@if $active {
+		background: $pr-bg-surface;
+		border: $pr-border-default;
+		box-shadow: $pr-shadow-pill;
+		color: $pr-text;
+	} @else {
+		border: $pr-border-transparent;
+		color: $pr-text-muted;
+	}
+}
+
+// Pagrindinis navbar („pill“)
+@mixin pr-navbar {
+	display: flex;
+	align-items: center;
+	gap: 18px;
+	padding: 8px;
+	background: $pr-bg-nav;
+	border: $pr-border-default;
+	border-radius: $pr-radius-pill;
+
+	@include pr-tablet {
+		width: 100%;
+		gap: 10px;
+		padding: 6px;
+	}
+}
+
+// Kortelės skirtukai (Produktai / Mano patiekalai)
+@mixin pr-tab($active: false) {
+	padding: 8px 0;
+	font-size: $pr-fs-base;
+	font-weight: $pr-weight-semibold;
+	border-bottom: 2px solid transparent;
+	color: $pr-text-muted;
+
+	@if $active {
+		color: $pr-text;
+		border-bottom-color: $pr-green;
+	}
+}
+
+// --- Sluoksniai --------------------------------------------------------------
+
+// Iškrentantis sąrašas (aktyvumas, plano pasirinkimas, paieškos rezultatai)
+@mixin pr-dropdown {
+	position: absolute;
+	z-index: $pr-z-dropdown;
+	padding: 6px;
+	background: $pr-bg-surface;
+	border: $pr-border-default;
+	border-radius: $pr-radius-2xl;
+	box-shadow: $pr-shadow-dropdown;
+	transform-origin: top center;
+	transition: opacity $pr-duration ease, transform $pr-duration $pr-ease;
+}
+
+// Modalo uždanga
+@mixin pr-overlay {
+	position: fixed;
+	inset: 0;
+	z-index: $pr-z-modal;
+	display: flex;
+	justify-content: center;
+	align-items: flex-start;
+	padding: 150px 24px 24px;
+	background: $pr-overlay;
+
+	@include pr-phone {
+		padding: 110px 16px 16px;
+	}
+}
+
+// Modalo langas
+@mixin pr-modal($max-width: 600px) {
+	position: relative;
+	box-sizing: border-box;
+	width: 100%;
+	max-width: $max-width;
+	padding: 26px 28px 24px;
+	background: $pr-bg-surface;
+	border-radius: $pr-radius-card;
+	box-shadow: $pr-shadow-modal;
+
+	@include pr-phone {
+		border-radius: 22px;
+		padding: 20px 18px;
+	}
+}
+
+// --- Lentelės ----------------------------------------------------------------
+
+@mixin pr-table-head {
+	font-size: $pr-fs-label;
+	font-weight: $pr-weight-bold;
+	letter-spacing: 0.12em;
+	text-transform: uppercase;
+	color: $pr-text-subtle;
+}
+
+@mixin pr-table-row {
+	border-top: $pr-border-divider;
+}
+
+// Telefone: lentelė slenka horizontaliai, pirmas stulpelis prilipęs
+@mixin pr-table-scroll($min-width: 640px) {
+	overflow-x: auto;
+
+	table {
+		min-width: $min-width;
+	}
+	th:first-child {
+		position: sticky;
+		left: 0;
+		z-index: 1;
+		background: $pr-bg-surface;
+		box-shadow: 6px 0 8px -6px rgba(8, 43, 29, 0.12);
+	}
+}
+
+// --- CTA blokas ----------------------------------------------------------------
+
+// Žalias kvietimo blokas (narystės pasiūlymas)
+@mixin pr-cta-block {
+	display: flex;
+	align-items: center;
+	gap: 20px;
+	padding: 18px 18px 18px 24px;
+	background: $pr-green-light;
+	border: $pr-border-green;
+	border-radius: $pr-radius-card;
+
+	@include pr-phone {
+		flex-direction: column;
+		align-items: stretch;
+		gap: 14px;
+		padding: 18px;
+	}
+}
