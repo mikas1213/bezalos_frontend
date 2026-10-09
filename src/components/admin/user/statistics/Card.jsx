@@ -1,6 +1,6 @@
-import styles from './Card.module.css';
-import { Weight, Ruler, LayoutList, Ghost } from 'lucide-react';
+import { Ghost,LayoutList, Ruler, Weight } from 'lucide-react';
 
+import styles from './Card.module.css';
 
 const icons = {
     'SVORIS': <Weight className={styles.iconWeight} />,

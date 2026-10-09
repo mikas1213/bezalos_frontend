@@ -1,12 +1,13 @@
-import { Outlet } from 'react-router-dom';
 import { useState } from 'react';
-import useServiceMutation from '../../../hooks/paslaugos/useServiceMutation';
-import useAdminPromotions from '../../../hooks/paslaugos/useAdmniPromotions';
-import useAdminServices from '../../../hooks/paslaugos/useAdminServices';
-import ServicesNav from '../../../components/admin/services/ServicesNav';
+import { Outlet } from 'react-router-dom';
+
 import AddNewModal from '../../../components/admin/services/AddNewModal';
-import ServiceFrom from '../../../components/admin/services/forms/ServiceForm';
 import PromotionForm from '../../../components/admin/services/forms/PromotionForm';
+import ServiceFrom from '../../../components/admin/services/forms/ServiceForm';
+import ServicesNav from '../../../components/admin/services/ServicesNav';
+import useAdminServices from '../../../hooks/paslaugos/useAdminServices';
+import useAdminPromotions from '../../../hooks/paslaugos/useAdmniPromotions';
+import useServiceMutation from '../../../hooks/paslaugos/useServiceMutation';
 
 const service_form = {
     quantity: 10,

@@ -1,11 +1,12 @@
-import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
-import { useManagePlan } from '../../../hooks/nutrition_plans_hooks/useManagePlan';
-import ManagePlan from '../../../components/admin/nutrition_plans/planai/ManagePlan';
-import AssignPlan from '../../../components/admin/nutrition_plans/planai/AssignPlan';
-import Spinner from '../../../components/UI/Spinner';
-import { axiosPrivate } from '../../../api/axios';
+import { useEffect,useState } from 'react';
 import toast from 'react-hot-toast';
+import { useParams } from 'react-router-dom';
+
+import { axiosPrivate } from '../../../api/axios';
+import AssignPlan from '../../../components/admin/nutrition_plans/planai/AssignPlan';
+import ManagePlan from '../../../components/admin/nutrition_plans/planai/ManagePlan';
+import Spinner from '../../../components/UI/Spinner';
+import { useManagePlan } from '../../../hooks/nutrition_plans_hooks/useManagePlan';
 
 const ManagePlanPage = () => {
     const params = useParams();
@@ -106,6 +107,7 @@ const OnAssignPlanToast = ({ id, name, email }) => {
             </div>
             <div style={{display: 'flex', paddingLeft: '1rem'}}>
                 <button 
+                    type="button"
                     style={{
                         border: 'none', 
                         backgroundColor: 'transparent', 

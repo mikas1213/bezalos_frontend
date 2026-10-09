@@ -1,5 +1,6 @@
-import cx from 'classnames';
 import type { Dispatch, SetStateAction } from 'react';
+
+import cx from 'classnames';
 
 import type { RecipeFilters } from '../../hooks/useRecipes';
 import { MacroInfo } from '../MacroInfo';

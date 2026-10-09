@@ -1,9 +1,12 @@
-import styles from './Results.module.css';
 import { useEffect, useRef } from 'react';
-import { Flame } from 'lucide-react';
-import ProgressBar from './ProgressBar';
-import ButtonCTA from './ButtonCTA';
 import CountUp from 'react-countup';
+
+import { Flame } from 'lucide-react';
+
+import ButtonCTA from './ButtonCTA';
+import ProgressBar from './ProgressBar';
+
+import styles from './Results.module.css';
 
 const Results = ({ calculations }) => {
 

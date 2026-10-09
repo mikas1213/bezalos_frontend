@@ -1,17 +1,16 @@
-import { useState, useEffect } from 'react';
-import { axiosPrivate } from '../../api/axios';
-import { useOutletContext } from 'react-router-dom';
+import { useEffect,useState } from 'react';
 import toast from 'react-hot-toast';
+import { useOutletContext } from 'react-router-dom';
 
-import StatistikaLayout from '../../components/profilis/statistika/StatistikaLayout';
-import Container from '../../components/UI/Container';
+import { axiosPrivate } from '../../api/axios';
 import BodyTracking from '../../components/profilis/statistika/BodyTracking';
 import Chart from '../../components/profilis/statistika/Chart';
-import StatistikaData from '../../components/profilis/statistika/StatistikaData';
-import Pagination from '../../components/UI/Pagination';
-
 import No_BodyTracking from '../../components/profilis/statistika/no_statistika/No_BodyTracking';
 import No_Chart from '../../components/profilis/statistika/no_statistika/No_Chart';
+import StatistikaData from '../../components/profilis/statistika/StatistikaData';
+import StatistikaLayout from '../../components/profilis/statistika/StatistikaLayout';
+import Container from '../../components/UI/Container';
+import Pagination from '../../components/UI/Pagination';
 
 const getApimtys = data => {
     return ['bicepsas', 'talija', 'sedmenys', 'slaunis']
@@ -64,7 +63,7 @@ const StatistikaPage = () => {
                 const indexOfFirstRecord = indexOfLastRecord - recordsPerPage;
                 const currentRecords = all_data.slice(indexOfFirstRecord, indexOfLastRecord);
                 setPaginatedRecords(currentRecords);
-            } catch (err) {
+            } catch {
                 setIsLoadingChartData(false);
             }
         };

@@ -1,7 +1,9 @@
-import styles from './ReviewCard.module.css';
-import { Stack } from '../../Shared';
-import { useMediaQuery } from '../../../contexts/MediaQueryProvider';
 import { FaStar } from 'react-icons/fa6';
+
+import { useMediaQuery } from '../../../contexts/MediaQueryProvider';
+import { Stack } from '../../Shared';
+
+import styles from './ReviewCard.module.css';
 export type ReviewProps = {
     title: string,
     text: string

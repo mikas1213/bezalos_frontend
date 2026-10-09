@@ -1,10 +1,13 @@
-import styles from './NewsLetter.module.css';
-import { axiosPublic } from '../../../../api/axios';
-import toast from 'react-hot-toast';
 import { useForm } from 'react-hook-form';
+import toast from 'react-hot-toast';
+
 import { useMutation } from '@tanstack/react-query';
-import { Box, Cluster } from '../../../Shared';
 import { AxiosError } from 'axios';
+
+import { axiosPublic } from '../../../../api/axios';
+import { Box, Cluster } from '../../../Shared';
+
+import styles from './NewsLetter.module.css';
 
 type NewsLetterFormData = {
     email: string

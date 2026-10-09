@@ -1,7 +1,9 @@
-import styles from './Accordion.module.css';
-import AccordionRow from './AccordionRow';
 import { Cluster } from '../../Shared/cluster/Cluster';
+
+import AccordionRow from './AccordionRow';
 import { type AccordionData } from './types';
+
+import styles from './Accordion.module.css';
 
 export const Accordion = ({ data }: { data: AccordionData }) => {
     return (

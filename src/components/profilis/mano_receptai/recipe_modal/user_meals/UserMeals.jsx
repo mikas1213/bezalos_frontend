@@ -1,7 +1,10 @@
-import styles from './UserMeals.module.css';
 import { useState } from 'react';
-import { Utensils, ChevronLeft } from 'lucide-react';
+
+import { ChevronLeft,Utensils } from 'lucide-react';
+
 import Meal from './Meal';
+
+import styles from './UserMeals.module.css';
 
 const UserMeals = ({ userPlans, selectedMeal, setSelectedMeal, setNewRecipe }) => {
     const [isOpen, setIsOpen] = useState(false);

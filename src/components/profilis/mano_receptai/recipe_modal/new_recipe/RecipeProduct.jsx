@@ -1,5 +1,6 @@
-import styles from './RecipeProduct.module.css';
 import { DeleteBin_icon } from '../../../../../svg/icons';
+
+import styles from './RecipeProduct.module.css';
 
 const RecipeProduct = ({ prod, handleProductDelete, children }) => {
     

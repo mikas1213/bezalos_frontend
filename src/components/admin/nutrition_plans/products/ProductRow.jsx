@@ -1,7 +1,9 @@
-import styles from './ProductRow.module.css';
-import { IoTrashBin } from 'react-icons/io5';
 import { useRef } from 'react';
+import { IoTrashBin } from 'react-icons/io5';
+
 import ProdCell from './ProdCell';
+
+import styles from './ProductRow.module.css';
 
 const ProductRow = ({ 
     product, 
@@ -38,7 +40,7 @@ const ProductRow = ({
                     setIsClickedDelete(click => product.id === clickedProduct ? !click : true)
                 }}><IoTrashBin />
             </span>
-            {isDelete && <button 
+            {isDelete && <button type="button"
                 className={styles.deleteBtn} 
                 onClick={() => {
                     handleDeleteProduct(product.id); del.current.classList.add(styles.deleted)

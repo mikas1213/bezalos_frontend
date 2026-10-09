@@ -1,17 +1,18 @@
-import { useState, useEffect } from 'react';
+import { useEffect,useState } from 'react';
+import toast from 'react-hot-toast';
 import { useOutletContext } from 'react-router-dom';
-import Container from '../../components/UI/Container';
-import Header from '../../components/profilis/mano_receptai/header/Header';
+
+import { axiosPrivate } from '../../api/axios';
 import HowItWorks from '../../components/profilis/HowItWorks';
-import NewRecipeBtn from '../../components/profilis/mano_receptai/header/NewRecipeBtn';
+import Header from '../../components/profilis/mano_receptai/header/Header';
 import LogicFilter from '../../components/profilis/mano_receptai/header/LogicFilter';
+import NewRecipeBtn from '../../components/profilis/mano_receptai/header/NewRecipeBtn';
 import SearchRecipe from '../../components/profilis/mano_receptai/header/SearchRecipe';
+import No_recipes from '../../components/profilis/mano_receptai/No_recipes';
 import RecipeModal from '../../components/profilis/mano_receptai/recipe_modal/RecipeModal';
 import RecipeList from '../../components/profilis/mano_receptai/user_recipes/RecipeList';
+import Container from '../../components/UI/Container';
 import Pagination from '../../components/UI/Pagination';
-import No_recipes from '../../components/profilis/mano_receptai/No_recipes';
-import { axiosPrivate } from '../../api/axios';
-import toast from 'react-hot-toast';
 
 const filterOptions = [
     {value: 'A+B', label: 'A+B', color: '#30c040'},

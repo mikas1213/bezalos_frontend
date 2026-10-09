@@ -1,7 +1,9 @@
-import styles from './Footer.module.css';
-import Logo from '../../assets/icons/svg/be-zalos-logo.svg';
-import { PiFacebookLogo, PiInstagramLogo, PiAt } from 'react-icons/pi';
+import { PiAt,PiFacebookLogo, PiInstagramLogo } from 'react-icons/pi';
 import { Link } from 'react-router-dom';
+
+import Logo from '../../assets/icons/svg/be-zalos-logo.svg';
+
+import styles from './Footer.module.css';
 
 const Footer = () => {
     return (

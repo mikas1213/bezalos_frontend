@@ -1,5 +1,6 @@
-import styles from './LogicFilter.module.css';
 import { useState } from 'react';
+
+import styles from './LogicFilter.module.css';
 
 const LogicFilter = ({ options, setFilter, onSetFilter, setCurrentPage = () => {}}) => {
     

@@ -1,6 +1,7 @@
-import { useState, useEffect } from 'react';
-import { axiosPrivate } from '../../api/axios';
+import { useEffect,useState } from 'react';
 import toast from 'react-hot-toast';
+
+import { axiosPrivate } from '../../api/axios';
 
 export const useUserInfo = (user_id) => {
     const [user, setUser] = useState(null);

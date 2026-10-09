@@ -1,6 +1,8 @@
-import styles from './AdminRecipe.module.css';
-import { CircleX, CirclePlay, Vegan, Clock, Heart } from 'lucide-react';
 import { Link } from 'react-router-dom';
+
+import { CirclePlay, CircleX, Clock, Heart,Vegan } from 'lucide-react';
+
+import styles from './AdminRecipe.module.css';
 
 const AdminRecipe = ({ adminRecipe, handleDeleteRecipe, setModalControl, setNewRecipe }) => {
     const img_src = adminRecipe.photo ? URL.createObjectURL(adminRecipe.photo) : adminRecipe.image_s;

@@ -1,5 +1,6 @@
+import { useEffect,useState } from 'react';
+
 import { axiosPrivate } from '../../api/axios';
-import { useState, useEffect } from 'react';
 
 export const useUsers = (currentPage, search, sort) => {
     const pageSize = 20;

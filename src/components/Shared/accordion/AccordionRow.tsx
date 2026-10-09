@@ -1,12 +1,14 @@
-import styles from './AccordionRow.module.css';
 import { useState } from 'react';
-import RowHeader from './RowHeader';
+
+import { Box } from '../box/Box';
+import { Cluster } from '../cluster/Cluster';
+
 import RowBody from './RowBody';
 import RowBodyItem from './RowBodyItem';
-import { Cluster } from '../cluster/Cluster';
-import { Box } from '../box/Box';
+import RowHeader from './RowHeader';
+import type { Properties,Row } from './types';
 
-import type { Row, Properties } from './types';
+import styles from './AccordionRow.module.css';
 type Props = { row: Row, properties: Properties, isFirstChild: boolean };
 
 const AccordionRow = ({ row, properties, isFirstChild }: Props) => {

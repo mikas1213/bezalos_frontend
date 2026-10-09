@@ -1,7 +1,8 @@
+import { useEffect,useState } from 'react';
+
+import { Cell, Pie, PieChart, ResponsiveContainer } from 'recharts';
 
 import styles from './Circle.module.css';
-import { PieChart, Pie, Cell, ResponsiveContainer } from 'recharts';
-import { useState, useEffect } from 'react';
 
 const Circle = () => {
     const [circle, setCircle] = useState({ inner: 92, outer: 105, bar_space: 15, dy: 22,  height: 290 });

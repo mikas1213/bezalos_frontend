@@ -1,6 +1,8 @@
-import styles from './Header.module.css';
+import { Calendar,User } from 'lucide-react';
+
 import { Divider } from '../../nutrition_plans/Divider';
-import { User, Calendar } from 'lucide-react';
+
+import styles from './Header.module.css';
 
 
 const renderHeaderItem = (icon, label, value) => {

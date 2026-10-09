@@ -1,5 +1,6 @@
-import styles from './MealItem.module.css';
 import { kcal } from '../../../../utils/calculationsHelpers';
+
+import styles from './MealItem.module.css';
 
 const MealItem = ({ meal }) => {
     

@@ -1,5 +1,6 @@
-import styles from './Promo.module.css';
 import { CircleAlert, CircleX } from 'lucide-react';
+
+import styles from './Promo.module.css';
 
 export const PromoHeader = () => {
     return (

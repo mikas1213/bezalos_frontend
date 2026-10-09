@@ -1,6 +1,8 @@
-import styles from './Filters.module.css';
+import { useEffect, useRef,useState } from 'react';
+
 import { ChevronLeft } from 'lucide-react';
-import { useState, useEffect, useRef } from 'react';
+
+import styles from './Filters.module.css';
 
 const timeFrames = [
     {frame: '1month', label: '1 mėnesis', label_mob: '1 mėn.'},

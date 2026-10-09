@@ -1,5 +1,6 @@
-import styles from './NaujiIprociai.module.css';
 import { Fragment } from 'react';
+
+import styles from './NaujiIprociai.module.css';
 
 const NaujiIprociai = ({ anketa }) => {
     return (

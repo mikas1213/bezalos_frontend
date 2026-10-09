@@ -1,11 +1,14 @@
-import styles from './Chart.module.css';
+import { useEffect, useRef,useState } from 'react';
 import CountUp from 'react-countup';
-import { useState, useEffect, useRef } from 'react';
-import { Weight, Ruler, ChevronDown, ChevronUp, Minus} from 'lucide-react';
-import { ComposedChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
+
+import { ChevronDown, ChevronUp, Minus,Ruler, Weight} from 'lucide-react';
+import { CartesianGrid, ComposedChart, Line, ResponsiveContainer,Tooltip, XAxis, YAxis } from 'recharts';
 
 import Filters from '../../../components/profilis/statistika/Filters';
+
 import FiltersMob from './FiltersMob';
+
+import styles from './Chart.module.css';
 
 const domain_calc = (data, key, top = 1, bottom = 1) => {
     const validValues = data.filter(item => item[key] !== null).map(item => item[key]);    

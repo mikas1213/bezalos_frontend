@@ -1,5 +1,6 @@
-import styles from './Input.module.css';
 import { limits } from '../../../../utils/anketaFieldLimits';
+
+import styles from './Input.module.css';
 
 const Input = ({ handleForm, formData, placeholder, label = '', name, error, setErrors }) => {
       

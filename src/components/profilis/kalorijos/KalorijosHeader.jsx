@@ -1,6 +1,8 @@
+import { useEffect, useRef,useState } from 'react';
+
+import { Check,ChevronLeft, Heart } from 'lucide-react';
+
 import styles from './KalorijosHeader.module.css';
-import { Heart, ChevronLeft, Check } from 'lucide-react';
-import { useState, useEffect, useRef } from 'react';
 
 const options = [
     {id: 1, icon: '🪑', title: 'Sėdimas darbas', paragraph: 'Mažai arba visai nejudama'},

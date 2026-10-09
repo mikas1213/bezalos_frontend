@@ -1,4 +1,5 @@
-import type { CSSProperties, ReactNode, ElementType, HTMLAttributes } from 'react';
+import type { CSSProperties, ElementType, HTMLAttributes,ReactNode } from 'react';
+
 import styles from './Center.module.css';
 
 /**

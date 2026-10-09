@@ -1,10 +1,10 @@
-import styles from './NutritionTab.module.css';
-import { NavLink, useLocation } from 'react-router-dom';
 import { useState } from 'react';
-
-import { TiShoppingCart } from 'react-icons/ti';
-import { GiOpenedFoodCan } from 'react-icons/gi';
 import { CgTemplate } from 'react-icons/cg';
+import { GiOpenedFoodCan } from 'react-icons/gi';
+import { TiShoppingCart } from 'react-icons/ti';
+import { NavLink, useLocation } from 'react-router-dom';
+
+import styles from './NutritionTab.module.css';
 
 
 const NutritionTab = ({ isLoading, stats }) => {

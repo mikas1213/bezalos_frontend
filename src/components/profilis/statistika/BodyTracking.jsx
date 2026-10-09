@@ -1,6 +1,8 @@
-import styles from './BodyTracking.module.css';
+import { Ruler,Weight } from 'lucide-react';
+
 import Input from './Input';
-import { Weight, Ruler } from 'lucide-react';
+
+import styles from './BodyTracking.module.css';
 
 const fields = [
     {name: 'svoris', label: 'Svoris', ph: 'kg', icon: <Weight className={styles.icon} />},
@@ -35,7 +37,8 @@ const BodyTracking = ({ errors, setErrors, formData, setFormData, isLoadingAdd, 
                     error={errors ? errors.find(err => err.path === field.name)?.msg : ''}
                     setErrors={setErrors}
                 />)}
-                <button
+                <button 
+                    type="button"
                     disabled={isLoadingAdd}
                     className={styles.btn}
                     onClick={handleAddBodyTracking}

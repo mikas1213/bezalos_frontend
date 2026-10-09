@@ -1,5 +1,6 @@
-import styles from './Meal.module.css';
 import { IoIosArrowBack } from 'react-icons/io';
+
+import styles from './Meal.module.css';
 
 
 const Meal = ({ title }) => {

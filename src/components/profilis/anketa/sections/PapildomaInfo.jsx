@@ -1,5 +1,6 @@
-import styles from './PapildomaInfo.module.css';
 import Textarea from '../ui/Textarea';
+
+import styles from './PapildomaInfo.module.css';
 
 const PapildomaInfo = ({ formData, handleForm, setErrors }) => {
     return (

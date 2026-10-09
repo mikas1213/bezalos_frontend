@@ -1,9 +1,9 @@
-import styles from './FormInput.module.css';
-
-import { FaUser, FaLock } from 'react-icons/fa6';
-import { FaEnvelope } from 'react-icons/fa';
-import { RiEyeCloseLine } from 'react-icons/ri';
 import { BsEyeFill } from 'react-icons/bs';
+import { FaEnvelope } from 'react-icons/fa';
+import { FaLock,FaUser } from 'react-icons/fa6';
+import { RiEyeCloseLine } from 'react-icons/ri';
+
+import styles from './FormInput.module.css';
 
 const FormInput = ({ children, inputType, openEye, setOpenEye, errors }) => {
 

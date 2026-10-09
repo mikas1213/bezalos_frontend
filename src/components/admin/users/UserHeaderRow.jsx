@@ -1,8 +1,10 @@
-import styles from './UserHeaderRow.module.css';
+import { FaRegCopy } from 'react-icons/fa';
 import { IoIosArrowRoundDown, IoIosArrowRoundUp } from 'react-icons/io';
 import { IoCloseCircle } from 'react-icons/io5';
-import { FaRegCopy } from 'react-icons/fa';
+
 import Filters from './Filters';
+
+import styles from './UserHeaderRow.module.css';
 
 const UserHeaderRow = ({ usersEmailsForCopy, setSearch, search, sort, setSort, setCurrentPage }) => {
     return (    
@@ -38,7 +40,7 @@ const UserHeaderRow = ({ usersEmailsForCopy, setSearch, search, sort, setSort, s
                 <option value='plan_assign'>Planas priskirtas</option>
                 <option value='subscription_type'>free</option>
             </select>
-            <button onClick={() => setSort(prevState => ({...prevState, sort: prevState.sort === 'DESC'? 'ASC' : 'DESC'}))}>
+            <button type="button" onClick={() => setSort(prevState => ({...prevState, sort: prevState.sort === 'DESC'? 'ASC' : 'DESC'}))}>
                 {sort.sort === 'DESC' ? <IoIosArrowRoundUp className={styles.icon} /> : <IoIosArrowRoundDown className={styles.icon} />}
             </button>
             

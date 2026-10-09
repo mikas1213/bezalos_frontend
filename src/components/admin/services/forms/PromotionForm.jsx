@@ -1,10 +1,13 @@
-import styles from './PromotionForm.module.css';
-import { useState, useEffect, useRef } from 'react';
+import { useEffect, useRef,useState } from 'react';
+
+import { ChevronLeft } from 'lucide-react';
+
+import ActionBtns from '../ActionBtns';
+import CheckBox from '../CheckBox';
 import Input from '../Input';
 import Select from '../Select';
-import CheckBox from '../CheckBox';
-import ActionBtns from '../ActionBtns';
-import { ChevronLeft } from 'lucide-react';
+
+import styles from './PromotionForm.module.css';
 
 const PromotionForm = ({ isLoading, isModalOpen, services, formValues, setFormValues, handleServiceForm, handleModalOpen, handleSubmit }) => {
 

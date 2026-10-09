@@ -1,7 +1,9 @@
-import styles from './AvailableProducts.module.css';
 import { useState } from 'react';
+import { TbSortAscendingLetters, TbSortAscendingNumbers, TbSortDescendingLetters, TbSortDescendingNumbers } from 'react-icons/tb';
+
 import { set_grams_keitykle } from '../../../utils/calculationsHelpers';
-import { TbSortAscendingLetters, TbSortDescendingLetters, TbSortAscendingNumbers, TbSortDescendingNumbers } from 'react-icons/tb';
+
+import styles from './AvailableProducts.module.css';
 
 const avail_food_types = ['Mėsa', 'Žuvis', 'Kruopos', 'Pieno produktai', 'Ankštiniai'];
 const AvailableProducts = ({ prodList, selectedProd }) => {
@@ -23,6 +25,7 @@ const AvailableProducts = ({ prodList, selectedProd }) => {
         <>
             <div className={styles.groupFilters}>
                 <button 
+                type="button"
                     className={sortOrder.food_type === 'all' ? styles.active : ''}
                     onClick={() => {
                         setSortOrder(prevSort => ({...prevSort, food_type: 'all'}));
@@ -30,7 +33,7 @@ const AvailableProducts = ({ prodList, selectedProd }) => {
                     }}
                 >Visi</button>
 
-                {food_types.map(food_type => <button
+                {food_types.map(food_type => <button type="button"
                     key={food_type}
                     className={sortOrder.food_type === food_type ? styles.active : ''}
                     onClick={() => {

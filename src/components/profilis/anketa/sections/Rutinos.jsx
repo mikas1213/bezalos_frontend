@@ -1,8 +1,10 @@
-import styles from './Rutinos.module.css';
+import { IoIosAdd } from "react-icons/io";
+
+import { DeleteBin_icon } from '../../../../svg/icons';
 import Radio from '../ui/Radio';
 import Timepicker from '../ui/Timepicker';
-import { IoIosAdd } from "react-icons/io";
-import { DeleteBin_icon } from '../../../../svg/icons';
+
+import styles from './Rutinos.module.css';
 
 const renderHabit = (type, name, label, day, handleForm, errors, setErrors) => {
     const err_id = `${name}_${day.day_id}`;
@@ -74,7 +76,7 @@ const renderRoutine = (day, handleForm, deleteRoutine, type, errors, setErrors, 
 
 const renderNewRoutineBtn = (addRoutine, routine) => {
     return <div>
-        <button className={styles.newRoutineBtn} onClick={() => addRoutine(routine)}>
+        <button type="button" className={styles.newRoutineBtn} onClick={() => addRoutine(routine)}>
             <IoIosAdd className={styles.icon} />Papildoma rutina
         </button>
         <div className={styles.explanation}>

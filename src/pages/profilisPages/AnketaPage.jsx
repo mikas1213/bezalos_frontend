@@ -1,21 +1,23 @@
-import { v4 as uuidv4 } from 'uuid';
 import { useState } from 'react';
+import toast from 'react-hot-toast';
 import { useOutletContext } from 'react-router-dom';
-import Container from '../../components/UI/Container';
+
+import { v4 as uuidv4 } from 'uuid';
+
+import { axiosPrivate } from '../../api/axios';
 import Anketa from '../../components/profilis/anketa/Anketa';
+import Pagination from '../../components/profilis/anketa/Pagination';
 import ProgressBar from '../../components/profilis/anketa/ProgressBar';
+import DabartiniaiIprociai from '../../components/profilis/anketa/sections/DabartiniaiIprociai';
+import DarboGrafikas from '../../components/profilis/anketa/sections/DarboGrafikas';
+import FiziniaiDuomenys from '../../components/profilis/anketa/sections/FiziniaiDuomenys';
+import PapildomaInfo from '../../components/profilis/anketa/sections/PapildomaInfo';
+import Rutinos from '../../components/profilis/anketa/sections/Rutinos';
+import Sveikata from '../../components/profilis/anketa/sections/Sveikata';
+import Tikslai from '../../components/profilis/anketa/sections/Tikslai';
 import StepIndicator from '../../components/profilis/anketa/StepIndicator';
 import StepInfo from '../../components/profilis/anketa/StepInfo';
-import Pagination from '../../components/profilis/anketa/Pagination';
-import FiziniaiDuomenys from '../../components/profilis/anketa/sections/FiziniaiDuomenys';
-import Tikslai from '../../components/profilis/anketa/sections/Tikslai';
-import DarboGrafikas from '../../components/profilis/anketa/sections/DarboGrafikas';
-import Sveikata from '../../components/profilis/anketa/sections/Sveikata';
-import DabartiniaiIprociai from '../../components/profilis/anketa/sections/DabartiniaiIprociai';
-import Rutinos from '../../components/profilis/anketa/sections/Rutinos';
-import PapildomaInfo from '../../components/profilis/anketa/sections/PapildomaInfo';
-import { axiosPrivate } from '../../api/axios';
-import toast from 'react-hot-toast';
+import Container from '../../components/UI/Container';
 
 const AnketaPage = () => {
     const { anketa: formData, setAnketa: setFormData, user_id } = useOutletContext();

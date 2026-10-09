@@ -1,8 +1,10 @@
-import styles from './OfferCard.module.css';
-import { Kitchen, MealPlan, Mentorship } from '../icons';
-import { Box, Cluster, Stack } from '../../../../../../components/Shared';
-import type { OfferCardProps, IconsMap } from '../types';
 import { useNavigate } from 'react-router-dom';
+
+import { Box, Cluster, Stack } from '../../../../../../components/Shared';
+import { Kitchen, MealPlan, Mentorship } from '../icons';
+import type { IconsMap,OfferCardProps } from '../types';
+
+import styles from './OfferCard.module.css';
 
 const iconsMap: IconsMap = {
     kitchen: <Kitchen />,
@@ -36,7 +38,7 @@ export const OfferCard = ({ card }: { card: OfferCardProps }) => {
                     <Box>{card.p2}</Box>
                 </Cluster>
                 <Box className={styles.btn}>
-                    <button onClick={() =>  navigate(card.url)}>{card.btnLabel}</button>
+                    <button type="button" onClick={() =>  navigate(card.url)}>{card.btnLabel}</button>
                 </Box>
             </Stack>          
         </Box>

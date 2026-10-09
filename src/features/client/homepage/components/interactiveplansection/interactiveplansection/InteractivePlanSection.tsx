@@ -1,20 +1,22 @@
-import styles from './InteractivePlanSection.module.css';
-import { useEffect, useState, useRef } from 'react';
-import { useMediaQuery } from '../../../../../../contexts/MediaQueryProvider';
-import { InteractiveCard } from '../interactivecard/InteractiveCard';
-import { Phone } from '../phone/Phone';
-import {
-	Box,
-	Container,
-	Cluster,
-	Stack
-} from '../../../../../../components/Shared';
-import { SectionTitle } from '../../../../../../components/Shared/SectionTitle/SectionTitle';
-import { Icon1, Icon2, Icon3, Icon4 } from '../icons';
+import { useEffect, useRef,useState } from 'react';
+
 import video1 from '../../../../../../assets/videos/homepage/video1.mp4';
 import video2 from '../../../../../../assets/videos/homepage/video2.mp4';
 import video3 from '../../../../../../assets/videos/homepage/video3.mp4';
-import type { Card, BottomItem } from '../types';
+import {
+	Box,
+	Cluster,
+	Container,
+	Stack
+} from '../../../../../../components/Shared';
+import { SectionTitle } from '../../../../../../components/Shared/SectionTitle/SectionTitle';
+import { useMediaQuery } from '../../../../../../contexts/MediaQueryProvider';
+import { Icon1, Icon2, Icon3, Icon4 } from '../icons';
+import { InteractiveCard } from '../interactivecard/InteractiveCard';
+import { Phone } from '../phone/Phone';
+import type { BottomItem,Card } from '../types';
+
+import styles from './InteractivePlanSection.module.css';
 
 const cards: Card[] = [
 	{

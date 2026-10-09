@@ -1,9 +1,13 @@
-import styles from './NewRecipe.module.css';
-import { useState, useRef } from 'react';
-import { v4 as uuidv4 } from 'uuid';
-import RecipeProduct from './RecipeProduct';
+import { useRef,useState } from 'react';
+
 import { Flame } from 'lucide-react';
+import { v4 as uuidv4 } from 'uuid';
+
 import { kcal, mealProdBarSum, productsBarSum } from '../../../../../utils/calculationsHelpers';
+
+import RecipeProduct from './RecipeProduct';
+
+import styles from './NewRecipe.module.css';
 
 const NewRecipe = ({ prodList, newRecipe, setNewRecipe, is_bar_error }) => {
 

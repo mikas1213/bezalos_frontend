@@ -7,13 +7,14 @@ import AdminNavbar from '../navBar/AdminNavbar';
 import styles from './AdminLayout.module.css';
 
 const AdminLayout = () => {
-	document.body.style.backgroundColor = '#eff1ef';
+	
 
 	const [stats, setStats] = useState([]);
 	const [isLoading, setIsLoading] = useState(true);
 
 	useEffect(() => {
 		const htmlElement = document.documentElement;
+        document.body.style.backgroundColor = '#eff1ef';
 		htmlElement.style.backgroundColor = '#eff1ef';
 	}, []);
 

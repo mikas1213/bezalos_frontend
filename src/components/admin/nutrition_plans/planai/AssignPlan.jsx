@@ -1,8 +1,10 @@
-import styles from './AssignPlan.module.css';
-import { axiosPrivate } from '../../../../api/axios';
-import { default as UsersSelect } from 'react-select/async';
 import { useState } from 'react';
+import { default as UsersSelect } from 'react-select/async';
+
+import { axiosPrivate } from '../../../../api/axios';
 import UserDetails from '../../user/edit_plan/UserDetails';
+
+import styles from './AssignPlan.module.css';
 
 const customUsersLoadStyles = {
     container: (provider) => ({
@@ -89,7 +91,7 @@ const AssignPlan = ({ user, setUser, assignPlanToUser, isPlanAssigning }) => {
                 }));
                 callback(options);
             }
-        } catch (err) {
+        } catch {
             callback([]);
         }
     };
@@ -101,7 +103,7 @@ const AssignPlan = ({ user, setUser, assignPlanToUser, isPlanAssigning }) => {
             const { data } = await axiosPrivate.get(`/admin/user/${e.value}`);
             setUserDetails(data);
             setIsLoading(false);
-        } catch (err) {
+        } catch {
             setIsLoading(false);
         }
     };
@@ -124,10 +126,9 @@ const AssignPlan = ({ user, setUser, assignPlanToUser, isPlanAssigning }) => {
                 value={user}
             />
 
-            <button disabled={isPlanAssigning}
+            <button type="button" disabled={isPlanAssigning}
                 className={styles.assignPlanBtn}
                 onClick={() => {
-                    // localStorage.removeItem('localPlan');
                     assignPlanToUser();
             }}>Priskirti</button>
             {!isLoading && <UserDetails userDetails={userDetails} />}

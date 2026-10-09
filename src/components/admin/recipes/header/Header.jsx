@@ -1,11 +1,14 @@
-import styles from './Header.module.css';
 import { RiPlayListAddLine } from 'react-icons/ri';
+
 import { Search } from 'lucide-react';
+
+import styles from './Header.module.css';
 
 const Header = ({ setModalControl, filters, setFilters }) => {
     return (
         <div className={styles.header}>
             <button 
+                type="button"
                 className={styles.addButton}
                 onClick={() => setModalControl({isOpen: true, action: 'add'})}
             >
@@ -22,7 +25,7 @@ const Header = ({ setModalControl, filters, setFilters }) => {
                     onChange={e => setFilters({search: e.target.value})}
                 />
                 <Search className={styles.iconSearch} />
-                <button className={styles.clear} onClick={() => setFilters({search: ''})}>Valyti</button>
+                <button type="button" className={styles.clear} onClick={() => setFilters({search: ''})}>Valyti</button>
             </div>
             
         </div>

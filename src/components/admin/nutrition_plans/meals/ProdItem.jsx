@@ -1,9 +1,11 @@
-import styles from './ProdItem.module.css';
+import { useRef,useState } from 'react';
 import AsyncSelect from 'react-select/async';
+
 import { axiosPrivate } from '../../../../api/axios';
-import { useState, useRef } from 'react';
-import { kcal } from '../../../../utils/calculationsHelpers';
 import { DeleteBin_icon } from '../../../../svg/icons';
+import { kcal } from '../../../../utils/calculationsHelpers';
+
+import styles from './ProdItem.module.css';
 
 const height = 26;
 const minHeight = 0;

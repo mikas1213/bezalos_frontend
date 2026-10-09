@@ -1,6 +1,8 @@
-import styles from './InteractiveCard.module.css';
 import type { Dispatch, SetStateAction } from 'react';
+
 import { type Card } from '../types';
+
+import styles from './InteractiveCard.module.css';
 type CardProps = {
     card: Card,
     selected?: boolean,

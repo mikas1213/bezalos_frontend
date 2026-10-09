@@ -1,14 +1,16 @@
-import ProductRow, { ProductRowH } from '../../../components/admin/nutrition_plans/products/ProductRow';
-import { axiosPrivate } from '../../../api/axios';
 import { useState } from 'react';
-import Wrapper from './Wrapper';
-import Navbar from '../../../components/admin/nutrition_plans/Navbar';
-import AddProduct from '../../../components/admin/nutrition_plans/products/AddProduct';
-import SearchInput from '../../../components/admin/nutrition_plans/SearchInput';
-import { default as CategorySelect } from 'react-select';
-import { useProducts } from '../../../hooks/nutrition_plans_hooks/useProducts';
 import toast from 'react-hot-toast';
 import { useOutletContext } from 'react-router-dom';
+import { default as CategorySelect } from 'react-select';
+
+import { axiosPrivate } from '../../../api/axios';
+import Navbar from '../../../components/admin/nutrition_plans/Navbar';
+import AddProduct from '../../../components/admin/nutrition_plans/products/AddProduct';
+import ProductRow, { ProductRowH } from '../../../components/admin/nutrition_plans/products/ProductRow';
+import SearchInput from '../../../components/admin/nutrition_plans/SearchInput';
+import { useProducts } from '../../../hooks/nutrition_plans_hooks/useProducts';
+
+import Wrapper from './Wrapper';
 
 const categoryOptions = [
     { value: 'Riebūs baltymai', label: 'Riebūs baltymai'},
