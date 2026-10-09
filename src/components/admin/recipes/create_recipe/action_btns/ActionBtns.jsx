@@ -5,12 +5,13 @@ const ActionBtns = ({ modalControl, setModalControl, handleNewRecipe, handleEdit
     return (
         <div className={styles.actionBtns}>
 
-            <button className={styles.cancelBtn} onClick={() => {
+            <button type="button" className={styles.cancelBtn} onClick={() => {
                 setModalControl({isOpen: false, action: ''});
                 setNewRecipe(emptyRecipe);
             }}>Atšaukti</button>
 
             <button 
+                type="button"
                 disabled={isLoading} 
                 className={styles.saveBtn} 
                 onClick={() => (modalControl.action === 'add' ?  handleNewRecipe() : handleEditRecipe(newRecipe.id)) }

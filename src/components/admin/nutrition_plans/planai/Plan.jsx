@@ -1,14 +1,17 @@
-import styles from './Plan.module.css';
 import { useState } from 'react';
-import { axiosPrivate } from '../../../../api/axios';
-import { DeleteX_icon } from '../../../../svg/icons';
+import { ImPlus } from 'react-icons/im';
 import { LuVegan } from 'react-icons/lu';
 import { SlSettings } from 'react-icons/sl';
-import { ImPlus } from 'react-icons/im';
-import { default as AddPlanSelect } from 'react-select/async';
-import MealItem, { SportItem } from './MealItem';
-import { kcal } from '../../../../utils/calculationsHelpers';
 import { useNavigate } from 'react-router-dom';
+import { default as AddPlanSelect } from 'react-select/async';
+
+import { axiosPrivate } from '../../../../api/axios';
+import { DeleteX_icon } from '../../../../svg/icons';
+import { kcal } from '../../../../utils/calculationsHelpers';
+
+import MealItem, { SportItem } from './MealItem';
+
+import styles from './Plan.module.css';
 
 const customAddProdStyles = {
     container: (provider) => ({
@@ -161,6 +164,7 @@ const Plan = ({ plan, handlePlanEdit, handlePlanDelete, handleAddPlanMeal }) => 
                 />
 
                 <button 
+                    type="button"
                     className={styles.addSportBtn} 
                     onClick={() => handleAddPlanMeal(plan.id, {meal_id: null}, true)}
                 >

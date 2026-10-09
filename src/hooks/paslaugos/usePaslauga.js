@@ -1,6 +1,7 @@
-import { useState, useEffect } from 'react';
-import { axiosPublic } from '../../api/axios';
+import { useEffect,useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+
+import { axiosPublic } from '../../api/axios';
 
 const usePaslauga = (slug) => {
     const [paslauga, setPaslauga] = useState([]);

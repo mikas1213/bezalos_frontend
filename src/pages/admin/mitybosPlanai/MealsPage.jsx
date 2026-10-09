@@ -1,19 +1,21 @@
 import { useState } from 'react';
+import toast from 'react-hot-toast';
+import { LiaPizzaSliceSolid } from 'react-icons/lia';
+import { useOutletContext } from 'react-router-dom';
+
 import { axiosPrivate } from '../../../api/axios';
-import Navbar from '../../../components/admin/nutrition_plans/Navbar';
 import { AddNewBtn } from '../../../components/admin/nutrition_plans/AddNewBtn';
-import Wrapper from './Wrapper';
-import Pagination from '../../../components/UI/Pagination';
-import Meal from '../../../components/admin/nutrition_plans/meals/Meal';
-import { RadioFilters } from '../../../components/admin/nutrition_plans/RadioFilters';
 import { CheckBoxFilters } from '../../../components/admin/nutrition_plans/CheckBoxFilters';
 import { Divider } from '../../../components/admin/nutrition_plans/Divider';
+import Meal from '../../../components/admin/nutrition_plans/meals/Meal';
+import Navbar from '../../../components/admin/nutrition_plans/Navbar';
+import { RadioFilters } from '../../../components/admin/nutrition_plans/RadioFilters';
 import SearchInput from '../../../components/admin/nutrition_plans/SearchInput';
-import { bar } from '../../../utils/calculationsHelpers';
-import { LiaPizzaSliceSolid } from 'react-icons/lia';
-import toast from 'react-hot-toast';
+import Pagination from '../../../components/UI/Pagination';
 import { useMeals } from '../../../hooks/nutrition_plans_hooks/useMeals';
-import { useOutletContext } from 'react-router-dom';
+import { bar } from '../../../utils/calculationsHelpers';
+
+import Wrapper from './Wrapper';
 
 const MealsPage = () => {
     const { setStats } = useOutletContext();

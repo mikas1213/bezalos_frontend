@@ -1,6 +1,7 @@
-import styles from './Timepicker.module.css';
-import { useState, useEffect, useRef } from 'react';
+import { useEffect, useRef,useState } from 'react';
 import { FaRegClock } from 'react-icons/fa6';
+
+import styles from './Timepicker.module.css';
 
 const hours = Array.from({ length: 24 }, (_, i) => String(i).padStart(2, '0'));
 const minutes = Array.from({ length: 12 }, (_, i) => String(i * 5).padStart(2, '0'));
@@ -90,6 +91,7 @@ const Timepicker = ({ type, name, formData, handleForm, setErrors }) => {
 
                 <div className={styles.footer}>
                     <button
+                        type="button"
                         className={styles.footerBtn}
                         onClick={() => setIsOpen(false)}
                     >Pasirinkti

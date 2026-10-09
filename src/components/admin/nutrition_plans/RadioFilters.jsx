@@ -1,5 +1,6 @@
-import styles from './RadioFilters.module.css';
 import { useState } from 'react';
+
+import styles from './RadioFilters.module.css';
 
 export const RadioFilters = ({ options, setFilter, onSetFilter, setCurrentPage }) => {
     

@@ -1,5 +1,6 @@
-import styles from './SelectPlan.module.css';
 import { IoIosArrowBack } from 'react-icons/io';
+
+import styles from './SelectPlan.module.css';
 
 const SelectPlan = () => {
 

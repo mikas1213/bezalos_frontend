@@ -23,7 +23,7 @@ const NeedBuyCourse = () => {
 							<p>santykį su maistu 👇</p>
 						</div>
 
-						<button onClick={() => navigate('/paslaugos/kursas-kodel-as-vis-persivalgau')}>Įsigyti kursą</button>
+						<button type="button" onClick={() => navigate('/paslaugos/kursas-kodel-as-vis-persivalgau')}>Įsigyti kursą</button>
 					</div>
 				</FlexContainer>
 			</Main>

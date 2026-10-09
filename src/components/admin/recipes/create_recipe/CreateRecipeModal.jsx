@@ -1,7 +1,9 @@
-import styles from './CreateRecipeModal.module.css';
-import NewRecipe from './new_recipe/NewRecipe';
-import ActionBtns from './action_btns/ActionBtns';
 import Spinner from '../../../UI/Spinner';
+
+import ActionBtns from './action_btns/ActionBtns';
+import NewRecipe from './new_recipe/NewRecipe';
+
+import styles from './CreateRecipeModal.module.css';
 
 const CreateRecipeModal = ({ isLoading, modalControl, setModalControl, prodList, handleNewRecipe, handleEditRecipe, newRecipe, setNewRecipe, emptyRecipe }) => {
 

@@ -1,7 +1,9 @@
+import { useEffect,useState } from 'react';
+
+import { ChevronDown, ChevronLeft, ChevronUp, Minus,Ruler, Weight} from 'lucide-react';
+import { CartesianGrid, ComposedChart, Line, ResponsiveContainer,XAxis, YAxis } from 'recharts';
+
 import styles from './No_Chart.module.css';
-import { useState, useEffect } from 'react';
-import { Weight, Ruler, ChevronDown, ChevronUp, ChevronLeft, Minus} from 'lucide-react';
-import { ComposedChart, Line, XAxis, YAxis, CartesianGrid, ResponsiveContainer } from 'recharts';
 
 const testData = [
     {

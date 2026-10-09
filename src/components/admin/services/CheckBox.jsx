@@ -1,5 +1,6 @@
-import styles from './CheckBox.module.css';
 import { useRef } from 'react';
+
+import styles from './CheckBox.module.css';
 
 const CheckBox = ({ name, label, value, checked, handleServiceForm }) => {
     const checkRef = useRef(null);

@@ -1,9 +1,10 @@
 import { useOutletContext } from "react-router-dom";
-import Header from '../../../components/admin/user/statistics/Header';
-import StatisticLayout from '../../../components/admin/user/statistics/StatisticLayout';
+
 import Card from '../../../components/admin/user/statistics/Card';
 import CardBody from '../../../components/admin/user/statistics/CardBody';
 import CardProportions from '../../../components/admin/user/statistics/CardProportions';
+import Header from '../../../components/admin/user/statistics/Header';
+import StatisticLayout from '../../../components/admin/user/statistics/StatisticLayout';
 
 const styles = { display: 'flex' };
 const UserStatistikaPage = () => {

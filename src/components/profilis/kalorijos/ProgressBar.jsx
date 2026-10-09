@@ -1,6 +1,7 @@
-import styles from './ProgressBar.module.css';
-import CountUp from 'react-countup';
 import { useEffect, useRef } from 'react';
+import CountUp from 'react-countup';
+
+import styles from './ProgressBar.module.css';
 
 const ProgressBar = ({ kcal }) => {
 

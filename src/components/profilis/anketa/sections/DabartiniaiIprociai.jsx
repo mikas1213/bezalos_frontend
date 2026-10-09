@@ -1,8 +1,8 @@
-import styles from './DabartiniaiIprociai.module.css';
 import CheckBox from '../ui/CheckBox';
 import Textarea from '../ui/Textarea';
 import Timepicker from '../ui/Timepicker';
 
+import styles from './DabartiniaiIprociai.module.css';
 
 const habits = [
     {label: 'Pusryčiai', name: 'breakfast', chbx_label: 'Pasryčių nevalgau', text_place_holder: 'Aprašyk DABAR dažniausiai valgomus produktus ir/ar patiekalus'},

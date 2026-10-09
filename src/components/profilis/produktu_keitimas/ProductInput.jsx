@@ -1,5 +1,6 @@
-import styles from './ProductInput.module.css';
 import { CiSearch } from 'react-icons/ci';
+
+import styles from './ProductInput.module.css';
 
 const ProductInput = ({ handleProductSearch, searchQuery, grams, handleGrams, setGramsPlaceholder, gramsPlaceholder }) => {
     return (

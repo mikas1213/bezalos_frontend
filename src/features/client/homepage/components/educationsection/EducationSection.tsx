@@ -1,7 +1,9 @@
-import styles from './EducationSection.module.css';
-import { Container, Cluster, Stack } from '../../../../../components/Shared';
-import { EducationIcon } from './EducationIcon';
+import { Cluster, Container, Stack } from '../../../../../components/Shared';
 import { useMediaQuery } from '../../../../../contexts/MediaQueryProvider';
+
+import { EducationIcon } from './EducationIcon';
+
+import styles from './EducationSection.module.css';
 type Items = {
     row1: string,
     row2: string

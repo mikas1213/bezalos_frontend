@@ -1,6 +1,7 @@
-import styles from './UploadArea.module.css';
 import { IoMdVideocam } from 'react-icons/io';
 import { IoMdImage } from 'react-icons/io';
+
+import styles from './UploadArea.module.css';
 
 const params = {
     video: { 

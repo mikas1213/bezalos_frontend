@@ -1,13 +1,22 @@
-import Container from '../../components/UI/Container';
-import ProfileNavbar from '../../components/profilis/ProfileNavbar';
+import { useEffect } from 'react';
 import { Outlet } from 'react-router-dom';
+
+import ProfileNavbar from '../../components/profilis/ProfileNavbar';
+import Container from '../../components/UI/Container';
 import { useAuth } from '../../features/auth';
 import { usePlanProducts } from '../../hooks/profile/usePlanProducts';
 import { useUserDetails } from '../../hooks/profile/useUserDetails';
 
 const ProfilisPageLayout = () => {
-    document.body.style.backgroundColor = '#fff';
-    document.title = 'Be žalos | Profilis';
+    useEffect(() => {
+        document.body.style.backgroundColor = '#fff';
+        document.title = 'Be žalos | Profilis';
+
+        return () => {
+            document.body.style.backgroundColor = ''; // atstato pradinę spalvą
+        };
+    }, []);
+
     const { user } = useAuth();
     const user_id = user?.user_id;
     const user_role = user?.user_role;

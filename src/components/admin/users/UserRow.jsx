@@ -7,7 +7,6 @@ import stripe_img from '../../../assets/images/admin/stripe_png.png';
 import {
 	date_to_yyyy_mm_dd,
 	date_with_time,
-	isMaintenance,
 	isTodayOrFiveDaysBefore,
 	isTodayOrLater,
 	isTwoOrFourWeeks,
@@ -207,35 +206,6 @@ const UserRow = ({ user, handleSubscriptionUpdate, handleUserUpdate }) => {
 					/>
 				</SideBox>
 			</UserBox>
-
-			{/* <UserBox>
-                <SideBox>
-                    <span className={styles.sideBoxTitle}>Priežiūra</span>
-                    <input 
-                        className={`${styles.inputDate} ${styles[isMaintenance(user.maintenance, user.maintenance_status).setClass]}`}
-                        type='date' 
-                        name='maintenance' 
-                        min='2024-01-01'                     
-                        value={user.maintenance || ''}
-                        onChange={e => handleUserUpdate(user.id, e.target.name, e.target.value)}
-                    />
-                </SideBox>
-                <SideBox>
-                    <span className={styles.sideBoxTitle}>Statusas</span>
-                    <select 
-                        className={`${styles.statusSelect} ${styles.colorLight}`}
-                        name='maintenance_status' 
-                        value={user.maintenance_status} 
-                        onChange={e => handleUserUpdate(user.id, e.target.name, e.target.value)}
-                    >
-                        <option>Pasirinkti</option>
-                        <option disabled={isMaintenance(user.maintenance, user.maintenance_status).sav !== '1_sav'}>1 sav</option>
-                        <option disabled={isMaintenance(user.maintenance, user.maintenance_status).sav !== '2_sav'}>2 sav</option>
-                        <option disabled={isMaintenance(user.maintenance, user.maintenance_status).sav !== '3_sav'}>3 sav</option>
-                        <option disabled={isMaintenance(user.maintenance, user.maintenance_status).sav !== '4_sav'}>4 sav</option>
-                    </select>
-                </SideBox>
-            </UserBox> */}
 		</div>
 	);
 };

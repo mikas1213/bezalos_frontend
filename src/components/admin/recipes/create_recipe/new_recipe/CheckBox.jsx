@@ -1,5 +1,6 @@
-import styles from './CheckBox.module.css';
 import { useState } from 'react';
+
+import styles from './CheckBox.module.css';
 
 const CheckBox = ({newRecipe, setNewRecipe, className = '' }) => {
     

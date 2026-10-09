@@ -1,5 +1,6 @@
-import styles from './Textarea.module.css';
 import { useEffect, useRef } from 'react';
+
+import styles from './Textarea.module.css';
 
 const   Textarea = ({ placeholder, label, name, maxLength = 200, value, dataValue = '', handleServiceForm }) => {
     const customClass = [styles.textarea, styles[name]].join(' ');

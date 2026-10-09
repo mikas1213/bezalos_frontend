@@ -1,5 +1,6 @@
-import styles from './StatistikaData.module.css';
 import DataRow, { DataRowHeader } from './DataRow';
+
+import styles from './StatistikaData.module.css';
 
 const StatistikaData = ({ deleteBodyData, paginatedRecords }) => {
     return (

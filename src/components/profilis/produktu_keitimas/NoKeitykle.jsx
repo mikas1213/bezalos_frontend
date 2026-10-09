@@ -1,6 +1,7 @@
-import styles from './NoKeitykle.module.css';
 import { CiSearch } from 'react-icons/ci';
 import { TbSortAscendingLetters, TbSortAscendingNumbers } from 'react-icons/tb';
+
+import styles from './NoKeitykle.module.css';
 
 const fake_products = [
     {id: 1, title: 'Kanapių sėklos', g: 27},
@@ -22,12 +23,12 @@ const NoKeitykle = () => {
             </div>
 
             <div className={styles.groupFilters}>
-                <button disabled={true}>Visi</button>
-                <button disabled={true} className={styles.active}>Mėsa</button>
-                <button disabled={true} className={styles.active}>Žuvis</button>
-                <button disabled={true} className={styles.active}>Kruopos</button>
-                <button disabled={true} className={styles.active}>Pieno produktai</button>
-                <button disabled={true} className={styles.active}>Ankštiniai</button>
+                <button type="button" disabled={true}>Visi</button>
+                <button type="button" disabled={true} className={styles.active}>Mėsa</button>
+                <button type="button" disabled={true} className={styles.active}>Žuvis</button>
+                <button type="button" disabled={true} className={styles.active}>Kruopos</button>
+                <button type="button" disabled={true} className={styles.active}>Pieno produktai</button>
+                <button type="button" disabled={true} className={styles.active}>Ankštiniai</button>
             </div>
 
             <div className={styles.sort}>

@@ -1,7 +1,9 @@
-import styles from './Select.module.css';
+import { useEffect, useRef,useState } from 'react';
+
 import { ChevronLeft } from 'lucide-react';
-import { useState, useEffect, useRef } from 'react';
 import { Check } from 'lucide-react';
+
+import styles from './Select.module.css';
 
 const Select = ({ options, field, newRecipe, setNewRecipe }) => {
     

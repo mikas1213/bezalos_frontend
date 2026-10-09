@@ -1,12 +1,13 @@
-import Header from '../../../components/admin/recipes/header/Header';
-import CreateRecipeModal from '../../../components/admin/recipes/create_recipe/CreateRecipeModal';
-import { usePlanProducts } from '../../../hooks/profile/usePlanProducts';
-import useAdminRecipes from '../../../hooks/useAdminRecipes';
-import { axiosPrivate } from '../../../api/axios';
-import AdminRecipes from '../../../components/admin/recipes/AdminRecipes';
-import Pagination from '../../../components/UI/Pagination';
 import { useState } from 'react';
 import toast from 'react-hot-toast';
+
+import { axiosPrivate } from '../../../api/axios';
+import AdminRecipes from '../../../components/admin/recipes/AdminRecipes';
+import CreateRecipeModal from '../../../components/admin/recipes/create_recipe/CreateRecipeModal';
+import Header from '../../../components/admin/recipes/header/Header';
+import Pagination from '../../../components/UI/Pagination';
+import { usePlanProducts } from '../../../hooks/profile/usePlanProducts';
+import useAdminRecipes from '../../../hooks/useAdminRecipes';
 
 const ReceptaiPage = () => {
 

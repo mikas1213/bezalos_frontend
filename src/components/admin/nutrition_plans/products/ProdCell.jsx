@@ -1,5 +1,6 @@
+import { useEffect, useRef,useState } from 'react';
+
 import styles from './ProdCell.module.css';
-import { useState, useEffect, useRef } from 'react';
 
 const ProdCell = ({ 
     value, 

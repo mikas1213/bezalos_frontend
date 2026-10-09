@@ -1,6 +1,7 @@
-import styles from './Phone.module.css';
 import frame from '../../../../../../assets/videos/homepage/iphone17ProMaxFrame.png';
 import { type PhoneProps } from '../types';
+
+import styles from './Phone.module.css';
 
 export const Phone = ({ allCards, selected }: PhoneProps) => {
 	return (

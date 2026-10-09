@@ -1,6 +1,7 @@
-import { axiosPrivate } from '../../api/axios';
-import { useState, useEffect, useCallback } from 'react';
+import { useCallback,useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
+
+import { axiosPrivate } from '../../api/axios';
 
 export const useManagePlan = (plan_id) => {
     
@@ -18,7 +19,7 @@ export const useManagePlan = (plan_id) => {
                 kcal: data.meals.filter(meal => !meal.is_sport).map(meal => meal.kcal).reduce((acc, val) => acc + val, 0)
             }
             setPlan(currentPlan);
-        } catch (err) {
+        } catch {
             toast.error('Klaida, kažkas negerai..');
         } finally {
             setIsLoading(false);

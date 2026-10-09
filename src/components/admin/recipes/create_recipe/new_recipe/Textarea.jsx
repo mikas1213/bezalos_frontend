@@ -1,5 +1,6 @@
-import styles from './Textarea.module.css';
 import { useEffect, useRef } from 'react';
+
+import styles from './Textarea.module.css';
 
 const Textarea = ({ placeholder, newRecipe, setNewRecipe, className = '' }) => {
     const customClass = [styles.textarea, className].join(' ');

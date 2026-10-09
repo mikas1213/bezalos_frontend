@@ -1,7 +1,8 @@
-import { useState, useEffect } from 'react';
-import { axiosPrivate } from '../../api/axios';
+import { useEffect,useState } from 'react';
 import toast from 'react-hot-toast';
 import { useOutletContext } from 'react-router-dom';
+
+import { axiosPrivate } from '../../api/axios';
 
 const MailsPage = () => {
 
@@ -26,7 +27,7 @@ const MailsPage = () => {
     return (
         <>
             <div style={{ marginBottom: '1rem', display: 'flex', gap: '1rem'}}>
-                {!isLoad && Object.entries(stats.email_stats).map(([source, count]) => (<div>
+                {!isLoad && Object.entries(stats.email_stats).map(([source, count]) => (<div key={source}>
                         <span>{source}</span>:&nbsp;
                         <span style={{ fontWeight: 'bold'}}>{count}</span>
                     </div>)

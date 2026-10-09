@@ -1,5 +1,6 @@
+import { Ruler,Weight } from 'lucide-react';
+
 import styles from './No_BodyTracking.module.css';
-import { Weight, Ruler } from 'lucide-react';
 
 const fields = [
     {name: 'svoris', label: 'Svoris', ph: 'kg', icon: <Weight className={styles.icon} />},
@@ -29,7 +30,7 @@ const No_BodyTracking = () => {
                         />
                     </div>
                 )}
-                <button disabled={true} className={styles.btn}>Pateikti</button>
+                <button type="button" disabled={true} className={styles.btn}>Pateikti</button>
             </form>
         </div>
     );

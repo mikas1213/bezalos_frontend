@@ -1,7 +1,9 @@
-import styles from './Service.module.css';
-import { CircleX } from 'lucide-react';
 import { HiTemplate } from 'react-icons/hi';
 import { MdOutlineOndemandVideo } from "react-icons/md";
+
+import { CircleX } from 'lucide-react';
+
+import styles from './Service.module.css';
 
 const Service = ({ service, handleModalOpen, setFormValues, handleServiceDelete }) => {
     

@@ -1,6 +1,8 @@
 import { Fragment } from 'react';
+
+import { CircleX,Flame} from 'lucide-react';
+
 import styles from './No_recipes.module.css';
-import { Flame, CircleX} from 'lucide-react';
 
 const icons = { '-': '🍽', 'A+B': '🥘', 'B+R': '🥗', 'A+R': '🍩' };
 const fake_recipes = [
@@ -35,7 +37,7 @@ const No_recipes = () => {
         <>
         <div className={styles.manoReceptaiNavBar}>
             <div className={styles.newRecipe}>
-                <button className={styles.newRecipeBtn}>Kurti naują receptą</button>
+                <button type="button" className={styles.newRecipeBtn}>Kurti naują receptą</button>
             </div>
 
             <div 

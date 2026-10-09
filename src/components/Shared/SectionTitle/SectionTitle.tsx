@@ -1,5 +1,6 @@
-import styles from './SectionTitle.module.css';
 import { Box, Stack } from '../../Shared';
+
+import styles from './SectionTitle.module.css';
 
 interface SectionTitleProps {
     title: string,

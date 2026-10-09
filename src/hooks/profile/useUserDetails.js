@@ -1,7 +1,9 @@
-import { axiosPrivate } from '../../api/axios';
-import { useState, useEffect } from 'react';
+import { useEffect,useState } from 'react';
 import toast from 'react-hot-toast';
+
 import { v4 as uuidv4 } from 'uuid';
+
+import { axiosPrivate } from '../../api/axios';
 
 const defaultAnketa = {
     gender: 'Moteris',

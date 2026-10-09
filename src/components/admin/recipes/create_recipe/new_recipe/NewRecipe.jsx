@@ -1,13 +1,17 @@
-import styles from './NewRecipe.module.css';
-import { useState, useRef } from 'react';
+import { useRef,useState } from 'react';
 import { FaRegArrowAltCircleUp } from 'react-icons/fa';
-import { v4 as uuidv4 } from 'uuid';
-import RecipeProduct from './RecipeProduct';
+
 import { Flame } from 'lucide-react';
+import { v4 as uuidv4 } from 'uuid';
+
 import { kcal, mealProdBarSum, productsBarSum } from '../../../../../utils/calculationsHelpers';
-import Select from './Select';
+
 import CheckBox from './CheckBox';
+import RecipeProduct from './RecipeProduct';
+import Select from './Select';
 import Textarea from './Textarea';
+
+import styles from './NewRecipe.module.css';
 
 const recipeTypes = ['Pusryčiai', 'Pietūs', 'Vakarienė', 'Užkandžiai'];
 const tastes = ['Aštru', 'Saldu', 'Sūru'];

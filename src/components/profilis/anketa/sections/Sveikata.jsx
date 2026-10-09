@@ -1,6 +1,7 @@
-import styles from './Sveikata.module.css';
 import CheckBox from '../ui/CheckBox';
 import Textarea from '../ui/Textarea';
+
+import styles from './Sveikata.module.css';
 
 const Sveikata = ({ formData, handleForm, errors, setErrors }) => {
     

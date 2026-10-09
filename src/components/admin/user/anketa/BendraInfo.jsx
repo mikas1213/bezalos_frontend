@@ -1,8 +1,10 @@
-import styles from './BendraInfo.module.css';
-
-import { User, Ruler, Weight, Activity, PersonStanding, Target, Calendar, Hospital, Baby, Info } from 'lucide-react';
 import { FaRegCopy } from 'react-icons/fa';
+
+import { Activity, Baby, Calendar, Hospital, Info,PersonStanding, Ruler, Target, User, Weight } from 'lucide-react';
+
 import { kmi } from '../../../../utils/calculationsHelpers';
+
+import styles from './BendraInfo.module.css';
 
 const BendraInfo = ({ user, anketa }) => {
     return (

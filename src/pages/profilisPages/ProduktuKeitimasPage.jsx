@@ -1,12 +1,13 @@
 import { useState } from 'react';
-import Container from '../../components/UI/Container';
+import { useOutletContext } from 'react-router-dom';
+
+import HowItWorks from '../../components/profilis/HowItWorks';
+import AvailableProducts from '../../components/profilis/produktu_keitimas/AvailableProducts';
 import KeitykleContainer from '../../components/profilis/produktu_keitimas/KeitykleContainer';
+import NoKeitykle from '../../components/profilis/produktu_keitimas/NoKeitykle';
 import ProductInput from '../../components/profilis/produktu_keitimas/ProductInput';
 import SearchResults from '../../components/profilis/produktu_keitimas/SearchResults';
-import AvailableProducts from '../../components/profilis/produktu_keitimas/AvailableProducts';
-import NoKeitykle from '../../components/profilis/produktu_keitimas/NoKeitykle';
-import { useOutletContext } from 'react-router-dom';
-import HowItWorks from '../../components/profilis/HowItWorks';
+import Container from '../../components/UI/Container';
 
 const ProduktuKeitimasPage = () => {
     const { prodList, is_subscription } = useOutletContext();

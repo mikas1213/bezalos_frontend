@@ -1,5 +1,6 @@
-import styles from './AdminRecipes.module.css';
 import AdminRecipe from './AdminRecipe';
+
+import styles from './AdminRecipes.module.css';
 
 const AdminRecipes = ({ adminRecipes, handleDeleteRecipe, setModalControl, setNewRecipe }) => {
     

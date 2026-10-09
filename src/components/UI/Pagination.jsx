@@ -1,13 +1,14 @@
-import styles from './Pagination.module.css';
 // import { useState } from 'react';
-
 import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from 'react-icons/md';
+
+import styles from './Pagination.module.css';
 
 const Pagination = ({ setCurrentPage, currentPage, totalPages, pagesLimit = 5, color = '#d1d6cf' }) => {
     const renderPageNumbers = () => {
         if (totalPages === 1) {
             return (
                 <button
+                    type="button"
                     key={1}
                     onClick={() => setCurrentPage(1)}
                     style={{ '--color-bgr-card': color }}
@@ -24,6 +25,7 @@ const Pagination = ({ setCurrentPage, currentPage, totalPages, pagesLimit = 5, c
         // First page
         pageNumbers.push(
             <button
+                type="button"
                 key={1}
                 onClick={() => setCurrentPage(1)}
                 style={{ '--color-bgr-card': color }}
@@ -35,7 +37,7 @@ const Pagination = ({ setCurrentPage, currentPage, totalPages, pagesLimit = 5, c
 
         // Left ellipsis if necessary
         if (currentPage >= visiblePages && currentPage > Math.ceil(pagesLimit / 2) + 1) {
-            pageNumbers.push(<button key='left'>. . .</button>);
+            pageNumbers.push(<button type="button" key='left'>. . .</button>);
         }
 
         // Visible page range
@@ -45,6 +47,7 @@ const Pagination = ({ setCurrentPage, currentPage, totalPages, pagesLimit = 5, c
         for (let i = start; i <= end; i++) {
             pageNumbers.push(
                 <button
+                    type="button"
                     key={i}
                     onClick={() => setCurrentPage(i)}
                     style={{ '--color-bgr-card': color }}
@@ -57,12 +60,13 @@ const Pagination = ({ setCurrentPage, currentPage, totalPages, pagesLimit = 5, c
 
         // Right ellipsis if necessary
         if (currentPage < totalPages - visiblePages && currentPage + Math.ceil(pagesLimit / 2) < totalPages - 1) {
-            pageNumbers.push(<button key='right'>. . .</button>);
+            pageNumbers.push(<button type="button" key='right'>. . .</button>);
         }
 
         // Last page
         pageNumbers.push(
             <button
+                type="button"
                 key={totalPages}
                 onClick={() => setCurrentPage(totalPages)}
                 style={{ '--color-bgr-card': color }}
@@ -78,6 +82,7 @@ const Pagination = ({ setCurrentPage, currentPage, totalPages, pagesLimit = 5, c
     return (
         <div className={styles.pagination}>
             <button
+                type="button"
                 onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
                 disabled={currentPage === 1}
             >
@@ -87,6 +92,7 @@ const Pagination = ({ setCurrentPage, currentPage, totalPages, pagesLimit = 5, c
             {renderPageNumbers()}
 
             <button
+                type="button"
                 onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
                 disabled={currentPage === totalPages}
             >

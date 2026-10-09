@@ -1,5 +1,6 @@
-import styles from './RadioBig.module.css';
 import { FaRegCircleCheck } from "react-icons/fa6";
+
+import styles from './RadioBig.module.css';
 const RadioBig = ({ name, value, formData, handleForm, setErrors }) => {
 
     return (

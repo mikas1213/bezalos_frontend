@@ -1,5 +1,6 @@
-import styles from './UserNav.module.css';
 import { NavLink, useLocation, useParams } from 'react-router-dom';
+
+import styles from './UserNav.module.css';
 
 const UserNav = () => {
     const { id } = useParams();

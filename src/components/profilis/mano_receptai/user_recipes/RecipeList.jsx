@@ -1,5 +1,6 @@
-import styles from './RecipeList.module.css';
 import UserRecipe from './UserRecipe';
+
+import styles from './RecipeList.module.css';
 
 const RecipeList = ({ recipes, handleDeleteRecipe }) => {
     return (

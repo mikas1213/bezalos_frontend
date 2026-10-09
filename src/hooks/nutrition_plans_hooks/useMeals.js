@@ -1,7 +1,8 @@
-import { useState, useEffect } from 'react';
+import { useEffect,useState } from 'react';
+import toast from 'react-hot-toast';
+
 import { axiosPrivate } from '../../api/axios';
 import { bar } from '../../utils/calculationsHelpers';
-import toast from 'react-hot-toast';
 
 export const useMeals = (filters, currentPage) => {
     const pageSize = 8;

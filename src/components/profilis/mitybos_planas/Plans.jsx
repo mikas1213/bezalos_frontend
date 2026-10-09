@@ -1,10 +1,11 @@
-import styles from './Plans.module.css';
-import SelectPlan from './SelectPlan';
-import Circle from './Circle';
-import Meal from './Meal';
-import Sport from './Sport';
 import ChangeProductList from './ChangeProductList';
+import Circle from './Circle';
 import InfoSubscribe from './InfoSubscribe';
+import Meal from './Meal';
+import SelectPlan from './SelectPlan';
+import Sport from './Sport';
+
+import styles from './Plans.module.css';
 
 const Plans = ({ plans, selectedPlan, setSelectedPlan, is_subscription, onChangeProduct, onUpdateProduct, topPosition, isShowChageProdList, setIsShowChageProdList, setClickedProd, clickedProd, filteredProducts }) => {
 

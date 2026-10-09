@@ -1,10 +1,12 @@
-import styles from './EditUserPlan.module.css';
 import { useState } from 'react';
-import { axiosPrivate } from '../../../../api/axios';
+import { LuMilkOff,LuWheatOff } from 'react-icons/lu';
 import { default as MealSelect } from 'react-select/async';
 import { default as ProdSelect } from 'react-select/async';
-import { LuWheatOff, LuMilkOff } from 'react-icons/lu';
+
+import { axiosPrivate } from '../../../../api/axios';
 import { DeleteBin_icon } from '../../../../svg/icons';
+
+import styles from './EditUserPlan.module.css';
 
 const mealStyles = {
     container: (provider) => ({
@@ -177,7 +179,7 @@ const EditUserPlan = ({ currentUserPlan, onPlanChange, onPlanUpdate }) => {
                 }));
                 callback(options);
             }
-        } catch (err) {
+        } catch {
             callback([]);
         }
     };

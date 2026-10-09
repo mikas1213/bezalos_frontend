@@ -1,6 +1,7 @@
-import styles from './SelectPlan.module.css';
-import { useState, useEffect, useRef } from 'react';
+import { useEffect, useRef,useState } from 'react';
 import { IoIosArrowBack } from 'react-icons/io';
+
+import styles from './SelectPlan.module.css';
 
 const SelectPlan = ({ plans, selectedPlan, setSelectedPlan}) => {
     const [isOpen, setIsOpen] = useState(false);

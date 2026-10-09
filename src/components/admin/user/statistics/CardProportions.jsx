@@ -1,5 +1,6 @@
-import styles from './CardProportions.module.css';
 import { Circle } from 'lucide-react';
+
+import styles from './CardProportions.module.css';
 
 const CardProportions = ({ label, newest, diff }) => {
     const trend = diff < 0 ? 'down' : diff > 0 ? 'up' : 'equal';

@@ -1,14 +1,15 @@
-import styles from './ProfileNavbar.module.css';
-import { useState, useEffect, useRef } from 'react';
-
-import { NavLink, useLocation } from 'react-router-dom';
+import { useEffect, useRef,useState } from 'react';
 import { BiSolidBowlRice } from 'react-icons/bi';
-import { HiClipboardList } from 'react-icons/hi';
-import { FaArrowsRotate, FaCalculator } from 'react-icons/fa6';
 import { FaBook } from 'react-icons/fa';
+import { FaArrowsRotate, FaCalculator } from 'react-icons/fa6';
+import { HiClipboardList } from 'react-icons/hi';
 import { IoMdAnalytics } from 'react-icons/io';
 import { RiSettings5Fill } from 'react-icons/ri';
+import { NavLink, useLocation } from 'react-router-dom';
+
 import { ChevronLeft, ChevronRight } from 'lucide-react';
+
+import styles from './ProfileNavbar.module.css';
 
 const ProfileNavbar = () => {
     const location = useLocation();

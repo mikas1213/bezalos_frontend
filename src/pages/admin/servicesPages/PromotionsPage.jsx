@@ -1,8 +1,10 @@
-import { useOutletContext } from 'react-router-dom';
-import { axiosPrivate } from '../../../api/axios';
-import { useMutation, useQueryClient } from '@tanstack/react-query';
-import Promo, { PromoHeader } from '../../../components/admin/services/Promo';
 import toast from 'react-hot-toast';
+import { useOutletContext } from 'react-router-dom';
+
+import { useMutation, useQueryClient } from '@tanstack/react-query';
+
+import { axiosPrivate } from '../../../api/axios';
+import Promo, { PromoHeader } from '../../../components/admin/services/Promo';
 
 const layoutStyles = {
     display: 'grid', 

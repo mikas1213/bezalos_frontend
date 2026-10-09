@@ -1,7 +1,10 @@
-import styles from './ServicesNav.module.css';
 import { NavLink, useLocation } from 'react-router-dom';
+
 import { CirclePlus } from 'lucide-react';
+
 import { Divider } from '../nutrition_plans/Divider';
+
+import styles from './ServicesNav.module.css';
 
 const ServicesNav = ({ isModalOpen, handleModalOpen }) => {
     const location = useLocation();
@@ -9,7 +12,7 @@ const ServicesNav = ({ isModalOpen, handleModalOpen }) => {
 
     return (
         <div className={styles.servicesNav}>
-            <button disabled={isModalOpen.isOpen ? true : false}
+            <button type="button" disabled={isModalOpen.isOpen ? true : false}
                 className={styles.addBtn}
                 onClick={() => handleModalOpen(true, add_item, 'insert')}
             >

@@ -10,6 +10,7 @@ const Products = ({ isShowProd, meal, onChangeProduct, setClickedProd, clickedPr
                     {meal.products.map(prod => <div key={meal.id + prod.id} className={styles.product}>                                          
                         <div className={styles.btn}>
                             <button 
+                            type="button"
                                 disabled={cantChangeProd.includes(prod.title)} 
                                 onClick={(e) => {
                                     onChangeProduct(e, clickedProd.m_id === meal.id && clickedProd.p_id === prod.id, meal.logic, prod); 

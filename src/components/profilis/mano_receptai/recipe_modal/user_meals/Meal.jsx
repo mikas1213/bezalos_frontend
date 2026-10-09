@@ -1,5 +1,6 @@
-import styles from './Meal.module.css';
 import { Flame } from 'lucide-react';
+
+import styles from './Meal.module.css';
 
 const Meal = ({ meal, setSelectedMeal = () => {}, setIsOpen = () => {}, className = '', setNewRecipe = () => {} }) => {
     

@@ -1,6 +1,8 @@
-import styles from './RowBodyItem.module.css';
 import { Cluster } from '../../Shared/cluster/Cluster';
+
 import type { Item, Properties } from './types';
+
+import styles from './RowBodyItem.module.css';
 type Props = { item: Item, properties: Properties };
 
 const RowBodyItem = ({ item, properties }: Props) => {

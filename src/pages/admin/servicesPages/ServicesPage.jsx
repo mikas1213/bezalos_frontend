@@ -1,8 +1,10 @@
-import Service, { ServiceHeader } from '../../../components/admin/services/Service';
-import { axiosPrivate } from '../../../api/axios';
-import { useOutletContext } from 'react-router-dom';
-import { useMutation, useQueryClient } from '@tanstack/react-query';
 import toast from 'react-hot-toast';
+import { useOutletContext } from 'react-router-dom';
+
+import { useMutation, useQueryClient } from '@tanstack/react-query';
+
+import { axiosPrivate } from '../../../api/axios';
+import Service, { ServiceHeader } from '../../../components/admin/services/Service';
 
 const ServicesPage = () => {
 

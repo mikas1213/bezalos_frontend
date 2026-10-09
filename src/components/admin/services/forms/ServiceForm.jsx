@@ -1,11 +1,14 @@
-import styles from './ServiceForm.module.css';
 import { useState } from 'react';
+import { FaRegArrowAltCircleUp } from 'react-icons/fa';
+
+import { BookImage } from 'lucide-react';
+
+import ActionBtns from '../ActionBtns';
 import Input from '../Input';
 import Select from '../Select';
 import Textarea from '../Textarea';
-import ActionBtns from '../ActionBtns';
-import { FaRegArrowAltCircleUp } from 'react-icons/fa';
-import { BookImage } from 'lucide-react';
+
+import styles from './ServiceForm.module.css';
 
 const ServiceForm = ({ isLoading, isModalOpen, formValues, setFormValues, handleServiceForm, handleSubmit, handleModalOpen }) => {
     const [photoPreview, setPhotoPreview] = useState(formValues.image_m);

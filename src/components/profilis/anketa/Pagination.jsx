@@ -1,6 +1,7 @@
-import styles from './Pagination.module.css';
-import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import { useState } from 'react';
+import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
+
+import styles from './Pagination.module.css';
 
 const Pagination = ({ currentStep, setCurrentStep, totalSteps, isValidFormPage, formData, isLoading, submitAnketa }) => {
     const [buttonStatus, setButtonStatus] = useState(formData.user_id ? 'Atnaujinti' : 'Pateikti');
@@ -27,6 +28,7 @@ const Pagination = ({ currentStep, setCurrentStep, totalSteps, isValidFormPage, 
     return (
         <div className={styles.pagination}>
             <button
+                type="button"
                 onClick={handlePrev}
                 className={styles.btn}
                 disabled={currentStep === 1}
@@ -35,6 +37,7 @@ const Pagination = ({ currentStep, setCurrentStep, totalSteps, isValidFormPage, 
                 Atgal
             </button>                
             <button
+                type="button"
                 disabled={!isLoading ? false : true}
                 onClick={handleNext}
                 className={`${styles.btn} ${styles.next} ${currentStep === totalSteps ? styles.btnEnd : ''}`}

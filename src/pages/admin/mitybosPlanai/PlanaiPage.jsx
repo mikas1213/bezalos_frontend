@@ -1,18 +1,20 @@
 import { useState } from 'react';
-import { axiosPrivate } from '../../../api/axios';
-import Navbar from '../../../components/admin/nutrition_plans/Navbar';
-import Wrapper from './Wrapper';
-import Plan from '../../../components/admin/nutrition_plans/planai/Plan';
-import { AddNewBtn } from '../../../components/admin/nutrition_plans/AddNewBtn';
+import toast from 'react-hot-toast';
 import { ImPlus } from 'react-icons/im';
-import SearchInput from '../../../components/admin/nutrition_plans/SearchInput';
-import { RadioFilters } from '../../../components/admin/nutrition_plans/RadioFilters';
+import { useOutletContext } from 'react-router-dom';
+
+import { axiosPrivate } from '../../../api/axios';
+import { AddNewBtn } from '../../../components/admin/nutrition_plans/AddNewBtn';
 import { CheckBoxFilters } from '../../../components/admin/nutrition_plans/CheckBoxFilters';
 import { Divider } from '../../../components/admin/nutrition_plans/Divider';
-import toast from 'react-hot-toast';
+import Navbar from '../../../components/admin/nutrition_plans/Navbar';
+import Plan from '../../../components/admin/nutrition_plans/planai/Plan';
+import { RadioFilters } from '../../../components/admin/nutrition_plans/RadioFilters';
+import SearchInput from '../../../components/admin/nutrition_plans/SearchInput';
 import { usePlans } from '../../../hooks/nutrition_plans_hooks/usePlans';
 import { bar } from '../../../utils/calculationsHelpers';
-import { useOutletContext } from 'react-router-dom';
+
+import Wrapper from './Wrapper';
 
 const PlanaiPage = () => {
 

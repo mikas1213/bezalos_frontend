@@ -1,7 +1,8 @@
-import Container from '../../components/UI/Container';
+import { useState } from 'react';
+
 import KalorijosHeader from '../../components/profilis/kalorijos/KalorijosHeader';
 import Results from '../../components/profilis/kalorijos/Results';
-import { useState } from 'react';
+import Container from '../../components/UI/Container';
 
 const KalorijosPage = () => {
     const [calculations, setCalculations] = useState({

@@ -1,13 +1,16 @@
-import styles from './RecipeModal.module.css';
 import { useState } from 'react';
-import { useOutletContext } from 'react-router-dom';
-import { axiosPrivate } from '../../../../api/axios';
-import UserMeals from './user_meals/UserMeals';
-import NewRecipe from './new_recipe/NewRecipe';
-import ActionBtns from './action_btns/ActionBtns';
 import toast from 'react-hot-toast';
-import Spinner from '../../../UI/Spinner';
+import { useOutletContext } from 'react-router-dom';
+
+import { axiosPrivate } from '../../../../api/axios';
 import { isBarInRange } from '../../../../utils/calculationsHelpers';
+import Spinner from '../../../UI/Spinner';
+
+import ActionBtns from './action_btns/ActionBtns';
+import NewRecipe from './new_recipe/NewRecipe';
+import UserMeals from './user_meals/UserMeals';
+
+import styles from './RecipeModal.module.css';
 
 const RecipeModal = ({ setOpen, setRecipes }) => {
     const { user_id, plans: userPlans, prodList } = useOutletContext();

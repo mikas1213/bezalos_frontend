@@ -1,6 +1,8 @@
-import styles from './RowHeader.module.css';
 import { RiArrowLeftSLine } from 'react-icons/ri';
-import type { Row, Color } from './types';
+
+import type { Color,Row } from './types';
+
+import styles from './RowHeader.module.css';
 type Props = {
     row: Row,
     colors: Color, 

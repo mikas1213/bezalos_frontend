@@ -1,5 +1,6 @@
+import { CircleX,Flame} from 'lucide-react';
+
 import styles from './UserRecipe.module.css';
-import { Flame, CircleX} from 'lucide-react';
 
 const icons = { '-': '🍽', 'A+B': '🥘', 'B+R': '🥗', 'A+R': '🍩' };
 

@@ -1,7 +1,8 @@
-import styles from './No_Plans.module.css';
-import SelectPlan from './SelectPlan';
 import Circle from './Circle';
 import Meal from './Meal';
+import SelectPlan from './SelectPlan';
+
+import styles from './No_Plans.module.css';
 
 const No_Plans = () => {
     return (

@@ -1,7 +1,8 @@
-import styles from './DarboGrafikas.module.css';
-import RadioBig from '../ui/RadioBig';
 import CheckBox from '../ui/CheckBox';
+import RadioBig from '../ui/RadioBig';
 import Textarea from '../ui/Textarea';
+
+import styles from './DarboGrafikas.module.css';
 
 const DarboGrafikas = ({ formData, handleForm, errors, setErrors }) => {
     return (

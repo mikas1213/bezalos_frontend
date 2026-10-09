@@ -1,8 +1,10 @@
-import styles from './AddProduct.module.css';
-import Select from 'react-select';
 import { useState } from 'react';
-import { axiosPrivate } from '../../../../api/axios';
 import toast from 'react-hot-toast';
+import Select from 'react-select';
+
+import { axiosPrivate } from '../../../../api/axios';
+
+import styles from './AddProduct.module.css';
 
 const categoryOptions = [
     { value: 'Riebūs baltymai', label: 'Riebūs baltymai'},
@@ -155,7 +157,7 @@ const AddProduct = ({ handleAddProduct }) => {
                 value={formData.intolerance ? intoleranceOptions.find(option => option.value === formData.intolerance) : null}
                 onChange={handleFormData}
             />
-            <button>Pridėti</button>
+            <button type="submit">Pridėti</button>
         </form>
     );
 };

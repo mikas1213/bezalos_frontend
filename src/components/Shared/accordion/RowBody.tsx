@@ -1,4 +1,4 @@
-import { useRef, type ReactNode } from 'react';
+import { type ReactNode,useRef } from 'react';
 type Props = {
     children: ReactNode,
     isOpen: boolean

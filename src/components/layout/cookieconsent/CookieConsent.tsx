@@ -1,8 +1,11 @@
-import styles from './CookieConsent.module.css';
-import { createPortal } from 'react-dom';
 import { useState } from 'react';
-import cookieImg from '../../../assets/icons/png/cookies/cookie.png';
+import { createPortal } from 'react-dom';
+
 import { type CookieSetOptions } from 'universal-cookie';
+
+import cookieImg from '../../../assets/icons/png/cookies/cookie.png';
+
+import styles from './CookieConsent.module.css';
 
 type CookieConsentProps = {
     setCookie: (name: 'COOKIE_CONSENT', value: any, options?: CookieSetOptions) => void;
@@ -30,7 +33,7 @@ export const CookieConsent = ({ setCookie }: CookieConsentProps) => {
                     </div>
             </div>
             <div className={styles.btn}>
-                <button onClick={giveCookieConsent}>Leisti</button>
+                <button type="button" onClick={giveCookieConsent}>Leisti</button>
             </div>
         </div>, document.body
     );

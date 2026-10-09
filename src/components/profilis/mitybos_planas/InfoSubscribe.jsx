@@ -1,5 +1,6 @@
-import styles from './InfoSubscribe.module.css';
 import { useEffect, useRef } from 'react';
+
+import styles from './InfoSubscribe.module.css';
 
 const InfoSubscribe = ({ setIsShowChageProdList }) => {
     const ref = useRef(null);

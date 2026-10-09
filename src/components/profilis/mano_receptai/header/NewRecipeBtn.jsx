@@ -4,6 +4,7 @@ const NewRecipeBtn = ({ setOpen }) => {
     return (
         <div className={styles.newRecipe}>
             <button 
+                type="button"
                 onClick={() => setOpen(true)}
                 className={styles.newRecipeBtn}>
                 Kurti naują receptą

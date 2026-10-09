@@ -1,5 +1,6 @@
-import styles from './HowItWorks.module.css';
 import { Link } from 'react-router-dom';
+
+import styles from './HowItWorks.module.css';
 
 const HowItWorks = ({title, tutorial_link}) => {
     return (

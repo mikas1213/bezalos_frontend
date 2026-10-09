@@ -1,5 +1,6 @@
-import styles from './Radio.module.css';
 import { useRef } from 'react';
+
+import styles from './Radio.module.css';
 
 const Radio = ({ type = '', name, value, formData, handleForm, className = '', size = 'm'}) => {
     const ref = useRef(null);

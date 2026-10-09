@@ -4,7 +4,8 @@ const ActionBtns = ({ isLoading, isModalOpen, setFormValues, handleSubmit, handl
     
     return (
         <div className={styles.actionBtns}>
-            <button 
+            <button
+                type="button"
                 className={styles.cancelBtn} 
                 onClick={() => {
                     handleModalOpen(false);
@@ -13,6 +14,7 @@ const ActionBtns = ({ isLoading, isModalOpen, setFormValues, handleSubmit, handl
             >Atšaukti</button>
 
             <button 
+                type="button"
                 disabled={isLoading} 
                 className={styles.saveBtn} 
                 onClick={handleSubmit}

@@ -1,7 +1,9 @@
-import styles from './Meal.module.css';
 import { useState } from 'react';
 import { IoIosArrowBack } from 'react-icons/io';
+
 import Products from './Products';
+
+import styles from './Meal.module.css';
 
 const Meal = ({ meal, is_subscription, onChangeProduct, setIsShowChageProdList, setClickedProd, clickedProd }) => {
     const [isShowProd, setIsShowProd] = useState(false);

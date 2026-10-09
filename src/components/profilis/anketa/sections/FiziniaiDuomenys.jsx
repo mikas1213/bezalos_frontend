@@ -1,6 +1,7 @@
-import styles from './FiziniaiDuomenys.module.css';
-import Radio from '../ui/Radio';
 import Input from '../ui/Input';
+import Radio from '../ui/Radio';
+
+import styles from './FiziniaiDuomenys.module.css';
 
 const FiziniaiDuomenys = ({ formData, handleForm, errors, setErrors }) => {
     return (

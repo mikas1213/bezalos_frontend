@@ -21,7 +21,7 @@ const NeedSubscription = () => {
 							<p>bendruomenės dalimi 💚</p>
 						</div>
 
-						<button onClick={() => navigate('/paslaugos')}>Į narystę</button>
+						<button type="button" onClick={() => navigate('/paslaugos')}>Į narystę</button>
 					</div>
 				</FlexContainer>
 			</Main>
