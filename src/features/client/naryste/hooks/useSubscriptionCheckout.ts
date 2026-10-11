@@ -61,7 +61,7 @@ export const useSubscriptionCheckout = (): UseSubscriptionCheckoutReturn => {
 				executeSubscriptionCheckout(pending.planData, pending.planData.plan_name as Variant);
 			}
 		}
-	}, [user_id]);
+	}, [user_id, executeSubscriptionCheckout, hasUserSubscription]);
 
 	return { handleSubscriptionCheckout, loadingVariant, hasUserSubscription, currentPeriodEnd, subscriptionPlan };
 };

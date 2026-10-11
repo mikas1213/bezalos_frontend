@@ -91,7 +91,7 @@ const ProductsPage = () => {
             currentProduct[prodCell] = value;
             currentProducts[index] = currentProduct;
             setProducts([...currentProducts]);
-        } catch (err) {
+        } catch {
             toast.error('Klaida!')
         }
     };
@@ -103,7 +103,7 @@ const ProductsPage = () => {
                 setProducts(products => products.filter(product => product.id !== id));
                 setStats(prevState => ({ ...prevState, products: prevState.products - 1 }));
             }, 500);
-        } catch (err) {
+        } catch {
             toast.error('Klaida!')
         }
     };

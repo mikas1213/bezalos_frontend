@@ -89,7 +89,7 @@ const ReceptaiPage = () => {
             formData.append('products', JSON.stringify(newRecipe.products));
             formData.append('description', newRecipe.description);
             formData.append('video_link', newRecipe.video_link);
-            newRecipe.photo && formData.append('photo', newRecipe.photo);
+            if (newRecipe.photo) formData.append('photo', newRecipe.photo);
 
             const {data: {isFileExist, slug}} = await axiosPrivate.patch(`/admin/recipes/${id}`, formData, {
                 headers: { 'Content-Type': 'multipart/form-data' }

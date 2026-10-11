@@ -2,32 +2,44 @@ import { useEffect,useState } from 'react';
 import toast from 'react-hot-toast';
 import { useOutletContext } from 'react-router-dom';
 
+import { isAxiosError } from 'axios';
+
 import { axiosPrivate } from '../../api/axios';
+import type { AdminOutletContext } from '../../components/admin/layout/AdminLayout';
+
+type Email = {
+    id: string;
+    email: string;
+    created_at: string;
+};
 
 const MailsPage = () => {
 
 
-    const [emails, setEmails] = useState([]);
+    const [emails, setEmails] = useState<Email[]>([]);
     const [isLoading, setIsLoading] = useState(true);
-    const { isLoading: isLoad, stats } = useOutletContext();
+    const { stats } = useOutletContext<AdminOutletContext>();
 
     useEffect(() => {
         const getData = async () => {
             try {
-                const { data } = await axiosPrivate.get('/admin/emails');
+                const { data } = await axiosPrivate.get<Email[]>('/admin/emails');
                 setEmails(data);
                 setIsLoading(false);
             } catch (err) {
-                toast.error(err.response.data.message || err.message);
+                const message = isAxiosError<{ message?: string }>(err)
+                    ? err.response?.data?.message || err.message
+                    : String(err);
+                toast.error(message);
             }
         };
         getData();
 
-    }, [axiosPrivate]);
+    }, []);
     return (
         <>
             <div style={{ marginBottom: '1rem', display: 'flex', gap: '1rem'}}>
-                {!isLoad && Object.entries(stats.email_stats).map(([source, count]) => (<div key={source}>
+                {stats && Object.entries(stats.email_stats).map(([source, count]) => (<div key={source}>
                         <span>{source}</span>:&nbsp;
                         <span style={{ fontWeight: 'bold'}}>{count}</span>
                     </div>)

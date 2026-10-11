@@ -1,7 +1,7 @@
 import image from '../../../../../assets/images/homepage/author2.webp';
 import signature from '../../../../../assets/images/homepage/signature.webp';
 import { Box, Cluster, Container, Grid, Stack } from '../../../../../components/Shared';
-import { useMediaQuery } from '../../../../../contexts/MediaQueryProvider';
+import { useMediaQuery } from '../../../../../contexts/MediaQueryContext';
 
 import styles from './AboutSection.module.css';
 

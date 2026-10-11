@@ -10,7 +10,7 @@ import {
 	Stack
 } from '../../../../../../components/Shared';
 import { SectionTitle } from '../../../../../../components/Shared/SectionTitle/SectionTitle';
-import { useMediaQuery } from '../../../../../../contexts/MediaQueryProvider';
+import { useMediaQuery } from '../../../../../../contexts/MediaQueryContext';
 import { Icon1, Icon2, Icon3, Icon4 } from '../icons';
 import { InteractiveCard } from '../interactivecard/InteractiveCard';
 import { Phone } from '../phone/Phone';
@@ -135,7 +135,7 @@ export const InteractivePlanSection = () => {
                 cancelAnimationFrame(scrollEndTimerRef.current);
             }
         }
-    }, []);
+    }, [allCards.length]);
 
 	return (
 		<Container

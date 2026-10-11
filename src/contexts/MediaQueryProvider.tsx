@@ -1,5 +1,6 @@
-import { createContext, type ReactNode, useContext, useEffect, useState } from 'react';
-const MediaQueryContext = createContext(0);
+import { type ReactNode, useEffect, useState } from 'react';
+
+import { MediaQueryContext } from './MediaQueryContext';
 
 export const MediaQueryProvider = ({ children }: { children: ReactNode }) => {
 	const [mediaQuery, setMediaQuery] = useState(1025);
@@ -26,11 +27,4 @@ export const MediaQueryProvider = ({ children }: { children: ReactNode }) => {
 	}, []);
 
 	return <MediaQueryContext value={mediaQuery}>{children}</MediaQueryContext>;
-};
-
-export const useMediaQuery = () => {
-	const context = useContext(MediaQueryContext);
-	if (context === undefined)
-		throw new Error('MadiaQueryContext was used outside of the MediaQueryProvider');
-	return context;
 };

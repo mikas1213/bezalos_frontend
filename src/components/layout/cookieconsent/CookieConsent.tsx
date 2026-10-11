@@ -8,7 +8,7 @@ import cookieImg from '../../../assets/icons/png/cookies/cookie.png';
 import styles from './CookieConsent.module.css';
 
 type CookieConsentProps = {
-    setCookie: (name: 'COOKIE_CONSENT', value: any, options?: CookieSetOptions) => void;
+    setCookie: (name: 'COOKIE_CONSENT', value: boolean, options?: CookieSetOptions) => void;
 }
 
 export const CookieConsent = ({ setCookie }: CookieConsentProps) => {

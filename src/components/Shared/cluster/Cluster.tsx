@@ -1,5 +1,4 @@
-import type { CSSProperties, ElementType, HTMLAttributes, ReactNode } from 'react';
-import { forwardRef } from 'react';
+import type { CSSProperties, ElementType, HTMLAttributes, ReactNode, Ref } from 'react';
 
 import styles from './Cluster.module.css';
 
@@ -38,22 +37,21 @@ type ClusterProps = {
 	dir?: Dir;
 } & HTMLAttributes<HTMLElement>;
 
-export const Cluster = forwardRef<HTMLDivElement, ClusterProps>(
-	(
-		{
-			as: Component = 'div',
-			children,
-			justify,
-			align,
-			height = '',
-			dir = 'row',
-			wrap = 'wrap',
-			gap,
-			className = '',
-			...props
-		},
-		ref,
-	) => {
+type Props = ClusterProps & { ref?: Ref<HTMLDivElement>};
+
+export const Cluster = ({
+	as: Component = 'div',
+	children,
+	justify,
+	align,
+	height = '',
+	dir = 'row',
+	wrap = 'wrap',
+	gap,
+	className = '',
+	ref,
+	...props
+}: Props) => {
 		const clusterClasses = [styles.cluster, className].join(' ');
 
 		const clusterStyle = {
@@ -70,5 +68,4 @@ export const Cluster = forwardRef<HTMLDivElement, ClusterProps>(
 				{children}
 			</Component>
 		);
-	},
-);
+    };

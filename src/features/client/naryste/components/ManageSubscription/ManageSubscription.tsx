@@ -4,12 +4,13 @@ import toast from 'react-hot-toast';
 import { CalendarDays, Leaf, Settings } from 'lucide-react';
 
 import { axiosPrivate } from '../../../../../api/axios';
+import type { UserData } from '../../../../auth/core/services';
 import { ProfilisIcon, VirtuveIcon } from '../../icons';
 
 import styles from './ManageSubscription.module.scss';
 interface ManageSubscriptionProps {
 	currentPeriodEnd: string | undefined;
-	subscriptionPlan: 'Virtuvė' | 'Virtuvė Plus' | 'Profilis' | undefined;
+	subscriptionPlan: UserData['u_status'] | undefined;
 }
 
 export const ManageSubscription = ({ currentPeriodEnd, subscriptionPlan }: ManageSubscriptionProps) => {

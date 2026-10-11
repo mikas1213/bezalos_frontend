@@ -2,7 +2,7 @@ import { PiAt, PiFacebookLogo, PiInstagramLogo } from 'react-icons/pi';
 import { Link } from 'react-router-dom';
 
 import Logo from '../../../../assets/icons/svg/be-zalos-logo.svg';
-import { useMediaQuery } from '../../../../contexts/MediaQueryProvider';
+import { useMediaQuery } from '../../../../contexts/MediaQueryContext';
 import { Cluster } from '../../../Shared';
 
 import styles from './FooterSmall.module.css';
