@@ -123,6 +123,18 @@ export interface NewRecipeResponse {
 	recipe_id: string;
 }
 
+/**
+ * Ką RecipeModal paduoda `useCreateRecipe`: payload + kliento suskaičiuotos sumos ir laikini produktų id,
+ * kad naują receptą būtų galima įdėti į cache be papildomo refetch'o.
+ */
+export interface CreateRecipeInput extends NewRecipePayload {
+	products: Array<NewRecipeProduct & { id?: string }>;
+	b: number;
+	a: number;
+	r: number;
+	kcal: number;
+}
+
 /* -------------------------------------------------------------------------- */
 /* Anketa: GET /profile/:id → anketa[0], POST /profile/anketa/:userId         */
 /* -------------------------------------------------------------------------- */
@@ -236,4 +248,12 @@ export interface ProfileDto {
 	anketa: AnketaDto[];
 	/** Kūno apimčių suvestinė. Bus tipizuota kartu su StatistikaPage refaktoringu. */
 	apimtys: unknown[];
+}
+
+/** Normalizuotas profilis kliento pusei: `useProfile` select rezultatas. */
+export interface ProfileData {
+	plans: UserPlan[];
+	recipes: UserRecipe[];
+	/** Jau formos pavidalu; tuščia forma, kai anketa dar nepildyta. */
+	anketa: AnketaForm;
 }

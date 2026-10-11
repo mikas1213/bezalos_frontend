@@ -6,7 +6,7 @@ import AdminRecipes from '../../../components/admin/recipes/AdminRecipes';
 import CreateRecipeModal from '../../../components/admin/recipes/create_recipe/CreateRecipeModal';
 import Header from '../../../components/admin/recipes/header/Header';
 import Pagination from '../../../components/UI/Pagination';
-import { usePlanProducts } from '../../../hooks/profile/usePlanProducts';
+import { useProducts } from '../../../features/client/profilis/hooks/useProducts';
 import useAdminRecipes from '../../../hooks/useAdminRecipes';
 
 const ReceptaiPage = () => {
@@ -14,7 +14,7 @@ const ReceptaiPage = () => {
     const [modalControl, setModalControl] = useState({isOpen: false, action: ''});
     const [filters, setFilters] = useState({ search: ''});
     const [isLoadingOnSaveRecipe, setIsLoadingOnSaveRecipe] = useState(false);
-    const { prodList } = usePlanProducts();
+    const { products: prodList } = useProducts();
     const { isLoading, adminRecipes, setAdminRecipes, currentPage, setCurrentPage, totalPages } = useAdminRecipes(filters);
     
     const emptyRecipe = { 
