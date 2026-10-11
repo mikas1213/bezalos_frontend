@@ -1,7 +1,7 @@
 import { useParams } from 'react-router-dom';
 
 import { Box } from '../../../../../components/Shared';
-import { useAuth } from '../../../../auth';
+import { hasActiveSubscription, useAuth } from '../../../../auth';
 import type { UserData } from '../../../../auth/core/services';
 import { useAuthModal } from '../../../../auth/modal/hooks/useAuthModal';
 import { Comments, VideoInfo, VideoLoading, VideoNotFound, VideoPlayer } from '../../components/virtuveVideo';
@@ -29,7 +29,7 @@ const getActionAccess = (user: UserData | null, category: VideoCategory): Action
 			user.u_status === 'Cancel_virtuve_plus' ||
 			user.s_status === 'virtuve' ||
 			user.s_status === 'virtuve_plus') &&
-		(user.user_s_subscription || user.user_subscription);
+		hasActiveSubscription(user);
 
 	if (subscriptionCategories.includes(category) && !hasSubscription) return { allowed: false, forbidden: 'subscription' };
 

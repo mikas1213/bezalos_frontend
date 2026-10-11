@@ -1,26 +1,35 @@
 import { useState } from 'react';
 import toast from 'react-hot-toast';
-import { useOutletContext } from 'react-router-dom';
 
-import { v4 as uuidv4 } from 'uuid';
+import Anketa from '../../../../components/profilis/anketa/Anketa';
+import Pagination from '../../../../components/profilis/anketa/Pagination';
+import ProgressBar from '../../../../components/profilis/anketa/ProgressBar';
+import DabartiniaiIprociai from '../../../../components/profilis/anketa/sections/DabartiniaiIprociai';
+import DarboGrafikas from '../../../../components/profilis/anketa/sections/DarboGrafikas';
+import FiziniaiDuomenys from '../../../../components/profilis/anketa/sections/FiziniaiDuomenys';
+import PapildomaInfo from '../../../../components/profilis/anketa/sections/PapildomaInfo';
+import Rutinos from '../../../../components/profilis/anketa/sections/Rutinos';
+import Sveikata from '../../../../components/profilis/anketa/sections/Sveikata';
+import Tikslai from '../../../../components/profilis/anketa/sections/Tikslai';
+import StepIndicator from '../../../../components/profilis/anketa/StepIndicator';
+import StepInfo from '../../../../components/profilis/anketa/StepInfo';
+import Container from '../../../../components/UI/Container';
+import Spinner from '../../../../components/UI/Spinner';
+import { createRoutine } from '../constants/defaultAnketa';
+import { useProfile } from '../hooks/useProfile';
+import { useProfilisContext } from '../hooks/useProfilisContext';
+import { useSaveAnketa } from '../hooks/useSaveAnketa';
 
-import { axiosPrivate } from '../../api/axios';
-import Anketa from '../../components/profilis/anketa/Anketa';
-import Pagination from '../../components/profilis/anketa/Pagination';
-import ProgressBar from '../../components/profilis/anketa/ProgressBar';
-import DabartiniaiIprociai from '../../components/profilis/anketa/sections/DabartiniaiIprociai';
-import DarboGrafikas from '../../components/profilis/anketa/sections/DarboGrafikas';
-import FiziniaiDuomenys from '../../components/profilis/anketa/sections/FiziniaiDuomenys';
-import PapildomaInfo from '../../components/profilis/anketa/sections/PapildomaInfo';
-import Rutinos from '../../components/profilis/anketa/sections/Rutinos';
-import Sveikata from '../../components/profilis/anketa/sections/Sveikata';
-import Tikslai from '../../components/profilis/anketa/sections/Tikslai';
-import StepIndicator from '../../components/profilis/anketa/StepIndicator';
-import StepInfo from '../../components/profilis/anketa/StepInfo';
-import Container from '../../components/UI/Container';
+/** @typedef {import('../types').AnketaForm} AnketaForm */
 
-const AnketaPage = () => {
-    const { anketa: formData, setAnketa: setFormData, user_id } = useOutletContext();
+/**
+ * Pati forma. Gauna jau pakrautą anketą kaip pradinę reikšmę, todėl `useState` inicializuojasi vieną kartą
+ * ir nereikia sinchronizuojančio efekto. Juodraštis gyvena čia: išėjus iš puslapio neišsaugoti pakeitimai dingsta.
+ * @param {{ initialAnketa: AnketaForm; userId: string }} props
+ */
+const AnketaForm = ({ initialAnketa, userId }) => {
+    const [formData, setFormData] = useState(initialAnketa);
+    const saveAnketa = useSaveAnketa(userId);
     const [errors, setErrors] = useState({});
     const [currentStep, setCurrentStep] = useState(1);
     const [isLoading, setIsLoading] = useState(false);
@@ -74,17 +83,7 @@ const AnketaPage = () => {
             ...prev,
             routines: {
                 ...prev.routines,
-                [routine]: [...prev.routines[routine], {
-                    day_id: uuidv4(),
-                    eat: 'Galiu valgyti betkada',
-                    get_up: '--:--',
-                    go_sleep: '--:--',
-                    sport: '--:--',
-                    breakfast_time: '--:--',
-                    lunch_time: '--:--',
-                    snack_time: '--:--',
-                    dinner_time: '--:--'
-                }]
+                [routine]: [...prev.routines[routine], createRoutine()]
             }
         }));
     };
@@ -225,10 +224,8 @@ const AnketaPage = () => {
     const submitAnketa_api = async () => {
         try {
             setIsLoading(true);
-            await axiosPrivate.post(`/profile/anketa/${user_id}`, formData);
+            await saveAnketa.mutateAsync(formData);
             await delay(1200);
-            setIsLoading(false);
-
         } catch (err) {
             const { status } = err;
             const { message = 'Klaida! ' } = err.response.data;
@@ -307,6 +304,22 @@ const AnketaPage = () => {
             </Anketa>
         </Container>
     );
+};
+
+/** Laukia, kol profilis pakraus anketą, ir tik tada montuoja formą su pradine reikšme. */
+const AnketaPage = () => {
+    const { userId } = useProfilisContext();
+    const { anketa } = useProfile(userId);
+
+    if (!anketa) {
+        return (
+            <Container>
+                <Spinner />
+            </Container>
+        );
+    }
+
+    return <AnketaForm key={userId} initialAnketa={anketa} userId={userId} />;
 };
 
 export default AnketaPage;

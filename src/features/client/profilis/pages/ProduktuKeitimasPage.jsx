@@ -1,16 +1,18 @@
 import { useState } from 'react';
-import { useOutletContext } from 'react-router-dom';
 
-import HowItWorks from '../../components/profilis/HowItWorks';
-import AvailableProducts from '../../components/profilis/produktu_keitimas/AvailableProducts';
-import KeitykleContainer from '../../components/profilis/produktu_keitimas/KeitykleContainer';
-import NoKeitykle from '../../components/profilis/produktu_keitimas/NoKeitykle';
-import ProductInput from '../../components/profilis/produktu_keitimas/ProductInput';
-import SearchResults from '../../components/profilis/produktu_keitimas/SearchResults';
-import Container from '../../components/UI/Container';
+import AvailableProducts from '../../../../components/profilis/produktu_keitimas/AvailableProducts';
+import KeitykleContainer from '../../../../components/profilis/produktu_keitimas/KeitykleContainer';
+import NoKeitykle from '../../../../components/profilis/produktu_keitimas/NoKeitykle';
+import ProductInput from '../../../../components/profilis/produktu_keitimas/ProductInput';
+import SearchResults from '../../../../components/profilis/produktu_keitimas/SearchResults';
+import Container from '../../../../components/UI/Container';
+import HowItWorks from '../components/HowItWorks/HowItWorks';
+import { useProducts } from '../hooks/useProducts';
+import { useProfilisContext } from '../hooks/useProfilisContext';
 
 const ProduktuKeitimasPage = () => {
-    const { prodList, is_subscription } = useOutletContext();
+    const { isSubscribed } = useProfilisContext();
+    const { products: prodList } = useProducts();
 
     const [searchQuery, setSearchQuery] = useState('');
     const [selectedProd, setSelectedProd] = useState(null);
@@ -44,7 +46,7 @@ const ProduktuKeitimasPage = () => {
     return (
         <Container>
             <HowItWorks title='Produktų keitimas' tutorial_link='https://youtu.be/lWZj6OZBuoo' />
-            {is_subscription ? 
+            {isSubscribed ?
                 <KeitykleContainer>
                     <ProductInput 
                         handleProductSearch={handleProductSearch}
