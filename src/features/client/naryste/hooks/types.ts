@@ -1,3 +1,5 @@
+import type { UserData } from '../../../auth/core/services';
+
 export type Period = 'month' | 'year';
 export type Variant = 'profilis' | 'virtuve' | 'virtuve_plus';
 
@@ -58,5 +60,5 @@ export interface UseSubscriptionCheckoutReturn {
 	loadingVariant: Variant | null;
 	hasUserSubscription: boolean;
 	currentPeriodEnd: string | undefined;
-	subscriptionPlan: string | undefined;
+	subscriptionPlan: UserData['u_status'] | undefined;
 }

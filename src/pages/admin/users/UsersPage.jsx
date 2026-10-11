@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import toast from 'react-hot-toast';
 
+import { isAxiosError } from 'axios';
+
 import { axiosPrivate } from '../../../api/axios';
 import UserHeaderRow from '../../../components/admin/users/UserHeaderRow';
 import UserRow from '../../../components/admin/users/UserRow';
@@ -36,7 +38,7 @@ const UsersPage = () => {
                 column: 'subscription_expires'
             });
             
-        } catch (err) {
+        } catch {
             toast.error('Klaida!', {
                 icon: <span style={{fontSize: '1.6rem'}}>😬</span>
             });
@@ -54,7 +56,8 @@ const UsersPage = () => {
                 value: value === '' ? null : value
             });
         } catch (err) {
-            toast.error('Klaida!\n'+err.response.data.message, {
+            const message = isAxiosError(err) && err.response?.data?.message;
+            toast.error(message ? 'Klaida!\n' + message : 'Klaida!', {
                 icon: <span style={{fontSize: '1.6rem'}}>😬</span>
             });
         }

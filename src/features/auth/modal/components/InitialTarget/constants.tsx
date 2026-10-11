@@ -1,9 +1,9 @@
 import { CircleCheck, CircleQuestionMark, type LucideIcon,Salad, Sprout  } from 'lucide-react';
 
-import type { InitialTarget } from '../../contexts/types';
+import type { TargetProps } from '../Signup/types';
 
 interface Targets {
-    id: InitialTarget;
+    id: TargetProps;
     title: string;
     description: string;
     icon: LucideIcon;

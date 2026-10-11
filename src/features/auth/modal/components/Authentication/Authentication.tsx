@@ -2,7 +2,7 @@ import cx from 'classnames';
 import { X } from 'lucide-react';
 
 import { Box } from '../../../../../components/Shared';
-import { useMediaQuery } from '../../../../../contexts/MediaQueryProvider';
+import { useMediaQuery } from '../../../../../contexts/MediaQueryContext';
 import type { AuthMode } from '../../contexts/authentication.types';
 import { useAuthentication } from '../../hooks/useAuthentication';
 import { AccessDenied } from '../AccessDenied';

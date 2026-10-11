@@ -1,12 +1,10 @@
-import { createContext, type ReactNode, useContext, useEffect, useState } from 'react';
+import { type ReactNode, useEffect, useState } from 'react';
 
-type ActiveSectionContext = {
-	isIntersecting: boolean;
-};
+import { ActiveSectionContext } from './ObserverContext';
+
 type ObserverProviderProps = {
 	children: ReactNode;
 };
-const ActiveSectionContext = createContext<ActiveSectionContext | undefined>(undefined);
 
 export const ObserverProvider = ({ children }: ObserverProviderProps) => {
 	const [isIntersecting, setIsIntersecting] = useState<boolean>(false);
@@ -43,12 +41,4 @@ export const ObserverProvider = ({ children }: ObserverProviderProps) => {
 	}, []);
 
 	return <ActiveSectionContext value={{ isIntersecting }}>{children}</ActiveSectionContext>;
-};
-
-export const useObserver = () => {
-	const context = useContext(ActiveSectionContext);
-	if (context === undefined) {
-		throw new Error('useObserver must be used inside an ObserverProvider.');
-	}
-	return context;
 };

@@ -38,7 +38,7 @@ const resultMapper = (key: QuestionCategory): CookieValue => {
 
 export const getHighestScore = (scores: Record<QuestionCategory, number>): CookieValue => {
 	const entries = Object.entries(scores);
-	const values = entries.map(([_, value]) => value);
+	const values = entries.map(([, value]) => value);
 
 	// 1. Jeigu visi skaičiai < 2.5
 	if (values.every((value) => value < 2.5)) {
@@ -66,6 +66,6 @@ export const getHighestScore = (scores: Record<QuestionCategory, number>): Cooki
 
 	// 5. Grąžina kategorijos pavadinimą su didžiausia reikšme
 	const maxValue = Math.max(...values);
-	const key: CookieValue = entries.find(([_, value]) => value === maxValue)![0] as CookieValue;
-	return resultMapper(key as QuestionCategory);
+	const key = entries.find(([, value]) => value === maxValue)![0] as QuestionCategory;
+	return resultMapper(key);
 };

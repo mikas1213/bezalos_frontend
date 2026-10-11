@@ -1,5 +1,5 @@
 import { Cluster, Container } from '../../../../../components/Shared';
-import { useMediaQuery } from '../../../../../contexts/MediaQueryProvider';
+import { useMediaQuery } from '../../../../../contexts/MediaQueryContext';
 import { useIsMounted } from '../../../../../hooks';
 
 import styles from './ExperienceSection.module.css';

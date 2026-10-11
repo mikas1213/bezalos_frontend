@@ -1,4 +1,4 @@
-import { useMediaQuery } from '../../../../contexts/MediaQueryProvider';
+import { useMediaQuery } from '../../../../contexts/MediaQueryContext';
 import { Cluster, Container } from '../../../Shared';
 import { FooterSmall } from '../footersmall/FooterSmall';
 import { NewsLetter } from '../newsletter/NewsLetter';

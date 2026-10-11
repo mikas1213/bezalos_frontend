@@ -56,7 +56,7 @@ const MealsPage = () => {
                 b: 0, a: 0, r: 0
             }, ...prevState]);
             
-        } catch (err) {
+        } catch {
             toast.error('Valgis neprisidėjo!');
         }
     };
@@ -106,7 +106,7 @@ const MealsPage = () => {
                 } : meal)
             ]));
 
-        } catch (err) {
+        } catch {
             toast.error('Klaida!\nProduktas nebuvo pridėtas');
         }
     };
@@ -153,7 +153,7 @@ const MealsPage = () => {
                 } : meal)
             ]));
             await axiosPrivate.delete('admin/plans/meal/product', {data: {id}});
-        } catch (err) {
+        } catch {
             toast.error('kažkas negerai 🤔');
         }
     };

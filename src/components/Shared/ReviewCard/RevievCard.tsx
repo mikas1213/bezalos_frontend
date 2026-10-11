@@ -1,6 +1,6 @@
 import { FaStar } from 'react-icons/fa6';
 
-import { useMediaQuery } from '../../../contexts/MediaQueryProvider';
+import { useMediaQuery } from '../../../contexts/MediaQueryContext';
 import { Stack } from '../../Shared';
 
 import styles from './ReviewCard.module.css';

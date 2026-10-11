@@ -1,5 +1,5 @@
 import { Cluster, Container, Stack } from '../../../../../components/Shared';
-import { useMediaQuery } from '../../../../../contexts/MediaQueryProvider';
+import { useMediaQuery } from '../../../../../contexts/MediaQueryContext';
 
 import { EducationIcon } from './EducationIcon';
 

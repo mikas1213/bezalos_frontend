@@ -1,13 +1,34 @@
-import { useState } from 'react';
+import { type ChangeEvent, useState } from 'react';
 import { Outlet } from 'react-router-dom';
 
 import AddNewModal from '../../../components/admin/services/AddNewModal';
 import PromotionForm from '../../../components/admin/services/forms/PromotionForm';
 import ServiceFrom from '../../../components/admin/services/forms/ServiceForm';
 import ServicesNav from '../../../components/admin/services/ServicesNav';
+import type { ServiceDetail } from '../../../hooks/paslaugos/types';
 import useAdminServices from '../../../hooks/paslaugos/useAdminServices';
 import useAdminPromotions from '../../../hooks/paslaugos/useAdmniPromotions';
 import useServiceMutation from '../../../hooks/paslaugos/useServiceMutation';
+
+type FormValues = {
+    id?: string;
+    // paslaugos forma
+    quantity?: number | string;
+    discount?: string;
+    base_price?: number | string;
+    discounted_price?: number;
+    sort?: number | string;
+    status?: string;
+    category?: string;
+    is_active?: string;
+    details?: ServiceDetail[];
+    photo?: File;
+    // akcijos forma
+    promo_code?: string;
+    promo_type?: string;
+    usage_limit?: number | string;
+    specific_products?: string[];
+};
 
 const service_form = {
     quantity: 10,
@@ -35,31 +56,35 @@ const ServicesPageLayout = () => {
     const serviceMutation = useServiceMutation();
     const { data: services, isLoading: isLoadingServices } = useAdminServices();
     const [isModalOpen, setIsModalOpen] = useState({isOpen: false, form: '', action: ''});
-    const [formValues, setFormValues] = useState({});
-    
-    const handleModalOpen = (isOpen, form = '', action = '') => {
-        isOpen && form === 'services' && setFormValues(service_form);
-        isOpen && form === 'promo' && setFormValues(promotion_form);
-        isOpen && form === 'subscription' && setFormValues({});
-        !isOpen && setFormValues({});
+    const [formValues, setFormValues] = useState<FormValues>({});
+
+    const handleModalOpen = (isOpen: boolean, form = '', action = '') => {
+        if (!isOpen || form === 'subscription') {
+            setFormValues({});
+        } else if (form === 'services') {
+            setFormValues(service_form);
+        } else if (form === 'promo') {
+            setFormValues(promotion_form);
+        }
+        
         setIsModalOpen({ isOpen, form, action });
     };
 
-    const handleServiceForm = (e) => {
-        
-        const target = e.target || e.current;
-        const { name, value } = target; 
-       
-        
-        if(target?.dataset.id) {
-            setFormValues(prevState => ({...prevState, details: prevState.details.map(detail => detail.id == target.dataset.id ? {
+    const handleServiceForm = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+
+        const target = e.target;
+        const { name, value } = target;
+
+
+        if(target.dataset.id) {
+            setFormValues(prevState => ({...prevState, details: prevState.details?.map(detail => String(detail.id) === target.dataset.id ? {
                 ...detail,
                 [target.name]: target.value,
             } : detail)}));
 
         } else if(name === 'specific_products') {
             setFormValues(prevState => {
-                let specific_products = [...prevState.specific_products];
+                let specific_products = [...(prevState.specific_products ?? [])];
                 if(!specific_products.includes(value)) {
                     specific_products.push(value);
                 } else {
@@ -69,9 +94,13 @@ const ServicesPageLayout = () => {
             });
 
         } else {
+            // TODO: klaida – `value` čia yra BET KURIO redaguojamo lauko reikšmė, o formulė ją laiko nuolaidos %.
+            // Keičiant pvz. title: parseFloat('tekstas') = NaN → discounted_price = NaN (formoje rodoma "NaN").
+            // Keičiant base_price: skaičiuojama nuo senos kainos (prevState.base_price), o nauja kaina laikoma nuolaida.
+            // Sprendimas: pirma atnaujinti lauką, tada skaičiuoti iš atnaujinto state'o base_price ir discount.
             setFormValues(prevState => ({
-                ...prevState, 
-                discounted_price: parseFloat(prevState.base_price) - (parseFloat(prevState.base_price) * parseFloat(value) / 100),
+                ...prevState,
+                discounted_price: parseFloat(String(prevState.base_price)) - (parseFloat(String(prevState.base_price)) * parseFloat(value) / 100),
                 [target.name]: target.value
             }));
         }
@@ -80,8 +109,12 @@ const ServicesPageLayout = () => {
     const getFormData = () => {
         const formData = new FormData();
         Object.entries(formValues).forEach(([key, value]) => {
-            if(!key.startsWith('image')) {
-                formData.append(key, key === 'details' ? JSON.stringify(value) : value);
+            if(key.startsWith('image')) return;
+
+            if(value instanceof Blob) {
+                formData.append(key, value);
+            } else {
+                formData.append(key, key === 'details' ? JSON.stringify(value) : String(value));
             }
         });
         return formData;
@@ -120,7 +153,7 @@ const ServicesPageLayout = () => {
 
                 {isModalOpen.form === 'promo' && <PromotionForm
                     isLoading={isLoading} 
-                    services={services.filter(s => s.is_active === 'On')}
+                    services={(services ?? []).filter(s => s.is_active === 'On')}
                     isModalOpen={isModalOpen}
                     formValues={formValues}
                     setFormValues={setFormValues}

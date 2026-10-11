@@ -4,7 +4,7 @@ import image from '../../../../assets/images/atliktesta/sandra-with-laptop.webp'
 import signature from '../../../../assets/images/homepage/signature.webp';
 import { Box, Cluster, Container, Grid, Stack } from '../../../../components/Shared';
 import { ButtonSave } from '../../../../components/Shared/Buttons';
-import { useMediaQuery } from '../../../../contexts/MediaQueryProvider';
+import { useMediaQuery } from '../../../../contexts/MediaQueryContext';
 
 import styles from './AtlikTestaPage.module.scss';
 

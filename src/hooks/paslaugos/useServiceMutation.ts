@@ -1,13 +1,22 @@
 import toast from 'react-hot-toast';
 
 import { useMutation, useQueryClient } from '@tanstack/react-query';
+import type { AxiosError } from 'axios';
 
 import { axiosPrivate } from '../../api/axios';
+
+export interface ServiceMutationVariables {
+    id?: string;
+    api: string;
+    formData: FormData;
+    action: string;
+    onCloseModal: () => void;
+}
 
 const useServiceMutation = () => {
     const queryClient = useQueryClient();
 
-    return useMutation({
+    return useMutation<unknown, AxiosError<{ message?: string }>, ServiceMutationVariables>({
         mutationFn: ({ id, api, formData, action }) => {
             
             const config = { headers: { 'Content-Type': 'multipart/form-data' } };

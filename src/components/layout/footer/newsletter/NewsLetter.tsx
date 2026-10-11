@@ -1,4 +1,4 @@
-import { useForm } from 'react-hook-form';
+import { useForm, useWatch } from 'react-hook-form';
 import toast from 'react-hot-toast';
 
 import { useMutation } from '@tanstack/react-query';
@@ -21,7 +21,8 @@ export type ServerErrorResponse = {
 };
 
 export const NewsLetter = () => {
-    const { register, formState: { errors }, setError, watch, reset, handleSubmit } = useForm<NewsLetterFormData>({ mode: 'onChange' });
+    const { register, formState: { errors }, setError, control, reset, handleSubmit } = useForm<NewsLetterFormData>({ mode: 'onChange' });
+    const email = useWatch({ control, name: 'email' });
     const { mutate, isPending } = useMutation<void, AxiosError<ServerErrorResponse>, NewsLetterFormData>({
         mutationFn: async (inputsData) => {
             await axiosPublic.post('mailer/add', inputsData, {
@@ -58,7 +59,7 @@ export const NewsLetter = () => {
                 <Box className={styles.emailWrapper}>
                     <input type='email'
                         placeholder='El. paštas'
-                        className={`${errors.email && styles.invalid || !!watch('email') && !errors.email && styles.valid}`}
+                        className={`${errors.email && styles.invalid || !!email && !errors.email && styles.valid}`}
                             {...register('email', {
                                 required: 'Neįvestas el. paštas',
                                 pattern: {
@@ -66,7 +67,7 @@ export const NewsLetter = () => {
                                 message: 'Neteisingai įvestas el. pašto adresas'
                             }
                     })} autoComplete='off' />
-                    <button disabled={isPending ? true : false}>Prenumeruoti</button>
+                    <button type="submit" disabled={isPending ? true : false}>Prenumeruoti</button>
                     {errors.email && <span className={styles.inputError}>{errors?.email?.message}</span>}
                 </Box>
             </Cluster>
