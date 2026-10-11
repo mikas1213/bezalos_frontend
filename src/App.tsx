@@ -45,14 +45,6 @@ import CancelSubscription from './pages/paymentPages/CancelSubscription';
 import NeedBuyCourse from './pages/paymentPages/NeedBuyCourse';
 import NeedSubscription from './pages/paymentPages/NeedSubscription';
 import SuccessBuyService from './pages/paymentPages/SuccessBuyService';
-import AnketaPage from './pages/profilisPages/AnketaPage';
-import KalorijosPage from './pages/profilisPages/KalorijosPage';
-import ManoReceptaiPage from './pages/profilisPages/ManoReceptaiPage';
-import NustatymaiPage from './pages/profilisPages/NustatymaiPage';
-import ProduktuKeitimasPage from './pages/profilisPages/ProduktuKeitimasPage';
-import ProfilisPageLayout from './pages/profilisPages/ProfilisPageLayout';
-import StatistikaPage from './pages/profilisPages/StatistikaPage';
-import UserPlansPage from './pages/profilisPages/UserPlansPage';
 
 import styles from './App.module.css';
 
@@ -72,6 +64,15 @@ const SubscriptionPage = lazy(() => import('./features/client/naryste/pages/Subs
 const PaslaugosPage = lazy(() => import('./features/client/paslaugos/pages/PaslaugosPage'));
 const PirkimoTaisyklesPage = lazy(() => import('./pages/client/PirkimoTaisyklesPage/PirkimoTaisyklesPage'));
 const PrivatumoPolitikaPage = lazy(() => import('./pages/client/PrivatumoPolitikaPage/PrivatumoPolitikaPage'));
+
+const ProfilisLayout = lazy(() => import('./features/client/profilis/layouts/ProfilisLayout'));
+const UserPlansPage = lazy(() => import('./features/client/profilis/pages/UserPlansPage'));
+const AnketaPage = lazy(() => import('./features/client/profilis/pages/AnketaPage'));
+const ProduktuKeitimasPage = lazy(() => import('./features/client/profilis/pages/ProduktuKeitimasPage'));
+const ManoReceptaiPage = lazy(() => import('./features/client/profilis/pages/ManoReceptaiPage'));
+const KalorijosPage = lazy(() => import('./features/client/profilis/pages/KalorijosPage'));
+const StatistikaPage = lazy(() => import('./features/client/profilis/pages/StatistikaPage'));
+const NustatymaiPage = lazy(() => import('./features/client/profilis/pages/NustatymaiPage'));
 
 type CookieValue = {
 	COOKIE_CONSENT: string;
@@ -131,7 +132,7 @@ function App() {
 										<Route path="/privatumo-politika" element={<PrivatumoPolitikaPage />} />
 
 										<Route element={<ProtectedRoute allowedRoles={[1213, 2324]} />}>
-											<Route path="/profilis" element={<ProfilisPageLayout />}>
+											<Route path="/profilis" element={<ProfilisLayout />}>
 												<Route index element={<UserPlansPage />} />
 												<Route path="anketa" element={<AnketaPage />} />
 												<Route path="produktu-keitimas" element={<ProduktuKeitimasPage />} />

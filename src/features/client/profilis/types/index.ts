@@ -1,3 +1,5 @@
+import type { Dispatch, SetStateAction } from 'react';
+
 /**
  * Profilio (/profile/*) API tipai.
  *
@@ -256,4 +258,13 @@ export interface ProfileData {
 	recipes: UserRecipe[];
 	/** Jau formos pavidalu; tuščia forma, kai anketa dar nepildyta. */
 	anketa: AnketaForm;
+}
+
+/** Ką `ProfilisLayout` duoda puslapiams per Outlet. Skaityti per `useProfilisContext()`. */
+export interface ProfilisOutletContext {
+	userId: string;
+	isSubscribed: boolean;
+	/** Vartotojo pasirinktas arba lokaliai pakeistas planas; kol nepasirinkta, pirmas iš `plans`. */
+	selectedPlan: UserPlan | null;
+	setSelectedPlan: Dispatch<SetStateAction<UserPlan | null>>;
 }

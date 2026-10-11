@@ -1,14 +1,19 @@
 import { useState } from 'react';
 import toast from 'react-hot-toast';
-import  { useOutletContext } from 'react-router-dom';
 
-import HowItWorks from '../../components/profilis/HowItWorks';
-import No_Plans from '../../components/profilis/mitybos_planas/no_subscription/No_Plans';
-import Plans from '../../components/profilis/mitybos_planas/Plans';
-import { bar, kcal, set_grams } from '../../utils/calculationsHelpers';
+import No_Plans from '../../../../components/profilis/mitybos_planas/no_subscription/No_Plans';
+import Plans from '../../../../components/profilis/mitybos_planas/Plans';
+import Spinner from '../../../../components/UI/Spinner';
+import { bar, kcal, set_grams } from '../../../../utils/calculationsHelpers';
+import HowItWorks from '../components/HowItWorks/HowItWorks';
+import { useProducts } from '../hooks/useProducts';
+import { useProfile } from '../hooks/useProfile';
+import { useProfilisContext } from '../hooks/useProfilisContext';
 
 const UserPlansPage = () => {
-    const { is_subscription, prodList, plans, selectedPlan, setSelectedPlan, isLoading } = useOutletContext();
+    const { userId, isSubscribed, selectedPlan, setSelectedPlan } = useProfilisContext();
+    const { plans, isLoading } = useProfile(userId);
+    const { products: prodList } = useProducts();
 
     const [topPosition, setTopPosition] = useState(0);
     const [isShowChageProdList, setIsShowChageProdList] = useState(false);
@@ -88,12 +93,12 @@ const UserPlansPage = () => {
                 alignItems: 'center'
             }}>
                 <HowItWorks title='Mitybos planas' tutorial_link='https://youtu.be/FaMiA17ZTWw' />
-                {isLoading ? null : (
-                    plans.length > 0 ? <Plans 
-                        plans={plans} 
+                {isLoading ? <Spinner /> : (
+                    plans.length > 0 ? <Plans
+                        plans={plans}
                         selectedPlan={selectedPlan}
                         setSelectedPlan={setSelectedPlan}
-                        is_subscription={is_subscription} 
+                        is_subscription={isSubscribed}
                         onChangeProduct={onChangeProduct}
                         onUpdateProduct={onUpdateProduct}
                         topPosition={topPosition}

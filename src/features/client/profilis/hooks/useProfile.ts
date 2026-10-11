@@ -34,6 +34,8 @@ export const useProfile = (userId: string | undefined) => {
 		/** True, kol dar nėra duomenų (pirmas krovimas arba laukiama `userId`). */
 		isLoading: query.isPending,
 		isError: query.isError,
+		/** True ir per pakartotinį krovimą (pvz. paspaudus „Bandyti dar kartą“). */
+		isFetching: query.isFetching,
 		error: query.error,
 		refetch: query.refetch,
 	};

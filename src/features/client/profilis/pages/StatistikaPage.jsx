@@ -1,16 +1,16 @@
-import { useEffect,useState } from 'react';
+import { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
-import { useOutletContext } from 'react-router-dom';
 
-import { axiosPrivate } from '../../api/axios';
-import BodyTracking from '../../components/profilis/statistika/BodyTracking';
-import Chart from '../../components/profilis/statistika/Chart';
-import No_BodyTracking from '../../components/profilis/statistika/no_statistika/No_BodyTracking';
-import No_Chart from '../../components/profilis/statistika/no_statistika/No_Chart';
-import StatistikaData from '../../components/profilis/statistika/StatistikaData';
-import StatistikaLayout from '../../components/profilis/statistika/StatistikaLayout';
-import Container from '../../components/UI/Container';
-import Pagination from '../../components/UI/Pagination';
+import { axiosPrivate } from '../../../../api/axios';
+import BodyTracking from '../../../../components/profilis/statistika/BodyTracking';
+import Chart from '../../../../components/profilis/statistika/Chart';
+import No_BodyTracking from '../../../../components/profilis/statistika/no_statistika/No_BodyTracking';
+import No_Chart from '../../../../components/profilis/statistika/no_statistika/No_Chart';
+import StatistikaData from '../../../../components/profilis/statistika/StatistikaData';
+import StatistikaLayout from '../../../../components/profilis/statistika/StatistikaLayout';
+import Container from '../../../../components/UI/Container';
+import Pagination from '../../../../components/UI/Pagination';
+import { useProfilisContext } from '../hooks/useProfilisContext';
 
 const getApimtys = data => {
     return ['bicepsas', 'talija', 'sedmenys', 'slaunis']
@@ -21,7 +21,7 @@ const getApimtys = data => {
 
 const StatistikaPage = () => {
 
-    const { user_id, is_subscription } = useOutletContext();
+    const { userId: user_id, isSubscribed: is_subscription } = useProfilisContext();
 
     const [formData, setFormData] = useState({});
     const [chartData, setChartData] = useState([]);
@@ -68,7 +68,7 @@ const StatistikaPage = () => {
             }
         };
         getData();
-    }, [axiosPrivate, user_id, timeFrame, currentPage]);
+    }, [user_id, timeFrame, currentPage]);
     
     const addBodyTracking = async () => {
         const sum = getApimtys(formData);
