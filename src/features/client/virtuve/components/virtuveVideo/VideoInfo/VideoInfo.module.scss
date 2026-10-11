@@ -161,6 +161,7 @@
 	font-size: 0.9rem;
 	color: var(--neutral-600);
 	line-height: 1.65;
+    white-space: pre-line;
 	&:hover {
 		background: var(--neutral-100);
 	}
