@@ -61,6 +61,6 @@ export default [
 	},
 
 	{
-		ignores: ['dist', 'src/components/profilis', 'src/pages/profilisPages'],
+		ignores: ['dist'],
 	},
 ];
