@@ -3,7 +3,7 @@ import { Outlet } from 'react-router-dom';
 
 import { usePageMeta } from '../../../../hooks';
 import { hasActiveSubscription, useAuth } from '../../../auth';
-import { SubNav } from '../components/SubNav';
+import { ProfilisNavbar } from '../components/ProfilisNavbar';
 import { useProfile } from '../hooks/useProfile';
 import type { ProfilisOutletContext, UserPlan } from '../types';
 import { getErrorMessage } from '../utils/getErrorMessage';
@@ -11,7 +11,7 @@ import { getErrorMessage } from '../utils/getErrorMessage';
 import styles from './ProfilisLayout.module.scss';
 
 /**
- * Profilio layout'as: skilčių subnav'as, puslapio meta ir minimalus kontekstas vaikams.
+ * Profilio layout'as: skilčių navbar'as, puslapio meta ir minimalus kontekstas vaikams.
  * Duomenis puslapiai imasi patys per useProfile / useProducts, todėl Outlet krovimo metu neblokuojamas.
  * Klaidos atveju vietoj Outlet rodomas pranešimas su „Bandyti dar kartą“.
  */
@@ -47,7 +47,7 @@ const ProfilisLayout = () => {
 	return (
 		<>
 			<div className={styles.shell}>
-				<SubNav />
+				<ProfilisNavbar />
 			</div>
 			{isError ? (
 				<div className={styles.shell}>

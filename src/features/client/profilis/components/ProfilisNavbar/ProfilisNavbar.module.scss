@@ -1,0 +1,40 @@
+@use '@/styles/profile' as *;
+
+.navbar {
+	display: flex;
+	justify-content: center;
+	margin: $pr-space-10 0 $pr-space-16;
+
+	@include pr-tablet {
+		justify-content: flex-start;
+		margin: $pr-space-8 0 $pr-space-12;
+	}
+}
+
+// Desktop: viena „pill“ eilutė. Siauriau: be slinkimo – punktai keliasi į kitą eilutę,
+// konteineris tampa užapvalintu bloku per visą plotį.
+.list {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 2px;
+	width: fit-content;
+	max-width: 100%;
+	margin: 0;
+	padding: $pr-space-2;
+	box-sizing: border-box;
+	list-style: none;
+	background: $pr-bg-muted;
+	border: $pr-border-default;
+	border-radius: $pr-radius-pill;
+
+	@include pr-tablet {
+		justify-content: flex-start;
+		row-gap: $pr-space-2;
+		border-radius: $pr-radius-3xl;
+	}
+
+	@include pr-phone {
+		width: 100%;
+		border-radius: $pr-radius-2xl;
+	}
+}
