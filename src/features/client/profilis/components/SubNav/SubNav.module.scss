@@ -1,0 +1,19 @@
+@use '@/styles/profile' as *;
+
+.subNav {
+	display: flex;
+	justify-content: center;
+	margin: $pr-space-10 0 $pr-space-16;
+
+	@include pr-phone {
+		justify-content: flex-start;
+		margin: $pr-space-8 0 $pr-space-12;
+	}
+}
+
+.list {
+	@include pr-subnav;
+	position: relative;
+	margin: 0;
+	list-style: none;
+}

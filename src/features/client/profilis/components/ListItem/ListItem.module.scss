@@ -1,0 +1,30 @@
+@use '@/styles/profile' as *;
+
+// Nuorodos stiliai įdėti į .item, kad nugalėtų globalią `a:link, a:visited` taisyklę.
+.item {
+	display: flex;
+	flex: none;
+
+	.link {
+		@include pr-subnav-item(false);
+		transition: color $pr-transition, background-color $pr-transition;
+
+		@media (hover: hover) {
+			&:hover {
+				color: $pr-text;
+			}
+		}
+	}
+
+	.linkActive {
+		@include pr-subnav-item(true);
+	}
+
+	.link,
+	.linkActive {
+		&:focus-visible {
+			outline: 2px solid $pr-green;
+			outline-offset: 2px;
+		}
+	}
+}

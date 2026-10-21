@@ -1,10 +1,9 @@
 import { type Dispatch, type SetStateAction, useCallback, useState } from 'react';
 import { Outlet } from 'react-router-dom';
 
-import Container from '../../../../components/UI/Container';
 import { usePageMeta } from '../../../../hooks';
 import { hasActiveSubscription, useAuth } from '../../../auth';
-import ProfileNavbar from '../components/ProfileNavbar/ProfileNavbar';
+import { SubNav } from '../components/SubNav';
 import { useProfile } from '../hooks/useProfile';
 import type { ProfilisOutletContext, UserPlan } from '../types';
 import { getErrorMessage } from '../utils/getErrorMessage';
@@ -12,7 +11,7 @@ import { getErrorMessage } from '../utils/getErrorMessage';
 import styles from './ProfilisLayout.module.scss';
 
 /**
- * Profilio layout'as: navbar'as, puslapio meta ir minimalus kontekstas vaikams.
+ * Profilio layout'as: skilčių subnav'as, puslapio meta ir minimalus kontekstas vaikams.
  * Duomenis puslapiai imasi patys per useProfile / useProducts, todėl Outlet krovimo metu neblokuojamas.
  * Klaidos atveju vietoj Outlet rodomas pranešimas su „Bandyti dar kartą“.
  */
@@ -47,18 +46,18 @@ const ProfilisLayout = () => {
 
 	return (
 		<>
-			<Container>
-				<ProfileNavbar />
-			</Container>
+			<div className={styles.shell}>
+				<SubNav />
+			</div>
 			{isError ? (
-				<Container>
+				<div className={styles.shell}>
 					<div className={styles.error} role="alert">
 						<p className={styles.errorText}>Nepavyko užkrauti profilio: {getErrorMessage(error)}</p>
 						<button type="button" className={styles.retryBtn} onClick={() => refetch()} disabled={isFetching}>
 							{isFetching ? 'Kraunama...' : 'Bandyti dar kartą'}
 						</button>
 					</div>
-				</Container>
+				</div>
 			) : (
 				<Outlet context={context} />
 			)}

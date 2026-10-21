@@ -1,5 +1,22 @@
 @use '@/styles/profile' as *;
 
+// Bendras profilio puslapių plotis ir kraštų atitraukimai (subnav, klaidos pranešimas)
+.shell {
+	box-sizing: border-box;
+	width: 100%;
+	max-width: $pr-content-width + 2 * $pr-gutter-desktop;
+	margin: 0 auto;
+	padding: 0 $pr-gutter-desktop;
+	font-family: $pr-font-family;
+
+	@include pr-tablet {
+		padding: 0 $pr-gutter-tablet;
+	}
+	@include pr-phone {
+		padding: 0 $pr-gutter-phone;
+	}
+}
+
 .error {
 	display: flex;
 	flex-direction: column;
@@ -10,7 +27,7 @@
 }
 
 .errorText {
-	color: var(--color-error);
+	color: $pr-danger-text;
 }
 
 .retryBtn {
