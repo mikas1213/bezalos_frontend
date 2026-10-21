@@ -13,5 +13,4 @@ export const PROFILIS_NAVBAR_LINKS: ProfilisNavbarLink[] = [
 	{ to: '/profilis/kalorijos', label: 'Kalorijos' },
 	{ to: '/profilis/statistika', label: 'Statistika' },
 	{ to: '/profilis/anketa', label: 'Anketa' },
-	{ to: '/profilis/nustatymai', label: 'Nustatymai' },
 ];
