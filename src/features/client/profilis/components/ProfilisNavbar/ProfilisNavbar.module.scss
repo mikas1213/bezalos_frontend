@@ -1,21 +1,22 @@
 @use '@/styles/profile' as *;
 
+// Navbar'as visuose pločiuose centruojamas ekrano viduryje.
 .navbar {
 	display: flex;
 	justify-content: center;
 	margin: $pr-space-10 0 $pr-space-16;
 
 	@include pr-tablet {
-		justify-content: flex-start;
 		margin: $pr-space-8 0 $pr-space-12;
 	}
 }
 
 // Desktop: viena „pill“ eilutė. Siauriau: be slinkimo – punktai keliasi į kitą eilutę,
-// konteineris tampa užapvalintu bloku per visą plotį.
+// eilutės centruojamos, o konteineris tampa užapvalintu bloku.
 .list {
 	display: flex;
 	flex-wrap: wrap;
+	justify-content: center;
 	gap: 2px;
 	width: fit-content;
 	max-width: 100%;
@@ -28,13 +29,11 @@
 	border-radius: $pr-radius-pill;
 
 	@include pr-tablet {
-		justify-content: flex-start;
 		row-gap: $pr-space-2;
 		border-radius: $pr-radius-3xl;
 	}
 
 	@include pr-phone {
-		width: 100%;
 		border-radius: $pr-radius-2xl;
 	}
 }
