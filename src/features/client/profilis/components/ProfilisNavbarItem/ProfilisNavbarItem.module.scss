@@ -1,6 +1,8 @@
 @use '@/styles/profile' as *;
 
-// Nuorodos stiliai įdėti į .item, kad nugalėtų globalią `a:link, a:visited` taisyklę.
+// Nuorodos stiliai įdėti į .item / .sheetItem, kad nugalėtų globalią `a:link, a:visited` taisyklę.
+
+// „Pill“ juostos punktas (desktop / planšetė)
 .item {
 	display: flex;
 	flex: none;
@@ -22,7 +24,7 @@
 
 	.link,
 	.linkActive {
-		// Kompaktiškesni punktai, kad planšetėje tilptų vienoje eilutėje, o telefone – trijose
+		// Kompaktiškesni punktai, kad planšetėje tilptų vienoje eilutėje
 		@include pr-tablet {
 			padding: 6px 11px;
 			font-size: 12.5px;
@@ -32,5 +34,52 @@
 			outline: 2px solid $pr-green;
 			outline-offset: 2px;
 		}
+	}
+}
+
+// Telefono apatinio lango (bottom sheet) eilutė
+.sheetItem {
+	display: block;
+
+	.link,
+	.linkActive {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: $pr-space-6;
+		min-height: 44px;
+		padding: $pr-space-6;
+		box-sizing: border-box;
+		border-radius: $pr-radius-md;
+		font-size: $pr-fs-base;
+		transition: background-color $pr-transition;
+
+		&:focus-visible {
+			outline: 2px solid $pr-green;
+			outline-offset: -2px;
+		}
+	}
+
+	.link {
+		color: $pr-text;
+		font-weight: $pr-weight-regular;
+
+		@media (hover: hover) {
+			&:hover {
+				background: $pr-bg-page;
+			}
+		}
+	}
+
+	.linkActive {
+		background: $pr-green-light;
+		color: $pr-green-dark;
+		font-weight: $pr-weight-medium;
+	}
+
+	.check {
+		flex: none;
+		width: 18px;
+		height: 18px;
 	}
 }

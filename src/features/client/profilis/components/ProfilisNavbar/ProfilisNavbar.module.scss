@@ -1,5 +1,14 @@
 @use '@/styles/profile' as *;
 
+// Tas pats breakpoint'as kaip pagrindinio navbar'o ir Container (--content-padding-sm)
+$sheet-bp: 576px;
+
+@mixin sheet-mode {
+	@media (max-width: $sheet-bp) {
+		@content;
+	}
+}
+
 // Navbar'as visuose pločiuose centruojamas ekrano viduryje.
 .navbar {
 	display: flex;
@@ -8,6 +17,11 @@
 
 	@include pr-tablet {
 		margin: $pr-space-8 0 $pr-space-12;
+	}
+
+	@include sheet-mode {
+		display: block;
+		margin: $pr-space-6 0 $pr-space-10;
 	}
 }
 
@@ -33,7 +47,139 @@
 		border-radius: $pr-radius-3xl;
 	}
 
-	@include pr-phone {
-		border-radius: $pr-radius-2xl;
+	@include sheet-mode {
+		display: none;
 	}
+}
+
+/* ── ≤ 576 px: mygtukas su dabartine skiltimi ─────────────────────────── */
+
+.mobile {
+	display: none;
+
+	@include sheet-mode {
+		display: block;
+	}
+}
+
+.caption {
+	display: block;
+	margin: 0 0 $pr-space-2 $pr-space-2;
+	font-size: $pr-fs-label;
+	color: $pr-text-muted;
+}
+
+.trigger {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: $pr-space-6;
+	width: 100%;
+	min-height: 44px;
+	padding: $pr-space-5 $pr-space-8;
+	box-sizing: border-box;
+	background: $pr-bg-muted;
+	border: $pr-border-default;
+	border-radius: $pr-radius-pill;
+	font-family: inherit;
+	color: $pr-text;
+	cursor: pointer;
+	transition: border-color $pr-transition;
+
+	&[aria-expanded='true'] {
+		border-color: $pr-green;
+	}
+
+	&:focus-visible {
+		outline: 2px solid $pr-green;
+		outline-offset: 2px;
+	}
+}
+
+.triggerLabel {
+	font-size: $pr-fs-base;
+	font-weight: $pr-weight-medium;
+}
+
+.chevron {
+	flex: none;
+	width: 18px;
+	height: 18px;
+	color: $pr-text-muted;
+}
+
+/* ── Apatinis langas (bottom sheet) ───────────────────────────────────── */
+
+@keyframes fade-in {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+@keyframes slide-up {
+	from {
+		transform: translateY(100%);
+	}
+	to {
+		transform: translateY(0);
+	}
+}
+
+.sheetRoot {
+	position: fixed;
+	inset: 0;
+	z-index: $pr-z-modal;
+	font-family: $pr-font-family;
+}
+
+.backdrop {
+	position: absolute;
+	inset: 0;
+	background: $pr-overlay;
+	animation: fade-in $pr-duration ease;
+}
+
+.sheet {
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	max-height: 85vh;
+	overflow-y: auto;
+	padding: $pr-space-5 $pr-space-7 calc(#{$pr-space-8} + env(safe-area-inset-bottom));
+	box-sizing: border-box;
+	background: $pr-bg-surface;
+	border-radius: $pr-radius-3xl $pr-radius-3xl 0 0;
+	box-shadow: $pr-shadow-modal;
+	animation: slide-up $pr-duration-slow $pr-ease;
+
+	@media (prefers-reduced-motion: reduce) {
+		animation: none;
+	}
+}
+
+.handle {
+	display: block;
+	width: 36px;
+	height: 4px;
+	margin: 0 auto $pr-space-6;
+	border-radius: 2px;
+	background: $pr-border-strong;
+}
+
+.sheetTitle {
+	margin: 0 0 $pr-space-3 $pr-space-2;
+	font-size: $pr-fs-xs;
+	color: $pr-text-muted;
+}
+
+.sheetList {
+	display: flex;
+	flex-direction: column;
+	margin: 0;
+	padding: 0;
+	list-style: none;
 }
