@@ -71,18 +71,15 @@
 		}
 	}
 
-	// Aktyvus – pilkšvas, kaip navbar'o juostos fonas (pr-subnav: $pr-bg-muted + rėmelis)
 	.linkActive {
-		background: $pr-bg-muted;
-		box-shadow: inset 0 0 0 1px $pr-border;
-		color: $pr-text;
-		font-weight: $pr-weight-semibold;
+		background: $pr-green-light;
+		color: $pr-green-dark;
+		font-weight: $pr-weight-medium;
 	}
 
 	.check {
 		flex: none;
 		width: 18px;
 		height: 18px;
-		color: $pr-text-secondary;
 	}
 }

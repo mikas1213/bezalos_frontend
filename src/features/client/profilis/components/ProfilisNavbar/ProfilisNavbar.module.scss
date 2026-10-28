@@ -86,7 +86,7 @@ $sheet-bp: 576px;
 	cursor: pointer;
 	transition: border-color $pr-transition;
 
-	// Atidarytas – pilkšvas, kaip aktyvus punktas lange
+	// Atidarytas – pilkšvas rėmelis
 	&[aria-expanded='true'] {
 		border-color: $pr-border-strong;
 	}
