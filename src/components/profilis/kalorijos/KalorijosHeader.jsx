@@ -1,6 +1,6 @@
 import { useEffect, useRef,useState } from 'react';
 
-import { Check,ChevronLeft, Heart } from 'lucide-react';
+import { Check,ChevronLeft } from 'lucide-react';
 
 import styles from './KalorijosHeader.module.css';
 
@@ -64,13 +64,6 @@ const KalorijosHeader = ({ calculations, setCalculations }) => {
 
     return (
         <div className={styles.calculatorContainer}>
-
-            <div className={styles.calculatorHeader}>
-                <Heart className={styles.heartIcon} />
-                <h1>Kalorijų skaičiuoklė</h1>
-                <p>Apskaičiuokite dienos kalorijų ir maistinių medžiagų poreikį</p>
-            </div>
-
 
             <div className={styles.calculator}>
                 <div className={styles.inputGroup}>

@@ -1,0 +1,23 @@
+@use '@/styles/profile' as *;
+
+// H1 + paantraštė viename bloke, „Kaip tai veikia“ – po jais (tarpas iš pr-page-header).
+.header {
+	@include pr-page-header;
+	font-family: $pr-font-family;
+}
+
+.text {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.title {
+	@include pr-h1;
+}
+
+.subtitle {
+	@include pr-lead;
+	margin-left: auto;
+	margin-right: auto;
+}

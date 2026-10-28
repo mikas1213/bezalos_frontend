@@ -1,0 +1,40 @@
+@use '@/styles/profile' as *;
+
+// `a.howItWorks`, kad nugalėtų globalią `a:link, a:visited` taisyklę.
+a.howItWorks {
+	@include pr-btn-howto;
+	flex: none;
+	box-sizing: border-box;
+	text-decoration: none;
+
+	@media (hover: hover) {
+		&:hover {
+			border-color: $pr-green-border;
+		}
+	}
+
+	&:focus-visible {
+		outline: 2px solid $pr-green;
+		outline-offset: 2px;
+	}
+}
+
+.play {
+	display: grid;
+	place-items: center;
+	flex: none;
+	width: 26px;
+	height: 26px;
+	border-radius: $pr-radius-round;
+	background: $pr-green;
+	color: $pr-text-inverse;
+}
+
+.srOnly {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	overflow: hidden;
+	clip: rect(0 0 0 0);
+	white-space: nowrap;
+}

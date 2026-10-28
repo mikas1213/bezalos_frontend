@@ -10,7 +10,8 @@ import RecipeList from '../../../../components/profilis/mano_receptai/user_recip
 import Container from '../../../../components/UI/Container';
 import Pagination from '../../../../components/UI/Pagination';
 import Spinner from '../../../../components/UI/Spinner';
-import HowItWorks from '../components/HowItWorks/HowItWorks';
+import { ProfilisHeader } from '../components/ProfilisHeader';
+import { PROFILIS_HEADERS } from '../constants/ProfilisHeaders';
 import { useDeleteRecipe } from '../hooks/useDeleteRecipe';
 import { useProfile } from '../hooks/useProfile';
 import { useProfilisContext } from '../hooks/useProfilisContext';
@@ -37,7 +38,9 @@ const ManoReceptaiPage = () => {
 
 	return (
 		<>
-			<HowItWorks title="Receptų sudarymas" tutorial_link="https://youtu.be/sJUk-HCbcZ8" />
+			<Container>
+				<ProfilisHeader {...PROFILIS_HEADERS.manoReceptai} />
+			</Container>
 			{!isSubscribed ? (
 				<Container>
 					<No_recipes />

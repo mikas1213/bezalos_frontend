@@ -15,7 +15,9 @@ import StepIndicator from '../../../../components/profilis/anketa/StepIndicator'
 import StepInfo from '../../../../components/profilis/anketa/StepInfo';
 import Container from '../../../../components/UI/Container';
 import Spinner from '../../../../components/UI/Spinner';
+import { ProfilisHeader } from '../components/ProfilisHeader';
 import { createRoutine } from '../constants/defaultAnketa';
+import { PROFILIS_HEADERS } from '../constants/ProfilisHeaders';
 import { useProfile } from '../hooks/useProfile';
 import { useProfilisContext } from '../hooks/useProfilisContext';
 import { useSaveAnketa } from '../hooks/useSaveAnketa';
@@ -282,6 +284,7 @@ const AnketaForm = ({ initialAnketa, userId }) => {
 
     return (
         <Container>
+            <ProfilisHeader {...PROFILIS_HEADERS.anketa} />
             <Anketa>
                 <ProgressBar currentStep={currentStep} totalSteps={totalSteps} />
                 <StepIndicator
@@ -314,6 +317,7 @@ const AnketaPage = () => {
     if (!anketa) {
         return (
             <Container>
+                <ProfilisHeader {...PROFILIS_HEADERS.anketa} />
                 <Spinner />
             </Container>
         );
