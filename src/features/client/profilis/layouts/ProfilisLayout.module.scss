@@ -1,5 +1,23 @@
 @use '@/styles/profile' as *;
 
+// Plotis ir kraštų atitraukimai tokie patys kaip pagrindinio navbar'o ir Container
+// (globalūs --content-width / --content-padding-* kintamieji ir jų breakpoint'ai 576 / 375).
+.shell {
+	box-sizing: border-box;
+	width: 100%;
+	max-width: var(--content-width);
+	margin: 0 auto;
+	padding: 0 var(--content-padding-lg);
+	font-family: $pr-font-family;
+
+	@media (max-width: 576px) {
+		padding: 0 var(--content-padding-sm);
+	}
+	@media (max-width: 375px) {
+		padding: 0 var(--content-padding-xs);
+	}
+}
+
 .error {
 	display: flex;
 	flex-direction: column;
@@ -10,7 +28,7 @@
 }
 
 .errorText {
-	color: var(--color-error);
+	color: $pr-danger-text;
 }
 
 .retryBtn {

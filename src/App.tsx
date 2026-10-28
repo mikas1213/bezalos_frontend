@@ -72,7 +72,6 @@ const ProduktuKeitimasPage = lazy(() => import('./features/client/profilis/pages
 const ManoReceptaiPage = lazy(() => import('./features/client/profilis/pages/ManoReceptaiPage'));
 const KalorijosPage = lazy(() => import('./features/client/profilis/pages/KalorijosPage'));
 const StatistikaPage = lazy(() => import('./features/client/profilis/pages/StatistikaPage'));
-const NustatymaiPage = lazy(() => import('./features/client/profilis/pages/NustatymaiPage'));
 
 type CookieValue = {
 	COOKIE_CONSENT: string;
@@ -139,7 +138,6 @@ function App() {
 												<Route path="mano-receptai" element={<ManoReceptaiPage />} />
 												<Route path="kalorijos" element={<KalorijosPage />} />
 												<Route path="statistika" element={<StatistikaPage />} />
-												<Route path="nustatymai" element={<NustatymaiPage />} />
 											</Route>
 											<Route path="/paslauga-apmoketa" element={<SuccessBuyService />} />
 											<Route path="/apmoketa-sekmingai" element={<SubscriptionSuccess />} />

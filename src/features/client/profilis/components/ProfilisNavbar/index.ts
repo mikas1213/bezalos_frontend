@@ -1,0 +1,1 @@
+export { ProfilisNavbar } from './ProfilisNavbar';

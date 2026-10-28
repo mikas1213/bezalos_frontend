@@ -1,0 +1,1 @@
+export { ProfilisHowItWorks } from './ProfilisHowItWorks';

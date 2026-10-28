@@ -5,7 +5,8 @@ import No_Plans from '../../../../components/profilis/mitybos_planas/no_subscrip
 import Plans from '../../../../components/profilis/mitybos_planas/Plans';
 import Spinner from '../../../../components/UI/Spinner';
 import { bar, kcal, set_grams } from '../../../../utils/calculationsHelpers';
-import HowItWorks from '../components/HowItWorks/HowItWorks';
+import { ProfilisHeader } from '../components/ProfilisHeader';
+import { PROFILIS_HEADERS } from '../constants/ProfilisHeaders';
 import { useProducts } from '../hooks/useProducts';
 import { useProfile } from '../hooks/useProfile';
 import { useProfilisContext } from '../hooks/useProfilisContext';
@@ -92,7 +93,7 @@ const UserPlansPage = () => {
                 flexDirection: 'column',
                 alignItems: 'center'
             }}>
-                <HowItWorks title='Mitybos planas' tutorial_link='https://youtu.be/FaMiA17ZTWw' />
+                <ProfilisHeader {...PROFILIS_HEADERS.mitybosPlanas} />
                 {isLoading ? <Spinner /> : (
                     plans.length > 0 ? <Plans
                         plans={plans}

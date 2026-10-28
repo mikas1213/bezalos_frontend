@@ -4,21 +4,6 @@
     align-items: center;
     gap: 2rem;
 }
-.calculatorHeader {
-    text-align: center;
-    .heartIcon {
-        width: 2rem;
-        height: 2rem;
-        color: var(--color-btn-secondary);
-    }
-    h1 {
-        color: var(--color-text-green-dark);
-    }
-    p {
-        color: var(--color-text-grey);
-    }
-}
-
 .calculator {
     display: grid;
     gap: 1rem;
@@ -206,19 +191,6 @@
     }
 }
 @media only screen and (max-width: 375px) {
-    .calculatorHeader {
-        .heartIcon {
-            width: var(--font-size-dynamic-h2-sm);
-            height: var(--font-size-dynamic-h2-sm);
-        }
-        h1 {
-            font-size: var(--font-size-dynamic-h3-sm);
-        }
-        p {
-            font-size: var(--font-size-dynamic-h5-sm);
-        }
-    }
-
     .genderOptions, .activityOptions {
         padding: 0.3rem;
     }

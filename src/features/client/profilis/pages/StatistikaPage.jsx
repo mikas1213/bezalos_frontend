@@ -10,6 +10,8 @@ import StatistikaData from '../../../../components/profilis/statistika/Statistik
 import StatistikaLayout from '../../../../components/profilis/statistika/StatistikaLayout';
 import Container from '../../../../components/UI/Container';
 import Pagination from '../../../../components/UI/Pagination';
+import { ProfilisHeader } from '../components/ProfilisHeader';
+import { PROFILIS_HEADERS } from '../constants/ProfilisHeaders';
 import { useProfilisContext } from '../hooks/useProfilisContext';
 
 const getApimtys = data => {
@@ -146,6 +148,9 @@ const StatistikaPage = () => {
 
     return (
         <>
+            <Container>
+                <ProfilisHeader {...PROFILIS_HEADERS.statistika} />
+            </Container>
             {is_subscription ? <Container>
                 {!isLoadingChartData && <StatistikaLayout>
                     <BodyTracking 

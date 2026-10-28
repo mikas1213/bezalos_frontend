@@ -6,7 +6,8 @@ import NoKeitykle from '../../../../components/profilis/produktu_keitimas/NoKeit
 import ProductInput from '../../../../components/profilis/produktu_keitimas/ProductInput';
 import SearchResults from '../../../../components/profilis/produktu_keitimas/SearchResults';
 import Container from '../../../../components/UI/Container';
-import HowItWorks from '../components/HowItWorks/HowItWorks';
+import { ProfilisHeader } from '../components/ProfilisHeader';
+import { PROFILIS_HEADERS } from '../constants/ProfilisHeaders';
 import { useProducts } from '../hooks/useProducts';
 import { useProfilisContext } from '../hooks/useProfilisContext';
 
@@ -45,7 +46,7 @@ const ProduktuKeitimasPage = () => {
 
     return (
         <Container>
-            <HowItWorks title='Produktų keitimas' tutorial_link='https://youtu.be/lWZj6OZBuoo' />
+            <ProfilisHeader {...PROFILIS_HEADERS.produktuKeitimas} />
             {isSubscribed ?
                 <KeitykleContainer>
                     <ProductInput 
