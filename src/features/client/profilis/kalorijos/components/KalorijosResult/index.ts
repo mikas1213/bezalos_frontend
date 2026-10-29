@@ -1,0 +1,1 @@
+export { KalorijosResult } from './KalorijosResult';

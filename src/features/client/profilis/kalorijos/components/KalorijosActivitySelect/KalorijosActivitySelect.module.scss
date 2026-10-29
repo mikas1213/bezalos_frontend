@@ -1,0 +1,189 @@
+@use '@/styles/profile' as *;
+
+.activity {
+	position: relative;
+}
+
+.label {
+	@include pr-field-label;
+}
+
+.trigger {
+	display: flex;
+	align-items: center;
+	gap: $pr-space-5;
+	width: 100%;
+	height: $pr-control-h;
+	padding: 0 $pr-space-7 0 5px;
+	box-sizing: border-box;
+	border: $pr-border-default;
+	border-radius: $pr-radius-pill;
+	background: $pr-bg-surface;
+	font-family: inherit;
+	text-align: left;
+	cursor: pointer;
+	transition: border-color $pr-transition;
+
+	&:focus-visible {
+		outline: 2px solid $pr-green;
+		outline-offset: 2px;
+	}
+
+	@include pr-phone {
+		height: 48px;
+	}
+}
+
+.triggerOpen {
+	border-color: $pr-green;
+
+	.chevron {
+		transform: rotate(180deg);
+	}
+}
+
+.triggerIcon {
+	display: grid;
+	flex: none;
+	place-items: center;
+	width: 32px;
+	height: 32px;
+	border-radius: $pr-radius-round;
+	background: $pr-green-light;
+	font-size: $pr-fs-body;
+}
+
+.triggerText {
+	flex: 1;
+	min-width: 0;
+	overflow: hidden;
+	font-size: $pr-fs-base;
+	font-weight: $pr-weight-semibold;
+	color: $pr-text;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.placeholder {
+	padding-left: 9px;
+	font-weight: $pr-weight-regular;
+	color: $pr-text-placeholder;
+}
+
+.chevron {
+	flex: none;
+	width: $pr-icon-sm;
+	height: $pr-icon-sm;
+	color: $pr-text-muted;
+	transition: transform $pr-duration ease;
+}
+
+// Desktop – 340 px pločio sąrašas, prigludęs prie dešinio krašto; siauriau – per visą plotį.
+.list {
+	@include pr-dropdown;
+	top: calc(100% + 8px);
+	right: 0;
+	width: 340px;
+	margin: 0;
+	list-style: none;
+	transform-origin: top right;
+	opacity: 0;
+	visibility: hidden;
+	pointer-events: none;
+	transform: translateY(-6px) scale(0.98);
+	transition: opacity $pr-duration ease, transform $pr-duration $pr-ease, visibility $pr-duration;
+
+	@include pr-tablet {
+		left: 0;
+		width: auto;
+		transform-origin: top center;
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		transition: none;
+	}
+}
+
+.listOpen {
+	opacity: 1;
+	visibility: visible;
+	pointer-events: auto;
+	transform: none;
+}
+
+.option {
+	display: flex;
+	align-items: center;
+	gap: $pr-space-6;
+	width: 100%;
+	padding: 6px $pr-space-6 6px 6px;
+	border: 0;
+	border-radius: $pr-radius-lg;
+	background: transparent;
+	font-family: inherit;
+	text-align: left;
+	cursor: pointer;
+	transition: background-color $pr-transition;
+
+	@media (hover: hover) {
+		&:hover {
+			background: $pr-bg-page;
+		}
+	}
+
+	&:focus-visible {
+		outline: 2px solid $pr-green;
+		outline-offset: -2px;
+	}
+
+	.optionIcon {
+		display: grid;
+		flex: none;
+		place-items: center;
+		width: 40px;
+		height: 40px;
+		border-radius: $pr-radius-md;
+		background: $pr-bg-muted;
+		font-size: $pr-fs-lg;
+	}
+}
+
+.optionSelected {
+	background: $pr-selected-bg;
+
+	@media (hover: hover) {
+		&:hover {
+			background: $pr-selected-bg;
+		}
+	}
+
+	.optionIcon {
+		background: $pr-green-light;
+	}
+}
+
+.optionText {
+	display: flex;
+	flex: 1;
+	flex-direction: column;
+	gap: 1px;
+	min-width: 0;
+}
+
+.optionTitle {
+	font-size: $pr-fs-base;
+	font-weight: $pr-weight-semibold;
+	color: $pr-text;
+}
+
+.optionDescription {
+	font-size: $pr-fs-xs;
+	color: $pr-text-muted;
+}
+
+.check {
+	flex: none;
+	width: 18px;
+	height: 18px;
+	color: $pr-green;
+}

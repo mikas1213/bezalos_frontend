@@ -1,0 +1,240 @@
+@use 'sass:map';
+@use '@/styles/profile' as *;
+
+.result {
+	margin-top: $pr-space-24;
+	text-align: center;
+
+	@include pr-tablet {
+		margin-top: 44px;
+	}
+
+	@include pr-phone {
+		margin-top: 36px;
+	}
+}
+
+.srOnly {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	overflow: hidden;
+	clip: rect(0 0 0 0);
+	white-space: nowrap;
+}
+
+.empty {
+	margin: 0;
+	padding: $pr-space-10 0;
+	font-size: $pr-fs-md;
+	line-height: $pr-lh-relaxed;
+	color: $pr-text-muted;
+}
+
+.flame {
+	display: block;
+	width: 60px;
+	height: 60px;
+	margin: 0 auto $pr-space-5;
+	color: $pr-danger;
+
+	@include pr-tablet {
+		width: 52px;
+		height: 52px;
+	}
+
+	@include pr-phone {
+		width: 44px;
+		height: 44px;
+		margin-bottom: $pr-space-4;
+	}
+}
+
+// Skaičius tiksliai per centrą, „kcal“ prikabintas iš dešinės ir centravimo neveikia.
+.kcal {
+	display: flex;
+	justify-content: center;
+}
+
+.kcalValue {
+	position: relative;
+	display: inline-block;
+}
+
+.kcalNumber {
+	display: block;
+	font-size: 72px;
+	font-weight: $pr-weight-bold;
+	line-height: $pr-lh-none;
+	letter-spacing: $pr-ls-display;
+	color: $pr-text-secondary;
+	@include pr-tabular;
+
+	@include pr-tablet {
+		font-size: 64px;
+	}
+
+	@include pr-phone {
+		font-size: $pr-fs-display;
+	}
+}
+
+.kcalUnit {
+	position: absolute;
+	bottom: 9px;
+	left: 100%;
+	margin-left: $pr-space-5;
+	font-size: $pr-fs-body;
+	font-weight: $pr-weight-semibold;
+	color: $pr-text-secondary;
+	white-space: nowrap;
+
+	@include pr-phone {
+		bottom: 7px;
+		margin-left: $pr-space-4;
+		font-size: $pr-fs-md;
+	}
+}
+
+// Makroelementai: desktop / planšetė – trys stulpeliai su vertikaliomis linijomis, telefone – eilutės.
+.macros {
+	display: grid;
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+	margin: $pr-space-16 0 0;
+	padding: 26px 0 0;
+	border-top: $pr-border-default;
+	list-style: none;
+
+	@include pr-tablet {
+		margin-top: $pr-space-14;
+		padding-top: $pr-space-12;
+	}
+
+	@include pr-phone {
+		grid-template-columns: 1fr;
+		margin-top: $pr-space-12;
+		padding-top: 0;
+		text-align: left;
+	}
+}
+
+@each $key, $m in $pr-macros {
+	.#{$key} {
+		--macro-color: #{map.get($m, color)};
+		--macro-bg: #{map.get($m, bg)};
+		--macro-text: #{map.get($m, text)};
+	}
+}
+
+.macro {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: $pr-space-3;
+	padding: 0 $pr-space-7;
+
+	& + & {
+		border-left: $pr-border-default;
+	}
+
+	@include pr-phone {
+		display: grid;
+		grid-template-columns: minmax(0, 1fr) auto;
+		align-items: center;
+		row-gap: $pr-space-4;
+		padding: $pr-space-7 0;
+
+		& + & {
+			border-top: $pr-border-default;
+			border-left: 0;
+		}
+	}
+}
+
+.macroName {
+	display: inline-flex;
+	align-items: center;
+	gap: $pr-space-4;
+	font-size: $pr-fs-sm;
+	font-weight: $pr-weight-semibold;
+	color: $pr-text-secondary;
+
+	@include pr-phone {
+		font-size: $pr-fs-base;
+	}
+}
+
+.macroPercent {
+	padding: 2px $pr-space-4;
+	border-radius: $pr-radius-pill;
+	background: var(--macro-bg);
+	color: var(--macro-text);
+	font-size: $pr-fs-label;
+	font-weight: $pr-weight-bold;
+	@include pr-tabular;
+}
+
+.macroGrams {
+	color: var(--macro-text);
+	@include pr-tabular;
+
+	> b {
+		font-size: $pr-fs-stat;
+		font-weight: $pr-weight-bold;
+		letter-spacing: -0.04em;
+	}
+
+	> span {
+		margin-left: 3px;
+		font-size: $pr-fs-base;
+		font-weight: $pr-weight-semibold;
+	}
+
+	@include pr-tablet {
+		> b {
+			font-size: 28px;
+		}
+	}
+
+	@include pr-phone {
+		text-align: right;
+
+		> b {
+			font-size: $pr-fs-h2;
+		}
+
+		> span {
+			font-size: $pr-fs-sm;
+		}
+	}
+}
+
+.macroBar {
+	width: 100%;
+	max-width: 160px;
+	height: $pr-progress-h-sm;
+	overflow: hidden;
+	border-radius: $pr-radius-pill;
+	background: var(--macro-bg);
+
+	span {
+		display: block;
+		height: 100%;
+		border-radius: $pr-radius-pill;
+		background: var(--macro-color);
+	}
+
+	@include pr-phone {
+		max-width: none;
+	}
+}
+
+.macroKcal {
+	font-size: $pr-fs-xs;
+	color: $pr-text-muted;
+	@include pr-tabular;
+
+	@include pr-phone {
+		text-align: right;
+	}
+}

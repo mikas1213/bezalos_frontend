@@ -1,0 +1,61 @@
+@use '@/styles/profile' as *;
+
+.cta {
+	display: flex;
+	align-items: center;
+	gap: $pr-space-12;
+	margin-top: 44px;
+	padding: $pr-space-9 $pr-space-9 $pr-space-9 $pr-space-12;
+	border: $pr-border-default;
+	border-radius: $pr-radius-3xl;
+
+	@include pr-tablet {
+		gap: $pr-space-10;
+		margin-top: $pr-space-20;
+		padding-left: 22px;
+	}
+
+	@include pr-phone {
+		flex-direction: column;
+		align-items: stretch;
+		gap: $pr-space-7;
+		margin-top: $pr-space-16;
+		padding: $pr-space-9;
+	}
+
+	// Įdėta į .cta, kad nugalėtų globalią `a:link, a:visited` spalvą.
+	.button {
+		@include pr-btn-base;
+		flex: none;
+		height: 40px;
+		background: $pr-green;
+		color: $pr-text-inverse;
+		font-weight: $pr-weight-medium;
+
+		&:hover {
+			background: $pr-green-hover;
+		}
+
+		&:focus-visible {
+			outline: 2px solid $pr-green;
+			outline-offset: 2px;
+		}
+
+		@include pr-phone {
+			height: $pr-control-h-lg;
+		}
+	}
+}
+
+.text {
+	flex: 1;
+	min-width: 0;
+	margin: 0;
+	font-size: $pr-fs-md;
+	line-height: $pr-lh-normal;
+	color: $pr-text;
+
+	@include pr-tablet {
+		font-size: 14.5px;
+	}
+}
