@@ -9,6 +9,7 @@
 //  ir jų planšetės (768) bei telefono (390) variantai.
 //
 //  Failas savarankiškas – nepriklauso nuo kitų src/styles failų.
+//  Tai partial (_profile.scss): CSS neišveda, tik SCSS kintamieji ir mixinai.
 //
 //  Naudojimas komponento .module.scss faile:
 //      @use '@/styles/profile' as *;
@@ -20,8 +21,8 @@
 //          @include pr-h1;
 //      }
 //
-//  CSS kintamieji (--pr-*) aprašyti :root bloke – juos galima naudoti ir
-//  tiesiogiai: color: var(--pr-text);
+//  CSS kintamieji (--pr-*) aprašyti index.scss :root bloke (įkeliami vieną
+//  kartą per main.tsx) – juos galima naudoti tiesiogiai: color: var(--pr-text);
 // =============================================================================
 
 // -----------------------------------------------------------------------------
@@ -287,77 +288,6 @@ $pr-z-modal-top: 80;
 $pr-bp-desktop: 1280px;
 $pr-bp-tablet: 900px; // ≤ 900 – planšetės išdėstymas (dizainas: 768)
 $pr-bp-phone: 700px; // ≤ 700 – telefono išdėstymas (dizainas: 390)
-
-// =============================================================================
-//  CSS KINTAMIEJI
-// =============================================================================
-
-:root {
-	/* Tekstas */
-	--pr-text: #{$pr-text};
-	--pr-text-secondary: #{$pr-text-secondary};
-	--pr-text-muted: #{$pr-text-muted};
-	--pr-text-subtle: #{$pr-text-subtle};
-	--pr-text-placeholder: #{$pr-text-placeholder};
-	--pr-text-inverse: #{$pr-text-inverse};
-
-	/* Paviršiai */
-	--pr-bg-page: #{$pr-bg-page};
-	--pr-bg-surface: #{$pr-bg-surface};
-	--pr-bg-muted: #{$pr-bg-muted};
-	--pr-bg-nav: #{$pr-bg-nav};
-
-	/* Rėmeliai */
-	--pr-border: #{$pr-border};
-	--pr-border-subtle: #{$pr-border-subtle};
-	--pr-border-strong: #{$pr-border-strong};
-
-	/* Žalia */
-	--pr-green: #{$pr-green};
-	--pr-green-hover: #{$pr-green-hover};
-	--pr-green-dark: #{$pr-green-dark};
-	--pr-green-light: #{$pr-green-light};
-	--pr-green-border: #{$pr-green-border};
-	--pr-selected-bg: #{$pr-selected-bg};
-	--pr-dark: #{$pr-dark};
-
-	/* Makroelementai */
-	--pr-protein: #{$pr-protein};
-	--pr-protein-bg: #{$pr-protein-bg};
-	--pr-protein-text: #{$pr-protein-text};
-	--pr-carbs: #{$pr-carbs};
-	--pr-carbs-bg: #{$pr-carbs-bg};
-	--pr-carbs-text: #{$pr-carbs-text};
-	--pr-fat: #{$pr-fat};
-	--pr-fat-bg: #{$pr-fat-bg};
-	--pr-fat-text: #{$pr-fat-text};
-
-	/* Būsenos */
-	--pr-danger: #{$pr-danger};
-	--pr-danger-bg: #{$pr-danger-bg};
-	--pr-danger-text: #{$pr-danger-text};
-	--pr-disabled-bg: #{$pr-disabled-bg};
-	--pr-disabled-text: #{$pr-disabled-text};
-	--pr-overlay: #{$pr-overlay};
-
-	/* Šriftas */
-	--pr-font: #{$pr-font-family};
-
-	/* Radius */
-	--pr-radius-sm: #{$pr-radius-sm};
-	--pr-radius-md: #{$pr-radius-md};
-	--pr-radius-xl: #{$pr-radius-xl};
-	--pr-radius-2xl: #{$pr-radius-2xl};
-	--pr-radius-card: #{$pr-radius-card};
-	--pr-radius-pill: #{$pr-radius-pill};
-
-	/* Šešėliai */
-	--pr-shadow-sm: #{$pr-shadow-sm};
-	--pr-shadow-pill: #{$pr-shadow-pill};
-	--pr-shadow-card: #{$pr-shadow-card};
-	--pr-shadow-dropdown: #{$pr-shadow-dropdown};
-	--pr-shadow-modal: #{$pr-shadow-modal};
-}
 
 // =============================================================================
 //  MIXIN'AI

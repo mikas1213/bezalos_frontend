@@ -4,6 +4,77 @@
 @forward './variables-fonts';
 @forward './effects';
 
+@use './profile' as pr;
+
+// Profilio dizaino sistemos CSS kintamieji (reikšmės iš _profile.scss)
+:root {
+	/* Tekstas */
+	--pr-text: #{pr.$pr-text};
+	--pr-text-secondary: #{pr.$pr-text-secondary};
+	--pr-text-muted: #{pr.$pr-text-muted};
+	--pr-text-subtle: #{pr.$pr-text-subtle};
+	--pr-text-placeholder: #{pr.$pr-text-placeholder};
+	--pr-text-inverse: #{pr.$pr-text-inverse};
+
+	/* Paviršiai */
+	--pr-bg-page: #{pr.$pr-bg-page};
+	--pr-bg-surface: #{pr.$pr-bg-surface};
+	--pr-bg-muted: #{pr.$pr-bg-muted};
+	--pr-bg-nav: #{pr.$pr-bg-nav};
+
+	/* Rėmeliai */
+	--pr-border: #{pr.$pr-border};
+	--pr-border-subtle: #{pr.$pr-border-subtle};
+	--pr-border-strong: #{pr.$pr-border-strong};
+
+	/* Žalia */
+	--pr-green: #{pr.$pr-green};
+	--pr-green-hover: #{pr.$pr-green-hover};
+	--pr-green-dark: #{pr.$pr-green-dark};
+	--pr-green-light: #{pr.$pr-green-light};
+	--pr-green-border: #{pr.$pr-green-border};
+	--pr-selected-bg: #{pr.$pr-selected-bg};
+	--pr-dark: #{pr.$pr-dark};
+
+	/* Makroelementai */
+	--pr-protein: #{pr.$pr-protein};
+	--pr-protein-bg: #{pr.$pr-protein-bg};
+	--pr-protein-text: #{pr.$pr-protein-text};
+	--pr-carbs: #{pr.$pr-carbs};
+	--pr-carbs-bg: #{pr.$pr-carbs-bg};
+	--pr-carbs-text: #{pr.$pr-carbs-text};
+	--pr-fat: #{pr.$pr-fat};
+	--pr-fat-bg: #{pr.$pr-fat-bg};
+	--pr-fat-text: #{pr.$pr-fat-text};
+
+	/* Būsenos */
+	--pr-danger: #{pr.$pr-danger};
+	--pr-danger-bg: #{pr.$pr-danger-bg};
+	--pr-danger-text: #{pr.$pr-danger-text};
+	--pr-disabled-bg: #{pr.$pr-disabled-bg};
+	--pr-disabled-text: #{pr.$pr-disabled-text};
+	--pr-overlay: #{pr.$pr-overlay};
+
+	/* Šriftas */
+	--pr-font: #{pr.$pr-font-family};
+
+	/* Radius */
+	--pr-radius-sm: #{pr.$pr-radius-sm};
+	--pr-radius-md: #{pr.$pr-radius-md};
+	--pr-radius-xl: #{pr.$pr-radius-xl};
+	--pr-radius-2xl: #{pr.$pr-radius-2xl};
+	--pr-radius-card: #{pr.$pr-radius-card};
+	--pr-radius-pill: #{pr.$pr-radius-pill};
+
+	/* Šešėliai */
+	--pr-shadow-sm: #{pr.$pr-shadow-sm};
+	--pr-shadow-pill: #{pr.$pr-shadow-pill};
+	--pr-shadow-card: #{pr.$pr-shadow-card};
+	--pr-shadow-dropdown: #{pr.$pr-shadow-dropdown};
+	--pr-shadow-modal: #{pr.$pr-shadow-modal};
+}
+
+
 :root {
 	/* Colors CMD + k + g */
 	/* ---V-E-R-Y---N-E-W---V-A-R-I-A-B-L-E-S---F-O-R---C-O-L-O-R-S---A-D-D-E-D-2025-05-25*/
