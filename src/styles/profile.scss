@@ -48,12 +48,12 @@ $pr-border-subtle: #eef2ef; // Lentelių eilučių skirtukai
 $pr-border-strong: #c9d4cd; // Neaktyvūs taškai, laiko juostos taškai
 
 // Pagrindinė (žalia) spalva
-$pr-green: #3cbf68; // Pagrindinis veiksmas, aktyvi būsena
-$pr-green-hover: #34a95c;
-$pr-green-dark: #1f6b3a; // Žalias tekstas ant šviesaus fono
-$pr-green-light: #e2f5e8; // Žalias fonas (badge, CTA blokas)
-$pr-green-border: #b9e6c8; // Rėmelis ant žalio fono
-$pr-selected-bg: #f1faf4; // Pasirinkta eilutė / kortelė
+$pr-green: #65d02f; // Pagrindinis veiksmas, aktyvi būsena
+$pr-green-hover: #57b329;
+$pr-green-dark: #386b1f; // Žalias tekstas ant šviesaus fono
+$pr-green-light: #e8f5e2; // Žalias fonas (badge, CTA blokas)
+$pr-green-border: #c8e6b9; // Rėmelis ant žalio fono
+$pr-selected-bg: #f4faf1; // Pasirinkta eilutė / kortelė
 
 // Tamsus mygtukas (Prisijungti)
 $pr-dark: #082b1d;
@@ -65,9 +65,9 @@ $pr-protein: #1c7f92; // B – baltymai
 $pr-protein-bg: #ddecef;
 $pr-protein-text: #125766;
 
-$pr-carbs: #3cbf68; // A – angliavandeniai
-$pr-carbs-bg: #e2f5e8;
-$pr-carbs-text: #1f6b3a;
+$pr-carbs: #65d02f; // A – angliavandeniai
+$pr-carbs-bg: #e8f5e2;
+$pr-carbs-text: #386b1f;
 
 $pr-fat: #f2a93b; // R – riebalai
 $pr-fat-bg: #fdf2e2;
@@ -240,8 +240,8 @@ $pr-shadow-raised: 0 16px 36px -20px rgba(8, 43, 29, 0.35); // Išskleista korte
 $pr-shadow-dropdown: 0 18px 40px -16px rgba(8, 43, 29, 0.35); // Iškrentantys sąrašai
 $pr-shadow-modal: 0 30px 80px -20px rgba(8, 43, 29, 0.45); // Modalai
 $pr-shadow-phone: 0 30px 60px -28px rgba(8, 43, 29, 0.35), 0 8px 22px -12px rgba(8, 43, 29, 0.18); // Plano kortelė
-$pr-shadow-green: 0 6px 18px -8px rgba(60, 191, 104, 0.55); // Žalias CTA
-$pr-glow-green: radial-gradient(circle at 50% 50%, rgba(60, 191, 104, 0.1), rgba(60, 191, 104, 0) 70%);
+$pr-shadow-green: 0 6px 18px -8px rgba(101, 208, 47, 0.55); // Žalias CTA
+$pr-glow-green: radial-gradient(circle at 50% 50%, rgba(101, 208, 47, 0.1), rgba(101, 208, 47, 0) 70%);
 
 // -----------------------------------------------------------------------------
 //  7. KOMPONENTŲ MATMENYS
