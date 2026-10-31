@@ -23,11 +23,13 @@ export const KalorijosCalculator = () => {
 	// Kol aktyvumas nepasirinktas, skaičiuojama su koeficientu 1 (bazinis poreikis).
 	const ratio = KALORIJOS_ACTIVITIES.find((activity) => activity.id === values.activityId)?.ratio ?? 1;
 	const kcal = calculateDailyCalories({ ...values, ratio });
+	// Mažiausias rekomenduojamas kiekis – bazinis poreikis be aktyvumo; renkantis aktyvumą nesikeičia.
+	const minKcal = calculateDailyCalories({ ...values, ratio: 1 });
 
 	return (
 		<section aria-label="Kalorijų skaičiuoklė" className={styles.calculator}>
 			<KalorijosForm values={values} onChange={(patch) => setValues((prev) => ({ ...prev, ...patch }))} />
-			<KalorijosResult kcal={kcal} />
+			<KalorijosResult kcal={kcal} minKcal={minKcal} />
 			<KalorijosMembershipCta />
 		</section>
 	);

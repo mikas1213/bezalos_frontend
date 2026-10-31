@@ -96,6 +96,24 @@
 	}
 }
 
+// Bazinis poreikis po dideliu skaičiumi – matomas, bet su juo nekonkuruoja.
+.minimum {
+	margin: $pr-space-7 0 0;
+	font-size: $pr-fs-base;
+	line-height: $pr-lh-normal;
+	color: $pr-text-muted;
+
+	b {
+		font-weight: $pr-weight-semibold;
+		color: $pr-text-secondary;
+		@include pr-tabular;
+	}
+
+	@include pr-phone {
+		font-size: $pr-fs-sm;
+	}
+}
+
 // Makroelementai: desktop / planšetė – trys stulpeliai su vertikaliomis linijomis, telefone – eilutės.
 .macros {
 	display: grid;
