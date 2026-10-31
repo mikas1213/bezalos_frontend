@@ -70,7 +70,7 @@ const UserPlansPage = lazy(() => import('./features/client/profilis/pages/UserPl
 const AnketaPage = lazy(() => import('./features/client/profilis/pages/AnketaPage'));
 const ProduktuKeitimasPage = lazy(() => import('./features/client/profilis/pages/ProduktuKeitimasPage'));
 const ManoReceptaiPage = lazy(() => import('./features/client/profilis/pages/ManoReceptaiPage'));
-const KalorijosPage = lazy(() => import('./features/client/profilis/pages/KalorijosPage'));
+const KalorijosPage = lazy(() => import('./features/client/profilis/kalorijos/KalorijosPage'));
 const StatistikaPage = lazy(() => import('./features/client/profilis/pages/StatistikaPage'));
 
 type CookieValue = {

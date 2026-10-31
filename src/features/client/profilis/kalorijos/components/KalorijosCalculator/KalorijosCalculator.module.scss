@@ -1,0 +1,13 @@
+@use '@/styles/profile' as *;
+
+// Vienos kolonos plotis – kaip profilio navigacijos juostos (828 px).
+.calculator {
+	max-width: 828px;
+	margin: 0 auto $pr-space-40;
+	color: $pr-text;
+	font-family: $pr-font-family;
+
+	@include pr-phone {
+		margin-bottom: $pr-space-28;
+	}
+}

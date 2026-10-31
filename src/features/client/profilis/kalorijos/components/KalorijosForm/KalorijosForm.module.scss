@@ -1,0 +1,86 @@
+@use '@/styles/profile' as *;
+
+// Desktop: lytis | amžius | ūgis | svoris | aktyvumas – vienoje eilutėje.
+.form {
+	display: grid;
+	grid-template-columns: 160px repeat(3, minmax(0, 1fr)) 250px;
+	gap: $pr-space-6;
+
+	// Planšetė: aktyvumas – atskiroje eilutėje per visą plotį.
+	@include pr-tablet {
+		grid-template-columns: 168px repeat(3, minmax(0, 1fr));
+		gap: $pr-space-8 $pr-space-6;
+	}
+
+	// Telefonas: lytis ir aktyvumas per visą plotį, trys laukai – vienoje eilutėje.
+	@include pr-phone {
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+		gap: $pr-space-8 $pr-space-5;
+	}
+}
+
+.gender {
+	@include pr-phone {
+		grid-column: 1 / -1;
+	}
+}
+
+.activity {
+	@include pr-tablet {
+		grid-column: 1 / -1;
+	}
+}
+
+.label {
+	@include pr-field-label;
+}
+
+.segmented {
+	@include pr-segmented;
+
+	@include pr-phone {
+		height: $pr-control-h-lg;
+	}
+}
+
+.segment {
+	@include pr-segmented-item(false);
+	font-family: inherit;
+	transition: background-color $pr-transition, color $pr-transition;
+
+	&:focus-visible {
+		outline: 2px solid $pr-green;
+		outline-offset: 1px;
+	}
+}
+
+.segmentActive {
+	@include pr-segmented-item(true);
+}
+
+.inputWrap {
+	position: relative;
+}
+
+.input {
+	@include pr-input-unit;
+
+	@include pr-phone {
+		height: $pr-control-h-lg;
+	}
+}
+
+.unit {
+	position: absolute;
+	top: 50%;
+	right: $pr-space-8;
+	transform: translateY(-50%);
+	font-size: $pr-fs-sm;
+	font-weight: $pr-weight-semibold;
+	color: $pr-text-subtle;
+	pointer-events: none;
+
+	@include pr-phone {
+		right: $pr-space-6;
+	}
+}

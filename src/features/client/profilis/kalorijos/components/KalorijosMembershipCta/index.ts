@@ -1,0 +1,1 @@
+export { KalorijosMembershipCta } from './KalorijosMembershipCta';
