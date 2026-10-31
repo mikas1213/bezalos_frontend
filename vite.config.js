@@ -1,3 +1,4 @@
+/// <reference types="vitest/config" />
 import react from '@vitejs/plugin-react';
 import path from 'path';
 import { defineConfig } from 'vite';
@@ -28,5 +29,14 @@ export default defineConfig({
 	},
 	build: {
 		chunkSizeWarningLimit: 2600,
+	},
+	test: {
+		environment: 'jsdom',
+		setupFiles: ['./src/test/setup.ts'],
+		coverage: {
+			// Netestuoti failai irgi įskaičiuojami (0 %), kitaip procentas rodytų tik testų paliestus failus.
+			include: ['src/**/*.{js,jsx,ts,tsx}'],
+			exclude: ['src/test/**'],
+		},
 	},
 });
