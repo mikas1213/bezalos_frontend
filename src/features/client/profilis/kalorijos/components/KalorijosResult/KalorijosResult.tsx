@@ -19,7 +19,7 @@ export const KalorijosResult = ({ kcal }: KalorijosResultProps) => {
 	if (kcal <= 0) {
 		return (
 			<div className={styles.result} aria-live="polite">
-				<p className={styles.empty}>Įvesk amžių, ūgį ir svorį – rezultatas atsiras čia.</p>
+				<p className={styles.empty}>Suvedus duomenis – rezultatas atsiras čia.</p>
 			</div>
 		);
 	}
